@@ -131,3 +131,5 @@ The only difference between this more detailed view and the student view of thei
 ##Attendance
 [Back to top](#managr)
 
+Instructors use the attendance page to mark attendance each week of GET HIP. Instructors can mark each student Present (P), Excused (E), or Unexcused (U). The table of attendance on each student's profile is automatically updated when an instructor updates the attendance page.
+![ScreenShot](Screenshots/28IAttendance.png)
