@@ -22,6 +22,19 @@ Team 3 will be creating the student profiles and attendance portions of Managr. 
 - Kevin Lin
 - Rohan Thakker
 
+## Colors Used
+| Color Description | Hex Code | RGB |
+| --- | --- | --- |
+| Green in blog posts | #61c250 | 97,194,80 |
+| Gold in assignments | #fcb040 | 252,176,64 |
+| Blue in profiles | #0397d7 | 3,151,215 |
+| Orange in attendance | #f58028 | 245,128,40 |
+| Dark grey text and nav bars | #333333 | 51,51,51 |
+| Light grey background | #f3f3f3 | 243,243,243 |
+| Medium grey even numbered rows in all tables | #eeeeee | 238,238,238 |
+| Light gold hover row in assignments | #fef1de | 254,241,222 |
+| Light blue hover row in profiles | #e0f5fe | 224,245,254 |
+
 ## Blog Posts
 The blog posts page acts as the home page of Managr. When no user is logged in, it will show Jim Collison's blog posts only. There will be no link to sign in on the home page. It will also have a left side nav bar with recent posts, comments, and archives.
 ![ScreenShot](Screenshots/01HomeLocked.png)
