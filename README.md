@@ -3,12 +3,12 @@ Managr is the student management system for Gallup's Educational Taskforce High 
 
 
 Sections in this document:
-
-[Teams](#teams)
-
-[Colors Used](#colors-used)
-
-[Blog Posts](#blog-posts)
+- [Teams](#teams)
+- [Colors Used](#colors-used)
+- [Blog Posts](#blog-posts)
+- [Assignments](#assignments)
+- [Student Profiles](#student-profiles)
+- [Attendance](#attendance)
 
 
 ##Teams
@@ -32,6 +32,7 @@ Team 3 will be creating the student profiles and attendance portions of Managr. 
 - Kevin Lin
 - Rohan Thakker
 
+
 ## Colors Used
 | Color Description | Hex Code | RGB |
 | --- | --- | --- |
@@ -44,6 +45,7 @@ Team 3 will be creating the student profiles and attendance portions of Managr. 
 | Medium grey even numbered rows in all tables | #eeeeee | 238,238,238 |
 | Light gold hover row in assignments | #fef1de | 254,241,222 |
 | Light blue hover row in profiles | #e0f5fe | 224,245,254 |
+
 
 ## Blog Posts
 The blog posts page acts as the home page of Managr. When no user is logged in, it will show Jim Collison's blog posts only. There will be no link to sign in on the home page. It will also have a left side nav bar with recent posts, comments, and archives.
@@ -60,3 +62,33 @@ When a student is signed in, the top nav bar will include links to their profile
 
 When an instructor is signed in, they will be able to create blog posts, and the top nav bar will include links to a student profiles page, assignments, and attendance.
 ![ScreenShot](Screenshots/21IHome.png)
+
+
+## Assignments
+Subsections in Assignments:
+- [Student View](#student-view)
+- [Instructor View](#instructor-view)
+
+### Student View
+The main page of assignments for a student will show an overview of the assignments assigned to that student.
+![ScreenShot](Screenshots/14SAssignments.png)
+
+Each assignment in the table is clickable and when clicked will show a more detailed description of that assignment.
+![ScreenShot](Screenshots/15SAssignment.png)
+
+### Instructor View
+The main page of assignments for an instructor will let the instructor create a new assignment and will show an overview of all the assignments in the system which are all deletable from this screen.
+![ScreenShot](Screenshots/25IAssignments.png)
+
+Each assignment in the table is clickable and when clicked will show a more detailed description of that assignment. An instructor can choose to update an assignment as well.
+![ScreenShot](Screenshots/26IAssignment.png)
+
+When an instructor chooses to edit an assignment, that instructor can change that assignment's name, points possible, date due, description, and students assigned.
+![ScreenShot](Screenshots/27IUpdateAssignment.png)
+
+
+## Student Profiles
+
+
+
+##Attendance
