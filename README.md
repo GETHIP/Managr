@@ -12,6 +12,8 @@ Sections in this document:
 
 
 ##Teams
+[Back to top](#managr)
+
 Team 1 will be creating the blog post portion of Managr. Team 1 will be led by Cooper Knaak and will have the following GET HIP interns:
 - Eddie Yuan
 - Kristin Goertz
@@ -34,6 +36,8 @@ Team 3 will be creating the student profiles and attendance portions of Managr. 
 
 
 ## Colors Used
+[Back to top](#managr)
+
 | Color Description | Hex Code | RGB |
 | --- | --- | --- |
 | Green in blog posts | #61c250 | 97,194,80 |
@@ -42,12 +46,15 @@ Team 3 will be creating the student profiles and attendance portions of Managr. 
 | Orange in attendance | #f58028 | 245,128,40 |
 | Dark grey text and nav bars | #333333 | 51,51,51 |
 | Light grey background | #f3f3f3 | 243,243,243 |
-| Medium grey even numbered rows in all tables | #eeeeee | 238,238,238 |
+| Medium-dark grey top nav hover | #444444 | 68,68,68 |
+| Medium-light grey even numbered rows in all tables | #eeeeee | 238,238,238 |
 | Light gold hover row in assignments | #fef1de | 254,241,222 |
 | Light blue hover row in profiles | #e0f5fe | 224,245,254 |
 
 
 ## Blog Posts
+[Back to top](#managr)
+
 The blog posts page acts as the home page of Managr. When no user is logged in, it will show Jim Collison's blog posts only. There will be no link to sign in on the home page. It will also have a left side nav bar with recent posts, comments, and archives.
 ![ScreenShot](Screenshots/01HomeLocked.png)
 
@@ -65,11 +72,15 @@ When an instructor is signed in, they will be able to create blog posts, and the
 
 
 ## Assignments
+[Back to top](#managr)
+
 Subsections in Assignments:
 - [Student View](#student-view)
 - [Instructor View](#instructor-view)
 
 ### Student View
+[Back to Assignments](#assignments)
+
 The main page of assignments for a student will show an overview of the assignments assigned to that student.
 ![ScreenShot](Screenshots/14SAssignments.png)
 
@@ -77,6 +88,8 @@ Each assignment in the table is clickable and when clicked will show a more deta
 ![ScreenShot](Screenshots/15SAssignment.png)
 
 ### Instructor View
+[Back to Assignments](#assignments)
+
 The main page of assignments for an instructor will let the instructor create a new assignment and will show an overview of all the assignments in the system which are all deletable from this screen.
 ![ScreenShot](Screenshots/25IAssignments.png)
 
@@ -88,7 +101,11 @@ When an instructor chooses to edit an assignment, that instructor can change tha
 
 
 ## Student Profiles
+[Back to top](#managr)
+
 
 
 
 ##Attendance
+[Back to top](#managr)
+
