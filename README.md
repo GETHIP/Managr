@@ -75,10 +75,10 @@ When an instructor is signed in, they will be able to create blog posts, and the
 [Back to top](#managr)
 
 Subsections in Assignments:
-- [Student View](#student-view)
-- [Instructor View](#instructor-view)
+- [Student View](#student-view-assignments)
+- [Instructor View](#instructor-view-assignments)
 
-### Student View
+### Student View Assignments
 [Back to Assignments](#assignments)
 
 The main page of assignments for a student will show an overview of the assignments assigned to that student.
@@ -87,7 +87,7 @@ The main page of assignments for a student will show an overview of the assignme
 Each assignment in the table is clickable and when clicked will show a more detailed description of that assignment.
 ![ScreenShot](Screenshots/15SAssignment.png)
 
-### Instructor View
+### Instructor View Assignments
 [Back to Assignments](#assignments)
 
 The main page of assignments for an instructor will let the instructor create a new assignment and will show an overview of all the assignments in the system which are all deletable from this screen.
@@ -103,8 +103,30 @@ When an instructor chooses to edit an assignment, that instructor can change tha
 ## Student Profiles
 [Back to top](#managr)
 
+Subsections in Assignments:
+- [Student View](#student-view-profiles)
+- [Instructor View](#instructor-view-profiles)
 
+### Student View Profiles
+[Back to Student Profiles](#student-profiles)
 
+A student can view and edit their own information, view their attendance, and view their assignment grades.
+![ScreenShot](Screenshots/13SProfile.png)
+
+From this screen, student is able to update their "About Me" section which includes their basic information including school, year, email address, parent/guardian names, year in GET HIP, and top 5 strengths.
+![ScreenShot](Screenshots/12SUpdateProfile.png)
+
+### Instructor View Profiles
+[Back to Student Profiles](#student-profiles)
+
+From the main page of profiles, an instructor can see a list of students and basic information about them including their names, schools, years in schoo, email addresses, years in GET HIP, attendance scores, and grades (percentages). Instructors can delete students who drop out of the program and email all the students in the system.
+![ScreenShot](Screenshots/22IProfiles.png)
+
+Each student in the table is clickable and when clicked will show a more detailed description of that student. 
+![ScreenShot](Screenshots/23IProfile.png)
+
+The only difference between this more detailed view and the student view of their own profile is the instructors' ability to edit the student's grades.
+![ScreenShot](Screenshots/24IUpdateProfile.png)
 
 ##Attendance
 [Back to top](#managr)
