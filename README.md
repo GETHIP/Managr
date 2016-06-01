@@ -1,6 +1,16 @@
 # Managr
 Managr is the student management system for Gallup's Educational Taskforce High school Innovation Program (GET HIP). It combines instructor blog posts, assignments, student profiles, and attendance to make a single place for instructors and students to communicate. Managr is being created by current GET HIP summer interns split into 3 teams.
 
+
+Sections in this document:
+
+[Teams](#teams)
+
+[Colors Used](#colors-used)
+
+[Blog Posts](#blog-posts)
+
+
 ##Teams
 Team 1 will be creating the blog post portion of Managr. Team 1 will be led by Cooper Knaak and will have the following GET HIP interns:
 - Eddie Yuan
