@@ -38,18 +38,18 @@ Team 3 will be creating the student profiles and attendance portions of Managr. 
 ## Colors Used
 [Back to top](#managr)
 
-| Color Description | Hex Code | RGB |
-| --- | --- | --- |
-| Green in blog posts | #61c250 | 97,194,80 |
-| Gold in assignments | #fcb040 | 252,176,64 |
-| Blue in profiles | #0397d7 | 3,151,215 |
-| Orange in attendance | #f58028 | 245,128,40 |
-| Dark grey text and nav bars | #333333 | 51,51,51 |
-| Light grey background | #f3f3f3 | 243,243,243 |
-| Medium-dark grey top nav hover | #444444 | 68,68,68 |
-| Medium-light grey even numbered rows in all tables | #eeeeee | 238,238,238 |
-| Light gold hover row in assignments | #fef1de | 254,241,222 |
-| Light blue hover row in profiles | #e0f5fe | 224,245,254 |
+| Color Description | Hex Code | RGB | Color |
+| --- | --- | --- | --- |
+| Green in blog posts | [#61c250](http://rgb.to/hex/61c250) | 97,194,80 | ![ScreenShot](Screenshots/29IGallupGreen.png) |
+| Gold in assignments | [#fcb040](http://rgb.to/hex/fcb040) | 252,176,64 | ![ScreenShot](Screenshots/30IGoldInAssignments.png) |
+| Blue in profiles | [#0397d7](http://rgb.to/hex/0397d7) | 3,151,215 | ![ScreenShot](Screenshots/31IBlueInProfiles.png) |
+| Orange in attendance | [#f58028](http://rgb.to/hex/f58028) | 245,128,40 | ![ScreenShot](Screenshots/32IOrangeInAttendance.png) |
+| Dark grey text and nav bars | [#333333](http://rgb.to/hex/333333) | 51,51,51 | ![ScreenShot](Screenshots/33IDarkGreyTextAndNavBars.png) |
+| Light grey background | [#f3f3f3](http://rgb.to/hex/f3f3f3) | 243,243,243 | ![ScreenShot](Screenshots/34ILightGrayBackground.png) |
+| Medium-dark grey top nav hover | [#444444](http://rgb.to/hex/444444) | 68,68,68 | ![ScreenShot](Screenshots/35IMediumDarkGrayTopNavHover.png) |
+| Medium-light grey even numbered rows in all tables | [#eeeeee](http://rgb.to/hex/eeeeee) | 238,238,238 | ![ScreenShot](Screenshots/36IMediumLightGrayEvenNumberedRowsInAllTables.png) |
+| Light gold hover row in assignments | [#fef1de](http://rgb.to/hex/fef1de) | 254,241,222 | ![ScreenShot](Screenshots/37ILightGoldHoverRowInAssignments.png) |
+| Light blue hover row in profiles | [#e0f5fe](http://rgb.to/hex/e0f5fe) | 224,245,254 | ![ScreenShot](Screenshots/38ILightBlueHoverRowInProfiles.png) |
 
 
 ## Blog Posts
