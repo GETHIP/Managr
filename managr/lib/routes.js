@@ -10,7 +10,7 @@ FlowRouter.route("/assignments", {
     BlazeLayout.render("original",{content: "all"});
   }
 })
-/////////////////////////// TABLE OF ALL ASSIGNMENTS
+// TABLE OF ALL ASSIGNMENTS
 FlowRouter.route("/assignments/all", {
   name: "all",
   action() {
@@ -23,9 +23,9 @@ FlowRouter.route("/assignments/edit/all", {
     BlazeLayout.render("original",{content: "edit-all"});
   }
 });
-/////////////////////////// SINGLE ASSIGNMENT INFO
-FlowRouter.route("/assignments/single/:id", { //TODO Add param
-  name: "single", //TODO Add assignment number
+// SINGLE ASSIGNMENT INFO
+FlowRouter.route("/assignments/single/:id", {
+  name: "single",
   action(params) {
     BlazeLayout.render("original",{content: "single"});
   }
@@ -36,7 +36,7 @@ FlowRouter.route("/assignments/edit/single/:id", {
     BlazeLayout.render("original",{content: "single-edit"});
   }
 });
-/////////////////////////// GRADE SPREADSHEET
+// GRADE SPREADSHEET
 FlowRouter.route("/assignments/edit/grades", {
   name: "edit-grades",
   action() {

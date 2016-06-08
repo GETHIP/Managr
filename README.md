@@ -40,16 +40,16 @@ Team 3 will be creating the student profiles and attendance portions of Managr. 
 
 | Color Description | Hex Code | RGB |
 | --- | --- | --- |
-| Green in blog posts | [#61c250](http://rgb.to/hex/61c250) | 97,194,80 |
-| Gold in assignments | [#fcb040](http://rgb.to/hex/fcb040) | 252,176,64 |
-| Blue in profiles | [#0397d7](http://rgb.to/hex/0397d7) | 3,151,215 |
-| Orange in attendance | [#f58028](http://rgb.to/hex/f58028) | 245,128,40 |
+| Green in blog posts | [#61C250](http://rgb.to/hex/61c250) | 97,194,80 |
+| Gold in assignments | [#FCB040](http://rgb.to/hex/fcb040) | 252,176,64 |
+| Blue in profiles | [#0397D7](http://rgb.to/hex/0397d7) | 3,151,215 |
+| Orange in attendance | [#F58028](http://rgb.to/hex/f58028) | 245,128,40 |
 | Dark grey text and nav bars | [#333333](http://rgb.to/hex/333333) | 51,51,51 |
-| Light grey background | [#f3f3f3](http://rgb.to/hex/f3f3f3) | 243,243,243 |
+| Light grey background | [#F3F3F3](http://rgb.to/hex/f3f3f3) | 243,243,243 |
 | Medium-dark grey top nav hover | [#444444](http://rgb.to/hex/444444) | 68,68,68 |
-| Medium-light grey even numbered rows in all tables | [#eeeeee](http://rgb.to/hex/eeeeee) | 238,238,238 |
-| Light gold hover row in assignments | [#fef1de](http://rgb.to/hex/fef1de) | 254,241,222 |
-| Light blue hover row in profiles | [#e0f5fe](http://rgb.to/hex/e0f5fe) | 224,245,254 |
+| Medium-light grey even numbered rows in all tables | [#EEEEEE](http://rgb.to/hex/eeeeee) | 238,238,238 |
+| Light gold hover row in assignments | [#FEF1DE](http://rgb.to/hex/fef1de) | 254,241,222 |
+| Light blue hover row in profiles | [#E0F5FE](http://rgb.to/hex/e0f5fe) | 224,245,254 |
 
 
 ## Blog Posts
@@ -122,7 +122,7 @@ From this screen, student is able to update their "About Me" section which inclu
 From the main page of profiles, an instructor can see a list of students and basic information about them including their names, schools, years in schoo, email addresses, years in GET HIP, attendance scores, and grades (percentages). Instructors can delete students who drop out of the program and email all the students in the system.
 ![ScreenShot](Screenshots/22IProfiles.png)
 
-Each student in the table is clickable and when clicked will show a more detailed description of that student. 
+Each student in the table is clickable and when clicked will show a more detailed description of that student.
 ![ScreenShot](Screenshots/23IProfile.png)
 
 The only difference between this more detailed view and the student view of their own profile is the instructors' ability to edit the student's grades.
