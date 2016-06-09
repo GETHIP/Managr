@@ -9,40 +9,40 @@ FlowRouter.route("/", {
 });
 // Assignments Index
 FlowRouter.route("/assignments", {
-  name: "all",
+  name: "all_assignments",
   action() {
     BlazeLayout.render(default_template,{content: "all"});
   }
 })
 // Table of Assignments
 FlowRouter.route("/assignments/all", {
-  name: "all",
+  name: "all_assignments",
   action() {
     BlazeLayout.render(default_template,{content: "all"});
   }
 });
 FlowRouter.route("/assignments/edit/all", {
-  name: "edit-all",
+  name: "edit_all_assignments",
   action() {
     BlazeLayout.render(default_template,{content: "edit-all"});
   }
 });
 // Information on a single assignment
 FlowRouter.route("/assignments/single/:id", {
-  name: "single",
+  name: "single_assignment",
   action(params) {
     BlazeLayout.render(default_template,{content: "single"});
   }
 });
 FlowRouter.route("/assignments/edit/single/:id", {
-  name: "edit-single",
+  name: "edit_single_assignment",
   action(params) {
     BlazeLayout.render(default_template,{content: "single-edit"});
   }
 });
 // Spreadsheet of grades
 FlowRouter.route("/assignments/edit/grades", {
-  name: "edit-grades",
+  name: "edit_grades",
   action() {
     BlazeLayout.render(default_template,{content: "edit-grades"});
   }

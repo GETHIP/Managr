@@ -1,14 +1,29 @@
 <head>
   <title>Managr</title>
 </head>
-<body>
+<body style="margin-left:1em;">
   <h1>Welcome to Managr!</h1>
   <!--Displays page name. Will be removed when templates are included-->
   <h2>Current page: {{page}}</h2>
   <!--Inserts the below template in the body-->
   {{> original}}
+  <hr>
+  {{> links}}
 </body>
 <!--The name of this template must be the declared on line 1 of routes.js-->
 <template name="original">
     <!--This section is replaced by the content of the appropriate page-->
+</template>
+<template name="links">
+    <h4>While this website is still under development, use these links to navigate:</h4>
+    <p>When adding pages in routes.js append the url to this list (until webpage has navigation bar)</p>
+    <ul>
+	<li><a href="localhost:3000">root</a></li>
+	<li><a href="localhost:3000/assignments">all_assignments</a></li>
+	<li><a href="localhost:3000/assignments/all">all_assignments</a></li>
+	<li><a href="localhost:3000/assignments/edit/all">edit_all_assignments</a></li>
+	<li><a href="localhost:3000/assignments/single/0">single_assignment</a></li>
+	<li><a href="localhost:3000/assignments/edit/single/0">edit_single_assignment</a></li>
+	<li><a href="localhost:3000/assignments/edit/grades">edit_grades</a></li>
+    </ul>
 </template>
