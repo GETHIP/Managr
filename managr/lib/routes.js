@@ -1,49 +1,52 @@
 // Must be set to the name of the template in main.html
-var default_template = "original";
+var defaultTemplate = "original";
+var assignmentSection = FlowRouter.group({
+  prefix: "/assignments"
+});
 // Delete the next 6 lines when merging with other groups
 FlowRouter.route("/", {
   name: "root",
   action() {
-    BlazeLayout.render(default_template,{content: "root"});
+    BlazeLayout.render(defaultTemplate,{content: "root"});
   }
 });
 // Assignments Index
-FlowRouter.route("/assignments", {
-  name: "all_assignments",
+assignmentSection.route("/", {
+  name: "allAssignments",
   action() {
-    BlazeLayout.render(default_template,{content: "all"});
+    BlazeLayout.render(defaultTemplate,{content: "all"});
   }
 })
 // Table of Assignments
-FlowRouter.route("/assignments/all", {
-  name: "all_assignments",
+assignmentSection.route("/all", {
+  name: "allAssignments",
   action() {
-    BlazeLayout.render(default_template,{content: "all"});
+    BlazeLayout.render(defaultTemplate,{content: "all"});
   }
 });
-FlowRouter.route("/assignments/edit/all", {
-  name: "edit_all_assignments",
+assignmentSection.route("/edit/all", {
+  name: "editAllAssignments",
   action() {
-    BlazeLayout.render(default_template,{content: "edit-all"});
+    BlazeLayout.render(defaultTemplate,{content: "editAll"});
   }
 });
 // Information on a single assignment
-FlowRouter.route("/assignments/single/:id", {
-  name: "single_assignment",
+assignmentSection.route("/single/:id", {
+  name: "singleAssignment",
   action(params) {
-    BlazeLayout.render(default_template,{content: "single"});
+    BlazeLayout.render(defaultTemplate,{content: "single"});
   }
 });
-FlowRouter.route("/assignments/edit/single/:id", {
-  name: "edit_single_assignment",
+assignmentSection.route("/edit/single/:id", {
+  name: "editSingleAssignment",
   action(params) {
-    BlazeLayout.render(default_template,{content: "single-edit"});
+    BlazeLayout.render(defaultTemplate,{content: "singleEdit"});
   }
 });
 // Spreadsheet of grades
-FlowRouter.route("/assignments/edit/grades", {
-  name: "edit_grades",
+assignmentSection.route("/edit/grades", {
+  name: "editGrades",
   action() {
-    BlazeLayout.render(default_template,{content: "edit-grades"});
+    BlazeLayout.render(defaultTemplate,{content: "editGrades"});
   }
 });
