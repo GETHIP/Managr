@@ -1,45 +1,49 @@
+//
+var default_template = "original";
+// Delete the next 6 lines when merging with other groups
 FlowRouter.route("/", {
   name: "root",
   action() {
-    BlazeLayout.render("original",{content: "root"});
+    BlazeLayout.render(default_template,{content: "root"});
   }
 });
+// Assignments Index
 FlowRouter.route("/assignments", {
   name: "all",
   action() {
-    BlazeLayout.render("original",{content: "all"});
+    BlazeLayout.render(default_template,{content: "all"});
   }
 })
-// TABLE OF ALL ASSIGNMENTS
+// Table of Assignments
 FlowRouter.route("/assignments/all", {
   name: "all",
   action() {
-    BlazeLayout.render("original",{content: "all"});
+    BlazeLayout.render(default_template,{content: "all"});
   }
 });
 FlowRouter.route("/assignments/edit/all", {
   name: "edit-all",
   action() {
-    BlazeLayout.render("original",{content: "edit-all"});
+    BlazeLayout.render(default_template,{content: "edit-all"});
   }
 });
-// SINGLE ASSIGNMENT INFO
+// Information on a single assignment
 FlowRouter.route("/assignments/single/:id", {
   name: "single",
   action(params) {
-    BlazeLayout.render("original",{content: "single"});
+    BlazeLayout.render(default_template,{content: "single"});
   }
 });
 FlowRouter.route("/assignments/edit/single/:id", {
   name: "edit-single",
   action(params) {
-    BlazeLayout.render("original",{content: "single-edit"});
+    BlazeLayout.render(default_template,{content: "single-edit"});
   }
 });
-// GRADE SPREADSHEET
+// Spreadsheet of grades
 FlowRouter.route("/assignments/edit/grades", {
   name: "edit-grades",
   action() {
-    BlazeLayout.render("original",{content: "edit-grades"});
+    BlazeLayout.render(default_template,{content: "edit-grades"});
   }
 });
