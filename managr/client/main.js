@@ -2,7 +2,7 @@ import { Template } from 'meteor/templating';
 Template.body.helpers({
   page: function() {
     var currentPage = currentPage = FlowRouter.getRouteName();
-    if (current_page == null || current_page.length < 1) {
+    if (currentPage == null || currentPage.length < 1) {
       return "404 Error. Page not found.";
     }
     else {

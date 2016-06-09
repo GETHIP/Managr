@@ -1,5 +1,5 @@
 // Must be set to the name of the template in main.html
-var default_template = "original";
+var defaultTemplate = "original";
 var assignmentSection = FlowRouter.group({
   prefix: "/assignments"
 });
@@ -7,46 +7,46 @@ var assignmentSection = FlowRouter.group({
 FlowRouter.route("/", {
   name: "root",
   action() {
-    BlazeLayout.render(default_template,{content: "root"});
+    BlazeLayout.render(defaultTemplate,{content: "root"});
   }
 });
 // Assignments Index
 assignmentSection.route("/", {
   name: "allAssignments",
   action() {
-    BlazeLayout.render(default_template,{content: "all"});
+    BlazeLayout.render(defaultTemplate,{content: "all"});
   }
 })
 // Table of Assignments
 assignmentSection.route("/all", {
   name: "allAssignments",
   action() {
-    BlazeLayout.render(default_template,{content: "all"});
+    BlazeLayout.render(defaultTemplate,{content: "all"});
   }
 });
 assignmentSection.route("/edit/all", {
   name: "editAllAssignments",
   action() {
-    BlazeLayout.render(default_template,{content: "editAll"});
+    BlazeLayout.render(defaultTemplate,{content: "editAll"});
   }
 });
 // Information on a single assignment
 assignmentSection.route("/single/:id", {
   name: "singleAssignment",
   action(params) {
-    BlazeLayout.render(default_template,{content: "single"});
+    BlazeLayout.render(defaultTemplate,{content: "single"});
   }
 });
 assignmentSection.route("/edit/single/:id", {
   name: "editSingleAssignment",
   action(params) {
-    BlazeLayout.render(default_template,{content: "singleEdit"});
+    BlazeLayout.render(defaultTemplate,{content: "singleEdit"});
   }
 });
 // Spreadsheet of grades
 assignmentSection.route("/edit/grades", {
   name: "editGrades",
   action() {
-    BlazeLayout.render(default_template,{content: "editGrades"});
+    BlazeLayout.render(defaultTemplate,{content: "editGrades"});
   }
 });
