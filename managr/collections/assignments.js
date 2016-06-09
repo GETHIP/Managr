@@ -21,7 +21,7 @@ AssignmentSchema = new SimpleSchema({
         label: "Assigner"
     },
     assignedStudents: {
-        type: [String],
+        type: [Number],
         label: "Assigned Students"
     },
     dateAssigned: {
