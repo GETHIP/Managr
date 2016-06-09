@@ -3,8 +3,10 @@
 </head>
 <body>
   <h1>Welcome to Managr!</h1>
-  <h2>{{page}}</h2>
-  {{>original}}
+  <!--Displays page name. Will be removed when templates are included-->
+  <h2>Current page: {{page}}</h2>
+  <!--Inserts the below template in the body-->
+  {{> original}}
 </body>
 <!--The name of this template must be the declared on line 1 of routes.js-->
 <template name="original">

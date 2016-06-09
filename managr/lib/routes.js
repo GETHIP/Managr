@@ -1,4 +1,4 @@
-//
+// Must be set to the name of the template in main.html
 var default_template = "original";
 // Delete the next 6 lines when merging with other groups
 FlowRouter.route("/", {
