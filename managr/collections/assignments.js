@@ -20,6 +20,10 @@ AssignmentSchema = new SimpleSchema({
         type: String,
         label: "Assigner"
     },
+    assignedStudents: {
+        type: [String],
+        label: "Assigned Students"
+    },
     dateAssigned: {
         type: String,
         label: "Date Assigned",,
