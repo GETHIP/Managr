@@ -12,7 +12,7 @@ AssignmentSchema = new SimpleSchema({
     dueDate: {
         type: Date,
         label: "Due Date",
-        autoValue: function {
+        autoValue: function() {
             return new Date(new Date().getTime() + 7 * 24 * 60 * 60 * 1000);
         }
     },
@@ -26,15 +26,15 @@ AssignmentSchema = new SimpleSchema({
     },
     dateAssigned: {
         type: String,
-        label: "Date Assigned",,
-        autoValue: function {
+        label: "Date Assigned",
+        autoValue: function() {
             return new Date();
         }
     },
     pointsPossible: {
         type: Number,
         label: "Points Possible",
-        autoValue: function {
+        autoValue: function() {
             return 10;
         }
     }
