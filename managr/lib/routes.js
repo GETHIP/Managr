@@ -40,7 +40,7 @@ assignmentSection.route("/single/:id", {
 assignmentSection.route("/edit/single/:id", {
   name: "editSingleAssignment",
   action(params) {
-    BlazeLayout.render(defaultTemplate,{content: "singleEdit"});
+    BlazeLayout.render(defaultTemplate,{content: "editSingle"});
   }
 });
 // Spreadsheet of grades
