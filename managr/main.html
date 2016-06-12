@@ -1,30 +1,8 @@
 <head>
-  <title>Managr</title>
+    <title>Managr</title>
 </head>
-<body style="margin-left:1em;">
-  <h1>Welcome to Managr!</h1>
-  <!--Displays page name. Will be removed when templates are included-->
-  <h2>Current page: {{page}}</h2>
-  <h3>Assignment ID: {{param}}</h3>
-  <!--Inserts the below template in the body-->
-  {{> original}}
-  <hr>
-  {{> links}}
-</body>
-<!--The name of this template must be the declared on line 1 of routes.js-->
-<template name="original">
-    <!--This section is replaced by the content of the appropriate page-->
-</template>
-<template name="links">
-    <h4>While this website is still under development, use these urls to navigate:</h4>
-    <p>When adding pages in routes.js append the url to this list (until webpage has navigation bar)</p>
-    <ul>
-	<li><code>./</code></li>
-	<li><code>./assignments</code></li>
-	<li><code>./assignments/all</code></li>
-	<li><code>./assignments/edit/all</code></li>
-	<li><code>./assignments/single/{id}</code></li>
-	<li><code>./assignments/edit/single/{id}</code></li>
-	<li><code>./assignments/edit/grades</code></li>
-    </ul>
+<template name="main">
+    <div>
+            {{>Template.dynamic template=content}}
+    </div>
 </template>

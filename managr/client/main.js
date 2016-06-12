@@ -1,24 +1,9 @@
 import { Template } from 'meteor/templating';
-Template.body.helpers({
-  page: function() {
-    var currentPage = currentPage = FlowRouter.getRouteName();
-    if (currentPage == null || currentPage.length < 1) {
-      return "404 Error. Page not found.";
+//import { Assignments } from "../collections/assignments.js";
+Template.single.helpers({
+    assignments: function() {
+        var a = Assignments.find().fetch();
+        console.log(a);
+        return a;
     }
-    else {
-      return currentPage;
-    }
-  }
 });
-Template.body.helpers({
-  param: function() {
-    var parameters, id;
-    id = FlowRouter.getParam("id");
-    if (typeof id == undefined) {
-      return "none";
-    }
-    else {
-      return id;
-    }
-  }
-})
