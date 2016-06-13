@@ -1,3 +1,11 @@
 body {
   background-color: #f3f3f3;
+  margin-left: 30%;
+}
+textarea {
+  width: 95%;
+  height: 100px;
+}
+input[name="name"] {
+  width: 95%;
 }
