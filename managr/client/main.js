@@ -8,29 +8,57 @@ Template.editSingle.onCreated(function () {
 });
 Template.single.helpers({
   assignments: function() {
-    var param = FlowRouter.getParam("id");
-    console.log(param);
-    var obj = new Meteor.Collection.ObjectID(param);
-    console.log(obj);
-    var filter = {"_id":obj}
-    console.log(filter);
-    var a = Assignments.find(filter);
-    console.log(a);
-    console.log(a.fetch());
-    return a;
+    var objects = Assignments.find({"_id":new Meteor.Collection.ObjectID(FlowRouter.getParam("id"))}).fetch();
+    if (objects.length > 0) {
+      var obj = objects[0];
+      var strStudents = "";
+      var numStudents = obj.assignedStudents;
+      for (var i = 0; i < numStudents.length; i++) {
+        strStudents += numStudents[i] + ", ";
+      }
+      strStudents = strStudents.slice(0, -2);
+      console.log(obj.title)
+      var cleanedObj = {
+        title: obj.title,
+        description: obj.description,
+        dueDate: (obj.dueDate.getMonth() + 1) + '/' + obj.dueDate.getDate() + '/' +  obj.dueDate.getFullYear(),
+        assigner: obj.assigner,
+        assignedStudents: strStudents,
+        dateAssigned: (obj.dueDate.getMonth() + 1) + '/' + obj.dueDate.getDate() + '/' +  obj.dueDate.getFullYear(),
+        pointsPossible: obj.pointsPossible
+      }
+      return [cleanedObj];
+    }
+    else {
+      return [];
+    }
   }
 });
 Template.editSingle.helpers({
   assignments: function() {
-    var param = FlowRouter.getParam("id");
-    console.log(param);
-    var obj = new Meteor.Collection.ObjectID(param);
-    console.log(obj);
-    var filter = {"_id":obj}
-    console.log(filter);
-    var a = Assignments.find(filter);
-    console.log(a);
-    console.log(a.fetch());
-    return a;
+    var objects = Assignments.find({"_id":new Meteor.Collection.ObjectID(FlowRouter.getParam("id"))}).fetch();
+    if (objects.length > 0) {
+      var obj = objects[0];
+      var strStudents = "";
+      var numStudents = obj.assignedStudents;
+      for (var i = 0; i < numStudents.length; i++) {
+        strStudents += numStudents[i] + ", ";
+      }
+      strStudents = strStudents.slice(0, -2);
+      console.log(obj.title)
+      var cleanedObj = {
+        title: obj.title,
+        description: obj.description,
+        dueDate: (obj.dueDate.getMonth() + 1) + '/' + obj.dueDate.getDate() + '/' +  obj.dueDate.getFullYear(),
+        assigner: obj.assigner,
+        assignedStudents: strStudents,
+        dateAssigned: (obj.dueDate.getMonth() + 1) + '/' + obj.dueDate.getDate() + '/' +  obj.dueDate.getFullYear(),
+        pointsPossible: obj.pointsPossible
+      }
+      return [cleanedObj];
+    }
+    else {
+      return [];
+    }
   }
 });
