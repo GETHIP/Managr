@@ -1,16 +1,13 @@
-// Must be set to the name of the template in main.html
-var defaultTemplate = "original";
+var defaultTemplate = "main";
 var assignmentSection = FlowRouter.group({
   prefix: "/assignments"
 });
-// Delete the next 6 lines when merging with other groups
 FlowRouter.route("/", {
   name: "root",
   action() {
-    BlazeLayout.render(defaultTemplate,{content: "root"});
+    BlazeLayout.render(defaultTemplate,{content: "original"});
   }
 });
-// Assignments Index
 assignmentSection.route("/", {
   name: "allAssignments",
   action() {

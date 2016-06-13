@@ -1,5 +1,7 @@
 import { Meteor } from 'meteor/meteor';
-
+import { Assignments } from '../collections/assignments.js';
 Meteor.startup(() => {
-  // code to run on server at startup
+  Meteor.publish('Assignments', function() {
+    return Assignments.find();
+  });
 });
