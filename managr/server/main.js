@@ -9,4 +9,16 @@ Meteor.startup(() => {
   Meteor.publish("Student", function(){
     return Student.find();
   });
+
+  for(var i = Student.find().count(); i < 15; i++){
+      Student.insert({"name":"ben" + i,
+      "profilePicture":"http://http://i.telegraph.co.uk/multimedia/archive/03523/Kim_Jong_Un_3523321k.jpg",
+      "age":5,
+      "strengths":['Input', 'Command', 'Restorative', 'Learner', 'Futuristic'],
+      "description":"tall",
+      "grade": ['100%'],
+      "attendance":['true'],
+      "assignments":[['12', '100']],
+      "school":"West Dodge"});
+  }
 });
