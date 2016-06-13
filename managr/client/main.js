@@ -1,5 +1,14 @@
 import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
+import { Comments } from '../collections/comments.js'
+
+Template.comment.onCreated(function(){
+  Meteor.subscribe('Comments');
+});
+
+Template.post.onCreated(function(){
+  Meteor.subscribe('Posts');
+})
 
 Template.hello.onCreated(function helloOnCreated() {
   // counter starts at 0
@@ -17,4 +26,8 @@ Template.hello.events({
     // increment the counter when button is clicked
     instance.counter.set(instance.counter.get() + 1);
   },
+});
+
+Template.post.events({
+
 });
