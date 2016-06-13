@@ -5,3 +5,9 @@ FlowRouter.route('/attendance', {
   }
 //  BlazeLayout.render("main", {content: "Login"});
 });
+
+FlowRouter.route("/profile/:id", {
+  action: function(params, queryParams){
+    BlazeLayout.render("Profile", {content: "aboutme"})
+  }
+});
