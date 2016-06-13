@@ -9,16 +9,20 @@ Template.aboutme.onCreated(function(){
 
 Template.aboutme.helpers({
     student: function(){
-      var userId = FlowRouter.getParam("id");
-      console.log(userId);
-      var student = Student.findOne({"_id": "FwbA73GS9owiMivhS"});
-      console.log(student)
+      let userId = FlowRouter.getParam("id");
+      let student = Student.findOne({"_id": userId});
       return student;
     },
     strengths: function(){
-      var userId = FlowRouter.getParam("id");
-      var strengths = Student.findOne({"_id": "FwbA73GS9owiMivhS"});
-      console.log(strengths);
-      return strengths.strengths;
+      let userId = FlowRouter.getParam("id");
+      let strengths = Student.findOne({"_id": userId});
+      let strnths = {};
+      let stren = strengths.strengths;
+      strnths.s1 = stren[0];
+      strnths.s2 = stren[1];
+      strnths.s3 = stren[2];
+      strnths.s4 = stren[3];
+      strnths.s5 = stren[4];
+      return strngths;
     }
 });
