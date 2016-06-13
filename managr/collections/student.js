@@ -9,14 +9,13 @@ var StudentSchema = new SimpleSchema({
     profilePicture: {
         type: String,
         label: 'Profile Picture'
-        //autoValue: 'http:\/\/www.benwingerter.com\/seizurefarm\/resources\/pictures\/penguinNormal.png'
     },
     age: {
         type: Number,
         label: 'Age'
     },
     strengths: {
-        type: String,
+        type: [String],
         label: 'Strengths'
     },
     description: {
@@ -24,11 +23,11 @@ var StudentSchema = new SimpleSchema({
         label: 'Description'
     },
     grade: {
-        type: Number,
+        type: [[]],
         label: 'Grade'
     },
     attendance: {
-        type: String,
+        type: [String],
         label: 'Attendance'
     },
     assignments: {
