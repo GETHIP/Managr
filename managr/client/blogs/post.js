@@ -1,1 +1,11 @@
-//Insert helpers for post template here...
+Template.post.helpers({
+  title: function(id){
+    Posts.find({})
+
+  }
+
+
+
+
+
+});
