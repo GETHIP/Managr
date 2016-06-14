@@ -1,7 +1,7 @@
 hr {
     display: block;
-    margin-top: 1in;
-    margin-bottom: 2in;
+    margin-top: 10px;
+    margin-bottom: 50px;
     margin-left: 2.5%;
     margin-right: 2.5%;
     border-style: solid;
@@ -32,11 +32,10 @@ p {
     margin-left: 5%;
 }
 
-.btn btn-primary {
+.btn-primary {
     background-color: #0397d7;
-    width: 95%;
-    padding-left: 20px;
     margin-left: 18%;
+    margin-right: 18%;
 }
 
 #name {
