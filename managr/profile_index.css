@@ -1,13 +1,12 @@
 hr {
-    display: block; !important
-    margin-top: 10px; !important
-    margin-bottom: 50px; !important
-    margin-left: 2.5%; !important
-    margin-right: 2.5%; !important
-    border-style: solid; !important
-    border-width: 2px; !important
-    border-color:  #0397d7; !important
-
+    display: block !important;
+    margin-top: 10px !important;
+    margin-bottom: 50px !important;
+    margin-left: 2.5% !important;
+    margin-right: 2.5% !important;
+    border-style: solid !important;
+    border-width: 2px !important;
+    border-color:  #0397d7 !important;
 }
 
 body {

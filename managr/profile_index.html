@@ -26,8 +26,10 @@
         <span class="caret"></span></a>
         <ul class="dropdown-menu">
           <li><a href="#">Sign Out</a></li>
+
         </ul>
         </li>
+
     </ul>
   </div>
 </nav>-->
@@ -38,13 +40,12 @@
             About Me
         </strong> </h1>
        <!--Data Here is information about the person -->
-       {{> aboutme}}
-       {{> profileEdit}}
+       {{>Template.dynamic template=body}}
 
     </div>
 
+      {{>Template.dynamic template=editAboutMe}}
 
-    <button type="button" class="btn btn-primary btn-block" style="color:#0397d7;">Edit About Me</button>
     <br>
     <br>
     <div class="container">
@@ -69,18 +70,7 @@
     <tbody>
       <tr>
           <!-- Attendance -->
-        <td>here</td>
-        <td>come</td>
-        <td>dat</td>
-        <td>boi</td>
-        <td>o</td>
-        <td>yes</td>
-        <td>waddup</td>
-        <td>watch</td>
-        <td>him</td>
-        <td>rollin</td>
-        <td>watch</td>
-        <td>him</td>
+          {{> Template.dynamic template=attendance}}
       </tr>
     </tbody>
   </table>
@@ -137,4 +127,14 @@
     {{#with student}}
     <p><strong>Get Hip Year:</strong></p><p>{{getHipYear}}</p>
     {{/with}}
+</template>
+
+<template name="attendance">
+    {{#each attendance}}
+    <td>this</td>
+    {{/each}}
+</template>
+
+<template name="editAboutMe">
+    <button type="button" class="btn btn-primary btn-block">Edit About Me</button>
 </template>
