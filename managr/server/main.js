@@ -19,6 +19,8 @@ Meteor.startup(() => {
       "grade": ['100%'],
       "attendance":['true'],
       "assignments":[['12', '100']],
-      "school":"West Dodge"});
+      "school":"West Dodge",
+      "email": "ben@ben.com"
+  });
     }
 });

@@ -37,6 +37,10 @@ var StudentSchema = new SimpleSchema({
     school: {
         type: String,
         label: 'School'
+    },
+    email: {
+        type: String,
+        label: 'Email'
     }
 });
 Student.attachSchema(StudentSchema);
