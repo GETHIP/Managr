@@ -27,7 +27,7 @@ var StudentSchema = new SimpleSchema({
         label: 'Grade'
     },
     attendance: {
-        type: [String],
+        type: [Boolean],
         label: 'Attendance'
     },
     assignments: {

@@ -14,7 +14,7 @@ Meteor.startup(() => {
       "strengths": ['Input', 'Command', 'Restorative', 'Learner', 'Futuristic'],
       "description": "tall",
       "grade": ['100%'],
-      "attendance": ['true'],
+      "attendance": [true, false, true, true, false, false, true, true, false, true, true, false, false, true],
       "assignments": [['12', '100']],
       "school": "West Dodge",
       "email": "ben@ben.com",
