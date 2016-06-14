@@ -15,14 +15,14 @@ Template.aboutme.helpers({
     },
     strengths: function(){
       let userId = FlowRouter.getParam("id");
-      let strengths = Student.findOne({"_id": userId});
-      let strnths = {};
-      let stren = strengths.strengths;
-      strnths.s1 = stren[0];
-      strnths.s2 = stren[1];
-      strnths.s3 = stren[2];
-      strnths.s4 = stren[3];
-      strnths.s5 = stren[4];
-      return strngths;
+      let student = Student.findOne({"_id": userId});
+      let strengths = {};
+      let stren = student.strengths;
+      strengths.s1 = stren[0];
+      strengths.s2 = stren[1];
+      strengths.s3 = stren[2];
+      strengths.s4 = stren[3];
+      strengths.s5 = stren[4];
+      return strengths;
     }
 });
