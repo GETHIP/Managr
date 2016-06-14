@@ -1,4 +1,25 @@
-<template name="Profile">
+<!-- ______      _                       _ _     _                       _            __   _   _     _     
+| ___ \    | |                     | (_)   | |                     | |          / _| | | | |   (_)    
+| |_/ /___ | |__   __ _ _ __     __| |_  __| |  _ __ ___   ___  ___| |_    ___ | |_  | |_| |__  _ ___ 
+|    // _ \| '_ \ / _` | '_ \   / _` | |/ _` | | '_ ` _ \ / _ \/ __| __|  / _ \|  _| | __| '_ \| / __|
+| |\ \ (_) | | | | (_| | | | | | (_| | | (_| | | | | | | | (_) \__ \ |_  | (_) | |   | |_| | | | \__ \
+\_| \_\___/|_| |_|\__,_|_| |_|  \__,_|_|\__,_| |_| |_| |_|\___/|___/\__|  \___/|_|    \__|_| |_|_|___/
+                                                                                                      
+                                                                                                     
+                                                                                                     
+                                                                                                     
+                                                                                                     
+                                                                                                     
+                                                                                                     
+                                                                                                     
+                                                                                                         
+   / //_/___  _   __ (_)____     (_)_____   ____ _   / ____// ___// ___/   / ____/____   ____/ /
+  / ,<  / _ \| | / // // __ \   / // ___/  / __ `/  / /     \__ \ \__ \   / / __ / __ \ / __  / 
+ / /| |/  __/| |/ // // / / /  / /(__  )  / /_/ /  / /___  ___/ /___/ /  / /_/ // /_/ // /_/ /  
+/_/ |_|\___/ |___//_//_/ /_/  /_//____/   \__,_/   \____/ /____//____/   \____/ \____/ \__,_/   
+                                                                                                
+ -->
+
 <head>
     <title>Profiles</title>
     <link type="text/css" rel="stylesheet" href="./navbar.css">
@@ -10,15 +31,15 @@
   </head>
 <body>
      <!--My Beautiful Navbar -->
-     <!--<nav class="navbar navbar-inverse">
+     <nav style="border-radius:0;" class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">7
       <a class="navbar-brand" href="#">GET HIP Managr</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
+      <li><a href="#">Home</a></li>
       <li><a href="#">Assignments</a></li>
-      <li><a href="#">My Profile</a></li>
+      <li class="active"><a href="#">My Profile</a></li> 
     </ul>
     <ul class="nav navbar-nav navbar-right">
            <li class="dropdown">
@@ -26,13 +47,13 @@
         <span class="caret"></span></a>
         <ul class="dropdown-menu">
           <li><a href="#">Sign Out</a></li>
-
+         
         </ul>
         </li>
 
     </ul>
   </div>
-</nav>-->
+</nav> 
     <h1 id="name">Student Name</h1>
     <hr>
     <div class="rectangle">
@@ -40,11 +61,25 @@
             About Me
         </strong> </h1>
        <!--Data Here is information about the person -->
-       {{> aboutme}}
-
+        <p><strong>School:</strong></p><p>{{schoolName}}</p>
+        <p><strong>Grade:</strong></p><p>{{grade}}</p> 
+        <p><strong>Age:</strong></p><p>{{age}}</p>
+        <p><strong>Email:</strong></strong></p> <p>{{email}}</p>
+        <p><strong>Top 5:</strong></p> 
+            
+        <ol>
+            <!-- Top 5 -->
+            <li>{{1}}</li>
+            <li>{{2}}</li>
+            <li>{{3}}</li>
+            <li>{{4}}</li>
+            <li>{{5}}</li>
+        </ol>
+        <p><strong>Get Hip Year:</strong></p><p>{{getHip}}</p>
+        
     </div>
 
-    <button type="button" class="btn btn-primary">Edit About Me</button>
+    <button type="button" class="btn btn-primary btn-block">Edit About Me</button>
     <br>
     <br>
     <div class="container">
@@ -55,15 +90,15 @@
         <th>Week One</th>
         <th>Week Two</th>
         <th>Week Three</th>
-        <th>Week Four</th>
-        <th>Week Five</th>
-        <th>Week Six</th>
-        <th>Week Seven</th>
-        <th>Week Eight</th>
-        <th>Week Nine</th>
-        <th>Week Ten</th>
-        <th>Week Eleven</th>
-        <th>Week Twelve</th>
+<th>Week Four</th>
+<th>Week Five</th>
+<th>Week Six</th>
+<th>Week Seven</th>
+<th>Week Eight</th>
+<th>Week Nine</th>
+<th>Week Ten</th>
+<th>Week Eleven</th>
+<th>Week Twelve</th>
       </tr>
     </thead>
     <tbody>
@@ -74,7 +109,7 @@
         <td>dat</td>
         <td>boi</td>
         <td>o</td>
-        <td>yes</td>
+        <td>shit</td>
         <td>waddup</td>
         <td>watch</td>
         <td>him</td>
@@ -90,15 +125,12 @@
   <table class="table table-bordered">
     <thead class=color>
       <tr>
-        <th>Week One</th>
-        <th>Week Two</th>
-        <th>Week Three</th>
-        <th>Name</th>
-        <th>Date Assigned</th>
-        <th>Due Dates</th>
-        <th>Points Possible</th>
-        <th>Points Received</th>
-        <th>Instructor</th>
+<th>Name</th>
+<th>Date Assigned</th>
+<th>Due Dates</th></th>
+<th>Points Possible</th>
+<th>Points Received</th>
+<th>Instructor</th>
       </tr>
     </thead>
     <tbody>
@@ -109,32 +141,12 @@
         <td>dat</td>
         <td>boi</td>
         <td>o</td>
-        <td>yes</td>
+        <td>shit</td>
       </tr>
     </tbody>
   </table>
 </div>
-
-
-
+   
+    
+    
  </body>
-</template>
-
-<template name="aboutme">
-    {{#with student}}
-    <p><strong>Name:</strong></p><p>{{name}}</p>
-    <p><strong>School:</strong></p><p>{{school}}</p>
-    <p><strong>Grade:</strong></p><p>{{grade}}</p>
-    <p><strong>Age:</strong></p><p>{{age}}</p>
-    <p><strong>Email:</strong></p> <p>{{email}}</p>
-    <p><strong>Top 5:</strong></p>
-    {{/with}}
-    <ol>
-    {{#each strengths}}
-        <li>{{this}}</li>
-    {{/each}}
-    </ol>
-    {{#with student}}
-    <p><strong>Get Hip Year:</strong></p><p>{{getHipYear}}</p>
-    {{/with}}
-</template>
