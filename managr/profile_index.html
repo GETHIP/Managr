@@ -129,15 +129,11 @@
     <p><strong>Email:</strong></p> <p>{{email}}</p>
     <p><strong>Top 5:</strong></p>
     {{/with}}
-    {{#with strengths}}
     <ol>
-        <li>{{s1}}</li>
-        <li>{{s2}}</li>
-        <li>{{s3}}</li>
-        <li>{{s4}}</li>
-        <li>{{s5}}</li>
+    {{#each strengths}}
+        <li>{{this}}</li>
+    {{/each}}
     </ol>
-    {{/with}}
     {{#with student}}
     <p><strong>Get Hip Year:</strong></p><p>{{getHipYear}}</p>
     {{/with}}
