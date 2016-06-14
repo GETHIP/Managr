@@ -41,6 +41,10 @@ var StudentSchema = new SimpleSchema({
     email: {
         type: String,
         label: 'Email'
+    },
+    getHipYear: {
+        type: Number,
+        label: 'Get Hip Year'
     }
 });
 Student.attachSchema(StudentSchema);

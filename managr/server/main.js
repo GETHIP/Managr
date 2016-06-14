@@ -16,7 +16,8 @@ Meteor.startup(() => {
       "attendance":['true'],
       "assignments":[['12', '100']],
       "school":"West Dodge",
-      "email": "ben@ben.com"
+      "email": "ben@ben.com",
+      "getHipYear": 2
     });
   }
   console.log(Student.findOne({"name":"ben1"}));
