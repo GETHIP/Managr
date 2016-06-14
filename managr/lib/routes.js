@@ -11,14 +11,14 @@ FlowRouter.route("/", {
 assignmentSection.route("/", {
   name: "allAssignments",
   action() {
-    BlazeLayout.render(defaultTemplate,{content: "all"});
+    BlazeLayout.render(defaultTemplate,{content: "listing"});
   }
 })
 // Table of Assignments
 assignmentSection.route("/all", {
   name: "allAssignments",
   action() {
-    BlazeLayout.render(defaultTemplate,{content: "all"});
+    BlazeLayout.render(defaultTemplate,{content: "listing"});
   }
 });
 assignmentSection.route("/edit/all", {
