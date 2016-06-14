@@ -86,7 +86,8 @@ Template.table.helpers({
           assigner: obj.assigner,
           assignedStudents: strStudents,
           dateAssigned: (obj.dueDate.getMonth() + 1) + '/' + obj.dueDate.getDate() + '/' +  obj.dueDate.getFullYear(),
-          pointsPossible: obj.pointsPossible
+          pointsPossible: obj.pointsPossible,
+          url: obj._id.valueOf()
         }
         list.push(cleanedObj);
       }
