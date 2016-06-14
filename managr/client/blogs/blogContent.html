@@ -1,12 +1,11 @@
 <template name="blogContent">
 
-  **if user is logged in**
-
+  <!--if user is logged in** -->
   {{#each allPosts }}
   <ul> {{> post}} </ul>
   {{/each}}
 
-**else if user is not logged in**
+<!-- else if user is not logged in-->
 
   {{#each publicPosts }}
   <ul>{{> post}}</ul>
