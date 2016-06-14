@@ -1,7 +1,7 @@
 import { Mongo } from 'meteor/mongo';
 export const Assignments = new Mongo.Collection('Assignments');
-// Milliseconds in a week (60*60*24*7*1000)
-const ms = 604800000;
+// (60*60*24*7*1000)
+const MILLISECONDS_IN_A_WEEK = 604800000;
 AssignmentSchema = new SimpleSchema({
     title: {
         type: String,
@@ -15,8 +15,7 @@ AssignmentSchema = new SimpleSchema({
         type: Date,
         label: "Due Date",
         autoValue: function() {
-          // Adds a week in milliseconds
-          return new Date() + ms;
+          return new Date() + MILLISECONDS_IN_A_WEEK;
         }
     },
     assigner: {
