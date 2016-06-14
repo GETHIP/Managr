@@ -1,6 +1,6 @@
 import { Template } from 'meteor/templating';
 
-export Posts = new Mongo.Collection('Posts');
+export const Posts = new Mongo.Collection('Posts');
 
 Comment = new SimpleSchema({
     text: {
