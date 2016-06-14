@@ -1,0 +1,50 @@
+
+body {
+    background-color: #f3f3f3;
+}
+
+p {
+    padding-left: 20px;
+}
+
+
+
+/*    NavBar Below    */
+ul {
+    list-style-type: none;
+}
+
+a {
+
+}
+
+.navContent {
+    display: block;
+    padding: 10px 20px 10px 20px;
+    color: white;
+    left: 0;
+    font-size: 15px;
+}
+
+.navContent:hover {
+    background-color: #444444;
+    color: white;
+}
+
+.navTitle {
+    background-color: #61c250;
+    font-size: 20px;
+    padding: 10px 8px 10px 8px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+#sideNav {
+    background-color: #333333;
+    color: white;
+    width: 25%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+}

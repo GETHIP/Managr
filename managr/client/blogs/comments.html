@@ -1,0 +1,21 @@
+<template name="comment">
+  <div class="commentBox">
+    <h5>{{author}} on {{date}}</h5>
+
+    <p>{{body}}</p>
+
+  </div>
+</template>
+
+<template name="writeComment">
+  <div class="newComment">
+    <h4>Leave a Comment</h4>
+    <form>
+      First name:<br>
+      <input type="text" name="name"><br>
+      Comment:<br>
+      <input type="text" name="comment"><br>
+      <input type="submit">
+    </form>
+  </div>
+</template>
