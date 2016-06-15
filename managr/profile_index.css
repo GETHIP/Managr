@@ -36,7 +36,7 @@ h1 {
 }*/
 
 .btn-primary {
-    background-color: #0397d7;
+    background-color: #0397d7 !important;
     margin-left: 18%;
     margin-right: 18%;
 }
