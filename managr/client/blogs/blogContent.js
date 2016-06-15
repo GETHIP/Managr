@@ -1,3 +1,5 @@
+import { Posts } from '../../collections/blogPosts.js';
+
 Template.blogContent.helpers({
   //Returns Posts by Jim for non-logins
       publicPosts: function(){
