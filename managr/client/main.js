@@ -63,4 +63,10 @@ Template.assignments.helpers({
       assignments = Student.findOne({"_id": userId});
       return assignments;
     }
+});
+
+Template.editAboutMe.helpers({
+    userId: function () {
+      return userId = "window.location = \"/profile/edit/" + FlowRouter.getParam("id") + "\"";
+    }
 })
