@@ -6,10 +6,8 @@ Template.post.onCreated(function(){
   Meteor.subscribe('Posts');
 })
 
-Template.sideNav.helpers({
-  cooper:function() {
-    return FlowRouter.getParam("blog_id");
-  }
+Template.comment.onCreated(function(){
+  // Meteor.subscribe('Comments');
 });
 
 Template.hello.onCreated(function helloOnCreated() {
