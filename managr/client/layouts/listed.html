@@ -76,26 +76,23 @@
   	<h1 id="title">Modify {{title}}</h1>
   	<div class="orange-bar">&nbsp;</div>
   	<div class="assignmentContainer">
-  		<form>
-  		  <p id=assignmentFormFormat><b>Name:</b> {{title}}</p>
-  		  <input type="text" name="name" class="assignmentForm">
-  			<p id=assignmentFormFormat><b>Points Possible:</b> {{pointsPossible}}</p>
-  			<input type="text" name="points" class="assignmentForm">
-  			<p id=assignmentFormFormat><b>Instructor:</b> {{assigner}}</p>
-  			<input type="text" name="instructor" class="assignmentForm">
-  			<p id=assignmentFormFormat><b>Date Due:</b> {{dueDate}}</p>
-  			<input type="text" name="dateDue" class="assignmentForm">
-  			<p id=assignmentFormFormat><b>Description:</b> {{description}}</p>
-  			<textarea name="studentsAssigned" class="assignmentDescForm"></textarea>
-  			<p id=assignmentFormFormat><b>Students Assigned:</b> {{assignedStudents}}</p>
-  			<select name="students" class="assignmentDescForm" multiple>
-  			</select>
-  		</form>
+  		{{> quickForm collection="Assignments" id="updateAssignment" type="update" class="update-assignment-form"}}
   	</div>
   	<div class="buttonDiv">
   		<input type="update" value="Update" class="buttonStyle">
   	</div>
   {{/each}}
+</template>
+
+<template name="newAssignment">
+  <h1 id="title">New Assignment</h1>
+  <div class="orange-bar">&nbsp;</div>
+  <div class="assignmentContainer">
+    {{> quickForm collection="Assignments" id="newAssignment" type="insert" class="new-assignment-form"}}
+  </div>
+  <div class="butonDiv">
+    <input type="update" value="Update" class="buttonStyle">
+  </div>
 </template>
 
 <template name="editListed">

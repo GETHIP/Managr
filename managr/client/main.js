@@ -123,3 +123,5 @@ Template.listing.helpers({
     return list;
   }
 })
+
+window.Assignments = Assignments;
