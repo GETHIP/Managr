@@ -9,15 +9,18 @@
     <link rel="stylesheet" href="Profile_index.css">
   </head>
 <body>
+  <div class="name-holder">
     {{> studentName}}
-    <hr>
+  </div>
+  <hr>
     <div class="rectangle">
+      <div class="profile-words">
         <h1><strong>
             About Me
         </strong> </h1>
        <!--Data Here is information about the person -->
        {{>Template.dynamic template=body}}
-
+     </div>
     </div>
 
       {{>Template.dynamic template=editAboutMe}}
