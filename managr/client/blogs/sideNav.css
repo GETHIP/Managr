@@ -18,6 +18,10 @@ a {
 
 }
 
+.navbar {
+	margin-bottom: 0px;
+}
+
 .navContent {
     display: block;
     padding: 10px 20px 10px 20px;
@@ -44,7 +48,4 @@ a {
     color: white;
     width: 25%;
     height: 100%;
-    position: fixed;
-    left: 0;
-    top: 0;
 }
