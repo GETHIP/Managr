@@ -6,6 +6,9 @@ Meteor.startup(() => {
   Meteor.publish("Comments", function(){
     return Comments.find();
   });
+  Meteor.publish("Posts", function(){
+    return Posts.find();
+  });
   Posts.allow({
     'insert': function(userId, doc) {
       true;

@@ -1,4 +1,13 @@
-import { Comments } from '../collections/comments.js'
+import { Posts } from '../../collections/blogPosts.js'
+import { Comments } from '../../collections/comments.js'
+
+Template.sideNav.onCreated(function(){
+  Meteor.subscribe("Posts");
+});
+
+Template.sideNav.onCreated(function(){
+  Meteor.subscribe("Comments");
+});
 
 var commentDisplays = 5;
 var postDisplays = 5;
@@ -9,11 +18,18 @@ Template.sideNav.helpers({
   },
   recentComments: function(){
     var comments = [];
-  return comments = Comments.find().sort({Date:1}).slice(0,commentDisplays-1);
+    return Comments.find().fetch().slice(0, commentDisplays);
   },
   recentPosts: function(){
-    var posts = [];
-    return comments = Posts.find().sort({Date:1}).slice(0,commentDisplays-1);
+
+    return Posts.find().fetch().slice(0, postDisplays);
   },
-  }
+});
+
+Template.sideNav.events({
+  //For click events on side navbar
+
+
+
+
 });
