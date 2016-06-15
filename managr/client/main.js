@@ -29,6 +29,38 @@ Template.attendance.onCreated(function(){
 Template.attendance.helpers({
     attendance: function(){
       let userId = FlowRouter.getParam("id");
-      return attendance = Student.findOne({"id": userId}).attendance;
+      return attendance = Student.findOne({"_id": userId}).attendance;
     }
 });
+
+Template.studentName.onCreated(function(){
+    var self = this;
+    self.autorun(function(){
+      self.subscribe('Student');
+    });
+});
+
+Template.studentName.helpers({
+    studentName: function(){
+      let userId = FlowRouter.getParam("id");
+      let studentName = {};
+      studentName = Student.findOne({"_id": userId});
+      return studentName;
+    }
+});
+
+Template.assignments.onCreated(function(){
+    var self = this;
+    self.autorun(function(){
+      self.subscribe('Student');
+    });
+});
+
+Template.assignments.helpers({
+    assignments: function(){
+      let userId = FlowRouter.getParam("id");
+      let assignments = {};
+      assignments = Student.findOne({"_id": userId});
+      return assignments;
+    }
+})

@@ -9,31 +9,7 @@
     <link rel="stylesheet" href="Profile_index.css">
   </head>
 <body>
-     <!--My Beautiful Navbar -->
-     <!--<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">7
-      <a class="navbar-brand" href="#">GET HIP Managr</a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
-      <li><a href="#">Assignments</a></li>
-      <li><a href="#">My Profile</a></li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-           <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Sign Out
-        <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a href="#">Sign Out</a></li>
-
-        </ul>
-        </li>
-
-    </ul>
-  </div>
-</nav>-->
-    <h1 id="name">Student Name</h1>
+    {{> studentName}}
     <hr>
     <div class="rectangle">
         <h1><strong>
@@ -94,12 +70,7 @@
     <tbody>
       <tr>
           <!-- Information About Assignments -->
-        <td>here</td>
-        <td>come</td>
-        <td>dat</td>
-        <td>boi</td>
-        <td>o</td>
-        <td>yes</td>
+          {{> Template.dynamic template=assignments}}
       </tr>
     </tbody>
   </table>
@@ -131,10 +102,22 @@
 
 <template name="attendance">
     {{#each attendance}}
-    <td>this</td>
+    <td>{{this}}</td>
     {{/each}}
 </template>
 
 <template name="editAboutMe">
     <button type="button" class="btn btn-primary btn-block">Edit About Me</button>
+</template>
+
+<template name="studentName">
+    {{#with studentName}}
+    <h1>{{name}}</h1>
+    {{/with}}
+</template>
+
+<template name="assignments">
+    {{#each assignments}}
+    <td>{{this}}</td>
+    {{/each}}
 </template>
