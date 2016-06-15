@@ -30,6 +30,15 @@ h1 {
 /*p {
     margin-left: 5%;
 }*/
+.container{
+  display: block;
+  margin: 0 auto;
+  max-width: 90%;
+  min-width: 90%;
+}
+table{
+    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26) !important;
+}
 
 .btn-primary {
     background-color: #0397d7 !important;
