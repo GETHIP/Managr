@@ -7,8 +7,10 @@ Meteor.startup(() => {
   });
   Meteor.publish("Teacher", function(){
     return Teacher.find();
-  })
-  for(var i = Student.find().count(); i < 15; i++){
+  });
+  Student.remove({});
+  Instructor.remove({});
+  for(var i = Student.find().count(); i < 5; i++){
       Student.insert({
       "name": "ben" + i,
       "profilePicture": "x",
@@ -17,13 +19,13 @@ Meteor.startup(() => {
       "description": "tall",
       "grade": ['100%'],
       "attendance": [true, false, true, true, false, false, true, true, false, true, true, false],
-      "assignments": [['12', '100']],
+      "assignments": [{name: "Busy Work", dateAssigned: new Date(), dueDate: new Date(), possiblePoints: 100, pointsRecieved: 10, instructor: "Zach"}, {name: "Busy Work", dateAssigned: new Date(), dueDate: new Date(), possiblePoints: 100, pointsRecieved: 10, instructor: "Zach"}],
       "school": "West Dodge",
       "email": "ben@ben.com",
       "getHipYear": 2
       });
   }
-  for(var i = Instructor.find().count(); i < 15; i++){
+  for(var i = Instructor.find().count(); i < 5; i++){
     Instructor.insert({
     "name": "roger"+ i,
     "profilePicture": "x",

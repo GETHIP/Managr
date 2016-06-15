@@ -56,9 +56,6 @@
   <table class="table table-bordered">
     <thead class=color>
       <tr>
-        <th>Week One</th>
-        <th>Week Two</th>
-        <th>Week Three</th>
         <th>Name</th>
         <th>Date Assigned</th>
         <th>Due Dates</th>
@@ -68,10 +65,8 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
           <!-- Information About Assignments -->
           {{> Template.dynamic template=assignments}}
-      </tr>
     </tbody>
   </table>
 </div>
@@ -120,6 +115,13 @@
 
 <template name="assignments">
     {{#each assignments}}
-    <td>{{this}}</td>
+    <tr>
+    <td>{{name}}</td>
+    <td>{{dateAssigned}}</td>
+    <td>{{dueDate}}</td>
+    <td>{{possiblePoints}}</td>
+    <td>{{pointsRecieved}}</td>
+    <td>{{instructor}}</td>
+    </tr>
     {{/each}}
 </template>

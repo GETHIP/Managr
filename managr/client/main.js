@@ -59,8 +59,8 @@ Template.assignments.onCreated(function(){
 Template.assignments.helpers({
     assignments: function(){
       let userId = FlowRouter.getParam("id");
-      let assignments = {};
-      assignments = Student.findOne({"_id": userId});
+      let assignments = [];
+      assignments = Student.findOne({"_id": userId}).assignments;
       return assignments;
     }
 });
