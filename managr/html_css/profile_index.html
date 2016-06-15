@@ -9,7 +9,9 @@
     <link rel="stylesheet" href="Profile_index.css">
   </head>
 <body>
+  <div class="name-holder">
     {{> studentName}}
+  </div>
     <hr>
     <div class="rectangle">
         <h1><strong>
@@ -111,6 +113,7 @@
     <button type="button" class="btn btn-primary btn-block" onclick={{userId}}>Edit About Me</button>
   {{/with}}
 </template>
+
 
 <template name="studentName">
     {{#with studentName}}
