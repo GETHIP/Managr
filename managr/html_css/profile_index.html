@@ -79,56 +79,57 @@
 
 <template name="aboutme">
     {{#with student}}
-    <p><strong>Name:</strong></p>
-    <p>{{name}}</p>
-    <p><strong>School:</strong></p>
-    <p>{{school}}</p>
-    <p><strong>Grade:</strong></p>
-    <p>{{grade}}</p>
-    <p><strong>Age:</strong></p>
-    <p>{{age}}</p>
-    <p><strong>Email:</strong></p>
-    <p>{{email}}</p>
-    <p><strong>Top 5:</strong></p>
+        <p><strong>Name:</strong></p>
+        <p>{{name}}</p>
+        <p><strong>School:</strong></p>
+        <p>{{school}}</p>
+        <p><strong>Grade:</strong></p>
+        <p>{{grade}}</p>
+        <p><strong>Age:</strong></p>
+        <p>{{age}}</p>
+        <p><strong>Email:</strong></p>
+        <p>{{email}}</p>
+        <p><strong>Top 5:</strong></p>
     {{/with}}
     <ol>
         {{#each strengths}}
-        <li>{{this}}</li>
+            <li>{{this}}</li>
         {{/each}}
     </ol>
     {{#with student}}
-    <p><strong>Get Hip Year:</strong></p>
-    <p>{{getHipYear}}</p>
+        <p><strong>Get Hip Year:</strong></p>
+        <p>{{getHipYear}}</p>
     {{/with}}
 </template>
 
 <template name="attendance">
     {{#each attendance}}
-    <td>{{this}}</td>
+        <td>{{this}}</td>
     {{/each}}
 </template>
 
 <template name="editAboutMe">
     {{#with userId}}
-    <button type="button" class="btn btn-primary btn-block" onclick={{userId}}>Edit About Me</button>
+        <button type="button" class="btn btn-primary btn-block" onclick={{userId}}>Edit About Me</button>
     {{/with}}
 </template>
 
 
 <template name="studentName">
     {{#with studentName}}
-    <h1>{{name}}</h1> {{/with}}
+        <h1>{{name}}</h1> 
+    {{/with}}
 </template>
 
 <template name="assignments">
     {{#each assignments}}
-    <tr>
-        <td>{{name}}</td>
-        <td>{{dateAssigned}}</td>
-        <td>{{dueDate}}</td>
-        <td>{{possiblePoints}}</td>
-        <td>{{pointsRecieved}}</td>
-        <td>{{instructor}}</td>
-    </tr>
+        <tr>
+            <td>{{name}}</td>
+            <td>{{dateAssigned}}</td>
+            <td>{{dueDate}}</td>
+            <td>{{possiblePoints}}</td>
+            <td>{{pointsRecieved}}</td>
+            <td>{{instructor}}</td>
+        </tr>
     {{/each}}
 </template>
