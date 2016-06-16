@@ -6,6 +6,10 @@ Template.post.onCreated(function(){
   Meteor.subscribe('Posts');
 })
 
+Template.comment.onCreated(function(){
+  // Meteor.subscribe('Comments');
+});
+
 Template.post.events({
 
 });
