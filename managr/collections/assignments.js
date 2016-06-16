@@ -20,7 +20,10 @@ AssignmentSchema = new SimpleSchema({
     },
     assigner: {
         type: String,
-        label: "Assigner"
+        label: "Assigner",
+        autoform: {
+            type: 'hidden'
+        }
     },
     assignedStudents: {
         type: [String],
@@ -29,6 +32,9 @@ AssignmentSchema = new SimpleSchema({
     dateAssigned: {
         type: Date,
         label: "Date Assigned",
+        autoform: {
+            type:'hidden'
+        },
         autoValue: function() {
             return new Date();
         }

@@ -79,6 +79,8 @@ Template.table.helpers({
           strStudents += numStudents[j] + ", ";
         }
         strStudents = strStudents.slice(0, -2);
+        var aUrl = "http://localhost:3000/assignments/single/" + obj._id.valueOf()
+        console.log(aUrl);
         var cleanedObj = {
           title: obj.title,
           description: obj.description,
@@ -87,7 +89,7 @@ Template.table.helpers({
           assignedStudents: strStudents,
           dateAssigned: (obj.dueDate.getMonth() + 1) + '/' + obj.dueDate.getDate() + '/' +  obj.dueDate.getFullYear(),
           pointsPossible: obj.pointsPossible,
-          url: obj._id.valueOf()
+          url: aUrl
         }
         list.push(cleanedObj);
       }
@@ -123,5 +125,5 @@ Template.listing.helpers({
     return list;
   }
 })
-
+// Givew user window scope over the Assignments collection
 window.Assignments = Assignments;
