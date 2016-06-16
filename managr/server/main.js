@@ -19,7 +19,7 @@ Meteor.startup(() => {
       "description": "tall",
       "grade": ['100%'],
       "attendance": [true, false, true, true, false, false, true, true, false, true, true, false],
-      "assignments": [{name: "Java Work", dateAssigned: new Date(), dueDate: new Date(), possiblePoints: 100, pointsRecieved: 10, instructor: "Zach"}, {name: "Busy Work", dateAssigned: new Date(), dueDate: new Date(), possiblePoints: 100, pointsRecieved: 10, instructor: "Zach"}],
+      "assignments": [{name: "Java Work", dateAssigned: new Date(), dueDate: new Date(), possiblePoints: 100, pointsRecieved: 10, instructor: "Zach"}, {name: "Java Work", dateAssigned: new Date(), dueDate: new Date(), possiblePoints: 100, pointsRecieved: 10, instructor: "Zach"}],
       "school": "West Dodge",
       "email": "ben@ben.com",
       "getHipYear": 2
