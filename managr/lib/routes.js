@@ -1,7 +1,7 @@
 FlowRouter.route('/', {
 	name: 'home',
 	action() {
-  BlazeLayout.render('blogMain');
+		BlazeLayout.render('blogMain');
 	}
 })
 
@@ -9,12 +9,13 @@ FlowRouter.route('/blogs/:blog_id', {
 	name: 'blogs',
 	action : function(params) {
     console.log("Individual blog post! ", FlowRouter.getParam("blog_id"));
-		BlazeLayout.render('blogMain');
+		BlazeLayout.render('mainPage', {currentPage: 'blogMain'})
 	}
 })
-FlowRouter.route('/blog', {
-	name: 'blogs',
+
+FlowRouter.route('/testBlogs', {
+	name: 'testdata',
 	action() {
-		BlazeLayout.render('navbar', {main: 'home'})
+		BlazeLayout.render('testInsertData', {})
 	}
 })

@@ -1,10 +1,12 @@
+import { Posts } from '../../collections/blogPosts.js';
+
 Template.blogContent.helpers({
-      publicPosts: function(){
-        //Returns Posts by Jim for non-logins
-        return BlogPostCollection.find({authorId: {$eq: 1}}); //Set ID to Jim's Id (Always Public Posts)
+  //Returns Posts by Jim for non-logins
+      publicPosts: function() {
+        return Posts.find({authorId: {$eq: 1}}); //Set ID to Jim's Id (Always Public Posts)
       },
-      //Returns all Blog Posts
+  //Returns all Blog Posts
       allPosts: function(){
-        return BlogPostsCollection.find();
+        return Posts.find();
       }
 });
