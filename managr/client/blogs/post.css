@@ -1,4 +1,30 @@
-.blogpost {
-  background-color: white;
-  display: block;
+body {
+    background-color: #f3f3f3;
+}
+.blogPost {
+    box-shadow: 3px 3px 5px #888888;
+    background-color: white;
+    padding-top:1px;
+    padding-right: 10px;
+    padding-bottom: 12px;
+    padding-left: 10px;
+}
+span {
+  float: right;
+  font-size: 11px;
+  color: #444444;
+  font-family: Arial;
+}
+p {
+  font-size: 18px;
+  font-family: Arial;
+}
+a {
+  font-size: 11px;
+  color: #444444;
+  font-family: Arial;
+}
+h3 {
+  font-size:25px;
+  font-family: Arial;
 }
