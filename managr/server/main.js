@@ -1,5 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { Posts } from '../collections/blogPosts.js';
+import { Comments } from '../collections/comments.js';
 
 Meteor.startup(() => {
   // code to run on server at startup

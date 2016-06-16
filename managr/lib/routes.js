@@ -1,7 +1,7 @@
 FlowRouter.route('/', {
 	name: 'home',
 	action() {
-		BlazeLayout.render('blogMain');
+		BlazeLayout.render('mainPage', {currentPage: 'blogMain'});
 	}
 })
 
