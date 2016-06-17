@@ -1,14 +1,15 @@
 FlowRouter.route('/', {
 	name: 'home',
 	action() {
-		BlazeLayout.render('navbar', {main: 'home'})
+		BlazeLayout.render('mainPage', {currentPage: 'blogMain'});
 	}
 })
 
-FlowRouter.route('/blog', {
+FlowRouter.route('/blogs/:blog_id', {
 	name: 'blogs',
-	action() {
-		BlazeLayout.render('navbar', {main: 'home'})
+	action : function(params) {
+    console.log("Individual blog post! ", FlowRouter.getParam("blog_id"));
+		BlazeLayout.render('mainPage', {currentPage: 'blogMain'})
 	}
 })
 

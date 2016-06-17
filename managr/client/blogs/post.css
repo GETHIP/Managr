@@ -1,6 +1,4 @@
-body {
-    background-color: #f3f3f3;
-}
+
 .blogPost {
     box-shadow: 3px 3px 5px #888888;
     background-color: white;
@@ -8,6 +6,7 @@ body {
     padding-right: 10px;
     padding-bottom: 12px;
     padding-left: 10px;
+	margin-right: 10px;
 }
 #signature {
   float: right;
@@ -15,7 +14,11 @@ body {
   color: #444444;
   font-family: Arial;
 }
+<<<<<<< HEAD
 #postText {
+=======
+.p {
+>>>>>>> c0cd1ec0c722478ccdd70a17cccd7ea85095d206
   font-size: 18px;
   font-family: Arial;
 }

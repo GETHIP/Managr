@@ -18,6 +18,10 @@ a {
 
 }
 
+.navbar {
+	margin-bottom: 0px;
+}
+
 .navContent {
     display: block;
     padding: 10px 20px 10px 20px;
@@ -33,7 +37,7 @@ a {
 
 .navTitle {
     background-color: #61c250;
-    font-size: 20px;
+    font-size: 16px;
     padding: 10px 8px 10px 8px;
     margin-top: 0;
     margin-bottom: 0;
@@ -42,9 +46,9 @@ a {
 #sideNav {
     background-color: #333333;
     color: white;
-    width: 25%;
+    width: 20%;
     height: 100%;
-    position: fixed;
-    left: 0;
-    top: 0;
+	position: fixed;
+	left: 0px;
+	top: 52px;
 }
