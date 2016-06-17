@@ -8,6 +8,12 @@ Meteor.startup(() => {
   Meteor.publish("Teacher", function(){
     return Teacher.find();
   });
+  //control update better
+  Student.allow({
+    update: function(userId, doc){
+      return true;
+    }
+  });
   Student.remove({});
   Instructor.remove({});
   for(var i = Student.find().count(); i < 5; i++){

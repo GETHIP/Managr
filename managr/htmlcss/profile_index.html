@@ -24,7 +24,7 @@
 
         </div>
 
-        {{>Template.dynamic template=editAboutMe}}
+        <button type="button" class="btn btn-primary btn-block editAboutMe">Edit About Me</button>
         <div class="container">
             <h2>Attendance</h2>
             <table class="table table-bordered">
@@ -51,6 +51,7 @@
                     </tr>
                 </tbody>
             </table>
+            <button type="button" class="btn btn-primary btn-block editAttendance">Edit Attendance</button>
         </div>
         <div class="container">
             <h2>Assignments</h2>
@@ -71,9 +72,6 @@
                 </tbody>
             </table>
         </div>
-
-
-
     </body>
 </template>
 
@@ -108,16 +106,9 @@
     {{/each}}
 </template>
 
-<template name="editAboutMe">
-    {{#with userId}}
-        <button type="button" class="btn btn-primary btn-block" onclick={{userId}}>Edit About Me</button>
-    {{/with}}
-</template>
-
-
 <template name="studentName">
     {{#with studentName}}
-        <h1>{{name}}</h1> 
+        <h1>{{name}}</h1>
     {{/with}}
 </template>
 

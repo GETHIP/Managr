@@ -1,23 +1,25 @@
 <template name="profileEdit">
-    <form role="form">
+  {{#with data}}
+    <form class="profileEdit">
   <div class="form-group">
     <label for="email">Email address:</label>
-    <input type="email" class="form-control" id="email">
+    <input type="email" class="form-control" id="email" name="email" value={{email}}>
   </div>
   <div class="form-group">
-    <label for="Grade">Grade:</label>
-    <input type="text" class="form-control" id="grade">
-  </div>
-   <div class="form-group">
     <label for="Age">Age:</label>
-    <input type="text" class="form-control" id="age">
+    <input type="text" class="form-control" id="age" name="age" value={{age}}>
   </div>
-   <div class="form-group">
-    <label for="">Top 5:</label>
-    <input type="text" class="form-control" id="school">
+  <div class="form-group">
+    <label for="">School:</label>
+    <input type="text" class="form-control" id="school" name="school" value={{school}}>
   </div>
+  <div class="form-group">
+    <label for="">Get Hip Year:</label>
+    <input type="text" class="form-control" id="getHipYear" name="getHipYear" value={{getHipYear}}>
+  </div>
+    <button type="submit" class="btn btn-primary btn-block">Update About Me</button>
   </form>
-    <button type="button" class="btn btn-primary btn-block">Update About Me</button>
     <br>
     <br>
+  {{/with}}
 </template>

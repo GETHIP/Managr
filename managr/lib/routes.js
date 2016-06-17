@@ -1,6 +1,6 @@
 FlowRouter.route("/profile/:id", {
   action: function(params, queryParams){
-    BlazeLayout.render("Profile", {body: "aboutme", attendance: "attendance", editAboutMe: "editAboutMe", assignments: "assignments"});
+    BlazeLayout.render("Profile", {body: "aboutme", attendance: "attendance", assignments: "assignments"});
   }
 });
 
@@ -10,7 +10,7 @@ FlowRouter.route("/profile/edit/:id", {
   }
 });
 
-FlowRouter.route("/attendance", {
+FlowRouter.route("/attendance/edit/:id", {
     action: function(params, queryParams){
         BlazeLayout.render("attendanceUpdate", {updateAttendance: "updateAttendance"})
     }

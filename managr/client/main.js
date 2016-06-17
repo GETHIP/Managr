@@ -65,8 +65,45 @@ Template.assignments.helpers({
     }
 });
 
-Template.editAboutMe.helpers({
-    userId: function () {
-      return userId = "window.location = \"/profile/edit/" + FlowRouter.getParam("id") + "\"";
+Template.Profile.events({
+    "click .editAboutMe"(event){
+        window.location = "/profile/edit/" + FlowRouter.getParam("id");
+    },
+    "click .editAttendance"(event){
+        window.location = "/attendance/edit/" + FlowRouter.getParam("id");
+    }
+});
+
+Template.profileEdit.onCreated(function(){
+    var self = this;
+    self.autorun(function(){
+      self.subscribe('Student');
+    });
+});
+
+Template.profileEdit.events({
+    "submit .profileEdit"(event){
+      event.preventDefault();
+      let userId = FlowRouter.getParam("id");
+      const email = event.target.email.value;
+      const age = event.target.age.value;
+      const school = event.target.school.value;
+      const getHipYear = event.target.getHipYear.value;
+      var data = {
+        email: email,
+        age: age,
+        school: school,
+        getHipYear: getHipYear
+      }
+      Student.update({_id: userId}, {$set: data});
+      window.location = "/profile/" + FlowRouter.getParam("id");
+    }
+});
+
+Template.profileEdit.helpers({
+    data: function(){
+      let userId = FlowRouter.getParam("id");
+      let data = Student.findOne({"_id": userId});
+      return data;
     }
 })
