@@ -106,4 +106,25 @@ Template.profileEdit.helpers({
       let data = Student.findOne({"_id": userId});
       return data;
     }
-})
+});
+
+Template.attendanceUpdate.events({
+    "submit .attendanceUpdate"(event){
+      event.preventDefault();
+      console.log("form submitted")
+      let userId = FlowRouter.getParam("id");
+      let data = [];
+      for(i=1;i<13;i++){
+        let week = event.target["week"+i];
+        week = week.value;
+        if(week === "True"){
+            data.push(true);
+        }else{
+            data.push(false);
+        }
+      }
+      console.log(data);
+      Student.update({_id: userId}, {$set: {attendance: data}});
+      window.location = "/profile/" + FlowRouter.getParam("id");
+    }
+});

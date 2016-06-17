@@ -1,107 +1,100 @@
 <template name="attendanceUpdate">
   <h1>Attendance</h1>
-  <table class= "table-bordered table-hovered table">
-  <thead id="attendance">
-    <tr>
-    <th>First Name</th>
-    <th>Last Name</th>
-    <th>Week One</th>
-    <th>Week Two</th>
-    <th>Week Three</th>
-    <th>Week Four</th>
-    <th>Week Five</th>
-    <th>Week Six</th>
-    <th>Week Seven</th>
-    <th>Week Eight</th>
-    <th>Week Nine</th>
-    <th>Week Ten</th>
-    <th>Week Eleven</th>
-    <th>Week Twelve</th>
-  </tr>
-</thead>
- <tbody>
-   <tr>
-     <!--Attendance-->
-     <!--Add Meteor-->
-<th>{{firstName}}</th>
-<th>{{lastName}}</th>
-<th>
-     <select class="form-control" id="week1">
-          <option>True</option>
-          <option>False</option>
-     </select>
-</th>
-<th>
-     <select class="form-control" id="week2">
-          <option>True</option>
-          <option>False</option>
-     </select>
-</th>
-<th>
-     <select class="form-control" id="week3">
-          <option>True</option>
-          <option>False</option>
-     </select>
-</th>
-<th>
-     <select class="form-control" id="week4">
-          <option>True</option>
-          <option>False</option>
-     </select>
-</th>
-<th>
-     <select class="form-control" id="week5">
-          <option>True</option>
-          <option>False</option>
-     </select>
-</th>
-<th>
-     <select class="form-control" id="week6">
-          <option>True</option>
-          <option>False</option>
-     </select>
-</th>
-<th>
-     <select class="form-control" id="week7">
-          <option>True</option>
-          <option>False</option>
-     </select>
-</th>
-<th>
-     <select class="form-control" id="week8">
-          <option>True</option>
-          <option>False</option>
-     </select>
-</th>
-<th>
-     <select class="form-control" id="week9">
-          <option>True</option>
-          <option>False</option>
-     </select>
-</th>
-<th>
-     <select class="form-control" id="week10">
-          <option>True</option>
-          <option>False</option>
-     </select>
-</th>
-<th>
-     <select class="form-control" id="week11">
-          <option>True</option>
-          <option>False</option>
-     </select>
-</th>
-<th>
-     <select class="form-control" id="week12">
-          <option>True</option>
-          <option>False</option>
-     </select>
-</th>
-   </tr>
-   </tbody>
-   </table>
-</template>
-
-<template name="updateAttendance">
-    <button type="button" class="btn btn-warning btn-block">Update Attendance</button>
+  <form class="attendanceUpdate">
+    <table class= "table-bordered table-hovered table">
+    <thead id="attendance">
+        <tr>
+            <th>Week One</th>
+            <th>Week Two</th>
+            <th>Week Three</th>
+            <th>Week Four</th>
+            <th>Week Five</th>
+            <th>Week Six</th>
+            <th>Week Seven</th>
+            <th>Week Eight</th>
+            <th>Week Nine</th>
+            <th>Week Ten</th>
+            <th>Week Eleven</th>
+            <th>Week Twelve</th>
+      </tr>
+    </thead>
+     <tbody>
+       <tr>
+    <th>
+         <select class="form-control" id="week1">
+              <option>True</option>
+              <option>False</option>
+         </select>
+    </th>
+    <th>
+         <select class="form-control" id="week2">
+              <option>True</option>
+              <option>False</option>
+         </select>
+    </th>
+    <th>
+         <select class="form-control" id="week3">
+              <option>True</option>
+              <option>False</option>
+         </select>
+    </th>
+    <th>
+         <select class="form-control" id="week4">
+              <option>True</option>
+              <option>False</option>
+         </select>
+    </th>
+    <th>
+         <select class="form-control" id="week5">
+              <option>True</option>
+              <option>False</option>
+         </select>
+    </th>
+    <th>
+         <select class="form-control" id="week6">
+              <option>True</option>
+              <option>False</option>
+         </select>
+    </th>
+    <th>
+         <select class="form-control" id="week7">
+              <option>True</option>
+              <option>False</option>
+         </select>
+    </th>
+    <th>
+         <select class="form-control" id="week8">
+              <option>True</option>
+              <option>False</option>
+         </select>
+    </th>
+    <th>
+         <select class="form-control" id="week9">
+              <option>True</option>
+              <option>False</option>
+         </select>
+    </th>
+    <th>
+         <select class="form-control" id="week10">
+              <option>True</option>
+              <option>False</option>
+         </select>
+    </th>
+    <th>
+         <select class="form-control" id="week11">
+              <option>True</option>
+              <option>False</option>
+         </select>
+    </th>
+    <th>
+         <select class="form-control" id="week12">
+              <option>True</option>
+              <option>False</option>
+         </select>
+    </th>
+       </tr>
+     </tbody>
+  </table>
+    <button type="submit" class="btn btn-primary btn-block updateAttendance">Update Attendance</button>
+</form>
 </template>
