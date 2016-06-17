@@ -42,6 +42,12 @@ body {
     padding: 7px;
     width: 95%;
 }
+#name:focus {
+    border-color: #61c250;
+}
+#comment:focus {
+    border-color: #61c250;
+}
 .button{
     background-color: #4CAF50;
     border: none;
