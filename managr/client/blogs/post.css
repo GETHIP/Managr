@@ -9,22 +9,22 @@ body {
     padding-bottom: 12px;
     padding-left: 10px;
 }
-span {
+#signature {
   float: right;
   font-size: 11px;
   color: #444444;
   font-family: Arial;
 }
-p {
+#postText {
   font-size: 18px;
   font-family: Arial;
 }
-a {
+#viewComments {
   font-size: 11px;
   color: #444444;
   font-family: Arial;
 }
-h3 {
+#postHeader {
   font-size:25px;
   font-family: Arial;
 }
