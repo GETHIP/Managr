@@ -28,6 +28,26 @@ var AssignmentsSchema = new SimpleSchema({
     }
 });
 
+var Address = new SimpleSchema({
+    address: {
+        type: String,
+        label: 'Address'
+    },
+    city: {
+        type: String,
+        label: 'City'
+    },
+    state: {
+        type: String,
+        label: 'String'
+    },
+    zipCode: {
+        type: Number,
+        label: 'Zip Code'
+    }
+
+})
+
 var StudentSchema = new SimpleSchema({
     name: {
         type: String,
@@ -72,6 +92,22 @@ var StudentSchema = new SimpleSchema({
     getHipYear: {
         type: Number,
         label: 'Get Hip Year'
+    },
+    phoneNumber: {
+        type: Number,
+        label: 'Phone Number'
+    },
+    parentNames: {
+        type: [String],
+        label: 'Parent\'s Phone Numbers'
+    },
+    address: {
+        type: Address,
+        label: 'Home Address'
+    },
+    github: {
+        type: String, //The string can be their user name. Using that we can generate a URL to their github profile
+        label: 'Github'
     }
 });
 Student.attachSchema(StudentSchema);
