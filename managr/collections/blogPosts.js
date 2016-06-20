@@ -20,7 +20,7 @@ postSchema = new SimpleSchema({
   		}
     },
     comments: {
-      type: [Comment]
+      type: [String]
     }
 });
 
