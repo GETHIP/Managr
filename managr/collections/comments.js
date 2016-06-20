@@ -17,4 +17,4 @@ Comment = new SimpleSchema({
 
 });
 
-Comments.attachSchema(postSchema);
+Comments.attachSchema(Comment);
