@@ -10,16 +10,15 @@ Template.aboutme.onCreated(function() {
 Template.aboutme.helpers({
 	student: function() {
 		let userId = FlowRouter.getParam("id");
-		let student = Student.findOne({
-			"_id": userId
-		});
-		return student;
+		let student = Student.findOne({"_id": userId});
+    student.github = "https://github.com/" + student.github;
+    student.address = student.address.street + " " + student.address.city + " " + student.address.state + " " + student.address.zipCode;
+    student.parentNames = student.parentNames[0] + " and " + student.parentNames[1];
+    return student;
 	},
 	strengths: function() {
 		let userId = FlowRouter.getParam("id");
-		return strengths = Student.findOne({
-			"_id": userId
-		}).strengths;
+		return strengths = Student.findOne({"_id": userId}).strengths;
 	}
 });
 
