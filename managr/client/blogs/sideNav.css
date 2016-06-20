@@ -10,28 +10,29 @@ p {
 
 
 /*    NavBar Below    */
-ul {
+
+
+
+
+li {
     list-style-type: none;
 }
 
-a {
-
-}
-
-.navbar {
-	margin-bottom: 0px;
+li a {
+    display: block;
+    padding: 10px 20px 10px 20px;
+    left: 0;
 }
 
 .navContent {
-    display: block;
-    padding: 10px 20px 10px 20px;
-    color: white;
-    left: 0;
     font-size: 15px;
+    color: white;
+    text-decoration: none;
 }
 
 .navContent:hover {
     background-color: #444444;
+    text-decoration: none;
     color: white;
 }
 
@@ -44,11 +45,13 @@ a {
 }
 
 #sideNav {
+    margin-top: 4%;
+    position: fixed;
     background-color: #333333;
     color: white;
     width: 20%;
     height: 100%;
-	position: fixed;
-	left: 0px;
-	top: 52px;
+    position: fixed;
+    left: 0px;
+    top: 52px;
 }
