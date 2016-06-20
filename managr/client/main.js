@@ -23,14 +23,14 @@ Template.aboutme.helpers({
 	}
 });
 
-Template.attendance.onCreated(function() {
+Template.attendanceBody.onCreated(function() {
 	var self = this;
 	self.autorun(function() {
 		self.subscribe('Student');
 	});
 });
 
-Template.attendance.helpers({
+Template.attendanceBody.helpers({
 	attendance: function() {
 		let userId = FlowRouter.getParam("id");
 		let attendance = [];
@@ -59,14 +59,14 @@ Template.studentName.helpers({
 	}
 });
 
-Template.assignments.onCreated(function() {
+Template.assignmentsBody.onCreated(function() {
 	var self = this;
 	self.autorun(function() {
 		self.subscribe('Student');
 	});
 });
 
-Template.assignments.helpers({
+Template.assignmentsBody.helpers({
 	assignments: function() {
 		let userId = FlowRouter.getParam("id");
 		let assignments = [];

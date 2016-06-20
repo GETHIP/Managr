@@ -45,8 +45,7 @@ var Address = new SimpleSchema({
         type: Number,
         label: 'Zip Code'
     }
-
-})
+});
 
 var StudentSchema = new SimpleSchema({
     name: {

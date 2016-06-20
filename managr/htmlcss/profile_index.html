@@ -23,55 +23,9 @@
             {{>Template.dynamic template=body}}
 
         </div>
-
-        <button type="button" class="btn btn-primary btn-block editAboutMe">Edit About Me</button>
-        <div class="container">
-            <h2>Attendance</h2>
-            <table class="table table-bordered">
-                <thead class=color>
-                    <tr>
-                        <th>Week One</th>
-                        <th>Week Two</th>
-                        <th>Week Three</th>
-                        <th>Week Four</th>
-                        <th>Week Five</th>
-                        <th>Week Six</th>
-                        <th>Week Seven</th>
-                        <th>Week Eight</th>
-                        <th>Week Nine</th>
-                        <th>Week Ten</th>
-                        <th>Week Eleven</th>
-                        <th>Week Twelve</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <!-- Attendance -->
-                        {{> Template.dynamic template=attendance}}
-                    </tr>
-                </tbody>
-            </table>
-            <button type="button" class="btn btn-primary btn-block editAttendance">Edit Attendance</button>
-        </div>
-        <div class="container">
-            <h2>Assignments</h2>
-            <table class="table table-bordered">
-                <thead class=color>
-                    <tr>
-                        <th>Name</th>
-                        <th>Date Assigned</th>
-                        <th>Due Dates</th>
-                        <th>Points Possible</th>
-                        <th>Points Received</th>
-                        <th>Instructor</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Information About Assignments -->
-                    {{> Template.dynamic template=assignments}}
-                </tbody>
-            </table>
-        </div>
+              {{> Template.dynamic template=editAboutMe}}
+              {{> Template.dynamic template=attendanceBody}}
+              {{> Template.dynamic template=assignmentsBody}}
     </body>
 </template>
 
@@ -100,10 +54,36 @@
     {{/with}}
 </template>
 
-<template name="attendance">
-    {{#each attendance}}
-        <td>{{this}}</td>
-    {{/each}}
+<template name="attendanceBody">
+    <div class="container">
+        <h2>Attendance</h2>
+        <table class="table table-bordered">
+            <thead class=color>
+                <tr>
+                    <th>Week One</th>
+                    <th>Week Two</th>
+                    <th>Week Three</th>
+                    <th>Week Four</th>
+                    <th>Week Five</th>
+                    <th>Week Six</th>
+                    <th>Week Seven</th>
+                    <th>Week Eight</th>
+                    <th>Week Nine</th>
+                    <th>Week Ten</th>
+                    <th>Week Eleven</th>
+                    <th>Week Twelve</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                  {{#each attendance}}
+                      <td>{{this}}</td>
+                  {{/each}}
+                </tr>
+            </tbody>
+        </table>
+        <button type="button" class="btn btn-primary btn-block editAttendance">Edit Attendance</button>
+    </div>
 </template>
 
 <template name="studentName">
@@ -112,15 +92,36 @@
     {{/with}}
 </template>
 
-<template name="assignments">
-    {{#each assignments}}
-        <tr>
-            <td>{{name}}</td>
-            <td>{{dateAssigned}}</td>
-            <td>{{dueDate}}</td>
-            <td>{{possiblePoints}}</td>
-            <td>{{pointsRecieved}}</td>
-            <td>{{instructor}}</td>
-        </tr>
-    {{/each}}
+<template name="assignmentsBody">
+    <div class="container">
+        <h2>Assignments</h2>
+        <table class="table table-bordered">
+            <thead class=color>
+                <tr>
+                    <th>Name</th>
+                    <th>Date Assigned</th>
+                    <th>Due Dates</th>
+                    <th>Points Possible</th>
+                    <th>Points Received</th>
+                    <th>Instructor</th>
+                </tr>
+            </thead>
+            <tbody>
+              {{#each assignments}}
+                  <tr>
+                      <td>{{name}}</td>
+                      <td>{{dateAssigned}}</td>
+                      <td>{{dueDate}}</td>
+                      <td>{{possiblePoints}}</td>
+                      <td>{{pointsRecieved}}</td>
+                      <td>{{instructor}}</td>
+                  </tr>
+              {{/each}}
+            </tbody>
+        </table>
+    </div>
+</template>
+
+<template name="editAboutMe">
+        <button type="button" class="btn btn-primary btn-block editAboutMe">Edit About Me</button>
 </template>
