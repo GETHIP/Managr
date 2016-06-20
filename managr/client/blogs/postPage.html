@@ -4,10 +4,12 @@
     {{> header}}
     <br>
     <div class="commentSection">
-    {{> post}}
-    {{> oddcomment}}
-    {{> commentEven}}
-    {{> writeComment}}
+    {{#with blogPost}}
+      {{> post}}
+      {{> oddcomment}}
+      {{> commentEven}}
+      {{> writeComment}}
+    {{/with}}
   </div>
   </div>
 </template>
