@@ -1,13 +1,12 @@
-import {
-	Template
-}
-from 'meteor/templating';
+import {Template} from 'meteor/templating';
+
 Template.aboutme.onCreated(function() {
 	var self = this;
 	self.autorun(function() {
 		self.subscribe('Student');
 	});
 });
+
 Template.aboutme.helpers({
 	student: function() {
 		let userId = FlowRouter.getParam("id");
@@ -23,12 +22,14 @@ Template.aboutme.helpers({
 		}).strengths;
 	}
 });
+
 Template.attendance.onCreated(function() {
 	var self = this;
 	self.autorun(function() {
 		self.subscribe('Student');
 	});
 });
+
 Template.attendance.helpers({
 	attendance: function() {
 		let userId = FlowRouter.getParam("id");
@@ -39,12 +40,14 @@ Template.attendance.helpers({
 		return attendance;
 	}
 });
+
 Template.studentName.onCreated(function() {
 	var self = this;
 	self.autorun(function() {
 		self.subscribe('Student');
 	});
 });
+
 Template.studentName.helpers({
 	studentName: function() {
 		let userId = FlowRouter.getParam("id");
@@ -55,12 +58,14 @@ Template.studentName.helpers({
 		return studentName;
 	}
 });
+
 Template.assignments.onCreated(function() {
 	var self = this;
 	self.autorun(function() {
 		self.subscribe('Student');
 	});
 });
+
 Template.assignments.helpers({
 	assignments: function() {
 		let userId = FlowRouter.getParam("id");
@@ -148,6 +153,7 @@ Template.assignments.helpers({
 		return assignments;
 	}
 });
+
 Template.Profile.events({
 	"click .editAboutMe" (event) {
 		window.location = "/profile/edit/" + FlowRouter.getParam("id");
@@ -155,12 +161,14 @@ Template.Profile.events({
 		window.location = "/attendance/edit/" + FlowRouter.getParam("id");
 	}
 });
+
 Template.profileEdit.onCreated(function() {
 	var self = this;
 	self.autorun(function() {
 		self.subscribe('Student');
 	});
 });
+
 Template.profileEdit.events({
 	"submit .profileEdit" (event) {
 		event.preventDefault();
@@ -175,14 +183,11 @@ Template.profileEdit.events({
 			school: school,
 			getHipYear: getHipYear
 		}
-		Student.update({
-			_id: userId
-		}, {
-			$set: data
-		});
+		Student.update({_id: userId},{$set: data});
 		window.location = "/profile/" + FlowRouter.getParam("id");
 	}
 });
+
 Template.profileEdit.helpers({
 	data: function() {
 		let userId = FlowRouter.getParam("id");
@@ -192,12 +197,14 @@ Template.profileEdit.helpers({
 		return data;
 	}
 });
+
 Template.attendanceUpdate.onCreated(function() {
 	var self = this;
 	self.autorun(function() {
 		self.subscribe('Student');
 	});
 });
+
 Template.attendanceUpdate.events({
 	"submit .attendanceUpdate" (event) {
 		event.preventDefault();
@@ -214,13 +221,7 @@ Template.attendanceUpdate.events({
 			}
 		}
 		console.log(data);
-		Student.update({
-			_id: userId
-		}, {
-			$set: {
-				attendance: data
-			}
-		});
+		Student.update({_id: userId},{$set: {attendance: data}});
 		window.location = "/profile/" + FlowRouter.getParam("id");
 	}
 });
@@ -230,9 +231,7 @@ var wordNumbers = ["zero", "one", "two", "three", "four", "five", "six",
 Template.attendanceUpdate.helpers({
 	attendance: function() {
 		let userId = FlowRouter.getParam("id");
-		let attendanceBoolean = Student.findOne({
-			"_id": userId
-		}).attendance;
+		let attendanceBoolean = Student.findOne({"_id": userId}).attendance;
 		let attendance = {};
 		for (i = 1; i < 13; i++) {
 			if (attendanceBoolean[i - 1] === true) {
@@ -246,4 +245,4 @@ Template.attendanceUpdate.helpers({
 		console.log(attendance);
 		return attendance;
 	}
-})
+});
