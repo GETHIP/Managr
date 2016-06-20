@@ -38,7 +38,7 @@ li a {
 
 .navTitle {
     background-color: #61c250;
-    font-size: 20px;
+    font-size: 16px;
     padding: 10px 8px 10px 8px;
     margin-top: 0;
     margin-bottom: 0;
@@ -51,6 +51,7 @@ li a {
     color: white;
     width: 20%;
     height: 100%;
-    left: 0;
-    top: 0;
+    position: fixed;
+    left: 0px;
+    top: 52px;
 }
