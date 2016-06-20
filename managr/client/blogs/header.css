@@ -1,12 +1,10 @@
-body {
-    background-color: #f3f3f3;
-}
+
 #welcome{
- font-size:40px;
- font-family: Arial;
+ font-size:35px;
+ font-family: Helvetica;
 }
 #line{
-    width: 100%;
+    width: 99%;
     height: 3px;
     background-color: #61c250;
 }
