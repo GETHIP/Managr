@@ -33,6 +33,27 @@ Meteor.startup(() => {
           date: new Date()}
          }})
 
-    }
+    },
+	'testCreateUsers': function() {
+		var adminId = Accounts.createUser({
+			username: "instructor",
+			password: "password",
+		});
+		var studentId = Accounts.createUser({
+			username: "student",
+			password: "password",
+		});
+		Roles.addUsersToRoles(adminId, 'instructor');
+		Roles.addUsersToRoles(studentId, 'student');
+		/*
+		Meteor.users.find().forEach(function(user) {
+			if (user.username == "admin") {
+				Roles.addUsersToRole()
+			} else if (user.username == "student") {
+				
+			}
+		});
+		*/
+	}
   })
 });
