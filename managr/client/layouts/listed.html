@@ -58,7 +58,7 @@
 </template>
 
 <template name="single">
-    {{#each assignments}}
+    {{#with assignments}}
         <h1 id="title">{{title}}</h1>
         <div class="orange-bar">&nbsp;</div>
         <div class="assignmentContainer">
@@ -68,11 +68,11 @@
             <p id=assignmentTextFormat><b>Students Assigned:</b> {{assignedStudents}}</p>
             <p id=assignmentTextFormat><b>Description:</b> {{description}}</p>
         </div>
-    {{/each}}
+    {{/with}}
 </template>
 
 <template name="editSingle">
-  {{#each assignments}}
+  {{#with assignments}}
   	<h1 id="title">Modify {{title}}</h1>
   	<div class="orange-bar">&nbsp;</div>
   	<div class="assignmentContainer">
@@ -81,7 +81,7 @@
   	<div class="buttonDiv">
   		<input type="update" value="Update" class="buttonStyle">
   	</div>
-  {{/each}}
+  {{/with}}
 </template>
 
 <template name="newAssignment">

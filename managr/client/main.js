@@ -43,10 +43,10 @@ Template.single.helpers({
                 dateAssigned: (obj.dueDate.getMonth() + 1) + "/" + obj.dueDate.getDate() + "/" +  obj.dueDate.getFullYear(),
                 pointsPossible: obj.pointsPossible
             }
-            return [cleanedObj];
+            return cleanedObj;
         }
         else {
-            return [];
+            return {};
         }
     }
 });
@@ -77,10 +77,10 @@ Template.editSingle.helpers({
                 dateAssigned: (obj.dueDate.getMonth() + 1) + "/" + obj.dueDate.getDate() + "/" +  obj.dueDate.getFullYear(),
                 pointsPossible: obj.pointsPossible
             }
-            return [cleanedObj];
+            return cleanedObj;
         }
         else {
-            return [];
+            return {};
         }
     }
 });
