@@ -33,7 +33,8 @@ Meteor.startup(() => {
       "parentNames": ['Bill', 'Hillary'],
       "address": {"street": '3910 s 226th st.', "city": 'Elkhorn', "state": 'Nebraska', "zipCode": 68022},
       "github": 'Athletesrun',
-      "blog": "http://blogger.com"
+      "blog": "http://blogger.com",
+      "tshirtSize": "Small"
       });
   }
   for(var i = Instructor.find().count(); i < 5; i++){

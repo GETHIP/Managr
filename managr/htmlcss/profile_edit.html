@@ -1,5 +1,6 @@
 <template name="profileEdit">
   {{#with data}}
+  <div class="rectangle">
     <form class="profileEdit">
   <div class="form-group">
     <label for="email">Email address:</label>
@@ -25,9 +26,10 @@
     <label for="">Github User Name:</label>
     <input type="text" class="form-control" id="github" name="github" value={{github}}>
   </div>
-    <button type="submit" class="btn btn-primary btn-block">Update About Me</button>
   </form>
     <br>
     <br>
+  </div>
+  <button type="submit" class="btn btn-primary btn-block">Update About Me</button>
   {{/with}}
 </template>

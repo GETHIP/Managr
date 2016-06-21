@@ -107,6 +107,10 @@ var StudentSchema = new SimpleSchema({
     github: {
         type: String, //The string can be their user name. Using that we can generate a URL to their github profile
         label: 'Github'
+    },
+    tshirtSize:{
+        type: String,
+        label: 'tshirtSize'
     }
 });
 Student.attachSchema(StudentSchema);
