@@ -101,7 +101,7 @@ Template.table.helpers({
                     strStudents += numStudents[j] + ", ";
                 }
                 strStudents = strStudents.slice(0, -2);
-                aUrl = "./assignments/single/" + obj._id.valueOf();
+                aUrl = "./single/" + obj._id.valueOf();
                 // The formatted object to be returned
                 cleanedObj = {
                     title: obj.title,
@@ -130,19 +130,12 @@ Template.listing.helpers({
             if (objects.length > 0) {
                 var obj, strStudents, numStudents, j, cleanedObj;
                 obj = objects[i];
-                strStudents = "";
-                numStudents = obj.assignedStudents;
-                for (j = 0; j < numStudents.length; j++) {
-                    strStudents += numStudents[j] + ", ";
-                }
-                strStudents = strStudents.slice(0, -2);
                 // The formatted object to be returned
                 cleanedObj = {
                     title: obj.title,
                     description: obj.description,
                     dueDate: (obj.dueDate.getMonth() + 1) + "/" + obj.dueDate.getDate() + "/" +  obj.dueDate.getFullYear(),
                     assigner: obj.assigner,
-                    assignedStudents: strStudents,
                     dateAssigned: (obj.dueDate.getMonth() + 1) + "/" + obj.dueDate.getDate() + "/" +  obj.dueDate.getFullYear(),
                     pointsPossible: obj.pointsPossible
                 }

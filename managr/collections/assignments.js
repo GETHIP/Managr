@@ -36,11 +36,6 @@ AssignmentSchema = new SimpleSchema({
             type: 'hidden'
         }
     },
-    // Array of assigned students (by string form of ObjectID)
-    assignedStudents: {
-        type: [String],
-        label: "Assigned Students"
-    },
     // Date the assignment was created
     dateAssigned: {
         type: Date,
