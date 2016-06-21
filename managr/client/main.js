@@ -10,27 +10,26 @@ Template.aboutme.onCreated(function() {
 Template.aboutme.helpers({
 	student: function() {
 		let userId = FlowRouter.getParam("id");
-		let student = Student.findOne({
-			"_id": userId
-		});
-		return student;
+		let student = Student.findOne({"_id": userId});
+    student.github = "https://github.com/" + student.github;
+    student.address = student.address.street + " " + student.address.city + " " + student.address.state + " " + student.address.zipCode;
+    student.parentNames = student.parentNames[0] + " and " + student.parentNames[1];
+    return student;
 	},
 	strengths: function() {
 		let userId = FlowRouter.getParam("id");
-		return strengths = Student.findOne({
-			"_id": userId
-		}).strengths;
+		return strengths = Student.findOne({"_id": userId}).strengths;
 	}
 });
 
-Template.attendance.onCreated(function() {
+Template.attendanceBody.onCreated(function() {
 	var self = this;
 	self.autorun(function() {
 		self.subscribe('Student');
 	});
 });
 
-Template.attendance.helpers({
+Template.attendanceBody.helpers({
 	attendance: function() {
 		let userId = FlowRouter.getParam("id");
 		let attendance = [];
@@ -59,14 +58,14 @@ Template.studentName.helpers({
 	}
 });
 
-Template.assignments.onCreated(function() {
+Template.assignmentsBody.onCreated(function() {
 	var self = this;
 	self.autorun(function() {
 		self.subscribe('Student');
 	});
 });
 
-Template.assignments.helpers({
+Template.assignmentsBody.helpers({
 	assignments: function() {
 		let userId = FlowRouter.getParam("id");
 		let assignments = [];
@@ -245,4 +244,15 @@ Template.attendanceUpdate.helpers({
 		console.log(attendance);
 		return attendance;
 	}
+});
+
+Template.navbar.helpers({
+		assignments: function(){
+				let userId = FlowRouter.getParam("id");
+				return assignments = "/assignments/" + userId;
+		},
+		profile: function(){
+			let userId = FlowRouter.getParam("id");
+			return assignments = "/profile/" + userId;
+		}
 });

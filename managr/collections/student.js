@@ -29,7 +29,7 @@ var AssignmentsSchema = new SimpleSchema({
 });
 
 var Address = new SimpleSchema({
-    address: {
+    street: {
         type: String,
         label: 'Address'
     },
@@ -45,8 +45,7 @@ var Address = new SimpleSchema({
         type: Number,
         label: 'Zip Code'
     }
-
-})
+});
 
 var StudentSchema = new SimpleSchema({
     name: {

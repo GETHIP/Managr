@@ -25,14 +25,15 @@ Meteor.startup(() => {
       "description": "tall",
       "grade": ['10th'],
       "attendance": [true, false, true, true, false, false, true, true, false, true, true, false],
-      "assignments": [{name: "Java Work", dateAssigned: new Date(), dueDate: new Date(), possiblePoints: 100, pointsRecieved: 10, instructor: "Zach"}, {name: "Java Work", dateAssigned: new Date(), dueDate: new Date(), possiblePoints: 100, pointsRecieved: 10, instructor: "Zach"}],
+      "assignments": [{"name": "Java Work", "dateAssigned": new Date(), "dueDate": new Date(), "possiblePoints": 100, "pointsRecieved": 10, "instructor": "Zach"}, {name: "Java Work", dateAssigned: new Date(), dueDate: new Date(), possiblePoints: 100, pointsRecieved: 10, instructor: "Zach"}],
       "school": "West Dodge",
       "email": "ben@ben.com",
       "getHipYear": 2,
-      phoneNumber: '4026571179',
-      parentNames: ['Bill', 'Hillary'],
-      address: {address: '3910 s 226th st.', city: 'Elkhorn', state: 'Nebraska', zipCode: 68022},
-      github: 'Athletesrun'
+      "phoneNumber": '4026571179',
+      "parentNames": ['Bill', 'Hillary'],
+      "address": {"street": '3910 s 226th st.', "city": 'Elkhorn', "state": 'Nebraska', "zipCode": 68022},
+      "github": 'Athletesrun',
+      "blog": "http://blogger.com"
       });
   }
   for(var i = Instructor.find().count(); i < 5; i++){
