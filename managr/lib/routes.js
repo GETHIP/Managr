@@ -15,3 +15,9 @@ FlowRouter.route("/attendance/edit/:id", {
         BlazeLayout.render("attendanceUpdate", {updateAttendance: "updateAttendance"})
     }
 });
+
+FlowRouter.route("/assignments/:id", {
+    action: function(params, queryParams){
+        BlazeLayout.render("Profile", {assignmentsBody: "assignmentsBody"})
+    }
+})

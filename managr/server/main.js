@@ -32,7 +32,8 @@ Meteor.startup(() => {
       "phoneNumber": '4026571179',
       "parentNames": ['Bill', 'Hillary'],
       "address": {"street": '3910 s 226th st.', "city": 'Elkhorn', "state": 'Nebraska', "zipCode": 68022},
-      "github": 'Athletesrun'
+      "github": 'Athletesrun',
+      "blog": "http://blogger.com"
       });
   }
   for(var i = Instructor.find().count(); i < 5; i++){

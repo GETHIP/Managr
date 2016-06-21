@@ -245,3 +245,14 @@ Template.attendanceUpdate.helpers({
 		return attendance;
 	}
 });
+
+Template.navbar.helpers({
+		assignments: function(){
+				let userId = FlowRouter.getParam("id");
+				return assignments = "/assignments/" + userId;
+		},
+		profile: function(){
+			let userId = FlowRouter.getParam("id");
+			return assignments = "/profile/" + userId;
+		}
+});

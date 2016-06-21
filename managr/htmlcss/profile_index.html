@@ -9,20 +9,13 @@
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="Profile_index.css">
     </head>
-
+      {{> navbar}}
     <body>
         <div class="name-holder">
             {{> studentName}}
         </div>
         <hr>
-        <div class="rectangle">
-            <h1><strong>
-            About Me
-        </strong> </h1>
-            <!--Data Here is information about the person -->
-            {{>Template.dynamic template=body}}
-
-        </div>
+              {{>Template.dynamic template=body}}
               {{> Template.dynamic template=editAboutMe}}
               {{> Template.dynamic template=attendanceBody}}
               {{> Template.dynamic template=assignmentsBody}}
@@ -30,6 +23,10 @@
 </template>
 
 <template name="aboutme">
+<div class="rectangle">
+    <h1><strong>
+      About Me
+    </strong> </h1>
     {{#with student}}
         <p><strong>Name:</strong></p>
         <p>{{name}}</p>
@@ -47,18 +44,20 @@
         <p>{{address}}</p>
         <p><strong>Github:</strong></p>
         <p><a href={{github}}>Github</a></p>
-
+        <p><strong>Blog:</strong></p>
+        <p><a href={{blog}}>Blog</a></p>
         <p><strong>Top 5:</strong></p>
-    {{/with}}
-    <ol>
-        {{#each strengths}}
-            <li>{{this}}</li>
-        {{/each}}
-    </ol>
-    {{#with student}}
+        {{/with}}
+            <ol>
+                {{#each strengths}}
+                    <li>{{this}}</li>
+                {{/each}}
+            </ol>
+        {{#with student}}
         <p><strong>Get Hip Year:</strong></p>
         <p>{{getHipYear}}</p>
     {{/with}}
+</div>
 </template>
 
 <template name="attendanceBody">

@@ -1,4 +1,4 @@
-
+<template name="navbar">
 <head>
     <title>Profiles</title>
     <link type="text/css" rel="stylesheet" href="./navbar.css">
@@ -12,12 +12,14 @@
      <nav class="navbar navbar-inverse navbar-fixed-top" style="border-radius:0px;">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">GET HIP Managr</a>
+      <a class="navbar-brand" href="/">GET HIP Managr</a>
     </div>
     <ul class="nav navbar-nav">
       <li class="active"><a href="#">Home</a></li>
-      <li><a href="#">Assignments</a></li>
-      <li><a href="#">My Profile</a></li>
+      {{#with assignments}}
+      <li><a href={{assignments}}>Assignments</a></li>
+      <li><a href={{profile}}>My Profile</a></li>
+      {{/with}}
     </ul>
     <ul class="nav navbar-nav navbar-right">
            <li class="dropdown">
@@ -33,3 +35,4 @@
   </div>
 </nav>
 </body>
+</template>
