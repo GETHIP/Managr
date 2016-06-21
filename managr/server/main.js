@@ -23,7 +23,7 @@ Meteor.startup(() => {
       "age": 5,
       "strengths": ['Input', 'Command', 'Restorative', 'Learner', 'Futuristic'],
       "description": "tall",
-      "grade": ['10th'],
+      "grade": '10th',
       "attendance": [true, false, true, true, false, false, true, true, false, true, true, false],
       "assignments": [{"name": "Java Work", "dateAssigned": new Date(), "dueDate": new Date(), "possiblePoints": 100, "pointsRecieved": 10, "instructor": "Zach"}, {name: "Java Work", dateAssigned: new Date(), dueDate: new Date(), possiblePoints: 100, pointsRecieved: 10, instructor: "Zach"}],
       "school": "West Dodge",

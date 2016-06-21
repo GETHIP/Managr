@@ -69,7 +69,7 @@ var StudentSchema = new SimpleSchema({
         label: 'Description'
     },
     grade: {
-        type: [String],
+        type: String,
         label: 'Grade'
     },
     attendance: {

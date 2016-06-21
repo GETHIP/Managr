@@ -176,12 +176,18 @@ Template.profileEdit.events({
 		const age = event.target.age.value;
 		const school = event.target.school.value;
 		const getHipYear = event.target.getHipYear.value;
+		const grade = event.target.grade.value;
+		const github = event.target.github.value;
+
 		var data = {
 			email: email,
 			age: age,
 			school: school,
-			getHipYear: getHipYear
-		}
+			getHipYear: getHipYear,
+			grade: grade,
+			github: github
+		};
+
 		Student.update({_id: userId},{$set: data});
 		window.location = "/profile/" + FlowRouter.getParam("id");
 	}
