@@ -22,6 +22,15 @@ Template.aboutme.helpers({
 	}
 });
 
+Template.aboutme.events({
+	'click .blogButton'(event){
+			let userId = FlowRouter.getParam("id");
+			let blogURL = Student.findOne({"_id": userId}).blog;
+			console.log(blogURL);
+			//window.location = blogURL;
+	}
+})
+
 Template.attendanceBody.onCreated(function() {
 	var self = this;
 	self.autorun(function() {
@@ -156,7 +165,6 @@ Template.assignmentsBody.helpers({
 				}
 			}
 		}
-
 		return assignments;
 	}
 });

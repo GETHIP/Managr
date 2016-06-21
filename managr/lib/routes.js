@@ -12,12 +12,12 @@ FlowRouter.route("/profile/edit/:id", {
 
 FlowRouter.route("/attendance/edit/:id", {
     action: function(params, queryParams){
-        BlazeLayout.render("attendanceUpdate", {updateAttendance: "updateAttendance"})
+        BlazeLayout.render("attendanceUpdate", {updateAttendance: "updateAttendance"});
     }
 });
 
 FlowRouter.route("/assignments/:id", {
     action: function(params, queryParams){
-        BlazeLayout.render("Profile", {assignmentsBody: "assignmentsBody"})
+        BlazeLayout.render("Profile", {assignmentsBody: "assignmentsBody"});
     }
-})
+});
