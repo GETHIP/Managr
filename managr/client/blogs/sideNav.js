@@ -26,7 +26,4 @@ Template.sideNav.helpers({
 Template.sideNav.events({
   //For click events on side navbar
 
-
-
-
 });

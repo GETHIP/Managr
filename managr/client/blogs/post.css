@@ -11,18 +11,23 @@
   float: right;
   font-size: 11px;
   color: #444444;
-  font-family: Arial;
+  font-family: Helvetica;
 }
 #postText {
   font-size: 18px;
-  font-family: Arial;
+  font-family: Helvetica;
 }
 #viewComments {
   font-size: 11px;
   color: #444444;
-  font-family: Arial;
+  font-family: Helvetica;
 }
 #postHeader {
   font-size:25px;
-  font-family: Arial;
+  font-family: Helvetica;
+}
+#pretag {
+    font-family: Helvetica;
+    border:none;
+    background-color: white; 
 }
