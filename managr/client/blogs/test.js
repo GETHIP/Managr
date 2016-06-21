@@ -18,7 +18,7 @@ Template.testInsertData.events({
 	  ];
 	  for (i = 1; i <= 10; i++) {
 		Meteor.call('insertPost', {
-			title: "Title",
+			title: "Title " + i,
 			text: "Text of the blog post.\n\n\n\nEnd of blog post.",
 			authorId: "jimsId",
 			date: dates[i - 1],
