@@ -7,26 +7,35 @@ export const Assignments = new Mongo.Collection('Assignments');
 // A constant of the number of milliseconds in a week (60 * 60 * 24 * 7 * 1000)
 const milliseconds = 604800000;
 
+Assignments.allow({
+  insert: function() {
+    return true;
+  }
+});
+
 // A schema that acts as the required data type format for the Assignments collection
 AssignmentSchema = new SimpleSchema({
     // Assignments title
     title: {
         type: String,
-        label: "Title"
+        label: "Title",
+        optional: false
     },
     // Assignment description
     description: {
         type: String,
-        label: "Description"
+        label: "Description",
+        optional: false
     },
     // Date assignment is due
     dueDate: {
         type: Date,
         label: "Due Date",
-        autoValue: function() {
+        optional:false
+        /*autoValue: function() {
             // A week ahead of today by default
             return new Date() + milliseconds;
-        }
+        }*/
     },
     // Instructor that assigned the assignment
     assigner: {
@@ -34,7 +43,8 @@ AssignmentSchema = new SimpleSchema({
         label: "Assigner",
         autoform: {
             type: 'hidden'
-        }
+        },
+        optional:false
     },
     // Date the assignment was created
     dateAssigned: {
@@ -46,7 +56,8 @@ AssignmentSchema = new SimpleSchema({
         autoValue: function() {
             // Automatically set to today
             return new Date();
-        }
+        },
+        optional: true
     },
     // Points the assignment is worth
     pointsPossible: {
@@ -54,7 +65,8 @@ AssignmentSchema = new SimpleSchema({
         label: "Points Possible",
         autoValue: function() {
             return 10;
-        }
+        },
+        optional: false
     }
 });
 
