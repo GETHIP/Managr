@@ -1,13 +1,10 @@
 import { Posts } from '../../collections/blogPosts.js'
-import { Comments } from '../../collections/comments.js'
+
 
 Template.sideNav.onCreated(function(){
   Meteor.subscribe("Posts");
 });
 
-Template.sideNav.onCreated(function(){
-  Meteor.subscribe("Comments");
-});
 
 var commentDisplays = 5;
 var postDisplays = 5;
@@ -18,7 +15,7 @@ Template.sideNav.helpers({
   },
   recentComments: function(){
     var comments = [];
-    return Comments.find().fetch().slice(0, commentDisplays);
+    return [];
   },
   recentPosts: function(){
 

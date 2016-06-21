@@ -1,3 +1,4 @@
+/*
 export const Comments = new Mongo.Collection('Comments');
 
 Comment = new SimpleSchema({
@@ -18,3 +19,4 @@ Comment = new SimpleSchema({
 });
 
 Comments.attachSchema(Comment);
+*/
