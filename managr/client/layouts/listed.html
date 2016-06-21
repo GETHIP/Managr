@@ -26,9 +26,7 @@
 
 <template name="table">
   <h1 id="title">Assignments</h1>
-  <div class="orange-bar">
-      &nbsp;
-  </div>
+  <div class="orange-bar"> &nbsp;</div>
   <div style="overflow-x:auto;">
       <table id="tableTitle">
           <tr>
@@ -41,7 +39,9 @@
           </tr>
           {{#each assignments}}
           <tr>
-              <td><a style="text-decoration:none;color:#333333;" href="{{url}}">{{title}}</a></td>
+              <td>
+                  <a style="text-decoration:none;color:#333333;" href="{{url}}">{{title}}</a>
+              </td>
               <td>{{dateAssigned}}</td>
               <td>{{dueDate}}</td>
               <td>{{pointsPossible}}</td>
