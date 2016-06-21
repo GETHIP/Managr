@@ -33,9 +33,17 @@ Template.attendanceBody.helpers({
 	attendance: function() {
 		let userId = FlowRouter.getParam("id");
 		let attendance = [];
-		attendance = Student.findOne({
+		let rawAttendance = Student.findOne({
 			"_id": userId
 		}).attendance;
+		for(i in rawAttendance){
+				if(rawAttendance[i] === true){
+						attendance.push("True");
+				}
+				if(rawAttendance[i] === false){
+						attendance.push("False");
+				}
+		}
 		return attendance;
 	}
 });
