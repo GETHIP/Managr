@@ -13,12 +13,26 @@ Meteor.startup(() => {
   Posts.allow({
     'insert': function(userId, doc) {
       true;
-    }
-  });
+    },
+    'update': function(userId, doc){
+      true;
+  }
+});
+
   Meteor.methods({
     'insertPost':function(post) {
       Posts.insert(post);
       console.log(Posts.find().fetch());
+    },
+    'updateComment': function(authorId, commentText){
+     Posts.update({_id:"2ZMjNPiNs85A4Fq48" },
+        {$push:{
+          comments:
+          {text: commentText,
+          authorId: authorId,
+          date: new Date()}
+         }})
+
     }
   })
 });

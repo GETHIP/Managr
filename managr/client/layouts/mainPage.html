@@ -1,4 +1,6 @@
 <template name="mainPage">
+	<div id="fullBody">
 	{{> topNav}}
-	{{> blogContent}}
+	{{> Template.dynamic template=currentPage}}
+</div>
 </template>

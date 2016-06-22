@@ -7,6 +7,21 @@ Template.blogContent.helpers({
       },
   //Returns all Blog Posts
       allPosts: function(){
-        return Posts.find();
+        var posts = Posts.find().fetch();
+        var newPosts = [];
+        var newDate;
+        var i;
+        for (i = 0; i < posts.length; i++){
+          newDate = moment(posts[i].date);
+          moment(newDate).format("dddd, MMMM Do YYYY, h:mm:ss a");
+          newPosts.push({
+            date: newDate,
+            title: posts[i].title,
+            text: posts[i].text,
+            authorId: posts[i].authorId,
+            comments: posts[i].comments,
+          });
+        }
+        return newPosts;
       }
 });
