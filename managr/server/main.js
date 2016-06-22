@@ -1,11 +1,7 @@
 import { Meteor } from 'meteor/meteor';
-import { Accounts } from 'meteor/accounts-base';
 
 Meteor.startup(() => {
   // code to run on server at startup
-  Accounts.ui.config({
-
-  });
   Meteor.publish("Student", function(){
     return Student.find();
   });
