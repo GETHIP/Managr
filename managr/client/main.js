@@ -85,6 +85,8 @@ Template.studentName.helpers({
 		studentName = Student.findOne({
 			"_id": userId
 		});
+
+		console.log(studentName);
 		return studentName;
 	}
 });

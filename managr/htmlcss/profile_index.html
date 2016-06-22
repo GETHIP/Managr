@@ -11,10 +11,8 @@
     </head>
       {{> navbar}}
     <body>
-        <div class="name-holder">
-            {{> studentName}}
-        </div>
-        <hr>
+        {{> studentName}}
+
               {{> Template.dynamic template=body}}
               {{> Template.dynamic template=editAboutMe}}
               {{> Template.dynamic template=attendanceBody}}
@@ -96,7 +94,11 @@
 
 <template name="studentName">
     {{#with studentName}}
-        <h1>{{name}}</h1>
+        <div style="margin-top: 2em;" class="name-holder">
+            <h1>{{ studentName.name }}</h1>
+        </div>
+        <hr>
+
     {{/with}}
 </template>
 
