@@ -83,7 +83,7 @@ Template.table.helpers({
             if (objects.length > 0) {
                 var obj, j, aUrl, cleanedObj;
                 obj = objects[i];
-                aUrl = "./single/" + obj._id.valueOf();
+                aUrl = "./assignments/single/" + obj._id.valueOf();
                 // The formatted object to be returned
                 cleanedObj = {
                     title: obj.title,
