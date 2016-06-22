@@ -1,13 +1,12 @@
 .oddcommentBox{
   box-shadow: 3px 3px 5px #888888;
   margin-right: 10px;
-  background-color: #D9DFE0;
+  background-color: #D7D5D6;
   padding-top:1px;
   padding-right: 12px;
   padding-bottom: 12px;
   padding-left: 12px;
   font-size: 15px;
-
 }
 .evencommentBox{
   box-shadow: 3px 3px 5px #888888;
@@ -19,25 +18,16 @@
   padding-left: 12px;
   font-size: 15px;
 }
-.newComment{
-  box-shadow: 3px 3px 5px #888888;
-  margin-right: 10px;
-   background-color: white;
-   padding-top:1px;
-   padding-right: 12px;
-   padding-bottom: 12px;
-   padding-left: 12px;
-}
 #name{
-    border-radius: 5px;
+    border-radius: 6px;
     border: 2px solid #D9DFE0;
     padding: 7px;
     width: 95%;
-    height: 20px;
+    height: 30px;
     color: #444444;
 }
 #comment{
-    border-radius: 5px;
+    border-radius: 6px;
     border: 2px solid #D9DFE0;
     padding: 7px;
     width: 95%;
@@ -45,9 +35,13 @@
 }
 #name:focus {
     border-color: #61c250;
+    outline: none;
+    color: #444444;
 }
 #comment:focus {
-    border-color: #61c250;
+  border-color: #61c250;
+  outline: none;
+  color: #444444;
 }
 .button{
     background-color: #61c250;
@@ -62,4 +56,32 @@
      cursor: pointer;
      width: 100%;
      border-radius: 5px;
+}
+.button:hover{
+  color: white;
+  background-color: #61d250;
+}
+#inBoxForum{
+  box-shadow: 3px 3px 5px #888888;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  background-color: white;
+  padding-top:1px;
+  padding-right: 12px;
+  padding-bottom: 12px;
+  padding-left: 12px;
+  font-family: Helvetica;
+}
+#forumTitle{
+  box-shadow: 3px 3px 5px #888888;
+  margin-right: 10px;
+  padding-top:1px;
+  padding-right: 12px;
+  padding-bottom: 12px;
+  padding-left: 12px;
+  background-color: white;
+  font-family: Helvetica;
+}
+#postComment{
+    margin-right: 10px;
 }
