@@ -31,7 +31,7 @@ AssignmentSchema = new SimpleSchema({
     dueDate: {
         type: Date,
         label: "Due Date",
-        optional:false
+        optional: false
         /*autoValue: function() {
             // A week ahead of today by default
             return new Date() + milliseconds;

@@ -83,7 +83,7 @@ Template.table.helpers({
             if (objects.length > 0) {
                 var obj, j, aUrl, cleanedObj;
                 obj = objects[i];
-                aUrl = "./assignments/single/" + obj._id.valueOf();
+                aUrl = "./single/" + obj._id.valueOf();
                 // The formatted object to be returned
                 cleanedObj = {
                     title: obj.title,
@@ -125,6 +125,22 @@ Template.listing.helpers({
         }
         return list;
     }
+});
+
+Template.newAssignment.events({
+  'submit .submitbtn'(event){
+      event.preventDefault();
+      const form = event.target;
+      Assignments.insert({
+        title: form.name.value,
+        description: form.description.value,
+        dueDate: form.dateDue.value,
+        assigner: "Zach Merrill",
+        dateAssigned: new Date(),
+        pointsPossible: form.points.value
+      });
+      //Assignments.update({_id: }, $set{data: data})
+  }
 });
 
 // Gives user window scope over the Assignments collection
