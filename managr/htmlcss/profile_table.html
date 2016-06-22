@@ -1,25 +1,47 @@
-<template name="studentTable">
-<body>
-<div class="constainer">
-  <table class= table table-striped table-bordered table-hover>
-    <thead> <!--table content should correspond -->
-      <tr>
-        <th> First Name </th>
-        <th> Last Name </th>
-        <th> School </th>
-        <th> Year in Schoo </th>
-        <th> Email </th>
-        <th> GET HIP Year </th>
-        <th> Attendance (P/E/U)</th>
-        <th> Grade </th>
-        <th> Actions </th>
-      </tr>
-    </thead>
-  </table>
-</div>
-</body>
-</template>
-
-<template name="emailAll">
-      <button type="button" class="btn btn-primary btn-block">Email All</button>
+<template name="ProfilesTable">
+	<head>
+        <title>Profiles</title>
+        <link type="text/css" rel="stylesheet" href="./navbar.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="profile_index.css">
+    </head>
+    <body>
+		{{> navbar}}
+		<div class="container-fluid">
+			<table class="table table-bordered table-striped table-hover" style="margin-top:10em;">
+				<thead style="background-color:#0397d7; color:white;">
+					<!--table content should correspond -->
+					<tr>
+						<th>First Name</th>
+						<th>Last Name</th>
+						<th>School</th>
+						<th>Year in Schoo</th>
+						<th>Email</th>
+						<th>GET HIP Year</th>
+						<th>Attendance (P/E/U)</th>
+						<th>Grade</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+	                {{#each ProfilesTable}}
+	                    <tr>
+	                        <th>{{firstName}}</th>
+	    					<th>{{lastName}}</th>
+	    					<th>{{school}}</th>
+	    					<th>{{grade}}</th>
+	    					<th>{{email}}</th>
+	    					<th>{{year}}</th>
+	    					<th>{{attendance}}</th>
+	    					<th>{{grade}}</th>
+	    					<th>{{actions}}</th>
+	                    </tr>
+	                {{/each}}
+				</tbody>
+			</table>
+		</div>
+	</body>
 </template>

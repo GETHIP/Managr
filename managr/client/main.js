@@ -57,6 +57,20 @@ Template.attendanceBody.helpers({
 	}
 });
 
+Template.ProfilesTable.onCreated(function() {
+	var self = this;
+	self.autorun(function() {
+		self.subscribe('Student');
+	})
+})
+
+Template.ProfilesTable.helpers({
+	ProfilesTable: function() {
+		console.log(Student.find({}))
+	 	return Student.find({});
+	}
+})
+
 Template.studentName.onCreated(function() {
 	var self = this;
 	self.autorun(function() {

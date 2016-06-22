@@ -21,3 +21,9 @@ FlowRouter.route("/assignments/:id", {
         BlazeLayout.render("Profile", {assignmentsBody: "assignmentsBody"});
     }
 });
+
+FlowRouter.route("/profiles", {
+    action: function(params, queryParams) {
+        BlazeLayout.render('ProfilesTable');
+    }
+})
