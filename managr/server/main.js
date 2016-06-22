@@ -87,15 +87,6 @@ Meteor.startup(() => {
 		Roles.addUsersToRoles(adminId, 'instructor');
 		Roles.addUsersToRoles(jimId, 'instructor');
 		Roles.addUsersToRoles(studentId, 'student');
-		/*
-		Meteor.users.find().forEach(function(user) {
-			if (user.username == "admin") {
-				Roles.addUsersToRole()
-			} else if (user.username == "student") {
-
-			}
-		});
-		*/
 	}
   })
 });
