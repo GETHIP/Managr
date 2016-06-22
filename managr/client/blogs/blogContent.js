@@ -16,15 +16,16 @@ export function formatDatesOfPosts(posts){
       comments: posts[i].comments,
     });
   }
+  return newPosts;
 }
 
 Template.blogContent.helpers({
   //Returns Posts by Jim for non-logins
       publicPosts: function() {
-        return Posts.find({authorId: {$eq: 1}}); //Set ID to Jim's Id (Always Public Posts)
+        return formatDatesOfPosts(Posts.find({authorId: {$eq: 1}})); //Set ID to Jim's Id (Always Public Posts)
       },
   //Returns all Blog Posts
-      allPosts: function(){  
+      allPosts: function(){
         return formatDatesOfPosts(Posts.find().fetch());
       }
 });
