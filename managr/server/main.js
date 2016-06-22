@@ -16,8 +16,8 @@ Meteor.startup(() => {
     },
     'update': function(userId, doc){
       true;
-  }
-});
+	}
+  });
 
   Meteor.methods({
     'insertPost':function(post) {
@@ -32,12 +32,11 @@ Meteor.startup(() => {
           authorId: authorId,
           date: new Date()}
          }})
-
     },
 	'testCreatePosts': function() {
 		var jimId = Meteor.users.findOne({username: "jim"})._id;
 		var instructorId = Meteor.users.findOne({username: "instructor"})._id;
-		
+
 		var i = 0;
 		var dates = [
 			new Date(2016, 1, 1),
@@ -70,7 +69,7 @@ Meteor.startup(() => {
 				]
 			});
 		}
-		
+
 	},
 	'testCreateUsers': function() {
 		var adminId = Accounts.createUser({
@@ -88,15 +87,6 @@ Meteor.startup(() => {
 		Roles.addUsersToRoles(adminId, 'instructor');
 		Roles.addUsersToRoles(jimId, 'instructor');
 		Roles.addUsersToRoles(studentId, 'student');
-		/*
-		Meteor.users.find().forEach(function(user) {
-			if (user.username == "admin") {
-				Roles.addUsersToRole()
-			} else if (user.username == "student") {
-				
-			}
-		});
-		*/
 	}
   })
 });

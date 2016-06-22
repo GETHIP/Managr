@@ -13,4 +13,4 @@ Template.testInsertData.events({
 	'click .createUsers': function(e) {
 		Meteor.call('testCreateUsers');
 	}
-})
+});
