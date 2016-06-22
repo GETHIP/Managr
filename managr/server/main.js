@@ -33,9 +33,6 @@ Meteor.startup(() => {
           date: new Date()}
          }})
 
-<<<<<<< HEAD
-    }
-=======
     },
 	'testCreateUsers': function() {
 		var adminId = Accounts.createUser({
@@ -53,11 +50,10 @@ Meteor.startup(() => {
 			if (user.username == "admin") {
 				Roles.addUsersToRole()
 			} else if (user.username == "student") {
-				
+
 			}
 		});
 		*/
 	}
->>>>>>> TestData
   })
 });
