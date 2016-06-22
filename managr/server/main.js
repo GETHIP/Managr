@@ -16,8 +16,8 @@ Meteor.startup(() => {
     },
     'update': function(userId, doc){
       true;
-  }
-});
+	}
+  });
 
   Meteor.methods({
     'insertPost':function(post) {
@@ -32,7 +32,6 @@ Meteor.startup(() => {
           authorId: authorId,
           date: new Date()}
          }})
-
     },
 	'testCreatePosts': function() {
 		var jimId = Meteor.users.findOne({username: "jim"})._id;

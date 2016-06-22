@@ -1,8 +1,9 @@
 <template name="postPage">
+  <div id="fullBody">
   {{> sideNav}}
   <div id="bodyContent">
     {{> header}}
-    <br>
+
     <div class="commentSection">
     {{#with blogPost}}
       {{> post}}
@@ -12,4 +13,5 @@
     {{/with}}
   </div>
   </div>
+</div>
 </template>

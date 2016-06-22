@@ -40,3 +40,4 @@ Template.testInsertData.events({
 		Meteor.call('testCreateUsers');
 	}
 });
+
