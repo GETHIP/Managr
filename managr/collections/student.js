@@ -111,6 +111,10 @@ var StudentSchema = new SimpleSchema({
     tshirtSize:{
         type: String,
         label: 'tshirtSize'
+    },
+    blog: {
+        type: String,
+        label: "Blog"
     }
 });
 Student.attachSchema(StudentSchema);

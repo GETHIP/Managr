@@ -27,9 +27,9 @@ Template.aboutme.events({
 			let userId = FlowRouter.getParam("id");
 			let blogURL = Student.findOne({"_id": userId}).blog;
 			console.log(blogURL);
-			//window.location = blogURL;
+			window.location = blogURL;
 	}
-})
+});
 
 Template.attendanceBody.onCreated(function() {
 	var self = this;
