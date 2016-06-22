@@ -210,6 +210,15 @@ Template.profileEdit.events({
 		const getHipYear = event.target.getHipYear.value;
 		const grade = event.target.grade.value;
 		const github = event.target.github.value;
+		const name = event.target.name.value;
+		const description = event.target.description.value;
+		const phoneNumber = event.target.phoneNumber.value;
+		const tshirtSize = event.target.tshirtSize.value;
+		const blog = event.target.blog.value;
+		const street = event.target.street.value;
+		const city = event.target.city.value;
+		const state = event.target.state.value;
+		const zipCode = event.target.zipCode.value;
 
 		var data = {
 			email: email,
@@ -217,7 +226,18 @@ Template.profileEdit.events({
 			school: school,
 			getHipYear: getHipYear,
 			grade: grade,
-			github: github
+			github: github,
+			name: name,
+			description: description,
+			phoneNumber: phoneNumber,
+			tshirtSize: tshirtSize,
+			blog: blog,
+			address: {
+				street: street,
+				city: city,
+				state: state,
+				zipCode: zipCode
+			}
 		};
 
 		Student.update({_id: userId},{$set: data});
@@ -228,9 +248,7 @@ Template.profileEdit.events({
 Template.profileEdit.helpers({
 	data: function() {
 		let userId = FlowRouter.getParam("id");
-		let data = Student.findOne({
-			"_id": userId
-		});
+		let data = Student.findOne({"_id": userId});
 		return data;
 	}
 });
