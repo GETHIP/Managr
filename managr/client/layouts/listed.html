@@ -19,9 +19,6 @@
     <link type="text/css" rel="stylesheet" href="listing.css">
   </head>
   {{> table}}
-  {{#each assignments}}
-    {{> listed}}
-  {{/each}}
 </template>
 
 <template name="table">
@@ -58,21 +55,20 @@
 </template>
 
 <template name="single">
-    {{#each assignments}}
+    {{#with assignments}}
         <h1 id="title">{{title}}</h1>
         <div class="orange-bar">&nbsp;</div>
         <div class="assignmentContainer">
             <p id=assignmentTextFormat><b>Points Possible:</b> {{pointsPossible}}</p>
             <p id=assignmentTextFormat><b>Instructor:</b> {{assigner}}</p>
             <p id=assignmentTextFormat><b>Date Assigned:</b> {{dateAssigned}}</p>
-            <p id=assignmentTextFormat><b>Students Assigned:</b> {{assignedStudents}}</p>
             <p id=assignmentTextFormat><b>Description:</b> {{description}}</p>
         </div>
-    {{/each}}
+    {{/with}}
 </template>
 
 <template name="editSingle">
-  {{#each assignments}}
+  {{#with assignments}}
   	<h1 id="title">Modify {{title}}</h1>
   	<div class="orange-bar">&nbsp;</div>
   	<div class="assignmentContainer">
@@ -81,7 +77,7 @@
   	<div class="buttonDiv">
   		<input type="update" value="Update" class="buttonStyle">
   	</div>
-  {{/each}}
+  {{/with}}
 </template>
 
 <template name="newAssignment">
@@ -109,10 +105,6 @@
       	<p id=assignmentFormFormat><b>Date Due:</b> {{dueDate}}</p>
       	<input type="text" name="dateDue" class="assignmentForm">
       	<p id=assignmentFormFormat><b>Description:</b> {{description}}</p>
-      	<textarea name="studentsAssigned" class="assignmentDescForm"></textarea>
-      	<p id=assignmentFormFormat><b>Students Assigned:</b> {{assignedStudents}}</p>
-      	<select name="students" class="assignmentDescForm" multiple>
-      	</select>
       </form>
     </div>
     <div class="buttonDiv">

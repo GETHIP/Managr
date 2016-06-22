@@ -15,6 +15,9 @@ Template.table.onCreated(function () {
 Template.listing.onCreated(function () {
     Meteor.subscribe("Assignments");
 });
+Template.newAssignment.onCreated(function () {
+  Meteor.subscribe("Assignments");
+});
 
 // Provides the assignment data to the single template from Assignments collection
 Template.single.helpers({
@@ -24,29 +27,21 @@ Template.single.helpers({
             "_id": new Meteor.Collection.ObjectID(FlowRouter.getParam("id"))
         }).fetch();
         if (objects.length > 0) {
-            var obj, strStudents, numStudents, cleanedObj;
+            var obj, cleanedObj;
             obj = objects[0];
-            strStudents = "";
-            numStudents = obj.assignedStudents;
-            for (var i = 0; i < numStudents.length; i++) {
-                strStudents += numStudents[i] + ", ";
-            }
-            strStudents = strStudents.slice(0, -2);
             // The formatted object to be returned
             cleanedObj = {
                 title: obj.title,
                 description: obj.description,
                 dueDate: (obj.dueDate.getMonth() + 1) + "/" + obj.dueDate.getDate() + "/" +  obj.dueDate.getFullYear(),
-                // TODO query users collection to get names of students and instructors
                 assigner: obj.assigner,
-                assignedStudents: strStudents,
                 dateAssigned: (obj.dueDate.getMonth() + 1) + "/" + obj.dueDate.getDate() + "/" +  obj.dueDate.getFullYear(),
                 pointsPossible: obj.pointsPossible
             }
-            return [cleanedObj];
+            return cleanedObj;
         }
         else {
-            return [];
+            return {};
         }
     }
 });
@@ -59,28 +54,21 @@ Template.editSingle.helpers({
             "_id":new Meteor.Collection.ObjectID(FlowRouter.getParam("id"))
         }).fetch();
         if (objects.length > 0) {
-            var obj, strStudents, cleanedObj, numStudents, i;
+            var obj, cleanedObj, i;
             obj = objects[0];
-            strStudents = "";
-            numStudents = obj.assignedStudents;
-            for (i = 0; i < numStudents.length; i++) {
-                strStudents += numStudents[i] + ", ";
-            }
-            strStudents = strStudents.slice(0, -2);
             // The formatted object to be returned
             cleanedObj = {
                 title: obj.title,
                 description: obj.description,
                 dueDate: (obj.dueDate.getMonth() + 1) + "/" + obj.dueDate.getDate() + "/" +  obj.dueDate.getFullYear(),
                 assigner: obj.assigner,
-                assignedStudents: strStudents,
                 dateAssigned: (obj.dueDate.getMonth() + 1) + "/" + obj.dueDate.getDate() + "/" +  obj.dueDate.getFullYear(),
                 pointsPossible: obj.pointsPossible
             }
-            return [cleanedObj];
+            return cleanedObj;
         }
         else {
-            return [];
+            return {};
         }
     }
 });
@@ -93,22 +81,15 @@ Template.table.helpers({
         objects = Assignments.find({}).fetch();
         for (i = 0; i < objects.length; i++) {
             if (objects.length > 0) {
-                var obj, strStudents, j, aUrl, cleanedObj;
+                var obj, j, aUrl, cleanedObj;
                 obj = objects[i];
-                strStudents = "";
-                numStudents = obj.assignedStudents;
-                for (j = 0; j < numStudents.length; j++) {
-                    strStudents += numStudents[j] + ", ";
-                }
-                strStudents = strStudents.slice(0, -2);
-                aUrl = "./assignments/single/" + obj._id.valueOf();
+                aUrl = "./single/" + obj._id.valueOf();
                 // The formatted object to be returned
                 cleanedObj = {
                     title: obj.title,
                     description: obj.description,
                     dueDate: (obj.dueDate.getMonth() + 1) + "/" + obj.dueDate.getDate() + "/" +  obj.dueDate.getFullYear(),
                     assigner: obj.assigner,
-                    assignedStudents: strStudents,
                     dateAssigned: (obj.dueDate.getMonth() + 1) + "/" + obj.dueDate.getDate() + "/" +  obj.dueDate.getFullYear(),
                     pointsPossible: obj.pointsPossible,
                     url: aUrl
@@ -128,21 +109,14 @@ Template.listing.helpers({
         objects = Assignments.find({}).fetch();
         for (i = 0; i < objects.length; i++) {
             if (objects.length > 0) {
-                var obj, strStudents, numStudents, j, cleanedObj;
+                var obj, j, cleanedObj;
                 obj = objects[i];
-                strStudents = "";
-                numStudents = obj.assignedStudents;
-                for (j = 0; j < numStudents.length; j++) {
-                    strStudents += numStudents[j] + ", ";
-                }
-                strStudents = strStudents.slice(0, -2);
                 // The formatted object to be returned
                 cleanedObj = {
                     title: obj.title,
                     description: obj.description,
                     dueDate: (obj.dueDate.getMonth() + 1) + "/" + obj.dueDate.getDate() + "/" +  obj.dueDate.getFullYear(),
                     assigner: obj.assigner,
-                    assignedStudents: strStudents,
                     dateAssigned: (obj.dueDate.getMonth() + 1) + "/" + obj.dueDate.getDate() + "/" +  obj.dueDate.getFullYear(),
                     pointsPossible: obj.pointsPossible
                 }
