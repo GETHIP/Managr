@@ -15,29 +15,25 @@
 				<thead style="background-color:#0397d7; color:white;">
 					<!--table content should correspond -->
 					<tr>
-						<th>First Name</th>
-						<th>Last Name</th>
+						<th>Name</th>
 						<th>School</th>
-						<th>Year in Schoo</th>
+						<th>Year in School</th>
 						<th>Email</th>
 						<th>GET HIP Year</th>
-						<th>Attendance (P/E/U)</th>
+						<th>Attendance</th>
 						<th>Grade</th>
-						<th>Actions</th>
 					</tr>
 				</thead>
 				<tbody>
 	                {{#each ProfilesTable}}
 	                    <tr>
-	                        <th>{{firstName}}</th>
-	    					<th>{{lastName}}</th>
+	              <th>{{name}}</th>
 	    					<th>{{school}}</th>
 	    					<th>{{grade}}</th>
 	    					<th>{{email}}</th>
-	    					<th>{{year}}</th>
+	    					<th>{{getHipYear}}</th>
 	    					<th>{{attendance}}</th>
 	    					<th>{{grade}}</th>
-	    					<th>{{actions}}</th>
 	                    </tr>
 	                {{/each}}
 				</tbody>
