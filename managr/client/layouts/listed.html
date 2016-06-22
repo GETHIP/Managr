@@ -72,7 +72,21 @@
   	<h1 id="title">Modify {{title}}</h1>
   	<div class="orange-bar">&nbsp;</div>
   	<div class="assignmentContainer">
-  		{{> quickForm collection="Assignments" id="updateAssignment" type="update" class="update-assignment-form"}}
+      <form class="submitbtn" id="submitbtn">
+        <p id=assignmentFormFormat><b>Name:</b> {{title}}</p>
+        <input type="text" name="name" class="assignmentForm">
+        <p id=assignmentFormFormat><b>Description:</b> {{description}}</p>
+        <textarea name="description" class="assignmentDescForm"></textarea>
+        <p id=assignmentFormFormat><b>Points Possible:</b> {{pointsPossible}}</p>
+        <input type="text" name="points" class="assignmentForm">
+        <p id=assignmentFormFormat><b>Instructor:</b> {{assigner}}</p>
+        <input type="text" name="instructor" class="assignmentForm">
+        <p id=assignmentFormFormat><b>Date Due:</b> {{dueDate}}</p>
+        <input type="date" name="dateDue" class="assignmentForm">
+        <div class="butonDiv">
+          <input type="submit" value="Update" class="buttonStyle submitbtn2">
+        </div>
+      </form>
   	</div>
   	<div class="buttonDiv">
   		<input type="update" value="Update" class="buttonStyle">
@@ -87,22 +101,22 @@
     <form class="submitbtn" id="submitbtn">
       <p id=assignmentFormFormat><b>Name:</b> {{title}}</p>
       <input type="text" name="name" class="assignmentForm">
+      <p id=assignmentFormFormat><b>Description:</b> {{description}}</p>
+      <textarea name="description" class="assignmentDescForm"></textarea>
       <p id=assignmentFormFormat><b>Points Possible:</b> {{pointsPossible}}</p>
       <input type="text" name="points" class="assignmentForm">
       <p id=assignmentFormFormat><b>Instructor:</b> {{assigner}}</p>
       <input type="text" name="instructor" class="assignmentForm">
       <p id=assignmentFormFormat><b>Date Due:</b> {{dueDate}}</p>
       <input type="date" name="dateDue" class="assignmentForm">
-      <p id=assignmentFormFormat><b>Description:</b> {{description}}</p>
-      <textarea name="description" class="assignmentDescForm"></textarea>
       <div class="butonDiv">
-        <input type="submit" value="Update" class="buttonStyle submitbtn">
+        <input type="submit" value="Create" class="buttonStyle submitbtn">
       </div>
     </form>
   </div>
 </template>
 
-<template name="editListed">
+<!--<template name="editListed">
   <h1 id="title">Modify {{title}}</h1>
     <div class="orange-bar">&nbsp;</div>
     <div class="assignmentContainer">
@@ -121,4 +135,4 @@
     <div class="buttonDiv">
     <input type="update" value="Update" class="buttonStyle">
   </div>
-</template>
+</template>-->

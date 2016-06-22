@@ -127,19 +127,38 @@ Template.listing.helpers({
     }
 });
 
-Template.newAssignment.events({
-  'submit .submitbtn'(event){
-      event.preventDefault();
-      const form = event.target;
-      Assignments.insert({
+Template.editSingle.events({
+  'submit .submitbtn2'(event) {
+    event.preventDefault();
+    const form = event.target;
+    Assignments.update({
+      _id:new Meteor.Collection.ObjectID(FlowRouter.getParam("id"))
+    },
+    {
+      $set: {
         title: form.name.value,
         description: form.description.value,
         dueDate: form.dateDue.value,
         assigner: "Zach Merrill",
         dateAssigned: new Date(),
         pointsPossible: form.points.value
-      });
-      //Assignments.update({_id: }, $set{data: data})
+      }
+    });
+  }
+});
+
+Template.newAssignment.events({
+  'submit .submitbtn'(event){
+    event.preventDefault();
+    const form = event.target;
+    Assignments.insert({
+      title: form.name.value,
+      description: form.description.value,
+      dueDate: form.dateDue.value,
+      assigner: "Zach Merrill",
+      dateAssigned: new Date(),
+      pointsPossible: form.points.value
+    });
   }
 });
 
