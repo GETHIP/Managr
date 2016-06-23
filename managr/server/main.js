@@ -1,7 +1,10 @@
+// Import meteor for server / publish and Assignments to publish
 import { Meteor } from 'meteor/meteor';
 import { Posts } from '../collections/blogPosts.js';
 import { Comments } from '../collections/comments.js';
+import { Assignments } from '../collections/assignments.js';
 
+// Publishes Assignments collection so templates can subscribe to recieve collection data
 Meteor.startup(() => {
   // code to run on server at startup
   Meteor.publish("Comments", function(){
@@ -34,5 +37,8 @@ Meteor.startup(() => {
          }})
 
     }
-  })
+  });
+    Meteor.publish('Assignments', function() {
+        return Assignments.find();
+    });
 });
