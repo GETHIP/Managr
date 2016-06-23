@@ -11,7 +11,7 @@ Template.writeComment.onCreated(function(){
 
 })
 
-Template.comment.onCreated(function(){
+// Template.comment.onCreated(function(){
   // Meteor.subscribe('Comments');
 // Importing Template for helpers and Assignments collection
 import { Template } from "meteor/templating";
