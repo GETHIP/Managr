@@ -19,16 +19,11 @@
     <link type="text/css" rel="stylesheet" href="listing.css">
   </head>
   {{> table}}
-  {{#each assignments}}
-    {{> listed}}
-  {{/each}}
 </template>
 
 <template name="table">
   <h1 id="title">Assignments</h1>
-  <div class="orange-bar">
-      &nbsp;
-  </div>
+  <div class="orange-bar"> &nbsp;</div>
   <div style="overflow-x:auto;">
       <table id="tableTitle">
           <tr>
@@ -41,11 +36,13 @@
           </tr>
           {{#each assignments}}
           <tr>
-              <td><a style="text-decoration:none;color:#333333;" href="assignments/single/{{url}}">{{title}}</a></td>
+              <td>
+                  <a style="text-decoration:none;color:#333333;" href="{{url}}">{{title}}</a>
+              </td>
               <td>{{dateAssigned}}</td>
               <td>{{dueDate}}</td>
               <td>{{pointsPossible}}</td>
-              <td>TODO</td>
+              <td>Not Graded</td>
               <td>{{assigner}}</td>
           </tr>
           {{/each}}
@@ -58,47 +55,68 @@
 </template>
 
 <template name="single">
-    {{#each assignments}}
+    {{#with assignments}}
         <h1 id="title">{{title}}</h1>
         <div class="orange-bar">&nbsp;</div>
         <div class="assignmentContainer">
             <p id=assignmentTextFormat><b>Points Possible:</b> {{pointsPossible}}</p>
             <p id=assignmentTextFormat><b>Instructor:</b> {{assigner}}</p>
             <p id=assignmentTextFormat><b>Date Assigned:</b> {{dateAssigned}}</p>
-            <p id=assignmentTextFormat><b>Students Assigned:</b> {{assignedStudents}}</p>
             <p id=assignmentTextFormat><b>Description:</b> {{description}}</p>
         </div>
-    {{/each}}
+    {{/with}}
 </template>
 
 <template name="editSingle">
-  {{#each assignments}}
+  {{#with assignments}}
   	<h1 id="title">Modify {{title}}</h1>
   	<div class="orange-bar">&nbsp;</div>
-  	<div class="assignmentContainer">
-  		<form>
-  		  <p id=assignmentFormFormat><b>Name:</b> {{title}}</p>
-  		  <input type="text" name="name" class="assignmentForm">
-  			<p id=assignmentFormFormat><b>Points Possible:</b> {{pointsPossible}}</p>
-  			<input type="text" name="points" class="assignmentForm">
-  			<p id=assignmentFormFormat><b>Instructor:</b> {{assigner}}</p>
-  			<input type="text" name="instructor" class="assignmentForm">
-  			<p id=assignmentFormFormat><b>Date Due:</b> {{dueDate}}</p>
-  			<input type="text" name="dateDue" class="assignmentForm">
-  			<p id=assignmentFormFormat><b>Description:</b> {{description}}</p>
-  			<textarea name="studentsAssigned" class="assignmentDescForm"></textarea>
-  			<p id=assignmentFormFormat><b>Students Assigned:</b> {{assignedStudents}}</p>
-  			<select name="students" class="assignmentDescForm" multiple>
-  			</select>
-  		</form>
-  	</div>
+    <form class="submitbtn" id="submitbtn">
+  	  <div class="assignmentContainer">
+        <p id=assignmentFormFormat><b>Name:</b> {{title}}</p>
+        <input type="text" name="name" class="assignmentForm">
+        <p id=assignmentFormFormat><b>Description:</b> {{description}}</p>
+        <textarea name="description" class="assignmentDescForm"></textarea>
+        <p id=assignmentFormFormat><b>Points Possible:</b> {{pointsPossible}}</p>
+        <input type="text" name="points" class="assignmentForm">
+        <p id=assignmentFormFormat><b>Instructor:</b> {{assigner}}</p>
+        <input type="text" name="instructor" class="assignmentForm">
+        <p id=assignmentFormFormat><b>Date Due:</b> {{dueDate}}</p>
+        <input type="date" name="dateDue" class="assignmentForm">
+      </div>
+      <div class="butonDiv">
+        <input type="submit" value="Update" class="buttonStyle submitbtn2">
+      </div>
+    </form>
   	<div class="buttonDiv">
   		<input type="update" value="Update" class="buttonStyle">
   	</div>
-  {{/each}}
+  {{/with}}
 </template>
 
-<template name="editListed">
+<template name="newAssignment">
+  <h1 id="title">New Assignment</h1>
+  <div class="orange-bar">&nbsp;</div>
+  <form class="submitbtn" id="submitbtn">
+    <div class="assignmentContainer">
+      <p id=assignmentFormFormat><b>Name:</b> {{title}}</p>
+      <input type="text" name="name" class="assignmentForm">
+      <p id=assignmentFormFormat><b>Description:</b> {{description}}</p>
+      <textarea name="description" class="assignmentDescForm"></textarea>
+      <p id=assignmentFormFormat><b>Points Possible:</b> {{pointsPossible}}</p>
+      <input type="text" name="points" class="assignmentForm">
+      <p id=assignmentFormFormat><b>Instructor:</b> {{assigner}}</p>
+      <input type="text" name="instructor" class="assignmentForm">
+      <p id=assignmentFormFormat><b>Date Due:</b> {{dueDate}}</p>
+      <input type="date" name="dateDue" class="assignmentForm">
+    </div>
+    <div class="buttonDiv">
+      <input type="submit" value="Create Assignment" class="buttonStyle submitbtn">
+    </div>
+  </form>
+</template>
+
+<!--<template name="editListed">
   <h1 id="title">Modify {{title}}</h1>
     <div class="orange-bar">&nbsp;</div>
     <div class="assignmentContainer">
@@ -112,13 +130,9 @@
       	<p id=assignmentFormFormat><b>Date Due:</b> {{dueDate}}</p>
       	<input type="text" name="dateDue" class="assignmentForm">
       	<p id=assignmentFormFormat><b>Description:</b> {{description}}</p>
-      	<textarea name="studentsAssigned" class="assignmentDescForm"></textarea>
-      	<p id=assignmentFormFormat><b>Students Assigned:</b> {{assignedStudents}}</p>
-      	<select name="students" class="assignmentDescForm" multiple>
-      	</select>
       </form>
     </div>
     <div class="buttonDiv">
     <input type="update" value="Update" class="buttonStyle">
   </div>
-</template>
+</template>-->

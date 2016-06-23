@@ -1,21 +1,16 @@
 html {
   box-sizing: border-box;
 }
-
 *, *:before, *:after {
   box-sizing: inherit;
 }
-
-
 body {
   font-family: sans-serif;
   font-size: 16px;
   background: #f3f3f3;
 }
-
 .assignmentContainer {
   max-width: 95%;
-  /*margin: 0 auto;*/
   min-height: 100%;
   background: white;
   box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26);
@@ -27,22 +22,18 @@ body {
   padding-bottom: 10px;
   padding-left: 15px;
 }
-
 #assignmentTextFormat {
     padding: 10px 0px 10px 0px;
 }
-
 #assignmentFormFormat {
   margin-left: 5px;
   margin-top: 15px;
   margin-bottom: 5px;
 }
-
 header {
   padding: 20px 15px 15px 15px;
   position: relative;
 }
-
 #title {
   font-family: arial, sans-serif;
   font-weight: normal;
@@ -53,7 +44,6 @@ header {
   margin-bottom: 0px;
   display: inline-block;
 }
-
 .assignmentForm {
     border-radius: 6px;
     border: 2px solid lightgrey;
@@ -62,13 +52,11 @@ header {
     margin: 0px;
     box-sizing: border-box;
 }
-
 .assignmentForm:focus {
   outline: none;
   border-radius: 6px;
-  border: 2px solid orange;
+  border: 2px solid #fcb040;
 }
-
 .assignmentDescForm {
     border-radius: 6px;
     border: 2px solid lightgrey;
@@ -84,24 +72,21 @@ header {
     font-style: normal;
     font-size: 14px;
 }
-
 .assignmentDescForm:focus {
   outline: none;
   border-radius: 6px;
-  border: 2px solid orange;
+  border: 2px solid #fcb040;
 }
-
 .orange-bar {
   max-width: 95%;
   margin: 0 auto;
   max-height: 4px;
-  background: orange;
+  background: #fcb040;
   margin-top: 15px;
   margin-bottom: 25px;
 }
-
 .buttonStyle {
-  background-color: orange;
+  background-color: #fcb040;
   border: none;
   color: white;
   padding: 16px 32px;
@@ -109,11 +94,11 @@ header {
   width: 100%;
   cursor: pointer;
   text-align: center;
-  font-size: 14px;
+  font-size: 18px;
   border-radius: 6px;
 }
-
 .buttonDiv {
+  font-size: 20px;
   margin: 35px;
   margin-top: 15px;
   margin-bottom: 15px;
@@ -122,6 +107,13 @@ header {
   padding-bottom: 10px;
   padding-left: 15px;
 }
+.buttonStyle:hover {
+  outline: none;
+  background-color: #FF9C0A; 
+}
+.buttonStyle:focus {
+  outline: none;
+}
 
 li {
   position: relative;
@@ -129,19 +121,15 @@ li {
   padding: 20px 15px;
   border-bottom: #eee solid 1px;
 }
-
 li .text {
   margin-left: 10px;
 }
-
 li.checked {
   color: #888;
 }
-
 li.checked .text {
   text-decoration: line-through;
 }
-
 table {
     border-collapse: collapse;
     border: 1px dotted lightgrey;
@@ -159,7 +147,6 @@ th {
   border-bottom: 1px solid #000000;
   border-right: 1px dotted lightgrey;
 }
-
 th, td {
     padding: 5px;
     text-align: center;
@@ -168,8 +155,6 @@ th, td {
     border-right: 1px dotted lightgrey;
     border-bottom: 1px dotted lightgrey;
 }
-
-
 table tr:nth-child(even) {
     background-color: #fff;
 }
