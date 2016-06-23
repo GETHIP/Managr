@@ -1,6 +1,7 @@
 import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
 import { Comments } from '../collections/comments.js'
+import { Assignments } from "../collections/assignments.js";
 
 Template.post.onCreated(function(){
   Meteor.subscribe('Posts');
@@ -14,8 +15,6 @@ Template.writeComment.onCreated(function(){
 // Template.comment.onCreated(function(){
   // Meteor.subscribe('Comments');
 // Importing Template for helpers and Assignments collection
-import { Template } from "meteor/templating";
-import { Assignments } from "../collections/assignments.js";
 
 // Gives each template the Assignments collection
 Template.single.onCreated(function() {
