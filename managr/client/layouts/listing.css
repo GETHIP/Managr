@@ -1,9 +1,3 @@
-/*Entire site CSS*/
-
-/*Blogs CSS*/
-
-
-/*Assignments CSS*/
 html {
   box-sizing: border-box;
 }
@@ -61,7 +55,7 @@ header {
 .assignmentForm:focus {
   outline: none;
   border-radius: 6px;
-  border: 2px solid orange;
+  border: 2px solid #fcb040;
 }
 .assignmentDescForm {
     border-radius: 6px;
@@ -81,18 +75,18 @@ header {
 .assignmentDescForm:focus {
   outline: none;
   border-radius: 6px;
-  border: 2px solid orange;
+  border: 2px solid #fcb040;
 }
 .orange-bar {
   max-width: 95%;
   margin: 0 auto;
   max-height: 4px;
-  background: orange;
+  background: #fcb040;
   margin-top: 15px;
   margin-bottom: 25px;
 }
 .buttonStyle {
-  background-color: orange;
+  background-color: #fcb040;
   border: none;
   color: white;
   padding: 16px 32px;
@@ -100,10 +94,11 @@ header {
   width: 100%;
   cursor: pointer;
   text-align: center;
-  font-size: 14px;
+  font-size: 18px;
   border-radius: 6px;
 }
 .buttonDiv {
+  font-size: 20px;
   margin: 35px;
   margin-top: 15px;
   margin-bottom: 15px;
@@ -112,9 +107,17 @@ header {
   padding-bottom: 10px;
   padding-left: 15px;
 }
+.buttonStyle:hover {
+  outline: none;
+  background-color: #FF9C0A; 
+}
+.buttonStyle:focus {
+  outline: none;
+}
+
 li {
   position: relative;
-  list-style: none;
+  list-style-type: none;
   padding: 20px 15px;
   border-bottom: #eee solid 1px;
 }
@@ -127,7 +130,37 @@ li.checked {
 li.checked .text {
   text-decoration: line-through;
 }
-/*Profiles CSS*/
-
-
-/*Attendance CSS*/
+table {
+    border-collapse: collapse;
+    border: 1px dotted lightgrey;
+    max-width: 93%;
+    margin: 0 auto;
+    height: 4px;
+    min-width: 93%;
+    margin-top: 15px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+th {
+  background: #fcb040;
+  color: white;
+  border-bottom: 1px solid #000000;
+  border-right: 1px dotted lightgrey;
+}
+th, td {
+    padding: 5px;
+    text-align: center;
+    font-size: 12pt;
+    height: 60px;
+    border-right: 1px dotted lightgrey;
+    border-bottom: 1px dotted lightgrey;
+}
+table tr:nth-child(even) {
+    background-color: #fff;
+}
+table tr:nth-child(odd) {
+   background-color:#eeeeee;
+}
+table tr:hover {
+  background-color: #fef1de;
+}
