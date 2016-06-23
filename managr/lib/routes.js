@@ -1,25 +1,18 @@
+var main, assignmentSection;
+main = "main";
 FlowRouter.route('/', {
 	name: 'home',
 	action() {
-		BlazeLayout.render('mainPage', {currentPage: 'blogMain'});
+		BlazeLayout.render(main, {content: 'blogMain'});
 	}
 });
 
 FlowRouter.route('/blogs/:blog_id', {
 	name: 'blogs',
 	action : function(params) {
-		BlazeLayout.render('mainPage', {currentPage: 'postPage'})
+		BlazeLayout.render(main, {content: 'postPage'})
 	}
 });
-
-FlowRouter.route('/testBlogs', {
-	name: 'testdata',
-	action() {
-		BlazeLayout.render('testInsertData', {})
-	}
-});
-var main, assignmentSection;
-main = "main";
 
 // Used by all URLs beginning with /assignments
 assignmentSection = FlowRouter.group({
