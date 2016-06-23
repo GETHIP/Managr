@@ -25,15 +25,6 @@ main = "main";
 assignmentSection = FlowRouter.group({
     prefix: "/assignments"
 });
-// TODO remove this when merging with other groups
-FlowRouter.route("/", {
-    name: "root",
-    action() {
-        BlazeLayout.render(main,{
-            content: "original"
-        });
-    }
-});
 // Table of Assignments
 assignmentSection.route("/", {
     name: "allAssignments",
