@@ -71,8 +71,8 @@
   {{#with assignments}}
   	<h1 id="title">Modify {{title}}</h1>
   	<div class="orange-bar">&nbsp;</div>
-  	<div class="assignmentContainer">
-      <form class="submitbtn" id="submitbtn">
+    <form class="submitbtn" id="submitbtn">
+  	  <div class="assignmentContainer">
         <p id=assignmentFormFormat><b>Name:</b> {{title}}</p>
         <input type="text" name="name" class="assignmentForm">
         <p id=assignmentFormFormat><b>Description:</b> {{description}}</p>
@@ -83,11 +83,11 @@
         <input type="text" name="instructor" class="assignmentForm">
         <p id=assignmentFormFormat><b>Date Due:</b> {{dueDate}}</p>
         <input type="date" name="dateDue" class="assignmentForm">
-        <div class="butonDiv">
-          <input type="submit" value="Update" class="buttonStyle submitbtn2">
-        </div>
-      </form>
-  	</div>
+      </div>
+      <div class="butonDiv">
+        <input type="submit" value="Update" class="buttonStyle submitbtn2">
+      </div>
+    </form>
   	<div class="buttonDiv">
   		<input type="update" value="Update" class="buttonStyle">
   	</div>
@@ -97,8 +97,8 @@
 <template name="newAssignment">
   <h1 id="title">New Assignment</h1>
   <div class="orange-bar">&nbsp;</div>
-  <div class="assignmentContainer">
-    <form class="submitbtn" id="submitbtn">
+  <form class="submitbtn" id="submitbtn">
+    <div class="assignmentContainer">
       <p id=assignmentFormFormat><b>Name:</b> {{title}}</p>
       <input type="text" name="name" class="assignmentForm">
       <p id=assignmentFormFormat><b>Description:</b> {{description}}</p>
@@ -109,11 +109,11 @@
       <input type="text" name="instructor" class="assignmentForm">
       <p id=assignmentFormFormat><b>Date Due:</b> {{dueDate}}</p>
       <input type="date" name="dateDue" class="assignmentForm">
-      <div class="butonDiv">
-        <input type="submit" value="Create" class="buttonStyle submitbtn">
-      </div>
-    </form>
-  </div>
+    </div>
+    <div class="buttonDiv">
+      <input type="submit" value="Create Assignment" class="buttonStyle submitbtn">
+    </div>
+  </form>
 </template>
 
 <!--<template name="editListed">
