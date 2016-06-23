@@ -10,7 +10,7 @@ Template.writeComment.onCreated(function(){
   Meteor.subscribe('Posts')
 
 })
-/*
+
 Template.comment.onCreated(function(){
   // Meteor.subscribe('Comments');
 // Importing Template for helpers and Assignments collection
@@ -60,7 +60,7 @@ Template.single.helpers({
         }
     }
 });
-*/
+
 Template.post.events({
 
 });
