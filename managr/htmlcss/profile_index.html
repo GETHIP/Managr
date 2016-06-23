@@ -54,9 +54,15 @@
                 {{/each}}
             </ol>
         {{#with student}}
+        <p><strong>EP10:</strong></p>
+            <ol>
+                {{#each ep}}
+                    <li>{{this}}</li>
+                {{/each}}
+            </ol>
         <p><strong>Get Hip Year:</strong></p>
         <p>{{getHipYear}}</p>
-    {{/with}}
+        {{/with}}
 </div>
 </template>
 

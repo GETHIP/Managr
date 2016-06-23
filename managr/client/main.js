@@ -19,6 +19,10 @@ Template.aboutme.helpers({
 	strengths: function() {
 		let userId = FlowRouter.getParam("id");
 		return strengths = Student.findOne({"_id": userId}).strengths;
+	},
+	ep: function() {
+		let userId = FlowRouter.getParam("id");
+		return ep = Student.findOne({"_id": userId}).ep10;
 	}
 });
 
@@ -219,7 +223,16 @@ Template.profileEdit.events({
 		const city = event.target.city.value;
 		const state = event.target.state.value;
 		const zipCode = event.target.zipCode.value;
-
+		const strength1 = event.target.strength1.value;
+		const strength2	= event.target.strength2.value;
+		const strength3 = event.target.strength3.value;
+		const strength4 = event.target.strength4.value;
+		const strength5 = event.target.strength5.value;
+		const ep1 = event.target.ep1.value;
+		const ep2 = event.target.ep2.value;
+		const ep3 = event.target.ep3.value;
+		const ep4 = event.target.ep4.value;
+		
 		var data = {
 			email: email,
 			age: age,
@@ -237,7 +250,9 @@ Template.profileEdit.events({
 				city: city,
 				state: state,
 				zipCode: zipCode
-			}
+			},
+			strengths: [strength1, strength2, strength3, strength4, strength5],
+			ep10: [ep1, ep2, ep3, ep4]
 		};
 
 		Student.update({_id: userId},{$set: data});

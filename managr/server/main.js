@@ -63,7 +63,8 @@ Meteor.startup(() => {
 			},
 			"github": 'Athletesrun',
 			"blog": "http://blogger.com",
-			"tshirtSize": "Small"
+			"tshirtSize": "Small",
+      "ep10": ["Responsibility", "Profitability", "Communication", "Strategic"]
 		});
 	}
 	for (var i = Instructor.find().count(); i < 5; i++) {

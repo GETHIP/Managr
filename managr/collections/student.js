@@ -115,6 +115,10 @@ var StudentSchema = new SimpleSchema({
     blog: {
         type: String,
         label: "Blog"
+    },
+    ep10: {
+        type: [String],
+        label: "EP10"
     }
 });
 Student.attachSchema(StudentSchema);
