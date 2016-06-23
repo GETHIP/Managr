@@ -1,4 +1,5 @@
 <template name="listed">
+  <link type="text/css" rel="stylesheet" href="assignements.css">
   <h1 id="title">{{title}}</h1>
   <div class="orange-bar">&nbsp;</div>
   <div class="assignmentContainer">
@@ -11,7 +12,10 @@
 </template>
 
 <template name="editGrades">
-    <h3>This page will contain grades for the instructor to edit.</h3>
+  <head>
+    <link type="text/css" rel="stylesheet" href="assignements.css">
+  </head>
+  <h3>This page will contain grades for the instructor to edit.</h3>
 </template>
 
 <template name="listing">
@@ -22,6 +26,9 @@
 </template>
 
 <template name="table">
+  <head>
+    <link type="text/css" rel="stylesheet" href="assignements.css">
+  </head>
   <h1 id="title">Assignments</h1>
   <div class="orange-bar"> &nbsp;</div>
   <div style="overflow-x:auto;">
@@ -50,11 +57,10 @@
   </div>
 </template>
 
-<template name="original">
-    <h3>This will be the home page.</h3>
-</template>
-
 <template name="single">
+  <head>
+    <link type="text/css" rel="stylesheet" href="assignements.css">
+  </head>
     {{#with assignments}}
         <h1 id="title">{{title}}</h1>
         <div class="orange-bar">&nbsp;</div>
@@ -68,6 +74,9 @@
 </template>
 
 <template name="editSingle">
+  <head>
+    <link type="text/css" rel="stylesheet" href="assignements.css">
+  </head>
   {{#with assignments}}
   	<h1 id="title">Modify {{title}}</h1>
   	<div class="orange-bar">&nbsp;</div>
@@ -95,6 +104,9 @@
 </template>
 
 <template name="newAssignment">
+  <head>
+    <link type="text/css" rel="stylesheet" href="assignements.css">
+  </head>
   <h1 id="title">New Assignment</h1>
   <div class="orange-bar">&nbsp;</div>
   <form class="submitbtn" id="submitbtn">
@@ -115,24 +127,3 @@
     </div>
   </form>
 </template>
-
-<!--<template name="editListed">
-  <h1 id="title">Modify {{title}}</h1>
-    <div class="orange-bar">&nbsp;</div>
-    <div class="assignmentContainer">
-      <form>
-        <p id=assignmentFormFormat><b>Name:</b> {{title}}</p>
-        <input type="text" name="name" class="assignmentForm">
-      	<p id=assignmentFormFormat><b>Points Possible:</b> {{pointsPossible}}</p>
-      	<input type="text" name="points" class="assignmentForm">
-      	<p id=assignmentFormFormat><b>Instructor:</b> {{assigner}}</p>
-      	<input type="text" name="instructor" class="assignmentForm">
-      	<p id=assignmentFormFormat><b>Date Due:</b> {{dueDate}}</p>
-      	<input type="text" name="dateDue" class="assignmentForm">
-      	<p id=assignmentFormFormat><b>Description:</b> {{description}}</p>
-      </form>
-    </div>
-    <div class="buttonDiv">
-    <input type="update" value="Update" class="buttonStyle">
-  </div>
-</template>-->
