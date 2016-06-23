@@ -51,10 +51,10 @@ Template.attendanceBody.helpers({
 		}).attendance;
 		for(i in rawAttendance){
 				if(rawAttendance[i] === true){
-						attendance.push("True");
+						attendance.push("Present");
 				}
 				if(rawAttendance[i] === false){
-						attendance.push("False");
+						attendance.push("Absent");
 				}
 		}
 		return attendance;
@@ -232,7 +232,7 @@ Template.profileEdit.events({
 		const ep2 = event.target.ep2.value;
 		const ep3 = event.target.ep3.value;
 		const ep4 = event.target.ep4.value;
-		
+
 		var data = {
 			email: email,
 			age: age,
@@ -283,10 +283,10 @@ Template.attendanceUpdate.events({
 		for (i = 1; i < 13; i++) {
 			let week = event.target["week" + i];
 			let weeks = week.value;
-			if (weeks === "True" || weeks === true) {
+			if (weeks === "Present" || weeks === true) {
 				data.push(true);
 			}
-			if (weeks === "False" || weeks === false) {
+			if (weeks === "Absent" || weeks === false) {
 				data.push(false);
 			}
 		}
