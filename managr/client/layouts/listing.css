@@ -109,13 +109,13 @@ header {
 }
 .buttonStyle:hover {
   outline: none;
-  background-color: #FF9C0A; 
+  background-color: #FF9C0A;
 }
 .buttonStyle:focus {
   outline: none;
 }
 
-li {
+/*li {
   position: relative;
   list-style-type: none;
   padding: 20px 15px;
@@ -129,7 +129,7 @@ li.checked {
 }
 li.checked .text {
   text-decoration: line-through;
-}
+}*/
 table {
     border-collapse: collapse;
     border: 1px dotted lightgrey;

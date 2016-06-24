@@ -115,7 +115,7 @@ Meteor.startup(() => {
 	}
 	console.log(Student.findOne({
 		"name": "ben1"
-	}));
+	})._id);
 	console.log(Instructor.findOne({
 		"name": "roger1"
 	}));
