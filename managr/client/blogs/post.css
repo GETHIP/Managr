@@ -17,7 +17,7 @@
   font-size: 18px;
   font-family: Helvetica;
 }
-#viewComments {
+#leaveComment {
   font-size: 11px;
   color: #444444;
   font-family: Helvetica;
@@ -25,9 +25,12 @@
 #postHeader {
   font-size:25px;
   font-family: Helvetica;
+  pointer-events: none;
+  cursor: default;
+  color: #444444;
 }
 #pretag {
     font-family: Helvetica;
     border:none;
-    background-color: white; 
+    background-color: white;
 }
