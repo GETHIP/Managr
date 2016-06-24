@@ -1,0 +1,103 @@
+<template name="attendanceUpdate">
+  <h1>Attendance</h1>
+  {{> navbar}}
+  <form class="attendanceUpdate">
+    <table class= "table-bordered table-hovered table">
+    <thead id="attendance">
+        <tr>
+            <th>Week One</th>
+            <th>Week Two</th>
+            <th>Week Three</th>
+            <th>Week Four</th>
+            <th>Week Five</th>
+            <th>Week Six</th>
+            <th>Week Seven</th>
+            <th>Week Eight</th>
+            <th>Week Nine</th>
+            <th>Week Ten</th>
+            <th>Week Eleven</th>
+            <th>Week Twelve</th>
+      </tr>
+    </thead>
+     <tbody>
+       <tr>
+        {{#with attendance}}
+    <th>
+         <select class="form-control" id="week1">
+              <option {{oneone}}>True</option>
+              <option {{onetwo}}>False</option>
+         </select>
+    </th>
+    <th>
+         <select class="form-control" id="week2">
+              <option {{twoone}}>True</option>
+              <option {{twotwo}}>False</option>
+         </select>
+    </th>
+    <th>
+         <select class="form-control" id="week3">
+              <option {{threeone}}>True</option>
+              <option {{threetwo}}>False</option>
+         </select>
+    </th>
+    <th>
+         <select class="form-control" id="week4">
+              <option {{fourone}}>True</option>
+              <option {{fourtwo}}>False</option>
+         </select>
+    </th>
+    <th>
+         <select class="form-control" id="week5">
+              <option {{fiveone}}>True</option>
+              <option {{fivetwo}}>False</option>
+         </select>
+    </th>
+    <th>
+         <select class="form-control" id="week6">
+              <option {{sixone}}>True</option>
+              <option {{sixtwo}}>False</option>
+         </select>
+    </th>
+    <th>
+         <select class="form-control" id="week7">
+              <option {{sevenone}}>True</option>
+              <option {{seventwo}}>False</option>
+         </select>
+    </th>
+    <th>
+         <select class="form-control" id="week8">
+              <option {{eightone}}>True</option>
+              <option {{eighttwo}}>False</option>
+         </select>
+    </th>
+    <th>
+         <select class="form-control" id="week9">
+              <option {{nineone}}>True</option>
+              <option {{ninetwo}}>False</option>
+         </select>
+    </th>
+    <th>
+         <select class="form-control" id="week10">
+              <option {{tenone}}>True</option>
+              <option {{tentwo}}>False</option>
+         </select>
+    </th>
+    <th>
+         <select class="form-control" id="week11">
+              <option {{elevenone}}>True</option>
+              <option {{eleventwo}}>False</option>
+         </select>
+    </th>
+    <th>
+         <select class="form-control" id="week12">
+              <option {{twelveone}}>True</option>
+              <option {{twelvetwo}}>False</option>
+         </select>
+    </th>
+    {{/with}}
+       </tr>
+     </tbody>
+  </table>
+    <button type="submit" class="btn btn-warning btn-block updateAttendance">Update Attendance</button>
+</form>
+</template>

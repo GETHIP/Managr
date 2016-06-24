@@ -1,0 +1,20 @@
+#attendance {
+    color: white;
+    background-color: #fcb040 !important;
+    border-style: dashed;
+}
+
+.btn-warning {
+  background-color: #f58028 !important;
+}
+
+.btn {
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+
+}
+
+.btn-block {
+    max-width: 90% !important;
+}
