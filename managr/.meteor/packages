@@ -29,3 +29,4 @@ zimme:active-route
 gwendall:auth-client-callbacks
 meteortoys:allthings
 twbs:bootstrap
+flynn:upload-server
