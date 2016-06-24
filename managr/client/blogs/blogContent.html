@@ -3,7 +3,7 @@
   <!--if user is logged in** -->
   <ul class="allPosts">
 	  {{#each allPosts }}
-	  <li> {{> post}} </li>
+	  <ul> <a href="/blogs/{{_id}}" style="text-decoration:none">{{> post}}</a></ul>
 	  {{/each}}
   </ul>
 
