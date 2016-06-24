@@ -46,8 +46,9 @@ li {
     background-color: #333333;
     color: white;
     width: 20%;
-    height: 110%;
-  	position: absolute;
+    height: 100%;
+    display: block;
+  	position: fixed;;
   	left: 0px;
-	  top: 52px;
+	  top: 53px;
 }

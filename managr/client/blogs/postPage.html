@@ -5,11 +5,15 @@
     {{> header}}
 
     <div class="commentSection">
-    {{> post}}
-    {{> oddcomment}}
-    {{> commentEven}}
-    {{> writeComment}}
+    {{#with blogPost}}
+      {{> post}}
+      {{#each comments}}
+        {{> commentDisplay}}
+      {{/each}}
+      {{> writeComment}}
+    {{/with}}
   </div>
+  {{> writeCommentSubmit}}
   </div>
 </div>
 </template>

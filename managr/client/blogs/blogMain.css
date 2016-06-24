@@ -11,5 +11,6 @@ input[name="name"] {
   width: 95%;
 }
 #postsHeader{
-    margin-left: 253px;
+    margin-left: 20%;
+    margin-top: 5em;
 }

@@ -1,11 +1,11 @@
 <template name="blogContent">
 
   <!--if user is logged in** -->
-  <div class="allPosts">
+  <ul class="allPosts">
 	  {{#each allPosts }}
-	  <ul> {{> post}} </ul>
+	  <ul> <a href="/blogs/{{_id}}" style="text-decoration:none">{{> post}}</a></ul>
 	  {{/each}}
-  </div>
+  </ul>
 
 <!-- else if user is not logged in-->
 <!--

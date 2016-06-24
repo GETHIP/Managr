@@ -33,4 +33,5 @@ zimme:active-route
 gwendall:auth-client-callbacks
 meteortoys:allthings
 twbs:bootstrap
+momentjs:moment
 alanning:roles
