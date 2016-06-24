@@ -73,6 +73,16 @@ Template.ProfilesTable.helpers({
 		let ProfilesTable = [];
 		Profiles.forEach(function(currentValue, index, profile){
 			currentValue.url = "/profile/" + currentValue._id;
+			for(i in currentValue.attendance){
+					if(currentValue.attendance[i] === true){
+							currentValue.attendance[i] = "Present";
+					}
+					if(currentValue.attendance[i] === false){
+							currentValue.attendance[i] = "Absent";
+					}
+			}
+			currentValue.attendance = currentValue.attendance.join(" | ");
+			currentValue.parentNames = currentValue.parentNames.join(" and ")
 			ProfilesTable.push(currentValue);
 		});
 	 	return ProfilesTable;
