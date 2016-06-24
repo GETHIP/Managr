@@ -30,7 +30,6 @@ Template.aboutme.events({
 	'click .blogButton'(event){
 			let userId = FlowRouter.getParam("id");
 			let blogURL = Student.findOne({"_id": userId}).blog;
-			console.log(blogURL);
 			window.location = blogURL;
 	}
 });
@@ -70,8 +69,13 @@ Template.ProfilesTable.onCreated(function() {
 
 Template.ProfilesTable.helpers({
 	ProfilesTable: function() {
-		console.log(Student.find({}))
-	 	return Student.find({});
+		let Profiles = Student.find({});
+		let ProfilesTable = [];
+		Profiles.forEach(function(currentValue, index, profile){
+			currentValue.url = "/profile/" + currentValue._id;
+			ProfilesTable.push(currentValue);
+		});
+	 	return ProfilesTable;
 	}
 })
 
@@ -86,11 +90,7 @@ Template.studentName.helpers({
 	studentName: function() {
 		let userId = FlowRouter.getParam("id");
 		let studentName = {};
-		studentName = Student.findOne({
-			"_id": userId
-		});
-
-		console.log(studentName);
+		studentName = Student.findOne({"_id": userId});
 		return studentName;
 	}
 });
@@ -106,12 +106,9 @@ Template.assignmentsBody.helpers({
 	assignments: function() {
 		let userId = FlowRouter.getParam("id");
 		let assignments = [];
-		assignments = Student.findOne({
-			"_id": userId
-		}).assignments;
+		assignments = Student.findOne({"_id": userId}).assignments;
 		for (var i in assignments) {
-
-            //put the date in the format: Sunday June 4, 2016
+      //put the date in the format: Sunday June 4, 2016
 			var dateAssigned = assignments[i].dateAssigned;
             var dueDate = assignments[i].dueDate;
 
@@ -290,7 +287,6 @@ Template.attendanceUpdate.events({
 				data.push(false);
 			}
 		}
-		console.log(data);
 		Student.update({_id: userId},{$set: {attendance: data}});
 		window.location = "/profile/" + FlowRouter.getParam("id");
 	}
@@ -312,7 +308,6 @@ Template.attendanceUpdate.helpers({
 				attendance[wordNumbers[i] + "two"] = "selected";
 			}
 		};
-		console.log(attendance);
 		return attendance;
 	}
 });
