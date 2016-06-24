@@ -7,11 +7,13 @@
     <div class="commentSection">
     {{#with blogPost}}
       {{> post}}
-      {{> oddcomment}}
-      {{> commentEven}}
+      {{#each comments}}
+        {{> commentDisplay}}
+      {{/each}}
       {{> writeComment}}
     {{/with}}
   </div>
+  {{> writeCommentSubmit}}
   </div>
 </div>
 </template>
