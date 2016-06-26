@@ -22,7 +22,7 @@ assignmentSection.route("/", {
     name: "allAssignments",
     action() {
         BlazeLayout.render(main,{
-            content: "studentsAllAssignments"
+            content: "allStudent"
         });
     }
 });
@@ -30,7 +30,7 @@ assignmentSection.route("/all", {
     name: "allAssignments",
     action() {
         BlazeLayout.render(main,{
-            content: "studentsAllAssignments"
+            content: "allStudent"
         });
     }
 });
@@ -39,7 +39,7 @@ assignmentSection.route("/single/:id", {
     name: "singleAssignment",
     action(params) {
         BlazeLayout.render(main,{
-            content: "studentAssignmentSingle"
+            content: "studentSingle"
         });
     }
 });
@@ -47,7 +47,7 @@ assignmentSection.route("/edit/single/:id", {
     name: "editSingleAssignment",
     action(params) {
         BlazeLayout.render(main,{
-            content: "studentAssignmentSingleEdit"
+            content: "editAssignment"
         });
     }
 });

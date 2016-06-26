@@ -9,16 +9,16 @@ Template.post.onCreated(function(){
 Template.writeComment.onCreated(function(){
   Meteor.subscribe('Posts');
 });
-Template.studentAssignmentSingle.onCreated(function() {
+Template.studentSingle.onCreated(function() {
   Meteor.subscribe("Assignments");
 });
-Template.studentAssignmentSingleEdit.onCreated(function () {
+Template.editAssignment.onCreated(function () {
   Meteor.subscribe("Assignments");
 });
-Template.studentAssignmentTable.onCreated(function () {
+Template.studentTable.onCreated(function () {
   Meteor.subscribe("Assignments");
 });
-Template.studentsAllAssignments.onCreated(function () {
+Template.allStudent.onCreated(function () {
   Meteor.subscribe("Assignments");
 });
 Template.newAssignment.onCreated(function () {
@@ -26,7 +26,7 @@ Template.newAssignment.onCreated(function () {
 });
 
 // Provides the assignment data to the single template from Assignments collection
-Template.studentAssignmentSingle.helpers({
+Template.studentSingle.helpers({
     assignments: function() {
         var objects;
         objects = Assignments.find({
@@ -53,7 +53,7 @@ Template.studentAssignmentSingle.helpers({
 });
 
 // Provides the editSingle template with information on a single assignment
-Template.studentAssignmentSingleEdit.helpers({
+Template.editAssignment.helpers({
     assignments: function() {
         var objects;
         objects = Assignments.find({
@@ -80,7 +80,7 @@ Template.studentAssignmentSingleEdit.helpers({
 });
 
 // Provides the table template with all the listed assignments
-Template.studentAssignmentTable.helpers({
+Template.studentTable.helpers({
     assignments: function() {
         var list, objects, i;
         list = [];
@@ -108,7 +108,7 @@ Template.studentAssignmentTable.helpers({
 });
 
 // Provides listing template with a list of assignments
-Template.studentsAllAssignments.helpers({
+Template.allStudent.helpers({
     assignments: function() {
         var list, objects, i;
         list = [];
@@ -449,15 +449,25 @@ Template.attendanceUpdate.helpers({
 Template.navbar.helpers({
 		assignments: function(){
 				let userId = FlowRouter.getParam("id");
-				return assignments = "/assignments/" + userId;
+                if (userId == undefined) {
+                    return "/assignments/";
+                }
+                else {
+	                return "/assignments/" + userId;
+                }
 		},
 		profile: function(){
 			let userId = FlowRouter.getParam("id");
-			return assignments = "/profile/" + userId;
+            if (userId == undefined) {
+                return "/profiles/";
+            }
+            else {
+                return "/profiles/" + userId;
+            }
 		}
 });
 
-Template.studentAssignmentSingleEdit.events({
+Template.editAssignment.events({
   'submit .submitbtn2'(event) {
     event.preventDefault();
     const form = event.target;
