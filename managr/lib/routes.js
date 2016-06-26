@@ -6,7 +6,6 @@ FlowRouter.route('/', {
 		BlazeLayout.render(main, {content: 'blogMain'});
 	}
 });
-
 FlowRouter.route('/blogs/:blog_id', {
 	name: 'blogs',
 	action : function(params) {
@@ -23,7 +22,7 @@ assignmentSection.route("/", {
     name: "allAssignments",
     action() {
         BlazeLayout.render(main,{
-            content: "listing"
+            content: "allStudent"
         });
     }
 });
@@ -31,15 +30,7 @@ assignmentSection.route("/all", {
     name: "allAssignments",
     action() {
         BlazeLayout.render(main,{
-            content: "listing"
-        });
-    }
-});
-assignmentSection.route("/edit/all", {
-    name: "editAllAssignments",
-    action() {
-        BlazeLayout.render(main,{
-            content: "editAll"
+            content: "allStudent"
         });
     }
 });
@@ -48,7 +39,7 @@ assignmentSection.route("/single/:id", {
     name: "singleAssignment",
     action(params) {
         BlazeLayout.render(main,{
-            content: "single"
+            content: "studentSingle"
         });
     }
 });
@@ -56,7 +47,7 @@ assignmentSection.route("/edit/single/:id", {
     name: "editSingleAssignment",
     action(params) {
         BlazeLayout.render(main,{
-            content: "editSingle"
+            content: "editAssignment"
         });
     }
 });

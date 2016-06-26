@@ -73,5 +73,5 @@ AssignmentSchema = new SimpleSchema({
 // Binding the rules of the schema to the Assignments collection
 Assignments.attachSchema(AssignmentSchema);
 
-// TEST DATA
+// TEST DATA - may not work anymore
 // db.Assignments.insert([{title:"Bubble Sort Algorithm",description:"Write a Java algorithm that sorts random elements using the bubble sort method.",dueDate:new Date(),assigner:"abc",assignedStudents:["abcd","abcde","abcdef"],dateAssigned:new Date(),pointsPossible:100},{title:"Radix Sort Algorithm",description:"Write a Java algorithm that sorts random elements using the radix sort method",dueDate:new Date(),assigner:"abcdefg",assignedStudents:["abcdefgh","abcdefghi","abcdefghij","abcdefghijk"],dateAssigned:new Date(),pointsPossible:140},{title:"Navigation Bar Design",description:"Create a simple navigation bar with at least 5 links.",dueDate:new Date(),assigner:"abcdefghijkl",assignedStudents:["abcdefghijklm","abcdefghijklmn","abcdefghijklmno","abcdefghijklmnop","abcdefghijklmnopq"],dateAssigned:new Date(),pointsPossible:65}]);

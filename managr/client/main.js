@@ -6,35 +6,27 @@ import { Assignments } from "../collections/assignments.js";
 Template.post.onCreated(function(){
   Meteor.subscribe('Posts');
 });
-
 Template.writeComment.onCreated(function(){
-  Meteor.subscribe('Posts')
-
+  Meteor.subscribe('Posts');
 });
-
-// Template.comment.onCreated(function(){
-  // Meteor.subscribe('Comments');
-// Importing Template for helpers and Assignments collection
-
-// Gives each template the Assignments collection
-Template.single.onCreated(function() {
-    Meteor.subscribe("Assignments");
+Template.studentSingle.onCreated(function() {
+  Meteor.subscribe("Assignments");
 });
-Template.editSingle.onCreated(function () {
-    Meteor.subscribe("Assignments");
+Template.editAssignment.onCreated(function () {
+  Meteor.subscribe("Assignments");
 });
-Template.table.onCreated(function () {
-    Meteor.subscribe("Assignments");
+Template.studentTable.onCreated(function () {
+  Meteor.subscribe("Assignments");
 });
-Template.listing.onCreated(function () {
-    Meteor.subscribe("Assignments");
+Template.allStudent.onCreated(function () {
+  Meteor.subscribe("Assignments");
 });
 Template.newAssignment.onCreated(function () {
   Meteor.subscribe("Assignments");
 });
 
 // Provides the assignment data to the single template from Assignments collection
-Template.single.helpers({
+Template.studentSingle.helpers({
     assignments: function() {
         var objects;
         objects = Assignments.find({
@@ -60,12 +52,8 @@ Template.single.helpers({
     }
 });
 
-Template.post.events({
-
-});
-
 // Provides the editSingle template with information on a single assignment
-Template.editSingle.helpers({
+Template.editAssignment.helpers({
     assignments: function() {
         var objects;
         objects = Assignments.find({
@@ -92,7 +80,7 @@ Template.editSingle.helpers({
 });
 
 // Provides the table template with all the listed assignments
-Template.table.helpers({
+Template.studentTable.helpers({
     assignments: function() {
         var list, objects, i;
         list = [];
@@ -120,7 +108,7 @@ Template.table.helpers({
 });
 
 // Provides listing template with a list of assignments
-Template.listing.helpers({
+Template.allStudent.helpers({
     assignments: function() {
         var list, objects, i;
         list = [];
@@ -254,14 +242,11 @@ Template.assignmentsBody.helpers({
 			"_id": userId
 		}).assignments;
 		for (var i in assignments) {
-
             //put the date in the format: Sunday June 4, 2016
 			var dateAssigned = assignments[i].dateAssigned;
             var dueDate = assignments[i].dueDate;
-
             assignments[i].dateAssigned = getDay(dateAssigned.getDay()) + ' ' + getMonth(dateAssigned.getMonth()) + ' ' + dateAssigned.getDate() + ', ' + dateAssigned.getFullYear();
             assignments[i].dueDate = getDay(dueDate.getDay()) + ' ' + getMonth(dueDate.getMonth()) + ' ' + dueDate.getDate() + ', ' + dueDate.getFullYear();
-
             function getDay(day) {
     			switch (day) {
     				case 0:
@@ -464,15 +449,25 @@ Template.attendanceUpdate.helpers({
 Template.navbar.helpers({
 		assignments: function(){
 				let userId = FlowRouter.getParam("id");
-				return assignments = "/assignments/" + userId;
+                if (userId == undefined) {
+                    return "/assignments/";
+                }
+                else {
+	                return "/assignments/" + userId;
+                }
 		},
 		profile: function(){
 			let userId = FlowRouter.getParam("id");
-			return assignments = "/profile/" + userId;
+            if (userId == undefined) {
+                return "/profiles/";
+            }
+            else {
+                return "/profiles/" + userId;
+            }
 		}
 });
 
-Template.editSingle.events({
+Template.editAssignment.events({
   'submit .submitbtn2'(event) {
     event.preventDefault();
     const form = event.target;
