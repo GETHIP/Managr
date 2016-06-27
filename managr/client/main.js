@@ -256,6 +256,8 @@ Template.profileEdit.events({
 		const city = event.target.city.value;
 		const state = event.target.state.value;
 		const zipCode = event.target.zipCode.value;
+		const parentNames1 = event.target.parentNames1.value;
+		const parentNames2 = event.target.parentNames2.value;
 		const strength1 = event.target.strength1.value;
 		const strength2	= event.target.strength2.value;
 		const strength3 = event.target.strength3.value;
@@ -285,7 +287,8 @@ Template.profileEdit.events({
 				zipCode: zipCode
 			},
 			strengths: [strength1, strength2, strength3, strength4, strength5],
-			ep10: [ep1, ep2, ep3, ep4]
+			ep10: [ep1, ep2, ep3, ep4],
+			parentNames: [parentNames1, parentNames2]
 		};
 
 		Student.update({_id: userId},{$set: data});
