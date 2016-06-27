@@ -2,8 +2,11 @@ input[name="name"] {
  width: 95%;
 }
 #postsHeader{
+
    margin-left: 24%;
 }
 body{
   background-color: #f3f3f3;
+    margin-left: 20%;
+    margin-top: 5em;
 }

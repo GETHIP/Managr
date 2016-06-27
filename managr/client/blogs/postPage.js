@@ -6,14 +6,14 @@ export function formatDatesOfComments(comments){
   var i;
   for (i = 0; i < comments.length; i++){
     newDate = moment(comments[i].date);
-    var formattedDate = moment(newDate).format("M/D/YY");
-
+    var formattedDate = moment(newDate).format("MMMM D,  YYYY [at] H:mm A");
     newComments.push({
       date: formattedDate,
       text: comments[i].text,
       authorId: comments[i].authorId,
     });
   }
+  console.log(newComments);
   return newComments;
 }
 

@@ -58,4 +58,9 @@ li {
 .navContent:focus{
   text-decoration: none;
   color: white;
+    height: 100%;
+    display: block;
+  	position: fixed;
+  	left: 0px;
+	  top: 53px;
 }

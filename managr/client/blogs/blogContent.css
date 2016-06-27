@@ -1,7 +1,13 @@
 .allPosts {
-  background-color: #f3f3f3;
+	background-color: #f3f3f3;
 	position: relative;
 	left: 21%;
   width: 80%;
   height: 100%;
+}
+
+.allPosts li {
+    box-shadow: 3px 3px 5px #888888;
+    margin-bottom: 8px;
+
 }

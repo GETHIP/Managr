@@ -1,32 +1,6 @@
-<template name="oddcomment">
-  <div class="oddcommentBox">
-   <h4>{{author}} on {{date}}</h4>
-   <p>{{body}}</p>
+<template name="commentDisplay">
+  <div class="commentBox">
+   <h4>{{authorId}} on {{date}}</h4>
+   <p>{{text}}</p>
  </div>
-</template>
-<template name="commentEven">
-  <div class="evencommentBox">
-    <h4>{{author}} on {{date}}</h4>
-    <p>{{body}}</p>
-  </div>
-</template>
-<template name="writeComment">
-<div id="forumTitle">
-  <h3>Leave a Comment</h3>
-
-</div>
-  <form>
-    <div id="inBoxForum">
-    <b>Name:</b><br>
-    <input type="text" id="name"><br><br>
-    <b>Comment:</b><br>
-   <textarea id="comment" rows="15" cols=100%></textarea>
-   <br><br>
-</div>
-<div id="postComment">
-   <br>
- <input type="submit" class="button" value="Post Comment">
- <br> <br>
- </div>
-  </form>
 </template>

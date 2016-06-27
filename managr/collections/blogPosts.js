@@ -12,8 +12,8 @@ Comment = new SimpleSchema({
       type: Date,
       autoValue: function() {
   			return new Date()
-  		},
-    }
+  		}
+    },
 
 });
 
