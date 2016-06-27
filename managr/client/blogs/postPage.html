@@ -3,8 +3,7 @@
   {{> sideNav}}
   <div id="bodyContent">
     {{> header}}
-
-    <div class="commentSection">
+  <div class="commentSection">
     {{#with blogPost}}
       {{> post}}
       {{#each comments}}
@@ -14,6 +13,7 @@
     {{/with}}
   </div>
   {{> writeCommentSubmit}}
+
   </div>
 </div>
 </template>
