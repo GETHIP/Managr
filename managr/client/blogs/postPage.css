@@ -1,8 +1,11 @@
 #bodyContent {
-    padding-left: 4%;
+    padding-left: 3%;
     background-color: #f3f3f3;
     position: relative;
-    left: 20%;
+    left: 21%;
     width: 80%;
     height: 100%;
+    margin-bottom: -9999px;
+    padding-bottom: 9999px;
+    overflow: hidden;
 }

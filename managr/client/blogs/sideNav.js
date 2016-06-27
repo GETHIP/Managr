@@ -15,9 +15,19 @@ Template.sideNav.helpers({
     var archives = [];
     var i = 0;
     for (i = 0; i < posts.length; i++) {
-
+      var dateString = moment(posts[i].date).format("MMMM YYYY");
+      if (!archives.includes(dateString)) {
+        archives.push({
+          date: dateString,
+          url: moment(posts[i].date).format("/YYYY/MMMM")
+        });
+      }
     }
+
+    // /2016/February
+
     //Return months with posts from mongo
+    return archives;
   },
   recentComments: function(){
     var comments = [];

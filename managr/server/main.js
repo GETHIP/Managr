@@ -50,12 +50,13 @@ Meteor.startup(() => {
 			new Date(2014, 3, 1),
 			new Date(2013, 1, 1)
 		];
+    console.log(dates);
 		for (i = 1; i <= 10; i++) {
 			var id = jimId;
 			if (i % 2 == 0) {
 				id = instructorId;
 			}
-			Meteor.call('insertPost', {
+			Posts.insert({
 				title: "Title " + i,
 				text: "Text of the blog post.\n\n\n\nEnd of blog post.",
 				authorId: id,
