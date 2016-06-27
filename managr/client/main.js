@@ -4,7 +4,22 @@ studentIndex = new EasySearch.Index({
 	name: "studentIndex",
 	collection: Student,
 	fields: ['name'],
-	engine: new EasySearch.Minimongo(),
+	engine: new EasySearch.Minimongo({
+		transform: function (doc){
+			doc.url = "/profile/" + doc._id;
+			for(i in doc.attendance){
+					if(doc.attendance[i] === true){
+							doc.attendance[i] = "Present";
+					}
+					if(doc.attendance[i] === false){
+							doc.attendance[i] = "Absent";
+					}
+			}
+			doc.attendance = doc.attendance.join(" | ");
+			doc.parentNames = doc.parentNames.join(" and ");
+			return doc;
+		}
+	}),
 	permission: function(){
 		return true;
 	}
@@ -98,7 +113,7 @@ Template.ProfilesTable.helpers({
 	studentIndex: function(){
 		return studentIndex;
 	}
-})
+});
 
 Template.studentName.onCreated(function() {
 	var self = this;
