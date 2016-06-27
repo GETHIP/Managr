@@ -1,7 +1,5 @@
-import {
-	Meteor
-}
-from 'meteor/meteor';
+import { Meteor } from 'meteor/meteor';
+
 Meteor.startup(() => {
 	// code to run on server at startup
 
@@ -9,7 +7,15 @@ Meteor.startup(() => {
         tmpDir: process.env.PWD + '/.uploads/tmp',
         uploadDir: process.env.PWD + '/.uploads/'
     })
-
+	studentIndex = new EasySearch.Index({
+		name: "studentIndex",
+		collection: Student,
+    fields: ['name'],
+    engine: new EasySearch.Minimongo(),
+		permission: function(){
+			return true;
+		}
+  });
 	Meteor.publish("Student", function() {
 		return Student.find();
 	});

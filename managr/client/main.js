@@ -1,5 +1,15 @@
 import {Template} from 'meteor/templating';
 
+studentIndex = new EasySearch.Index({
+	name: "studentIndex",
+	collection: Student,
+	fields: ['name'],
+	engine: new EasySearch.Minimongo(),
+	permission: function(){
+		return true;
+	}
+});
+
 Template.aboutme.onCreated(function() {
 	var self = this;
 	self.autorun(function() {
@@ -45,9 +55,7 @@ Template.attendanceBody.helpers({
 	attendance: function() {
 		let userId = FlowRouter.getParam("id");
 		let attendance = [];
-		let rawAttendance = Student.findOne({
-			"_id": userId
-		}).attendance;
+		let rawAttendance = Student.findOne({"_id": userId}).attendance;
 		for(i in rawAttendance){
 				if(rawAttendance[i] === true){
 						attendance.push("Present");
@@ -82,10 +90,13 @@ Template.ProfilesTable.helpers({
 					}
 			}
 			currentValue.attendance = currentValue.attendance.join(" | ");
-			currentValue.parentNames = currentValue.parentNames.join(" and ")
+			currentValue.parentNames = currentValue.parentNames.join(" and ");
 			ProfilesTable.push(currentValue);
 		});
 	 	return ProfilesTable;
+	},
+	studentIndex: function(){
+		return studentIndex;
 	}
 })
 
@@ -332,3 +343,9 @@ Template.navbar.helpers({
 			return assignments = "/profile/" + userId;
 		}
 });
+
+Template.search.helpers({
+		studentIndex: function (){
+			return studentIndex;
+		}
+})
