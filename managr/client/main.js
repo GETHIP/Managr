@@ -362,8 +362,31 @@ Template.navbar.helpers({
 		}
 });
 
-Template.search.helpers({
-		studentIndex: function (){
-			return studentIndex;
+Template.reports.events({
+		'change #reportsSelect' (event){
+			if(event.target.value === "T-Shirt Size Report"){
+					Session.set("reports", "tShirtSizeReport")
+			}
+			if(event.target.value === "Email Report"){
+					Session.set("reports", "emailReport")
+			}
+		}
+});
+
+Template.reports.helpers({
+		reports: function(){
+				console.log(Session.get("reports"))
+				if(Session.get("reports")){
+						if(Session.get("reports") === "tShirtSizeReport"){
+							let students = Student.find({});
+							let array = [];
+							students.forEach(function(currentValue, index){
+								array.push(currentValue.tshirtSize);
+							});
+							return array;
+						}
+				}else{
+					return "Select Report"
+				}
 		}
 })

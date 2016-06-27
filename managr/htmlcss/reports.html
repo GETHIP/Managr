@@ -1,0 +1,22 @@
+<template name="reports">
+    <head>
+        <link rel="stylesheet" href="reports.css">
+    </head>
+    <body>
+    <table class="table-bordered table-hovered table reportsTable">
+      <thead>
+        <tr>Reports:</tr>
+      </thead>
+      {{#with reports}}
+      <tbody>
+        <th>{{reports}}</th>
+      </tbody>
+      {{/with}}
+    </table>
+    <select id="reportsSelect" class="reportsSelect">
+      <option>Select a report</option>
+      <option id="tShirtSizeReport">T-Shirt Size Report</option>
+      <option id="emailReport">Email Report</option>
+    </select>
+  </body>
+</template>

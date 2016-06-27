@@ -26,4 +26,10 @@ FlowRouter.route("/profiles", {
     action: function(params, queryParams) {
         BlazeLayout.render('ProfilesTable');
     }
+});
+
+FlowRouter.route("/reports", {
+    action: function(params, queryParams){
+        BlazeLayout.render("Profile", {body: "reports"});
+    }
 })
