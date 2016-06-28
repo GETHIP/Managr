@@ -32,3 +32,12 @@ Template.postPage.helpers({
         }
       }
 });
+
+Template.postPage.events({
+  'submit .submitComment': function(event){
+    event.preventDefault();
+    Meteor.call("updateComment", FlowRouter.getParam("blog_id"), event.target.name.value, event.target.comment.value);
+    event.target.name.value = "";
+    event.target.comment.value = "";
+    }
+  });
