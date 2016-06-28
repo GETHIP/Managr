@@ -19,7 +19,7 @@ Template.sideNav.helpers({
       if (!archives.includes(dateString)) {
         archives.push({
           date: dateString,
-          url: moment(posts[i].date).format("/YYYY/MMMM")
+          url: moment(posts[i].date).format("YYYY/MMMM")
         });
       }
     }

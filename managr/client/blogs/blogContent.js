@@ -20,13 +20,36 @@ export function formatDatesOfPosts(posts){
   return newPosts;
 }
 
+function getPosts() {
+  var year = FlowRouter.getParam("year");
+  var month = FlowRouter.getParam("month");
+  if (year == undefined) {
+    return Posts.find().fetch();
+  }
+  var posts = Posts.find().fetch();
+  var validPosts = [];
+  var i = 0;
+  for (i = 0; i < posts.length; i++) {
+    var nameOfMonth = moment(posts[i].date).format("MMMM");
+    var nameOfYear = moment(posts[i].date).format("YYYY");
+    console.log(nameOfYear);
+    console.log(year);
+    if (year == nameOfYear && month == nameOfMonth) {
+      validPosts.push(posts[i]);
+    }
+  }
+  return validPosts;
+}
+
 Template.blogContent.helpers({
   //Returns Posts by Jim for non-logins
       publicPosts: function() {
+
         return formatDatesOfPosts(Posts.find({authorId: {$eq: 1}})); //Set ID to Jim's Id (Always Public Posts)
       },
   //Returns all Blog Posts
       allPosts: function(){
-        return formatDatesOfPosts(Posts.find().fetch());
+        console.log();
+        return formatDatesOfPosts(getPosts());
       }
 });
