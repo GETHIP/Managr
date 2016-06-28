@@ -18,3 +18,10 @@ FlowRouter.route('/testBlogs', {
 		BlazeLayout.render('testInsertData', {})
 	}
 })
+
+FlowRouter.route('/createPost', {
+	name: 'createPost',
+	action() {
+		BlazeLayout.render('mainPage', {currentPage: 'createPost'})
+	}
+})
