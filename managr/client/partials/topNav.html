@@ -1,34 +1,39 @@
 <template name="topNav">
-	    <title>Profiles</title>
-	    <link type="text/css" rel="stylesheet" href="./navbar.css">
-	    <meta name="viewport" content="width=device-width, initial-scale=1">
-	      <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-	  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script> -->
-	  <!-- <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> -->
-	    <!--My Beautiful Navbar -->
-	<div>
-	<nav class="navbar navbar-inverse" style="border-radius: 0px;">
-	  <div class="container-fluid">
-	    <div class="navbar-header">
-	      <a class="navbar-brand" href="#">GET HIP Managr</a>
-	    </div>
-	    <ul class="nav navbar-nav">
-	      <li class="active"><a href="#">Home</a></li>
-	      <li><a href="#">Assignments</a></li>
-	      <li><a href="#">My Profile</a></li>
-	    </ul>
-	    <ul class="nav navbar-nav navbar-right">
-	           <li class="dropdown">
-	        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Sign Out
-	        <span class="caret"></span></a>
-	        <ul class="dropdown-menu">
-	          <li><a href="#">Sign Out</a></li>
+	<title>Profiles</title>
+		<link type="text/css" rel="stylesheet" href="./navbar.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+		<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script> -->
+		<!-- <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> -->
+		<!--My Beautiful Navbar -->
+		<div>
+			<nav class="navbar navbar-inverse" style="border-radius: 0px;">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<a class="navbar-brand" href="#">GET HIP Managr</a>
+					</div>
+						<ul class="nav navbar-nav">
+							<li class="active"><a href="#">Home</a></li>
+								{{#if currentUser}}
+									<li><a href="#">Assignments</a></li>
+									{{#if isInRole 'instructor'}}
+										<li><a href="#">Profiles</a></li>
+									{{else}}
+										<li><a href="#">My Profile</a></li>
+									{{/if}}
+								{{/if}}
+							<li>{{> loginButtons}}</li>
+						</ul>
+						<ul class="nav navbar-nav navbar-right">
+							<li class="dropdown">
+							<a class="dropdown-toggle" data-toggle="dropdown" href="#">Sign Out<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="#">Sign Out</a></li>
+						</ul>
+						</li>
 
-	        </ul>
-	        </li>
-
-	    </ul>
-	  </div>
-	</nav>
-	</div>
+					</ul>
+				</div>
+			</nav>
+		</div>
 </template>

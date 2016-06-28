@@ -1,6 +1,7 @@
 <template name="mainPage">
 	<div id="fullBody">
-	{{> topNav}}
-	{{> Template.dynamic template=currentPage}}
-</div>
+	<!-- {{> topNav}} -->
+	{{> Template.dynamic template=navigationBar}}
+	{{> Template.dynamic template=content}}
+	</div>
 </template>

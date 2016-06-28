@@ -1,9 +1,19 @@
-var main, assignmentSection;
-main = "main";
+var main = "mainPage"
+
+// Used by all URLs beginning with /assignments
+var assignmentSection = FlowRouter.group({
+    prefix: "/assignments"
+});
 FlowRouter.route('/', {
 	name: 'home',
 	action() {
 		BlazeLayout.render(main, {content: 'blogMain'});
+	}
+});
+FlowRouter.route('/login', {
+	name: 'home',
+	action() {
+		BlazeLayout.render(main, {navigationBar: 'topNav', content: 'blogMain'});
 	}
 });
 
@@ -14,10 +24,6 @@ FlowRouter.route('/blogs/:blog_id', {
 	}
 });
 
-// Used by all URLs beginning with /assignments
-assignmentSection = FlowRouter.group({
-    prefix: "/assignments"
-});
 // Table of Assignments
 assignmentSection.route("/", {
     name: "allAssignments",

@@ -1,5 +1,4 @@
-import { Mongo } from 'meteor/mongo';
-Instructor = new Mongo.Collection('Instructor');
+export const Instructor = new Mongo.Collection('Instructor');
 
 var InstructorSchema = new SimpleSchema({
     name: {
