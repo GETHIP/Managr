@@ -1,19 +1,22 @@
 <template name="postPage">
   <div id="fullBody">
   {{> sideNav}}
+  <form class="submitComment">
   <div id="bodyContent">
-    {{> header}}
 
-    <div class="commentSection">
+  <div class="commentSection">
     {{#with blogPost}}
       {{> post}}
       {{#each comments}}
         {{> commentDisplay}}
       {{/each}}
+
       {{> writeComment}}
     {{/with}}
   </div>
   {{> writeCommentSubmit}}
+
   </div>
-</div>
+</form>
+  </div>
 </template>
