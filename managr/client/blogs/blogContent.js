@@ -9,6 +9,7 @@ export function formatDatesOfPosts(posts){
     var formattedDate = moment(newDate).format("M/D/YY");
 
     newPosts.push({
+      _id: posts[i]._id,
       date: formattedDate,
       title: posts[i].title,
       text: posts[i].text,
