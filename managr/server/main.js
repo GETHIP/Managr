@@ -24,8 +24,8 @@ Meteor.startup(() => {
       Posts.insert(post);
       console.log(Posts.find().fetch());
     },
-    'updateComment': function(authorId, commentText){
-     Posts.update({_id:"2ZMjNPiNs85A4Fq48" },
+    'updateComment': function(postId, authorId, commentText){
+     Posts.update({_id: postId },
         {$push:{
           comments:
           {text: commentText,
