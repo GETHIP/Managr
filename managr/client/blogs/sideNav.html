@@ -1,19 +1,20 @@
 <template name="sideNav">
     <div id="sideNav">
       <p class="navTitle"><b>Recent Posts</b></p>
-
+      <div id="recentPost">
       {{#each recentPosts}}
           <a href="/blogs/{{_id}}" class="navContent">{{title}}</a>
         {{/each}}
-
+      </div>
       <p class="navTitle"><b>Archives</b></p>
+      <div id="archives">
 
       {{#each months}}
-<a class="navContent" href="{{url}}">
+      <a class="navContent" href="{{url}}">
         {{date}}
-    </a>
+      </a>
       {{/each}}
-
+      </div>
       <p class="navTitle"><b>Recent Comments</b></p>
 
       <!-- Awaiting date in comments collection -->

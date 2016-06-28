@@ -32,8 +32,9 @@
 #postHeader {
   font-size:25px;
   font-family: Helvetica;
-  pointer-events: none;
-  cursor: default;
+  /*pointer-events: none;
+  cursor: default; */
+
   color: #444444;
 }
 #pretag {

@@ -1,6 +1,7 @@
 <template name="postPage">
   <div id="fullBody">
   {{> sideNav}}
+  <form class="submitComment">
   <div id="bodyContent">
 
   <div class="commentSection">
@@ -9,11 +10,13 @@
       {{#each comments}}
         {{> commentDisplay}}
       {{/each}}
+
       {{> writeComment}}
     {{/with}}
   </div>
   {{> writeCommentSubmit}}
 
   </div>
-</div>
+</form>
+  </div>
 </template>
