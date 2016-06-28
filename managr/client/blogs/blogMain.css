@@ -2,11 +2,13 @@ input[name="name"] {
  width: 95%;
 }
 #postsHeader{
-
-   margin-left: 24%;
+   padding-left: 22.5%;
 }
 body{
   background-color: #f3f3f3;
     margin-left: 20%;
     margin-top: 5em;
+}
+#blogSection{
+  padding-top: 5%;
 }

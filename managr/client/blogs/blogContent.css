@@ -1,9 +1,10 @@
 .allPosts {
 	background-color: #f3f3f3;
-	position: relative;
+	margin-left: 16%;
 	left: 21%;
-  width: 80%;
+  width: 84%;
   height: 100%;
+
 }
 
 .allPosts li {

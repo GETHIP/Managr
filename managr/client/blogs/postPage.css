@@ -1,20 +1,18 @@
 #bodyContent {
 
-    padding-left: 3%;
     background-color: #f3f3f3;
     position: relative;
-    left: 21%;
-    width: 80%;
+    margin-left: 22.5%;
+    width: 77.5%;
     height: 100%;
     margin-bottom: -9999px;
     padding-bottom: 9999px;
     overflow: hidden;
-
+   padding-top: 6%;
+  
 
 }
 
 .commentSection{
   box-shadow: 3px 3px 5px #888888;
-
-
 }
