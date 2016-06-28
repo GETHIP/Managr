@@ -364,29 +364,97 @@ Template.navbar.helpers({
 
 Template.reports.events({
 		'change #reportsSelect' (event){
-			if(event.target.value === "T-Shirt Size Report"){
-					Session.set("reports", "tShirtSizeReport")
-			}
-			if(event.target.value === "Email Report"){
-					Session.set("reports", "emailReport")
-			}
+				switch (event.target.value) {
+					case "T-Shirt Size Report":
+							Session.set("reports", "tShirtSizeReport");
+					break;
+					case "Email Report":
+							Session.set("reports", "emailReport");
+					break;
+					case "Select a report":
+							Session.set("reports", "blank");
+					break;
+					case "Name Report":
+							Session.set("reports", "nameReport");
+					break;
+					case "Age Report":
+							Session.set("reports", "ageReport");
+					break;
+					case "School Report":
+							Session.set("reports", "schoolReport");
+					break;
+					case "Address Report":
+							Session.set("reports", "addressReport");
+					break;
+				}
+		},
+		'change #namesIncluded' (event){
+				Session.set("checked", event.target.checked);
 		}
 });
 
 Template.reports.helpers({
 		reports: function(){
-				console.log(Session.get("reports"))
-				if(Session.get("reports")){
-						if(Session.get("reports") === "tShirtSizeReport"){
-							let students = Student.find({});
-							let array = [];
+				let students = Student.find({});
+				let array = [];
+				let checked = Session.get("checked");
+				switch (Session.get("reports")) {
+					case "tShirtSizeReport":
 							students.forEach(function(currentValue, index){
-								array.push(currentValue.tshirtSize);
+									if(checked === true){
+											array.push(currentValue.name + ": " + currentValue.tshirtSize);
+									}else{
+											array.push(currentValue.tshirtSize);
+									}
 							});
-							return array;
-						}
-				}else{
-					return "Select Report"
+							return array.join(", ");
+					break;
+					case "emailReport":
+							students.forEach(function(currentValue, index){
+									if(checked === true){
+											array.push(currentValue.name + ": " + currentValue.email);
+									}else{
+											array.push(currentValue.email);
+									}
+							});
+							return array.join(", ");
+					break;
+					case "nameReport":
+							students.forEach(function(currentValue, index){
+									array.push(currentValue.name);
+							});
+							return array.join(", ");
+					break;
+					case "ageReport":
+							students.forEach(function(currentValue, index){
+									if(checked === true){
+											array.push(currentValue.name + ": " + currentValue.age);
+									}else{
+											array.push(currentValue.age);
+									}
+							});
+							return array.join(", ");
+					case "schoolReport":
+							students.forEach(function(currentValue, index){
+									if(checked === true){
+											array.push(currentValue.name + ": " + currentValue.school);
+									}else{
+											array.push(currentValue.school);
+									}
+							});
+							return array.join(", ");
+					case "addressReport":
+							students.forEach(function(currentValue, index){
+									if(checked === true){
+											array.push(currentValue.name + ": " + currentValue.address.street + " " + currentValue.address.city + " " + currentValue.address.state + " " + currentValue.address.zipCode);
+									}else{
+											array.push(currentValue.address.street + " " + currentValue.address.city + " " + currentValue.address.state + " " + currentValue.address.zipCode);
+									}
+							});
+							return array.join(", ");
+					case "blank":
+							return "";
+					break;
 				}
 		}
 })
