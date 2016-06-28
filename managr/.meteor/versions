@@ -44,6 +44,7 @@ flynn:upload-server@1.3.4
 fortawesome:fontawesome@4.5.0
 geojson-utils@1.0.9
 gwendall:auth-client-callbacks@0.1.0
+harrison:papa-parse@1.1.1
 hot-code-push@1.0.4
 html-tools@1.0.10
 htmljs@1.0.10
