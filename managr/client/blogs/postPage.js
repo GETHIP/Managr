@@ -6,11 +6,11 @@ export function formatDatesOfComments(comments){
   var i;
   for (i = 0; i < comments.length; i++){
     var commentColor = "";
-    if (i % 2 == 1){
+    if (i % 2 == 0){
       commentColor = "#eeeeee";
     }
     else{
-      commentColor = "#d0ceb0";
+      commentColor = "#dddddd";
     }
     newDate = moment(comments[i].date);
     var formattedDate = moment(newDate).format("MMMM D,  YYYY [at] H:mm A");
