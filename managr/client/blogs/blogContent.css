@@ -1,14 +1,9 @@
 .allPosts {
 	background-color: #f3f3f3;
-	margin-left: 16%;
-	left: 21%;
-  width: 84%;
+	margin-left: 19.75%;
+  width: 80.25%;
   height: 100%;
-
 }
-
 .allPosts li {
-    box-shadow: 3px 3px 5px #888888;
     margin-bottom: 8px;
-
 }

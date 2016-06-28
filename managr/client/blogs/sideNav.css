@@ -33,6 +33,10 @@ li {
     text-decoration: none;
     color: white;
 }
+.navContent:focus {
+    text-decoration: none;
+    color: white;
+}
 
 .navTitle {
     background-color: #61c250;
@@ -53,4 +57,26 @@ li {
     padding-bottom: 9999px;
     overflow: hidden;
     box-shadow: 3px 3px 5px #888888;
+}
+#createPost{
+  background-color: #61c250;
+  border: none;
+  color: white;
+  text-align: center;
+   text-decoration: none;
+   font-size: 16px;
+   margin: 2px 1px;
+   cursor: pointer;
+   width: 90%;
+   border-radius: 5px;
+   margin-left: 5%;
+
+}
+#createPost:hover{
+color: white;
+background-color: #61d250;
+}
+#buttonArea{
+  padding-top: 10px;
+  padding-bottom: 10px;
 }

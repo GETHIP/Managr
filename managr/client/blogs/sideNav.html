@@ -1,6 +1,10 @@
 <template name="sideNav">
     <div id="sideNav">
-      <a class="btn btn-primary" href="/createPost">Create a Post</a>
+
+   <div id="buttonArea">
+      <a class="btn btn-primary" id="createPost" href="/createPost"><b>Create a Post</b></a>
+      <br>
+    </div>
       <p class="navTitle"><b>Recent Posts</b></p>
       <div id="recentPost">
       {{#each recentPosts}}
