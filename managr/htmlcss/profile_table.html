@@ -11,7 +11,9 @@
     </head>
     <body>
 		{{> navbar}}
-		{{> EasySearch.Input index=studentIndex}}
+		<div class="searchBar">
+		{{> EasySearch.Input index=studentIndex atttributes=searchBarProfile}}
+	</div>
 		<ul>
 		<div class="container-fluid">
 			<table class="table table-bordered table-striped table-hover" style="margin-top:10em;">
