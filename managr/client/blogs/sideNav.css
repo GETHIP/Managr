@@ -45,9 +45,12 @@ li {
     background-color: #333333;
     color: white;
     width: 20%;
-    height: 100%;
     display: block;
-    position: fixed;
+    position: absolute;
   	left: 0px;
-    top: 53px;
+    margin-top: -20px;
+    margin-bottom: -9999px;
+    padding-bottom: 9999px;
+    overflow: hidden;
+    box-shadow: 3px 3px 5px #888888;
 }
