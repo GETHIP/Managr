@@ -18,3 +18,10 @@ FlowRouter.route('/testBlogs', {
 		BlazeLayout.render('testInsertData', {})
 	}
 })
+
+FlowRouter.route('/blogs/:year/:month', {
+	name: 'archives',
+	action : function(params) {
+		BlazeLayout.render('mainPage', {currentPage: 'blogMain'})
+	}
+})
