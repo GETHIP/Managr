@@ -41,14 +41,26 @@ li {
     margin-top: 0;
     margin-bottom: 0;
 }
-
 #sideNav {
     background-color: #333333;
     color: white;
     width: 20%;
+    display: block;
+    position: absolute;
+  	left: 0px;
+    margin-top: -20px;
+    margin-bottom: -9999px;
+    padding-bottom: 9999px;
+    overflow: hidden;
+    box-shadow: 3px 3px 5px #888888;
+}
+
+.navContent:focus{
+  text-decoration: none;
+  color: white;
     height: 100%;
     display: block;
-  	position: fixed;;
+  	position: fixed;
   	left: 0px;
 	  top: 53px;
 }

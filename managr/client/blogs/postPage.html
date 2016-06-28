@@ -4,8 +4,7 @@
   <form class="submitComment">
   <div id="bodyContent">
     {{> header}}
-
-    <div class="commentSection">
+  <div class="commentSection">
     {{#with blogPost}}
       {{> post}}
       {{#each comments}}
@@ -16,6 +15,7 @@
     {{/with}}
   </div>
   {{> writeCommentSubmit}}
+
   </div>
 </form>
   </div>

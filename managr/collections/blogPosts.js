@@ -31,7 +31,7 @@ postSchema = new SimpleSchema({
     },
     date: {
       type: Date,
-      autoValue: function() {
+      defaultValue: function() {
   			return new Date()
   		}
     },
