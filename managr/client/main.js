@@ -454,9 +454,9 @@ Template.reports.events({
 				break;
 				case "allReport":
 						students.forEach(function(currentValue, index){
-									array.data.push([currentValue.name, currentValue.school, currentValue.age, currentValue.email, currentValue.description, currentValue.grade, currentValue.getHipYear, currentValue.phoneNumber, currentValue.blog, currentValue.address.street + " " + currentValue.address.city + " " + currentValue.address.state + " " + currentValue.address.zipCode]);
+									array.data.push([currentValue.name, currentValue.school, currentValue.age, currentValue.email, currentValue.parentNames[0] + " and " + currentValue.parentNames[1],currentValue.description, currentValue.grade, currentValue.getHipYear, currentValue.phoneNumber, currentValue.blog, currentValue.address.street + " " + currentValue.address.city + " " + currentValue.address.state + " " + currentValue.address.zipCode]);
 						});
-				array.fields = ["Name", "School", "Age","Email", "Description", "Grade", "Get Hip Year", "Phone Number", "Phone Number", "Address"];
+				array.fields = ["Name", "School", "Age", "Email", "Parent Names", "Description", "Grade", "Get Hip Year", "Phone Number", "Phone Number", "Address"];
 				csvDownload(array, "All Report");
 				break;
 		}
