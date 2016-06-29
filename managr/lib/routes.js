@@ -23,7 +23,7 @@ assignmentSection.route("/", {
     name: "allAssignments",
     action() {
         BlazeLayout.render(main,{
-            content: "listing"
+            content: "studentsAllAssignments"
         });
     }
 });
@@ -31,15 +31,7 @@ assignmentSection.route("/all", {
     name: "allAssignments",
     action() {
         BlazeLayout.render(main,{
-            content: "listing"
-        });
-    }
-});
-assignmentSection.route("/edit/all", {
-    name: "editAllAssignments",
-    action() {
-        BlazeLayout.render(main,{
-            content: "editAll"
+            content: "studentsAllAssignments"
         });
     }
 });
@@ -48,7 +40,7 @@ assignmentSection.route("/single/:id", {
     name: "singleAssignment",
     action(params) {
         BlazeLayout.render(main,{
-            content: "single"
+            content: "studentAssignmentSingle"
         });
     }
 });
@@ -56,7 +48,7 @@ assignmentSection.route("/edit/single/:id", {
     name: "editSingleAssignment",
     action(params) {
         BlazeLayout.render(main,{
-            content: "editSingle"
+            content: "studentAssignmentSingleEdit"
         });
     }
 });
@@ -93,12 +85,6 @@ FlowRouter.route("/profile/edit/:id", {
 FlowRouter.route("/attendance/edit/:id", {
     action: function(params, queryParams){
         BlazeLayout.render("attendanceUpdate", {updateAttendance: "updateAttendance"});
-    }
-});
-
-FlowRouter.route("/assignments/:id", {
-    action: function(params, queryParams){
-        BlazeLayout.render("Profile", {assignmentsBody: "assignmentsBody"});
     }
 });
 

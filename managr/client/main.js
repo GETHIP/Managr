@@ -17,24 +17,26 @@ Template.writeComment.onCreated(function(){
 // Importing Template for helpers and Assignments collection
 
 // Gives each template the Assignments collection
-Template.single.onCreated(function() {
-    Meteor.subscribe("Assignments");
+Template.editGrades.onCreated(function() {
+  Meteor.subscribe('Assignments');
 });
-Template.editSingle.onCreated(function () {
-    Meteor.subscribe("Assignments");
+Template.newAssignment.onCreated(function() {
+  Meteor.subscribe('Assignments');
 });
-Template.table.onCreated(function () {
-    Meteor.subscribe("Assignments");
+Template.studentAssignmentSingle.onCreated(function() {
+  Meteor.subscribe('Assignments');
 });
-Template.listing.onCreated(function () {
-    Meteor.subscribe("Assignments");
+Template.studentAssignmentTable.onCreated(function() {
+  Meteor.subscribe('Assignments');
 });
-Template.newAssignment.onCreated(function () {
-  Meteor.subscribe("Assignments");
+Template.studentsAllAssignments.onCreated(function() {
+  Meteor.subscribe('Assignments');
 });
-
+Template.studentAssignmentTable.onCreated(function() {
+  Meteor.subscribe('Assignments');
+});
 // Provides the assignment data to the single template from Assignments collection
-Template.single.helpers({
+Template.studentAssignmentSingle.helpers({
     assignments: function() {
         var objects;
         objects = Assignments.find({
@@ -60,12 +62,8 @@ Template.single.helpers({
     }
 });
 
-Template.post.events({
-
-});
-
 // Provides the editSingle template with information on a single assignment
-Template.editSingle.helpers({
+Template.studentAssignmentSingleEdit.helpers({
     assignments: function() {
         var objects;
         objects = Assignments.find({
@@ -92,7 +90,7 @@ Template.editSingle.helpers({
 });
 
 // Provides the table template with all the listed assignments
-Template.table.helpers({
+Template.studentAssignmentTable.helpers({
     assignments: function() {
         var list, objects, i;
         list = [];
@@ -120,7 +118,7 @@ Template.table.helpers({
 });
 
 // Provides listing template with a list of assignments
-Template.listing.helpers({
+Template.studentsAllAssignments.helpers({
     assignments: function() {
         var list, objects, i;
         list = [];
@@ -472,7 +470,7 @@ Template.navbar.helpers({
 		}
 });
 
-Template.editSingle.events({
+Template.studentAssignmentSingleEdit.events({
   'submit .submitbtn2'(event) {
     event.preventDefault();
     const form = event.target;
