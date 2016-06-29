@@ -15,3 +15,6 @@
 .postCreate{
   margin-top: 80px;
 }
+.postButton:focus{
+outline: none;
+}
