@@ -1,463 +1,106 @@
-import {Template} from 'meteor/templating';
+import { Meteor } from 'meteor/meteor';
 
-studentIndex = new EasySearch.Index({
-	name: "studentIndex",
-	collection: Student,
-	fields: ['name'],
-	engine: new EasySearch.Minimongo({
-		transform: function (doc){
-			doc.url = "/profile/" + doc._id;
-			for(i in doc.attendance){
-					if(doc.attendance[i] === true){
-							doc.attendance[i] = "Present";
-					}
-					if(doc.attendance[i] === false){
-							doc.attendance[i] = "Absent";
-					}
-			}
-			doc.attendance = doc.attendance.join(" | ");
-			doc.parentNames = doc.parentNames.join(" and ");
-			return doc;
-		}
-	}),
-	permission: function(){
-		return true;
-	}
-});
+Meteor.startup(() => {
+	// code to run on server at startup
 
-Template.aboutme.onCreated(function() {
-	var self = this;
-	self.autorun(function() {
-		self.subscribe('Student');
-	});
-});
-
-Template.aboutme.helpers({
-	student: function() {
-		let userId = FlowRouter.getParam("id");
-		let student = Student.findOne({"_id": userId});
-    student.github = "https://github.com/" + student.github;
-    student.address = student.address.street + " " + student.address.city + " " + student.address.state + " " + student.address.zipCode;
-    student.parentNames = student.parentNames[0] + " and " + student.parentNames[1];
-    return student;
-	},
-	strengths: function() {
-		let userId = FlowRouter.getParam("id");
-		return strengths = Student.findOne({"_id": userId}).strengths;
-	},
-	ep: function() {
-		let userId = FlowRouter.getParam("id");
-		return ep = Student.findOne({"_id": userId}).ep10;
-	}
-});
-
-Template.aboutme.events({
-	'click .blogButton'(event){
-			let userId = FlowRouter.getParam("id");
-			let blogURL = Student.findOne({"_id": userId}).blog;
-			window.location = blogURL;
-	}
-});
-
-Template.attendanceBody.onCreated(function() {
-	var self = this;
-	self.autorun(function() {
-		self.subscribe('Student');
-	});
-});
-
-Template.attendanceBody.helpers({
-	attendance: function() {
-		let userId = FlowRouter.getParam("id");
-		let attendance = [];
-		let rawAttendance = Student.findOne({"_id": userId}).attendance;
-		for(i in rawAttendance){
-				if(rawAttendance[i] === true){
-						attendance.push("Present");
+    UploadServer.init({
+        tmpDir: process.env.PWD + '/.uploads/tmp',
+        uploadDir: process.env.PWD + '/.uploads/'
+    })
+	studentIndex = new EasySearch.Index({
+		name: "studentIndex",
+		collection: Student,
+    fields: ['name'],
+    engine: new EasySearch.Minimongo({
+			transform: function (doc){
+				doc.url = "/profile/" + doc._id;
+				for(i in doc.attendance){
+						if(doc.attendance[i] === true){
+								doc.attendance[i] = "Present";
+						}
+						if(doc.attendance[i] === false){
+								doc.attendance[i] = "Absent";
+						}
 				}
-				if(rawAttendance[i] === false){
-						attendance.push("Absent");
-				}
-		}
-		return attendance;
-	}
-});
-
-Template.ProfilesTable.onCreated(function() {
-	var self = this;
-	self.autorun(function() {
-		self.subscribe('Student');
-	})
-})
-
-Template.ProfilesTable.helpers({
-	ProfilesTable: function() {
-		let Profiles = Student.find({});
-		let ProfilesTable = [];
-		Profiles.forEach(function(currentValue, index, profile){
-			currentValue.url = "/profile/" + currentValue._id;
-			for(i in currentValue.attendance){
-					if(currentValue.attendance[i] === true){
-							currentValue.attendance[i] = "Present";
-					}
-					if(currentValue.attendance[i] === false){
-							currentValue.attendance[i] = "Absent";
-					}
+				doc.attendance = doc.attendance.join(" | ");
+				doc.parentNames = doc.parentNames.join(" and ");
+				return doc;
 			}
-			currentValue.attendance = currentValue.attendance.join(" | ");
-			currentValue.parentNames = currentValue.parentNames.join(" and ");
-			ProfilesTable.push(currentValue);
-		});
-	 	return ProfilesTable;
-	},
-	studentIndex: function(){
-		return studentIndex;
-	},
-	searchBarProfile: function(){
-		return {id: "searchBar"}
-	}
-});
-
-Template.studentName.onCreated(function() {
-	var self = this;
-	self.autorun(function() {
-		self.subscribe('Student');
-	});
-});
-
-Template.studentName.helpers({
-	studentName: function() {
-		let userId = FlowRouter.getParam("id");
-		let studentName = {};
-		studentName = Student.findOne({"_id": userId});
-		return studentName;
-	}
-});
-
-Template.assignmentsBody.onCreated(function() {
-	var self = this;
-	self.autorun(function() {
-		self.subscribe('Student');
-	});
-});
-
-Template.assignmentsBody.helpers({
-	assignments: function() {
-		let userId = FlowRouter.getParam("id");
-		let assignments = [];
-		assignments = Student.findOne({"_id": userId}).assignments;
-		for (var i in assignments) {
-      //put the date in the format: Sunday June 4, 2016
-			var dateAssigned = assignments[i].dateAssigned;
-            var dueDate = assignments[i].dueDate;
-
-            assignments[i].dateAssigned = getDay(dateAssigned.getDay()) + ' ' + getMonth(dateAssigned.getMonth()) + ' ' + dateAssigned.getDate() + ', ' + dateAssigned.getFullYear();
-            assignments[i].dueDate = getDay(dueDate.getDay()) + ' ' + getMonth(dueDate.getMonth()) + ' ' + dueDate.getDate() + ', ' + dueDate.getFullYear();
-
-            function getDay(day) {
-    			switch (day) {
-    				case 0:
-    					return 'Sunday';
-    					break;
-    				case 1:
-    					return 'Monday';
-    					break;
-    				case 2:
-    					return 'Tuesday';
-    					break;
-    				case 3:
-    					return 'Wednesday';
-    					break;
-    				case 4:
-    					return 'Thursday';
-    					break;
-    				case 5:
-    					return 'Friday';
-    					break;
-    				case 6:
-    					return 'Saturday';
-    					break;
-    			}
-            }
-
-            function getMonth(month) {
-                switch (month) {
-					case 0:
-						return 'January';
-						break;
-					case 1:
-						return 'February';
-						break;
-					case 2:
-						return 'March';
-						break;
-					case 3:
-						return 'April';
-						break;
-					case 4:
-						return 'May';
-						break;
-					case 5:
-						return 'June';
-						break;
-					case 6:
-						return 'July';
-						break;
-					case 7:
-						return 'August';
-						break;
-					case 8:
-						return 'September';
-						break;
-					case 9:
-						return 'October';
-						break;
-					case 10:
-						return 'November';
-						break;
-					case 11:
-						return 'December';
-						break;
-				}
-			}
+		}),
+		permission: function(){
+			return true;
 		}
-		return assignments;
-	}
-});
-
-Template.Profile.events({
-	"click .editAboutMe" (event) {
-		window.location = "/profile/edit/" + FlowRouter.getParam("id");
-	}, "click .editAttendance" (event) {
-		window.location = "/attendance/edit/" + FlowRouter.getParam("id");
-	}
-});
-
-Template.profileEdit.onCreated(function() {
-	var self = this;
-	self.autorun(function() {
-		self.subscribe('Student');
+  });
+	Meteor.publish("Student", function() {
+		return Student.find();
 	});
-});
-
-Template.profileEdit.events({
-	"submit .profileEdit" (event) {
-		event.preventDefault();
-		let userId = FlowRouter.getParam("id");
-		const email = event.target.email.value;
-		const age = event.target.age.value;
-		const school = event.target.school.value;
-		const getHipYear = event.target.getHipYear.value;
-		const grade = event.target.grade.value;
-		const github = event.target.github.value;
-		const name = event.target.name.value;
-		const description = event.target.description.value;
-		const phoneNumber = event.target.phoneNumber.value;
-		const tshirtSize = event.target.tshirtSize.value;
-		const blog = event.target.blog.value;
-		const street = event.target.street.value;
-		const city = event.target.city.value;
-		const state = event.target.state.value;
-		const zipCode = event.target.zipCode.value;
-		const parentNames1 = event.target.parentNames1.value;
-		const parentNames2 = event.target.parentNames2.value;
-		const strength1 = event.target.strength1.value;
-		const strength2	= event.target.strength2.value;
-		const strength3 = event.target.strength3.value;
-		const strength4 = event.target.strength4.value;
-		const strength5 = event.target.strength5.value;
-		const ep1 = event.target.ep1.value;
-		const ep2 = event.target.ep2.value;
-		const ep3 = event.target.ep3.value;
-		const ep4 = event.target.ep4.value;
-
-		var data = {
-			email: email,
-			age: age,
-			school: school,
-			getHipYear: getHipYear,
-			grade: grade,
-			github: github,
-			name: name,
-			description: description,
-			phoneNumber: phoneNumber,
-			tshirtSize: tshirtSize,
-			blog: blog,
-			address: {
-				street: street,
-				city: city,
-				state: state,
-				zipCode: zipCode
+	Meteor.publish("Teacher", function() {
+		return Teacher.find();
+	});
+	//control update better
+	Student.allow({
+		update: function(userId, doc) {
+			return true;
+		}
+	});
+	Student.remove({});
+	Instructor.remove({});
+	for (var i = Student.find().count(); i < 5; i++) {
+		Student.insert({
+			"name": "ben" + i,
+			"profilePicture": "x",
+			"age": 5,
+			"strengths": ['Input', 'Command', 'Restorative', 'Learner', 'Futuristic'],
+			"description": "tall",
+			"grade": '10th',
+			"attendance": [true, false, true, true, false, false, true, true, false,
+				true, true, false
+			],
+			"assignments": [{
+				"name": "Java Work",
+				"dateAssigned": new Date(),
+				"dueDate": new Date(),
+				"possiblePoints": 100,
+				"pointsRecieved": 10,
+				"instructor": "Zach"
+			}, {
+				name: "Java Work",
+				dateAssigned: new Date(),
+				dueDate: new Date(),
+				possiblePoints: 100,
+				pointsRecieved: 10,
+				instructor: "Zach"
+			}],
+			"school": "West Dodge",
+			"email": "ben@ben.com",
+			"getHipYear": 2,
+			"phoneNumber": '4026571179',
+			"parentNames": ['Bill', 'Hillary'],
+			"address": {
+				"street": '3910 s 226th st.',
+				"city": 'Elkhorn',
+				"state": 'Nebraska',
+				"zipCode": 68022
 			},
-			strengths: [strength1, strength2, strength3, strength4, strength5],
-			ep10: [ep1, ep2, ep3, ep4],
-			parentNames: [parentNames1, parentNames2]
-		};
-
-		Student.update({_id: userId},{$set: data});
-		window.location = "/profile/" + FlowRouter.getParam("id");
+			"github": 'Athletesrun',
+			"blog": "http://blogger.com",
+			"tshirtSize": "Small",
+      "ep10": ["Responsibility", "Profitability", "Communication", "Strategic"]
+		});
 	}
-});
-
-Template.profileEdit.helpers({
-	data: function() {
-		let userId = FlowRouter.getParam("id");
-		let data = Student.findOne({"_id": userId});
-		return data;
+	for (var i = Instructor.find().count(); i < 5; i++) {
+		Instructor.insert({
+			"name": "roger" + i,
+			"profilePicture": "x",
+			"strengths": ['Command', 'Relator', 'Fun', 'Cool', 'Nice'],
+			"description": "Teacher",
+			"email": "Teacher@teacher.com"
+		});
 	}
+	console.log(Student.findOne({
+		"name": "ben1"
+	}));
+	console.log(Instructor.findOne({
+		"name": "roger1"
+	}));
 });
-
-Template.attendanceUpdate.onCreated(function() {
-	var self = this;
-	self.autorun(function() {
-		self.subscribe('Student');
-	});
-});
-
-Template.attendanceUpdate.events({
-	"submit .attendanceUpdate" (event) {
-		event.preventDefault();
-		let userId = FlowRouter.getParam("id");
-		let data = [];
-		for (i = 1; i < 13; i++) {
-			let week = event.target["week" + i];
-			let weeks = week.value;
-			if (weeks === "Present" || weeks === true) {
-				data.push(true);
-			}
-			if (weeks === "Absent" || weeks === false) {
-				data.push(false);
-			}
-		}
-		Student.update({_id: userId},{$set: {attendance: data}});
-		window.location = "/profile/" + FlowRouter.getParam("id");
-	}
-});
-var wordNumbers = ["zero", "one", "two", "three", "four", "five", "six",
-	"seven", "eight", "nine", "ten", "eleven", "twelve"
-]
-Template.attendanceUpdate.helpers({
-	attendance: function() {
-		let userId = FlowRouter.getParam("id");
-		let attendanceBoolean = Student.findOne({"_id": userId}).attendance;
-		let attendance = {};
-		for (i = 1; i < 13; i++) {
-			if (attendanceBoolean[i - 1] === true) {
-				attendance[wordNumbers[i] + "one"] = "selected";
-				attendance[wordNumbers[i] + "two"] = "";
-			} else {
-				attendance[wordNumbers[i] + "one"] = "";
-				attendance[wordNumbers[i] + "two"] = "selected";
-			}
-		};
-		return attendance;
-	}
-});
-
-Template.navbar.helpers({
-		assignments: function(){
-				let userId = FlowRouter.getParam("id");
-				return assignments = "/assignments/" + userId;
-		},
-		profile: function(){
-			let userId = FlowRouter.getParam("id");
-			return assignments = "/profile/" + userId;
-		}
-});
-
-Template.reports.events({
-		'change #reportsSelect' (event){
-				switch (event.target.value) {
-					case "T-Shirt Size Report":
-							Session.set("reports", "tShirtSizeReport");
-					break;
-					case "Email Report":
-							Session.set("reports", "emailReport");
-					break;
-					case "Select a report":
-							Session.set("reports", "blank");
-					break;
-					case "Name Report":
-							Session.set("reports", "nameReport");
-					break;
-					case "Age Report":
-							Session.set("reports", "ageReport");
-					break;
-					case "School Report":
-							Session.set("reports", "schoolReport");
-					break;
-					case "Address Report":
-							Session.set("reports", "addressReport");
-					break;
-				}
-		},
-		'change #namesIncluded' (event){
-				Session.set("checked", event.target.checked);
-		}
-});
-
-Template.reports.helpers({
-		reports: function(){
-				let students = Student.find({});
-				let array = [];
-				let checked = Session.get("checked");
-				switch (Session.get("reports")) {
-					case "tShirtSizeReport":
-							students.forEach(function(currentValue, index){
-									if(checked === true){
-											array.push(currentValue.name + ": " + currentValue.tshirtSize);
-									}else{
-											array.push(currentValue.tshirtSize);
-									}
-							});
-							return array.join(", ");
-					break;
-					case "emailReport":
-							students.forEach(function(currentValue, index){
-									if(checked === true){
-											array.push(currentValue.name + ": " + currentValue.email);
-									}else{
-											array.push(currentValue.email);
-									}
-							});
-							return array.join(", ");
-					break;
-					case "nameReport":
-							students.forEach(function(currentValue, index){
-									array.push(currentValue.name);
-							});
-							return array.join(", ");
-					break;
-					case "ageReport":
-							students.forEach(function(currentValue, index){
-									if(checked === true){
-											array.push(currentValue.name + ": " + currentValue.age);
-									}else{
-											array.push(currentValue.age);
-									}
-							});
-							return array.join(", ");
-					case "schoolReport":
-							students.forEach(function(currentValue, index){
-									if(checked === true){
-											array.push(currentValue.name + ": " + currentValue.school);
-									}else{
-											array.push(currentValue.school);
-									}
-							});
-							return array.join(", ");
-					case "addressReport":
-							students.forEach(function(currentValue, index){
-									if(checked === true){
-											array.push(currentValue.name + ": " + currentValue.address.street + " " + currentValue.address.city + " " + currentValue.address.state + " " + currentValue.address.zipCode);
-									}else{
-											array.push(currentValue.address.street + " " + currentValue.address.city + " " + currentValue.address.state + " " + currentValue.address.zipCode);
-									}
-							});
-							return array.join(", ");
-					case "blank":
-							return "";
-					break;
-				}
-		}
-})

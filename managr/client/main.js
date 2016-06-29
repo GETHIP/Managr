@@ -1,5 +1,38 @@
 import {Template} from 'meteor/templating';
 
+let convert = function(base64String){
+  let decodedString       = _decodeBase64( base64String ),
+      decodedStringLength = _getLength( decodedString ),
+      byteArray           = _buildByteArray( decodedString, decodedStringLength );
+
+  if ( byteArray ) {
+    return _createBlob( byteArray );
+  }
+};
+
+let _decodeBase64 = function( string ){
+  return atob( string );
+};
+
+let _getLength = function( value ){
+  return value.length;
+};
+
+let _buildByteArray = function( string, stringLength ){
+  let buffer = new ArrayBuffer( stringLength ),
+      array  = new Uint8Array( buffer );
+
+  for ( let i = 0; i < stringLength; i++ ) {
+    array[ i ] = string.charCodeAt( i );
+  }
+
+  return array;
+};
+
+let _createBlob = function( byteArray ){
+  return new Blob( [ byteArray ], { type: 'application/zip' } );
+};
+
 studentIndex = new EasySearch.Index({
 	name: "studentIndex",
 	collection: Student,
@@ -390,7 +423,72 @@ Template.reports.events({
 		},
 		'change #namesIncluded' (event){
 				Session.set("checked", event.target.checked);
+		},
+		'click #csvExport' (event){
+			console.log("export");
+			let students = Student.find({});
+			let array = [];
+			let checked = Session.get("checked");
+			switch (Session.get("reports")) {
+				case "tShirtSizeReport":
+						students.forEach(function(currentValue, index){
+								if(checked === true){
+										array.push(currentValue.name + ": " + currentValue.tshirtSize);
+								}else{
+										array.push(currentValue.tshirtSize);
+								}
+						});
+						let csv = Papa.unparse([array]);
+						saveAs(convert(csv));
+				break;
+				case "emailReport":
+						students.forEach(function(currentValue, index){
+								if(checked === true){
+										array.push(currentValue.name + ": " + currentValue.email);
+								}else{
+										array.push(currentValue.email);
+								}
+						});
+						return array.join(", ");
+				break;
+				case "nameReport":
+						students.forEach(function(currentValue, index){
+								array.push(currentValue.name);
+						});
+						return array.join(", ");
+				break;
+				case "ageReport":
+						students.forEach(function(currentValue, index){
+								if(checked === true){
+										array.push(currentValue.name + ": " + currentValue.age);
+								}else{
+										array.push(currentValue.age);
+								}
+						});
+						return array.join(", ");
+				case "schoolReport":
+						students.forEach(function(currentValue, index){
+								if(checked === true){
+										array.push(currentValue.name + ": " + currentValue.school);
+								}else{
+										array.push(currentValue.school);
+								}
+						});
+						return array.join(", ");
+				case "addressReport":
+						students.forEach(function(currentValue, index){
+								if(checked === true){
+										array.push(currentValue.name + ": " + currentValue.address.street + " " + currentValue.address.city + " " + currentValue.address.state + " " + currentValue.address.zipCode);
+								}else{
+										array.push(currentValue.address.street + " " + currentValue.address.city + " " + currentValue.address.state + " " + currentValue.address.zipCode);
+								}
+						});
+						return array.join(", ");
+				case "blank":
+						return "";
+				break;
 		}
+	}
 });
 
 Template.reports.helpers({
