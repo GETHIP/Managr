@@ -1,0 +1,28 @@
+<template name="studentsAllAssignments">
+  <h1 id="title">Assignments</h1>
+  <div class="orange-bar"> &nbsp;</div>
+  <div style="overflow-x:auto;">
+      <table id="tableTitle">
+          <tr>
+              <th>Name</th>
+              <th>Date Assigned</th>
+              <th>Due Date</th>
+              <th>Points Possible</th>
+              <th>Points Received</th>
+              <th>Instructor</th>
+          </tr>
+          {{#each assignments}}
+          <tr>
+              <td>
+                  <a style="text-decoration:none;color:#333333;" href="{{url}}">{{title}}</a>
+              </td>
+              <td>{{dateAssigned}}</td>
+              <td>{{dueDate}}</td>
+              <td>{{pointsPossible}}</td>
+              <td>Not Graded</td>
+              <td>{{assigner}}</td>
+          </tr>
+          {{/each}}
+      </table>
+  </div>
+</template>

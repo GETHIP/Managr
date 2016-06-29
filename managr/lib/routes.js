@@ -24,12 +24,14 @@ FlowRouter.route('/blogs/:blog_id', {
 	}
 });
 
-// Table of Assignments
+assignmentSection = FlowRouter.group({
+    prefix: "/assignments"
+});
 assignmentSection.route("/", {
     name: "allAssignments",
     action() {
         BlazeLayout.render(main,{
-            content: "listing"
+            content: "studentsAllAssignments"
         });
     }
 });
@@ -37,15 +39,7 @@ assignmentSection.route("/all", {
     name: "allAssignments",
     action() {
         BlazeLayout.render(main,{
-            content: "listing"
-        });
-    }
-});
-assignmentSection.route("/edit/all", {
-    name: "editAllAssignments",
-    action() {
-        BlazeLayout.render(main,{
-            content: "editAll"
+            content: "studentsAllAssignments"
         });
     }
 });
@@ -54,7 +48,7 @@ assignmentSection.route("/single/:id", {
     name: "singleAssignment",
     action(params) {
         BlazeLayout.render(main,{
-            content: "single"
+            content: "singleAssignment"
         });
     }
 });
@@ -62,11 +56,10 @@ assignmentSection.route("/edit/single/:id", {
     name: "editSingleAssignment",
     action(params) {
         BlazeLayout.render(main,{
-            content: "editSingle"
+            content: "editSingleAssignment"
         });
     }
 });
-// Create a new assignment
 assignmentSection.route('/edit/new', {
     name: "newAssignment",
     action(params) {
@@ -75,18 +68,14 @@ assignmentSection.route('/edit/new', {
         });
     }
 });
-// Spreadsheet of grades
-assignmentSection.route("/edit/grades", {
-    name: "editGrades",
-    action() {
-        BlazeLayout.render(main,{
-            content: "editGrades"
-        });
-    }
-});
 FlowRouter.route("/profile/:id", {
   action: function(params, queryParams){
-    BlazeLayout.render("Profile", {body: "aboutme", attendanceBody: "attendanceBody", assignmentsBody: "assignmentsBody", editAboutMe:"editAboutMe"});
+    BlazeLayout.render("Profile", {
+			body: "aboutme",
+			attendanceBody: "attendanceBody",
+			assignmentsBody: "assignmentsBody",
+			editAboutMe:"editAboutMe"
+		});
   }
 });
 
@@ -99,12 +88,6 @@ FlowRouter.route("/profile/edit/:id", {
 FlowRouter.route("/attendance/edit/:id", {
     action: function(params, queryParams){
         BlazeLayout.render("attendanceUpdate", {updateAttendance: "updateAttendance"});
-    }
-});
-
-FlowRouter.route("/assignments/:id", {
-    action: function(params, queryParams){
-        BlazeLayout.render("Profile", {assignmentsBody: "assignmentsBody"});
     }
 });
 
