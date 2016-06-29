@@ -25,3 +25,10 @@ FlowRouter.route('/blogs/:year/:month', {
 		BlazeLayout.render('mainPage', {currentPage: 'blogMain'})
 	}
 })
+
+FlowRouter.route('/createPost', {
+	name: 'createPost',
+	action() {
+		BlazeLayout.render('mainPage', {currentPage: 'createPost'})
+}
+})
