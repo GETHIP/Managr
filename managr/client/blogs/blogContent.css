@@ -1,9 +1,11 @@
 .allPosts {
 	background-color: #f3f3f3;
-	margin-left: 19.75%;
-  width: 80.25%;
-  height: 100%;
+	margin-left: 20%;
+  width: 78%;
+	height: auto;
 }
+
 .allPosts li {
+    box-shadow: 3px 3px 5px #888888;
     margin-bottom: 8px;
 }
