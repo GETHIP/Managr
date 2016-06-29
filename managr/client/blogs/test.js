@@ -7,10 +7,11 @@ Accounts.ui.config({
 });
 
 Template.testInsertData.events({
-	'click .testClass':function(e) {
+	'click .testClass'(event) {
 		Meteor.call('testCreatePosts');
+    console.log("created");
 	},
-	'click .createUsers': function(e) {
+	'click .createUsers'(event) {
 		Meteor.call('testCreateUsers');
 	}
 });

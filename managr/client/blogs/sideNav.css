@@ -41,13 +41,14 @@ li {
     margin-top: 0;
     margin-bottom: 0;
 }
-
 #sideNav {
     background-color: #333333;
     color: white;
     width: 20%;
-    height: 110%;
-  	position: absolute;
+    height: 100%;
+    display: block;
+    position: fixed;
   	left: 0px;
-	  top: 52px;
+    margin-top: 53px;
+    box-shadow: 3px 3px 5px #888888;
 }

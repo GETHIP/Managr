@@ -1,15 +1,14 @@
-body {
-  background-color: #f3f3f3;
-  margin-left: 30%;
-
-}
-textarea {
-  width: 95%;
-  height: 100px;
-}
 input[name="name"] {
-  width: 95%;
+ width: 95%;
 }
 #postsHeader{
-    margin-left: 253px;
+   padding-left: 21%;
+}
+body{
+  background-color: #f3f3f3;
+    margin-left: 21%;
+
+}
+#blogSection{
+  padding-top: 53px;
 }

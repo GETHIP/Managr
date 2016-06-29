@@ -24,8 +24,8 @@ Meteor.startup(() => {
       Posts.insert(post);
       console.log(Posts.find().fetch());
     },
-    'updateComment': function(authorId, commentText){
-     Posts.update({_id:"2ZMjNPiNs85A4Fq48" },
+    'updateComment': function(postId, authorId, commentText){
+     Posts.update({_id: postId },
         {$push:{
           comments:
           {text: commentText,
@@ -50,12 +50,13 @@ Meteor.startup(() => {
 			new Date(2014, 3, 1),
 			new Date(2013, 1, 1)
 		];
+    console.log(dates);
 		for (i = 1; i <= 10; i++) {
 			var id = jimId;
 			if (i % 2 == 0) {
 				id = instructorId;
 			}
-			Meteor.call('insertPost', {
+			Posts.insert({
 				title: "Title " + i,
 				text: "Text of the blog post.\n\n\n\nEnd of blog post.",
 				authorId: id,
@@ -65,7 +66,17 @@ Meteor.startup(() => {
 						text: "Comment.",
 						authorId: "otherId",
 						date: dates[i - 1]
-					}
+					},
+          {
+            text: "Comment.",
+            authorId: "otherId",
+            date: dates[i - 1]
+          },
+          {
+            text: "Comment.",
+            authorId: "otherId",
+            date: dates[i - 1]
+          }
 				]
 			});
 		}
