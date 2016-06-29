@@ -13,12 +13,9 @@ FlowRouter.route('/blogs/:blog_id', {
 		BlazeLayout.render(main, {content: 'postPage'})
 	}
 });
-
-// Used by all URLs beginning with /assignments
 assignmentSection = FlowRouter.group({
     prefix: "/assignments"
 });
-// Table of Assignments
 assignmentSection.route("/", {
     name: "allAssignments",
     action() {
@@ -40,7 +37,7 @@ assignmentSection.route("/single/:id", {
     name: "singleAssignment",
     action(params) {
         BlazeLayout.render(main,{
-            content: "studentAssignmentSingle"
+            content: "singleAssignment"
         });
     }
 });
@@ -48,25 +45,15 @@ assignmentSection.route("/edit/single/:id", {
     name: "editSingleAssignment",
     action(params) {
         BlazeLayout.render(main,{
-            content: "studentAssignmentSingleEdit"
+            content: "editSingleAssignment"
         });
     }
 });
-// Create a new assignment
 assignmentSection.route('/edit/new', {
     name: "newAssignment",
     action(params) {
         BlazeLayout.render(main, {
             content: "newAssignment"
-        });
-    }
-});
-// Spreadsheet of grades
-assignmentSection.route("/edit/grades", {
-    name: "editGrades",
-    action() {
-        BlazeLayout.render(main,{
-            content: "editGrades"
         });
     }
 });
