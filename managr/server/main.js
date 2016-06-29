@@ -66,7 +66,17 @@ Meteor.startup(() => {
 						text: "Comment.",
 						authorId: "otherId",
 						date: dates[i - 1]
-					}
+					},
+          {
+            text: "Comment.",
+            authorId: "otherId",
+            date: dates[i - 1]
+          },
+          {
+            text: "Comment.",
+            authorId: "otherId",
+            date: dates[i - 1]
+          }
 				]
 			});
 		}
