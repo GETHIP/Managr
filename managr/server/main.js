@@ -6,15 +6,24 @@ import { Assignments } from '../collections/assignments.js';
 import { Instructor } from '../collections/instructor.js';
 
 function createDefaultUser() {
-	var users = Meteor.users.find({username: "admin"});
-	if (users.count() > 0) {
+	var users = Meteor.users.find({username: "admin"}).fetch();
+	if (users.length > 0) {
 		return;
 	}
+
 	var adminId = Accounts.createUser({
 		username: "admin",
 		password: "Gallup2016",
 	});
-	Roles.addUsersToRoles(adminId, 'instructor');
+	Roles.addUsersToRoles(adminId, ['instructor']);
+	Instructor.insert({
+		name: "admin",
+		profilePicture: "none",
+		strengths: ["Achiever", "Activator", "Analytical", "Arranger", "Competition"],
+		description: "Admin. I validate other users.",
+		email: "none",
+		userId: adminId
+	});
 }
 
 // Publishes Assignments collection so templates can subscribe to recieve collection data
@@ -75,6 +84,5 @@ Meteor.startup(() => {
 			return true;
 		}
 	});
-
 	createDefaultUser();
 });

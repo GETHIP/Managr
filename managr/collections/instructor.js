@@ -20,6 +20,10 @@ var InstructorSchema = new SimpleSchema({
     email: {
         type: String,
         label: 'Email'
-    }
+    },
+	userId: {
+		type: String,
+		label: 'userId'
+	}
 });
 Instructor.attachSchema(InstructorSchema);
