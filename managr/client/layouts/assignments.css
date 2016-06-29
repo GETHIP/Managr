@@ -106,7 +106,7 @@ header {
   padding-bottom: 10px;
   padding-left: 15px;
 }
-li {
+/*li {
   position: relative;
   list-style: none;
   padding: 20px 15px;
@@ -120,4 +120,4 @@ li.checked {
 }
 li.checked .text {
   text-decoration: line-through;
-}
+}*/

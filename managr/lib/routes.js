@@ -59,7 +59,12 @@ assignmentSection.route('/edit/new', {
 });
 FlowRouter.route("/profile/:id", {
   action: function(params, queryParams){
-    BlazeLayout.render("Profile", {body: "aboutme", attendanceBody: "attendanceBody", assignmentsBody: "assignmentsBody", editAboutMe:"editAboutMe"});
+    BlazeLayout.render("Profile", {
+			body: "aboutme",
+			attendanceBody: "attendanceBody",
+			assignmentsBody: "assignmentsBody",
+			editAboutMe:"editAboutMe"
+		});
   }
 });
 
