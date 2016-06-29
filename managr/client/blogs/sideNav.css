@@ -58,25 +58,49 @@ li {
   	left: 0;
 }
 #createPostButton{
-    background-color: #61c250;
-    color: white;
-    margin: 0 auto;
+  background-color: #61c250;
+  color: white;
+  cursor: pointer;
+  display: block;
+  text-decoration: none;
+  width: 45%;
+  margin-top: 10px;
+  font-size: 12px;
+    float: right;
+    margin-right: 3%;
     text-align: center;
-    cursor: pointer;
-    display: block;
-    text-decoration: none;
-    margin-bottom: -10px;
-    margin-top: 10px;
+
 }
 #createPostButton:hover{
     color: white;
     background-color: #61d250;
     text-decoration: none;
-    margin: 0 auto;
-    display: block;
-    margin-bottom: -10px;
-    margin-top: 10px;
+}
+#createPostButton:focus{
+outline: none;
+}
+#editPostButton:focus{
+outline: none;
+}
+#editPostButton{
+  background-color: #61c250;
+  color: white;
+  text-align: center;
+  cursor: pointer;
+  display: block;
+  text-decoration: none;
+  width: 45%;
+  margin-top: 10px;
+  font-size: 12px;
+  margin-left: 3%;
+    float:left;
+}
+#editPostButton:hover{
+    color: white;
+    background-color: #61d250;
+    text-decoration: none;
 }
 #buttonArea{
-
+  background-color:#333333;
+  padding-bottom: 10px;
 }
