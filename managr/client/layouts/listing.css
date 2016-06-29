@@ -85,7 +85,7 @@ header {
   margin-top: 15px;
   margin-bottom: 25px;
 }
-.buttonStyle {
+/*.buttonStyle {
   background-color: #fcb040;
   border: none;
   color: white;
@@ -114,7 +114,7 @@ header {
 .buttonStyle:focus {
   outline: none;
 }/*
-li {
+li {*/
   position: relative;
   list-style-type: none;
   padding: 20px 15px;

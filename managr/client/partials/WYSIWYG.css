@@ -12,8 +12,8 @@
     font-weight: normal;
     font-style: normal;
     font-size: 14px;
-    overflow: scroll;
-
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 .editor:focus {
