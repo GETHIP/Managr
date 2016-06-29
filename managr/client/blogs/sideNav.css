@@ -66,8 +66,8 @@ li {
   width: 45%;
   margin-top: 10px;
   font-size: 12px;
-    float: right;
-    margin-right: 3%;
+    float: left;
+    margin-left: 3%;
     text-align: center;
 
 }
@@ -92,8 +92,8 @@ outline: none;
   width: 45%;
   margin-top: 10px;
   font-size: 12px;
-  margin-left: 3%;
-    float:left;
+  margin-right: 3%;
+  float:right;
 }
 #editPostButton:hover{
     color: white;
