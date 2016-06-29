@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="Profile_index.css">
     </head>
       {{> navbar}}
-    <body>
+    <body class="profileBody">
         {{> studentName}}
 
               {{> Template.dynamic template=body}}
@@ -21,7 +21,7 @@
 </template>
 
 <template name="aboutme">
-<div class="rectangle">
+<div class="aboutMe">
     <h1><strong>
       About Me
     </strong> </h1>
@@ -69,11 +69,11 @@
 </template>
 
 <template name="attendanceBody">
-    <div class="container">
+    <div class="attendanceContainer">
         <h2>Attendance</h2>
-        <table class="table table-bordered">
-            <thead class=color>
-                <tr>
+        <table class="table table-bordered attendanceTable">
+            <thead class="color">
+                <tr class="attendanceSize">
                     <th>Week One</th>
                     <th>Week Two</th>
                     <th>Week Three</th>
@@ -89,7 +89,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                <tr class="attendanceSize">
                   {{#each attendance}}
                       <td>{{this}}</td>
                   {{/each}}
@@ -105,15 +105,15 @@
         <div style="margin-top: 2em;" class="name-holder">
             <h1>{{ studentName.name }}</h1>
         </div>
-        <hr>
+        <hr class="nameLine">
 
     {{/with}}
 </template>
 
 <template name="assignmentsBody">
-    <div class="container">
+    <div class="assignmentsContainer">
         <h2>Assignments</h2>
-        <table class="table table-bordered">
+        <table class="table table-bordered assignmentsTable">
             <thead class=color>
                 <tr>
                     <th>Name</th>
@@ -137,6 +137,8 @@
               {{/each}}
             </tbody>
         </table>
+        <br>
+        <br>
     </div>
 </template>
 

@@ -1,8 +1,9 @@
 <template name="attendanceUpdate">
   <h1>Attendance</h1>
   {{> navbar}}
+<div class="containerAttendance">
   <form class="attendanceUpdate">
-    <table class= "table-bordered table-hovered table">
+    <table class= "table-bordered table-hovered table attendanceTable">
     <thead id="attendance">
         <tr>
             <th>Week One</th>
@@ -98,6 +99,8 @@
        </tr>
      </tbody>
   </table>
+
     <button type="submit" class="btn btn-warning btn-block updateAttendance">Update Attendance</button>
 </form>
+</div>
 </template>
