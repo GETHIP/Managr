@@ -18,6 +18,7 @@ blaze@2.1.8
 blaze-html-templates@1.0.4
 blaze-tools@1.0.9
 boilerplate-generator@1.0.9
+bootstrap@1.0.1
 caching-compiler@1.0.5_1
 caching-html-compiler@1.0.6
 callback-hook@1.0.9
@@ -56,6 +57,7 @@ localstorage@1.0.11
 logging@1.0.13_1
 matb33:bootstrap-base@10.0.0
 matb33:bootstrap-glyphicons@10.0.0
+mcrider:bootstrap-wysiwyg@0.1.0
 mdg:validation-error@0.5.1
 meteor@1.1.15_1
 meteor-base@1.0.4

@@ -9,7 +9,7 @@ Template.WYSIWYG.onRendered=function(){
     }
   });
 }
-(function ($) {
+/*(function ($) {
 	'use strict';
 	var readFileIntoDataUrl = function (fileInfo) {
 		var loader = $.Deferred(),
@@ -120,7 +120,7 @@ Template.WYSIWYG.onRendered=function(){
 				toolbar.find('[data-toggle=dropdown]').click(restoreSelection);
 
 				toolbar.find('input[type=text][data-' + options.commandRole + ']').on('webkitspeechchange change', function () {
-					var newValue = this.value; /* ugly but prevents fake double-calls due to selection restoration */
+					var newValue = this.value; /* ugly but prevents fake double-calls due to selection restoration *
 					this.value = '';
 					restoreSelection();
 					if (newValue) {
@@ -206,3 +206,4 @@ Template.WYSIWYG.onRendered=function(){
 		fileUploadError: function (reason, detail) { console.log("File upload error", reason, detail); }
 	};
 }(window.jQuery));
+*/
