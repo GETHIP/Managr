@@ -13,13 +13,13 @@
 						<a class="navbar-brand" href="#">GET HIP Managr</a>
 					</div>
 						<ul class="nav navbar-nav">
-							<li class="active"><a href="#">Home</a></li>
+							<li class="{{activeClass 'blogs'}}"><a href="#">Home</a></li>
 								{{#if currentUser}}
-									<li><a href="#">Assignments</a></li>
+									<li class="{{activeClass 'assignments'}}"><a href="#">Assignments</a></li>
 									{{#if isInRole 'instructor'}}
-										<li><a href="#">Profiles</a></li>
+										<li class="{{activeClass 'profiles'}}"><a href="#">Profiles</a></li>
 									{{else}}
-										<li><a href="#">My Profile</a></li>
+										<li class="{{activeClass 'profiles'}}"><a href="#">My Profile</a></li>
 									{{/if}}
 								{{/if}}
 							<li>{{> loginButtons}}</li>
