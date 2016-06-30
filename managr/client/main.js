@@ -1,37 +1,13 @@
 import {Template} from 'meteor/templating';
 
-let convert = function(base64String){
-  let decodedString       = _decodeBase64( base64String ),
-      decodedStringLength = _getLength( decodedString ),
-      byteArray           = _buildByteArray( decodedString, decodedStringLength );
-
-  if ( byteArray ) {
-    return _createBlob( byteArray );
-  }
-};
-
-let _decodeBase64 = function( string ){
-  return atob( string );
-};
-
-let _getLength = function( value ){
-  return value.length;
-};
-
-let _buildByteArray = function( string, stringLength ){
-  let buffer = new ArrayBuffer( stringLength ),
-      array  = new Uint8Array( buffer );
-
-  for ( let i = 0; i < stringLength; i++ ) {
-    array[ i ] = string.charCodeAt( i );
-  }
-
-  return array;
-};
-
-let _createBlob = function( byteArray ){
-  return new Blob( [ byteArray ], { type: 'application/zip' } );
-};
+function csvDownload(array, name){
+		console.log(array);
+		let csv = Papa.unparse(array);
+		console.log(csv);
+		csv = new Blob([csv], { type: 'text/csv' } );
+		console.log(csv);
+		saveAs(csv, name + ".csv");
+}
 
 studentIndex = new EasySearch.Index({
 	name: "studentIndex",
@@ -419,73 +395,69 @@ Template.reports.events({
 					case "Address Report":
 							Session.set("reports", "addressReport");
 					break;
+					case "All":
+							Session.set("reports","allReport");
+					break;
 				}
 		},
 		'change #namesIncluded' (event){
 				Session.set("checked", event.target.checked);
 		},
 		'click #csvExport' (event){
-			console.log("export");
 			let students = Student.find({});
-			let array = [];
+			let array = {};
+			array.data = [];
+			array.fields = ["Name"];
 			let checked = Session.get("checked");
 			switch (Session.get("reports")) {
 				case "tShirtSizeReport":
 						students.forEach(function(currentValue, index){
-								if(checked === true){
-										array.push(currentValue.name + ": " + currentValue.tshirtSize);
-								}else{
-										array.push(currentValue.tshirtSize);
-								}
+									array.data.push([currentValue.name, currentValue.tshirtSize]);
 						});
-						let csv = Papa.unparse([array]);
-						saveAs(convert(csv));
+				array.fields.push("T-Shirt Size");
+				csvDownload(array, "T-Shirt Report");
 				break;
 				case "emailReport":
 						students.forEach(function(currentValue, index){
-								if(checked === true){
-										array.push(currentValue.name + ": " + currentValue.email);
-								}else{
-										array.push(currentValue.email);
-								}
+									array.data.push([currentValue.name, currentValue.email]);
 						});
-						return array.join(", ");
+				array.fields.push("Email");
+				csvDownload(array, "Email Report");
 				break;
 				case "nameReport":
 						students.forEach(function(currentValue, index){
-								array.push(currentValue.name);
+									array.data.push([currentValue.name]);
 						});
-						return array.join(", ");
+				array.fields = ["Name"];
+				csvDownload(array, "Name Report");
 				break;
 				case "ageReport":
 						students.forEach(function(currentValue, index){
-								if(checked === true){
-										array.push(currentValue.name + ": " + currentValue.age);
-								}else{
-										array.push(currentValue.age);
-								}
+									array.data.push([currentValue.name, currentValue.age]);
 						});
-						return array.join(", ");
+				array.fields.push("Age");
+				csvDownload(array, "Age Report");
+				break;
 				case "schoolReport":
 						students.forEach(function(currentValue, index){
-								if(checked === true){
-										array.push(currentValue.name + ": " + currentValue.school);
-								}else{
-										array.push(currentValue.school);
-								}
+									array.data.push([currentValue.name, currentValue.school]);
 						});
-						return array.join(", ");
+				array.fields.push("School");
+				csvDownload(array, "School Report");
+				break;
 				case "addressReport":
 						students.forEach(function(currentValue, index){
-								if(checked === true){
-										array.push(currentValue.name + ": " + currentValue.address.street + " " + currentValue.address.city + " " + currentValue.address.state + " " + currentValue.address.zipCode);
-								}else{
-										array.push(currentValue.address.street + " " + currentValue.address.city + " " + currentValue.address.state + " " + currentValue.address.zipCode);
-								}
+									array.data.push([currentValue.name, currentValue.address.street + " " + currentValue.address.city + " " + currentValue.address.state + " " + currentValue.address.zipCode]);
 						});
-						return array.join(", ");
-				case "blank":
-						return "";
+				array.fields.push("Address");
+				csvDownload(array, "Address Report");
+				break;
+				case "allReport":
+						students.forEach(function(currentValue, index){
+									array.data.push([currentValue.name, currentValue.school, currentValue.age, currentValue.email, currentValue.parentNames[0] + " and " + currentValue.parentNames[1],currentValue.description, currentValue.grade, currentValue.getHipYear, currentValue.phoneNumber, currentValue.blog, currentValue.address.street + " " + currentValue.address.city + " " + currentValue.address.state + " " + currentValue.address.zipCode]);
+						});
+				array.fields = ["Name", "School", "Age", "Email", "Parent Names", "Description", "Grade", "Get Hip Year", "Phone Number", "Phone Number", "Address"];
+				csvDownload(array, "All Report");
 				break;
 		}
 	}
@@ -499,21 +471,13 @@ Template.reports.helpers({
 				switch (Session.get("reports")) {
 					case "tShirtSizeReport":
 							students.forEach(function(currentValue, index){
-									if(checked === true){
-											array.push(currentValue.name + ": " + currentValue.tshirtSize);
-									}else{
-											array.push(currentValue.tshirtSize);
-									}
+										array.push(currentValue.name + ": " + currentValue.tshirtSize);
 							});
 							return array.join(", ");
 					break;
 					case "emailReport":
 							students.forEach(function(currentValue, index){
-									if(checked === true){
-											array.push(currentValue.name + ": " + currentValue.email);
-									}else{
-											array.push(currentValue.email);
-									}
+										array.push(currentValue.name + ": " + currentValue.email);
 							});
 							return array.join(", ");
 					break;
@@ -525,29 +489,17 @@ Template.reports.helpers({
 					break;
 					case "ageReport":
 							students.forEach(function(currentValue, index){
-									if(checked === true){
-											array.push(currentValue.name + ": " + currentValue.age);
-									}else{
-											array.push(currentValue.age);
-									}
+									array.push(currentValue.name + ": " + currentValue.age);
 							});
 							return array.join(", ");
 					case "schoolReport":
 							students.forEach(function(currentValue, index){
-									if(checked === true){
-											array.push(currentValue.name + ": " + currentValue.school);
-									}else{
-											array.push(currentValue.school);
-									}
+									array.push(currentValue.name + ": " + currentValue.school);
 							});
 							return array.join(", ");
 					case "addressReport":
 							students.forEach(function(currentValue, index){
-									if(checked === true){
-											array.push(currentValue.name + ": " + currentValue.address.street + " " + currentValue.address.city + " " + currentValue.address.state + " " + currentValue.address.zipCode);
-									}else{
-											array.push(currentValue.address.street + " " + currentValue.address.city + " " + currentValue.address.state + " " + currentValue.address.zipCode);
-									}
+									array.push(currentValue.name + ": " + currentValue.address.street + " " + currentValue.address.city + " " + currentValue.address.state + " " + currentValue.address.zipCode);
 							});
 							return array.join(", ");
 					case "blank":
