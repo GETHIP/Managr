@@ -3,6 +3,40 @@ import { ReactiveVar } from 'meteor/reactive-var';
 import { Comments } from '../collections/comments.js'
 import { Assignments } from "../collections/assignments.js";
 
+studentIndex = new EasySearch.Index({
+	name: "studentIndex",
+	collection: Student,
+	fields: ['name'],
+	engine: new EasySearch.Minimongo({
+		transform: function (doc){
+			doc.url = "/profile/" + doc._id;
+			for(i in doc.attendance){
+					if(doc.attendance[i] === true){
+							doc.attendance[i] = "Present";
+					}
+					if(doc.attendance[i] === false){
+							doc.attendance[i] = "Absent";
+					}
+			}
+			doc.attendance = doc.attendance.join(" | ");
+			doc.parentNames = doc.parentNames.join(" and ");
+			return doc;
+		}
+	}),
+	permission: function(){
+		return true;
+	}
+});
+
+function csvDownload(array, name){
+		console.log(array);
+		let csv = Papa.unparse(array);
+		console.log(csv);
+		csv = new Blob([csv], { type: 'text/csv' } );
+		console.log(csv);
+		saveAs(csv, name + ".csv");
+}
+
 Template.post.onCreated(function(){
   Meteor.subscribe('Posts');
 });
@@ -196,10 +230,28 @@ Template.ProfilesTable.onCreated(function() {
 
 Template.ProfilesTable.helpers({
 	ProfilesTable: function() {
-		console.log(Student.find({}))
-	 	return Student.find({});
+		let Profiles = Student.find({});
+		let ProfilesTable = [];
+		Profiles.forEach(function(currentValue, index, profile){
+			currentValue.url = "/profile/" + currentValue._id;
+			for(i in currentValue.attendance){
+					if(currentValue.attendance[i] === true){
+							currentValue.attendance[i] = "Present";
+					}
+					if(currentValue.attendance[i] === false){
+							currentValue.attendance[i] = "Absent";
+					}
+			}
+			currentValue.attendance = currentValue.attendance.join(" | ");
+			currentValue.parentNames = currentValue.parentNames.join(" and ");
+			ProfilesTable.push(currentValue);
+		});
+	 	return ProfilesTable;
+	},
+	studentIndex: function(){
+		return studentIndex;
 	}
-})
+});
 
 Template.studentName.onCreated(function() {
 	var self = this;
@@ -349,6 +401,8 @@ Template.profileEdit.events({
 		const city = event.target.city.value;
 		const state = event.target.state.value;
 		const zipCode = event.target.zipCode.value;
+		const parentNames1 = event.target.parentNames1.value;
+		const parentNames2 = event.target.parentNames2.value;
 		const strength1 = event.target.strength1.value;
 		const strength2	= event.target.strength2.value;
 		const strength3 = event.target.strength3.value;
@@ -378,13 +432,15 @@ Template.profileEdit.events({
 				zipCode: zipCode
 			},
 			strengths: [strength1, strength2, strength3, strength4, strength5],
-			ep10: [ep1, ep2, ep3, ep4]
+			ep10: [ep1, ep2, ep3, ep4],
+			parentNames: [parentNames1, parentNames2]
 		};
 
 		Student.update({_id: userId},{$set: data});
 		window.location = "/profile/" + FlowRouter.getParam("id");
 	}
 });
+
 
 Template.profileEdit.helpers({
 	data: function() {
@@ -422,8 +478,8 @@ Template.attendanceUpdate.events({
 	}
 });
 var wordNumbers = ["zero", "one", "two", "three", "four", "five", "six",
-	"seven", "eight", "nine", "ten", "eleven", "twelve"
-]
+	"seven", "eight", "nine", "ten", "eleven", "twelve"];
+
 Template.attendanceUpdate.helpers({
 	attendance: function() {
 		let userId = FlowRouter.getParam("id");
@@ -451,6 +507,144 @@ Template.navbar.helpers({
 		profile: function(){
 			let userId = FlowRouter.getParam("id");
 			return assignments = "/profile/" + userId;
+		}
+});
+
+Template.reports.events({
+		'change #reportsSelect' (event){
+				switch (event.target.value) {
+					case "T-Shirt Size Report":
+							Session.set("reports", "tShirtSizeReport");
+					break;
+					case "Email Report":
+							Session.set("reports", "emailReport");
+					break;
+					case "Select a report":
+							Session.set("reports", "blank");
+					break;
+					case "Name Report":
+							Session.set("reports", "nameReport");
+					break;
+					case "Age Report":
+							Session.set("reports", "ageReport");
+					break;
+					case "School Report":
+							Session.set("reports", "schoolReport");
+					break;
+					case "Address Report":
+							Session.set("reports", "addressReport");
+					break;
+					case "All":
+							Session.set("reports","allReport");
+					break;
+				}
+		},
+		'change #namesIncluded' (event){
+				Session.set("checked", event.target.checked);
+		},
+		'click #csvExport' (event){
+			let students = Student.find({});
+			let array = {};
+			array.data = [];
+			array.fields = ["Name"];
+			let checked = Session.get("checked");
+			switch (Session.get("reports")) {
+				case "tShirtSizeReport":
+						students.forEach(function(currentValue, index){
+									array.data.push([currentValue.name, currentValue.tshirtSize]);
+						});
+				array.fields.push("T-Shirt Size");
+				csvDownload(array, "T-Shirt Report");
+				break;
+				case "emailReport":
+						students.forEach(function(currentValue, index){
+									array.data.push([currentValue.name, currentValue.email]);
+						});
+				array.fields.push("Email");
+				csvDownload(array, "Email Report");
+				break;
+				case "nameReport":
+						students.forEach(function(currentValue, index){
+									array.data.push([currentValue.name]);
+						});
+				array.fields = ["Name"];
+				csvDownload(array, "Name Report");
+				break;
+				case "ageReport":
+						students.forEach(function(currentValue, index){
+									array.data.push([currentValue.name, currentValue.age]);
+						});
+				array.fields.push("Age");
+				csvDownload(array, "Age Report");
+				break;
+				case "schoolReport":
+						students.forEach(function(currentValue, index){
+									array.data.push([currentValue.name, currentValue.school]);
+						});
+				array.fields.push("School");
+				csvDownload(array, "School Report");
+				break;
+				case "addressReport":
+						students.forEach(function(currentValue, index){
+									array.data.push([currentValue.name, currentValue.address.street + " " + currentValue.address.city + " " + currentValue.address.state + " " + currentValue.address.zipCode]);
+						});
+				array.fields.push("Address");
+				csvDownload(array, "Address Report");
+				break;
+				case "allReport":
+						students.forEach(function(currentValue, index){
+									array.data.push([currentValue.name, currentValue.school, currentValue.age, currentValue.email, currentValue.parentNames[0] + " and " + currentValue.parentNames[1],currentValue.description, currentValue.grade, currentValue.getHipYear, currentValue.phoneNumber, currentValue.blog, currentValue.address.street + " " + currentValue.address.city + " " + currentValue.address.state + " " + currentValue.address.zipCode]);
+						});
+				array.fields = ["Name", "School", "Age", "Email", "Parent Names", "Description", "Grade", "Get Hip Year", "Phone Number", "Phone Number", "Address"];
+				csvDownload(array, "All Report");
+				break;
+		}
+	}
+});
+
+Template.reports.helpers({
+		reports: function(){
+				let students = Student.find({});
+				let array = [];
+				let checked = Session.get("checked");
+				switch (Session.get("reports")) {
+					case "tShirtSizeReport":
+							students.forEach(function(currentValue, index){
+										array.push(currentValue.name + ": " + currentValue.tshirtSize);
+							});
+							return array.join(", ");
+					break;
+					case "emailReport":
+							students.forEach(function(currentValue, index){
+										array.push(currentValue.name + ": " + currentValue.email);
+							});
+							return array.join(", ");
+					break;
+					case "nameReport":
+							students.forEach(function(currentValue, index){
+									array.push(currentValue.name);
+							});
+							return array.join(", ");
+					break;
+					case "ageReport":
+							students.forEach(function(currentValue, index){
+									array.push(currentValue.name + ": " + currentValue.age);
+							});
+							return array.join(", ");
+					case "schoolReport":
+							students.forEach(function(currentValue, index){
+									array.push(currentValue.name + ": " + currentValue.school);
+							});
+							return array.join(", ");
+					case "addressReport":
+							students.forEach(function(currentValue, index){
+									array.push(currentValue.name + ": " + currentValue.address.street + " " + currentValue.address.city + " " + currentValue.address.state + " " + currentValue.address.zipCode);
+							});
+							return array.join(", ");
+					case "blank":
+							return "";
+					break;
+				}
 		}
 });
 
@@ -491,3 +685,26 @@ Template.newAssignment.events({
 
 // Gives user window scope over the Assignments collection
 window.Assignments = Assignments;
+
+/*
+Template.comment.onCreated(function(){
+  Meteor.subscribe('Comments');
+});
+*/
+
+Template.createField.onCreated(function(){
+  Meteor.subscribe('Posts');
+});
+
+Template.post.events({
+
+});
+/*
+var d1 = new Date("2015-01-31");
+var d2 = new Date("2015-02-16");
+var d3 = new Date("2015-03-1");
+console.log(d1 + " < " + d2 + " = " + (d1 < d2));
+console.log(d1 + " < " + d3 + " = " + (d1 < d3));
+console.log(d2 + " < " + d3 + " = " + (d2 < d3));
+*/
+

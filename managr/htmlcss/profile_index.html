@@ -1,5 +1,5 @@
 <template name="Profile">
-
+  {{> navbar}}
     <head>
         <title>Profiles</title>
         <link type="text/css" rel="stylesheet" href="./navbar.css">
@@ -22,7 +22,7 @@
 
 <template name="aboutme">
 <div class="rectangle">
-    <h1><strong>
+    <h1 class="profileHeader"><strong>
       About Me
     </strong> </h1>
     {{#with student}}

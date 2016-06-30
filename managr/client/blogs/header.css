@@ -1,10 +1,11 @@
-
 #welcome{
- font-size:35px;
- font-family: Helvetica;
+	font-size:35px;
+	font-family: Helvetica;
+	margin-left: 120px;
 }
 #line{
     width: 99%;
     height: 3px;
     background-color: #61c250;
+	margin-left: 120px;
 }

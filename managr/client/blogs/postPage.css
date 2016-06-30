@@ -1,8 +1,12 @@
 #bodyContent {
-    padding-left: 4%;
     background-color: #f3f3f3;
     position: relative;
-    left: 20%;
-    width: 80%;
-    height: 100%;
+    margin-left: 240px;
+	margin-top: 60px;
+    width: 77%;
+    height: auto;
+}
+
+.commentSection{
+  box-shadow: 3px 3px 5px #888888;
 }

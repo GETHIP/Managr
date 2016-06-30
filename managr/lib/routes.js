@@ -1,4 +1,4 @@
-var main = "mainPage"
+var main = "main"
 
 var blogsSection = FlowRouter.group({
 	name: "blogs",
@@ -119,7 +119,26 @@ FlowRouter.route("/assignments/:id", {
 
 profileSection.route("/profiles", {
     action: function(params, queryParams) {
-        // BlazeLayout.render('ProfilesTable');
         BlazeLayout.render(main, {content:'ProfilesTable'});
+	}
+});
+
+FlowRouter.route("/reports", {
+    action: function(params, queryParams){
+        BlazeLayout.render("Profile", {body: "reports"});
     }
-})
+});
+
+FlowRouter.route('/blogs/:year/:month', {
+	name: 'archives',
+	action : function(params) {
+		BlazeLayout.render(main, {content: 'blogMain'});
+	}
+});
+
+FlowRouter.route('/createPost', {
+	name: 'createPost',
+	action() {
+		BlazeLayout.render(main, {content: 'createPost'});
+}
+});
