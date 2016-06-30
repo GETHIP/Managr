@@ -1,4 +1,4 @@
-var main = "mainPage"
+var main = "main"
 
 // Used by all URLs beginning with /assignments
 var assignmentSection = FlowRouter.group({
@@ -98,13 +98,13 @@ FlowRouter.route("/profiles", {
 FlowRouter.route('/blogs/:year/:month', {
 	name: 'archives',
 	action : function(params) {
-		BlazeLayout.render('mainPage', {currentPage: 'blogMain'})
+		BlazeLayout.render(main, {content: 'blogMain'})
 	}
 })
 
 FlowRouter.route('/createPost', {
 	name: 'createPost',
 	action() {
-		BlazeLayout.render('mainPage', {currentPage: 'createPost'})
+		BlazeLayout.render(main, {content: 'createPost'})
 }
 })
