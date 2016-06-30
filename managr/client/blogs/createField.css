@@ -1,0 +1,20 @@
+.postButton{
+  background-color: #61c250;
+  border: none;
+  color: white;
+  text-align: center;
+   text-decoration: none;
+   font-size: 16px;
+   margin: 2px 1px;
+   cursor: pointer;
+   width: 100px;
+   border-radius: 5px;
+   margin-left: 5%;
+}
+
+.postCreate{
+  margin-top: 80px;
+}
+.postButton:focus{
+outline: none;
+}
