@@ -9,63 +9,68 @@
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="Profile_index.css">
     </head>
-      {{> navbar}}
-    <body class="profileBody">
-        {{> studentName}}
+    {{> navbar}}
 
-              {{> Template.dynamic template=body}}
-              {{> Template.dynamic template=editAboutMe}}
-              {{> Template.dynamic template=attendanceBody}}
-              {{> Template.dynamic template=assignmentsBody}}
+    <body class="profileBody">
+        {{> studentName}} {{> Template.dynamic template=body}} {{> Template.dynamic template=editAboutMe}} {{> Template.dynamic template=attendanceBody}} {{> Template.dynamic template=assignmentsBody}}
     </body>
 </template>
 
 <template name="aboutme">
-<div class="aboutMe">
-    <h1><strong>
+    <div class="aboutMe">
+        <h1><strong>
       About Me
-    </strong> </h1>
-    {{#with student}}
-        <p><strong>Name:</strong></p>
-        <p>{{name}}</p>
-        <p><strong>School:</strong></p>
-        <p>{{school}}</p>
-        <p><strong>Grade:</strong></p>
-        <p>{{grade}}</p>
-        <p><strong>Age:</strong></p>
-        <p>{{age}}</p>
-        <p><strong>Email:</strong></p>
-        <p>{{email}}</p>
-        <p><strong>Phone Number:</strong></p>
-        <p>{{phoneNumber}}</p>
-        <p><strong>Address:</strong></p>
-        <p>{{address}}</p>
-        <p><strong>T-Shirt Size:</strong></p>
-        <p>{{tshirtSize}}</p>
-        <p><strong>Github:</strong></p>
-        <p><a href={{github}}>Github</a></p>
-        <p><strong>Blog:</strong></p>
-        <p class="blogButton"><a class="blogButton">Blog</a></p>
-        <p><strong>Parent Names:</strong></p>
-        <p>{{parentNames}}</p>
-        <p><strong>Top 5:</strong></p>
+    </strong> </h1> {{#with student}}
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p><strong>Name:</strong></p>
+                    <p>{{name}}</p>
+                    <p><strong>School:</strong></p>
+                    <p>{{school}}</p>
+                    <p><strong>Grade:</strong></p>
+                    <p>{{grade}}</p>
+                    <p><strong>Age:</strong></p>
+                    <p>{{age}}</p>
+                    <p><strong>Email:</strong></p>
+                    <p>{{email}}</p>
+                    <p><strong>Phone Number:</strong></p>
+                    <p>{{phoneNumber}}</p>
+                    <p><strong>Address:</strong></p>
+                    <p>{{address}}</p>
+                    <p><strong>T-Shirt Size:</strong></p>
+                    <p>{{tshirtSize}}</p>
+                </div>
+                <div class="col-md-6">
+                    <p><strong>Github:</strong></p>
+                    <p><a href={{github}}>Github</a></p>
+                    <p><strong>Blog:</strong></p>
+                    <p class="blogButton"><a class="blogButton">Blog</a></p>
+                    <p><strong>Parent Names:</strong></p>
+                    <p>{{parentNames}}</p>
+                    <p><strong>Top 5:</strong></p>
+
+                    <ol>
+                        {{#each strengths}}
+                        <li>{{this}}</li>
+                        {{/each}}
+                    </ol>
+                    {{#with student}}
+                    <p><strong>EP10:</strong></p>
+                    <ol>
+                        {{#each ep}}
+                        <li>{{this}}</li>
+                        {{/each}}
+                    </ol>
+                    <p><strong>Get Hip Year:</strong></p>
+                    <p>{{getHipYear}}</p>
+                    {{/with}}
+                </div>
+
+            </div>
+        </div>
         {{/with}}
-            <ol>
-                {{#each strengths}}
-                    <li>{{this}}</li>
-                {{/each}}
-            </ol>
-        {{#with student}}
-        <p><strong>EP10:</strong></p>
-            <ol>
-                {{#each ep}}
-                    <li>{{this}}</li>
-                {{/each}}
-            </ol>
-        <p><strong>Get Hip Year:</strong></p>
-        <p>{{getHipYear}}</p>
-        {{/with}}
-</div>
+      </div>
 </template>
 
 <template name="attendanceBody">
@@ -90,9 +95,9 @@
             </thead>
             <tbody>
                 <tr class="attendanceSize">
-                  {{#each attendance}}
-                      <td>{{this}}</td>
-                  {{/each}}
+                    {{#each attendance}}
+                    <td>{{this}}</td>
+                    {{/each}}
                 </tr>
             </tbody>
         </table>
@@ -102,12 +107,10 @@
 
 <template name="studentName">
     {{#with studentName}}
-        <div style="margin-top: 2em;" class="name-holder">
-            <h1>{{ studentName.name }}</h1>
-        </div>
-        <hr class="nameLine">
-
-    {{/with}}
+    <div style="margin-top: 2em;" class="name-holder">
+        <h1>{{ studentName.name }}</h1>
+    </div>
+    <hr class="nameLine"> {{/with}}
 </template>
 
 <template name="assignmentsBody">
@@ -125,16 +128,16 @@
                 </tr>
             </thead>
             <tbody>
-              {{#each assignments}}
-                  <tr>
-                      <td>{{name}}</td>
-                      <td>{{dateAssigned}}</td>
-                      <td>{{dueDate}}</td>
-                      <td>{{possiblePoints}}</td>
-                      <td>{{pointsRecieved}}</td>
-                      <td>{{instructor}}</td>
-                  </tr>
-              {{/each}}
+                {{#each assignments}}
+                <tr>
+                    <td>{{name}}</td>
+                    <td>{{dateAssigned}}</td>
+                    <td>{{dueDate}}</td>
+                    <td>{{possiblePoints}}</td>
+                    <td>{{pointsRecieved}}</td>
+                    <td>{{instructor}}</td>
+                </tr>
+                {{/each}}
             </tbody>
         </table>
         <br>
@@ -143,5 +146,5 @@
 </template>
 
 <template name="editAboutMe">
-        <button type="button" class="btn btn-primary btn-block editAboutMe">Edit About Me</button>
+    <button type="button" class="btn btn-primary btn-block editAboutMe">Edit About Me</button>
 </template>
