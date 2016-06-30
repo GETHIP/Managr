@@ -173,7 +173,7 @@ Meteor.startup(() => {
 			return true;
 		}
 	});
-/*
+
 	Student.remove({});
 	Instructor.remove({});
 	for (var i = Student.find().count(); i < 5; i++) {
@@ -216,7 +216,8 @@ Meteor.startup(() => {
 			"github": 'Athletesrun',
 			"blog": "http://blogger.com",
 			"tshirtSize": "Small",
-      "ep10": ["Responsibility", "Profitability", "Communication", "Strategic"]
+      "ep10": ["Responsibility", "Profitability", "Communication", "Strategic"],
+			"userId": "asdof889a"
 		});
 	}
 	for (var i = Instructor.find().count(); i < 5; i++) {
@@ -225,7 +226,8 @@ Meteor.startup(() => {
 			"profilePicture": "x",
 			"strengths": ['Command', 'Relator', 'Fun', 'Cool', 'Nice'],
 			"description": "Teacher",
-			"email": "Teacher@teacher.com"
+			"email": "Teacher@teacher.com",
+			"userId": "asd34ai"
 		});
 	}
 	console.log(Student.findOne({
@@ -234,6 +236,5 @@ Meteor.startup(() => {
 	console.log(Instructor.findOne({
 		"name": "roger1"
 	}));
-*/
 	createDefaultUser();
 });

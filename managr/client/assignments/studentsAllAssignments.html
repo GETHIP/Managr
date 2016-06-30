@@ -5,7 +5,7 @@
   <!-- <div style="overflow-x:auto;"> -->
       <table class="allAssignmentTable">
           <tr>
-              <th class="tableHeadFormatStudent">Name</th>
+              <th class="tableHeadFormatStudent">Title</th>
               <th class="tableHeadFormatStudent">Date Assigned</th>
               <th class="tableHeadFormatStudent">Points Possible</th>
               <th class="tableHeadFormatStudent">Due Date</th>
@@ -15,7 +15,7 @@
           {{#each assignments}}
           <tr class="tableRowFormat">
               <td>
-                  <a style="text-decoration:none;color:#333333;" href="{{url}}">{{title}}</a>
+                  <a style="text-decoration:none;color:#333333;padding-left:6% !important;" class="tableDataFormatStudent" href="{{url}}">{{title}}</a>
               </td>
               <td class="tableDataFormatStudent">{{dateAssigned}}</td>
               <td class="tableDataFormatStudent">{{dueDate}}</td>

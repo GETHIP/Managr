@@ -40,9 +40,7 @@ blogsSection.route('/blogs/:blog_id', {
 assignmentSection.route("/", {
     name: "allAssignments",
     action() {
-        BlazeLayout.render(main,{
-            content: "studentsAllAssignments"
-        });
+        BlazeLayout.render(main, {content: "studentsAllAssignments"});
     }
 });
 assignmentSection.route("/all", {
