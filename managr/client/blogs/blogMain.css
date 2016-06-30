@@ -2,12 +2,11 @@ input[name="name"] {
  width: 95%;
 }
 #postsHeader{
-   padding-left: 21%;
+  padding-top: 1%;
+  padding-left: 21%;
 }
 body{
-
     margin-left: 21%;
-
 }
 #blogSection{
   padding-top: 53px;
