@@ -25,6 +25,50 @@ body {
 #assignmentTextFormat {
     padding: 10px 0px 10px 0px;
 }
+.summaryBoxContainer {
+
+  border-radius: 16px;
+  max-width: 100%;
+  min-height: 160px;
+  background: white;
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  margin: 50px;
+  margin-top: 1%;
+  margin-bottom: 2%;
+  padding-top: 1.5%;
+  /*padding-right: 15px;
+  padding-bottom: 10px;
+  padding-left: 15px;*/
+
+}
+.subSummaryContainerFirstTitle {
+  float: left;
+  font-size: 22px;
+  min-width: 50%;
+  max-width: 50%;
+  max-height: 50px;
+  text-align: center;
+}
+
+.subSummaryContainerFirst {
+  float: left;
+  font-size: 18px;
+  min-width: 50%;
+  max-width: 50%;
+  max-height: 50px;
+  text-align: center;
+  margin-bottom: .5%;
+}
+
+.subSummaryContainerSecond {
+  float: right;
+  font-size: 18px;
+  min-width: 50%;
+  max-width: 50%;
+  max-height: 50px;
+  text-align: center;
+  margin-bottom: .5%;
+}
 #assignmentFormFormat {
   margin-left: 5px;
   margin-top: 15px;
@@ -34,7 +78,7 @@ header {
   padding: 20px 15px 15px 15px;
   position: relative;
 }
-#title {
+.titleAssignment {
   font-family: arial, sans-serif;
   font-weight: normal;
   font-style: normal;
@@ -43,6 +87,20 @@ header {
   /*margin-top: 15px;*/
   margin-bottom: 0px;
   display: inline-block;
+  margin-top: 2%;
+  margin-left: 50px;
+}
+
+.allAssignmentTable {
+    border-collapse: collapse;
+    border: 1px dotted lightgrey;
+    max-width: 93%;
+    margin: 0 auto;
+    height: 4px;
+    min-width: 93%;
+    margin-top: 15px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 }
 
 .assignmentDescForm {
@@ -101,23 +159,7 @@ header {
 }
 .buttonStyle:focus {
   outline: none;
-}/*
-li {
-/*li {
-  position: relative;
-  list-style: none;
-  padding: 20px 15px;
-  border-bottom: #eee solid 1px;
 }
-li .text {
-  margin-left: 10px;
-}
-li.checked {
-  color: #888;
-}
-li.checked .text {
-  text-decoration: line-through;
-}*/
 .noIndent {
   padding:0 !important;
 }
@@ -140,3 +182,65 @@ li.checked .text {
 .assignmentForm::-webkit-inner-spin-button {
     display: none;
 }
+
+.viewAllTable {
+    border-collapse: collapse;
+    border: 1px dotted lightgrey;
+    max-width: 100em;
+    margin: 3em;
+    min-width: 93%;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+
+}
+.tableHeadFormat {
+  background-color: #fcb040;
+  padding: 2% 10% 2% 10%;
+  border-bottom: 1px solid #444444;
+  color: white;
+  width: 50%;
+  font-size: 18px;
+}
+
+.tableHeadFormatStudent {
+  background-color: #fcb040;
+  padding: 1% 5% 1% 5%;
+  border-bottom: 1px solid #444444;
+  color: white;
+  width: 16.67%;
+  font-size: 18px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.tableDataFormatStudent {
+  padding: 1% 5% 1% 5%;
+  color: black;
+  text-align: center;
+  border: 1px dotted lightgray;
+  width: 16.67%;
+}
+
+.tableDataFormat {
+  padding: 2% 10% 2% 10%;
+  color: black;
+  text-align: center;
+  border: 1px dotted lightgray;
+  width: 50%;
+}
+.tableRowFormat:hover {
+  background-color: #fef1de;
+}
+.tableRowFormat:nth-child(even) {
+  background-color: #eeeeee;
+}
+.tableRowFormat:nth-child(odd) {
+  background-color: white;
+}
+/*table tr:nth-child(even) {
+    background-color: #fff;
+}
+table tr:nth-child(odd) {
+   background-color:#eeeeee;
+}*/
