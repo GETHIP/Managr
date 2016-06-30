@@ -2,6 +2,7 @@ accounts-base@1.2.8
 accounts-password@1.1.11
 accounts-ui@1.1.9
 accounts-ui-unstyled@1.1.12
+alanning:roles@1.2.15
 aldeed:autoform@5.8.1
 aldeed:collection2@2.9.1
 aldeed:collection2-core@1.1.1
@@ -113,7 +114,8 @@ standard-minifier-css@1.0.7_1
 standard-minifier-js@1.0.7_1
 templating@1.1.12_1
 templating-tools@1.0.4
-tracker@1.0.14
+tomwasd:flow-router-autoscroll@0.0.2
+tracker@1.0.13
 twbs:bootstrap@3.3.6
 ui@1.0.11
 underscore@1.0.9

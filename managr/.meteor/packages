@@ -31,3 +31,6 @@ meteortoys:allthings
 twbs:bootstrap
 flynn:upload-server
 mcrider:bootstrap-wysiwyg
+momentjs:moment
+alanning:roles
+tomwasd:flow-router-autoscroll
