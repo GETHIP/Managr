@@ -123,6 +123,7 @@ Meteor.startup(() => {
 		Roles.addUsersToRoles(adminId, 'instructor');
 		Roles.addUsersToRoles(jimId, 'instructor');
 		Roles.addUsersToRoles(studentId, 'student');
+	},
 	'createDefaultUser': function() {
 		createDefaultUser();
 	}
