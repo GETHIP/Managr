@@ -16,7 +16,14 @@ Template.sideNav.helpers({
     var i = 0;
     for (i = 0; i < posts.length; i++) {
       var dateString = moment(posts[i].date).format("MMMM YYYY");
-      if (!archives.includes(dateString)) {
+      //console.log(archives.includes(dateString));
+      //console.log(archives);
+      var pulledDates = [];
+      for (var i = 0; i < archives.length; i++) {
+        pulledDates.push(archives[i].date);
+      //  console.log(archives[i].daye)
+      }
+      if (pulledDates.includes(dateString) == false) {
         archives.push({
           date: dateString,
           url: moment(posts[i].date).format("YYYY/MMMM")
