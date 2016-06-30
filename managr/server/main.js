@@ -3,6 +3,28 @@ import { Meteor } from 'meteor/meteor';
 import { Posts } from '../collections/blogPosts.js';
 import { Comments } from '../collections/comments.js';
 import { Assignments } from '../collections/assignments.js';
+import { Instructor } from '../collections/instructor.js';
+
+function createDefaultUser() {
+	var users = Meteor.users.find({username: "admin"}).fetch();
+	if (users.length > 0) {
+		return;
+	}
+
+	var adminId = Accounts.createUser({
+		username: "admin",
+		password: "Gallup2016",
+	});
+	Roles.addUsersToRoles(adminId, ['instructor']);
+	Instructor.insert({
+		name: "admin",
+		profilePicture: "none",
+		strengths: ["Achiever", "Activator", "Analytical", "Arranger", "Competition"],
+		description: "Admin. I validate other users.",
+		email: "none",
+		userId: adminId
+	});
+}
 
 // Publishes Assignments collection so templates can subscribe to recieve collection data
 Meteor.startup(() => {
@@ -101,6 +123,8 @@ Meteor.startup(() => {
 		Roles.addUsersToRoles(adminId, 'instructor');
 		Roles.addUsersToRoles(jimId, 'instructor');
 		Roles.addUsersToRoles(studentId, 'student');
+	'createDefaultUser': function() {
+		createDefaultUser();
 	}
   });
     Meteor.publish('Assignments', function() {
@@ -124,6 +148,7 @@ Meteor.startup(() => {
 			return true;
 		}
 	});
+/*
 	Student.remove({});
 	Instructor.remove({});
 	for (var i = Student.find().count(); i < 5; i++) {
@@ -184,5 +209,6 @@ Meteor.startup(() => {
 	console.log(Instructor.findOne({
 		"name": "roger1"
 	}));
-
+*/
+	createDefaultUser();
 });

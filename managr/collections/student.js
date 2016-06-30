@@ -119,6 +119,10 @@ var StudentSchema = new SimpleSchema({
     ep10: {
         type: [String],
         label: "EP10"
-    }
+    },
+	userId: {
+		type: String,
+		label: 'userId'
+	}
 });
 Student.attachSchema(StudentSchema);

@@ -1,28 +1,31 @@
 <template name="studentsAllAssignments">
-  <h1 id="title">Assignments</h1>
+  <h1 class="titleAssignment">Assignments Overview</h1>
   <div class="orange-bar"> &nbsp;</div>
-  <div style="overflow-x:auto;">
-      <table id="tableTitle">
+  {{>SummaryBox}}
+  <!-- <div style="overflow-x:auto;"> -->
+      <table class="allAssignmentTable">
           <tr>
-              <th>Name</th>
-              <th>Date Assigned</th>
-              <th>Due Date</th>
-              <th>Points Possible</th>
-              <th>Points Received</th>
-              <th>Instructor</th>
+              <th class="tableHeadFormatStudent">Name</th>
+              <th class="tableHeadFormatStudent">Date Assigned</th>
+              <th class="tableHeadFormatStudent">Points Possible</th>
+              <th class="tableHeadFormatStudent">Due Date</th>
+              <th class="tableHeadFormatStudent">Points Received</th>
+              <th class="tableHeadFormatStudent">Instructor</th>
           </tr>
           {{#each assignments}}
-          <tr>
+          <tr class="tableRowFormat">
               <td>
                   <a style="text-decoration:none;color:#333333;" href="{{url}}">{{title}}</a>
               </td>
-              <td>{{dateAssigned}}</td>
-              <td>{{dueDate}}</td>
-              <td>{{pointsPossible}}</td>
-              <td>Not Graded</td>
-              <td>{{assigner}}</td>
+              <td class="tableDataFormatStudent">{{dateAssigned}}</td>
+              <td class="tableDataFormatStudent">{{dueDate}}</td>
+              <td class="tableDataFormatStudent">{{pointsPossible}}</td>
+              <td class="tableDataFormatStudent">Not Graded</td>
+              <td class="tableDataFormatStudent">{{assigner}}</td>
           </tr>
+
           {{/each}}
+
       </table>
-  </div>
+  <!-- </div> -->
 </template>

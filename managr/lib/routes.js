@@ -1,9 +1,19 @@
-var main, assignmentSection;
-main = "main";
+var main = "mainPage"
+
+// Used by all URLs beginning with /assignments
+var assignmentSection = FlowRouter.group({
+    prefix: "/assignments"
+});
 FlowRouter.route('/', {
 	name: 'home',
 	action() {
 		BlazeLayout.render(main, {content: 'blogMain'});
+	}
+});
+FlowRouter.route('/login', {
+	name: 'home',
+	action() {
+		BlazeLayout.render(main, {navigationBar: 'topNav', content: 'blogMain'});
 	}
 });
 
@@ -13,9 +23,7 @@ FlowRouter.route('/blogs/:blog_id', {
 		BlazeLayout.render(main, {content: 'postPage'})
 	}
 });
-assignmentSection = FlowRouter.group({
-    prefix: "/assignments"
-});
+
 assignmentSection.route("/", {
     name: "allAssignments",
     action() {
@@ -82,8 +90,9 @@ FlowRouter.route("/attendance/edit/:id", {
 
 FlowRouter.route("/profiles", {
     action: function(params, queryParams) {
-        BlazeLayout.render('ProfilesTable');
-    }
+        // BlazeLayout.render('ProfilesTable');
+				BlazeLayout.render(main, {content: 'ProfilesTable'});
+			}
 })
 
 FlowRouter.route('/blogs/:year/:month', {
