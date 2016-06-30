@@ -502,11 +502,21 @@ Template.attendanceUpdate.helpers({
 Template.navbar.helpers({
 		assignments: function(){
 				let userId = FlowRouter.getParam("id");
-				return assignments = "/assignments/" + userId;
+				if (userId == null || userId == undefined || userId == "") {
+					return assignments = "/assignments/";
+				}
+				else {
+					return assignments = "/assignments/" + userId;
+				}
 		},
 		profile: function(){
 			let userId = FlowRouter.getParam("id");
-			return assignments = "/profile/" + userId;
+			if (userId == null || userId == undefined || userId == "") {
+				return assignments = "/profiles/";
+			}
+			else {
+				return assignments = "/profiles/" + userId;
+			}
 		}
 });
 
@@ -672,9 +682,10 @@ Template.newAssignment.events({
   'submit .submitbtn'(event){
     event.preventDefault();
     const form = event.target;
+		console.log(document.getElementById("editor"));
     Assignments.insert({
       title: form.name.value,
-      description: form.description.value,
+      description: document.getElementById("editor").innerHTML,
       dueDate: form.dateDue.value,
       assigner: "Zach Merrill",
       dateAssigned: new Date(),
@@ -707,4 +718,3 @@ console.log(d1 + " < " + d2 + " = " + (d1 < d2));
 console.log(d1 + " < " + d3 + " = " + (d1 < d3));
 console.log(d2 + " < " + d3 + " = " + (d2 < d3));
 */
-
