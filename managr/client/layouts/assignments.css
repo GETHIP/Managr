@@ -19,7 +19,7 @@ body {
   margin-bottom: 15px;
   padding-top: 2px;
   padding-right: 15px;
-  padding-bottom: 10px;
+  padding-bottom: 25px;
   padding-left: 15px;
 }
 #assignmentTextFormat {
@@ -93,6 +93,7 @@ header {
 
 .allAssignmentTable {
     border-collapse: collapse;
+    font-size: 14px;
     border: 1px dotted lightgrey;
     max-width: 93%;
     margin: 0 auto;
@@ -131,18 +132,20 @@ header {
   margin-top: 15px;
   margin-bottom: 25px;
 }
-.buttonStyle {
+#buttonStyle {
   background-color: #fcb040;
   border: none;
   color: white;
   padding: 16px 32px;
   text-decoration: none;
-  width: 100%;
+  width: 95%;
   cursor: pointer;
   text-align: center;
   font-size: 18px;
   border-radius: 6px;
   margin: 0 auto;
+  margin-left: 35px;
+  margin-right: 35px;
 }
 .buttonDiv {
   width:100%;
@@ -205,7 +208,7 @@ header {
 
 .tableHeadFormatStudent {
   background-color: #fcb040;
-  padding: 1% 5% 1% 5%;
+  padding: 1.5% 0% 1.5% 0%;
   border-bottom: 1px solid #444444;
   color: white;
   width: 16.67%;
@@ -217,8 +220,7 @@ header {
 .tableDataFormatStudent {
   padding: 1% 5% 1% 5%;
   color: black;
-  text-align: center;
-  border: 1px dotted lightgray;
+  text-align: center !important;
   width: 16.67%;
 }
 
@@ -228,6 +230,10 @@ header {
   text-align: center;
   border: 1px dotted lightgray;
   width: 50%;
+}
+.tableRowFormat {
+  text-align: center;
+  font-size: 16px;
 }
 .tableRowFormat:hover {
   background-color: #fef1de;
