@@ -31,3 +31,6 @@ meteortoys:allthings
 twbs:bootstrap
 flynn:upload-server
 mcrider:bootstrap-wysiwyg
+easy:search
+harrison:papa-parse
+pfafman:filesaver

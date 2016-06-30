@@ -82,7 +82,12 @@ FlowRouter.route("/attendance/edit/:id", {
 
 FlowRouter.route("/profiles", {
     action: function(params, queryParams) {
-        // BlazeLayout.render('ProfilesTable');
 				BlazeLayout.render(main, {content: 'ProfilesTable'});
-			\}
+			}
+});
+
+FlowRouter.route("/reports", {
+    action: function(params, queryParams){
+        BlazeLayout.render("Profile", {body: "reports"});
+    }
 })
