@@ -27,7 +27,7 @@ body {
 }
 .summaryBoxContainer {
 
-  border-radius: 16px;
+  /*border-radius: 16px;*/
   max-width: 100%;
   min-height: 160px;
   background: white;
@@ -216,7 +216,10 @@ header {
   margin: 0 auto;
   text-align: center;
 }
-
+::-webkit-calendar-picker-indicator {
+  color:rgba(0,0,0,0);
+  background:url(http://strictthemes.com/wp-content/plugins/stkit/assets/images/icons/16/glyphs/gray/calendar.png);
+}
 .tableDataFormatStudent {
   padding: 1% 5% 1% 5%;
   color: black;
@@ -234,15 +237,22 @@ header {
 .tableRowFormat {
   text-align: center;
   font-size: 16px;
+  background:#00FF00;
 }
 .tableRowFormat:hover {
-  background-color: #fef1de;
+  /*color:#00ff00;*/
 }
 .tableRowFormat:nth-child(even) {
-  background-color: #eeeeee;
+  background-color: #EEEEEE;
 }
 .tableRowFormat:nth-child(odd) {
   background-color: white;
+}
+.tableRowFormat:nth-child(even):hover {
+  background-color:#ffe1b5;
+}
+.tableRowFormat:nth-child(odd):hover {
+  background-color:#ffe1b5;
 }
 /*table tr:nth-child(even) {
     background-color: #fff;
