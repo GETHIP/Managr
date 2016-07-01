@@ -249,10 +249,10 @@ header {
   background-color: white;
 }
 .tableRowFormat:nth-child(even):hover {
-  background-color:#ffe1b5;
+  background-color:#FEF1DE;
 }
 .tableRowFormat:nth-child(odd):hover {
-  background-color:#ffe1b5;
+  background-color:#FEF1DE;
 }
 /*table tr:nth-child(even) {
     background-color: #fff;
