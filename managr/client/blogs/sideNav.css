@@ -48,11 +48,59 @@ li {
 #sideNav {
     background-color: #333333;
     color: white;
-    width: 20%;
+    width: 200px;
     height: 100%;
     display: block;
     position: fixed;
-  	left: 0px;
     margin-top: 53px;
     box-shadow: 3px 3px 5px #888888;
+  	top: 0;
+  	left: 0;
+}
+#createPostButton{
+  background-color: #61c250;
+  color: white;
+  cursor: pointer;
+  display: block;
+  text-decoration: none;
+  width: 45%;
+  margin-top: 10px;
+  font-size: 12px;
+    float: left;
+    margin-left: 3%;
+    text-align: center;
+
+}
+#createPostButton:hover{
+    color: white;
+    background-color: #61d250;
+    text-decoration: none;
+}
+#createPostButton:focus{
+outline: none;
+}
+#editPostButton:focus{
+outline: none;
+}
+#editPostButton{
+  background-color: #61c250;
+  color: white;
+  text-align: center;
+  cursor: pointer;
+  display: block;
+  text-decoration: none;
+  width: 45%;
+  margin-top: 10px;
+  font-size: 12px;
+  margin-right: 3%;
+  float:right;
+}
+#editPostButton:hover{
+    color: white;
+    background-color: #61d250;
+    text-decoration: none;
+}
+#buttonArea{
+  background-color:#333333;
+  padding-bottom: 10px;
 }

@@ -44,5 +44,8 @@ Template.sideNav.helpers({
 
 Template.sideNav.events({
   //For click events on side navbar
-
+  'click #createPostButton' : function(event, template){
+    event.preventDefault();
+    FlowRouter.go('/createPost');
+  }
 });
