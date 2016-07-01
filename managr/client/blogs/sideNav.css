@@ -57,6 +57,31 @@ li {
   	top: 0;
   	left: 0;
 }
+
+#editPostButton:focus{
+outline: none;
+}
+#editPostButton{
+  background-color: #61c250;
+  color: white;
+  cursor: pointer;
+  display: block;
+  text-decoration: none;
+  width: 45%;
+  margin-top: 10px;
+  font-size: 12px;
+  margin-right: 3%;
+  float:right;
+  text-align: center;
+}
+#editPostButton:hover{
+    color: white;
+    background-color: #61d250;
+    text-decoration: none;
+}
+#createPostButton:focus{
+outline: none;
+}
 #createPostButton{
   background-color: #61c250;
   color: white;
@@ -66,36 +91,15 @@ li {
   width: 45%;
   margin-top: 10px;
   font-size: 12px;
-    float: left;
-    margin-left: 3%;
-    text-align: center;
+  margin-left: 3%;
+  float:left;
+  text-align: center;
+  padding: 0px;
+  padding-top: 6px;
+  padding-bottom: 6px;
 
 }
 #createPostButton:hover{
-    color: white;
-    background-color: #61d250;
-    text-decoration: none;
-}
-#createPostButton:focus{
-outline: none;
-}
-#editPostButton:focus{
-outline: none;
-}
-#editPostButton{
-  background-color: #61c250;
-  color: white;
-  text-align: center;
-  cursor: pointer;
-  display: block;
-  text-decoration: none;
-  width: 45%;
-  margin-top: 10px;
-  font-size: 12px;
-  margin-right: 3%;
-  float:right;
-}
-#editPostButton:hover{
     color: white;
     background-color: #61d250;
     text-decoration: none;

@@ -1,8 +1,7 @@
-#bodyContent {
+.bodyContent {
     background-color: #f3f3f3;
     position: relative;
-    margin-left: 22.5%;
-    width: 77%;
+    margin-left: 250px;
     height: auto;
    padding-top: 6%;
    padding-right: 1%;
