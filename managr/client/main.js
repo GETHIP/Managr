@@ -11,9 +11,9 @@ Template.writeComment.onCreated(function(){
 
 })
 
-Template.comment.onCreated(function(){
+/*Template.comment.onCreated(function(){
   Meteor.subscribe('Comments');
-});
+});*/
 
 Template.post.events({
 
