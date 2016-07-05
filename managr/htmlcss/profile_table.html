@@ -1,0 +1,49 @@
+<template name="ProfilesTable">
+	<head>
+        <title>Profiles</title>
+        <link type="text/css" rel="stylesheet" href="./navbar.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="profile_index.css">
+        <link rel="stylesheet" href="profile_table.css">
+    </head>
+    <body>
+		{{> navbar}}
+		<div class="searchBar">
+		{{> EasySearch.Input index=studentIndex atttributes=searchBarProfile}}
+	</div>
+		<ul>
+		<div class="container-fluid">
+			<table class="table table-bordered table-striped table-hover" style="margin-top:10em;">
+				<thead style="background-color:#0397d7; color:white;">
+					<!--table content should correspond -->
+					<tr>
+						<th>Name</th>
+						<th>School</th>
+						<th>Grade</th>
+						<th>Email</th>
+						<th>Parents Names:</th>
+						<th>GET HIP Year</th>
+						<th>Attendance</th>
+					</tr>
+				</thead>
+				<tbody>
+					{{#EasySearch.Each index=studentIndex}}
+		              <tr>
+		              <th><a href={{url}}>{{name}}</a></th>
+		    					<th>{{school}}</th>
+		    					<th>{{grade}}</th>
+		    					<th>{{email}}</th>
+									<th>{{parentNames}}</th>
+		    					<th>{{getHipYear}}</th>
+		    					<th>{{attendance}}</th>
+		              </tr>
+					{{/EasySearch.Each}}
+				</tbody>
+			</table>
+		</div>
+	</ul>
+	</body>
+</template>

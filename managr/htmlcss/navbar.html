@@ -1,0 +1,17 @@
+<template name="navbar">
+    <!--My Beautiful Navbar -->
+     <nav class="navbar navbar-inverse navbar-fixed-top" style="border-radius:0px;">
+  <!--div class="container-fluid"-->
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">GET HIP Managr</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      {{#with assignments}}
+      <li><a href={{assignments}}>Assignments</a></li>
+      <li><a href={{profile}}>My Profile</a></li>
+      {{/with}}
+    </ul>
+  <!--/div-->
+</nav>
+</template>

@@ -48,6 +48,10 @@ li {
 #sideNav {
     background-color: #333333;
     color: white;
+    /*width: 20%;
+    height: 110%;
+  	position: absolute;
+  	left: 0px;*/
     width: 200px;
     height: 100%;
     display: block;
