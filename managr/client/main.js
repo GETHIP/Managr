@@ -499,6 +499,12 @@ Template.attendanceUpdate.helpers({
 	}
 });
 
+Template.main.helpers({
+	renderNavbar:function() {
+		return (FlowRouter.current().path == "/login") || (Meteor.user() != null);
+	}
+})
+
 Template.navbar.helpers({
 		assignments: function(){
 				let userId = FlowRouter.getParam("id");

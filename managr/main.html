@@ -2,7 +2,9 @@
     <title>Managr</title>
 </head>
 <template name="main">
-    {{> topNav}}
+    {{#if renderNavbar}}
+      {{> topNav}}
+    {{/if}}
     <div style="margin-top:50px;">
         {{>Template.dynamic template=content}}
     </div>
