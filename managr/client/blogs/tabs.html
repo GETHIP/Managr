@@ -1,17 +1,18 @@
 <template name="tabs">
 <div class="container">
-<ul class="nav nav-tabs richTextEditorTabs">
+<ul class="theTabs">
 
   {{#if useWYSIWYG}}
-    <li class="activewysiwyg"><a>WYSIWYG</a></li>
-    <li class="html"><a>HTML</a></li>
-<p> what you see</p>
+    <li class="activewysiwyg"><a class="activeText">WYSIWYG</a></li>
+    <li class="html"><a class="passiveText">HTML</a></li>
 
+     {{> createField}}
   {{else}}
 
-    <li class="wysiwyg"><a>WYSIWYG</a></li>
-    <li class="activehtml"><a>HTML</a></li>
-   <p> html</p>
+    <li class="wysiwyg"><a class="passiveText">WYSIWYG</a></li>
+    <li class="activehtml"><a class="activeText">HTML</a></li>
+  
+    {{> createHTMLField}}
   {{/if}}
 
 </ul>
