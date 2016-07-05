@@ -63,9 +63,6 @@ AssignmentSchema = new SimpleSchema({
     pointsPossible: {
         type: Number,
         label: "Points Possible",
-        autoValue: function() {
-            return 10;
-        },
         optional: false
     }
 });
