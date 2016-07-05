@@ -1,20 +1,36 @@
+
 .postButton{
   background-color: #61c250;
   border: none;
   color: white;
+  padding: 15px 32px;
   text-align: center;
    text-decoration: none;
    font-size: 16px;
-   margin: 2px 1px;
+   margin: 4px 2px;
    cursor: pointer;
-   width: 100px;
+   width: 100%;
    border-radius: 5px;
-   margin-left: 5%;
-}
-
-.postCreate{
-  margin-top: 80px;
 }
 .postButton:focus{
 outline: none;
+}
+.postButton:hover{
+  color: white;
+  background-color: #61d250;
+}
+ .postCreate{
+  padding-top: 80px;
+  background-color: #f3f3f3;
+}
+
+.postCreateBody {
+  box-shadow: 3px 3px 5px #888888;
+  background-color: white;
+  padding-top:1px;
+  padding-right: 10px;
+  padding-bottom: 12px;
+  padding-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
 }
