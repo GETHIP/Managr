@@ -1,0 +1,262 @@
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+body {
+  font-family: sans-serif;
+  font-size: 16px;
+  background: #f3f3f3;
+}
+.assignmentContainer {
+  max-width: 95%;
+  min-height: 100%;
+  background: white;
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  /*margin: 50px;*/
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding-top: 2px;
+  padding-right: 15px;
+  padding-bottom: 25px;
+  padding-left: 15px;
+}
+#assignmentTextFormat {
+    padding: 10px 0px 10px 0px;
+}
+.summaryBoxContainer {
+
+  /*border-radius: 16px;*/
+  max-width: 100%;
+  min-height: 160px;
+  background: white;
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  margin: 50px;
+  margin-top: 1%;
+  margin-bottom: 2%;
+  padding-top: 1.5%;
+  /*padding-right: 15px;
+  padding-bottom: 10px;
+  padding-left: 15px;*/
+
+}
+.subSummaryContainerFirstTitle {
+  float: left;
+  font-size: 22px;
+  min-width: 50%;
+  max-width: 50%;
+  max-height: 50px;
+  text-align: center;
+}
+
+.subSummaryContainerFirst {
+  float: left;
+  font-size: 18px;
+  min-width: 50%;
+  max-width: 50%;
+  max-height: 50px;
+  text-align: center;
+  margin-bottom: .5%;
+}
+
+.subSummaryContainerSecond {
+  float: right;
+  font-size: 18px;
+  min-width: 50%;
+  max-width: 50%;
+  max-height: 50px;
+  text-align: center;
+  margin-bottom: .5%;
+}
+#assignmentFormFormat {
+  margin-left: 5px;
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+header {
+  padding: 20px 15px 15px 15px;
+  position: relative;
+}
+.titleAssignment {
+  font-family: arial, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 40px;
+  /*margin: 55px;*/
+  /*margin-top: 15px;*/
+  margin-bottom: 0px;
+  display: inline-block;
+  margin-top: 2%;
+  margin-left: 50px;
+}
+
+.allAssignmentTable {
+    border-collapse: collapse;
+    font-size: 14px;
+    border: 1px dotted lightgrey;
+    max-width: 93%;
+    margin: 0 auto;
+    height: 4px;
+    min-width: 93%;
+    margin-top: 15px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+
+.assignmentDescForm {
+    border-radius: 6px;
+    border: 2px solid lightgrey;
+    width: 100%;
+    height: 120px;
+    padding: 8px 10px;
+    margin: 0px;
+    max-width: 100%;
+    max-height: 120px;
+    box-sizing: border-box;
+    font-family: arial, sans-serif;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 14px;
+}
+.assignmentDescForm:focus {
+  outline: none;
+  border-radius: 6px;
+  border: 2px solid orange;
+}
+.orange-bar {
+  max-width: 95%;
+  margin: 0 auto;
+  max-height: 4px;
+  background: orange;
+  margin-top: 15px;
+  margin-bottom: 25px;
+}
+#buttonStyle {
+  background-color: #fcb040;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-decoration: none;
+  width: 95%;
+  cursor: pointer;
+  text-align: center;
+  font-size: 18px;
+  border-radius: 6px;
+  margin: 0 auto;
+  margin-left: 35px;
+  margin-right: 35px;
+}
+.buttonDiv {
+  width:100%;
+  font-size: 20px;
+  margin-bottom: 15px;
+  padding-top: 2px;
+  padding-right: 15px;
+  padding-bottom: 10px;
+  padding-left: 15px;
+}
+.buttonStyle:hover {
+  outline: none;
+  background-color: #FF9C0A;
+}
+.buttonStyle:focus {
+  outline: none;
+}
+.noIndent {
+  padding:0 !important;
+}
+.assignmentForm {
+    border-radius: 6px !important;
+    border: 2px solid lightgrey !important;
+    width: 100% !important;
+    padding: 1em 1em !important;
+    margin: 0px !important;
+    box-sizing: border-box !important;
+    box-shadow: white !important;
+}
+.assignmentForm:focus {
+  outline: none !important;
+  border-radius: 6px !important;
+  border-color: white !important;
+  box-shadow: white !important;
+  border: 2px solid orange !important;
+}
+.assignmentForm::-webkit-inner-spin-button {
+    display: none;
+}
+
+.viewAllTable {
+    border-collapse: collapse;
+    border: 1px dotted lightgrey;
+    max-width: 100em;
+    margin: 3em;
+    min-width: 93%;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+
+}
+.tableHeadFormat {
+  background-color: #fcb040;
+  padding: 2% 10% 2% 10%;
+  border-bottom: 1px solid #444444;
+  color: white;
+  width: 50%;
+  font-size: 18px;
+}
+
+.tableHeadFormatStudent {
+  background-color: #fcb040;
+  padding: 1.5% 0% 1.5% 0%;
+  border-bottom: 1px solid #444444;
+  color: white;
+  width: 16.67%;
+  font-size: 18px;
+  margin: 0 auto;
+  text-align: center;
+}
+::-webkit-calendar-picker-indicator {
+  color:rgba(0,0,0,0);
+  background:url(http://strictthemes.com/wp-content/plugins/stkit/assets/images/icons/16/glyphs/gray/calendar.png);
+}
+.tableDataFormatStudent {
+  padding: 1% 5% 1% 5%;
+  color: black;
+  text-align: center !important;
+  width: 16.67%;
+}
+
+.tableDataFormat {
+  padding: 2% 10% 2% 10%;
+  color: black;
+  text-align: center;
+  border: 1px dotted lightgray;
+  width: 50%;
+}
+.tableRowFormat {
+  text-align: center;
+  font-size: 16px;
+  background:#00FF00;
+}
+.tableRowFormat:hover {
+  /*color:#00ff00;*/
+}
+.tableRowFormat:nth-child(even) {
+  background-color: #EEEEEE;
+}
+.tableRowFormat:nth-child(odd) {
+  background-color: white;
+}
+.tableRowFormat:nth-child(even):hover {
+  background-color:#FEF1DE;
+}
+.tableRowFormat:nth-child(odd):hover {
+  background-color:#FEF1DE;
+}
+/*table tr:nth-child(even) {
+    background-color: #fff;
+}
+table tr:nth-child(odd) {
+   background-color:#eeeeee;
+}*/

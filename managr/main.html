@@ -1,3 +1,12 @@
 <head>
-  <title>Managr</title>
+    <title>Managr</title>
 </head>
+<template name="main">
+    {{#if renderNavbar}}
+      {{> topNav}}
+    {{/if}}
+    <div style="margin-top:50px;">
+        {{>Template.dynamic template=content}}
+    </div>
+
+</template>
