@@ -1,16 +1,14 @@
-.commentDisplay{
-  box-shadow: 3px 3px 5px #888888;
-  margin-right: 10px;
-  background-color: #D7D5D6;
-  padding-top:1px;
-  padding-right: 12px;
-  padding-bottom: 12px;
-  padding-left: 12px;
-  font-size: 15px;
+.commentDisplay {
+    box-shadow: 3px 3px 5px #888888;
+    margin-right: 10px;
+    background-color: #D7D5D6;
+    padding-top: 1px;
+    padding-right: 12px;
+    padding-bottom: 12px;
+    padding-left: 12px;
+    font-size: 15px;
 }
-.commentTitle{
-  padding-left: 5px;
+.commentTitle {
+    padding-left: 5px;
 }
-.commentBox{
-
-}
+.commentBox {}

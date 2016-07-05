@@ -1,12 +1,17 @@
 <template name="blogContent">
 
-  <!--if user is logged in** -->
-  <ul class="allPosts">
-	  {{#each allPosts }}
-	   <li> <a href="/blogs/{{_id}}" style="text-decoration:none">{{> post}}</a></li>
-	  {{/each}}
-  </ul>
+  <div class="search">
+    {{> searchBox}}
+  </div>
 
+
+  <!--if user is logged in** -->
+<!--  <ul class="allPosts">
+    {{#each allPosts }}
+     <li> <a href="/blogs/{{_id}}" style="text-decoration:none">{{> post}}</a></li>
+    {{/each}}
+  </ul>
+-->
 <!-- else if user is not logged in-->
 <!--
 
@@ -18,4 +23,16 @@
 
   -->
 
+</template>
+
+
+<template name="searchBox">
+  <div class="searchBar">
+    {{> EasySearch.Input index=postsIndex placeholder="Search..."}}
+  </div>
+    <ul class="searchEngine">
+        {{#EasySearch.Each index=postsIndex }}
+            <li> <a href="/blogs/{{_id}}" style="text-decoration:none">{{> post}}</a></li>
+        {{/EasySearch.Each}}
+    </ul>
 </template>

@@ -1,14 +1,23 @@
 input[name="name"] {
- width: 95%;
+    width: 95%;
 }
-#postsHeader{
-   margin-left: 250px;
+#postsHeader {
+    margin-top: 10px;
+    margin-left: 250px;
 }
-body{
+body {
     background-color: #f3f3f3;
     margin-left: 250px;
-
 }
-#blogSection{
-  padding-top: 53px;
+#blogSection {
+    padding-top: 53px;
+}
+
+@media (max-width: 450px) {
+  body{
+    margin-left: 0px;
+  }
+  #postsHeader{
+    margin-left: 0px;
+  }
 }

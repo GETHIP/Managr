@@ -1,8 +1,8 @@
-#welcome{
- font-size:35px;
- font-family: Helvetica;
+#welcome {
+    font-size: 35px;
+    font-family: Helvetica;
 }
-#line{
+#line {
     width: 99%;
     height: 3px;
     background-color: #61c250;

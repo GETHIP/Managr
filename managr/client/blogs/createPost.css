@@ -1,11 +1,10 @@
 .mainCreate {
-	background-color: #ffffff;
-  margin-top: 80px;
-	margin-left: 30%;
-  width: 100px;
-	height: 50px;
+    background-color: #ffffff;
+    margin-top: 80px;
+    margin-left: 30%;
+    width: 100px;
+    height: 50px;
 }
-
-#createPostBody{
-	background-color: #fff;
+#createPostBody {
+    background-color: #fff;
 }
