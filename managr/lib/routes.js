@@ -36,6 +36,12 @@ blogsSection.route('/blogs/:blog_id', {
 		BlazeLayout.render(main, {content: 'postPage'})
 	}
 });
+blogsSection.route('/testBlogs', {
+	name: 'testBlogs',
+	action: function() {
+		BlazeLayout.render('testInsertData');
+	}
+})
 
 assignmentSection.route("/", {
     name: "allAssignments",
