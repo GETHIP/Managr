@@ -1,22 +1,29 @@
 <template name="SummaryBox">
-	<div class="summaryBoxContainer">
-    <div class ="subSummaryContainerFirst">
-      <p><b> Assignments: </b></p>
-    </div>
-    <div class ="subSummaryContainerSecond">
-      <p> Total Points Earned: 50{{totalPointsEarned}}  </p>
-    </div>
-    <div class ="subSummaryContainerFirst">
-      <p>  Complete: 10{{completedAssignments}} </p>
-    </div>
-    <div class ="subSummaryContainerSecond">
-      <p> Total Points Possible: 60{{totalPointsPossible}}</p>
-    </div>
-    <div class ="subSummaryContainerFirst">
-      <p> Incomplete: 2{{incompletedAssignments}} </p>
-    </div>
-    <div class ="subSummaryContainerSecond">
-      <p> Overall Grade: 83.33%{{grade}}  </p>
-    </div>
-	</div>
+	<div class="summaryDiv">
+    <table class="summaryTable">
+      <tr style="box-shadow: 0 rgba(0, 0, 0, 0.0);">
+        <td class="sumSubTitle">
+        Assignments
+          <p class="sumSubData">
+          Complete: 10
+          <br> Incomplete: 2
+          </p>
+        </td>
+        <td class="sumSubMargin"></td>
+        <td class="sumSubTitle">
+          Points
+          <p class="sumSubData">
+          Earned: 50
+          <br> Possible: 60
+          </p>
+        </td>
+        <td class="sumSubMargin"></td>
+        <td class="sumSubTitle">Grade
+        <p class="sumSubGrade">
+          83.33%
+        </p>
+      </td>
+      </tr>
+    </table>
+  </div>
 </template>
