@@ -38,7 +38,51 @@
 		    					<th>{{email}}</th>
 									<th>{{parentNames}}</th>
 		    					<th>{{getHipYear}}</th>
-		    					<th>{{attendance}}</th>
+		    					<th><table class="table table-bordered table-hover" style="table-layout:fixed; width:600px;">
+										<thead>
+											<tr>
+												<th>Week One</th>
+												<th>Week Two</th>
+												<th>Week Three</th>
+												<th>Week Four</th>
+												<th>Week Five</th>
+												<th>Week Six</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<th bgcolor={{attendance.[0]}}></th>
+												<th bgcolor={{attendance.[1]}}></th>
+												<th bgcolor={{attendance.[2]}}></th>
+												<th bgcolor={{attendance.[3]}}></th>
+												<th bgcolor={{attendance.[4]}}></th>
+												<th bgcolor={{attendance.[5]}}></th>
+											</tr>
+										</tbody>
+									</table>
+									<table class="table table-bordered table-hover" style="table-layout:fixed; width:600px;">
+										<thead>
+											<tr>
+												<th>Week Seven</th>
+												<th>Week Eight</th>
+												<th>Week Nine</th>
+												<th>Week Ten</th>
+												<th>Week Eleven</th>
+												<th>Week Twelve</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<th bgcolor={{attendance.[6]}}></th>
+												<th bgcolor={{attendance.[7]}}></th>
+												<th bgcolor={{attendance.[8]}}></th>
+												<th bgcolor={{attendance.[9]}}></th>
+												<th bgcolor={{attendance.[10]}}></th>
+												<th bgcolor={{attendance.[11]}}></th>
+											</tr>
+										</tbody>
+									</table>
+								</th>
 		              </tr>
 					{{/EasySearch.Each}}
 				</tbody>

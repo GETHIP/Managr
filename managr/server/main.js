@@ -15,14 +15,14 @@ Meteor.startup(() => {
 			transform: function (doc){
 				doc.url = "/profile/" + doc._id;
 				for(i in doc.attendance){
-						if(doc.attendance[i] === true){
-								doc.attendance[i] = "Present";
+						if(doc.attendance[i] == true){
+								doc.attendance[i] = "green";
 						}
-						if(doc.attendance[i] === false){
-								doc.attendance[i] = "Absent";
+						if(doc.attendance[i] == false){
+								doc.attendance[i] = "red";
 						}
 				}
-				doc.attendance = doc.attendance.join(" | ");
+        console.log(doc.attendance);
 				doc.parentNames = doc.parentNames.join(" and ");
 				return doc;
 			}
