@@ -1,14 +1,15 @@
 #bodyContent {
-    background-color: #f3f3f3;
-    position: relative;
-    margin-left: 22.5%;
-    width: 77%;
-    height: auto;
-   padding-top: 6%;
-   padding-right: 1%;
+  background-color: #f3f3f3;
+  position: relative;
+  margin-left: 240px;
+  margin-top: 60px;
+  width: 77%;
+  height: auto;
+  padding-top: 6%;
+  padding-right: 1%;
 }
 
-.commentSection{
+.commentSection {
   box-shadow: 3px 3px 5px #888888;
   background-color: white;
 }

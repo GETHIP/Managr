@@ -9,7 +9,16 @@
 
 
 	border-bottom-style: solid;
+}
 
+.blogsActive {
+	border-bottom-color: #61c250;
+}
+
+.assignmentsActive {
+	border-bottom-color: #fcb040;
+}
+
+.profilesActive {
 	border-bottom-color: #0397d7;
-    /* Change this hexcode to match the theme of your page */
 }
