@@ -1,4 +1,5 @@
 <template name="newAssignment">
+  <div class="marginContainer">
   <h1 class="titleAssignment">New Assignment</h1>
   <div class="orange-bar">&nbsp;</div>
   <form class="submitbtn" id="submitbtn">
@@ -15,8 +16,7 @@
       <p class="noIndent" id=assignmentFormFormat><b>Date Due:</b> {{dueDate}}</p>
       <input type="date" name="dateDue" class="assignmentForm">
     </div>
-    <div class="buttonDiv">
-      <input type="submit" value="Create Assignment" class="buttonStyle submitbtn" id="buttonStyle">
-    </div>
+      <input type="submit" value="Create Assignment" class="buttonStyle submitbtn">
   </form>
+</div>
 </template>
