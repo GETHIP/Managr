@@ -1,11 +1,17 @@
 .allPosts {
 	background-color: #f3f3f3;
-	margin-left: 210px;
-  margin-right: 30px;
+	margin-left: 250px;
+	margin-right: 30px;
 	height: auto;
 }
 
 .allPosts li {
     box-shadow: 3px 3px 5px #888888;
     margin-bottom: 8px;
+}
+
+a.invisibleLink,
+ a.invisibleLink:hover {
+	text-decoration: none;
+	color: black;
 }

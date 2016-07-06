@@ -1,10 +1,10 @@
 #bodyContent {
     background-color: #f3f3f3;
     position: relative;
-    margin-left: 22.5%;
+    margin-left: 240px;
+	margin-top: 60px;
     width: 77%;
     height: auto;
-   padding-top: 6%;
 }
 
 .commentSection{

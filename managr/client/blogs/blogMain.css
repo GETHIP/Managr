@@ -1,8 +1,6 @@
 
 body {
   background-color: #f3f3f3;
-
-
 }
 textarea {
   width: 95%;
@@ -13,13 +11,8 @@ input[name="name"] {
  width: 95%;
 }
 #postsHeader{
-   margin-left: 250px;
-}
-body{
-    background-color: #f3f3f3;
-    margin-left: 250px;
-
+   margin-left: 120px;
 }
 #blogSection{
-  padding-top: 53px;
+  padding-top: 24px;
 }

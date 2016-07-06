@@ -10,7 +10,6 @@
         <link rel="stylesheet" href="profile_table.css">
     </head>
     <body>
-		{{> navbar}}
 		<div class="searchBar">
 		{{> EasySearch.Input index=studentIndex atttributes=searchBarProfile}}
 	</div>
@@ -30,7 +29,17 @@
 					</tr>
 				</thead>
 				<tbody>
-					{{#EasySearch.Each index=studentIndex}}
+	                {{#each ProfilesTable}}
+	                    <tr>
+	              <td>{{name}}</td>
+	    					<td>{{school}}</td>
+	    					<td>{{grade}}</td>
+	    					<td>{{email}}</td>
+	    					<td>{{getHipYear}}</td>
+	    					<td>{{attendance}}</td>
+	                    </tr>
+	                {{/each}}
+		<!-- 			{{#EasySearch.Each index=studentIndex}}
 		              <tr>
 		              <th><a href={{url}}>{{name}}</a></th>
 		    					<th>{{school}}</th>
@@ -40,7 +49,7 @@
 		    					<th>{{getHipYear}}</th>
 		    					<th>{{attendance}}</th>
 		              </tr>
-					{{/EasySearch.Each}}
+					{{/EasySearch.Each}} -->
 				</tbody>
 			</table>
 		</div>
