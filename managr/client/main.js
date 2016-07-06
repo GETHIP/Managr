@@ -505,6 +505,7 @@ Template.main.helpers({
 	}
 })
 
+
 Template.navbar.helpers({
 		assignments: function(){
 				let userId = FlowRouter.getParam("id");
@@ -703,6 +704,7 @@ Template.newAssignment.events({
 // Gives user window scope over the Assignments collection
 window.Assignments = Assignments;
 
+
 /*
 Template.comment.onCreated(function(){
   Meteor.subscribe('Comments');
@@ -712,6 +714,7 @@ Template.comment.onCreated(function(){
 Template.createField.onCreated(function(){
   Meteor.subscribe('Posts');
 });
+
 
 Template.post.events({
 
