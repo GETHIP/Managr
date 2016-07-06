@@ -10,15 +10,18 @@ studentIndex = new EasySearch.Index({
 	engine: new EasySearch.Minimongo({
 		transform: function (doc){
 			doc.url = "/profile/" + doc._id;
+			doc.total = 0;
+			for(i=0;i<12;i++){
+				doc.total += doc.attendance[i];
+			}
 			for(i in doc.attendance){
-					if(doc.attendance[i] === true){
-							doc.attendance[i] = "Present";
+					if(doc.attendance[i] == true){
+							doc.attendance[i] = "green";
 					}
-					if(doc.attendance[i] === false){
-							doc.attendance[i] = "Absent";
+					if(doc.attendance[i] == false){
+							doc.attendance[i] = "red";
 					}
 			}
-			doc.attendance = doc.attendance.join(" | ");
 			doc.parentNames = doc.parentNames.join(" and ");
 			return doc;
 		}
@@ -204,15 +207,13 @@ Template.attendanceBody.helpers({
 	attendance: function() {
 		let userId = FlowRouter.getParam("id");
 		let attendance = [];
-		let rawAttendance = Student.findOne({
-			"_id": userId
-		}).attendance;
+		let rawAttendance = Student.findOne({"_id": userId}).attendance;
 		for(i in rawAttendance){
 				if(rawAttendance[i] === true){
-						attendance.push("True");
+						attendance.push("Present");
 				}
 				if(rawAttendance[i] === false){
-						attendance.push("False");
+						attendance.push("Absent");
 				}
 		}
 		return attendance;
@@ -240,7 +241,6 @@ Template.ProfilesTable.helpers({
 							currentValue.attendance[i] = "Absent";
 					}
 			}
-			currentValue.attendance = currentValue.attendance.join(" | ");
 			currentValue.parentNames = currentValue.parentNames.join(" and ");
 			ProfilesTable.push(currentValue);
 		});
@@ -262,11 +262,7 @@ Template.studentName.helpers({
 	studentName: function() {
 		let userId = FlowRouter.getParam("id");
 		let studentName = {};
-		studentName = Student.findOne({
-			"_id": userId
-		});
-
-		console.log(studentName);
+		studentName = Student.findOne({"_id": userId});
 		return studentName;
 	}
 });
@@ -445,6 +441,9 @@ Template.profileEdit.helpers({
 		let userId = FlowRouter.getParam("id");
 		let data = Student.findOne({"_id": userId});
 		return data;
+	},
+	specificFormData: function(){
+		return {id: FlowRouter.getParam("id")}
 	}
 });
 
@@ -463,18 +462,18 @@ Template.attendanceUpdate.events({
 		for (i = 1; i < 13; i++) {
 			let week = event.target["week" + i];
 			let weeks = week.value;
-			if (weeks === "True" || weeks === true) {
+			if (weeks === "Present" || weeks === true) {
 				data.push(true);
 			}
-			if (weeks === "False" || weeks === false) {
+			if (weeks === "Absent" || weeks === false) {
 				data.push(false);
 			}
 		}
-		console.log(data);
 		Student.update({_id: userId},{$set: {attendance: data}});
 		window.location = "/profile/" + FlowRouter.getParam("id");
 	}
 });
+
 var wordNumbers = ["zero", "one", "two", "three", "four", "five", "six",
 	"seven", "eight", "nine", "ten", "eleven", "twelve"];
 
@@ -492,7 +491,6 @@ Template.attendanceUpdate.helpers({
 				attendance[wordNumbers[i] + "two"] = "selected";
 			}
 		};
-		console.log(attendance);
 		return attendance;
 	}
 });

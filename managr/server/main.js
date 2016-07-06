@@ -29,30 +29,72 @@ function createDefaultUser() {
 // Publishes Assignments collection so templates can subscribe to recieve collection data
 Meteor.startup(() => {
   // code to run on server at startup
-  studentIndex = new EasySearch.Index({
-		name: "studentIndex",
-		collection: Student,
-    fields: ['name'],
-    engine: new EasySearch.Minimongo({
-			transform: function (doc){
-				doc.url = "/profile/" + doc._id;
-				for(i in doc.attendance){
-						if(doc.attendance[i] === true){
-								doc.attendance[i] = "Present";
-						}
-						if(doc.attendance[i] === false){
-								doc.attendance[i] = "Absent";
-						}
-				}
-				doc.attendance = doc.attendance.join(" | ");
-				doc.parentNames = doc.parentNames.join(" and ");
-				return doc;
+	const path = '/../../../../../public/images/';
+
+	UploadServer.init({
+			tmpDir: (process.env.PWD || process.cwd()) + path + 'tmp/',
+			uploadDir: (process.env.PWD || process.cwd()) + path,
+			checkCreateDirectories: true,
+			finished: function(fileInfo, formFields) {
+					console.log(fileInfo);
+					console.log(formFields);
+
+					var fs = Npm.require('fs');
+
+					var fileTypes = ['image/gif', 'image/jpg', 'image/jpeg', 'image/png', 'image/svg+xml'];
+					var fileExtensions= ['.gif', '.jpg', '.jpeg', '.png', '.svg'];
+
+					var extension;
+
+					for(var i in fileTypes) {
+							if(fileInfo.type === fileTypes[i]) {
+									extension = fileExtensions[i];
+									console.log(fileExtensions[i]);
+							}
+					}
+
+					Student.update({_id: formFields.id}, {$set: {picture: formFields.id + extension}});
+
+					fs.rename((process.env.PWD || process.cwd()) + path + fileInfo.name,
+							(process.env.PWD || process.cwd()) + path + formFields.id + extension,
+							function(stuff) {
+									console.log((process.env.PWD || process.cwd()) + path + fileInfo.name);
+									console.log((process.env.PWD || process.cwd()) + path + formFields.id + extension);
+									console.log('trying to rename file');
+									console.log(stuff);
+							});
+			},
+			acceptFileTypes: /(\.|\/)(gif|jpe?g|png|svg)$/i
+	});
+
+studentIndex = new EasySearch.Index({
+	name: "studentIndex",
+	collection: Student,
+	fields: ['name'],
+	engine: new EasySearch.Minimongo({
+		transform: function (doc){
+			doc.url = "/profile/" + doc._id;
+			doc.total = 0;
+			for(i=0;i<12;i++){
+				doc.total += doc.attendance[i];
 			}
-		}),
-		permission: function(){
-			return true;
+			for(i in doc.attendance){
+					if(doc.attendance[i] == true){
+							doc.attendance[i] = "green";
+					}
+					if(doc.attendance[i] == false){
+							doc.attendance[i] = "red";
+					}
+			}
+			console.log(doc.attendance);
+			doc.parentNames = doc.parentNames.join(" and ");
+			return doc;
 		}
-  });
+	}),
+	permission: function(){
+		return true;
+	}
+});
   Meteor.publish("Comments", function(){
     return Comments.find();
   });
@@ -178,12 +220,12 @@ Meteor.startup(() => {
 	Instructor.remove({});
 	for (var i = Student.find().count(); i < 5; i++) {
 		Student.insert({
-			"name": "ben" + i,
-			"profilePicture": "x",
-			"age": 5,
+			"name": "Dash Wedergren " + i,
+			"userId": "as879",
+			"age": 16,
 			"strengths": ['Input', 'Command', 'Restorative', 'Learner', 'Futuristic'],
-			"description": "tall",
-			"grade": '10th',
+			"description": "Programmer",
+			"grade": '10',
 			"attendance": [true, false, true, true, false, false, true, true, false,
 				true, true, false
 			],
@@ -202,8 +244,8 @@ Meteor.startup(() => {
 				pointsRecieved: 10,
 				instructor: "Zach"
 			}],
-			"school": "West Dodge",
-			"email": "ben@ben.com",
+			"school": "Mount Michael",
+			"email": "dash_wedergren@gallup.com",
 			"getHipYear": 2,
 			"phoneNumber": '4026571179',
 			"parentNames": ['Bill', 'Hillary'],
@@ -217,24 +259,24 @@ Meteor.startup(() => {
 			"blog": "http://blogger.com",
 			"tshirtSize": "Small",
       "ep10": ["Responsibility", "Profitability", "Communication", "Strategic"],
-			"userId": "asdof889a"
+      "picture": '8710339dcb6814d0d9d2290ef422285c9322b7163951f9a0ca8f883d3305286f44139aa374848e4174f5aada663027e4548637b6d19894aec4fb6c46a139fbf9.jpg'
 		});
 	}
 	for (var i = Instructor.find().count(); i < 5; i++) {
 		Instructor.insert({
-			"name": "roger" + i,
-			"profilePicture": "x",
-			"strengths": ['Command', 'Relator', 'Fun', 'Cool', 'Nice'],
+			"name": "Zach Merrill " + i,
+			"userId": "ad89",
+			"strengths": ['Command', 'Relator', 'Analytical', 'Learner', 'Responsibility'],
 			"description": "Teacher",
-			"email": "Teacher@teacher.com",
-			"userId": "asd34ai"
+			"email": "zach_merrill@gallup.com",
+      "picture": '8710339dcb6814d0d9d2290ef422285c9322b7163951f9a0ca8f883d3305286f44139aa374848e4174f5aada663027e4548637b6d19894aec4fb6c46a139fbf9.jpg'
 		});
 	}
 	console.log(Student.findOne({
-		"name": "ben1"
+		"name": "Dash Wedergren 1"
 	}));
 	console.log(Instructor.findOne({
-		"name": "roger1"
+		"name": "Zach Merrill 1"
 	}));
 	createDefaultUser();
 });
