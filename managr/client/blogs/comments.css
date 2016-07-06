@@ -8,7 +8,11 @@
     padding-left: 12px;
     font-size: 15px;
 }
-.commentTitle {
-    padding-left: 5px;
+.commentTitle{
+  padding-left: 5px;
 }
-.commentBox {}
+.commentBox{
+ padding-left: 10px;
+ padding-top: 10px;
+ padding-bottom: 10px;
+}

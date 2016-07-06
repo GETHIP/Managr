@@ -1,34 +1,148 @@
-FlowRouter.route('/', {
+var main = "main"
+
+var blogsSection = FlowRouter.group({
+	name: "blogs",
+	prefix: ""
+});
+// Used by all URLs beginning with /assignments
+var assignmentSection = FlowRouter.group({
+	name: "assignments",
+    prefix: "/assignments"
+});
+var profileSection = FlowRouter.group({
+	name: "profiles",
+	profiles: "/profiles"
+});
+var attendanceSection = FlowRouter.group({
+	name: "attendance",
+	profiles: "/attendance"
+});
+blogsSection.route('/', {
 	name: 'home',
 	action() {
-		BlazeLayout.render('mainPage', {currentPage: 'blogMain'});
+		BlazeLayout.render(main, {content: 'blogMain'});
 	}
-})
+});
+blogsSection.route('/login', {
+	name: 'login',
+	action() {
+		BlazeLayout.render(main, {content: 'blogMain'});
+	}
+});
 
-FlowRouter.route('/blogs/:blog_id', {
+blogsSection.route('/blogs/:blog_id', {
 	name: 'blogs',
 	action : function(params) {
-		BlazeLayout.render('mainPage', {currentPage: 'postPage'})
+		BlazeLayout.render(main, {content: 'postPage'})
+	}
+});
+blogsSection.route('/testBlogs', {
+	name: 'testBlogs',
+	action: function() {
+		BlazeLayout.render('testInsertData');
 	}
 })
 
-FlowRouter.route('/testBlogs', {
-	name: 'testdata',
-	action() {
-		BlazeLayout.render('testInsertData', {})
+assignmentSection.route("/", {
+    name: "allAssignments",
+    action() {
+        BlazeLayout.render(main, {content: "studentsAllAssignments"});
+    }
+});
+assignmentSection.route("/all", {
+    name: "allAssignments",
+    action() {
+        BlazeLayout.render(main,{
+            content: "studentsAllAssignments"
+        });
+    }
+});
+// Information on a single assignment
+assignmentSection.route("/single/:id", {
+    name: "singleAssignment",
+    action(params) {
+        BlazeLayout.render(main,{
+            content: "singleAssignment"
+        });
+    }
+});
+assignmentSection.route("/edit/single/:id", {
+    name: "editSingleAssignment",
+    action(params) {
+        BlazeLayout.render(main,{
+            content: "editSingleAssignment"
+        });
+    }
+});
+assignmentSection.route('/edit/new', {
+    name: "newAssignment",
+    action(params) {
+        BlazeLayout.render(main, {
+            content: "newAssignment"
+        });
+    }
+});
+
+// Spreadsheet of grades
+assignmentSection.route("/edit/grades", {
+    name: "editGrades",
+    action() {
+        BlazeLayout.render(main,{
+            content: "editGrades"
+        });
+    }
+});
+profileSection.route("/profile/:id", {
+  action: function(params, queryParams){
+    BlazeLayout.render("Profile", {
+			body: "aboutme",
+			attendanceBody: "attendanceBody",
+			assignmentsBody: "assignmentsBody",
+			editAboutMe:"editAboutMe"
+		});
+  }
+});
+
+profileSection.route("/profile/edit/:id", {
+  action: function(parmas, queryParams){
+    BlazeLayout.render("Profile", {body: "profileEdit", attendance: "attendance", assignments: "assignments"});
+  }
+});
+
+attendanceSection.route("/attendance/edit/:id", {
+    action: function(params, queryParams){
+        BlazeLayout.render("attendanceUpdate", {updateAttendance: "updateAttendance"});
+    }
+});
+
+FlowRouter.route("/assignments/:id", {
+    action: function(params, queryParams){
+        BlazeLayout.render("Profile", {assignmentsBody: "assignmentsBody"});
+    }
+});
+
+profileSection.route("/profiles", {
+    action: function(params, queryParams) {
+        BlazeLayout.render(main, {content:'ProfilesTable'});
 	}
-})
+});
+
+FlowRouter.route("/reports", {
+    action: function(params, queryParams){
+        BlazeLayout.render("Profile", {body: "reports"});
+    }
+});
 
 FlowRouter.route('/blogs/:year/:month', {
 	name: 'archives',
 	action : function(params) {
-		BlazeLayout.render('mainPage', {currentPage: 'blogMain'})
+		BlazeLayout.render(main, {content: 'blogMain'});
 	}
-})
+});
 
 FlowRouter.route('/createPost', {
 	name: 'createPost',
 	action() {
-		BlazeLayout.render('mainPage', {currentPage: 'createPost'})
+		BlazeLayout.render(main, {content: 'createPost'});
 }
-})
+});

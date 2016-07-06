@@ -10,6 +10,12 @@
     {{#each allPosts }}
      <li> <a href="/blogs/{{_id}}" style="text-decoration:none">{{> post}}</a></li>
     {{/each}}
+=======
+  <ul class="allPosts">
+	  {{#each allPosts }}
+	   <li> <a class="invisibleLink" href="/blogs/{{_id}}" style="text-decoration:none">{{> post}}</a></li>
+	  {{/each}}
+>>>>>>> master
   </ul>
 -->
 <!-- else if user is not logged in-->

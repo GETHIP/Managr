@@ -24,23 +24,20 @@ export function formatDatesOfComments(comments) {
 }
 
 Template.postPage.helpers({
-    blogPost: function() {
-        var blogId = FlowRouter.getParam("blog_id");
-        var post = Posts.findOne({
-            _id: blogId
-        });
-        newDate = moment(post.date);
-        var formattedDate = moment(newDate).format("M/D/YY");
-        console.log(post.date);
-        console.log(post.comments);
-        return {
-            title: post.title,
-            text: post.text,
-            authorId: post.authorId,
-            comments: formatDatesOfComments(post.comments),
-            date: formattedDate
-        }
-    }
+	blogPost: function() {
+		var blogId = FlowRouter.getParam("blog_id");
+		var post = Posts.findOne({_id: blogId});
+		newDate = moment(post.date);
+		var formattedDate = moment(newDate).format("M/D/YY");
+		console.log(post.comments);
+		return {
+			title: post.title,
+			text: post.text,
+			authorId: post.authorId,
+			comments: formatDatesOfComments(post.comments),
+			date: formattedDate
+		}
+	}
 });
 
 Template.postPage.events({
