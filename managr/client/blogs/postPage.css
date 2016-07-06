@@ -1,3 +1,4 @@
+
 .bodyContent {
     background-color: #f3f3f3;
     position: relative;
@@ -5,9 +6,10 @@
     height: auto;
    padding-top: 80px;
    padding-right: 1%;
+
 }
 
-.commentSection{
+.commentSection {
   box-shadow: 3px 3px 5px #888888;
   background-color: white;
 }

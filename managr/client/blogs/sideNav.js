@@ -6,28 +6,32 @@ Template.sideNav.onCreated(function(){
 });
 
 
-var commentDisplays = 5;
-var postDisplays = 5;
+  function checkCurrnet(archives, dateString){
+    for (var i = 0; i < archives.length; i++) {
+    if(archives[i].date == dateString){
+      return true;
+      }
+    }
+    return false;
+  }
 
 Template.sideNav.helpers({
   months: function(){
-    var posts = Posts.find().fetch();
+    var posts = Posts.find({}, { sort: {date: -1} }).fetch();
     var archives = [];
+    var pulledDates = [];
     var i = 0;
     for (i = 0; i < posts.length; i++) {
       var dateString = moment(posts[i].date).format("MMMM YYYY");
-      if (!archives.includes(dateString)) {
-        archives.push({
-          date: dateString,
-          url: moment(posts[i].date).format("YYYY/MMMM")
-        });
-      }
+    if(archives.length > 0){
+      if(checkCurrnet(archives, dateString) == false){
+       archives.push({date: dateString, url:moment(posts[i].date).format("YYYY/MMMM")});
+     }
+   }else{
+       archives.push({date: dateString, url:moment(posts[i].date).format("YYYY/MMMM")});
     }
-
-    // /2016/February
-
-    //Return months with posts from mongo
-    return archives;
+    }
+      return archives;
   },
   recentComments: function(){
     var comments = [];
@@ -35,7 +39,7 @@ Template.sideNav.helpers({
   },
   recentPosts: function(){
 
-    return Posts.find().fetch().slice(0, postDisplays);
+    return Posts.find({}, { sort: {date: -1} }).fetch().slice(0, 5);
   },
   archives: function(){
     Posts.find().fetch()

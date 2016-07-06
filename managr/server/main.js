@@ -1,9 +1,58 @@
+// Import meteor for server / publish and Assignments to publish
 import { Meteor } from 'meteor/meteor';
 import { Posts } from '../collections/blogPosts.js';
 import { Comments } from '../collections/comments.js';
+import { Assignments } from '../collections/assignments.js';
+import { Instructor } from '../collections/instructor.js';
 
+function createDefaultUser() {
+	var users = Meteor.users.find({username: "admin"}).fetch();
+	if (users.length > 0) {
+		return;
+	}
+
+	var adminId = Accounts.createUser({
+		username: "admin",
+		password: "Gallup2016",
+	});
+	Roles.addUsersToRoles(adminId, ['instructor']);
+	Instructor.insert({
+		name: "admin",
+		profilePicture: "none",
+		strengths: ["Achiever", "Activator", "Analytical", "Arranger", "Competition"],
+		description: "Admin. I validate other users.",
+		email: "none",
+		userId: adminId
+	});
+}
+
+// Publishes Assignments collection so templates can subscribe to recieve collection data
 Meteor.startup(() => {
   // code to run on server at startup
+  studentIndex = new EasySearch.Index({
+		name: "studentIndex",
+		collection: Student,
+    fields: ['name'],
+    engine: new EasySearch.Minimongo({
+			transform: function (doc){
+				doc.url = "/profile/" + doc._id;
+				for(i in doc.attendance){
+						if(doc.attendance[i] === true){
+								doc.attendance[i] = "Present";
+						}
+						if(doc.attendance[i] === false){
+								doc.attendance[i] = "Absent";
+						}
+				}
+				doc.attendance = doc.attendance.join(" | ");
+				doc.parentNames = doc.parentNames.join(" and ");
+				return doc;
+			}
+		}),
+		permission: function(){
+			return true;
+		}
+  });
   Meteor.publish("Comments", function(){
     return Comments.find();
   });
@@ -81,9 +130,9 @@ Meteor.startup(() => {
 			});
 		}
 
-	},
+    },
 	'testCreateUsers': function() {
-		var adminId = Accounts.createUser({
+		var instructorId = Accounts.createUser({
 			username: "instructor",
 			password: "password",
 		});
@@ -95,9 +144,157 @@ Meteor.startup(() => {
 			username: "student",
 			password: "password",
 		});
-		Roles.addUsersToRoles(adminId, 'instructor');
+
+		Roles.addUsersToRoles(instructorId, 'instructor');
 		Roles.addUsersToRoles(jimId, 'instructor');
 		Roles.addUsersToRoles(studentId, 'student');
+
+		Instructor.insert({
+			"name": "Jim Collison",
+			"profilePicture": "x",
+			"strengths": ['Arranger', 'Woo', 'Communication', 'Maximizer', 'Activator'],
+			"description": "Teacher",
+			"email": "Teacher@teacher.com",
+			"userId": jimId
+		});
+		Instructor.insert({
+			"name": "Zach",
+			"profilePicture": "x",
+			"strengths": ['Arranger', 'Woo', 'Communication', 'Maximizer', 'Activator'],
+			"description": "Teacher",
+			"email": "Teacher@teacher.com",
+			"userId": instructorId
+		});
+		Student.insert({
+			"name": "Johnny",
+			"profilePicture": "x",
+			"age": 15,
+			"strengths": ['Input', 'Command', 'Restorative', 'Learner', 'Futuristic'],
+			"description": "tall",
+			"grade": '10th',
+			"attendance": [true, false, true, true, false, false, true, true, false,
+				true, true, false
+			],
+			"assignments": [{
+				"name": "Java Work",
+				"dateAssigned": new Date(),
+				"dueDate": new Date(),
+				"possiblePoints": 100,
+				"pointsRecieved": 10,
+				"instructor": "Zach"
+			}, {
+				name: "Java Work",
+				dateAssigned: new Date(),
+				dueDate: new Date(),
+				possiblePoints: 100,
+				pointsRecieved: 10,
+				instructor: "Zach"
+			}],
+			"school": "West Dodge",
+			"email": "ben@ben.com",
+			"getHipYear": 2,
+			"phoneNumber": '4026571179',
+			"parentNames": ['Bill', 'Hillary'],
+			"address": {
+				"street": '3910 s 226th st.',
+				"city": 'Elkhorn',
+				"state": 'Nebraska',
+				"zipCode": 68022
+			},
+			"github": 'Athletesrun',
+			"blog": "http://blogger.com",
+			"tshirtSize": "Small",
+      "ep10": ["Responsibility", "Profitability", "Communication", "Strategic"],
+			"userId": studentId
+		});
+	},
+	'createDefaultUser': function() {
+		createDefaultUser();
 	}
-  })
+  });
+    Meteor.publish('Assignments', function() {
+        return Assignments.find();
+    });
+
+    UploadServer.init({
+        tmpDir: process.env.PWD + '/.uploads/tmp',
+        uploadDir: process.env.PWD + '/.uploads/'
+    })
+
+	Meteor.publish("Student", function() {
+		return Student.find();
+	});
+	Meteor.publish("Teacher", function() {
+		return Teacher.find();
+	});
+	//control update better
+	Student.allow({
+		update: function(userId, doc) {
+			return true;
+		}
+	});
+
+	Student.remove({});
+	Instructor.remove({});
+	for (var i = Student.find().count(); i < 5; i++) {
+		Student.insert({
+			"name": "ben" + i,
+			"profilePicture": "x",
+			"age": 5,
+			"strengths": ['Input', 'Command', 'Restorative', 'Learner', 'Futuristic'],
+			"description": "tall",
+			"grade": '10th',
+			"attendance": [true, false, true, true, false, false, true, true, false,
+				true, true, false
+			],
+			"assignments": [{
+				"name": "Java Work",
+				"dateAssigned": new Date(),
+				"dueDate": new Date(),
+				"possiblePoints": 100,
+				"pointsRecieved": 10,
+				"instructor": "Zach"
+			}, {
+				name: "Java Work",
+				dateAssigned: new Date(),
+				dueDate: new Date(),
+				possiblePoints: 100,
+				pointsRecieved: 10,
+				instructor: "Zach"
+			}],
+			"school": "West Dodge",
+			"email": "ben@ben.com",
+			"getHipYear": 2,
+			"phoneNumber": '4026571179',
+			"parentNames": ['Bill', 'Hillary'],
+			"address": {
+				"street": '3910 s 226th st.',
+				"city": 'Elkhorn',
+				"state": 'Nebraska',
+				"zipCode": 68022
+			},
+			"github": 'Athletesrun',
+			"blog": "http://blogger.com",
+			"tshirtSize": "Small",
+      "ep10": ["Responsibility", "Profitability", "Communication", "Strategic"],
+			"userId": "asdof889a"
+		});
+	}
+	for (var i = Instructor.find().count(); i < 5; i++) {
+		Instructor.insert({
+			"name": "roger" + i,
+			"profilePicture": "x",
+			"strengths": ['Command', 'Relator', 'Fun', 'Cool', 'Nice'],
+			"description": "Teacher",
+			"email": "Teacher@teacher.com",
+			"userId": "asd34ai"
+		});
+	}
+	console.log(Student.findOne({
+		"name": "ben1"
+	}));
+	console.log(Instructor.findOne({
+		"name": "roger1"
+	}));
+	createDefaultUser();
 });

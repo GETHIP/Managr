@@ -1,15 +1,12 @@
 <template name="blogMain">
+	<div class="sidebarBox">
+		{{> sideNav}}
+	</div>
+	<div id="blogSection">
+		<div id="postsHeader">
+			{{> header}}
+		</div>
+		{{> blogContent}}
+	</div>
 
-  <div class="sidebarBox">
-  {{> sideNav}}
-</div>
-    <div id="blogSection">
-       <div id="postsHeader">
-  {{> header}}
-
-  </div>
-
-  {{> blogContent}}
-
- </div>
 </template>
