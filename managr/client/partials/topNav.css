@@ -1,7 +1,8 @@
 .navbar .nav > .active > a:hover, .navbar .nav > .active > a:focus {
 background-color: #444444;
-border-bottom-width: 2px;
+border-bottom-width: 3px;
 border-bottom-style: solid;
+padding: 15px 15px 12px 15px;
 }
 
 .blogsActive:focus, .blogsActive:hover {
@@ -16,6 +17,7 @@ border-bottom-style: solid;
 	border-bottom-color: #0397d7;
 }
 
-.navbar .nav > .active > a {
+.navbar-inverse .nav .active > a {
   background-color: #222;
+  padding: 15px;
 }
