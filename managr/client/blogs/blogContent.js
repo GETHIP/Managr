@@ -23,7 +23,19 @@ function getPosts() {
     var year = FlowRouter.getParam("year");
     var month = FlowRouter.getParam("month");
     if (year == undefined) {
-        return Posts.find().fetch();
+      var p = Posts.find().fetch();
+      var s = p.sort((a, b) => {
+        if (a < b) {
+          return -1;
+        } else if (a > b) {
+          return 1;
+        } else {
+          return 0;
+        }
+      });
+      console.log("P: " + p);
+      console.log("S: " + s);
+      return s;
     }
     var posts = Posts.find().sort({'date': -1}).fetch();
     var validPosts = [];
@@ -56,11 +68,13 @@ Template.blogContent.helpers({
         return formatDatesOfPosts(getPosts());
     },
 
-    postsIndex() {
-      var post = Posts.find({}, {
-        sort: {'date': -1}
-      }).fetch();
-      console.log("Hello");
-      return post;
-    }
+
+});
+
+Template.searchBox.helpers({
+  searchEngine: function() {
+    var post = getPosts();
+    console.log("Hello");
+    return post;
+  }
 });

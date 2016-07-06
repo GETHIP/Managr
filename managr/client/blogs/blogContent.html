@@ -28,7 +28,7 @@
 
 <template name="searchBox">
   <div class="searchBar">
-    {{> EasySearch.Input index=postsIndex placeholder="Search..."}}
+    {{> EasySearch.Input index=postsIndex placeholder="Search..." sortBy='date'}}
   </div>
     <ul class="searchEngine">
         {{#EasySearch.Each index=postsIndex }}

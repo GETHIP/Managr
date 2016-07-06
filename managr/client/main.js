@@ -26,12 +26,9 @@ PostsIndex = new EasySearch.Index({
         return newPosts;
       },
       sort: function (searchObject, options) {
-        const sortBy = options.search.props.sortBy;
-        if('date' === sortBy){
           return {
             date: -1
-          }
-        }
+          };
       }
     })
 });
