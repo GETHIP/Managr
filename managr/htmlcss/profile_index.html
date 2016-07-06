@@ -10,7 +10,6 @@
         <link rel="stylesheet" href="Profile_index.css">
     </head>
     <body>
-	<h1>cooper</h1>
         {{> studentName}}
 
               {{> Template.dynamic template=body}}
@@ -26,6 +25,7 @@
       About Me
     </strong> </h1>
     {{#with student}}
+    <img style="margin-left: 12px;" alt="Profile Picture" height="200" width="200" src="/images/{{picture}}">
         <p><strong>Name:</strong></p>
         <p>{{name}}</p>
         <p><strong>School:</strong></p>
