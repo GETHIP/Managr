@@ -1,11 +1,10 @@
-#welcome{
-	font-size:35px;
-	font-family: Helvetica;
-	margin-left: 0px;
+<<<<<<< HEAD
+#welcome {
+    font-size: 35px;
+    font-family: Helvetica;
 }
-#line{
-	width: 99%;
-	height: 3px;
-	background-color: #61c250;
-	margin-left: 0px;
+#line {
+    width: 99%;
+    height: 3px;
+    background-color: #61c250;
 }

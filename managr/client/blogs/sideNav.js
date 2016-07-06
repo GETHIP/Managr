@@ -1,10 +1,15 @@
-import { Posts } from '../../collections/blogPosts.js'
+import {
+    Posts
+} from '../../collections/blogPosts.js'
 
 
-Template.sideNav.onCreated(function(){
-  Meteor.subscribe("Posts");
+Template.sideNav.onCreated(function() {
+    Meteor.subscribe("Posts");
 });
 
+function sortDates(){
+
+}
 
   function checkCurrnet(archives, dateString){
     for (var i = 0; i < archives.length; i++) {
@@ -47,9 +52,9 @@ Template.sideNav.helpers({
 });
 
 Template.sideNav.events({
-  //For click events on side navbar
-  'click #createPostButton' : function(event, template){
-    event.preventDefault();
-    FlowRouter.go('/createPost');
-  }
+    //For click events on side navbar
+    'click #createPostButton': function(event, template) {
+        event.preventDefault();
+        FlowRouter.go('/createPost');
+    }
 });
