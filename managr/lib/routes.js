@@ -77,6 +77,24 @@ assignmentSection.route('/edit/new', {
     }
 });
 
+assignmentSection.route('/grades', {
+    name: "viewAllGrades",
+    action() {
+        BlazeLayout.render(main, {
+            content: "viewAllGrades"
+        });
+    }
+});
+
+assignmentSection.route('/viewAll', {
+    name: "viewAllAssignments",
+    action() {
+        BlazeLayout.render(main, {
+            content: "viewAllAssignTable"
+        });
+    }
+});
+
 // Spreadsheet of grades
 assignmentSection.route("/edit/grades", {
     name: "editGrades",

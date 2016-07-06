@@ -1,0 +1,50 @@
+<template name="viewAllGrades">
+  <div class="marginContainer">
+  <h1 class="titleAssignment">Student Grade Overview</h1>
+  <div class="orange-bar">&nbsp;</div>
+  <table class="viewAllTable">
+    <tr>
+      <th class="tableHeadFormat">Student Name</th>
+      <th class="tableHeadFormat">Total Grade</th>
+    </tr>
+
+    {{#each assignment}}
+      <tr class="tableRowFormat">
+        <td class="tableDataFormat">{{studentNameHere}}</td>
+        <td class="tableDataFormat">{{studentGradeAvgHere}}</td>
+      </tr>
+    {{/each}}
+
+    <tr class="tableRowFormat">
+      <td class="tableDataFormat">Kevin Lin</td>
+      <td class="tableDataFormat">105.00%</td>
+    </tr>
+
+    <tr class="tableRowFormat">
+      <td class="tableDataFormat">Eddie Yuan</td>
+      <td class="tableDataFormat">99.99%</td>
+    </tr>
+
+    <tr class="tableRowFormat">
+      <td class="tableDataFormat">Jason Huang</td>
+      <td class="tableDataFormat">91.50%</td>
+    </tr>
+
+    <tr class="tableRowFormat">
+      <td class="tableDataFormat">Dash Wedergren</td>
+      <td class="tableDataFormat">95.75%</td>
+    </tr>
+
+    <tr class="tableRowFormat">
+      <td class="tableDataFormat">Jared Bledsoe</td>
+      <td class="tableDataFormat">94.50%</td>
+    </tr>
+
+    <tr class="tableRowFormat">
+      <td class="tableDataFormat">Emily Zhang</td>
+      <td class="tableDataFormat">68.95%</td>
+    </tr>
+
+  </table>
+</div>
+</template>
