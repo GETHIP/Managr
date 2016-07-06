@@ -17,7 +17,6 @@ body {
 }
 .summaryTable {
   border-collapse: collapse;
-  max-width: 100%;
   width: 100%;
   margin-top: 2%;
   margin-bottom: 2%;
@@ -34,7 +33,6 @@ body {
   font-size: 24px;
   font-weight: bold;
   width: 30%;
-  min-height: 100px;
   background-color: white;
   margin: 3em;
   /*padding: 2% 10% 2% 10%;
@@ -81,7 +79,6 @@ body {
     padding: 10px 0px 10px 0px;
 }
 .summaryBoxContainer {
-
   /*border-radius: 16px;*/
   max-width: 100%;
   min-height: 160px;
@@ -266,7 +263,7 @@ header {
   border-bottom: 1px solid #444444;
   color: white;
   width: 16.67%;
-  font-size: 18px; 
+  font-size: 18px;
   text-align: center;
 }
 ::-webkit-calendar-picker-indicator {
