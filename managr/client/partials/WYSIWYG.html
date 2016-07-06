@@ -1,25 +1,31 @@
 <template name="WYSIWYG">
 
   <head>
+      <!--
+
+      Some of these are needed, some of these aren't.
+      Through trial and error, we have found the ones that are
+      needed and the ones that aren't (which are commented out).
+
       <meta charset="utf-8">
       <title>Tiny, opensource, Bootstrap WYSIWYG rich text editor from MindMup</title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta name="keywords" content="opensource rich wysiwyg text editor jquery bootstrap execCommand html5" />
-      <meta name="description" content="This tiny jQuery Bootstrap WYSIWYG plugin turns any DIV into a HTML5 rich text editor" />
-      <link rel="apple-touch-icon" href="//mindmup.s3.amazonaws.com/lib/img/apple-touch-icon.png" />
+      <meta name="description" content="This tiny jQuery Bootstrap WYSIWYG plugin turns any DIV into a HTML5 rich text editor" /> -->
+      <!-- <link rel="apple-touch-icon" href="//mindmup.s3.amazonaws.com/lib/img/apple-touch-icon.png" />
       <link rel="shortcut icon" href="http://mindmup.s3.amazonaws.com/lib/img/favicon.ico" >
       <link href="external/google-code-prettify/prettify.css" rel="stylesheet">
       <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
-      <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css" rel="stylesheet">
+      <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css" rel="stylesheet"> -->
   		<link href="http://netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css" rel="stylesheet">
-      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+      <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script> -->
   		<script src="external/jquery.hotkeys.js"></script>
       <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
       <script src="external/google-code-prettify/prettify.js"></script>
   		<link href="index.css" rel="stylesheet">
       <script src="bootstrap-wysiwyg.js"></script>
     </head>
-  <div class="btn-toolbar" data-role="editor-toolbar" data-target="#editor">
+  <div data-role="editor-toolbar" data-target="#editor">
 
       <div class="btn-group">
         <a class="btn dropdown-toggle" data-toggle="dropdown" title="Font"><i class="icon-font"></i><b class="caret"></b></a>
