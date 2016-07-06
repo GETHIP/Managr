@@ -2,11 +2,10 @@
 	background-color: #f3f3f3;
 	margin-left: 210px;
   padding-right: 1%;
-	height: auto;
 }
 
 .allPosts li {
   box-shadow: 3px 3px 5px #888888;
-    margin-bottom: 8px;
-	  	background-color: white;
+  margin-bottom: 8px;
+	background-color: white;
 }
