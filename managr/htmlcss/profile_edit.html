@@ -2,6 +2,12 @@
   {{#with data}}
   <div class="rectangle aboutMe">
     <form class="profileEdit">
+    <div class="form-group">
+      <label for="">Profile Picture:</label>
+      <div class="upload">
+        {{> upload_bootstrap contentType='images' formData=specificFormData }}
+        </div>
+    </div>
   <div class="form-group">
     <label for="">Name:</label>
     <input type="text" class="form-control" id="name" name="name" value={{name}}>
