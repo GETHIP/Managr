@@ -17,7 +17,7 @@ Template.sideNav.onCreated(function(){
 
 Template.sideNav.helpers({
   months: function(){
-    var posts = Posts.find().fetch();
+    var posts = Posts.find({}, { sort: {date: -1} }).fetch();
     var archives = [];
     var pulledDates = [];
     var i = 0;
