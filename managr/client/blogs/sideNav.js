@@ -6,10 +6,6 @@ Template.sideNav.onCreated(function(){
 });
 
 
-var commentDisplays = 5;
-var postDisplays = 5;
-
-
   function checkCurrnet(archives, dateString){
     for (var i = 0; i < archives.length; i++) {
     if(archives[i].date == dateString){
@@ -43,7 +39,7 @@ Template.sideNav.helpers({
   },
   recentPosts: function(){
 
-    return Posts.find().fetch().slice(0, postDisplays);
+    return Posts.find({}, { sort: {date: -1} }).fetch().slice(0, 5);
   },
   archives: function(){
     Posts.find().fetch()
