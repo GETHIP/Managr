@@ -11,6 +11,31 @@
 	border-bottom-style: solid;
 }
 
+#navbarElements a{
+  padding-top: 15px;
+}
+
+.loginButton{
+  padding-top: 15px;
+}
+
+.loginButton a.login-close-text{
+  color: #0088cc;
+}
+
+.loginButton a{
+  color: #999999;
+  text-decoration: none !important;
+}
+
+.loginButton a:hover{
+  color: #ffffff;
+}
+
+.loginButton a.login-close-text:hover{
+  color: #0088cc;
+}
+
 .blogsActive {
 	border-bottom-color: #61c250;
 }
