@@ -19,7 +19,7 @@ export function formatDatesOfPosts(posts) {
     return newPosts;
 }
 
-function getPosts() {
+export function getPosts() {
     var year = FlowRouter.getParam("year");
     var month = FlowRouter.getParam("month");
     if (year == undefined) {
@@ -33,18 +33,14 @@ function getPosts() {
           return 0;
         }
       });
-      console.log("P: " + p);
-      console.log("S: " + s);
       return s;
     }
-    var posts = Posts.find().sort({'date': -1}).fetch();
+    var posts = Posts.find({}, { sort: {'date': -1} }).fetch();
     var validPosts = [];
     var i = 0;
     for (i = 0; i < posts.length; i++) {
         var nameOfMonth = moment(posts[i].date).format("MMMM");
         var nameOfYear = moment(posts[i].date).format("YYYY");
-        console.log(nameOfYear);
-        console.log(year);
         if (year == nameOfYear && month == nameOfMonth) {
             validPosts.push(posts[i]);
         }
@@ -54,15 +50,7 @@ function getPosts() {
 
 Template.blogContent.helpers({
 
-    //Returns Posts by Jim for non-logins
-    publicPosts: function() {
 
-        return formatDatesOfPosts(Posts.find({
-            authorId: {
-                $eq: 1
-            }
-        })); //Set ID to Jim's Id (Always Public Posts)
-    },
     //Returns all Blog Posts
     postsIndex: function() {
         return formatDatesOfPosts(getPosts());

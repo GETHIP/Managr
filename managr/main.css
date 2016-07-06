@@ -6,7 +6,9 @@ html {
 /*Entire site CSS*/
 
 /*Blogs CSS*/
-
+.userLoggedIn{
+  margin-top: 50px;
+}
 
 /*Assignments CSS*/
 
