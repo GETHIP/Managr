@@ -58,27 +58,25 @@ Template.studentsAllAssignments.onCreated(function() {
 // Provides the assignment data to the single template from Assignments collection
 Template.singleAssignment.helpers({
     assignments: function() {
-        var objects;
-        objects = Assignments.find({
-            "_id": new Meteor.Collection.ObjectID(FlowRouter.getParam("id"))
-        }).fetch();
-        if (objects.length > 0) {
-            var obj, cleanedObj;
-            obj = objects[0];
-            // The formatted object to be returned
-            cleanedObj = {
-                title: obj.title,
-                description: obj.description,
-                dueDate: (obj.dueDate.getMonth() + 1) + "/" + obj.dueDate.getDate() + "/" +  obj.dueDate.getFullYear(),
-                assigner: obj.assigner,
-                dateAssigned: (obj.dueDate.getMonth() + 1) + "/" + obj.dueDate.getDate() + "/" +  obj.dueDate.getFullYear(),
-                pointsPossible: obj.pointsPossible
-            }
-            return cleanedObj;
-        }
-        else {
-            return {};
-        }
+        var objects,thisAssignment;
+				var a = Assignments.find({}).fetch();
+				if (a.length != 0) {
+					for (var i = 0; i < a.length; i++) {
+						if (a[i]._id == FlowRouter.getParam("id")) {
+							thisAssignment = a[i]
+						}
+					}
+	        var cleanedObj;
+	        cleanedObj = {
+	            title: thisAssignment.title,
+	            description: thisAssignment.description,
+	            dueDate: (thisAssignment.dueDate.getMonth() + 1) + "/" + thisAssignment.dueDate.getDate() + "/" +  thisAssignment.dueDate.getFullYear(),
+	            assigner: thisAssignment.assigner,
+	            dateAssigned: (thisAssignment.dueDate.getMonth() + 1) + "/" + thisAssignment.dueDate.getDate() + "/" +  thisAssignment.dueDate.getFullYear(),
+	            pointsPossible: thisAssignment.pointsPossible
+	        }
+	        return cleanedObj;
+				}
     }
 });
 
@@ -119,7 +117,7 @@ Template.studentsAllAssignments.helpers({
             if (objects.length > 0) {
                 var obj, j, aUrl, cleanedObj;
                 obj = objects[i];
-                aUrl = "./single/" + obj._id.valueOf();
+                aUrl = "./assignments/single/" + obj._id.valueOf();
                 // The formatted object to be returned
                 cleanedObj = {
                     title: obj.title,
