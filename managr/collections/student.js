@@ -52,10 +52,6 @@ var StudentSchema = new SimpleSchema({
         type: String,
         label: 'Name'
     },
-    profilePicture: {
-        type: String,
-        label: 'Profile Picture'
-    },
     age: {
         type: Number,
         label: 'Age'
@@ -119,6 +115,10 @@ var StudentSchema = new SimpleSchema({
     ep10: {
         type: [String],
         label: "EP10"
+    },
+    picture: {
+        type: String,
+        label: "Profile Picture"
     }
 });
 Student.attachSchema(StudentSchema);

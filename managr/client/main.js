@@ -44,6 +44,14 @@ Template.aboutme.onCreated(function() {
 	});
 });
 
+Template.profileEdit.helpers({
+	specificFormData: function() {
+		return {
+			id: FlowRouter.getParam('id')
+		}
+	}
+});
+
 Template.aboutme.helpers({
 	student: function() {
 		let userId = FlowRouter.getParam("id");
