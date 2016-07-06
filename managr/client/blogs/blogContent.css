@@ -1,19 +1,19 @@
 .searchEngine {
     background-color: #f3f3f3;
-    margin-left: 200px;
 		margin-right: 30px;
     height: auto;
 		padding-top: 30px;
+    margin-left: 250px;
 }
 .searchEngine li {
     box-shadow: 3px 3px 5px #888888;
     margin-bottom: 8px;
 }
 
-
-.searchBar{
+.blogSearchBar{
 		margin-right: 50px;
 		float: right;
+    height: 30px;
 }
 
 @media (max-width: 450px) {
@@ -27,7 +27,7 @@
       box-shadow: 3px 3px 5px #888888;
       margin-bottom: 8px;
   }
-  .searchBar{
+  .blogSearchBar{
     margin-right: 15px;
     float: right;
   }

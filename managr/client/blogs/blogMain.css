@@ -12,15 +12,9 @@ input[name="name"] {
 }
 #postsHeader {
     margin-top: 10px;
-    margin-left: 250px;
-
-}
-body {
-    background-color: #f3f3f3;
-    margin-left: 250px;
 }
 #blogSection {
-    padding-top: 53px;
+    padding-top: 30px;
 }
 
 @media (max-width: 450px) {

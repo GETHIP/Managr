@@ -37,15 +37,11 @@ li {
 #sideNav {
     background-color: #333333;
     color: white;
-    /*width: 20%;
-    height: 110%;
-  	position: absolute;
-  	left: 0px;*/
+  	position: fixed;
+  	left: 0px;
     width: 200px;
-    margin-top: 43px;
+    margin-top: 0px;
     box-shadow: 3px 3px 5px #888888;
-    top: 0;
-    left: 0;
 }
 #createPostButton {
     background-color: #61c250;
