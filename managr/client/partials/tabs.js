@@ -19,9 +19,14 @@ Template.tabs.events({
 
     if (Template.instance().useWYSIWYG.get()) {
       var editor = document.getElementById('editor');
-      console.log("Editor: " + editor.innerHTML);
-        Meteor.call("updateComment", FlowRouter.getParam("blog_id"), event.target.name.value, event.target.comment.value);
-      
+        Meteor.call("insertPost",{
+          title:"Will it Work" ,
+          text: editor.innerHTML,
+          authorId: 12345,
+          date: new Date(),
+          comments: []
+        });
+
     }else{
       var editor = document.getElementById('plainTextEditor');
       console.log("HTML: " + editor);
