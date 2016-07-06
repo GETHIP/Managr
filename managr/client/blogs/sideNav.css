@@ -49,13 +49,14 @@ li {
     background-color: #333333;
     color: white;
     width: 200px;
-    height: 100%;
-    display: block;
-    position: fixed;
-    margin-top: 53px;
+    margin-top: 43px;
     box-shadow: 3px 3px 5px #888888;
   	top: 0;
   	left: 0;
+    float:left;
+    padding-bottom: 999px;
+    margin-bottom: -999px;
+    overflow: hidden;
 }
 
 #editPostButton:focus{
