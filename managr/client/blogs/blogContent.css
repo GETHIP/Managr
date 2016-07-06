@@ -1,12 +1,34 @@
-.allPosts {
-	background-color: #f3f3f3;
-
-	margin-left: 210px;
-  padding-right: 1%;
+.searchEngine {
+    background-color: #f3f3f3;
+		margin-right: 30px;
+    height: auto;
+		padding-top: 30px;
+    margin-left: 250px;
+}
+.searchEngine li {
+    box-shadow: 3px 3px 5px #888888;
+    margin-bottom: 8px;
 }
 
-.allPosts li {
-  box-shadow: 3px 3px 5px #888888;
-  margin-bottom: 8px;
-	background-color: white;
+.blogSearchBar{
+		margin-right: 50px;
+		float: right;
+    height: 30px;
+}
+
+@media (max-width: 450px) {
+  .searchEngine {
+      background-color: #f3f3f3;
+      height: auto;
+      padding-top: 30px;
+      margin-left: 0px;
+  }
+  .searchEngine li {
+      box-shadow: 3px 3px 5px #888888;
+      margin-bottom: 8px;
+  }
+  .blogSearchBar{
+    margin-right: 15px;
+    float: right;
+  }
 }

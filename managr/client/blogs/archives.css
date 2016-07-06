@@ -1,0 +1,26 @@
+.archivePosts {
+    background-color: #f3f3f3;
+		margin-right: 30px;
+    height: auto;
+		padding-top: 30px;
+    margin-left: 250px;
+}
+.archivePosts li {
+    box-shadow: 3px 3px 5px #888888;
+    margin-bottom: 8px;
+}
+
+.line{
+  width: 99%;
+  height: 3px;
+  background-color: #61c250;
+}
+
+#archiveHeader{
+  margin-left: 240px;
+}
+
+#timeHead{
+  font-size: 35px;
+  font-family: Helvetica;
+}

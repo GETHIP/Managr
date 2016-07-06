@@ -1,12 +1,17 @@
-import { Posts } from '../../collections/blogPosts.js'
+import {
+    Posts
+} from '../../collections/blogPosts.js'
 
 
-Template.sideNav.onCreated(function(){
-  Meteor.subscribe("Posts");
+Template.sideNav.onCreated(function() {
+    Meteor.subscribe("Posts");
 });
 
+function sortDates(){
 
-  function checkCurrnet(archives, dateString){
+}
+
+  function checkCurrent(archives, dateString){
     for (var i = 0; i < archives.length; i++) {
     if(archives[i].date == dateString){
       return true;
@@ -23,13 +28,13 @@ Template.sideNav.helpers({
     var i = 0;
     for (i = 0; i < posts.length; i++) {
       var dateString = moment(posts[i].date).format("MMMM YYYY");
-    if(archives.length > 0){
-      if(checkCurrnet(archives, dateString) == false){
-       archives.push({date: dateString, url:moment(posts[i].date).format("YYYY/MMMM")});
-     }
-   }else{
-       archives.push({date: dateString, url:moment(posts[i].date).format("YYYY/MMMM")});
-    }
+      if(archives.length > 0){
+        if(checkCurrent(archives, dateString) == false){
+          archives.push({date: dateString, url:moment(posts[i].date).format("YYYY/MMMM")});
+        }
+      } else {
+        archives.push({date: dateString, url:moment(posts[i].date).format("YYYY/MMMM")});
+        }
     }
       return archives;
   },
@@ -47,9 +52,9 @@ Template.sideNav.helpers({
 });
 
 Template.sideNav.events({
-  //For click events on side navbar
-  'click #createPostButton' : function(event, template){
-    event.preventDefault();
-    FlowRouter.go('/createPost');
-  }
+    //For click events on side navbar
+    'click #createPostButton': function(event, template) {
+        event.preventDefault();
+        FlowRouter.go('/createPost');
+    }
 });

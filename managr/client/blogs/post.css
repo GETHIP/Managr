@@ -1,6 +1,6 @@
 .blogPost {
     background-color: white;
-    padding-top:1px;
+    padding-top: 1px;
     padding-right: 10px;
     padding-bottom: 12px;
     padding-left: 10px;
@@ -9,36 +9,34 @@
     color: black;
 }
 #signature {
-  float: right;
-  font-size: 11px;
-  color: #444444;
-  font-family: Helvetica;
+    float: right;
+    font-size: 11px;
+    color: #444444;
+    font-family: Helvetica;
 }
-#viewComments  {
-
-  font-size: 11px;
-  color: #444444;
-  font-family: Helvetica;
+#viewComments {
+    font-size: 11px;
+    color: #444444;
+    font-family: Helvetica;
 }
 #postText {
-  font-size: 18px;
-  font-family: Helvetica;
+    font-size: 18px;
+    font-family: Helvetica;
 }
 #leaveComment {
-  font-size: 11px;
-  color: #444444;
-  font-family: Helvetica;
+    font-size: 11px;
+    color: #444444;
+    font-family: Helvetica;
 }
 #postHeader {
-  font-size:25px;
-  font-family: Helvetica;
-  /*pointer-events: none;
+    font-size: 25px;
+    font-family: Helvetica;
+    /*pointer-events: none;
   cursor: default; */
-
-  color: #444444;
+    color: #444444;
 }
 #pretag {
     font-family: Helvetica;
-    border:none;
+    border: none;
     background-color: white;
 }
