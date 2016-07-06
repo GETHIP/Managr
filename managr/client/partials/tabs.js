@@ -20,10 +20,15 @@ Template.tabs.events({
     if (Template.instance().useWYSIWYG.get()) {
       var editor = document.getElementById('editor');
       console.log("Editor: " + editor.innerHTML);
-    } else {
+        Meteor.call("updateComment", FlowRouter.getParam("blog_id"), event.target.name.value, event.target.comment.value);
+      
+    }else{
       var editor = document.getElementById('plainTextEditor');
       console.log("HTML: " + editor);
     }
+
+
+
     /*
     var postObject = {
       title: event.target.postTitle.value,
