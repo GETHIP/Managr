@@ -136,7 +136,7 @@ FlowRouter.route("/reports", {
 FlowRouter.route('/blogs/:year/:month', {
 	name: 'archives',
 	action : function(params) {
-		BlazeLayout.render(main, {content: 'blogMain'});
+		BlazeLayout.render(main, {content: 'archives'});
 	}
 });
 

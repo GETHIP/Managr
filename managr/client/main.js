@@ -534,7 +534,15 @@ Template.attendanceUpdate.helpers({
 Template.main.helpers({
 	renderNavbar:function() {
 		return (FlowRouter.current().path == "/login") || (Meteor.user() != null);
-	}
+	},
+  navbarDivMargins: function() {
+    if ((FlowRouter.current().path == "/login") || (Meteor.user() != null)){
+      return "userLoggedIn";
+    }
+    else{
+      return "";
+    }
+  }
 })
 
 
