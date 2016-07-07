@@ -1,0 +1,64 @@
+.activewysiwyg{
+width:  49.5%;
+text-align: center;
+float:left;
+background-color: #333333;
+padding: 8px;
+}
+.activehtml{
+width:  49.5%;
+text-align: center;
+background-color: #333333;
+float: right;
+padding: 8px;
+margin-right: .8%;
+}
+.wysiwyg{
+width:  49.5%;
+text-align: center;
+background-color: #333333;
+padding: 8px;
+float:left;
+}
+.html{
+width:  49.5%;
+text-align: center;
+float: right;
+background-color: #333333;
+padding: 8px;
+margin-right: .8%;
+}
+.html:hover{
+      background-color: #555555;
+}
+.wysiwyg:hover{
+    background-color: #555555;
+}
+.activehtml:hover{
+      background-color: #555555;
+}
+.activewysiwyg:hover{
+    background-color: #555555;
+}
+.activeText{
+  color: white;
+  decoration: none;
+  font-family: helvetica;
+}
+.activeText:hover{
+  color: white;
+  text-decoration: none;
+}
+.passiveText{
+ color: white;
+ decoration: none;
+ font-family: helvetica;
+
+}
+.passiveText:hover{
+  color: white;
+  text-decoration: none;
+}
+.container{
+  padding-top: 80px;
+}
