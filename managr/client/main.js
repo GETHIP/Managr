@@ -119,7 +119,6 @@ Template.singleAssignment.helpers({
 	        return cleanedObj;
 				}
     }
-  }
 });
 
 // Provides the editSingle template with information on a single assignment
@@ -172,10 +171,7 @@ Template.studentsAllAssignments.helpers({
                 }
                 list.push(cleanedObj);
             }
-        }
-        list.push(cleanedObj);
       }
-    }
     return list;
   }
 });
