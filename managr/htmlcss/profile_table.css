@@ -1,7 +1,6 @@
-.searchBar  input[type=text]{
-     position: relative;
-     margin-top: 60px;
-     width: 100%;
+
+.searchBar input[type=text]  {
+      width: 100%;
      box-sizing: border-box;
      border: 2px solid #ccc;
      border-radius: 4px;
@@ -11,4 +10,6 @@
      background-position: 10px 10px;
      background-repeat: no-repeat;
      padding: 12px 20px 12px 40px;
+     position: relative;
+     margin-top: 60px;
 }
