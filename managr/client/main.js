@@ -107,7 +107,7 @@ Template.singleAssignment.helpers({
 	            description: thisAssignment.description,
 	            dueDate: (thisAssignment.dueDate.getMonth() + 1) + "/" + thisAssignment.dueDate.getDate() + "/" +  thisAssignment.dueDate.getFullYear(),
 	            assigner: thisAssignment.assigner,
-	            dateAssigned: (thisAssignment.dueDate.getMonth() + 1) + "/" + thisAssignment.dueDate.getDate() + "/" +  thisAssignment.dueDate.getFullYear(),
+	            dateAssigned: (thisAssignment.dateAssigned.getMonth() + 1) + "/" + thisAssignment.dateAssigned.getDate() + "/" +  thisAssignment.dateAssigned.getFullYear(),
 	            pointsPossible: thisAssignment.pointsPossible
 	        }
 	        return cleanedObj;
@@ -157,9 +157,9 @@ Template.studentsAllAssignments.helpers({
                 cleanedObj = {
                     title: obj.title,
                     description: obj.description,
-                    dueDate: (obj.dueDate.getMonth() + 1) + "/" + obj.dueDate.getDate() + "/" +  obj.dueDate.getFullYear(),
+                    dueDate: (obj.dueDate.getMonth() + 1) + "/" + (obj.dueDate.getDate() + 1) + "/" +  obj.dueDate.getFullYear(),
                     assigner: obj.assigner,
-                    dateAssigned: (obj.dueDate.getMonth() + 1) + "/" + obj.dueDate.getDate() + "/" +  obj.dueDate.getFullYear(),
+                    dateAssigned: (obj.dateAssigned.getMonth() + 1) + "/" + obj.dateAssigned.getDate()  + "/" +  obj.dateAssigned.getFullYear(),
                     pointsPossible: obj.pointsPossible,
                     url: aUrl
                 }
