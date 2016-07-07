@@ -67,7 +67,6 @@ li {
 outline: none;
 }
 #editPostButton{
-  background-color: #61c250;
   color: white;
   cursor: pointer;
   display: block;
@@ -79,16 +78,10 @@ outline: none;
   float:right;
   text-align: center;
 }
-#editPostButton:hover{
-    color: white;
-    background-color: #61d250;
-    text-decoration: none;
-}
 #createPostButton:focus{
 outline: none;
 }
 #createPostButton{
-  background-color: #61c250;
   color: white;
   cursor: pointer;
   display: block;
@@ -103,11 +96,6 @@ outline: none;
   padding-top: 6px;
   padding-bottom: 6px;
 
-}
-#createPostButton:hover{
-    color: white;
-    background-color: #61d250;
-    text-decoration: none;
 }
 #buttonArea{
   background-color:#333333;
