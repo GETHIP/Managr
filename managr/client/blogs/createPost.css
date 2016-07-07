@@ -1,8 +1,9 @@
 #createPostBody {
-    background-color: #fff;
+    background-color: #f3f3f3;
 }
 
 .MainCreate {
-	background-color: #f3f3f3;
-  padding-left: 115px;
+ background-color: #f3f3f3;
+  margin-left: 10%;
+  margin-right: 30px;
 }
