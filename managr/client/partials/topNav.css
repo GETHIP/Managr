@@ -47,3 +47,9 @@
 .profilesActive {
 	border-bottom-color: #0397d7;
 }
+
+@media (max-width: 979px){
+.navbar-fixed-top {
+    margin-bottom: 0px !important;
+}
+}
