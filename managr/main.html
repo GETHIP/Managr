@@ -2,8 +2,10 @@
     <title>Managr</title>
 </head>
 <template name="main">
-    {{> topNav}}
-    <div style="margin-top:50px;">
+    {{#if renderNavbar}}
+      {{> topNav}}
+    {{/if}}
+    <div class="{{navbarDivMargins}}">
         {{>Template.dynamic template=content}}
     </div>
 

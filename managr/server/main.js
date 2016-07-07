@@ -174,7 +174,7 @@ studentIndex = new EasySearch.Index({
 
     },
 	'testCreateUsers': function() {
-		var adminId = Accounts.createUser({
+		var instructorId = Accounts.createUser({
 			username: "instructor",
 			password: "password",
 		});
@@ -186,9 +186,69 @@ studentIndex = new EasySearch.Index({
 			username: "student",
 			password: "password",
 		});
-		Roles.addUsersToRoles(adminId, 'instructor');
+
+		Roles.addUsersToRoles(instructorId, 'instructor');
 		Roles.addUsersToRoles(jimId, 'instructor');
 		Roles.addUsersToRoles(studentId, 'student');
+
+		Instructor.insert({
+			"name": "Jim Collison",
+			"profilePicture": "x",
+			"strengths": ['Arranger', 'Woo', 'Communication', 'Maximizer', 'Activator'],
+			"description": "Teacher",
+			"email": "Teacher@teacher.com",
+			"userId": jimId
+		});
+		Instructor.insert({
+			"name": "Zach",
+			"profilePicture": "x",
+			"strengths": ['Arranger', 'Woo', 'Communication', 'Maximizer', 'Activator'],
+			"description": "Teacher",
+			"email": "Teacher@teacher.com",
+			"userId": instructorId
+		});
+		Student.insert({
+			"name": "Johnny",
+			"profilePicture": "x",
+			"age": 15,
+			"strengths": ['Input', 'Command', 'Restorative', 'Learner', 'Futuristic'],
+			"description": "tall",
+			"grade": '10th',
+			"attendance": [true, false, true, true, false, false, true, true, false,
+				true, true, false
+			],
+			"assignments": [{
+				"name": "Java Work",
+				"dateAssigned": new Date(),
+				"dueDate": new Date(),
+				"possiblePoints": 100,
+				"pointsRecieved": 10,
+				"instructor": "Zach"
+			}, {
+				name: "Java Work",
+				dateAssigned: new Date(),
+				dueDate: new Date(),
+				possiblePoints: 100,
+				pointsRecieved: 10,
+				instructor: "Zach"
+			}],
+			"school": "West Dodge",
+			"email": "ben@ben.com",
+			"getHipYear": 2,
+			"phoneNumber": '4026571179',
+			"parentNames": ['Bill', 'Hillary'],
+			"address": {
+				"street": '3910 s 226th st.',
+				"city": 'Elkhorn',
+				"state": 'Nebraska',
+				"zipCode": 68022
+			},
+			"github": 'Athletesrun',
+			"blog": "http://blogger.com",
+			"tshirtSize": "Small",
+      "ep10": ["Responsibility", "Profitability", "Communication", "Strategic"],
+			"userId": studentId
+		});
 	},
 	'createDefaultUser': function() {
 		createDefaultUser();
