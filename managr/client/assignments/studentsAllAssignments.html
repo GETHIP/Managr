@@ -14,19 +14,15 @@
               <th class="tableHeadFormatStudent">Instructor</th>
           </tr>
           {{#each assignments}}
-          <tr class="tableRowFormat">
-              <td>
-                  <a style="text-decoration:none;color:#333333;padding-left:6% !important;" class="tableDataFormatStudent" href="{{url}}">{{title}}</a>
-              </td>
+            <tr class="tableRowFormat" onclick="parent.location='{{url}}'">
+              <td class="tableDataFormatStudent">{{title}}</td>
               <td class="tableDataFormatStudent">{{dateAssigned}}</td>
               <td class="tableDataFormatStudent">{{dueDate}}</td>
               <td class="tableDataFormatStudent">{{pointsPossible}}</td>
               <td class="tableDataFormatStudent">Not Graded</td>
               <td class="tableDataFormatStudent">{{assigner}}</td>
-          </tr>
-
+            </tr>
           {{/each}}
-
       </table>
   </div>
 </template>
