@@ -1,5 +1,20 @@
 import { Posts } from '../../collections/blogPosts.js';
 
+function userIsValid(){
+    var isValid = true;
+    if(Meteor.user() == null){
+      isValid = false;
+    }
+    else if(Roles.userIsInRole(Meteor.user()._id, 'unconfirmed')){
+      isValid = false;
+    }
+    return isValid;
+}
+
+UI.registerHelper("userIsValid", function(){
+  return userIsValid();
+})
+
 export function formatDatesOfComments(comments) {
     var newComments = [];
     var newDate;
@@ -24,6 +39,8 @@ export function formatDatesOfComments(comments) {
     return newComments;
 }
 
+
+
 Template.postPage.helpers({
 	blogPost: function() {
 		var blogId = FlowRouter.getParam("blog_id");
@@ -40,6 +57,8 @@ Template.postPage.helpers({
 			date: formattedDate
 		}
 	}
+
+
 });
 
 Template.postPage.events({
