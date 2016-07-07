@@ -14,7 +14,7 @@ Template.createField.onRendered(function() {
 });
 
 Template.HTMLField.onRendered(function() {
-    document.getElementById('create').value = Session.blogPostText;
+    document.getElementById('scriptEditor').value = Session.blogPostText;
 });
 
 Template.tabs.onRendered(function() {
@@ -24,7 +24,7 @@ Template.tabs.events({
 
   'click .wysiwyg':function(event) {
     Template.instance().useWYSIWYG.set(true);
-    Session.blogPostText = document.getElementById('create').value;
+    Session.blogPostText = document.getElementById('scriptEditor').value;
   },
   'click .html':function(event) {
     Template.instance().useWYSIWYG.set(false);
