@@ -1,22 +1,10 @@
 <template name="ProfilesTable">
-	<head>
-        <title>Profiles</title>
-        <link type="text/css" rel="stylesheet" href="./navbar.css">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-        <link rel="stylesheet" href="profile_index.css">
-        <link rel="stylesheet" href="profile_table.css">
-    </head>
-    <body>
-		{{> navbar}}
 		<div class="searchBar">
 		{{> EasySearch.Input index=studentIndex atttributes=searchBarProfile}}
 	</div>
 		<ul>
 		<div class="container-fluid">
-			<table class="table table-bordered table-hover" style="margin-top:10em;">
+			<table class="table table-bordered" style="margin-top:10em;">
 				<thead style="background-color:#0397d7; color:white;">
 					<!--table content should correspond -->
 					<tr>
@@ -62,7 +50,7 @@
 											</tr>
 										</tbody>
 									</table>
-									<table class="table table-bordered table-hover" style="table-layout:fixed; width:630px;">
+									<table class="table table-bordered" style="table-layout:fixed; width:630px;">
 										<thead>
 											<tr>
 												<th>Week Seven</th>
@@ -94,5 +82,4 @@
 			</table>
 		</div>
 	</ul>
-	</body>
 </template>
