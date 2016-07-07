@@ -3,7 +3,7 @@
 		margin-right: 30px;
     height: auto;
 		padding-top: 30px;
-    margin-left: 250px;
+    margin-left: 240px;
 }
 
 #searchEnginePost {
@@ -16,6 +16,7 @@
 		margin-right: 50px;
 		float: right;
     height: 30px;
+    margin-top: -40px;
 }
 
 @media (max-width: 450px) {
@@ -28,5 +29,6 @@
   .blogSearchBar{
     margin-right: 15px;
     float: right;
+    margin-top: 0px;
   }
 }

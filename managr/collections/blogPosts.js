@@ -8,6 +8,9 @@ Comment = new SimpleSchema({
     authorId: {
         type: String,
     },
+	authorName: {
+		type: String
+	},
     date: {
       type: Date,
       autoValue: function() {
@@ -29,6 +32,9 @@ postSchema = new SimpleSchema({
     authorId: {
         type: String,
     },
+	authorName: {
+		type: String,
+	},
     date: {
       type: Date,
       defaultValue: function() {
