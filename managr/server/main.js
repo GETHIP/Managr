@@ -29,7 +29,7 @@ function createDefaultUser() {
 // Publishes Assignments collection so templates can subscribe to recieve collection data
 Meteor.startup(() => {
   // code to run on server at startup
-	const path = '/../../../../../public/images/';
+	const path = Meteor.settings.uploadDirectoryPath;
 
 	UploadServer.init({
 			tmpDir: (process.env.PWD || process.cwd()) + path + 'tmp/',
@@ -257,11 +257,6 @@ studentIndex = new EasySearch.Index({
     Meteor.publish('Assignments', function() {
         return Assignments.find();
     });
-
-    UploadServer.init({
-        tmpDir: process.env.PWD + '/.uploads/tmp',
-        uploadDir: process.env.PWD + '/.uploads/'
-    })
 
 	Meteor.publish("Student", function() {
 		return Student.find();
