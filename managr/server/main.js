@@ -5,6 +5,25 @@ import { Comments } from '../collections/comments.js';
 import { Assignments } from '../collections/assignments.js';
 import { Instructor } from '../collections/instructor.js';
 
+function userIsValid(){
+    var isValid = true;
+    if(Meteor.user() == null){
+      isValid = false;
+    }
+    else if(Roles.userIsInRole(Meteor.user()._id, 'unconfirmed')){
+      isValid = false;
+    }
+    return isValid;
+}
+
+function userIsInstructor(){
+	var isInstructor = false;
+	if(Roles.userIsInRole(Meteor.user.()._id, 'instructor')){
+		var isInstructor = true;
+	}
+return isInstructor;
+}
+
 function createDefaultUser() {
 	var users = Meteor.users.find({username: "admin"}).fetch();
 	if (users.length > 0) {
@@ -70,11 +89,17 @@ Meteor.startup(() => {
 
   Meteor.methods({
     'insertPost':function(post) {
+			if(!userIsInstructor()){
+				return ;
+			}
       Posts.insert(post);
       console.log(Posts.find().fetch());
     },
     'updateComment': function(postId, authorId, commentText){
-     Posts.update({_id: postId },
+			if(!userIsValid()){
+				return ;
+			}
+		 Posts.update({_id: postId },
         {$push:{
           comments:
           {text: commentText,
