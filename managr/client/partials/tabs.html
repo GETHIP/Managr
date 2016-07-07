@@ -7,12 +7,14 @@
       <li class="html"><a class="passiveText">HTML</a></li>
 
        {{> createField}}
+       {{renderedWYSIWYG}}
     {{else}}
 
       <li class="wysiwyg"><a class="passiveText">WYSIWYG</a></li>
       <li class="activehtml"><a class="activeText">HTML</a></li>
 
       {{> HTMLField}}
+      {{renderedHTML}}
     {{/if}}
   </ul>
 
