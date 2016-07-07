@@ -3,11 +3,12 @@
 		margin-right: 30px;
     height: auto;
 		padding-top: 30px;
-    margin-left: 250px;
+    margin-left: 240px;
 }
 .archivePosts li {
     box-shadow: 3px 3px 5px #888888;
     margin-bottom: 8px;
+    background-color: white;
 }
 
 .line{
@@ -23,4 +24,21 @@
 #timeHead{
   font-size: 35px;
   font-family: Helvetica;
+}
+
+@media (max-width: 450px) {
+  .archivePosts {
+      background-color: #f3f3f3;
+  		margin-right: 30px;
+      height: auto;
+  		padding-top: 30px;
+      margin-left: 0px;
+  }
+  .archivePosts li {
+      box-shadow: 3px 3px 5px #888888;
+      margin-bottom: 8px;
+  }
+  #archiveHeader{
+    margin-left: 0px;
+  }
 }

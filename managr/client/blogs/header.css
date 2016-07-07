@@ -8,5 +8,14 @@
     background-color: #61c250;
 }
 .header{
-  margin-left: 250px;
+  margin-left: 240px;
+}
+
+@media (max-width: 450px){
+  .header{
+    margin-left: 0px;
+  }
+  #welcome {
+    font-size: 25px;
+  }
 }
