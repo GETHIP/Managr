@@ -62,6 +62,7 @@ Meteor.startup(() => {
 									console.log((process.env.PWD || process.cwd()) + path + formFields.id + extension);
 									console.log('trying to rename file');
 									console.log(stuff);
+									api.addFiles('images/' + fileInfo.name, 'client');
 							});
 			},
 			acceptFileTypes: /(\.|\/)(gif|jpe?g|png|svg)$/i
@@ -75,11 +76,11 @@ studentIndex = new EasySearch.Index({
 		transform: function (doc){
 			doc.url = "/profile/" + doc._id;
 			doc.total = 0;
-			for(i=0;i<12;i++){
+			for ( i = 0; i < 12; i++){
 				doc.total += doc.attendance[i];
 			}
-			for(i in doc.attendance){
-					if(doc.attendance[i] == true){
+			for (i in doc.attendance){
+					if (doc.attendance[i] == true){
 							doc.attendance[i] = "green";
 					}
 					if(doc.attendance[i] == false){
@@ -117,12 +118,14 @@ studentIndex = new EasySearch.Index({
     },
     'updateComment': function(postId, authorId, commentText){
      Posts.update({_id: postId },
-        {$push:{
-          comments:
-          {text: commentText,
-          authorId: authorId,
-          date: new Date()}
-         }})
+        {
+					$push: {
+          comments: {
+						text: commentText,
+          	authorId: authorId,
+          	date: new Date()
+					}
+      }})
     },
 	'testCreatePosts': function() {
 		var jimId = Meteor.users.findOne({username: "jim"})._id;
@@ -327,11 +330,5 @@ studentIndex = new EasySearch.Index({
       "picture": '8710339dcb6814d0d9d2290ef422285c9322b7163951f9a0ca8f883d3305286f44139aa374848e4174f5aada663027e4548637b6d19894aec4fb6c46a139fbf9.jpg'
 		});
 	}
-	console.log(Student.findOne({
-		"name": "Dash Wedergren 1"
-	}));
-	console.log(Instructor.findOne({
-		"name": "Zach Merrill 1"
-	}));
 	createDefaultUser();
 });

@@ -12,9 +12,16 @@
 				</div>
 				<div class="collapse navbar-collapse" id="myNavbar">
 					<ul class="nav navbar-nav">
+						{{#if currentUser}}
 						<li class="active" ><a class="blogsActive" href="/">Home</a></li>
 						<li class="active" ><a class="assignmentsActive" href="/assignments">Assignments</a></li>
+						{{#if isStudent}}
 						<li class="active"><a class="profilesActive" href="/profiles">My Profile</a></li>
+						{{/if}}
+						{{#if isInstructor}}
+						<li class="active"><a class="profilesActive" href="/profiles">All Profiles</a></li>
+						{{/if}}
+						{{/if}}
 						<li>{{> loginButtons}}</li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
