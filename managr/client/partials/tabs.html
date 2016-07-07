@@ -1,16 +1,21 @@
 <template name="tabs">
 <div class="container">
 <form class="postCreate">
+  <div class="newTitle">
+
+      <input type="text" id="createPostTitle" placeholder="Title">
+     </div>
   <ul class="theTabs">
+
     {{#if useWYSIWYG}}
-      <li class="activewysiwyg"><a class="activeText">WYSIWYG</a></li>
-      <li class="html"><a class="passiveText">HTML</a></li>
+      <li class="activewysiwyg"><a class="activeText">Text</a></li>
+      <li class="html"><a class="passiveText">Script</a></li>
 
        {{> createField}}
     {{else}}
 
-      <li class="wysiwyg"><a class="passiveText">WYSIWYG</a></li>
-      <li class="activehtml"><a class="activeText">HTML</a></li>
+      <li class="wysiwyg"><a class="passiveText">Text</a></li>
+      <li class="activehtml"><a class="activeText">Script</a></li>
 
       {{> HTMLField}}
     {{/if}}
