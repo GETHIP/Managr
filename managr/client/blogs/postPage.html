@@ -11,11 +11,15 @@
         {{> commentDisplay}}
       {{/each}}
 
+      {{#if userIsValid}}
       {{> writeComment}}
+      {{/if}}
     {{/with}}
   </div>
-  {{> writeCommentSubmit}}
 
+  {{#if userIsValid}}
+    {{> writeCommentSubmit}}
+  {{/if}}
   </div>
 </form>
   </div>
