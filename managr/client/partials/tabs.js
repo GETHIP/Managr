@@ -34,7 +34,7 @@ Template.tabs.events({
 
     if (Template.instance().useWYSIWYG.get()) {
         Meteor.call("insertPost",{
-          title:"Will it Work" ,
+          title: document.getElementById('createPostTitle').value ,
           text: document.getElementById('editor').innerHTML,
           authorId: 12345,
           date: new Date(),
@@ -43,7 +43,7 @@ Template.tabs.events({
 
     }else{
       Meteor.call("insertPost",{
-        title:"Will it Work" ,
+        title:document.getElementById('createPostTitle').value ,
         text: document.getElementById('create').value,
         authorId: 12345,
         date: new Date(),
