@@ -29,7 +29,7 @@ function createDefaultUser() {
 // Publishes Assignments collection so templates can subscribe to recieve collection data
 Meteor.startup(() => {
   // code to run on server at startup
-	const path = '/../../../../../public/images/';
+	const path = Meteor.settings.uploadDirectoryPath;
 
 	UploadServer.init({
 			tmpDir: (process.env.PWD || process.cwd()) + path + 'tmp/',
