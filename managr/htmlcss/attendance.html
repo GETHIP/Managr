@@ -1,8 +1,9 @@
 <template name="attendanceUpdate">
   <h1>Attendance</h1>
   {{> navbar}}
+<div class="containerAttendance">
   <form class="attendanceUpdate">
-    <table class= "table-bordered table-hovered table">
+    <table class= "table-bordered table-hovered table attendanceTable">
     <thead id="attendance">
         <tr>
             <th>Week One</th>
@@ -19,85 +20,87 @@
             <th>Week Twelve</th>
       </tr>
     </thead>
-     <tbody>
+     <tbody class="choice">
        <tr>
         {{#with attendance}}
     <th>
          <select class="form-control" id="week1">
-              <option {{oneone}}>True</option>
-              <option {{onetwo}}>False</option>
+              <option {{oneone}}>Present</option>
+              <option {{onetwo}}>Absent</option>
          </select>
     </th>
     <th>
          <select class="form-control" id="week2">
-              <option {{twoone}}>True</option>
-              <option {{twotwo}}>False</option>
+              <option {{twoone}}>Present</option>
+              <option {{twotwo}}>Absent</option>
          </select>
     </th>
     <th>
          <select class="form-control" id="week3">
-              <option {{threeone}}>True</option>
-              <option {{threetwo}}>False</option>
+              <option {{threeone}}>Present</option>
+              <option {{threetwo}}>Absent</option>
          </select>
     </th>
     <th>
          <select class="form-control" id="week4">
-              <option {{fourone}}>True</option>
-              <option {{fourtwo}}>False</option>
+              <option {{fourone}}>Present</option>
+              <option {{fourtwo}}>Absent</option>
          </select>
     </th>
     <th>
          <select class="form-control" id="week5">
-              <option {{fiveone}}>True</option>
-              <option {{fivetwo}}>False</option>
+              <option {{fiveone}}>Present</option>
+              <option {{fivetwo}}>Absent</option>
          </select>
     </th>
     <th>
          <select class="form-control" id="week6">
-              <option {{sixone}}>True</option>
-              <option {{sixtwo}}>False</option>
+              <option {{sixone}}>Present</option>
+              <option {{sixtwo}}>Absent</option>
          </select>
     </th>
     <th>
          <select class="form-control" id="week7">
-              <option {{sevenone}}>True</option>
-              <option {{seventwo}}>False</option>
+              <option {{sevenone}}>Present</option>
+              <option {{seventwo}}>Absent</option>
          </select>
     </th>
     <th>
          <select class="form-control" id="week8">
-              <option {{eightone}}>True</option>
-              <option {{eighttwo}}>False</option>
+              <option {{eightone}}>Present</option>
+              <option {{eighttwo}}>Absent</option>
          </select>
     </th>
     <th>
          <select class="form-control" id="week9">
-              <option {{nineone}}>True</option>
-              <option {{ninetwo}}>False</option>
+              <option {{nineone}}>Present</option>
+              <option {{ninetwo}}>Absent</option>
          </select>
     </th>
     <th>
          <select class="form-control" id="week10">
-              <option {{tenone}}>True</option>
-              <option {{tentwo}}>False</option>
+              <option {{tenone}}>Present</option>
+              <option {{tentwo}}>Absent</option>
          </select>
     </th>
     <th>
          <select class="form-control" id="week11">
-              <option {{elevenone}}>True</option>
-              <option {{eleventwo}}>False</option>
+              <option {{elevenone}}>Present</option>
+              <option {{eleventwo}}>Absent</option>
          </select>
     </th>
     <th>
          <select class="form-control" id="week12">
-              <option {{twelveone}}>True</option>
-              <option {{twelvetwo}}>False</option>
+              <option {{twelveone}}>Present</option>
+              <option {{twelvetwo}}>Absent</option>
          </select>
     </th>
     {{/with}}
        </tr>
      </tbody>
   </table>
+
     <button type="submit" class="btn btn-warning btn-block updateAttendance">Update Attendance</button>
 </form>
+</div>
 </template>
