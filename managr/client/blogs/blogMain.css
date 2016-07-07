@@ -8,19 +8,17 @@ textarea {
 }
 
 input[name="name"] {
- width: 95%;
+    width: 95%;
 }
-#postsHeader{
-
-   margin-left: 250px;
-
+#postsHeader {
+    margin-top: 10px;
 }
-body{
-    background-color: #f3f3f3;
+.blogSection {
+    padding-top: 30px;
 }
-#blogSection{
 
-  padding-top: 53px;
-  margin-top: 10px;
-
+@media (max-width: 450px) {
+  body{
+    margin-left: 0px;
+  }
 }

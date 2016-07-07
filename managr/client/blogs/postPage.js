@@ -1,27 +1,26 @@
 import { Posts } from '../../collections/blogPosts.js';
 
-export function formatDatesOfComments(comments){
-  var newComments = [];
-  var newDate;
-  var i;
-  for (i = 0; i < comments.length; i++){
-    var commentColor = "";
-    if (i % 2 == 0){
-      commentColor = "#eeeeee";
+export function formatDatesOfComments(comments) {
+    var newComments = [];
+    var newDate;
+    var i;
+    for (i = 0; i < comments.length; i++) {
+        var commentColor = "";
+        if (i % 2 == 0) {
+            commentColor = "#eeeeee";
+        } else {
+            commentColor = "#dddddd";
+        }
+        newDate = moment(comments[i].date);
+        var formattedDate = moment(newDate).format("MMMM D,  YYYY [at] H:mm A");
+        newComments.push({
+            date: formattedDate,
+            text: comments[i].text,
+            authorId: comments[i].authorId,
+            color: commentColor,
+        });
     }
-    else{
-      commentColor = "#dddddd";
-    }
-    newDate = moment(comments[i].date);
-    var formattedDate = moment(newDate).format("MMMM D,  YYYY [at] H:mm A");
-    newComments.push({
-      date: formattedDate,
-      text: comments[i].text,
-      authorId: comments[i].authorId,
-      color: commentColor,
-    });
-  }
-  return newComments;
+    return newComments;
 }
 
 Template.postPage.helpers({
@@ -42,10 +41,10 @@ Template.postPage.helpers({
 });
 
 Template.postPage.events({
-  'submit .submitComment': function(event){
-    event.preventDefault();
-    Meteor.call("updateComment", FlowRouter.getParam("blog_id"), event.target.name.value, event.target.comment.value);
-    event.target.name.value = "";
-    event.target.comment.value = "";
+    'submit .submitComment': function(event) {
+        event.preventDefault();
+        Meteor.call("updateComment", FlowRouter.getParam("blog_id"), event.target.name.value, event.target.comment.value);
+        event.target.name.value = "";
+        event.target.comment.value = "";
     }
-  });
+});

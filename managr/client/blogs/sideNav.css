@@ -1,24 +1,15 @@
-
 body {
     background-color: #f3f3f3;
 }
-
 p {
     padding-left: 20px;
 }
 
-
-
 /*    NavBar Below    */
-
-
-
 
 li {
     list-style-type: none;
 }
-
-
 .navContent {
     font-size: 15px;
     color: white;
@@ -27,7 +18,6 @@ li {
     padding: 10px 20px 10px 20px;
     left: 0;
 }
-
 .navContent:hover {
     background-color: #444444;
     text-decoration: none;
@@ -37,7 +27,6 @@ li {
     text-decoration: none;
     color: white;
 }
-
 .navTitle {
     background-color: #61c250;
     font-size: 16px;
@@ -48,56 +37,75 @@ li {
 #sideNav {
     background-color: #333333;
     color: white;
-    /*width: 20%;
-    height: 110%;
   	position: absolute;
-  	left: 0px;*/
+  	left: 0px;
     width: 200px;
-    margin-top: 43px;
+    height: 100%;
+    margin-top: 0px;
     box-shadow: 3px 3px 5px #888888;
-  	top: 0;
-  	left: 0;
-    float:left;
-    padding-bottom: 999px;
-    margin-bottom: -999px;
+    margin-bottom: -9999px;
+    padding-bottom: 9999px;
     overflow: hidden;
 }
+#createPostButton {
+    background-color: #61c250;
+    color: white;
+    cursor: pointer;
+    display: block;
+    text-decoration: none;
+    width: 45%;
+    margin-top: 10px;
+    font-size: 12px;
+    float: left;
+    margin-left: 3%;
+    text-align: center;
+    padding: 0px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border:none;
+    border-radius: 5px;
+}
+#createPostButton:hover {
+    color: white;
+    background-color: #61d250;
+    text-decoration: none;
+}
+#createPostButton:focus {
+    outline: none;
+}
+#editPostButton:focus {
+    outline: none;
+}
+#editPostButton {
+    background-color: #61c250;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+    display: block;
+    text-decoration: none;
+    width: 45%;
+    margin-top: 10px;
+    font-size: 12px;
+    margin-right: 3%;
+    float: right;
+    padding: 0px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border:none;
+    border-radius: 5px;
+}
+#editPostButton:hover {
+    color: white;
+    background-color: #61d250;
+    text-decoration: none;
+}
+#buttonArea {
+    background-color: #333333;
+    padding-bottom: 10px;
+}
 
-#editPostButton:focus{
-outline: none;
-}
-#editPostButton{
-  color: white;
-  cursor: pointer;
-  display: block;
-  text-decoration: none;
-  width: 45%;
-  margin-top: 10px;
-  font-size: 12px;
-  margin-right: 3%;
-  float:right;
-  text-align: center;
-}
-#createPostButton:focus{
-outline: none;
-}
-#createPostButton{
-  color: white;
-  cursor: pointer;
-  display: block;
-  text-decoration: none;
-  width: 45%;
-  margin-top: 10px;
-  font-size: 12px;
-  margin-left: 3%;
-  float:left;
-  text-align: center;
-  padding: 0px;
-  padding-top: 6px;
-  padding-bottom: 6px;
-
-}
-#buttonArea{
-  background-color:#333333;
-  padding-bottom: 10px;
+@media (max-width: 450px) {
+  #sideNav{
+    display: none;
+  }
 }

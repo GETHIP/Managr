@@ -6,8 +6,15 @@ html {
 /*Entire site CSS*/
 
 /*Blogs CSS*/
+.userLoggedIn{
+  margin-top: 50px;
+}
 
-
+@media (max-width: 980px){
+  .userLoggedIn{
+    margin-top: 0px;
+  }
+}
 /*Assignments CSS*/
 
 
