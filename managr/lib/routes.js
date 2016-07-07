@@ -36,6 +36,12 @@ blogsSection.route('/blogs/:blog_id', {
 		BlazeLayout.render(main, {content: 'postPage'})
 	}
 });
+blogsSection.route('/testBlogs', {
+	name: 'testBlogs',
+	action: function() {
+		BlazeLayout.render('testInsertData');
+	}
+})
 
 assignmentSection.route("/", {
     name: "allAssignments",
@@ -148,7 +154,7 @@ FlowRouter.route("/reports", {
 FlowRouter.route('/blogs/:year/:month', {
 	name: 'archives',
 	action : function(params) {
-		BlazeLayout.render(main, {content: 'blogMain'});
+		BlazeLayout.render(main, {content: 'archives'});
 	}
 });
 

@@ -1,7 +1,39 @@
 import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
 import { Comments } from '../collections/comments.js'
+import { Posts } from '../collections/blogPosts.js'
 import { Assignments } from "../collections/assignments.js";
+
+PostsIndex = new EasySearch.Index({
+    collection: Posts,
+    fields: ['title', 'text', 'comments'],
+    defaultSearchOptions: {
+      sortBy: 'date'
+    },
+    engine: new EasySearch.Minimongo({
+      transform: function(doc){
+        var newPosts = {};
+        var newDate;
+        newDate = moment(doc.date);
+        var formattedDate = moment(newDate).format("M/D/YY");
+        newPosts = {
+            _id: doc._id,
+            date: formattedDate,
+            title: doc.title,
+            text: doc.text,
+            authorId: doc.authorId,
+            comments: doc.comments
+        };
+        return newPosts;
+      },
+      sort: function (searchObject, options) {
+          return {
+            date: -1
+          };
+      }
+    })
+});
+
 
 studentIndex = new EasySearch.Index({
 	name: "studentIndex",
@@ -495,6 +527,21 @@ Template.attendanceUpdate.helpers({
 	}
 });
 
+Template.main.helpers({
+	renderNavbar:function() {
+		return (FlowRouter.current().path == "/login") || (Meteor.user() != null);
+	},
+  navbarDivMargins: function() {
+    if ((FlowRouter.current().path == "/login") || (Meteor.user() != null)){
+      return "userLoggedIn";
+    }
+    else{
+      return "";
+    }
+  }
+})
+
+
 Template.navbar.helpers({
 		assignments: function(){
 				let userId = FlowRouter.getParam("id");
@@ -693,6 +740,7 @@ Template.newAssignment.events({
 // Gives user window scope over the Assignments collection
 window.Assignments = Assignments;
 
+
 /*
 Template.comment.onCreated(function(){
   Meteor.subscribe('Comments');
@@ -702,6 +750,7 @@ Template.comment.onCreated(function(){
 Template.createField.onCreated(function(){
   Meteor.subscribe('Posts');
 });
+
 
 Template.post.events({
 
