@@ -18,7 +18,7 @@ function userIsValid(){
 
 function userIsInstructor(){
 	var isInstructor = false;
-	if(Roles.userIsInRole(Meteor.user.()._id, 'instructor')){
+	if(Roles.userIsInRole(Meteor.user()._id, 'instructor')){
 		var isInstructor = true;
 	}
 return isInstructor;
