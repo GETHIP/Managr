@@ -1,30 +1,34 @@
 <template name="SummaryBox">
-	<div class="summaryDiv">
-    <table class="summaryTable">
-      <tr style="box-shadow: 0 rgba(0, 0, 0, 0.0);">
-        <td class="sumSubTitle">
-        Assignments
-          <p class="sumSubData">
-          Complete: 10
-          <br> Incomplete: 2
-          </p>
-        </td>
-        <td class="sumSubMargin"></td>
-        <td class="sumSubTitle">
-          Points
-          <p class="sumSubData">
-          Earned: 50
-          <br> Possible: 60
-          </p>
-        </td>
-        <td class="sumSubMargin"></td>
-        <td class="sumSubTitle">Grade 
-        <p class="sumSubGrade">
-					<br>
-          83.33%
-        </p>
-      </td>
-      </tr>
-    </table>
-  </div>
+		<div class="sumRow">
+			<div class="sumCol first">
+				<div class="sumDiv title">
+					Assignments
+				</div>
+				<div class="sumDiv">
+					Complete: 10
+				</div>
+				<div class="sumDiv">
+					Incomplete: 2
+				</div>
+			</div>
+			<div class="sumCol second">
+				<div class="sumDiv title">
+					Points
+				</div>
+				<div class="sumDiv">
+					Earned: 50
+				</div>
+				<div class="sumDiv">
+					Possible: 60
+				</div>
+			</div>
+			<div class="sumCol third">
+				<div class="sumDiv title">
+					Grade:
+				</div>
+				<div class="sumDiv grade">
+					83.33%
+				</div>
+			</div>
+		</div>
 </template>

@@ -91,26 +91,33 @@ Template.studentsAllAssignments.onCreated(function() {
   Meteor.subscribe('Assignments');
 });
 // Provides the assignment data to the single template from Assignments collection
+Template.viewAllAssignTable.events({
+  'click #newAssignmentBtn'(event){
+    window.location = "/assignments/edit/new";
+  }
+});
+
 Template.singleAssignment.helpers({
-  assignments: function() {
-    var objects,thisAssignment;
-    var a = Assignments.find({}).fetch();
-    if (a.length != 0) {
-      for (var i = 0; i < a.length; i++) {
-        if (a[i]._id == FlowRouter.getParam("id")) {
-          thisAssignment = a[i]
-        }
-      }
-      var cleanedObj;
-      cleanedObj = {
-        title: thisAssignment.title,
-        description: thisAssignment.description,
-        dueDate: (thisAssignment.dueDate.getMonth() + 1) + "/" + thisAssignment.dueDate.getDate() + "/" +  thisAssignment.dueDate.getFullYear(),
-        assigner: thisAssignment.assigner,
-        dateAssigned: (thisAssignment.dueDate.getMonth() + 1) + "/" + thisAssignment.dueDate.getDate() + "/" +  thisAssignment.dueDate.getFullYear(),
-        pointsPossible: thisAssignment.pointsPossible
-      }
-      return cleanedObj;
+    assignments: function() {
+        var objects,thisAssignment;
+				var a = Assignments.find({}).fetch();
+				if (a.length != 0) {
+					for (var i = 0; i < a.length; i++) {
+						if (a[i]._id == FlowRouter.getParam("id")) {
+							thisAssignment = a[i]
+						}
+					}
+	        var cleanedObj;
+	        cleanedObj = {
+	            title: thisAssignment.title,
+	            description: thisAssignment.description,
+	            dueDate: (thisAssignment.dueDate.getMonth() + 1) + "/" + thisAssignment.dueDate.getDate() + "/" +  thisAssignment.dueDate.getFullYear(),
+	            assigner: thisAssignment.assigner,
+	            dateAssigned: (thisAssignment.dateAssigned.getMonth() + 1) + "/" + thisAssignment.dateAssigned.getDate() + "/" +  thisAssignment.dateAssigned.getFullYear(),
+	            pointsPossible: thisAssignment.pointsPossible
+	        }
+	        return cleanedObj;
+				}
     }
   }
 });
@@ -144,24 +151,27 @@ Template.editSingleAssignment.helpers({
 
 // Provides the table template with all the listed assignments
 Template.studentsAllAssignments.helpers({
-  assignments: function() {
-    var list, objects, i;
-    list = [];
-    objects = Assignments.find({}).fetch();
-    for (i = 0; i < objects.length; i++) {
-      if (objects.length > 0) {
-        var obj, j, aUrl, cleanedObj;
-        obj = objects[i];
-        aUrl = "./assignments/single/" + obj._id.valueOf();
-        // The formatted object to be returned
-        cleanedObj = {
-          title: obj.title,
-          description: obj.description,
-          dueDate: (obj.dueDate.getMonth() + 1) + "/" + obj.dueDate.getDate() + "/" +  obj.dueDate.getFullYear(),
-          assigner: obj.assigner,
-          dateAssigned: (obj.dueDate.getMonth() + 1) + "/" + obj.dueDate.getDate() + "/" +  obj.dueDate.getFullYear(),
-          pointsPossible: obj.pointsPossible,
-          url: aUrl
+    assignments: function() {
+        var list, objects, i;
+        list = [];
+        objects = Assignments.find({}).fetch();
+        for (i = 0; i < objects.length; i++) {
+            if (objects.length > 0) {
+                var obj, j, aUrl, cleanedObj;
+                obj = objects[i];
+                aUrl = "./assignments/single/" + obj._id.valueOf();
+                // The formatted object to be returned
+                cleanedObj = {
+                    title: obj.title,
+                    description: obj.description,
+                    dueDate: (obj.dueDate.getMonth() + 1) + "/" + (obj.dueDate.getDate() + 1) + "/" +  obj.dueDate.getFullYear(),
+                    assigner: obj.assigner,
+                    dateAssigned: (obj.dateAssigned.getMonth() + 1) + "/" + obj.dateAssigned.getDate()  + "/" +  obj.dateAssigned.getFullYear(),
+                    pointsPossible: obj.pointsPossible,
+                    url: aUrl
+                }
+                list.push(cleanedObj);
+            }
         }
         list.push(cleanedObj);
       }
@@ -193,6 +203,12 @@ Template.newAssignment.helpers({
     return list;
   }
 });
+
+Template.newAssignment.events({
+    'click #createAssignment'(event){
+        window.location = "/assignments/viewAll";
+    }
+})
 Template.aboutme.onCreated(function() {
   var self = this;
   self.autorun(function() {

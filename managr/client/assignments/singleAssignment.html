@@ -1,12 +1,15 @@
 <template name="singleAssignment">
+  <div class="marginContainer">
     {{#with assignments}}
-        <h1 id="title">{{title}}</h1>
+        <h1 class="titleAssignment">{{title}}</h1>
         <div class="orange-bar">&nbsp;</div>
         <div class="assignmentContainer">
-            <p id=assignmentTextFormat><b>Points Possible:</b> {{pointsPossible}}</p>
-            <p id=assignmentTextFormat><b>Instructor:</b> {{assigner}}</p>
-            <p id=assignmentTextFormat><b>Date Assigned:</b> {{dateAssigned}}</p>
-            <p id=assignmentTextFormat><b>Description:</b> {{{description}}}</p>
+            <p class=assignmentTextFormat><b>Points Possible:</b> {{pointsPossible}}</p>
+            <p class=assignmentTextFormat><b>Instructor:</b> {{assigner}}</p>
+            <p class=assignmentTextFormat><b>Date Assigned:</b> {{dateAssigned}}</p>
+            <p class=assignmentTextFormat><b>Due Date:</b> {{dueDate}}</p>
+            <p class=assignmentTextFormat><b>Description:</b> {{description}}</p>
         </div>
     {{/with}}
+  </div>
 </template>

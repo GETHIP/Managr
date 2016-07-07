@@ -66,6 +66,16 @@ assignmentSection.route("/single/:id", {
         });
     }
 });
+//this is a temp route
+assignmentSection.route("/single/admin/:id", {
+    name: "adminSingleAssignment",
+    action(params) {
+        BlazeLayout.render(main,{
+            content: "adminSingleAssignment"
+        });
+    }
+});
+
 assignmentSection.route("/edit/single/:id", {
     name: "editSingleAssignment",
     action(params) {
