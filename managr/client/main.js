@@ -91,6 +91,12 @@ Template.studentsAllAssignments.onCreated(function() {
   Meteor.subscribe('Assignments');
 });
 // Provides the assignment data to the single template from Assignments collection
+Template.viewAllAssignTable.events({
+  'click #newAssignmentBtn'(event){
+    window.location = "/assignments/edit/new";
+  }
+});
+
 Template.singleAssignment.helpers({
     assignments: function() {
         var objects,thisAssignment;
@@ -193,6 +199,12 @@ Template.newAssignment.helpers({
         return list;
     }
 });
+
+Template.newAssignment.events({
+    'click #createAssignment'(event){
+        window.location = "/assignments/viewAll";
+    }
+})
 Template.aboutme.onCreated(function() {
 	var self = this;
 	self.autorun(function() {
