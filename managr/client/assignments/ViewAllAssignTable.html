@@ -8,30 +8,15 @@
       <th class="tableHeadFormat">Average Percentage</th>
     </tr>
 
-    {{#each assignment}}
-      <tr class="tableRowFormat">
-        <td class="tableDataFormat">{{assignment.title}}</td>
-        <td class="tableDataFormat">{{assignment.avgPercentage}}</td>
+    {{#each assignments}}
+      <tr class="tableRowFormat" onclick="parent.location='{{url}}'">
+        <td class="tableDataFormat">{{title}}</td>
+        <td class="tableDataFormat">{{avgPercentage}}N/A</td>
       </tr>
     {{/each}}
 
-    <tr class="tableRowFormat">
-      <td class="tableDataFormat">Bubble Sort</td>
-      <td class="tableDataFormat">100%</td>
-    </tr>
-
-    <tr class="tableRowFormat">
-      <td class="tableDataFormat">Merge Sort</td>
-      <td class="tableDataFormat">80%</td>
-    </tr>
-
-    <tr class="tableRowFormat">
-      <td class="tableDataFormat">Fight Someone</td>
-      <td class="tableDataFormat">50%</td>
-    </tr>
-
   </table>
-  <input type="submit" value="Create New Assignment" class="buttonStyle submitbtn" id="newAssignmentBtn">  
+  <input type="submit" value="Create New Assignment" class="buttonStyle submitbtn" id="newAssignmentBtn">
 </div>
 
 </template>
