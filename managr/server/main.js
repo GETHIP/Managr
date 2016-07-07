@@ -258,11 +258,6 @@ studentIndex = new EasySearch.Index({
         return Assignments.find();
     });
 
-    UploadServer.init({
-        tmpDir: process.env.PWD + '/.uploads/tmp',
-        uploadDir: process.env.PWD + '/.uploads/'
-    })
-
 	Meteor.publish("Student", function() {
 		return Student.find();
 	});
