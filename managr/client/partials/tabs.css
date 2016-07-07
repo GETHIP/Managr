@@ -1,34 +1,32 @@
 .activewysiwyg{
-width:  53.5%;
+width:  49.5%;
 text-align: center;
 float:left;
 background-color: #333333;
 padding: 8px;
 }
 .activehtml{
-width:  53.5%;
+width:  49.5%;
 text-align: center;
-align: right;
 background-color: #333333;
 float: right;
 padding: 8px;
-margin-right: -7.1%;
+margin-right: .8%;
 }
 .wysiwyg{
-width:  53.5%;
+width:  49.5%;
 text-align: center;
 background-color: #333333;
 padding: 8px;
 float:left;
 }
 .html{
-width:  53.5%;
+width:  49.5%;
 text-align: center;
-align: right;
 float: right;
 background-color: #333333;
 padding: 8px;
-margin-right: -7.1%;
+margin-right: .8%;
 }
 .html:hover{
       background-color: #555555;

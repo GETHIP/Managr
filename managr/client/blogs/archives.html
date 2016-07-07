@@ -1,0 +1,17 @@
+<template name="archives">
+  <div class="sidebarBox">
+		{{> sideNav}}
+	</div>
+  <div class="blogSection">
+		<div id="archiveHeader">
+      <p id="timeHead">{{getHeader}}</p>
+  		<p class="line"></p>
+		</div>
+    <ul class="archivePosts">
+      {{#each publicPosts}}
+      <li>{{> post}}</li>
+      {{/each}}
+    </ul>
+	</div>
+
+</template>

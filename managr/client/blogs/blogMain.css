@@ -13,7 +13,7 @@ input[name="name"] {
 #postsHeader {
     margin-top: 10px;
 }
-#blogSection {
+.blogSection {
     padding-top: 30px;
 }
 

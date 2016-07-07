@@ -1,0 +1,24 @@
+<template name="tabs">
+<div class="container">
+<form class="postCreate">
+  <ul class="theTabs">
+    {{#if useWYSIWYG}}
+      <li class="activewysiwyg"><a class="activeText">WYSIWYG</a></li>
+      <li class="html"><a class="passiveText">HTML</a></li>
+
+       {{> createField}}
+    {{else}}
+
+      <li class="wysiwyg"><a class="passiveText">WYSIWYG</a></li>
+      <li class="activehtml"><a class="activeText">HTML</a></li>
+
+      {{> HTMLField}}
+    {{/if}}
+  </ul>
+
+  <input type="submit" class="postButton" value="Create Post">
+</form>
+
+
+</div>
+</template>
