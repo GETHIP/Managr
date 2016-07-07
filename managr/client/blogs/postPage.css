@@ -13,8 +13,8 @@
 }
 
 @media (max-width: 450px) {
-  #bodyContent {
-    margin-left: 20px;
+  .bodyContent {
+    margin-left: 0px;
     padding-top: 50px;
   }
 }

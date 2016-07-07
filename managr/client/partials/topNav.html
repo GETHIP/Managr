@@ -42,19 +42,13 @@
 					<a class="navbar-brand" href="/">GET HIP Managr</a>
 				</div>
 				<div class="collapse navbar-collapse" id="myNavbar">
-					<ul class="nav navbar-nav">
+					<ul class="nav navbar-nav" id="navbarElements">
 						<li class="{{activeClass 'blogs'}}"><a href="/">Home</a></li>
 						<li class="{{activeClass 'assignments'}}"><a href="/assignments">Assignments</a></li>
 						<li class="{{activeClass 'profiles'}}"><a href="/profiles">My Profile</a></li>
-						<li>{{> loginButtons}}</li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
-						<li class="dropdown">
-						<a class="dropdown-toggle" data-toggle="dropdown" href="#">Sign Out<span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="#">Sign Out</a></li>
-						</ul>
-						</li>
+						<li class="loginButton">{{> loginButtons align="right"}}</li>
 					</ul>
 				</div>
 			</div>
