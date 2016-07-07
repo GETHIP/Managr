@@ -1,3 +1,4 @@
+
 .searchBar input[type=text]  {
       width: 100%;
      box-sizing: border-box;
@@ -11,4 +12,4 @@
      padding: 12px 20px 12px 40px;
      position: relative;
      margin-top: 60px;
-  }
+}
