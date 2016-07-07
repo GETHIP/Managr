@@ -36,7 +36,7 @@
   </div>
     <ul class="searchEngine">
         {{#EasySearch.Each index=postsIndex }}
-            <li> <a href="/blogs/{{_id}}" style="text-decoration:none">{{> post}}</a></li>
+            <li id="searchEnginePost"> <a href="/blogs/{{_id}}" style="text-decoration:none">{{> post}}</a></li>
         {{/EasySearch.Each}}
     </ul>
 </template>
