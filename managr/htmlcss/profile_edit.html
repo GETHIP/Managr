@@ -4,9 +4,11 @@
     <form class="profileEdit">
     <div class="form-group">
       <label for="">Profile Picture:</label>
-      <div class="upload">
-        {{> upload_bootstrap contentType='images' formData=specificFormData }}
-        </div>
+      <form class="upload">
+          <input class="uploadInput" type="file">
+          <br>
+          <img class="profilePicturePreview" src="{{picture}}" height="200" width="200" alt="Profile Picture">
+      </form>
     </div>
   <div class="form-group">
     <label for="">Name:</label>

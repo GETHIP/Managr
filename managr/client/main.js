@@ -44,14 +44,6 @@ Template.aboutme.onCreated(function() {
 	});
 });
 
-Template.profileEdit.helpers({
-	specificFormData: function() {
-		return {
-			id: FlowRouter.getParam('id')
-		}
-	}
-});
-
 Template.aboutme.helpers({
 	student: function() {
 		let userId = FlowRouter.getParam("id");
@@ -257,6 +249,29 @@ Template.profileEdit.onCreated(function() {
 });
 
 Template.profileEdit.events({
+	'change .uploadInput'(e) {
+		e.preventDefault();
+
+		console.log('helloo');
+
+		var reader = new FileReader();
+		var preview = document.querySelector('.profilePicturePreview');
+		var file = document.querySelector('input[type=file]').files[0];
+		var result;
+
+		reader.addEventListener("load", function () {
+			result = reader.result;
+			console.log(result);
+		    preview.src = result;
+			Student.update({_id: userId}, {$set: {picture: result}});
+		}, false);
+
+		reader.readAsDataURL(file);
+
+		let userId = FlowRouter.getParam("id");
+
+		console.log(userId);
+	},
 	"submit .profileEdit" (event) {
 		event.preventDefault();
 		let userId = FlowRouter.getParam("id");
