@@ -1,17 +1,16 @@
 <template name="archives">
-  <div class="sidebarBox">
-		{{> sideNav}}
-	</div>
-  <div class="blogSection">
-		<div id="archiveHeader">
-      <p id="timeHead">{{getHeader}}</p>
-  		<p class="line"></p>
-		</div>
-    <ul class="archivePosts">
-      {{#each publicPosts}}
-      <li><a href="/blogs/{{_id}}" style="text-decoration:none">{{> post}}</a></li>
-      {{/each}}
-    </ul>
-	</div>
-
+    <div class="sidebarBox">
+        {{> sideNav}}
+    </div>
+    <div class="blogSection">
+        <div id="archiveHeader">
+            <p id="timeHead">{{getHeader}}</p>
+            <p class="line"></p>
+        </div>
+        <ul class="archivePosts">
+            {{#each publicPosts}}
+            <li class="archivePost"><a href="/blogs/{{_id}}" style="text-decoration:none">{{> post}}</a></li>
+            {{/each}}
+        </ul>
+    </div>
 </template>

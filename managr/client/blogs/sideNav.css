@@ -101,7 +101,7 @@ li {
 }
 #buttonArea {
     background-color: #333333;
-    padding-bottom: 10px;
+    padding-bottom: 3em;
 }
 
 @media (max-width: 450px) {
