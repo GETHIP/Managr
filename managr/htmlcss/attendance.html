@@ -1,106 +1,105 @@
 <template name="attendanceUpdate">
-  <h1>Attendance</h1>
-  {{> navbar}}
-<div class="containerAttendance">
-  <form class="attendanceUpdate">
-    <table class= "table-bordered table-hovered table attendanceTable">
-    <thead id="attendance">
-        <tr>
-            <th>Week One</th>
-            <th>Week Two</th>
-            <th>Week Three</th>
-            <th>Week Four</th>
-            <th>Week Five</th>
-            <th>Week Six</th>
-            <th>Week Seven</th>
-            <th>Week Eight</th>
-            <th>Week Nine</th>
-            <th>Week Ten</th>
-            <th>Week Eleven</th>
-            <th>Week Twelve</th>
-      </tr>
-    </thead>
-     <tbody class="choice">
-       <tr>
-        {{#with attendance}}
-    <th>
-         <select class="form-control" id="week1">
-              <option {{oneone}}>Present</option>
-              <option {{onetwo}}>Absent</option>
-         </select>
-    </th>
-    <th>
-         <select class="form-control" id="week2">
-              <option {{twoone}}>Present</option>
-              <option {{twotwo}}>Absent</option>
-         </select>
-    </th>
-    <th>
-         <select class="form-control" id="week3">
-              <option {{threeone}}>Present</option>
-              <option {{threetwo}}>Absent</option>
-         </select>
-    </th>
-    <th>
-         <select class="form-control" id="week4">
-              <option {{fourone}}>Present</option>
-              <option {{fourtwo}}>Absent</option>
-         </select>
-    </th>
-    <th>
-         <select class="form-control" id="week5">
-              <option {{fiveone}}>Present</option>
-              <option {{fivetwo}}>Absent</option>
-         </select>
-    </th>
-    <th>
-         <select class="form-control" id="week6">
-              <option {{sixone}}>Present</option>
-              <option {{sixtwo}}>Absent</option>
-         </select>
-    </th>
-    <th>
-         <select class="form-control" id="week7">
-              <option {{sevenone}}>Present</option>
-              <option {{seventwo}}>Absent</option>
-         </select>
-    </th>
-    <th>
-         <select class="form-control" id="week8">
-              <option {{eightone}}>Present</option>
-              <option {{eighttwo}}>Absent</option>
-         </select>
-    </th>
-    <th>
-         <select class="form-control" id="week9">
-              <option {{nineone}}>Present</option>
-              <option {{ninetwo}}>Absent</option>
-         </select>
-    </th>
-    <th>
-         <select class="form-control" id="week10">
-              <option {{tenone}}>Present</option>
-              <option {{tentwo}}>Absent</option>
-         </select>
-    </th>
-    <th>
-         <select class="form-control" id="week11">
-              <option {{elevenone}}>Present</option>
-              <option {{eleventwo}}>Absent</option>
-         </select>
-    </th>
-    <th>
-         <select class="form-control" id="week12">
-              <option {{twelveone}}>Present</option>
-              <option {{twelvetwo}}>Absent</option>
-         </select>
-    </th>
-    {{/with}}
-       </tr>
-     </tbody>
-  </table>
-
-    <button type="submit" class="btn btn-warning btn-block updateAttendance">Update Attendance</button>
-</form>
-</div>
+    <h1>Attendance</h1>
+    {{> navbar}}
+    <div class="containerAttendance">
+        <form class="attendanceUpdate">
+            <table class= "table-bordered table-hovered table attendanceTable">
+                <thead id="attendance">
+                    <tr>
+                        <th>Week One</th>
+                        <th>Week Two</th>
+                        <th>Week Three</th>
+                        <th>Week Four</th>
+                        <th>Week Five</th>
+                        <th>Week Six</th>
+                        <th>Week Seven</th>
+                        <th>Week Eight</th>
+                        <th>Week Nine</th>
+                        <th>Week Ten</th>
+                        <th>Week Eleven</th>
+                        <th>Week Twelve</th>
+                    </tr>
+                </thead>
+                <tbody class="choice">
+                    <tr>
+                    {{#with attendance}}
+                        <th>
+                            <select class="form-control" id="week1">
+                                <option {{oneone}}>Present</option>
+                                <option {{onetwo}}>Absent</option>
+                            </select>
+                        </th>
+                        <th>
+                            <select class="form-control" id="week2">
+                                <option {{twoone}}>Present</option>
+                                <option {{twotwo}}>Absent</option>
+                            </select>
+                        </th>
+                        <th>
+                            <select class="form-control" id="week3">
+                                <option {{threeone}}>Present</option>
+                                <option {{threetwo}}>Absent</option>
+                            </select>
+                        </th>
+                        <th>
+                            <select class="form-control" id="week4">
+                                <option {{fourone}}>Present</option>
+                                <option {{fourtwo}}>Absent</option>
+                            </select>
+                        </th>
+                        <th>
+                            <select class="form-control" id="week5">
+                                <option {{fiveone}}>Present</option>
+                                <option {{fivetwo}}>Absent</option>
+                            </select>
+                        </th>
+                        <th>
+                            <select class="form-control" id="week6">
+                                <option {{sixone}}>Present</option>
+                                <option {{sixtwo}}>Absent</option>
+                            </select>
+                        </th>
+                        <th>
+                            <select class="form-control" id="week7">
+                                <option {{sevenone}}>Present</option>
+                                <option {{seventwo}}>Absent</option>
+                            </select>
+                        </th>
+                        <th>
+                            <select class="form-control" id="week8">
+                                <option {{eightone}}>Present</option>
+                                <option {{eighttwo}}>Absent</option>
+                            </select>
+                        </th>
+                        <th>
+                        <select class="form-control" id="week9">
+                            <option {{nineone}}>Present</option>
+                            <option {{ninetwo}}>Absent</option>
+                        </select>
+                        </th>
+                        <th>
+                            <select class="form-control" id="week10">
+                                <option {{tenone}}>Present</option>
+                                <option {{tentwo}}>Absent</option>
+                            </select>
+                        </th>
+                        <th>
+                            <select class="form-control" id="week11">
+                                <option {{elevenone}}>Present</option>
+                                <option {{eleventwo}}>Absent</option>
+                            </select>
+                        </th>
+                        <th>
+                            <select class="form-control" id="week12">
+                                <option {{twelveone}}>Present</option>
+                                <option {{twelvetwo}}>Absent</option>
+                            </select>
+                        </th>
+                    {{/with}}
+                    </tr>
+                </tbody>
+            </table>
+            <button type="submit" class="btn btn-warning btn-block updateAttendance">Update Attendance</button>
+        </form>
+    </div>
 </template>

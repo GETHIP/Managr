@@ -1,22 +1,21 @@
 <template name="newAssignment">
-  <div class="marginContainer">
-  <h1 class="titleAssignment">New Assignment</h1>
-  <div class="orange-bar">&nbsp;</div>
-  <form class="submitbtn" id="submitbtn">
-    <div class="assignmentContainer">
-      <p class="noIndent" id=assignmentFormFormat><b>Name:</b> {{title}}</p>
-      <input type="text" name="name" class="assignmentForm">
-      <p class="noIndent" id=assignmentFormFormat><b>Description:</b> {{description}}</p>
-      {{> WYSIWYG }}
-      <!-- <textarea name="description" class="assignmentDescForm"></textarea> -->
-      <p class="noIndent" id=assignmentFormFormat><b>Points Possible:</b> {{pointsPossible}}</p>
-      <input type="text" name="points" class="assignmentForm">
-      <p class="noIndent" id=assignmentFormFormat><b>Instructor:</b> {{assigner}}</p>
-      <input type="text" name="instructor" class="assignmentForm">
-      <p class="noIndent" id=assignmentFormFormat><b>Date Due:</b> {{dueDate}}</p>
-      <input type="date" name="dateDue" class="assignmentForm">
+    <div class="marginContainer">
+        <h1 class="titleAssignment">New Assignment</h1>
+        <div class="orange-bar">&nbsp;</div>
+        <form class="submitbtn" id="submitbtn">
+            <div class="assignmentContainer">
+                <p class="noIndent" id=assignmentFormFormat><b>Name:</b> {{title}}</p>
+                <input type="text" name="name" class="assignmentForm">
+                <p class="noIndent" id=assignmentFormFormat><b>Description:</b> {{description}}</p>
+                {{> WYSIWYG }}
+                <p class="noIndent" id=assignmentFormFormat><b>Points Possible:</b> {{pointsPossible}}</p>
+                <input type="text" name="points" class="assignmentForm">
+                <p class="noIndent" id=assignmentFormFormat><b>Instructor:</b> {{assigner}}</p>
+                <input type="text" name="instructor" class="assignmentForm">
+                <p class="noIndent" id=assignmentFormFormat><b>Date Due:</b> {{dueDate}}</p>
+                <input type="date" name="dateDue" class="assignmentForm">
+            </div>
+            <input type="submit" value="Create Assignment" class="buttonStyle submitbtn" id="createAssignment">
+        </form>
     </div>
-      <input type="submit" value="Create Assignment" class="buttonStyle submitbtn" id="createAssignment">
-  </form>
-</div>
 </template>
