@@ -1,5 +1,5 @@
 var main = "main"
-
+var blogLayout = "blogLayout"
 var blogsSection = FlowRouter.group({
 	name: "blogs",
 	prefix: ""
@@ -20,20 +20,20 @@ var attendanceSection = FlowRouter.group({
 blogsSection.route('/', {
 	name: 'home',
 	action() {
-		BlazeLayout.render(main, {content: 'blogMain'});
+		BlazeLayout.render(blogLayout, {content: 'blogMain'});
 	}
 });
 blogsSection.route('/login', {
 	name: 'login',
 	action() {
-		BlazeLayout.render(main, {content: 'blogMain'});
+		BlazeLayout.render(blogLayout, {content: 'blogMain'});
 	}
 });
 
 blogsSection.route('/blogs/:blog_id', {
 	name: 'blogs',
 	action : function(params) {
-		BlazeLayout.render(main, {content: 'postPage'})
+		BlazeLayout.render(blogLayout, {content: 'postPage'})
 	}
 });
 blogsSection.route('/testBlogs', {
@@ -165,13 +165,13 @@ FlowRouter.route("/reports", {
 FlowRouter.route('/blogs/:year/:month', {
 	name: 'archives',
 	action : function(params) {
-		BlazeLayout.render(main, {content: 'archives'});
+		BlazeLayout.render(blogLayout, {content: 'archives'});
 	}
 });
 
 FlowRouter.route('/createPost', {
 	name: 'createPost',
 	action() {
-		BlazeLayout.render(main, {content: 'createPost'});
+		BlazeLayout.render(blogLayout, {content: 'createPost'});
 }
 });
