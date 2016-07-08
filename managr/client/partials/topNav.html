@@ -4,32 +4,44 @@
 			<div class="container-fluid">
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
 					</button>
 					<a class="navbar-brand" href="/">GET HIP Managr</a>
 				</div>
 				<div class="collapse navbar-collapse" id="myNavbar">
 					<ul class="nav navbar-nav">
 						{{#if currentUser}}
-						<li class="active" ><a class="blogsActive" href="/">Home</a></li>
-						<li class="active" ><a class="assignmentsActive" href="/assignments">Assignments</a></li>
+						<li class="active" >
+							<a class="blogsActive" href="/">Home</a>
+						</li>
+						<li class="active" >
+							<a class="assignmentsActive" href="/assignments">Assignments</a>
+						</li>
 						{{#if isStudent}}
-						<li class="active"><a class="profilesActive" href="/profiles">My Profile</a></li>
+						<li class="active">
+							<a class="profilesActive" href="/profiles">My Profile</a>
+						</li>
 						{{/if}}
 						{{#if isInstructor}}
-						<li class="active"><a class="profilesActive" href="/profiles">All Profiles</a></li>
+						<li class="active">
+							<a class="profilesActive" href="/profiles">All Profiles</a>
+						</li>
 						{{/if}}
 						{{/if}}
 						<li>{{> loginButtons}}</li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<li class="dropdown">
-						<a class="dropdown-toggle" data-toggle="dropdown" href="#">Sign Out<span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="#">Sign Out</a></li>
-						</ul>
+							<a class="dropdown-toggle" data-toggle="dropdown" href="#">Sign Out
+								<span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu">
+								<li>
+									<a href="#">Sign Out</a>
+								</li>
+							</ul>
 						</li>
 					</ul>
 				</div>

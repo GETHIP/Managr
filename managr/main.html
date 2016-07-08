@@ -3,10 +3,9 @@
 </head>
 <template name="main">
     {{#if renderNavbar}}
-      {{> topNav}}
+        {{> topNav}}
     {{/if}}
     <div class="{{navbarDivMargins}}">
         {{>Template.dynamic template=content}}
     </div>
-
 </template>
