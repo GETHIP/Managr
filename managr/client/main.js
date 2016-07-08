@@ -5,33 +5,34 @@ import { Posts } from '../collections/blogPosts.js'
 import { Assignments } from "../collections/assignments.js";
 
 PostsIndex = new EasySearch.Index({
-  collection: Posts,
-  fields: ['title', 'text', 'comments'],
-  defaultSearchOptions: {
-    sortBy: 'date'
-  },
-  engine: new EasySearch.Minimongo({
-    transform: function(doc){
-      var newPosts = {};
-      var newDate;
-      newDate = moment(doc.date);
-      var formattedDate = moment(newDate).format("M/D/YY");
-      newPosts = {
-        _id: doc._id,
-        date: formattedDate,
-        title: doc.title,
-        text: doc.text,
-        authorId: doc.authorId,
-        comments: doc.comments
-      };
-      return newPosts;
-    },
-    sort: function (searchObject, options) {
-      return {
-        date: -1
-      };
-    }
-  })
+	collection: Posts,
+	fields: ['title', 'text', 'comments'],
+	defaultSearchOptions: {
+		sortBy: 'date'
+	},
+	engine: new EasySearch.Minimongo({
+	  transform: function(doc){
+		var newPosts = {};
+		var newDate;
+		newDate = moment(doc.date);
+		var formattedDate = moment(newDate).format("M/D/YY");
+		newPosts = {
+			_id: doc._id,
+			date: formattedDate,
+			title: doc.title,
+			text: doc.text,
+			authorId: doc.authorId,
+			authorName: doc.authorName,
+			comments: doc.comments
+		};
+		return newPosts;
+	  },
+	  sort: function (searchObject, options) {
+		  return {
+			date: -1
+		  };
+	  }
+	})
 });
 
 

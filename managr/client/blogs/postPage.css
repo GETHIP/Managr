@@ -2,19 +2,19 @@
 .bodyContent {
     background-color: #f3f3f3;
     position: relative;
-    margin-left: 240px;
+    margin-left: 250px;
     margin-right: 30px;
     height: auto;
     padding-top: 40px;
 }
 .commentSection {
-    box-shadow: 3px 3px 5px #888888;
+      box-shadow: 3px 3px 5px #888888;
     background-color: white;
 }
 
 @media (max-width: 450px) {
-  #bodyContent {
-    margin-left: 20px;
+  .bodyContent {
+    margin-left: 0px;
     padding-top: 50px;
   }
 }

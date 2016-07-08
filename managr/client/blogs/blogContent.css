@@ -3,17 +3,20 @@
 		margin-right: 30px;
     height: auto;
 		padding-top: 30px;
-    margin-left: 250px;
+    margin-left: 240px;
 }
-.searchEngine li {
+
+#searchEnginePost {
     box-shadow: 3px 3px 5px #888888;
     margin-bottom: 8px;
+    background-color: white;
 }
 
 .blogSearchBar{
 		margin-right: 50px;
 		float: right;
     height: 30px;
+    margin-top: -40px;
 }
 
 @media (max-width: 450px) {
@@ -23,12 +26,9 @@
       padding-top: 30px;
       margin-left: 0px;
   }
-  .searchEngine li {
-      box-shadow: 3px 3px 5px #888888;
-      margin-bottom: 8px;
-  }
   .blogSearchBar{
     margin-right: 15px;
     float: right;
+    margin-top: 0px;
   }
 }

@@ -1,32 +1,38 @@
 .activewysiwyg{
-width:  49.5%;
+width:  48%;
 text-align: center;
 float:left;
 background-color: #333333;
 padding: 8px;
+margin-left: 1%;
+border-radius: 5px;
 }
 .activehtml{
-width:  49.5%;
+width:  48%;
 text-align: center;
 background-color: #333333;
 float: right;
 padding: 8px;
-margin-right: .8%;
+margin-right: 1.9%;
+border-radius: 5px;
 }
 .wysiwyg{
-width:  49.5%;
+width:  48%;
 text-align: center;
 background-color: #333333;
 padding: 8px;
 float:left;
+margin-left: 1%;
+border-radius: 5px;
 }
 .html{
-width:  49.5%;
+width:  48%;
 text-align: center;
 float: right;
 background-color: #333333;
 padding: 8px;
-margin-right: .8%;
+margin-right: 1.9%;
+border-radius: 5px;
 }
 .html:hover{
       background-color: #555555;
@@ -60,5 +66,25 @@ margin-right: .8%;
   text-decoration: none;
 }
 .container{
-  padding-top: 80px;
+  padding-top: 30px;
+}
+.newTitle{
+  box-shadow: 3px 3px 5px #888888;
+  background-color: white;
+  padding-top: 10px;
+  padding-left:10px;
+  padding-right: 10px;
+  margin-right: 10px;
+  margin-left: 25px;
+}
+#createPostTitle{
+  border-radius: 6px;
+  border: 2px solid lightgray;
+  padding: 7px;
+  width: 100%;
+  height: 35px;
+  font-size: 22px;
+}
+#createPostTitle:focus{
+  outline:none;
 }

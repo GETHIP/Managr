@@ -5,8 +5,38 @@ border-bottom-style: solid;
 padding: 15px 15px 12px 15px;
 }
 
+
 .blogsActive:focus, .blogsActive:hover {
   border-bottom-color: #61c250;
+}
+
+#navbarElements a{
+  padding-top: 15px;
+}
+
+.loginButton{
+  padding-top: 15px;
+}
+
+.loginButton a.login-close-text{
+  color: #0088cc;
+}
+
+.loginButton a{
+  color: #999999;
+  text-decoration: none !important;
+}
+
+.loginButton a:hover{
+  color: #ffffff;
+}
+
+.loginButton a.login-close-text:hover{
+  color: #0088cc;
+}
+
+.blogsActive {
+	border-bottom-color: #61c250;
 }
 
 .assignmentsActive:focus, .assignmentsActive:hover {
@@ -21,3 +51,9 @@ padding: 15px 15px 12px 15px;
   background-color: #222;
   padding: 15px;
 }
+@media (max-width: 979px){
+.navbar-fixed-top {
+    margin-bottom: 0px !important;
+}
+}
+
