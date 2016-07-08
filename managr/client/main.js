@@ -230,6 +230,13 @@ Template.newAssignment.events({
         window.location = "/assignments/viewAll";
     }
 })
+
+Template.assignmentBackButton.events({
+    'click #backToAssignments'(event){
+        window.location = "/assignments";
+    }
+})
+
 Template.aboutme.onCreated(function() {
 	var self = this;
 	self.autorun(function() {

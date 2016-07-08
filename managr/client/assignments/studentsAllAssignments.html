@@ -7,7 +7,6 @@
       <table class="allAssignmentTable">
           <tr>
               <th class="tableHeadFormatStudent">Title</th>
-              <th class="tableHeadFormatStudent">Date Assigned</th>
               <th class="tableHeadFormatStudent">Due Date</th>
               <th class="tableHeadFormatStudent">Points Possible</th>
               <th class="tableHeadFormatStudent">Points Received</th>
@@ -16,7 +15,6 @@
           {{#each assignments}}
             <tr class="tableRowFormat" onclick="parent.location='{{url}}'">
               <td class="tableDataFormatStudent">{{title}}</td>
-              <td class="tableDataFormatStudent">{{dateAssigned}}</td>
               <td class="tableDataFormatStudent">{{dueDate}}</td>
               <td class="tableDataFormatStudent">{{pointsPossible}}</td>
               <td class="tableDataFormatStudent">Not Graded</td>
