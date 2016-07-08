@@ -1,14 +1,13 @@
-
-.active {
-    background-color: #444444 !important;
-	/* You wont be able to see the color because there's an anchor
-	tag whose background color is black within the list. Therefore the black color
-	kind of stacks up on color: #444444. */
-
-	border-bottom-width: 2px;
+.navbar .nav > .active > a:hover, .navbar .nav > .active > a:focus {
+background-color: #444444;
+border-bottom-width: 3px;
+border-bottom-style: solid;
+padding: 15px 15px 12px 15px;
+}
 
 
-	border-bottom-style: solid;
+.blogsActive:focus, .blogsActive:hover {
+  border-bottom-color: #61c250;
 }
 
 #navbarElements a{
@@ -40,16 +39,21 @@
 	border-bottom-color: #61c250;
 }
 
-.assignmentsActive {
+.assignmentsActive:focus, .assignmentsActive:hover {
 	border-bottom-color: #fcb040;
 }
 
-.profilesActive {
+.profilesActive:focus, .profilesActive:hover {
 	border-bottom-color: #0397d7;
 }
 
+.navbar-inverse .nav .active > a {
+  background-color: #222;
+  padding: 15px;
+}
 @media (max-width: 979px){
 .navbar-fixed-top {
     margin-bottom: 0px !important;
 }
 }
+

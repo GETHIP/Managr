@@ -5,7 +5,7 @@ var InstructorSchema = new SimpleSchema({
         type: String,
         label: 'Name'
     },
-    profilePicture: {
+    picture: {
         type: String,
         label: 'Profile Picture'
     },
@@ -21,9 +21,9 @@ var InstructorSchema = new SimpleSchema({
         type: String,
         label: 'Email'
     },
-	userId: {
-		type: String,
-		label: 'userId'
-	}
+	  userId: {
+		    type: String,
+		    label: 'userId'
+	  }
 });
 Instructor.attachSchema(InstructorSchema);

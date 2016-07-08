@@ -1,31 +1,29 @@
 <template name="tabs">
-<div class="container">
-<form class="postCreate">
-  <div class="newTitle">
+	<div class="container">
+		<form class="postCreate">
+		  <div class="newTitle">
 
-      <input type="text" id="createPostTitle" placeholder="Title">
-     </div>
-  <ul class="theTabs">
+			  <input type="text" id="createPostTitle" placeholder="Title">
+			 </div>
+		  <ul class="theTabs">
 
-    {{#if useWYSIWYG}}
-      <li class="activewysiwyg"><a class="activeText">Text</a></li>
-      <li class="html"><a class="passiveText">Script</a></li>
+			{{#if useWYSIWYG}}
+			  <li class="activewysiwyg"><a class="activeText">Text</a></li>
+			  <li class="html"><a class="passiveText">Script</a></li>
 
-       {{> createField}}
-       {{renderedWYSIWYG}}
-    {{else}}
+			   {{> createField}}
+			   {{renderedWYSIWYG}}
+			{{else}}
 
-      <li class="wysiwyg"><a class="passiveText">Text</a></li>
-      <li class="activehtml"><a class="activeText">Script</a></li>
+			  <li class="wysiwyg"><a class="passiveText">Text</a></li>
+			  <li class="activehtml"><a class="activeText">Script</a></li>
 
-      {{> HTMLField}}
-      {{renderedHTML}}
-    {{/if}}
-  </ul>
+			  {{> HTMLField}}
+			  {{renderedHTML}}
+			{{/if}}
+		  </ul>
 
-  <input type="submit" class="postButton" value="Create Post">
-</form>
-
-
-</div>
+		  <input type="submit" class="postButton" value="Create Post">
+		</form>
+	</div>
 </template>
