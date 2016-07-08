@@ -1,0 +1,19 @@
+<template name="blogLayout">
+  <div class="row">
+    <div class="col-md-12">
+      {{#if renderNavbar}}
+      {{> topNav}}
+      {{/if}}
+    </div>
+  </div>
+  <div class="row {{navbarDivMargins}}">
+    <div class="col-3-md">
+      <div class="sidebarBox">
+        {{> sideNav}}
+      </div>
+    </div>
+    <div class="col-9-md">
+      {{>Template.dynamic template=content}}
+    </div>
+  </div>
+</template>

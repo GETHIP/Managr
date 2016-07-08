@@ -1,44 +1,18 @@
 <template name="blogContent">
-
-  <div class="search">
-    {{> searchBox}}
-  </div>
-
-
-  <!--if user is logged in** -->
-<!--  <ul class="allPosts">
-    {{#each allPosts }}
-     <li> <a href="/blogs/{{_id}}" style="text-decoration:none">{{> post}}</a></li>
-    {{/each}}
-=======
-  <ul class="allPosts">
-	  {{#each allPosts }}
-	   <li> <a class="invisibleLink" href="/blogs/{{_id}}" style="text-decoration:none">{{> post}}</a></li>
-	  {{/each}}
->>>>>>> master
-  </ul>
--->
-<!-- else if user is not logged in-->
-
-<!--
-	Uncomment this when we have users
-
-  {{#each publicPosts }}
-  <ul>{{> post}}</ul>
-  {{/each}} -->
-
-
-
+    <div class="search">
+        {{> searchBox}}
+    </div>
 </template>
 
-
 <template name="searchBox">
-  <div class="blogSearchBar">
-    {{> EasySearch.Input index=postsIndex placeholder="Search..." sortBy='date'}}
-  </div>
+    <div class="blogSearchBar">
+        {{> EasySearch.Input index=postsIndex placeholder="Search..." sortBy='date'}}
+    </div>
     <ul class="searchEngine">
         {{#EasySearch.Each index=postsIndex }}
-            <li> <a href="/blogs/{{_id}}" style="text-decoration:none">{{> post}}</a></li>
+        <li>
+             <a href="/blogs/{{_id}}" style="text-decoration:none">{{> post}}</a>
+         </li>
         {{/EasySearch.Each}}
     </ul>
 </template>

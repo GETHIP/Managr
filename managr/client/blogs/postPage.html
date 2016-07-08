@@ -1,22 +1,19 @@
 <template name="postPage">
-  <div id="fullBody">
-  {{> sideNav}}
-  <form class="submitComment">
-  <div class="bodyContent">
-
-  <div class="commentSection">
-    {{#with blogPost}}
-      {{> post}}
-      {{#each comments}}
-        {{> commentDisplay}}
-      {{/each}}
-
-      {{> writeComment}}
-    {{/with}}
-  </div>
-  {{> writeCommentSubmit}}
-
-  </div>
-</form>
-  </div>
+    <div id="fullBody">
+        {{> sideNav}}
+        <form class="submitComment">
+            <div class="bodyContent">
+                <div class="commentSection">
+                    {{#with blogPost}}
+                    {{> post}}
+                    {{#each comments}}
+                    {{> commentDisplay}}
+                    {{/each}}
+                    {{> writeComment}}
+                    {{/with}}
+                </div>
+                {{> writeCommentSubmit}}
+            </div>
+        </form>
+    </div>
 </template>

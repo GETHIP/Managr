@@ -1,13 +1,14 @@
 <template name="createPost">
-
-  <div id="createPostBody">
-  {{> sideNav}}
-
+    <div id="createPostBody">
   <div class="MainCreate">
+  {{#if isInstructor}}
+
     {{> tabs}}
 
-  </div>
 
+  {{else}}
+    {{> accessDenied}}
+  {{/if}}
+    </div>
   </div>
-
 </template>
