@@ -4,6 +4,7 @@ import { Posts } from '../collections/blogPosts.js';
 import { Comments } from '../collections/comments.js';
 import { Assignments } from '../collections/assignments.js';
 import { Instructor } from '../collections/instructor.js';
+import { Student } from '../collections/student.js';
 
 function userIsValid(){
     var isValid = true;
@@ -95,7 +96,7 @@ Meteor.startup(() => {
       Posts.insert(post);
       console.log(Posts.find().fetch());
     },
-    'updateComment': function(postId, authorId, commentText){
+    'updateComment': function(authorName, postId, authorId, commentText){
 			if(!userIsValid()){
 				return ;
 			}
@@ -104,7 +105,8 @@ Meteor.startup(() => {
           comments:
           {text: commentText,
           authorId: authorId,
-          date: new Date()}
+          date: new Date()},
+          authorName: authorName
          }})
     },
 	'testCreatePosts': function() {
@@ -112,7 +114,7 @@ Meteor.startup(() => {
 		var instructorId = Meteor.users.findOne({username: "instructor"})._id;
 		var jimName = Instructor.findOne({userId: jimId}).name;
 		var instructorName = Instructor.findOne({userId: instructorId}).name;
-		
+
 		var i = 0;
 		var dates = [
 			new Date(2016, 1, 1),
@@ -326,7 +328,7 @@ Meteor.startup(() => {
 				"userId": "asd34ai"
 			});
 		}
-		
+
 	}
 	createDefaultUser();
 });

@@ -1,4 +1,19 @@
 import { Posts } from '../../collections/blogPosts.js';
+import { Student } from '../../collections/student.js';
+import { Instructor } from '../../collections/instructor.js';
+
+function getName(id){
+  console.log(Instructor.find());
+  insQ = Instructor.find({userId: id});
+  stuQ = Student.find();
+  if(insQ != null){
+    console.log("it returned" + insQ.name);
+    return insQ.name;
+  }else if(stuQ != null){
+    return stuQ.name;
+  }
+}
+
 
 function userIsValid(){
     var isValid = true;
@@ -64,7 +79,9 @@ Template.postPage.helpers({
 Template.postPage.events({
     'submit .submitComment': function(event) {
         event.preventDefault();
-        Meteor.call("updateComment", FlowRouter.getParam("blog_id"), event.target.name.value, event.target.comment.value);
+        console.log("Its ran")
+        console.log(Meteor.userId());
+        Meteor.call("updateComment", FlowRouter.getParam("blog_id"), Meteor.userId() , event.target.comment.value, getName(Meteor.userId()));
         event.target.name.value = "";
         event.target.comment.value = "";
     }
