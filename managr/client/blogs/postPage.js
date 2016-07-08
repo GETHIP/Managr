@@ -1,5 +1,20 @@
 import { Posts } from '../../collections/blogPosts.js';
 
+function userIsValid(){
+    var isValid = true;
+    if(Meteor.user() == null){
+      isValid = false;
+    }
+    else if(Roles.userIsInRole(Meteor.user()._id, 'unconfirmed')){
+      isValid = false;
+    }
+    return isValid;
+}
+
+UI.registerHelper("userIsValid", function(){
+  return userIsValid();
+})
+
 export function formatDatesOfComments(comments) {
     var newComments = [];
     var newDate;
@@ -17,11 +32,14 @@ export function formatDatesOfComments(comments) {
             date: formattedDate,
             text: comments[i].text,
             authorId: comments[i].authorId,
+			authorName: comments[i].authorName,
             color: commentColor,
         });
     }
     return newComments;
 }
+
+
 
 Template.postPage.helpers({
 	blogPost: function() {
@@ -29,15 +47,18 @@ Template.postPage.helpers({
 		var post = Posts.findOne({_id: blogId});
 		newDate = moment(post.date);
 		var formattedDate = moment(newDate).format("M/D/YY");
-		console.log(post.comments);
+		var comments = formatDatesOfComments(post.comments);
 		return {
 			title: post.title,
 			text: post.text,
 			authorId: post.authorId,
-			comments: formatDatesOfComments(post.comments),
+			authorName: post.authorName,
+			comments: comments,
 			date: formattedDate
 		}
 	}
+
+
 });
 
 Template.postPage.events({
