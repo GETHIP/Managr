@@ -48,30 +48,73 @@ function createDefaultUser() {
 // Publishes Assignments collection so templates can subscribe to recieve collection data
 Meteor.startup(() => {
   // code to run on server at startup
-  studentIndex = new EasySearch.Index({
-		name: "studentIndex",
-		collection: Student,
-    fields: ['name'],
-    engine: new EasySearch.Minimongo({
-			transform: function (doc){
-				doc.url = "/profile/" + doc._id;
-				for(i in doc.attendance){
-						if(doc.attendance[i] === true){
-								doc.attendance[i] = "Present";
-						}
-						if(doc.attendance[i] === false){
-								doc.attendance[i] = "Absent";
-						}
-				}
-				doc.attendance = doc.attendance.join(" | ");
-				doc.parentNames = doc.parentNames.join(" and ");
-				return doc;
+	const path = Meteor.settings.uploadDirectoryPath;
+
+	UploadServer.init({
+			tmpDir: (process.env.PWD || process.cwd()) + path + 'tmp/',
+			uploadDir: (process.env.PWD || process.cwd()) + path,
+			checkCreateDirectories: true,
+			finished: function(fileInfo, formFields) {
+					console.log(fileInfo);
+					console.log(formFields);
+
+					var fs = Npm.require('fs');
+
+					var fileTypes = ['image/gif', 'image/jpg', 'image/jpeg', 'image/png', 'image/svg+xml'];
+					var fileExtensions= ['.gif', '.jpg', '.jpeg', '.png', '.svg'];
+
+					var extension;
+
+					for(var i in fileTypes) {
+							if(fileInfo.type === fileTypes[i]) {
+									extension = fileExtensions[i];
+									console.log(fileExtensions[i]);
+							}
+					}
+
+					Student.update({_id: formFields.id}, {$set: {picture: formFields.id + extension}});
+
+					fs.rename((process.env.PWD || process.cwd()) + path + fileInfo.name,
+							(process.env.PWD || process.cwd()) + path + formFields.id + extension,
+							function(stuff) {
+									console.log((process.env.PWD || process.cwd()) + path + fileInfo.name);
+									console.log((process.env.PWD || process.cwd()) + path + formFields.id + extension);
+									console.log('trying to rename file');
+									console.log(stuff);
+									api.addFiles('images/' + fileInfo.name, 'client');
+							});
+			},
+			acceptFileTypes: /(\.|\/)(gif|jpe?g|png|svg)$/i
+	});
+
+studentIndex = new EasySearch.Index({
+	name: "studentIndex",
+	collection: Student,
+	fields: ['name'],
+	engine: new EasySearch.Minimongo({
+		transform: function (doc){
+			doc.url = "/profile/" + doc._id;
+			doc.total = 0;
+			for ( i = 0; i < 12; i++){
+				doc.total += doc.attendance[i];
 			}
-		}),
-		permission: function(){
-			return true;
+			for (i in doc.attendance){
+					if (doc.attendance[i] == true){
+							doc.attendance[i] = "green";
+					}
+					if(doc.attendance[i] == false){
+							doc.attendance[i] = "red";
+					}
+			}
+			console.log(doc.attendance);
+			doc.parentNames = doc.parentNames.join(" and ");
+			return doc;
 		}
-  });
+	}),
+	permission: function(){
+		return true;
+	}
+});
   Meteor.publish("Comments", function(){
     return Comments.find();
   });
@@ -96,7 +139,7 @@ Meteor.startup(() => {
       console.log(Posts.find().fetch());
     },
     'updateComment': function(postId, authorId, commentText){
-			if(!userIsValid()){
+			if(!userIsValid()) {
 				return ;
 			}
 		 Posts.update({_id: postId },
@@ -252,11 +295,6 @@ Meteor.startup(() => {
     Meteor.publish('Assignments', function() {
         return Assignments.find();
     });
-
-    UploadServer.init({
-        tmpDir: process.env.PWD + '/.uploads/tmp',
-        uploadDir: process.env.PWD + '/.uploads/'
-    })
 
 	Meteor.publish("Student", function() {
 		return Student.find();

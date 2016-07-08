@@ -1,5 +1,5 @@
 var main = "main"
-
+var blogLayout = "blogLayout"
 var blogsSection = FlowRouter.group({
 	name: "blogs",
 	prefix: ""
@@ -20,20 +20,20 @@ var attendanceSection = FlowRouter.group({
 blogsSection.route('/', {
 	name: 'home',
 	action() {
-		BlazeLayout.render(main, {content: 'blogMain'});
+		BlazeLayout.render(blogLayout, {content: 'blogMain'});
 	}
 });
 blogsSection.route('/login', {
 	name: 'login',
 	action() {
-		BlazeLayout.render(main, {content: 'blogMain'});
+		BlazeLayout.render(blogLayout, {content: 'blogMain'});
 	}
 });
 
 blogsSection.route('/blogs/:blog_id', {
 	name: 'blogs',
 	action : function(params) {
-		BlazeLayout.render(main, {content: 'postPage'})
+		BlazeLayout.render(blogLayout, {content: 'postPage'})
 	}
 });
 blogsSection.route('/testBlogs', {
@@ -66,6 +66,16 @@ assignmentSection.route("/single/:id", {
         });
     }
 });
+//this is a temp route
+assignmentSection.route("/single/admin/:id", {
+    name: "adminSingleAssignment",
+    action(params) {
+        BlazeLayout.render(main,{
+            content: "adminSingleAssignment"
+        });
+    }
+});
+
 assignmentSection.route("/edit/single/:id", {
     name: "editSingleAssignment",
     action(params) {
@@ -79,6 +89,24 @@ assignmentSection.route('/edit/new', {
     action(params) {
         BlazeLayout.render(main, {
             content: "newAssignment"
+        });
+    }
+});
+
+assignmentSection.route('/grades', {
+    name: "viewAllGrades",
+    action() {
+        BlazeLayout.render(main, {
+            content: "viewAllGrades"
+        });
+    }
+});
+
+assignmentSection.route('/viewAll', {
+    name: "viewAllAssignments",
+    action() {
+        BlazeLayout.render(main, {
+            content: "viewAllAssignTable"
         });
     }
 });
@@ -124,6 +152,7 @@ FlowRouter.route("/assignments/:id", {
 profileSection.route("/profiles", {
     action: function(params, queryParams) {
         BlazeLayout.render(main, {content:'ProfilesTable'});
+		//BlazeLayout.render(main, { content: 'assignmentsBody' });
 	}
 });
 
@@ -136,13 +165,13 @@ FlowRouter.route("/reports", {
 FlowRouter.route('/blogs/:year/:month', {
 	name: 'archives',
 	action : function(params) {
-		BlazeLayout.render(main, {content: 'archives'});
+		BlazeLayout.render(blogLayout, {content: 'archives'});
 	}
 });
 
 FlowRouter.route('/createPost', {
 	name: 'createPost',
 	action() {
-		BlazeLayout.render(main, {content: 'createPost'});
+		BlazeLayout.render(blogLayout, {content: 'createPost'});
 }
 });
