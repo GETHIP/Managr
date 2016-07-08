@@ -10,18 +10,13 @@ textarea {
 input[name="name"] {
     width: 95%;
 }
-#postsHeader {
-    margin-top: 10px;
-}
+
 .blogSection {
     padding-top: 30px;
 }
 
 @media (max-width: 450px) {
   body{
-    margin-left: 0px;
-  }
-  #postsHeader{
     margin-left: 0px;
   }
 }

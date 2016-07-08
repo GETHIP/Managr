@@ -5,6 +5,7 @@
     width: 95%;
     height: 30px;
     color: #444444;
+  
 }
 #comment {
     border-radius: 6px;
@@ -35,10 +36,13 @@
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 5px;
+    width: 101% !important;
+
 }
 .button:hover {
     color: white;
     background-color: #61d250;
+
 }
 #inBoxForum {
     margin-right: 10px;

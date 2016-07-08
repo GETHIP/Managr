@@ -13,6 +13,7 @@ export function formatDatesOfPosts(posts) {
             title: posts[i].title,
             text: posts[i].text,
             authorId: posts[i].authorId,
+			authorName: posts[i].authorName,
             comments: posts[i].comments,
         });
     }

@@ -1,11 +1,8 @@
 <template name="createPost">
-    <div id="createPostBody">
+  <div id="createPostBody">
   <div class="MainCreate">
   {{#if isInstructor}}
-
     {{> tabs}}
-
-
   {{else}}
     {{> accessDenied}}
   {{/if}}
