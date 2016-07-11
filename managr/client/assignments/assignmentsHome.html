@@ -1,0 +1,8 @@
+<template name="assignmentsHome">
+  {{#if isInstructor}}
+    {{> viewAllAssignTable}}
+  {{/if}}
+  {{#if isStudent}}
+    {{> studentsAllAssignments}}
+  {{/if}}
+</template>
