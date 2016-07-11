@@ -1,4 +1,17 @@
 import { Posts } from '../../collections/blogPosts.js';
+import { Student } from '../../collections/student.js';
+import { Instructor } from '../../collections/instructor.js';
+
+function getName(id){
+  insQ = Instructor.findOne({userId: id});
+  stuQ = Student.findOne({userId: id});
+  if(insQ != null){
+    return insQ.name;
+  }else if(stuQ != null){
+    return stuQ.name;
+  }
+}
+
 
 export function userIsValid(){
     var isValid = true;
@@ -64,7 +77,7 @@ Template.postPage.helpers({
 Template.postPage.events({
     'submit .submitComment': function(event) {
         event.preventDefault();
-        Meteor.call("updateComment", FlowRouter.getParam("blog_id"), event.target.name.value, event.target.comment.value);
+        Meteor.call("updateComment", getName(Meteor.userId()), FlowRouter.getParam("blog_id"), Meteor.userId() , event.target.comment.value);
         event.target.name.value = "";
         event.target.comment.value = "";
     }
