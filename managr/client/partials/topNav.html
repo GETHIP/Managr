@@ -43,18 +43,28 @@
 				</div>
 				<div class="collapse navbar-collapse" id="myNavbar">
 					<ul class="nav navbar-nav">
-						<li class="{{activeClass 'blogs'}}"><a href="/">Home</a></li>
-						<li class="{{activeClass 'assignments'}}"><a href="/assignments">Assignments</a></li>
-						<li class="{{activeClass 'profiles'}}"><a href="/profiles">My Profile</a></li>
-						<li>{{> loginButtons}}</li>
+						{{#if currentUser}}
+						<li class="active" >
+							<a class="blogsActive" href="/">Home</a>
+						</li>
+						<li class="active" >
+							<a class="assignmentsActive" href="/assignments">Assignments</a>
+						</li>
+						{{#if isStudent}}
+						<li class="active">
+							<a class="profilesActive" href="/profiles">My Profile</a>
+						</li>
+						{{/if}}
+						{{#if isInstructor}}
+						<li class="active">
+							<a class="profilesActive" href="/profiles">All Profiles</a>
+						</li>
+						{{/if}}
+						{{/if}}
+						<li></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
-						<li class="dropdown">
-						<a class="dropdown-toggle" data-toggle="dropdown" href="#">Sign Out<span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="#">Sign Out</a></li>
-						</ul>
-						</li>
+								 <li class="loginButton">{{> loginButtons align="right"}}</li>
 					</ul>
 				</div>
 			</div>
