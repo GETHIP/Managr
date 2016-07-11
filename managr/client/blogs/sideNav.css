@@ -109,3 +109,7 @@ li {
     display: none;
   }
 }
+
+.navbarButton{
+  background-image: none;
+}
