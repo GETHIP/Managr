@@ -13,14 +13,10 @@
 }
 
 .blogSearchBar{
-	margin-right: 30px;
+	margin-right: 50px;
 	float: right;
 	height: 30px;
-}
-
-.placeholder{
-	float: right;
-	margin-right: 5px;
+	margin-top: -40px;
 }
 
 @media (max-width: 450px) {
