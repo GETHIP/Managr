@@ -1,89 +1,85 @@
 <template name="ProfilesTable">
-	<div class="searchBar">
+		<div class="searchBar">
 		{{> EasySearch.Input index=studentIndex atttributes=searchBarProfile}}
 	</div>
-	<ul>
+		<ul>
 		<div class="container-fluid">
-		<table class="table table-bordered" style="margin-top:10em;">
-			<thead style="background-color:#0397d7; color:white;">
-				<tr>
-					<th>Picture</th>
-					<th>Name</th>
-					<th>School</th>
-					<th>Grade</th>
-					<th>Email</th>
-					<th>Parents Names:</th>
-					<th>GET HIP Year</th>
-					<th>Attendance</th>
-				</tr>
-			</thead>
-			<tbody>
-				{{#EasySearch.Each index=studentIndex}}
-				<tr>
-					<th>
-						<img height="70" width="70" alt="Profile Picture" src="/images/{{picture}}"/>
-					</th>
-					<th>
-						<a href={{url}}>{{name}}</a>
-					</th>
-					<th>{{school}}</th>
-					<th>{{grade}}</th>
-					<th>{{email}}</th>
-					<th>{{parentNames}}</th>
-					<th>{{getHipYear}}</th>
-					<th>
-						<table class="table" style="table-layout:fixed; width:630px;">
-							<thead>
-								<tr>
-									<th>Week One</th>
-									<th>Week Two</th>
-									<th>Week Three</th>
-									<th>Week Four</th>
-									<th>Week Five</th>
-									<th>Week Six</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<th bgcolor={{attendance.[0]}}></th>
-									<th bgcolor={{attendance.[1]}}></th>
-									<th bgcolor={{attendance.[2]}}></th>
-									<th bgcolor={{attendance.[3]}}></th>
-									<th bgcolor={{attendance.[4]}}></th>
-									<th bgcolor={{attendance.[5]}}></th>
-								</tr>
-							</tbody>
-						</table>
-						<table class="table table-bordered" style="table-layout:fixed; width:630px;">
-							<thead>
-								<tr>
-									<th>Week Seven</th>
-									<th>Week Eight</th>
-									<th>Week Nine</th>
-									<th>Week Ten</th>
-									<th>Week Eleven</th>
-									<th>Week Twelve</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<th bgcolor={{attendance.[6]}}></th>
-									<th bgcolor={{attendance.[7]}}></th>
-									<th bgcolor={{attendance.[8]}}></th>
-									<th bgcolor={{attendance.[9]}}></th>
-									<th bgcolor={{attendance.[10]}}></th>
-									<th bgcolor={{attendance.[11]}}></th>
-								</tr>
-								<tr>
-									<th style="width:1200px">Total Present: {{total}}</th>
-								</tr>
-							</tbody>
-						</table>
-					</th>
-				</tr>
-				{{/EasySearch.Each}}
-			</tbody>
-		</table>
+			<table class="table table-bordered table-striped table-hover" style="margin-top:10em;">
+				<thead style="background-color:#0397d7; color:white;">
+					<!--table content should correspond -->
+					<tr>
+						<th>Picture</th>
+						<th>Name</th>
+						<th>School</th>
+						<th>Grade</th>
+						<th>Email</th>
+						<th>Parents Names:</th>
+						<th>GET HIP Year</th>
+						<th>Attendance</th>
+					</tr>
+				</thead>
+				<tbody>
+					{{#EasySearch.Each index=studentIndex}}
+		              <tr>
+						  <th><img height="70" width="70" alt="Profile Picture" src="{{picture}}"></th>
+		              <td><a href={{url}}>{{name}}</a></td>
+		    					<td>{{school}}</td>
+		    					<td>{{grade}}</td>
+		    					<td>{{email}}</td>
+									<td>{{parentNames}}</td>
+		    					<td>{{getHipYear}}</td>
+		    					<th><table class="table table-bordered table-hover" style="table-layout:fixed; width:630px;">
+										<thead>
+											<tr>
+												<th>Week One</th>
+												<th>Week Two</th>
+												<th>Week Three</th>
+												<th>Week Four</th>
+												<th>Week Five</th>
+												<th>Week Six</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td bgcolor={{attendance.[0]}}></td>
+												<td bgcolor={{attendance.[1]}}></td>
+												<td bgcolor={{attendance.[2]}}></td>
+												<td bgcolor={{attendance.[3]}}></td>
+												<td bgcolor={{attendance.[4]}}></td>
+												<td bgcolor={{attendance.[5]}}></td>
+											</tr>
+										</tbody>
+									</table>
+									<table class="table table-bordered table-hover" style="table-layout:fixed; width:630px;">
+										<thead>
+											<tr>
+												<th>Week Seven</th>
+												<th>Week Eight</th>
+												<th>Week Nine</th>
+												<th>Week Ten</th>
+												<th>Week Eleven</th>
+												<th>Week Twelve</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td bgcolor={{attendance.[6]}}></td>
+												<td bgcolor={{attendance.[7]}}></td>
+												<td bgcolor={{attendance.[8]}}></td>
+												<td bgcolor={{attendance.[9]}}></td>
+												<td bgcolor={{attendance.[10]}}></td>
+												<td bgcolor={{attendance.[11]}}></td>
+											</tr>
+											<tr>
+												<th style="width:1200px">Total Present: {{total}}</th>
+											</tr>
+										</tbody>
+									</table>
+								</th>
+		              </tr>
+					{{/EasySearch.Each}}
+				</tbody>
+			</table>
 		</div>
 	</ul>
 </template>
