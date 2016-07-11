@@ -7,7 +7,7 @@ import { Student } from "../collections/student.js";
 
 PostsIndex = new EasySearch.Index({
 	collection: Posts,
-	fields: ['title', 'text', 'comments'],
+	fields: ['title', 'text', 'comments', 'authorName'],
 	defaultSearchOptions: {
 		sortBy: 'date'
 	},
