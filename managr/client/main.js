@@ -90,6 +90,9 @@ Template.newAssignment.onCreated(function() {
 Template.singleAssignment.onCreated(function() {
   Meteor.subscribe('Assignments');
 });
+Template.adminSingleAssignment.onCreated(function() {
+	Meteor.subscribe('Assignments');
+})
 Template.studentsAllAssignments.onCreated(function() {
   Meteor.subscribe('Assignments');
 });
@@ -106,7 +109,6 @@ Template.viewAllAssignTable.events({
     window.location = "/assignments/edit/new";
   }
 });
-
 Template.singleAssignment.helpers({
     assignments: function() {
         var objects,thisAssignment;
@@ -114,7 +116,7 @@ Template.singleAssignment.helpers({
 				if (a.length != 0) {
 					for (var i = 0; i < a.length; i++) {
 						if (a[i]._id == FlowRouter.getParam("id")) {
-							thisAssignment = a[i]
+							thisAssignment = a[i];
 						}
 					}
 	        var cleanedObj;
@@ -134,28 +136,26 @@ Template.singleAssignment.helpers({
 // Provides the editSingle template with information on a single assignment
 Template.editSingleAssignment.helpers({
   assignments: function() {
-    var objects;
-    objects = Assignments.find({
-      "_id":new Meteor.Collection.ObjectID(FlowRouter.getParam("id"))
-    }).fetch();
-    if (objects.length > 0) {
-      var obj, cleanedObj, i;
-      obj = objects[0];
-      // The formatted object to be returned
-      cleanedObj = {
-        title: obj.title,
-        description: obj.description,
-        dueDate: (obj.dueDate.getMonth() + 1) + "/" + obj.dueDate.getDate() + "/" +  obj.dueDate.getFullYear(),
-        assigner: obj.assigner,
-        dateAssigned: (obj.dueDate.getMonth() + 1) + "/" + obj.dueDate.getDate() + "/" +  obj.dueDate.getFullYear(),
-        pointsPossible: obj.pointsPossible
-      }
-      return cleanedObj;
-    }
-    else {
-      return {};
-    }
-  }
+    var objects,thisAssignment;
+		var a = Assignments.find({}).fetch();
+		if (a.length != 0) {
+			for (var i = 0; i < a.length; i++) {
+				if (a[i]._id == FlowRouter.getParam("id")) {
+					thisAssignment = a[i];
+				}
+			}
+	    var cleanedObj;
+	      cleanedObj = {
+	        title: thisAssignment.title,
+	        description: thisAssignment.description,
+	        dueDate: (thisAssignment.dueDate.getMonth() + 1) + "/" + thisAssignment.dueDate.getDate() + "/" +  thisAssignment.dueDate.getFullYear(),
+	        assigner: thisAssignment.assigner,
+	        dateAssigned: (thisAssignment.dueDate.getMonth() + 1) + "/" + thisAssignment.dueDate.getDate() + "/" +  thisAssignment.dueDate.getFullYear(),
+	        pointsPossible: thisAssignment.pointsPossible
+	      }
+	      return cleanedObj;
+	    }
+  	}
 });
 
 // Provides the table template with all the listed assignments
@@ -236,14 +236,12 @@ Template.newAssignment.events({
     'click #createAssignment'(event){
         window.location = "/assignments";
     }
-})
-
+});
 Template.assignmentBackButton.events({
     'click #backToAssignments'(event){
         window.location = "/assignments";
     }
-})
-
+});
 Template.aboutme.onCreated(function() {
   var self = this;
   self.autorun(function() {
@@ -790,7 +788,13 @@ Template.editSingleAssignment.events({
     });
   }
 });
-
+Template.adminSingleAssignment.events({
+	'click #modassign'(event) {
+		event.preventDefault();
+		var id = FlowRouter.getParam("id");
+		window.location = "/assignments/edit/single/admin/" + id;
+	}
+});
 Template.newAssignment.events({
   'submit .submitbtn'(event){
     event.preventDefault();
