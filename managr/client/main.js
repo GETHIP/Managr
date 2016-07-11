@@ -189,7 +189,7 @@ Template.viewAllAssignTable.helpers({
             if (objects.length > 0) {
                 var obj, j, aUrl, cleanedObj;
                 obj = objects[i];
-                aUrl = "./single/admin/" + obj._id.valueOf();
+                aUrl = "/assignments/single/admin/" + obj._id.valueOf();
                 // The formatted object to be returned
                 cleanedObj = {
                     title: obj.title,
@@ -228,7 +228,7 @@ Template.newAssignment.helpers({
 
 Template.newAssignment.events({
     'click #createAssignment'(event){
-        window.location = "/assignments/viewAll";
+        window.location = "/assignments";
     }
 })
 
