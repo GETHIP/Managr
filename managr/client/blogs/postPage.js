@@ -77,8 +77,17 @@ Template.postPage.helpers({
 Template.postPage.events({
     'submit .submitComment': function(event) {
         event.preventDefault();
-        Meteor.call("updateComment", getName(Meteor.userId()), FlowRouter.getParam("blog_id"), Meteor.userId() , event.target.comment.value);
-        event.target.name.value = "";
-        event.target.comment.value = "";
+        var text = null;
+        if(document.getElementById('editor') != undefined){
+          text = document.getElementById('editor').innerHTML;
+          document.getElementById('editor').innerHTML = "";
+        }
+        else{
+          text = document.getElementById('scriptEditor').value;
+          document.getElementById('scriptEditor').value = "";
+        }
+
+        Meteor.call("updateComment", getName(Meteor.userId()), FlowRouter.getParam("blog_id"), Meteor.userId() , text);
+
     }
 });
