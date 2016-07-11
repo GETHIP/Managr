@@ -10,23 +10,20 @@ function createDefaultUser() {
 	if (users.length > 0) {
 		return;
 	}
-	console.log("Creating user");
+
 	var adminId = Accounts.createUser({
 		username: "admin",
 		password: "Gallup2016",
 	});
-	console.log("adminID: " + adminId);
 	Roles.addUsersToRoles(adminId, ['instructor']);
-	console.log("added");
 	Instructor.insert({
 		name: "admin",
-		picture: "none",
+		profilePicture: "none",
 		strengths: ["Achiever", "Activator", "Analytical", "Arranger", "Competition"],
 		description: "Admin. I validate other users.",
 		email: "none",
 		userId: adminId
 	});
-	console.log("instructor added");
 }
 
 // Publishes Assignments collection so templates can subscribe to recieve collection data
@@ -88,7 +85,9 @@ Meteor.startup(() => {
     },
 	'testCreatePosts': function() {
 		var jimId = Meteor.users.findOne({username: "jim"})._id;
+		var jimName = "Jim";
 		var instructorId = Meteor.users.findOne({username: "instructor"})._id;
+		var instructorName = "Zach";
 
 		var i = 0;
 		var dates = [
@@ -106,28 +105,41 @@ Meteor.startup(() => {
     console.log(dates);
 		for (i = 1; i <= 10; i++) {
 			var id = jimId;
+			var name = jimName;
+			var otherId = instructorId;
+			var otherName = instructorName;
+			var isPublic = true;
 			if (i % 2 == 0) {
 				id = instructorId;
+				name = instructorName;
+				otherId = jimId;
+				otherName = jimName;
+				isPublic = false;
 			}
 			Posts.insert({
 				title: "Title " + i,
 				text: "Text of the blog post.\n\n\n\nEnd of blog post.",
 				authorId: id,
+				authorName: name,
 				date: dates[i - 1],
+				isPublic: isPublic,
 				comments: [
 					{
 						text: "Comment.",
-						authorId: "otherId",
+						authorId: otherId,
+						authorName: otherName,
 						date: dates[i - 1]
 					},
           {
             text: "Comment.",
-            authorId: "otherId",
+						authorId: jimId,
+						authorName: jimName,
             date: dates[i - 1]
           },
           {
             text: "Comment.",
-            authorId: "otherId",
+						authorId: otherId,
+						authorName: otherName,
             date: dates[i - 1]
           }
 				]
@@ -155,7 +167,7 @@ Meteor.startup(() => {
 
 		Instructor.insert({
 			"name": "Jim Collison",
-			"picture": "x",
+			"profilePicture": "x",
 			"strengths": ['Arranger', 'Woo', 'Communication', 'Maximizer', 'Activator'],
 			"description": "Teacher",
 			"email": "Teacher@teacher.com",
@@ -163,7 +175,7 @@ Meteor.startup(() => {
 		});
 		Instructor.insert({
 			"name": "Zach",
-			"picture": "x",
+			"profilePicture": "x",
 			"strengths": ['Arranger', 'Woo', 'Communication', 'Maximizer', 'Activator'],
 			"description": "Teacher",
 			"email": "Teacher@teacher.com",
@@ -171,7 +183,7 @@ Meteor.startup(() => {
 		});
 		Student.insert({
 			"name": "Johnny",
-			"picture": "x",
+			"profilePicture": "x",
 			"age": 15,
 			"strengths": ['Input', 'Command', 'Restorative', 'Learner', 'Futuristic'],
 			"description": "tall",
@@ -228,8 +240,8 @@ Meteor.startup(() => {
 	Meteor.publish("Student", function() {
 		return Student.find();
 	});
-	Meteor.publish("Teacher", function() {
-		return Teacher.find();
+	Meteor.publish("Instructor", function() {
+		return Instructor.find();
 	});
 	//control update better
 	Student.allow({

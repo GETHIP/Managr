@@ -1,6 +1,7 @@
-import {Instructor} from '../../collections/instructor.js';
+import { Instructor } from '../../collections/instructor.js';
 
 Template.tabs.onCreated(function() {
+  Meteor.subscribe('Instructor');
   Template.instance().useWYSIWYG = new ReactiveVar(true);
   Session.blogPostText = "";
 });
@@ -42,7 +43,7 @@ Template.tabs.events({
     else{
       isPublic = false;
     }
-
+    console.log(Instructor.find().fetch());
     var authorName = Instructor.findOne({userId: Meteor.user()._id}).name;
     console.log(authorName);
     if (Template.instance().useWYSIWYG.get()) {
