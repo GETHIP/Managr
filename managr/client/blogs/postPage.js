@@ -1,6 +1,6 @@
 import { Posts } from '../../collections/blogPosts.js';
 
-function userIsValid(){
+export function userIsValid(){
     var isValid = true;
     if(Meteor.user() == null){
       isValid = false;
@@ -32,7 +32,7 @@ export function formatDatesOfComments(comments) {
             date: formattedDate,
             text: comments[i].text,
             authorId: comments[i].authorId,
-			authorName: comments[i].authorName,
+            authorName: comments[i].authorName,
             color: commentColor,
         });
     }
@@ -47,13 +47,13 @@ Template.postPage.helpers({
 		var post = Posts.findOne({_id: blogId});
 		newDate = moment(post.date);
 		var formattedDate = moment(newDate).format("M/D/YY");
-		var comments = formatDatesOfComments(post.comments);
+		console.log(post.comments);
 		return {
 			title: post.title,
 			text: post.text,
 			authorId: post.authorId,
-			authorName: post.authorName,
-			comments: comments,
+      authorName: post.authorName,
+			comments: formatDatesOfComments(post.comments),
 			date: formattedDate
 		}
 	}
