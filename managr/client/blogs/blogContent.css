@@ -16,7 +16,11 @@
 	margin-right: 50px;
 	float: right;
 	height: 30px;
-	margin-top: -40px;
+}
+
+.placeholder{
+	float: right;
+	margin-right: 5px;
 }
 
 @media (max-width: 450px) {
