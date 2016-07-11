@@ -5,12 +5,24 @@
 }
 
 .buttonBottom {
-align-content: center;
+display:inline-block;
+margin-bottom: inherit;
+text-align: center;
 }
 
 .reportsButton{
   max-width: 90% !important;
-  display: block;
+  display: inline-block !important;
   margin: 0 auto;
   background-color: #0397d7 !important;
+}
+
+.reportsSelect{
+  display: inline-block;
+  margin: 0 auto;
+
+}
+
+.row {
+  padding-left: 40%;
 }

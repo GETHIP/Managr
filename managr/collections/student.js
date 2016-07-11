@@ -39,7 +39,7 @@ var Address = new SimpleSchema({
     },
     state: {
         type: String,
-        label: 'String'
+        label: 'State'
     },
     zipCode: {
         type: Number,
