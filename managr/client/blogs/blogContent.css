@@ -18,6 +18,11 @@
 	height: 30px;
 }
 
+.placeholder{
+	float: right;
+	margin-right: 5px;
+}
+
 @media (max-width: 450px) {
   .searchEngine {
       background-color: #f3f3f3;
