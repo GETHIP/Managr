@@ -92,10 +92,10 @@ Template.singleAssignment.onCreated(function() {
 Template.studentsAllAssignments.onCreated(function() {
   Meteor.subscribe('Assignments');
 });
-Template.writeComment.onCreated(function() {
+Template.postPage.onCreated(function() {
   Meteor.subscribe('Instructor');
 });
-Template.writeComment.onCreated(function() {
+Template.postPage.onCreated(function() {
   Meteor.subscribe('Student');
 });
 // Provides the assignment data to the single template from Assignments collection

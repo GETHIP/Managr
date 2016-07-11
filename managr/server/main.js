@@ -148,13 +148,16 @@ studentIndex = new EasySearch.Index({
 				return ;
 			}
 		 Posts.update({_id: postId },
-        {$push:{
-          comments:
-          {text: commentText,
-          authorId: authorId,
-          date: new Date()},
-          authorName: authorName
-         }})
+        {
+          $push: { comments:
+            {
+              text: commentText,
+              authorId: authorId,
+              date: new Date(),
+              authorName: authorName
+            }
+          }
+        });
     },
 	'testCreatePosts': function() {
 		var jimId = Meteor.users.findOne({username: "jim"})._id;
@@ -305,8 +308,8 @@ studentIndex = new EasySearch.Index({
 	Meteor.publish("Student", function() {
 		return Student.find();
 	});
-	Meteor.publish("Teacher", function() {
-		return Teacher.find();
+	Meteor.publish("Instructor", function() {
+		return Instructor.find();
 	});
 	//control update better
 	Student.allow({

@@ -3,10 +3,8 @@ import { Student } from '../../collections/student.js';
 import { Instructor } from '../../collections/instructor.js';
 
 function getName(id){
-  console.log("its going");
-  console.log(id);
-  insQ = Instructor.find({userId: id});
-  stuQ = Student.find();
+  insQ = Instructor.findOne({userId: id});
+  stuQ = Student.findOne({userId: id});
   if(insQ != null){
     return insQ.name;
   }else if(stuQ != null){
