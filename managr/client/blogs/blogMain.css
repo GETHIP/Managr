@@ -13,6 +13,7 @@ input[name="name"] {
 
 .blogSection {
     padding-top: 30px;
+    margin-left: 10px;
 }
 
 @media (max-width: 450px) {

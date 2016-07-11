@@ -1,6 +1,10 @@
 <template name="createPost">
   <div id="createPostBody">
+    <div id="createHeading">
+{{> createHeader}}
+</div>
   <div class="MainCreate">
+
   {{#if isInstructor}}
     {{> tabs}}
   {{else}}

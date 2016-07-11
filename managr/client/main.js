@@ -3,10 +3,11 @@ import { ReactiveVar } from 'meteor/reactive-var';
 import { Comments } from '../collections/comments.js'
 import { Posts } from '../collections/blogPosts.js'
 import { Assignments } from "../collections/assignments.js";
+import { Student } from "../collections/student.js";
 
 PostsIndex = new EasySearch.Index({
 	collection: Posts,
-	fields: ['title', 'text', 'comments'],
+	fields: ['title', 'text', 'comments', 'authorName'],
 	defaultSearchOptions: {
 		sortBy: 'date'
 	},
@@ -23,6 +24,7 @@ PostsIndex = new EasySearch.Index({
 			text: doc.text,
 			authorId: doc.authorId,
 			authorName: doc.authorName,
+      isPublic: doc.isPublic,
 			comments: doc.comments
 		};
 		return newPosts;
@@ -96,6 +98,10 @@ Template.studentsAllAssignments.onCreated(function() {
 });
 Template.viewAllAssignTable.onCreated(function() {
   Meteor.subscribe('Assignments');
+});
+Template.postPage.onCreated(function() {
+  Meteor.subscribe('Instructor');
+  Meteor.subscribe('Student');
 });
 // Provides the assignment data to the single template from Assignments collection
 Template.viewAllAssignTable.events({
