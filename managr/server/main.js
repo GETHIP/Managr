@@ -10,20 +10,23 @@ function createDefaultUser() {
 	if (users.length > 0) {
 		return;
 	}
-
+	console.log("Creating user");
 	var adminId = Accounts.createUser({
 		username: "admin",
 		password: "Gallup2016",
 	});
+	console.log("adminID: " + adminId);
 	Roles.addUsersToRoles(adminId, ['instructor']);
+	console.log("added");
 	Instructor.insert({
 		name: "admin",
-		profilePicture: "none",
+		picture: "none",
 		strengths: ["Achiever", "Activator", "Analytical", "Arranger", "Competition"],
 		description: "Admin. I validate other users.",
 		email: "none",
 		userId: adminId
 	});
+	console.log("instructor added");
 }
 
 // Publishes Assignments collection so templates can subscribe to recieve collection data
@@ -152,7 +155,7 @@ Meteor.startup(() => {
 
 		Instructor.insert({
 			"name": "Jim Collison",
-			"profilePicture": "x",
+			"picture": "x",
 			"strengths": ['Arranger', 'Woo', 'Communication', 'Maximizer', 'Activator'],
 			"description": "Teacher",
 			"email": "Teacher@teacher.com",
@@ -160,7 +163,7 @@ Meteor.startup(() => {
 		});
 		Instructor.insert({
 			"name": "Zach",
-			"profilePicture": "x",
+			"picture": "x",
 			"strengths": ['Arranger', 'Woo', 'Communication', 'Maximizer', 'Activator'],
 			"description": "Teacher",
 			"email": "Teacher@teacher.com",
@@ -168,7 +171,7 @@ Meteor.startup(() => {
 		});
 		Student.insert({
 			"name": "Johnny",
-			"profilePicture": "x",
+			"picture": "x",
 			"age": 15,
 			"strengths": ['Input', 'Command', 'Restorative', 'Learner', 'Futuristic'],
 			"description": "tall",
