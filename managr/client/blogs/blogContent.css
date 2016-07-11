@@ -13,10 +13,9 @@
 }
 
 .blogSearchBar{
-	margin-right: 50px;
+	margin-right: 30px;
 	float: right;
 	height: 30px;
-	margin-top: -40px;
 }
 
 @media (max-width: 450px) {
