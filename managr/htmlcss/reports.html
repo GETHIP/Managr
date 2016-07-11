@@ -1,8 +1,4 @@
 <template name="reports">
-    <head>
-        <link rel="stylesheet" href="reports.css">
-    </head>
-    <body>
         <table class="table-bordered table-hovered table reportsTable">
             <thead style="background-color:#0397d7; color:white;">
                 <tr>
@@ -19,7 +15,7 @@
         </table>
         <div class="buttonBottom">
             <select id="reportsSelect" class="reportsSelect">
-                <option id="selectaReport">Select a report</option>
+                <option value="" disabled selected hidden>Select a report...</option>
                 <option id="tShirtSizeReport">T-Shirt Size Report</option>
                 <option id="emailReport">Email Report</option>
                 <option id="nameReport">Name Report</option>
@@ -30,5 +26,4 @@
             </select>
             <button type="button" id="csvExport" value="Export Selected Data" class="btn btn-primary reportsButton">Export Selected Data</button>
         </div>
-    </body>
 </template>
