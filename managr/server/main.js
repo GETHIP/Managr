@@ -57,7 +57,19 @@ Meteor.startup(() => {
     return Comments.find();
   });
   Meteor.publish("Posts", function(){
-    return Posts.find();
+		var isValid = true;
+    if(!this.userId){
+      isValid = false;
+    }
+    else if(Roles.userIsInRole(this.userId, 'unconfirmed')){
+      isValid = false;
+    }
+		if(isValid){
+    	return Posts.find();
+		}
+		else{
+			return Posts.find({isPublic: true});
+		}
   });
   Posts.allow({
     'insert': function(userId, doc) {
