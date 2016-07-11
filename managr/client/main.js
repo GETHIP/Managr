@@ -162,7 +162,7 @@ Template.studentsAllAssignments.helpers({
             if (objects.length > 0) {
                 var obj, j, aUrl, cleanedObj;
                 obj = objects[i];
-                aUrl = "./assignments/single/" + obj._id.valueOf();
+                aUrl = "/assignments/single/" + obj._id.valueOf();
                 // The formatted object to be returned
                 cleanedObj = {
                     title: obj.title,
