@@ -1,3 +1,9 @@
+if(Meteor.isClient) {
+	Accounts.onLogout(function() {
+		FlowRouter.go('home');
+	});
+}
+
 var main = "main"
 var blogLayout = "blogLayout"
 var blogsSection = FlowRouter.group({
