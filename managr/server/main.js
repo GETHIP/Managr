@@ -31,11 +31,6 @@ var fs = Npm.require('fs');
 Meteor.startup(() => {
 	// code to run on server at startup
 	createDefaultUser();
-	Meteor.publish("Student", function() {
-		return Student.find();
-	});
-
-	const path = '/../../../../../public/images/';
 
   studentIndex = new EasySearch.Index({
 		name: "studentIndex",
@@ -61,53 +56,6 @@ Meteor.startup(() => {
 			return true;
 		}
   });
-
-	UploadServer.init({
-			tmpDir: (process.env.PWD || process.cwd()) + path + 'tmp/',
-			uploadDir: (process.env.PWD || process.cwd()) + path,
-			checkCreateDirectories: true,
-			finished: function(fileInfo, formFields) {
-					if(fileInfo.type === "application/vnd.ms-excel"){
-						var data = fs.readFileSync((process.env.PWD || process.cwd()) + path + fileInfo.name).toString();
-						Papa.parse(data, {
-							complete: function(data){
-									console.log(data.data);
-									data = data.data;
-									for(i=1;i<data.length-1;i++){
-											Student.insert({
-												"name": data[i][0],
-												"school": data[i][1],
-												"age": data[i][2],
-												"email": data[i][3],
-												"parentNames": data[i][4].split(" and "),
-												"description": data[i][5],
-												"grade": data[i][6],
-												"getHipYear": data[i][7],
-												"phoneNumber": data[i][8],
-												"blog": data[i][9],
-												"strengths": [undefined],
-												"attendance": [undefined],
-												"assignments": [undefined],
-												"github": "blank",
-												"tshirtSize": "blank",
-												"blog": "blank",
-												"ep10": [undefined],
-												"picture": "blank",
-												"address": {
-													"street": data[i][10],
-													"zipCode": 68055,
-													"state": "blank",
-													"city": "blank"
-												}
-											});
-									}
-							}
-						});
-							return;
-					}
-			},
-			acceptFileTypes: /(\.|\/)(gif|jpe?g|png|svg|csv)$/i
-	});
   Meteor.publish("Comments", function(){
     return Comments.find();
   });
@@ -302,6 +250,17 @@ Meteor.startup(() => {
 	},
 	'createDefaultUser': function() {
 		createDefaultUser();
+	},
+	'addStudent': function(user){
+		console.log(user.username);
+		console.log(user.id);
+		 user.id = Accounts.createUser({
+				username: user.username,
+				password: user.password
+		 });
+		 Roles.addUsersToRoles(user.id, 'Student');
+		 console.log(user.id);
+		 Session.set("userId", user.id);
 	}
   });
     Meteor.publish('Assignments', function() {
@@ -326,11 +285,10 @@ Meteor.startup(() => {
 		}
 	});
 
-	if (Student.find().count == 0) {
 		for (var i = Student.find().count(); i < 5; i++) {
 			Student.insert({
 				"name": "ben" + i,
-				"profilePicture": "x",
+				"picture": "x",
 				"age": 5,
 				"strengths": ['Input', 'Command', 'Restorative', 'Learner', 'Futuristic'],
 				"description": "tall",
@@ -367,11 +325,10 @@ Meteor.startup(() => {
 				"github": 'Athletesrun',
 				"blog": "http://blogger.com",
 				"tshirtSize": "Small",
-		  "ep10": ["Responsibility", "Profitability", "Communication", "Strategic"],
+		  	"ep10": ["Responsibility", "Profitability", "Communication", "Strategic"],
 				"userId": "asdof889a"
 			});
 		}
-	}
 	for (var i = Instructor.find().count(); i < 5; i++) {
 		Instructor.insert({
 			"name": "Zach Merrill " + i,
