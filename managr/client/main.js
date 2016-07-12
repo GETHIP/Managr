@@ -3,10 +3,11 @@ import { ReactiveVar } from 'meteor/reactive-var';
 import { Comments } from '../collections/comments.js'
 import { Posts } from '../collections/blogPosts.js'
 import { Assignments } from "../collections/assignments.js";
+import { Student } from "../collections/student.js";
 
 PostsIndex = new EasySearch.Index({
 	collection: Posts,
-	fields: ['title', 'text', 'comments'],
+	fields: ['title', 'text', 'comments', 'authorName'],
 	defaultSearchOptions: {
 		sortBy: 'date'
 	},
@@ -23,6 +24,7 @@ PostsIndex = new EasySearch.Index({
 			text: doc.text,
 			authorId: doc.authorId,
 			authorName: doc.authorName,
+      isPublic: doc.isPublic,
 			comments: doc.comments
 		};
 		return newPosts;
@@ -52,8 +54,18 @@ Template.newAssignment.onCreated(function() {
 Template.singleAssignment.onCreated(function() {
   Meteor.subscribe('Assignments');
 });
+Template.adminSingleAssignment.onCreated(function() {
+	Meteor.subscribe('Assignments');
+})
 Template.studentsAllAssignments.onCreated(function() {
   Meteor.subscribe('Assignments');
+});
+Template.viewAllAssignTable.onCreated(function() {
+  Meteor.subscribe('Assignments');
+});
+Template.postPage.onCreated(function() {
+  Meteor.subscribe('Instructor');
+  Meteor.subscribe('Student');
 });
 // Provides the assignment data to the single template from Assignments collection
 Template.viewAllAssignTable.events({
@@ -69,7 +81,6 @@ Template.viewAllGrades.events({
 		window.location = '/assignments'
 	}
 });
-
 Template.singleAssignment.helpers({
     assignments: function() {
         var objects,thisAssignment;
@@ -77,7 +88,7 @@ Template.singleAssignment.helpers({
 				if (a.length != 0) {
 					for (var i = 0; i < a.length; i++) {
 						if (a[i]._id == FlowRouter.getParam("id")) {
-							thisAssignment = a[i]
+							thisAssignment = a[i];
 						}
 					}
 	        var cleanedObj;
@@ -97,28 +108,26 @@ Template.singleAssignment.helpers({
 // Provides the editSingle template with information on a single assignment
 Template.editSingleAssignment.helpers({
   assignments: function() {
-    var objects;
-    objects = Assignments.find({
-      "_id":new Meteor.Collection.ObjectID(FlowRouter.getParam("id"))
-    }).fetch();
-    if (objects.length > 0) {
-      var obj, cleanedObj, i;
-      obj = objects[0];
-      // The formatted object to be returned
-      cleanedObj = {
-        title: obj.title,
-        description: obj.description,
-        dueDate: (obj.dueDate.getMonth() + 1) + "/" + obj.dueDate.getDate() + "/" +  obj.dueDate.getFullYear(),
-        assigner: obj.assigner,
-        dateAssigned: (obj.dueDate.getMonth() + 1) + "/" + obj.dueDate.getDate() + "/" +  obj.dueDate.getFullYear(),
-        pointsPossible: obj.pointsPossible
-      }
-      return cleanedObj;
-    }
-    else {
-      return {};
-    }
-  }
+    var objects,thisAssignment;
+		var a = Assignments.find({}).fetch();
+		if (a.length != 0) {
+			for (var i = 0; i < a.length; i++) {
+				if (a[i]._id == FlowRouter.getParam("id")) {
+					thisAssignment = a[i];
+				}
+			}
+	    var cleanedObj;
+	      cleanedObj = {
+	        title: thisAssignment.title,
+	        description: thisAssignment.description,
+	        dueDate: (thisAssignment.dueDate.getMonth() + 1) + "/" + thisAssignment.dueDate.getDate() + "/" +  thisAssignment.dueDate.getFullYear(),
+	        assigner: thisAssignment.assigner,
+	        dateAssigned: (thisAssignment.dueDate.getMonth() + 1) + "/" + thisAssignment.dueDate.getDate() + "/" +  thisAssignment.dueDate.getFullYear(),
+	        pointsPossible: thisAssignment.pointsPossible
+	      }
+	      return cleanedObj;
+	    }
+  	}
 });
 
 // Provides the table template with all the listed assignments
@@ -131,7 +140,7 @@ Template.studentsAllAssignments.helpers({
             if (objects.length > 0) {
                 var obj, j, aUrl, cleanedObj;
                 obj = objects[i];
-                aUrl = "./assignments/single/" + obj._id.valueOf();
+                aUrl = "/assignments/single/" + obj._id.valueOf();
                 // The formatted object to be returned
                 cleanedObj = {
                     title: obj.title,
@@ -147,6 +156,28 @@ Template.studentsAllAssignments.helpers({
       }
     return list;
   }
+});
+Template.viewAllAssignTable.helpers({
+    assignments: function() {
+        var list, objects, i;
+        list = [];
+        objects = Assignments.find({}).fetch();
+        console.log("Objects: " + objects.length);
+        for (i = 0; i < objects.length; i++) {
+            if (objects.length > 0) {
+                var obj, j, aUrl, cleanedObj;
+                obj = objects[i];
+                aUrl = "/assignments/single/admin/" + obj._id.valueOf();
+                // The formatted object to be returned
+                cleanedObj = {
+                    title: obj.title,
+                    url: aUrl
+                }
+                list.push(cleanedObj);
+            }
+        }
+        return list;
+    }
 });
 Template.newAssignment.helpers({
   assignments: function() {
@@ -175,7 +206,12 @@ Template.newAssignment.helpers({
 
 Template.newAssignment.events({
     'click #createAssignment'(event){
-        window.location = "/assignments/viewAll";
+        window.location = "/assignments";
+    }
+});
+Template.assignmentBackButton.events({
+    'click #backToAssignments'(event){
+        window.location = "/assignments";
     }
 });
 
@@ -844,6 +880,11 @@ Template.editSingleAssignment.events({
   'submit .submitbtn2'(event) {
     event.preventDefault();
     const form = event.target;
+		function randInst() {
+			var myArray = ["Zach Merrill","James Getrost","Melanie Powell","Andy Elsaesser","Cooper Knaak","Max van Klinken","Logan Fitzgibbons"];
+			console.log(typeof(myArray[Math.floor(Math.random() * myArray.length)]));
+			return myArray[Math.floor(Math.random() * myArray.length)];
+		}
     Assignments.update({
       _id:new Meteor.Collection.ObjectID(FlowRouter.getParam("id"))
     },
@@ -852,24 +893,35 @@ Template.editSingleAssignment.events({
         title: form.name.value,
         description: form.description.value,
         dueDate: form.dateDue.value,
-        assigner: "Zach Merrill",
+        assigner: randInst(),
         dateAssigned: new Date(),
         pointsPossible: form.points.value
       }
     });
   }
 });
-
+Template.adminSingleAssignment.events({
+	'click #modassign'(event) {
+		event.preventDefault();
+		var id = FlowRouter.getParam("id");
+		window.location = "/assignments/edit/single/admin/" + id;
+	}
+});
 Template.newAssignment.events({
   'submit .submitbtn'(event){
     event.preventDefault();
     const form = event.target;
+		function randInst() {
+			var myArray = ["Zach Merrill","James Getrost","Melanie Powell","Andy Elsaesser","Cooper Knaak","Max van Klinken","Logan Fitzgibbons"];
+			console.log(typeof(myArray[Math.floor(Math.random() * myArray.length)]));
+			return myArray[Math.floor(Math.random() * myArray.length)];
+		}
     console.log(document.getElementById("editor"));
     Assignments.insert({
       title: form.name.value,
       description: document.getElementById("editor").innerHTML,
       dueDate: form.dateDue.value,
-      assigner: "Zach Merrill",
+      assigner: randInst(),
       dateAssigned: new Date(),
       pointsPossible: form.points.value
     });
