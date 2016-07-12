@@ -23,7 +23,6 @@ PostsIndex = new EasySearch.Index({
 			text: doc.text,
 			authorId: doc.authorId,
 			authorName: doc.authorName,
-      isPublic: doc.isPublic,
 			comments: doc.comments
 		};
 		return newPosts;
