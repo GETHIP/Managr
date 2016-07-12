@@ -70,58 +70,13 @@ body {
   box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26);
   margin-bottom: 2%;
   margin-top: 2%;
-  padding-top: 2%;
-  padding-right: 2%;
-  padding-bottom: 2%;
-  padding-left: 2%;
+  padding: 2%;
 }
 .assignmentTextFormat {
     padding: 10px 0px 10px 0px;
 }
-.summaryBoxContainer {
-  /*border-radius: 16px;*/
-  max-width: 100%;
-  min-height: 160px;
-  background: white;
-  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26);
-  margin: 50px;
-  margin-top: 1%;
-  margin-bottom: 2%;
-  padding-top: 1.5%;
-  /*padding-right: 15px;
-  padding-bottom: 10px;
-  padding-left: 15px;*/
 
-}
-.subSummaryContainerFirstTitle {
-  float: left;
-  font-size: 22px;
-  min-width: 50%;
-  max-width: 50%;
-  max-height: 50px;
-  text-align: center;
-}
-
-.subSummaryContainerFirst {
-  float: left;
-  font-size: 18px;
-  min-width: 50%;
-  max-width: 50%;
-  max-height: 50px;
-  text-align: center;
-  margin-bottom: .5%;
-}
-
-.subSummaryContainerSecond {
-  float: right;
-  font-size: 18px;
-  min-width: 50%;
-  max-width: 50%;
-  max-height: 50px;
-  text-align: center;
-  margin-bottom: .5%;
-}
-#assignmentFormFormat {
+.assignmentFormFormat {
   margin-left: 5px;
   margin-top: 15px;
   margin-bottom: 5px;
@@ -181,9 +136,8 @@ header {
 }
 
 .marginContainer {
-  margin-left: 4%;
-  margin-right: 4%;
-  min-width: 50%;
+  margin-left: 5%;
+  margin-right: 5%;
 }
 
 .buttonStyle {
@@ -199,8 +153,12 @@ header {
   font-size: 18px;
   border-radius: 6px;
   margin-bottom: 2%;
-
 }
+
+.buttonStyle.create {
+  margin-bottom: 0;
+}
+
 .buttonDiv {
   width:100%;
   /*padding-top: .25%;

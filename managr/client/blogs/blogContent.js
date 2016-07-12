@@ -1,4 +1,5 @@
 import { Posts } from '../../collections/blogPosts.js';
+import { userIsValid } from './postPage.js';
 
 export function formatDatesOfPosts(posts) {
     var newPosts = [];
@@ -13,8 +14,9 @@ export function formatDatesOfPosts(posts) {
             title: posts[i].title,
             text: posts[i].text,
             authorId: posts[i].authorId,
-			authorName: posts[i].authorName,
+			      authorName: posts[i].authorName,
             comments: posts[i].comments,
+            isPublic: posts[i].isPublic
         });
     }
     return newPosts;
@@ -37,6 +39,7 @@ export function getPosts() {
       return s;
     }
     var posts = Posts.find({}, { sort: {'date': -1} }).fetch();
+
     var validPosts = [];
     var i = 0;
     for (i = 0; i < posts.length; i++) {
@@ -51,9 +54,9 @@ export function getPosts() {
 
 Template.blogContent.helpers({
 
-
     //Returns all Blog Posts
     postsIndex: function() {
+      console.log("post index");
         return formatDatesOfPosts(getPosts());
     },
 

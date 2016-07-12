@@ -6,7 +6,7 @@
     padding: 8px 10px;
     margin: 0px;
     max-width: 100%;
-    max-height: 450px;
+    max-height: 200px;
     box-sizing: border-box;
     font-family: arial, sans-serif;
     font-weight: normal;
@@ -20,4 +20,8 @@
   outline: none;
   border-radius: 6px;
   border: 2px solid orange;
+}
+
+#WYSIWYGbuttons {
+  padding-bottom: 10px;
 }
