@@ -7,7 +7,7 @@ var InstructorSchema = new SimpleSchema({
     },
     picture: {
         type: String,
-        label: 'Profile Picture'
+        label: "Profile Picture"
     },
     strengths: {
         type: [String],

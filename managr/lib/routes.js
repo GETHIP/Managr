@@ -156,12 +156,6 @@ profileSection.route("/profiles", {
 	}
 });
 
-FlowRouter.route("/reports", {
-    action: function(params, queryParams){
-        BlazeLayout.render("Profile", {body: "reports"});
-    }
-});
-
 FlowRouter.route('/blogs/:year/:month', {
 	name: 'archives',
 	action : function(params) {
@@ -175,3 +169,8 @@ FlowRouter.route('/createPost', {
 		BlazeLayout.render(blogLayout, {content: 'createPost'});
 }
 });
+FlowRouter.route("/reports", {
+    action: function(params, queryParams){
+        BlazeLayout.render("Profile", {body: "reports"});
+    }
+})
