@@ -71,7 +71,15 @@ Template.postPage.onCreated(function() {
 Template.viewAllAssignTable.events({
   'click #newAssignmentBtn'(event){
     window.location = "/assignments/edit/new";
-  }
+  },
+	'click #viewGradesBtn'(event) {
+		window.location = '/assignments/grades';
+	}
+});
+Template.viewAllGrades.events({
+	'click #backGradesBtn'(event) {
+		window.location = '/assignments'
+	}
 });
 Template.singleAssignment.helpers({
     assignments: function() {
