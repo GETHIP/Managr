@@ -1,142 +1,140 @@
 <template name="Profile">
-	{{> studentName}}
-	{{> Template.dynamic template=body}}
-	{{> Template.dynamic template=editAboutMe}}
-	{{> Template.dynamic template=attendanceBody}}
-	{{> Template.dynamic template=assignmentsBody}}
+
+    <body class="profileBody">
+        {{> studentName}} {{> Template.dynamic template=body}} {{> Template.dynamic template=editAboutMe}} {{> Template.dynamic template=attendanceBody}} {{> Template.dynamic template=assignmentsBody}}
+    </body>
 </template>
 
 <template name="aboutme">
-	<div class="aboutMe">
-		<h1><strong>About Me</strong> </h1>
-		{{#with student}}
-			<img style="margin-left: 12px;" alt="Profile Picture" height="200" width="200" src="/images/{{picture}}">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-6">
-						<p><strong>Name:</strong></p>
-						<p>{{name}}</p>
-						<p><strong>School:</strong></p>
-						<p>{{school}}</p>
-						<p><strong>Grade:</strong></p>
-						<p>{{grade}}</p>
-						<p><strong>Age:</strong></p>
-						<p>{{age}}</p>
-						<p><strong>Email:</strong></p>
-						<p>{{email}}</p>
-						<p><strong>Phone Number:</strong></p>
-						<p>{{phoneNumber}}</p>
-						<p><strong>Address:</strong></p>
-						<p>{{address}}</p>
-						<p><strong>T-Shirt Size:</strong></p>
-						<p>{{tshirtSize}}</p>
-					</div>
-					<div class="col-md-6">
-						<p><strong>Github:</strong></p>
-						<p>
-							<a href={{github}}>Github</a>
-						</p>
-						<p><strong>Blog:</strong></p>
-						<p class="blogButton">
-							<a class="blogButton">Blog</a>
-						</p>
-						<p><strong>Parent Names:</strong></p>
-						<p>{{parentNames}}</p>
-						<p><strong>Top 5:</strong></p>
-						<ol>
-							{{#each strengths}}
-								<li>{{this}}</li>
-							{{/each}}
-						</ol>
-						{{#with student}}
-							<p><strong>EP10:</strong></p>
-							<ol>
-								{{#each ep}}
-									<li>{{this}}</li>
-								{{/each}}
-							</ol>
-							<p><strong>Get Hip Year:</strong></p>
-							<p>{{getHipYear}}</p>
-						{{/with}}
-					</div>
-				</div>
-			</div>
-		{{/with}}
-	</div>
+    <div class="aboutMe">
+        <h1><strong>
+      About Me
+    </strong> </h1> {{#with student}}
+    <img style="margin-left: 12px;" alt="Profile Picture" height="200" width="200" src="{{picture}}">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p><strong>Name:</strong></p>
+                    <p>{{name}}</p>
+                    <p><strong>School:</strong></p>
+                    <p>{{school}}</p>
+                    <p><strong>Grade:</strong></p>
+                    <p>{{grade}}</p>
+                    <p><strong>Age:</strong></p>
+                    <p>{{age}}</p>
+                    <p><strong>Email:</strong></p>
+                    <p>{{email}}</p>
+                    <p><strong>Phone Number:</strong></p>
+                    <p>{{phoneNumber}}</p>
+                    <p><strong>Address:</strong></p>
+                    <p>{{address}}</p>
+                    <p><strong>T-Shirt Size:</strong></p>
+                    <p>{{tshirtSize}}</p>
+                </div>
+                <div class="col-md-6">
+                    <p><strong>Github:</strong></p>
+                    <p><a href={{github}}>Github</a></p>
+                    <p><strong>Blog:</strong></p>
+                    <p class="blogButton"><a class="blogButton">Blog</a></p>
+                    <p><strong>Parent Names:</strong></p>
+                    <p>{{parentNames}}</p>
+                    <p><strong>Top 5:</strong></p>
+
+                    <ol>
+                        {{#each strengths}}
+                        <li>{{this}}</li>
+                        {{/each}}
+                    </ol>
+                    {{#with student}}
+                    <p><strong>EP10:</strong></p>
+                    <ol>
+                        {{#each ep}}
+                        <li>{{this}}</li>
+                        {{/each}}
+                    </ol>
+                    <p><strong>Get Hip Year:</strong></p>
+                    <p>{{getHipYear}}</p>
+                    {{/with}}
+                </div>
+
+            </div>
+        </div>
+        {{/with}}
+      </div>
 </template>
 
 <template name="attendanceBody">
-	<div class="attendanceContainer">
-		<h2>Attendance</h2>
-		<table class="table table-bordered attendanceTable">
-			<thead class="color">
-				<tr class="attendanceSize">
-					<th>Week One</th>
-					<th>Week Two</th>
-					<th>Week Three</th>
-					<th>Week Four</th>
-					<th>Week Five</th>
-					<th>Week Six</th>
-					<th>Week Seven</th>
-					<th>Week Eight</th>
-					<th>Week Nine</th>
-					<th>Week Ten</th>
-					<th>Week Eleven</th>
-					<th>Week Twelve</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr class="attendanceSize">
-					{{#each attendance}}
-						<td>{{this}}</td>
-					{{/each}}
-				</tr>
-			</tbody>
-		</table>
-	</div>
-	<button type="button" class="btn btn-primary btn-block editAttendance">Edit Attendance</button>
+    <div class="attendanceContainer">
+        <h2>Attendance</h2>
+        <table class="table table-bordered attendanceTable">
+            <thead class="color">
+                <tr class="attendanceSize">
+                    <th>Week One</th>
+                    <th>Week Two</th>
+                    <th>Week Three</th>
+                    <th>Week Four</th>
+                    <th>Week Five</th>
+                    <th>Week Six</th>
+                    <th>Week Seven</th>
+                    <th>Week Eight</th>
+                    <th>Week Nine</th>
+                    <th>Week Ten</th>
+                    <th>Week Eleven</th>
+                    <th>Week Twelve</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="attendanceSize">
+                    {{#each attendance}}
+                    <td>{{this}}</td>
+                    {{/each}}
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <button type="button" class="btn btn-primary btn-block editAttendance">Edit Attendance</button>
 </template>
 
 <template name="studentName">
-	{{#with studentName}}
-		<div style="margin-top: 2em;" class="name-holder">
-			<h1>{{ studentName.name }}</h1>
-		</div>
-		<hr class="nameLine">
-	{{/with}}
+    {{#with studentName}}
+    <div style="margin-top: 2em;" class="name-holder">
+        <h1>{{ studentName.name }}</h1>
+    </div>
+    <hr class="nameLine"> {{/with}}
 </template>
 
 <template name="assignmentsBody">
-	<div class="assignmentsContainer">
-		<h2>Assignments</h2>
-		<table class="table table-bordered assignmentsTable">
-			<thead class=color>
-				<tr>
-					<th>Name</th>
-					<th>Date Assigned</th>
-					<th>Due Dates</th>
-					<th>Points Possible</th>
-					<th>Points Received</th>
-					<th>Instructor</th>
-				</tr>
-			</thead>
-			<tbody>
-				{{#each assignments}}
-					<tr>
-						<td>{{name}}</td>
-						<td>{{dateAssigned}}</td>
-						<td>{{dueDate}}</td>
-						<td>{{possiblePoints}}</td>
-						<td>{{pointsRecieved}}</td>
-						<td>{{instructor}}</td>
-					</tr>
-				{{/each}}
-			</tbody>
-		</table>
-		<br><br>
-	</div>
+    <div class="assignmentsContainer">
+        <h2 class="assignmentHeader">Assignments</h2>
+        <table class="table table-bordered assignmentsTable">
+            <thead class=color>
+                <tr>
+                    <th>Name</th>
+                    <th>Date Assigned</th>
+                    <th>Due Dates</th>
+                    <th>Points Possible</th>
+                    <th>Points Received</th>
+                    <th>Instructor</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each assignments}}
+                <tr>
+                    <td>{{name}}</td>
+                    <td>{{dateAssigned}}</td>
+                    <td>{{dueDate}}</td>
+                    <td>{{possiblePoints}}</td>
+                    <td>{{pointsRecieved}}</td>
+                    <td>{{instructor}}</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+        <br>
+        <br>
+    </div>
 </template>
 
 <template name="editAboutMe">
-	<button type="button" class="btn btn-primary btn-block editAboutMe">Edit About Me</button>
+    <button type="button" class="btn btn-primary btn-block editAboutMe">Edit About Me</button>
 </template>
