@@ -1,33 +1,6 @@
 import { Mongo } from 'meteor/mongo';
 export const Student = new Mongo.Collection('Student');
 
-var AssignmentsSchema = new SimpleSchema({
-    name: {
-        type: String,
-        label: 'Name'
-    },
-    dateAssigned: {
-        type: Date,
-        label: 'Date'
-    },
-    dueDate: {
-        type: Date,
-        label: 'Due Date'
-    },
-    possiblePoints: {
-        type: Number,
-        label: 'Possible Points'
-    },
-    pointsRecieved: {
-        type: Number,
-        label: 'Points Recieved'
-    },
-    instructor: {
-        type: String,
-        label: 'Instructor'
-    }
-});
-
 var Address = new SimpleSchema({
     street: {
         type: String,
@@ -71,10 +44,6 @@ var StudentSchema = new SimpleSchema({
     attendance: {
         type: [Boolean],
         label: 'Attendance'
-    },
-    assignments: {
-        type: [AssignmentsSchema],
-        label: 'Assignments'
     },
     school: {
         type: String,
