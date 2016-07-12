@@ -170,7 +170,8 @@ FlowRouter.route('/createPost', {
 }
 });
 FlowRouter.route("/reports", {
-    action: function(params, queryParams){
-        BlazeLayout.render("Profile", {body: "reports"});
+    action: function(params, queryParams) {
+        // BlazeLayout.render("Profile", { body: "reports" });
+		BlazeLayout.render(main, { content: 'reports' });
     }
 })

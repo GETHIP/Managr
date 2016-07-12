@@ -1,12 +1,11 @@
 <template name="ProfilesTable">
-	{{> navbar}}
 		<ul>
 		<div class="container-fluid">
 			<div class="searchBar">
 				<h3 id="searchText">Search:</h3>
 			{{> EasySearch.Input index=studentIndex attributes=searchBarProfile}}
 		</div>
-			<table class="table" style="margin-top:10px;">
+			<table class="table table-bordered table-striped table-hover" style="margin-top:10px;">
 				<thead style="background-color:#0397d7; color:white;">
 					<!--table content should correspond -->
 					<tr>
