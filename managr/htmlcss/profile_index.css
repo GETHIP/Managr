@@ -47,27 +47,28 @@
     color: black;
 }
 .attendanceTable{
-  background-color: #f3f3f3;
+  background-color: #f3f3f3  !important;
   box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26) !important;
-  max-width: 90%;
-  min-width: 90%;
-  margin: 0 auto;
+  max-width: 100%  !important;
+  min-width: 100%  !important;
+  margin: 0 auto  !important;
 }
 /*p {
     margin-left: 5%;
 }*/
 .attendanceContainer{
-  display: block;
-  margin: 0 auto;
-  max-width: 90%;
-  min-width: 90%;
+  display: block  !important;
+  margin: 0 auto  !important;
+  max-width: 90%  !important;
+  min-width: 90%  !important;
 }
 
 .assignmentsContainer{
-  display: block;
-  margin: 0 auto;
-  max-width: 90%;
-  min-width: 90%;
+  display: block  !important;
+  margin: 0 auto  !important;
+  max-width: 90%  !important;
+  min-width: 90%  !important;
+  text-align: center;
 
 }
 
@@ -82,28 +83,32 @@
 
 .editAboutMe{
   max-width: 90% !important;
-  display: block;
-  margin: 0 auto;
+  display: block  !important;
+  margin: 0 auto  !important;
   background-color: #0397d7 !important;
 }
 
 .editAttendance{
   max-width: 90% !important;
-  display: block;
-  margin: 0 auto;
+  display: block  !important;
+margin: 0 auto  !important;
   background-color: #0397d7 !important;
+  margin-top: 1em !important;
 
 }
+.assignmentHeader{
+text-align: left;
 
+}
 .color {
     background-color: #0397d7;
     color: white;
 }
 .profileEdit{
-margin-right: 2em;
+margin-right: 2em  !important;
 
 }
 .attendanceSize th td {
-right: 0;
-left: 0;
+right: 0  !important;
+left: 0 ;
 }
