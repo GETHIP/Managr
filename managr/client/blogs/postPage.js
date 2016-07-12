@@ -1,6 +1,19 @@
 import { Posts } from '../../collections/blogPosts.js';
+import { Student } from '../../collections/student.js';
+import { Instructor } from '../../collections/instructor.js';
 
-function userIsValid(){
+function getName(id){
+  insQ = Instructor.findOne({userId: id});
+  stuQ = Student.findOne({userId: id});
+  if(insQ != null){
+    return insQ.name;
+  }else if(stuQ != null){
+    return stuQ.name;
+  }
+}
+
+
+export function userIsValid(){
     var isValid = true;
     if(Meteor.user() == null){
       isValid = false;
@@ -32,7 +45,7 @@ export function formatDatesOfComments(comments) {
             date: formattedDate,
             text: comments[i].text,
             authorId: comments[i].authorId,
-			authorName: comments[i].authorName,
+            authorName: comments[i].authorName,
             color: commentColor,
         });
     }
@@ -47,13 +60,13 @@ Template.postPage.helpers({
 		var post = Posts.findOne({_id: blogId});
 		newDate = moment(post.date);
 		var formattedDate = moment(newDate).format("M/D/YY");
-		var comments = formatDatesOfComments(post.comments);
+		console.log(post.comments);
 		return {
 			title: post.title,
 			text: post.text,
 			authorId: post.authorId,
-			authorName: post.authorName,
-			comments: comments,
+      authorName: post.authorName,
+			comments: formatDatesOfComments(post.comments),
 			date: formattedDate
 		}
 	}
@@ -64,7 +77,7 @@ Template.postPage.helpers({
 Template.postPage.events({
     'submit .submitComment': function(event) {
         event.preventDefault();
-        Meteor.call("updateComment", FlowRouter.getParam("blog_id"), event.target.name.value, event.target.comment.value);
+        Meteor.call("updateComment", getName(Meteor.userId()), FlowRouter.getParam("blog_id"), Meteor.userId() , event.target.comment.value);
         event.target.name.value = "";
         event.target.comment.value = "";
     }
