@@ -82,7 +82,6 @@ float: left;
 }
 .managingSignature{
   font-size: 14px;
-
 }
 .dateManage{
     padding-left: 90px;
@@ -90,3 +89,6 @@ float: left;
 .titleManage{
     float: left;
 }
+.commentNumber{
+    font-size: 14px;
+  }
