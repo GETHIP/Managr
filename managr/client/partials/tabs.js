@@ -4,6 +4,7 @@ Template.tabs.onCreated(function() {
   Meteor.subscribe('Instructor');
   Template.instance().useWYSIWYG = new ReactiveVar(true);
   Session.blogPostText = "";
+  Template.instance().publicPost = true;
 });
 
 Template.tabs.helpers({
@@ -35,14 +36,7 @@ Template.tabs.events({
   },
   'submit .postCreate':function(event){
     event.preventDefault();
-    var isPublic = true;
-    var checkValue = document.getElementById('publicCheck').value;
-    if(checkValue == "on"){
-      isPublic = true;
-    }
-    else{
-      isPublic = false;
-    }
+    var isPublic = Template.instance().publicPost;
     console.log(Instructor.find().fetch());
     var authorName = Instructor.findOne({userId: Meteor.user()._id}).name;
     console.log(authorName);
@@ -68,5 +62,9 @@ Template.tabs.events({
         authorName: authorName
       });
     }
+  },
+  'click #publicCheck':function(e) {
+    Template.instance().publicPost = !Template.instance().publicPost;
+    console.log(Template.instance().publicPost);
   }
 });

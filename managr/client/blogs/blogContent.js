@@ -14,8 +14,9 @@ export function formatDatesOfPosts(posts) {
             title: posts[i].title,
             text: posts[i].text,
             authorId: posts[i].authorId,
-			authorName: posts[i].authorName,
+			      authorName: posts[i].authorName,
             comments: posts[i].comments,
+            isPublic: posts[i].isPublic
         });
     }
     return newPosts;
@@ -53,9 +54,9 @@ export function getPosts() {
 
 Template.blogContent.helpers({
 
-
     //Returns all Blog Posts
     postsIndex: function() {
+      console.log("post index");
         return formatDatesOfPosts(getPosts());
     },
 
