@@ -1,15 +1,20 @@
 <template name="createPost">
   <div id="createPostBody">
     <div id="createHeading">
-{{> createHeader}}
-</div>
-  <div class="MainCreate">
-
-  {{#if isInstructor}}
-    {{> tabs}}
-  {{else}}
-    {{> accessDenied}}
-  {{/if}}
+      {{> createHeader}}
     </div>
+    <form class="postCreate">
+      <div class="MainCreate">
+        <div class="newTitle">
+          <input type="text" id="createPostTitle" placeholder="Title">
+        </div>
+        {{#if isInstructor}}
+          {{> tabs}}
+        {{else}}
+          {{> accessDenied}}
+        {{/if}}
+      </div>
+		  <input type="submit" class="postButton" value="Create Post">
+		</form>
   </div>
 </template>
