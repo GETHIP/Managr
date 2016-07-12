@@ -58,3 +58,10 @@ Template.sideNav.events({
         FlowRouter.go('/createPost');
     }
 });
+
+Template.sideNav.events({
+  'click #editPostButton': function(event, template) {
+    event.preventDefault();
+    FlowRouter.go('/managePosts');
+  }
+});

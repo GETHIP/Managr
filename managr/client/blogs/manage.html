@@ -2,11 +2,17 @@
   <div class="managing">
 {{> manageHeader}}
 <div class="managingCard">
-<p class="managingTitle"><b>title</b></p>
-<p class="managingSignature">date</p>
-<button class="manageButton"><b>Delete</b></button>
+  <div id="postIdentity">
+<p class="managingTitle"><b>{{title}}Title</b></p>
+<br>
+<p class="managingSignature">Posted on {{date}}date</p>
+</div>
+<div id="postManagingButtons">
+<button class="manageDeleteButton"><b>Delete</b></button>
 <button class="manageButton"><b>Edit</b></button>
 <button class="manageButton"><b>View</b></button>
+</div>
+<p id="manageLine"></p>
 </div>
 </div>
 </template>
