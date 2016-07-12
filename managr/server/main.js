@@ -214,21 +214,6 @@ Meteor.startup(() => {
 			"attendance": [true, false, true, true, false, false, true, true, false,
 				true, true, false
 			],
-			"assignments": [{
-				"name": "Java Work",
-				"dateAssigned": new Date(),
-				"dueDate": new Date(),
-				"possiblePoints": 100,
-				"pointsRecieved": 10,
-				"instructor": "Zach"
-			}, {
-				name: "Java Work",
-				dateAssigned: new Date(),
-				dueDate: new Date(),
-				possiblePoints: 100,
-				pointsRecieved: 10,
-				instructor: "Zach"
-			}],
 			"school": "Mount Michael",
 			"email": "dash_wedergren@gallup.com",
 			"getHipYear": 2,
