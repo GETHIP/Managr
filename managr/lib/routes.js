@@ -1,3 +1,9 @@
+if(Meteor.isClient) {
+	Accounts.onLogout(function() {
+		FlowRouter.go('home');
+	});
+}
+
 var main = "main"
 var blogLayout = "blogLayout"
 var blogsSection = FlowRouter.group({
@@ -46,15 +52,7 @@ blogsSection.route('/testBlogs', {
 assignmentSection.route("/", {
     name: "allAssignments",
     action() {
-        BlazeLayout.render(main, {content: "studentsAllAssignments"});
-    }
-});
-assignmentSection.route("/all", {
-    name: "allAssignments",
-    action() {
-        BlazeLayout.render(main,{
-            content: "studentsAllAssignments"
-        });
+        BlazeLayout.render(main, {content: "assignmentsHome"});
     }
 });
 // Information on a single assignment
@@ -76,7 +74,7 @@ assignmentSection.route("/single/admin/:id", {
     }
 });
 
-assignmentSection.route("/edit/single/:id", {
+assignmentSection.route("/edit/single/admin/:id", {
     name: "editSingleAssignment",
     action(params) {
         BlazeLayout.render(main,{
@@ -98,15 +96,6 @@ assignmentSection.route('/grades', {
     action() {
         BlazeLayout.render(main, {
             content: "viewAllGrades"
-        });
-    }
-});
-
-assignmentSection.route('/viewAll', {
-    name: "viewAllAssignments",
-    action() {
-        BlazeLayout.render(main, {
-            content: "viewAllAssignTable"
         });
     }
 });
