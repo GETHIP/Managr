@@ -1,6 +1,9 @@
 <template name="manage">
   <div class="managing">
-{{> manageHeader}}
+    <div class="managingHeader">
+      <p id="welcome">Manage Posts</p>
+      <p id="line"></p>
+    </div>
 <div class="managingCard">
   <div class="cardContents">
   <div id="postIdentity">
@@ -8,8 +11,8 @@
 <p class="managingTitle"><b>{{title}}Title</b></p>
 </div>
 <div class="dateManage">
-<p class="managingSignature">Posted on {{date}}date</p>
-<p class="commentNumber"># comments</p>
+<p class="managingSignature"><pre id="pretag">Posted on {{date}}date
+# comments</pre></p>
 </div>
 </div>
 <div id="postManagingButtons">
