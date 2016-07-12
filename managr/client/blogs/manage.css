@@ -68,8 +68,8 @@
   padding-left: 70%;
 }
 #postIdentity{
-float: left;
-
+  float: left;
+  padding-top: 15px;
 }
 #manageLine {
     width: 99%;
@@ -84,19 +84,11 @@ float: left;
   font-size: 14px;
 }
 .dateManage{
-    padding-left: 90px;
-    padding-top: 10px;
+    padding-left: 120px;
 }
 .titleManage{
     float: left;
-    padding-top: 15px;
 }
 .commentNumber{
     font-size: 14px;
-  }
-#pretag {
-      font-family: Helvetica;
-      border: none;
-      background-color: white;
-      padding: 0px;
   }
