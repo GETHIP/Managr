@@ -1,7 +1,4 @@
-import { Instructor } from '../../collections/instructor.js';
-
 Template.tabs.onCreated(function() {
-  Meteor.subscribe('Instructor');
   Template.instance().useWYSIWYG = new ReactiveVar(true);
   Session.blogPostText = "";
 });
@@ -33,39 +30,24 @@ Template.tabs.events({
     Template.instance().useWYSIWYG.set(false);
     Session.blogPostText = document.getElementById('editor').innerHTML;
   },
-  'submit .postCreate':function(event){
-    event.preventDefault();
-    var isPublic = true;
-    var checkValue = document.getElementById('publicCheck').value;
-    if(checkValue == "on"){
-      isPublic = true;
-    }
-    else{
-      isPublic = false;
-    }
-    console.log(Instructor.find().fetch());
-    var authorName = Instructor.findOne({userId: Meteor.user()._id}).name;
-    console.log(authorName);
+  'submit .postCreate':function(){
+
     if (Template.instance().useWYSIWYG.get()) {
         Meteor.call("insertPost",{
           title: document.getElementById('createPostTitle').value ,
           text: document.getElementById('editor').innerHTML,
-          authorId: Meteor.user()._id,
+          authorId: 12345,
           date: new Date(),
-          comments: [],
-          isPublic: isPublic,
-          authorName: authorName
+          comments: []
         });
 
     }else{
       Meteor.call("insertPost",{
         title:document.getElementById('createPostTitle').value ,
         text: document.getElementById('create').value,
-        authorId: Meteor.user()._id,
+        authorId: 12345,
         date: new Date(),
-        comments: [],
-        isPublic: isPublic,
-        authorName: authorName
+        comments: []
       });
     }
   }

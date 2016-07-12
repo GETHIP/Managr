@@ -5,15 +5,12 @@
 </template>
 
 <template name="searchBox">
-
     <div class="blogSearchBar">
         {{> EasySearch.Input index=postsIndex placeholder="Search..." sortBy='date'}}
     </div>
-    <p class="placeholder">Search: </p>
     <ul class="searchEngine">
         {{#EasySearch.Each index=postsIndex }}
             <li id="searchEnginePost"> <a href="/blogs/{{_id}}" style="text-decoration:none">{{> post}}</a></li>
         {{/EasySearch.Each}}
     </ul>
-
 </template>
