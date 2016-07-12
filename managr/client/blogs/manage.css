@@ -6,7 +6,7 @@
     background-color: white;
     padding-top: 10px;
     padding-right: 10px;
-    padding-bottom: 10px;
+    padding-bottom: 5px;
     padding-left: 10px;
     margin-right: 10px;
     margin-bottom: 10px;
@@ -16,6 +16,11 @@
     margin-top: 40px;
 
   }
+  .manageButton:hover {
+      color: white;
+      background-color: #61d250;
+      text-decoration: none;
+}
   .manageButton:focus {
       outline: none;
   }
@@ -24,9 +29,8 @@
     color: white;
     text-align: center;
     cursor: pointer;
-    display: block;
+    width:30%;
     text-decoration: none;
-    width: 250%;
     margin-top: 10px;
     font-size: 12px;
     padding: 0px;
@@ -35,22 +39,14 @@
     border:none;
     border-radius: 5px;
   }
-  .manageButton:hover {
-      color: white;
-      background-color: #61d250;
-      text-decoration: none;
-}
-.manageDeleteButton:focus {
-    outline: none;
-}
+
 .manageDeleteButton {
   background-color: #B2332F;
   color: white;
   text-align: center;
   cursor: pointer;
-  display: block;
+  width: 30%;
   text-decoration: none;
-  width: 250%;
   margin-top: 10px;
   font-size: 12px;
   padding: 0px;
@@ -59,29 +55,38 @@
   border:none;
   border-radius: 5px;
 }
+.manageDeleteButton:focus {
+    outline: none;
+}
+
 .manageDeleteButton:hover {
     color: white;
     background-color: #C43834;
     text-decoration: none;
 }
 #postManagingButtons{
-float: right;
-margin-right: 5%;
+  padding-left: 70%;
 }
 #postIdentity{
-  float: left;
-  padding-top: 20px;
+float: left;
+  padding-top: 15px;
 }
 #manageLine {
     width: 99%;
     height: 3px;
     background-color: #61c250;
-    margin-top: 150px;
+    margin-top: 15px;
 }
 .managingTitle{
-  font-size: 46px;
+  font-size: 36px;
 }
 .managingSignature{
-  font-size: 24px;
-  margin-left: 5px;
+  font-size: 14px;
+
+}
+.dateManage{
+    padding-left: 90px;
+}
+.titleManage{
+    float: left;
 }
