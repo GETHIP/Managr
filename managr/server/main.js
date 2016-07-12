@@ -130,10 +130,20 @@ studentIndex = new EasySearch.Index({
     },
     'update': function(userId, doc){
       true;
-	}
+	},
+    'remove': function(userId, doc){
+      true;
+  }
   });
 
   Meteor.methods({
+    'delPost': function(id){
+      correctId = Posts.findOne({"_id": id}).authorId;
+      console.log(Meteor.userId());
+      if(correctId == Meteor.userId()){
+        Posts.remove({"_id": id});
+      }
+    },
     'insertPost':function(post) {
 			if(!userIsInstructor()){
 				return ;
@@ -158,7 +168,7 @@ studentIndex = new EasySearch.Index({
 		var instructorId = Meteor.users.findOne({username: "instructor"})._id;
 		var jimName = Instructor.findOne({userId: jimId}).name;
 		var instructorName = Instructor.findOne({userId: instructorId}).name;
-		
+
 		var i = 0;
 		var dates = [
 			new Date(2016, 1, 1),
@@ -367,7 +377,7 @@ studentIndex = new EasySearch.Index({
 				"userId": "asd34ai"
 			});
 		}
-		
+
 	}
 	createDefaultUser();
 });
