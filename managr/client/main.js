@@ -794,37 +794,7 @@ Template.reports.events({
 				    }else{
 				    		data[i][4] = data[i][4].split(" and ");
 					  }
-						console.log(data[i][4]);
-						Meteor.call('addStudent', {username: data[i][3], password: "G3tH1pPr0gram"});
-						var userId = Session.get("userId");
-						console.log(userId)
-				    Student.insert({
-				        "name": data[i][0],
-								"userId": userId,
-				        "school": data[i][1],
-				        "age": data[i][2],
-				        "email": data[i][3],
-				        "parentNames": data[i][4],
-				        "description": data[i][5],
-				        "grade": data[i][6],
-				        "getHipYear": data[i][7],
-				        "phoneNumber": data[i][8],
-				        "blog": data[i][9],
-				        "strengths": [undefined],
-				        "attendance": [false, false, false, false, false, false, false, false, false, false, false, false],
-				        "assignments": [undefined],
-				        "github": "blank",
-				        "tshirtSize": "blank",
-				        "blog": "blank",
-				        "ep10": [undefined],
-				        "picture": "blank",
-				        "address": {
-				            "street": data[i][10],
-				            "zipCode": 68055,
-				            "state": "blank",
-				            "city": "blank"
-				        }
-				    });
+						Meteor.call('addStudent', data[i]);
 				}
 			}, false);
 		}
