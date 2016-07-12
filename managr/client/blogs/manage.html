@@ -5,13 +5,14 @@
       <p id="line"></p>
     </div>
 <div class="managingCard">
+  {{#each titles}}
   <div class="cardContents">
   <div id="postIdentity">
   <div class="titleManage">
-<p class="managingTitle"><b>{{title}}Title</b></p>
+<p class="managingTitle"><b>{{title}}</b></p>
 </div>
 <div class="dateManage">
-<p class="managingSignature"><pre id="pretag">Posted on {{date}}date
+<p class="managingSignature"><pre id="pretag">Posted on date
 # comments</pre></p>
 </div>
 </div>
@@ -22,6 +23,7 @@
 </div>
 </div>
 <p id="manageLine"></p>
+{{/each}}
 </div>
 </div>
 </template>
