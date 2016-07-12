@@ -1,5 +1,4 @@
 import { Posts } from '../../collections/blogPosts.js';
-import { userIsValid } from './postPage.js';
 
 export function formatDatesOfPosts(posts) {
     var newPosts = [];
@@ -38,7 +37,6 @@ export function getPosts() {
       return s;
     }
     var posts = Posts.find({}, { sort: {'date': -1} }).fetch();
-
     var validPosts = [];
     var i = 0;
     for (i = 0; i < posts.length; i++) {

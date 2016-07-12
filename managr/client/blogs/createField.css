@@ -10,7 +10,7 @@
    cursor: pointer;
    border-radius: 5px;
    margin-left: 30px!important;
-   width: 95% !important;
+   width: 97% !important;
 }
 .postButton:focus{
 outline: none;
@@ -20,13 +20,16 @@ outline: none;
   background-color: #61d250;
 }
 .postCreate{
-width: 95% !important;
+width: 108%;
 }
 
 .postCreateBody {
   box-shadow: 3px 3px 5px #888888;
   background-color: white;
-  padding: 45px 10px 12px 10px;
+  padding-top:45px;
+  padding-right: 10px;
+  padding-bottom: 12px;
+  padding-left: 10px;
   margin-right: 10px;
   margin-bottom: 10px;
 }
