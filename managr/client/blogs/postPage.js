@@ -67,7 +67,8 @@ Template.postPage.helpers({
 			authorId: post.authorId,
       authorName: post.authorName,
 			comments: formatDatesOfComments(post.comments),
-			date: formattedDate
+			date: formattedDate,
+      isPublic: post.isPublic
 		}
 	}
 
