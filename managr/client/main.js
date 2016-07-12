@@ -278,7 +278,6 @@ Template.aboutme.helpers({
 });
 
 Template.aboutme.events({
-
 	'click .blogButton'(event){
 			let userId = FlowRouter.getParam("id");
 			let blogURL = Student.findOne({"_id": userId}).blog;
@@ -681,6 +680,13 @@ Template.navbar.helpers({
   }
 });
 
+Template.reports.onCreated(function() {
+  var self = this;
+  self.autorun(function() {
+    self.subscribe('Student');
+  });
+});
+
 Template.reports.events({
   'change #reportsSelect' (event){
     switch (event.target.value) {
@@ -766,11 +772,62 @@ Template.reports.events({
       students.forEach(function(currentValue, index){
         array.data.push([currentValue.name, currentValue.school, currentValue.age, currentValue.email, currentValue.parentNames[0] + " and " + currentValue.parentNames[1],currentValue.description, currentValue.grade, currentValue.getHipYear, currentValue.phoneNumber, currentValue.blog, currentValue.address.street + " " + currentValue.address.city + " " + currentValue.address.state + " " + currentValue.address.zipCode]);
       });
-      array.fields = ["Name", "School", "Age", "Email", "Parent Names", "Description", "Grade", "Get Hip Year", "Phone Number", "Phone Number", "Address"];
+      array.fields = ["Name", "School", "Age", "Email", "Parent Names", "Description", "Grade", "Get Hip Year", "Phone Number", "Blog", "Address"];
       csvDownload(array, "All Report");
       break;
     }
-  }
+  },
+		'change #uploadCsv' (event){
+			event.preventDefault();
+			console.log("Update Data")
+			var reader = new FileReader();
+			var file = document.querySelector('#uploadCsv').files[0];
+			var data;
+			reader.readAsText(file);
+			reader.addEventListener("load", function () {
+				data = Papa.parse(reader.result);
+				data = data.data;
+				console.log(data);
+				for(i=1;i<data.length-1;i++){
+				    if(data[i][4].indexOf("and") === -1){
+								data[i][4] = [data[i][4]];
+				    }else{
+				    		data[i][4] = data[i][4].split(" and ");
+					  }
+						console.log(data[i][4]);
+						Meteor.call('addStudent', {username: data[i][3], password: "G3tH1pPr0gram"});
+						var userId = Session.get("userId");
+						console.log(userId)
+				    Student.insert({
+				        "name": data[i][0],
+								"userId": userId,
+				        "school": data[i][1],
+				        "age": data[i][2],
+				        "email": data[i][3],
+				        "parentNames": data[i][4],
+				        "description": data[i][5],
+				        "grade": data[i][6],
+				        "getHipYear": data[i][7],
+				        "phoneNumber": data[i][8],
+				        "blog": data[i][9],
+				        "strengths": [undefined],
+				        "attendance": [false, false, false, false, false, false, false, false, false, false, false, false],
+				        "assignments": [undefined],
+				        "github": "blank",
+				        "tshirtSize": "blank",
+				        "blog": "blank",
+				        "ep10": [undefined],
+				        "picture": "blank",
+				        "address": {
+				            "street": data[i][10],
+				            "zipCode": 68055,
+				            "state": "blank",
+				            "city": "blank"
+				        }
+				    });
+				}
+			}, false);
+		}
 });
 
 Template.reports.helpers({

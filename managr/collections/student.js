@@ -94,7 +94,7 @@ var StudentSchema = new SimpleSchema({
     },
     parentNames: {
         type: [String],
-        label: 'Parent\'s Phone Numbers'
+        label: 'Parent\'s Names'
     },
     address: {
         type: Address,
