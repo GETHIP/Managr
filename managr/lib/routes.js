@@ -143,6 +143,12 @@ FlowRouter.route("/assignments/:id", {
     }
 });
 
+profileSection.route('/profiles/attendance', {
+	action: function(params, queryParams) {
+		BlazeLayout.render('Profile', {body: 'profileAttendance'});
+	}
+})
+
 profileSection.route("/profiles", {
     action: function(params, queryParams) {
         BlazeLayout.render(main, {content:'ProfilesTable'});

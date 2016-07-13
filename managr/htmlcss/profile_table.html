@@ -17,7 +17,6 @@
 						<th>Email</th>
 						<th>Parents Names:</th>
 						<th>GET HIP Year</th>
-						<th>Attendance</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -30,54 +29,6 @@
 		    					<td><a href="mailto:{{email}}?Subject=GET%20HIP" target="_top">{{email}}</a></td>
 									<td>{{parentNames}}</td>
 		    					<td>{{getHipYear}}</td>
-		    					<th><table class="table" style="table-layout:fixed; width:630px;">
-										<thead>
-											<tr>
-												<th>Week One</th>
-												<th>Week Two</th>
-												<th>Week Three</th>
-												<th>Week Four</th>
-												<th>Week Five</th>
-												<th>Week Six</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr>
-												<td bgcolor={{attendance.[0]}}></td>
-												<td bgcolor={{attendance.[1]}}></td>
-												<td bgcolor={{attendance.[2]}}></td>
-												<td bgcolor={{attendance.[3]}}></td>
-												<td bgcolor={{attendance.[4]}}></td>
-												<td bgcolor={{attendance.[5]}}></td>
-											</tr>
-										</tbody>
-									</table>
-									<table class="table" style="table-layout:fixed; width:630px;">
-										<thead>
-											<tr>
-												<th>Week Seven</th>
-												<th>Week Eight</th>
-												<th>Week Nine</th>
-												<th>Week Ten</th>
-												<th>Week Eleven</th>
-												<th>Week Twelve</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr>
-												<td bgcolor={{attendance.[6]}}></td>
-												<td bgcolor={{attendance.[7]}}></td>
-												<td bgcolor={{attendance.[8]}}></td>
-												<td bgcolor={{attendance.[9]}}></td>
-												<td bgcolor={{attendance.[10]}}></td>
-												<td bgcolor={{attendance.[11]}}></td>
-											</tr>
-											<tr>
-												<th style="width:1200px">Total Present: {{total}}</th>
-											</tr>
-										</tbody>
-									</table>
-								</th>
 		              </tr>
 					{{/EasySearch.Each}}
 				</tbody>
