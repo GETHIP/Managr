@@ -191,7 +191,7 @@ Meteor.startup(() => {
 
 		Instructor.insert({
 			"name": "Jim Collison",
-			"profilePicture": "x",
+			"picture": "x",
 			"strengths": ['Arranger', 'Woo', 'Communication', 'Maximizer', 'Activator'],
 			"description": "Teacher",
 			"email": "Teacher@teacher.com",
@@ -199,7 +199,7 @@ Meteor.startup(() => {
 		});
 		Instructor.insert({
 			"name": "Zach",
-			"profilePicture": "x",
+			"picture": "x",
 			"strengths": ['Arranger', 'Woo', 'Communication', 'Maximizer', 'Activator'],
 			"description": "Teacher",
 			"email": "Teacher@teacher.com",
