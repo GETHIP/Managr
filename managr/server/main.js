@@ -111,15 +111,12 @@ Meteor.startup(() => {
   Meteor.methods({
     'delPost': function(id){
       correctId = Posts.findOne({"_id": id}).authorId;
-      console.log(Meteor.userId());
       if(correctId == Meteor.userId()){
         Posts.remove({"_id": id});
       }
     },
     'insertPost':function(post) {
-			console.log(post);
       Posts.insert(post);
-      console.log(Posts.find().fetch());
     },
     'updateComment': function(authorName, postId, authorId, commentText){
 		if(!userIsValid()){
