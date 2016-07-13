@@ -48,7 +48,6 @@ Template.tabs.events({
           // isPublic: isPublic,
           // authorName: authorName
         // });
-
     // }else{
       // Meteor.call("insertPost",{
         // title:document.getElementById('createPostTitle').value ,
