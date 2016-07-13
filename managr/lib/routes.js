@@ -120,7 +120,6 @@ profileSection.route("/profile/:id", {
     BlazeLayout.render("Profile", {
 			body: "aboutme",
 			attendanceBody: "attendanceBody",
-			assignmentsBody: "assignmentsBody",
 			editAboutMe:"editAboutMe"
 		});
   }
