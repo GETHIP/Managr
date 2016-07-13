@@ -166,7 +166,7 @@ FlowRouter.route('/blogs/:year/:month', {
 FlowRouter.route('/createPost', {
 	name: 'createPost',
 	action() {
-		BlazeLayout.render(blogLayout, {content: 'createPost'});
+		BlazeLayout.render(blogLayout, {content: 'createBlogPost'});
 }
 });
 FlowRouter.route("/reports", {

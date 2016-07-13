@@ -3,22 +3,21 @@
   {{> sideNav}}
   <form class="submitComment">
   <div class="bodyContent">
-
-  <div class="commentSection">
-    {{#with blogPost}}
-      {{> post}}
-      <p id="line2"></p>
-      {{#each comments}}
-        {{> commentDisplay}}
-      {{/each}}
-      {{#if userIsValid}}
-      {{> writeComment}}
-      {{/if}}
-    {{/with}}
-  </div>
-  {{#if userIsValid}}
-    {{> writeCommentSubmit}}
-  {{/if}}
+    <div class="commentSection">
+      {{#with blogPost}}
+        {{> post}}
+        <p id="line2"></p>
+        {{#each comments}}
+          {{> commentDisplay}}
+        {{/each}}
+        {{#if userIsValid}}
+        {{> writeComment}}
+        {{/if}}
+      {{/with}}
+    </div>
+    {{#if userIsValid}}
+      {{> writeCommentSubmit}}
+    {{/if}}
   </div>
 </form>
   </div>

@@ -18,6 +18,17 @@ function userIsValid() {
 	return isValid;
 }
 
+function userIsValid(){
+    var isValid = true;
+    if(Meteor.user() == null){
+      isValid = false;
+    }
+    else if(Roles.userIsInRole(Meteor.user()._id, 'unconfirmed')){
+      isValid = false;
+    }
+    return isValid;
+}
+
 function createDefaultUser() {
 	var users = Meteor.users.find({username: "admin"}).fetch();
 	if (users.length > 0) {
@@ -100,15 +111,12 @@ Meteor.startup(() => {
   Meteor.methods({
     'delPost': function(id){
       correctId = Posts.findOne({"_id": id}).authorId;
-      console.log(Meteor.userId());
       if(correctId == Meteor.userId()){
         Posts.remove({"_id": id});
       }
     },
     'insertPost':function(post) {
-			console.log(post);
       Posts.insert(post);
-      console.log(Posts.find().fetch());
     },
     'updateComment': function(authorName, postId, authorId, commentText){
 		if(!userIsValid()){
@@ -644,6 +652,15 @@ Meteor.startup(() => {
 				"userId": "asd34ai"
 			});
 		}
+	}
+	console.log(Student.findOne({
+		"name": "ben1"
+	}));
+	console.log(Instructor.findOne({
+		"name": "roger1"
+	}));
+
+	createDefaultUser();
 
 
 		for (var i = Instructor.find().count(); i < 5; i++) {
