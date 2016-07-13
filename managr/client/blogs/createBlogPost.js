@@ -21,7 +21,8 @@ Template.createBlogPost.events({
 			  isPublic: isPublic,
 			  authorName: authorName
 			});
-		} else {
+
+		}else{
 		  Meteor.call("insertPost",{
 			title:document.getElementById('createPostTitle').value ,
 			text: document.getElementById('scriptEditor').value,
