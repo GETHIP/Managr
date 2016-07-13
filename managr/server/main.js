@@ -18,6 +18,17 @@ function userIsValid() {
 	return isValid;
 }
 
+function userIsValid(){
+    var isValid = true;
+    if(Meteor.user() == null){
+      isValid = false;
+    }
+    else if(Roles.userIsInRole(Meteor.user()._id, 'unconfirmed')){
+      isValid = false;
+    }
+    return isValid;
+}
+
 function createDefaultUser() {
 	var users = Meteor.users.find({username: "admin"}).fetch();
 	if (users.length > 0) {
@@ -644,6 +655,15 @@ Meteor.startup(() => {
 				"userId": "asd34ai"
 			});
 		}
+	}
+	console.log(Student.findOne({
+		"name": "ben1"
+	}));
+	console.log(Instructor.findOne({
+		"name": "roger1"
+	}));
+
+	createDefaultUser();
 
 		
 		for (var i = Instructor.find().count(); i < 5; i++) {
