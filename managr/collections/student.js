@@ -58,7 +58,7 @@ var StudentSchema = new SimpleSchema({
         label: 'Get Hip Year'
     },
     phoneNumber: {
-        type: Number,
+        type: String,
         label: 'Phone Number'
     },
     parentNames: {

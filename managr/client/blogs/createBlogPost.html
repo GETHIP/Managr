@@ -1,0 +1,18 @@
+<template name="createBlogPost">
+	<div class="container">
+		<form class="postCreate">
+			<div class="MainCreate">
+				<div class="newTitle">
+					<div class="checkBox">
+						<input name="check" id="publicCheck" type="checkbox" checked="checked">Public Post
+					</div>
+					<input type="text" id="createPostTitle" placeholder="Title">
+				</div>
+
+				{{> tabs}}
+
+				</div>
+			<input type="submit" class="postButton" value="Create Post">
+		</form>
+	</div>
+</template>

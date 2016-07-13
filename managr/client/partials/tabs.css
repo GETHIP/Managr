@@ -70,13 +70,9 @@ border-radius: 5px;
   width: 90%;
 }
 .newTitle{
-  box-shadow: 3px 3px 5px #888888;
-  background-color: white;
-  padding-top: 10px;
-  padding-left:10px;
-  padding-right: 10px;
+  padding: 10px;
   margin-right: 10px;
-  margin-left: 25px;
+  margin-left: 10px;
 }
 #createPostTitle{
   border-radius: 6px;
@@ -101,4 +97,8 @@ border-radius: 5px;
 
 #publicCheck{
   margin-bottom: 7px;
+}
+
+.theTabs {
+  margin-left: 0px;
 }

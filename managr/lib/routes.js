@@ -120,7 +120,6 @@ profileSection.route("/profile/:id", {
     BlazeLayout.render("Profile", {
 			body: "aboutme",
 			attendanceBody: "attendanceBody",
-			assignmentsBody: "assignmentsBody",
 			editAboutMe:"editAboutMe"
 		});
   }
@@ -161,7 +160,7 @@ FlowRouter.route('/blogs/:year/:month', {
 FlowRouter.route('/createPost', {
 	name: 'createPost',
 	action() {
-		BlazeLayout.render(blogLayout, {content: 'createPost'});
+		BlazeLayout.render(blogLayout, {content: 'createBlogPost'});
 }
 });
 FlowRouter.route("/reports", {
