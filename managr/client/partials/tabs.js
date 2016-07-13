@@ -1,10 +1,10 @@
 import { Instructor } from '../../collections/instructor.js';
 
 Template.tabs.onCreated(function() {
-  Meteor.subscribe('Instructor');
-  Template.instance().useWYSIWYG = new ReactiveVar(true);
-  Session.blogPostText = "";
-  Template.instance().publicPost = true;
+	Meteor.subscribe('Instructor');
+	Template.instance().useWYSIWYG = new ReactiveVar(true);
+	Session.blogPostText = "";
+	Template.instance().publicPost = true;
 });
 
 Template.tabs.helpers({
@@ -37,9 +37,8 @@ Template.tabs.events({
   'submit .postCreate':function(event){
     event.preventDefault();
     var isPublic = Template.instance().publicPost;
-    console.log(Instructor.find().fetch());
     var authorName = Instructor.findOne({userId: Meteor.user()._id}).name;
-    console.log(authorName);
+    console.log(isPublic);
     if (Template.instance().useWYSIWYG.get()) {
         Meteor.call("insertPost",{
           title: document.getElementById('createPostTitle').value ,
