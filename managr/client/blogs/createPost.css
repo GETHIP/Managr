@@ -1,13 +1,15 @@
 #createPostBody {
     background-color: #f3f3f3;
+
 }
 
 .MainCreate {
-	background-color: #f3f3f3;
-  margin-left: 138px;
-  margin-right: -134px;
+  margin-left: 170px;
+
+  background-color: white;
+  box-shadow: 3px 3px 5px #888888;
 
 }
 #createHeading{
-  padding-top: 30px;
+  padding-top: 30%;
 }
