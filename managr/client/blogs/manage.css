@@ -1,0 +1,94 @@
+.managing{
+  padding-top:30px;
+  margin-left: 250px;
+  }
+  .managingCard{
+    background-color: white;
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    color: black;
+    box-shadow: 3px 3px 5px #888888;
+    margin-right: 2.5%;
+    margin-top: 40px;
+
+  }
+  .manageButton:hover {
+      color: white;
+      background-color: #61d250;
+      text-decoration: none;
+}
+  .manageButton:focus {
+      outline: none;
+  }
+  .manageButton {
+    background-color: #61c250;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+    width:30%;
+    text-decoration: none;
+    margin-top: 10px;
+    font-size: 12px;
+    padding: 0px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border:none;
+    border-radius: 5px;
+  }
+
+.manageDeleteButton {
+  background-color: #B2332F;
+  color: white;
+  text-align: center;
+  cursor: pointer;
+  width: 30%;
+  text-decoration: none;
+  margin-top: 10px;
+  font-size: 12px;
+  padding: 0px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border:none;
+  border-radius: 5px;
+}
+.manageDeleteButton:focus {
+    outline: none;
+}
+
+.manageDeleteButton:hover {
+    color: white;
+    background-color: #C43834;
+    text-decoration: none;
+}
+#postManagingButtons{
+  padding-left: 70%;
+}
+#postIdentity{
+  float: left;
+  padding-top: 15px;
+}
+#manageLine {
+    width: 99%;
+    height: 3px;
+    background-color: #D9DFE0;
+    margin-top: 15px;
+}
+.managingTitle{
+  font-size: 36px;
+}
+.managingSignature{
+  font-size: 14px;
+}
+.dateManage{
+    padding-left: 120px;
+}
+.titleManage{
+    float: left;
+}
+.commentNumber{
+    font-size: 14px;
+  }
