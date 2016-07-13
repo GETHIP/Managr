@@ -48,6 +48,12 @@ blogsSection.route('/testBlogs', {
 		BlazeLayout.render('testInsertData');
 	}
 })
+blogsSection.route('/managePosts', {
+	name: 'managePosts',
+	action : function(params) {
+		BlazeLayout.render(blogLayout, {content: 'manage'})
+	}
+});
 
 assignmentSection.route("/", {
     name: "allAssignments",
