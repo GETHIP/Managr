@@ -67,6 +67,7 @@ border-radius: 5px;
 }
 .container{
   padding-top: 30px;
+  width: 90%;
 }
 .newTitle{
   box-shadow: 3px 3px 5px #888888;
