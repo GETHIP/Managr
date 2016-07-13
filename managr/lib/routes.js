@@ -48,6 +48,12 @@ blogsSection.route('/testBlogs', {
 		BlazeLayout.render('testInsertData');
 	}
 })
+blogsSection.route('/managePosts', {
+	name: 'managePosts',
+	action : function(params) {
+		BlazeLayout.render(blogLayout, {content: 'manage'})
+	}
+});
 
 assignmentSection.route("/", {
     name: "allAssignments",
@@ -114,7 +120,6 @@ profileSection.route("/profile/:id", {
     BlazeLayout.render("Profile", {
 			body: "aboutme",
 			attendanceBody: "attendanceBody",
-			assignmentsBody: "assignmentsBody",
 			editAboutMe:"editAboutMe"
 		});
   }
@@ -145,12 +150,6 @@ profileSection.route("/profiles", {
 	}
 });
 
-FlowRouter.route("/reports", {
-    action: function(params, queryParams){
-        BlazeLayout.render("Profile", {body: "reports"});
-    }
-});
-
 FlowRouter.route('/blogs/:year/:month', {
 	name: 'archives',
 	action : function(params) {
@@ -161,6 +160,11 @@ FlowRouter.route('/blogs/:year/:month', {
 FlowRouter.route('/createPost', {
 	name: 'createPost',
 	action() {
-		BlazeLayout.render(blogLayout, {content: 'createPost'});
+		BlazeLayout.render(blogLayout, {content: 'createBlogPost'});
 }
 });
+FlowRouter.route("/reports", {
+    action: function(params, queryParams){
+        BlazeLayout.render("Profile", {body: "reports"});
+    }
+})
