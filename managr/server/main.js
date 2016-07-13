@@ -19,7 +19,7 @@ function createDefaultUser() {
 	Roles.addUsersToRoles(adminId, ['instructor']);
 	Instructor.insert({
 		"name": "Admin",
-		"profilePicture": "x",
+		"picture": "x",
 		"strengths": ['Arranger', 'Woo', 'Communication', 'Maximizer', 'Activator'],
 		"description": "Admin",
 		"email": "x",
@@ -201,7 +201,7 @@ Meteor.startup(() => {
 
 		Instructor.insert({
 			"name": "Jim Collison",
-			"profilePicture": "x",
+			"picture": "x",
 			"strengths": ['Arranger', 'Woo', 'Communication', 'Maximizer', 'Activator'],
 			"description": "Teacher",
 			"email": "Teacher@teacher.com",
@@ -209,14 +209,14 @@ Meteor.startup(() => {
 		});
 		Instructor.insert({
 			"name": "Zach",
-			"profilePicture": "x",
+			"picture": "x",
 			"strengths": ['Arranger', 'Woo', 'Communication', 'Maximizer', 'Activator'],
 			"description": "Teacher",
 			"email": "Teacher@teacher.com",
 			"userId": instructorId
 		});
 		Student.insert({
-			"name": "Dash Wedergren " + i,
+			"name": "Dash Wedergren ",
 			"age": 16,
 			"strengths": ['Input', 'Command', 'Restorative', 'Learner', 'Futuristic'],
 			"description": "Programmer",
