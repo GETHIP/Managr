@@ -66,6 +66,7 @@ Meteor.startup(() => {
 						if(doc.attendance[i] === true){
 								attendanceNumber++;
 								doc.attendance[i] = "Present";
+								doc.attendanceNumber++;
 						}
 						if(doc.attendance[i] === false){
 								doc.attendance[i] = "Absent";
