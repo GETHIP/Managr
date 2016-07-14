@@ -52,7 +52,10 @@ export function formatDatesOfComments(comments) {
     return newComments;
 }
 
-
+Template.postPage.onCreated(function() {
+  Meteor.subscribe('Instructor');
+  Meteor.subscribe('Student');
+});
 
 Template.postPage.helpers({
 	blogPost: function() {
