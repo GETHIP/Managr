@@ -86,15 +86,16 @@
   display: block  !important;
   margin: 0 auto  !important;
   background-color: #0397d7 !important;
+  background-image: none;
 }
 
 .editAttendance{
   max-width: 90% !important;
   display: block  !important;
-margin: 0 auto  !important;
+  margin: 0 auto  !important;
   background-color: #0397d7 !important;
   margin-top: 1em !important;
-
+  background-image: none;
 }
 .assignmentHeader{
 text-align: left;

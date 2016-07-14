@@ -61,8 +61,10 @@ Meteor.startup(() => {
     engine: new EasySearch.Minimongo({
 			transform: function (doc){
 				doc.url = "/profile/" + doc._id;
+				doc.attendanceNumber = 0;
 				for(i in doc.attendance){
 						if(doc.attendance[i] === true){
+								attendanceNumber++;
 								doc.attendance[i] = "Present";
 						}
 						if(doc.attendance[i] === false){
