@@ -59,3 +59,16 @@ padding: 15px 15px 12px 15px;
 .navbar-fixed-top{
   margin-bottom: 0px;
 }
+
+@media (max-width: 768px){
+.navbar-header{
+  margin-left: 10px !important;
+  margin-right: 10px !important;
+  }
+}
+
+@media (max-width: 882px){
+  .navbar-fixed-top{
+    position: fixed;
+  }
+}
