@@ -1,3 +1,4 @@
+import { Student } from '../../collections/student.js';
 
 Template.profileAttendance.onCreated(function() {
 	var self = this;
