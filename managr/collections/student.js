@@ -16,7 +16,19 @@ var Address = new SimpleSchema({
     },
     zipCode: {
         type: Number,
-        label: 'Zip Code'
+        label: 'Zip Code',
+        regEx: SimpleSchema.RegEx.ZipCode
+    }
+});
+
+var Grade = new SimpleSchema({
+    assignmentId: {
+        type: String,
+        label: "Assignment ID"
+    },
+    pointsReceived: {
+        type: Number,
+        label: "Points Received"
     }
 });
 
@@ -92,6 +104,11 @@ var StudentSchema = new SimpleSchema({
     picture: {
         type: String,
         label: 'Profile Picture'
+    },
+    grades: {
+        type: [Grade],
+        label: "Assignment Grades",
+        optional: true
     }
 });
 Student.attachSchema(StudentSchema);
