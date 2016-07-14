@@ -1,37 +1,38 @@
+import { Student } from '../../collections/student.js';
 
-// Template.aboutme.onCreated(function() {
-  // var self = this;
-  // self.autorun(function() {
-    // self.subscribe('Student');
-  // });
-// });
+Template.aboutme.onCreated(function() {
+  var self = this;
+  self.autorun(function() {
+    self.subscribe('Student');
+  });
+});
 
-// Template.aboutme.helpers({
-  // student: function() {
-    // let userId = FlowRouter.getParam("id");
-    // let student = Student.findOne({"_id": userId});
-    // student.github = "https://github.com/" + student.github;
-    // student.address = student.address.street + " " + student.address.city + " " + student.address.state + " " + student.address.zipCode;
-    // student.parentNames = student.parentNames[0] + " and " + student.parentNames[1];
-    // return student;
-  // },
-  // strengths: function() {
-    // let userId = FlowRouter.getParam("id");
-    // return strengths = Student.findOne({"_id": userId}).strengths;
-  // },
-  // ep: function() {
-    // let userId = FlowRouter.getParam("id");
-    // return ep = Student.findOne({"_id": userId}).ep10;
-  // }
-// });
+Template.aboutme.helpers({
+  student: function() {
+    let userId = FlowRouter.getParam("id");
+    let student = Student.findOne({"_id": userId});
+    student.github = "https://github.com/" + student.github;
+    student.address = student.address.street + " " + student.address.city + " " + student.address.state + " " + student.address.zipCode;
+    student.parentNames = student.parentNames[0] + " and " + student.parentNames[1];
+    return student;
+  },
+  strengths: function() {
+    let userId = FlowRouter.getParam("id");
+    return strengths = Student.findOne({"_id": userId}).strengths;
+  },
+  ep: function() {
+    let userId = FlowRouter.getParam("id");
+    return ep = Student.findOne({"_id": userId}).ep10;
+  }
+});
 
-// Template.aboutme.events({
-	// 'click .blogButton'(event){
-			// let userId = FlowRouter.getParam("id");
-			// let blogURL = Student.findOne({"_id": userId}).blog;
-			// window.location = blogURL;
-	// }
-// });
+Template.aboutme.events({
+	'click .blogButton'(event){
+			let userId = FlowRouter.getParam("id");
+			let blogURL = Student.findOne({"_id": userId}).blog;
+			window.location = blogURL;
+	}
+});
 
 Template.attendanceBody.onCreated(function() {
   var self = this;
