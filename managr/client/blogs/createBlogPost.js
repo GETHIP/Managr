@@ -8,12 +8,9 @@ Template.createBlogPost.onCreated(function() {
 
 Template.createBlogPost.events({
 	'submit .postCreate':function(event){
-		console.log("posted")
 		event.preventDefault();
 		var isPublic = Template.instance().publicPost;
-		console.log(Instructor.find().fetch());
 		var authorName = Instructor.findOne({userId: Meteor.user()._id}).name;
-		console.log(authorName);
 		if (document.getElementById('editor') != undefined) {
 			Meteor.call("insertPost",{
 			  title: document.getElementById('createPostTitle').value ,
@@ -28,7 +25,7 @@ Template.createBlogPost.events({
 		}else{
 		  Meteor.call("insertPost",{
 			title:document.getElementById('createPostTitle').value ,
-			text: document.getElementById('create').value,
+			text: document.getElementById('scriptEditor').value,
 			authorId: Meteor.user()._id,
 			date: new Date(),
 			comments: [],
