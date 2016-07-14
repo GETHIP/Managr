@@ -198,7 +198,6 @@ header {
 
 .viewAllTable {
     border-collapse: collapse;
-    border: 1px dotted lightgrey;
     width: 100%;
     margin-top: 2%;
     margin-bottom: 2%;
@@ -242,7 +241,6 @@ header {
   padding: 2% 10% 2% 10%;
   color: black;
   text-align: center;
-  border: 1px dotted lightgray;
   width: 50%;
 }
 .tableDataFormat {
