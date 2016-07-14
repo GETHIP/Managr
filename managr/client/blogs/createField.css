@@ -9,8 +9,8 @@
    margin: 4px 2px;
    cursor: pointer;
    border-radius: 5px;
-   margin-left: 240px!important;
-   width: 83% !important;
+   margin-left: 240px !important;
+   width: 79% !important;
 }
 .postButton:focus{
 outline: none;
@@ -27,4 +27,10 @@ width: 95% !important;
   padding: 45px 10px 12px 10px;
   margin-right: 10px;
   margin-bottom: 10px;
+}
+
+@media(max-width: 450px){
+  .postButton{
+    margin-left: 10px;
+  }
 }
