@@ -5,7 +5,7 @@ import { Mongo } from 'meteor/mongo';
 export const Assignments = new Mongo.Collection('Assignments');
 
 // A constant of the number of milliseconds in a week (60 * 60 * 24 * 7 * 1000)
-const milliseconds = 604800000;
+const MILLISECONDS_IN_A_WEEK = 604800000;
 
 Assignments.allow({
   insert: function() {
@@ -34,7 +34,7 @@ AssignmentSchema = new SimpleSchema({
         optional: false
         /*autoValue: function() {
             // A week ahead of today by default
-            return new Date() + milliseconds;
+            return new Date() + MILLISECONDS_IN_A_WEEK;
         }*/
     },
     // Instructor that assigned the assignment
@@ -42,7 +42,7 @@ AssignmentSchema = new SimpleSchema({
         type: String,
         label: "Assigner",
         autoform: {
-            type: 'hidden'
+            type: "hidden"
         },
         optional:false
     },
@@ -51,7 +51,7 @@ AssignmentSchema = new SimpleSchema({
         type: Date,
         label: "Date Assigned",
         autoform: {
-            type:'hidden'
+            type: "hidden"
         },
         autoValue: function() {
             // Automatically set to today
