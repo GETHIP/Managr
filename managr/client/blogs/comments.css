@@ -16,3 +16,30 @@
  padding-top: 10px;
  padding-bottom: 10px;
 }
+.commentDeleteButton{
+  background-color: #B2332F;
+  color: white;
+  text-align: center;
+  cursor: pointer;
+  width: 7%;
+  text-decoration: none;
+  margin-top: 10px;
+  font-size: 12px;
+  padding: 0px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border:none;
+  border-radius: 5px;
+  float:right;
+  margin-right: 10px;
+  margin-top: -2px;
+}
+.commentDeleteButton:focus {
+    outline: none;
+}
+
+.commentDeleteButton:hover {
+    color: white;
+    background-color: #C43834;
+    text-decoration: none;
+  }
