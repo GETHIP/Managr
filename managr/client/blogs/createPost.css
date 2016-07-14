@@ -4,7 +4,8 @@
 }
 
 .MainCreate {
-  margin-left: 160px;
+  margin-left: 240px;
+  box-shadow: 3px 3px 5px #888888;
   background-color: white;
   box-shadow: 3px 3px 5px #888888;
   margin-right: -122px;
@@ -13,5 +14,17 @@
 }
 .createHeading{
  padding-top: 30px;
- margin-left: 10px; 
+ margin-left: 10px;
+}
+
+@media(max-width: 450px){
+  .MainCreate {
+    margin-left: 10px;
+    box-shadow: 3px 3px 5px #888888;
+    background-color: white;
+  }
+
+  .postPostButton{
+    margin-left: 10px;
+  }
 }
