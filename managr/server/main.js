@@ -100,6 +100,7 @@ Meteor.startup(() => {
   Meteor.methods({
 		'deleteComment': function(id, index){
 			var comments = Posts.findOne({"_id": id}).comments;
+			var correctId = Posts.findOne({"_id": id}).authorId;
 			if(correctId == Meteor.userId() || Roles.userIsInRole(Meteor.user()._id, "instructor")){
 				comments.splice(index, 1)
 				Posts.update({"_id": id}, {$set : {"comments" : comments}});
