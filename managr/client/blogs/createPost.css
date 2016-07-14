@@ -3,11 +3,22 @@
 }
 
 .MainCreate {
-	background-color: #f3f3f3;
   margin-left: 240px;
   box-shadow: 3px 3px 5px #888888;
   background-color: white;
 }
 #createHeading{
   padding-top: 30px;
+}
+
+@media(max-width: 450px){
+  .MainCreate {
+    margin-left: 10px;
+    box-shadow: 3px 3px 5px #888888;
+    background-color: white;
+  }
+
+  .postPostButton{
+    margin-left: 10px;
+  }
 }
