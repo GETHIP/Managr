@@ -26,11 +26,11 @@ Template.viewAllAssignTable.helpers({
 });
 
 // Provides the assignment data to the single template from Assignments collection
-Template.viewAllAssignTable.events({
+/*Template.viewAllAssignTable.events({
   'click #newAssignmentBtn'(event){
     window.location = "/assignments/edit/new";
   },
 	'click #viewGradesBtn'(event) {
 		window.location = '/assignments/grades';
 	}
-});
+});*/
