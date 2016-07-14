@@ -8,10 +8,13 @@
         {{> post}}
         <p id="line2"></p>
         {{#each comments}}
-          {{> commentDisplay}}
+          <!-- We pass the index so we can access it as the id of the delete button.
+          You shouldn't need to pass all the other parameters, but passing the index
+          for some reason wipes all the other data, so we have to pass it manually -->
+          {{> commentDisplay commentIndex=@index authorName=authorName authorId = authorId date=date text=text color=color}}
         {{/each}}
         {{#if userIsValid}}
-        {{> writeComment}}
+          {{> writeComment}}
         {{/if}}
       {{/with}}
     </div>
