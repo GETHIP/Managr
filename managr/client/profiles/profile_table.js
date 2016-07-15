@@ -1,3 +1,4 @@
+import { Student } from '../../collections/student.js';
 
 Template.ProfilesTable.onCreated(function() {
   var self = this;
@@ -7,7 +8,7 @@ Template.ProfilesTable.onCreated(function() {
 })
 
 Template.ProfilesTable.helpers({
-  ProfilesTable: function() {
+   ProfilesTable: function() {
     let Profiles = Student.find({});
     let ProfilesTable = [];
     Profiles.forEach(function(currentValue, index, profile){

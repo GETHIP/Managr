@@ -1,3 +1,4 @@
+import { Student } from '../../collections/student.js';
 
 Template.attendanceUpdate.onCreated(function() {
   var self = this;

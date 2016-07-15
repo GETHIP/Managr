@@ -80,6 +80,7 @@ Template.postPage.helpers({
 
 Template.postPage.events({
     'submit .submitComment': function(event) {
+      console.log("submitcomment");
         event.preventDefault();
         var text = null;
         if(document.getElementById('editor') != undefined){
@@ -93,5 +94,9 @@ Template.postPage.events({
 
         Meteor.call("updateComment", getName(Meteor.userId()), FlowRouter.getParam("blog_id"), Meteor.userId() , text);
 
+    },
+
+    'click .commentDeleteButton': function(event){
+      Meteor.call("deleteComment", FlowRouter.getParam("blog_id"), event.target.id);
     }
 });
