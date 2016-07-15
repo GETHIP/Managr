@@ -6,75 +6,47 @@
     </style>
     <div class="attendanceContainer">
         <h1>Attendance</h1>
-        {{#EasySearch.Each index=studentIndex}}
-            <table class="table table-bordered">
+
+            <table class="table">
                 <thead>
-                    <tr>
-                        <th>Picture</th>
+                    <tr class="attendanceTableHead">
                         <th>Name</th>
-                        <th>Attendance</th>
+                        <th>Week One</th>
+                        <th>Week Two</th>
+                        <th>Week Three</th>
+                        <th>Week Four</th>
+                        <th>Week Five</th>
+                        <th>Week Six</th>
+                        <th>Week Seven</th>
+                        <th>Week Eight</th>
+                        <th>Week Nine</th>
+                        <th>Week Ten</th>
+                        <th>Week Eleven</th>
+                        <th>Week Twelve</th>
+                        <th>Total Present</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>
-                            <img height="70" width="70" src="{{picture}}" alt="Profile Picture">
-                        </td>
-                        <td>
-                            <a href={{url}}>{{name}}</a>
-                        </td>
-                        <td>
-                            <table class="table table-bordered" style="table-layout:fixed; width:720px;">
-                                <thead>
-                                    <tr>
-                                        <th>Week One</th>
-                                        <th>Week Two</th>
-                                        <th>Week Three</th>
-                                        <th>Week Four</th>
-                                        <th>Week Five</th>
-                                        <th>Week Six</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td bgcolor={{attendance.[0]}}></td>
-                                        <td bgcolor={{attendance.[1]}}></td>
-                                        <td bgcolor={{attendance.[2]}}></td>
-                                        <td bgcolor={{attendance.[3]}}></td>
-                                        <td bgcolor={{attendance.[4]}}></td>
-                                        <td bgcolor={{attendance.[5]}}></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <table class="table table-bordered" style="table-layout:fixed; width:720px;">
-                                <thead>
-                                    <tr>
-                                        <th>Week Seven</th>
-                                        <th>Week Eight</th>
-                                        <th>Week Nine</th>
-                                        <th>Week Ten</th>
-                                        <th>Week Eleven</th>
-                                        <th>Week Twelve</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td bgcolor={{attendance.[6]}}></td>
-                                        <td bgcolor={{attendance.[7]}}></td>
-                                        <td bgcolor={{attendance.[8]}}></td>
-                                        <td bgcolor={{attendance.[9]}}></td>
-                                        <td bgcolor={{attendance.[10]}}></td>
-                                        <td bgcolor={{attendance.[11]}}></td>
-                                    </tr>
-                                    <tr>
-                                        <th style="width:1200px">Total Present: {{total}}</th>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>
+                  {{#EasySearch.Each index=studentIndex}}
+                    <tr class="tableRowFormat attendanceTableRow">
+                        <td><a href={{url}}>{{name}}</a></td>
+                        <td bgcolor={{attendance.[0]}}></td>
+                        <td bgcolor={{attendance.[1]}}></td>
+                        <td bgcolor={{attendance.[2]}}></td>
+                        <td bgcolor={{attendance.[3]}}></td>
+                        <td bgcolor={{attendance.[4]}}></td>
+                        <td bgcolor={{attendance.[5]}}></td>
+                        <td bgcolor={{attendance.[6]}}></td>
+                        <td bgcolor={{attendance.[7]}}></td>
+                        <td bgcolor={{attendance.[8]}}></td>
+                        <td bgcolor={{attendance.[9]}}></td>
+                        <td bgcolor={{attendance.[10]}}></td>
+                        <td bgcolor={{attendance.[11]}}></td>
+                        <td>{{total}}</td>
                     </tr>
+                    {{/EasySearch.Each}}
                 </tbody>
             </table>
-        {{/EasySearch.Each}}
+
     </div>
 </template>
