@@ -10,6 +10,7 @@ Template.editSingleAssignment.helpers({
 		if (a.length != 0) {
 			for (var i = 0; i < a.length; i++) {
 				if (a[i]._id == FlowRouter.getParam("id")) {
+          console.log(thisAssignment);
 					thisAssignment = a[i];
 				}
 			}
@@ -21,6 +22,8 @@ Template.editSingleAssignment.helpers({
           return n.toString();
         }
       }
+      console.log("TITLE");
+      console.log(thisAssignment);
 	    var cleanedObj;
 	      cleanedObj = {
 	        title: thisAssignment.title,

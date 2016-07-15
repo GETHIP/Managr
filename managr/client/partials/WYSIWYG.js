@@ -11,7 +11,6 @@ Template.WYSIWYG.onRendered = function(){
 }
 Template.WYSIWYG.helpers({
   isAssignmentsRoute: function() {
-    console.log(FlowRouter.current());
     return FlowRouter.current().route.name == "editSingleAssignment";
   },
   assignments: function() {
