@@ -62,5 +62,6 @@ Template.editSingleAssignment.events({
         pointsPossible: form.points.value
       }
     });
+    FlowRouter.go("/assignments");
   }
 });
