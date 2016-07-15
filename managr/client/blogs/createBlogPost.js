@@ -9,6 +9,7 @@ Template.createBlogPost.onCreated(function() {
 Template.createBlogPost.events({
 	'submit .postCreate':function(event){
 		event.preventDefault();
+		Modal.show('publishPostOrComment');
 		var isPublic = Template.instance().publicPost;
 		var authorName = Instructor.findOne({userId: Meteor.user()._id}).name;
 		if (document.getElementById('editor') != undefined) {

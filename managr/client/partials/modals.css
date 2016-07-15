@@ -1,0 +1,8 @@
+.modal.fade.in{
+  top: 15%;
+}
+
+.modal{
+  width: 650px;
+  height: 280px;
+}
