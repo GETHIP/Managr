@@ -36,21 +36,26 @@ Template.editSingleAssignment.helpers({
 });
 
 Template.editSingleAssignment.events({
-  'submit .submitbtn2'(event) {
+  'submit .submitbtn'(event) {
     event.preventDefault();
     const form = event.target;
 		function randInst() {
 			var myArray = ["Zach Merrill","James Getrost","Melanie Powell","Andy Elsaesser","Cooper Knaak","Max van Klinken","Logan Fitzgibbons"];
-			console.log(typeof(myArray[Math.floor(Math.random() * myArray.length)]));
 			return myArray[Math.floor(Math.random() * myArray.length)];
 		}
+    var a = Assignments.find({}).fetch();
+    for (var i = 0; i < a.length; i++) {
+      if (a[i]._id == FlowRouter.getParam("id")) {
+        thisAssignment = a[i];
+      }
+    }
     Assignments.update({
-      _id:new Meteor.Collection.ObjectID(FlowRouter.getParam("id"))
+      _id:thisAssignment._id
     },
     {
       $set: {
         title: form.name.value,
-        description: form.description.value,
+        description: document.getElementById("editor").innerHTML,
         dueDate: form.dateDue.value,
         assigner: randInst(),
         dateAssigned: new Date(),
