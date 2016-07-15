@@ -4,40 +4,56 @@
         <div class="orange-bar">&nbsp;</div>
         <table class="viewAllTable">
             <tr>
-                <th class="tableHeadFormat">Student Name</th>
-                <th class="tableHeadFormat">Total Grade</th>
+                <th class="tableHeadFormat grades">Student Name</th>
+                <th class="tableHeadFormat grades">Assignments Completed</th>
+                <th class="tableHeadFormat grades">Points Earned</th>
+                <th class="tableHeadFormat grades">Total Grade</th>
             </tr>
             {{#each assignment}}
             <tr class="tableRowFormat">
-                <td class="tableDataFormat">{{studentNameHere}}</td>
-                <td class="tableDataFormat">{{studentGradeAvgHere}}</td>
+                <td class="tableDataFormat grades">{{studentNameHere}}</td>
+                <th class="tableHeadFormat grades">{{assignmentsCompleted}}</th>
+                <th class="tableHeadFormat grades">{{pointsEarned}}</th>
+                <td class="tableDataFormat grades">{{studentGradeAvgHere}}</td>
             </tr>
             {{/each}}
             <tr class="tableRowFormat">
-                <td class="tableDataFormat">Kevin Lin</td>
-                <td class="tableDataFormat">105.00%</td>
+                <td class="tableDataFormat grades">Kevin Lin</td>
+                <td class="tableDataFormat grades">3/3</td>
+                <td class="tableDataFormat grades">105/100</td>
+                <td class="tableDataFormat grades">105.00%</td>
             </tr>
             <tr class="tableRowFormat">
-                <td class="tableDataFormat">Eddie Yuan</td>
-                <td class="tableDataFormat">99.99%</td>
+                <td class="tableDataFormat grades">Eddie Yuan</td>
+                <td class="tableDataFormat grades">3/3</td>
+                <td class="tableDataFormat grades">99/100</td>
+                <td class="tableDataFormat grades">99.99%</td>
             </tr>
             <tr class="tableRowFormat">
-                <td class="tableDataFormat">Jason Huang</td>
-                <td class="tableDataFormat">91.50%</td>
+                <td class="tableDataFormat grades">Jason Huang</td>
+                <td class="tableDataFormat grades">3/3</td>
+                <td class="tableDataFormat grades">91/100</td>
+                <td class="tableDataFormat grades">91.50%</td>
             </tr>
             <tr class="tableRowFormat">
-                <td class="tableDataFormat">Dash Wedergren</td>
-                <td class="tableDataFormat">95.75%</td>
+                <td class="tableDataFormat grades">Dash Wedergren</td>
+                <td class="tableDataFormat grades">3/3</td>
+                <td class="tableDataFormat grades">95/100</td>
+                <td class="tableDataFormat grades">95.75%</td>
             </tr>
             <tr class="tableRowFormat">
-                <td class="tableDataFormat">Jared Bledsoe</td>
-                <td class="tableDataFormat">94.50%</td>
+                <td class="tableDataFormat grades">Jared Bledsoe</td>
+                <td class="tableDataFormat grades">3/3</td>
+                <td class="tableDataFormat grades">94/100</td>
+                <td class="tableDataFormat grades">94.50%</td>
             </tr>
             <tr class="tableRowFormat">
-                <td class="tableDataFormat">Emily Zhang</td>
-                <td class="tableDataFormat">68.95%</td>
+                <td class="tableDataFormat grades">Emily Zhang</td>
+                <td class="tableDataFormat grades">3/3</td>
+                <td class="tableDataFormat grades">94/100</td>
+                <td class="tableDataFormat grades">94.49%</td>
             </tr>
         </table>
-        <input type="submit" value="Back" class="buttonStyle submitbtn" id="backGradesBtn">
+        <a href="/assignments"><button value="Back" class="buttonStyle submitbtn" id="backGradesBtn">Back to Assignments</button></a>
     </div>
 </template>
