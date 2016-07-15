@@ -25,7 +25,7 @@ Template.tabs.onRendered(function() {
     document.getElementById('editor').innerHTML ="";
     document.getElementById('createPostTitle').value ="";
     document.getElementById('editor').innerHTML = Posts.findOne({_id: FlowRouter.getParam("blog_id")}).text;
-    document.getElementById('createPostTitle').value = Posts.findOne({_id: FlowRouter.getParam("blog_id")}).title;  
+    document.getElementById('createPostTitle').value = Posts.findOne({_id: FlowRouter.getParam("blog_id")}).title;
 });
 
 Template.tabs.events({

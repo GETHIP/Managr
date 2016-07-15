@@ -33,6 +33,7 @@ Template.createBlogPost.events({
 			authorName: authorName
 		  });
 		}
+		FlowRouter.go("/");
 	},
 	'click #publicCheck':function(e) {
 		Template.instance().publicPost = !Template.instance().publicPost;
