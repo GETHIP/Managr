@@ -39,7 +39,6 @@ Template.newAssignment.events({
     const form = event.target;
 		function randInst() {
 			var myArray = ["Zach Merrill","James Getrost","Melanie Powell","Andy Elsaesser","Cooper Knaak","Max van Klinken","Logan Fitzgibbons"];
-			console.log(typeof(myArray[Math.floor(Math.random() * myArray.length)]));
 			return myArray[Math.floor(Math.random() * myArray.length)];
 		}
     console.log(document.getElementById("editor"));
