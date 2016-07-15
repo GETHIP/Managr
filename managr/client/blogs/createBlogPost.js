@@ -5,7 +5,6 @@ Template.createBlogPost.onCreated(function() {
 	Template.instance().publicPost = true;
 });
 
-
 Template.createBlogPost.events({
 	'submit .postCreate':function(event){
 		event.preventDefault();
