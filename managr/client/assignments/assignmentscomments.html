@@ -1,0 +1,32 @@
+<template name="addcomment">
+  <div class="addcommentBox">
+   <h4>{{author}} on {{date}}</h4>
+   <p>{{body}}</p>
+ </div>
+</template>
+<template name="commentSecond">
+  <div class="secondcommentBox">
+    <h4>{{author}} on {{date}}</h4>
+    <p>{{body}}</p>
+  </div>
+</template>
+<template name="assignmentwriteComment">
+<div id="forumTitle">
+  <h3>Leave a Comment</h3>
+
+</div>
+  <form>
+    <div id="inBoxForum">
+    <b>Name:</b><br>
+    <input type="text" id="name1"><br><br>
+    <b>Comment:</b><br>
+   <textarea id="comment1" rows="15" cols=100%></textarea>
+   <br><br>
+</div>
+<div id="postComment">
+   <br>
+ <input type="submit" class="assignmentButton" value="Post Comment">
+ <br> <br>
+ </div>
+  </form>
+</template>
