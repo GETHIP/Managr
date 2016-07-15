@@ -1,6 +1,6 @@
 if(Meteor.isClient) {
 	Accounts.onLogout(function() {
-		FlowRouter.go('home');
+		FlowRouter.go('login');
 	});
 }
 
