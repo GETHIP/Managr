@@ -10,6 +10,9 @@ const MILLISECONDS_IN_A_WEEK = 604800000;
 Assignments.allow({
   insert: function() {
     return true;
+  },
+  update: function() {
+    return true;
   }
 });
 
