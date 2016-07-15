@@ -5,10 +5,16 @@ import { Instructor } from '../../collections/instructor.js';
 function getName(id){
   insQ = Instructor.findOne({userId: id});
   stuQ = Student.findOne({userId: id});
+  console.log("Instructor: " + insQ);
+  console.log("Student:    " + stuQ);
+  console.log("Instructors: " + Instructor.find().fetch());
+  console.log("Students: " + Student.find().fetch());
   if(insQ != null){
     return insQ.name;
   }else if(stuQ != null){
     return stuQ.name;
+  } else {
+	  return undefined;
   }
 }
 
@@ -80,6 +86,7 @@ Template.postPage.helpers({
 
 Template.postPage.events({
     'submit .submitComment': function(event) {
+      console.log("submitcomment");
         event.preventDefault();
         var text = null;
         if(document.getElementById('editor') != undefined){
@@ -91,7 +98,11 @@ Template.postPage.events({
           document.getElementById('scriptEditor').value = "";
         }
 
+		console.log("User ID: " + Meteor.userId());
         Meteor.call("updateComment", getName(Meteor.userId()), FlowRouter.getParam("blog_id"), Meteor.userId() , text);
+    },
 
+    'click .commentDeleteButton': function(event){
+      Meteor.call("deleteComment", FlowRouter.getParam("blog_id"), event.target.id);
     }
 });

@@ -40,16 +40,18 @@ PostsIndex = new EasySearch.Index({
 studentIndex = new EasySearch.Index({
   name: "studentIndex",
   collection: Student,
-  fields: ['name'],
+  fields: ['name','school','email','grade','getHipYear','parentNames'],
   engine: new EasySearch.Minimongo({
     transform: function (doc){
       doc.url = "/profile/" + doc._id;
       doc.total = 0;
+			doc.attendanceNumber = 0;
       for(i=0;i<12;i++){
         doc.total += doc.attendance[i];
       }
       for(i in doc.attendance){
         if(doc.attendance[i] == true){
+					doc.attendanceNumber++;
           doc.attendance[i] = "green";
         }
         if(doc.attendance[i] == false){

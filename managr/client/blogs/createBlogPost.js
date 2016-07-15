@@ -5,7 +5,6 @@ Template.createBlogPost.onCreated(function() {
 	Template.instance().publicPost = true;
 });
 
-
 Template.createBlogPost.events({
 	'submit .postCreate':function(event){
 		event.preventDefault();
@@ -22,7 +21,8 @@ Template.createBlogPost.events({
 			  authorName: authorName
 			});
 
-		}else{
+		}
+		else {
 		  Meteor.call("insertPost",{
 			title:document.getElementById('createPostTitle').value ,
 			text: document.getElementById('scriptEditor').value,

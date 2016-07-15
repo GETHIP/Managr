@@ -1,23 +1,31 @@
 #attendance {
     color: white;
     background-color: #fcb040 !important;
-
 }
 .containerAttendance {
-
   display: block;
   margin: 0 auto;
   max-width: 90%;
   min-width: 90%;
 }
 .updateAttendance{
-background-color: #f58028 !important;
-margin: 0 auto;
-display: block;
-max-width: 100% !important;
-min-width: 100% !important;
+  background-color: #f58028 !important;
+  margin: 0 auto;
+  display: block;
+  max-width: 100% !important;
+  min-width: 100% !important;
+  background-image: none;
 }
 
 .choice select{
   font-size: 11px;
+}
+
+.attendanceTableRow:hover {
+  background-color:#fde8d9;
+}
+
+.attendanceTableHead {
+  background-color: #f58028;
+  color: #fff;
 }
