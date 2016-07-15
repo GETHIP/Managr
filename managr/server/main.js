@@ -109,6 +109,18 @@ Meteor.startup(() => {
   });
 
   Meteor.methods({
+		'updatePost': function(postId, text, title, vis){
+			console.log(postId);
+			console.log(text);
+			console.log(title);
+			console.log(vis);
+
+				Posts.update({_id: postId},
+					{$set: {text: text, isVisible: vis, title: title }
+					}
+
+				);
+		},
     'delPost': function(id){
       correctId = Posts.findOne({"_id": id}).authorId;
       if(correctId == Meteor.userId()){
