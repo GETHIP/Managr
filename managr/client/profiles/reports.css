@@ -5,10 +5,10 @@
 }
 
 .buttonBottom {
-display:inline-block;
-margin-bottom: inherit;
-text-align: center;
-margin-left: 70px;
+  display:inline-block;
+  margin-bottom: inherit;
+  text-align: center;
+  margin-left: 70px;
 }
 
 .reportsButton{
@@ -16,14 +16,12 @@ margin-left: 70px;
   display: inline-block !important;
   margin: 0 auto;
   background-color: #0397d7 !important;
+  background-image: none;
 }
-
 .reportsSelect{
   display: inline-block;
   margin: 0 auto;
-
 }
-
 .form-group{
   margin-left: 50px;
 }

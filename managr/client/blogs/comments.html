@@ -1,6 +1,12 @@
 <template name="commentDisplay">
     <div class="commentBox" style="background-color: {{color}}">
-      <button id="" class="commentDeleteButton">Delete</button>
+      <!--  You'd think this <p> tag should be a button.
+            the problem is, the form it's nested in is
+            intercepting the click and posting comments
+            when you click it. Making it a <p> tag solves this. -->
+        {{#if isCurrentUser authorId}}
+            <p id="{{commentIndex}}" class="commentDeleteButton">Delete</p>
+        {{/if}}
 		<h4>{{authorName}} on {{date}}</h4>
 		<p>{{{text}}}</p>
     </div>

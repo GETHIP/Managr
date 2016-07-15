@@ -18,17 +18,6 @@ function userIsValid() {
 	return isValid;
 }
 
-function userIsValid(){
-    var isValid = true;
-    if(Meteor.user() == null){
-      isValid = false;
-    }
-    else if(Roles.userIsInRole(Meteor.user()._id, 'unconfirmed')){
-      isValid = false;
-    }
-    return isValid;
-}
-
 function createDefaultUser() {
 	var users = Meteor.users.find({username: "admin"}).fetch();
 	if (users.length > 0) {
@@ -61,9 +50,12 @@ Meteor.startup(() => {
     engine: new EasySearch.Minimongo({
 			transform: function (doc){
 				doc.url = "/profile/" + doc._id;
+				doc.attendanceNumber = 0;
 				for(i in doc.attendance){
 						if(doc.attendance[i] === true){
+								attendanceNumber++;
 								doc.attendance[i] = "Present";
+								doc.attendanceNumber++;
 						}
 						if(doc.attendance[i] === false){
 								doc.attendance[i] = "Absent";
@@ -109,6 +101,14 @@ Meteor.startup(() => {
   });
 
   Meteor.methods({
+		'deleteComment': function(id, index){
+			var comments = Posts.findOne({"_id": id}).comments;
+			var correctId = Posts.findOne({"_id": id}).authorId;
+			if(correctId == Meteor.userId() || Roles.userIsInRole(Meteor.user()._id, "instructor")){
+				comments.splice(index, 1)
+				Posts.update({"_id": id}, {$set : {"comments" : comments}});
+			}
+		},
     'delPost': function(id){
       correctId = Posts.findOne({"_id": id}).authorId;
       if(correctId == Meteor.userId()){
