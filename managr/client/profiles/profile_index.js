@@ -30,7 +30,7 @@ Template.aboutme.events({
 	'click .blogButton'(event){
 			let userId = FlowRouter.getParam("id");
 			let blogURL = Student.findOne({"_id": userId}).blog;
-			window.location = blogURL;
+			FlowRouter.go(blogURL);
 	}
 });
 
@@ -170,8 +170,8 @@ Template.assignmentsBody.helpers({
 
 Template.Profile.events({
   "click .editAboutMe" (event) {
-    window.location = "/profile/edit/" + FlowRouter.getParam("id");
+    FlowRouter.go("/profile/edit/" + FlowRouter.getParam("id"));
   }, "click .editAttendance" (event) {
-    window.location = "/attendance/edit/" + FlowRouter.getParam("id");
+    FlowRouter("/attendance/edit/" + FlowRouter.getParam("id"));
   }
 });

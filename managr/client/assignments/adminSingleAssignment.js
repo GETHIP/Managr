@@ -6,6 +6,6 @@ Template.adminSingleAssignment.events({
 	'click #modassign'(event) {
 		event.preventDefault();
 		var id = FlowRouter.getParam("id");
-		window.location = "/assignments/edit/single/admin/" + id;
+		FlowRouter.go("/assignments/edit/single/admin/" + id);
 	}
 });
