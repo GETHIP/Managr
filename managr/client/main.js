@@ -40,7 +40,7 @@ PostsIndex = new EasySearch.Index({
 studentIndex = new EasySearch.Index({
   name: "studentIndex",
   collection: Student,
-  fields: ['name'],
+  fields: ['name','school','email','grade','getHipYear','parentNames'],
   engine: new EasySearch.Minimongo({
     transform: function (doc){
       doc.url = "/profile/" + doc._id;
