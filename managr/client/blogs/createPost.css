@@ -7,10 +7,7 @@
   margin-left: 165px;
   box-shadow: 3px 3px 5px #888888;
   background-color: white;
-  box-shadow: 3px 3px 5px #888888;
   margin-right: -117px;
-
-
 }
 .createHeading{
  padding-top: 30px;
@@ -20,7 +17,6 @@
 @media(max-width: 450px){
   .MainCreate {
     margin-left: 10px;
-    box-shadow: 3px 3px 5px #888888;
     background-color: white;
   }
 
