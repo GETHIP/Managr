@@ -5,13 +5,30 @@ Template.createBlogPost.onCreated(function() {
 	Template.instance().publicPost = true;
 });
 
-
 Template.createBlogPost.events({
 	'submit .postCreate':function(event){
 		event.preventDefault();
 		Modal.show('publishPostOrComment');
-		var isPublic = Template.instance().publicPost;
+
+
+	},
+	'click #publicCheck':function(e) {
+		Template.instance().publicPost = !Template.instance().publicPost;
+		isPublic = Template.instance().publicPost;
+	},
+	'getIsPublic' : function(e){
+		e.preventDefault();
+		return Template.instance().publicPost;
+	}
+})
+
+
+Template.publishPostOrComment.events({
+  'click #publish': function(e){
+		e.preventDefault();
+		console.log("Hi");
 		var authorName = Instructor.findOne({userId: Meteor.user()._id}).name;
+		console.log(isPublic);
 		if (document.getElementById('editor') != undefined) {
 			Meteor.call("insertPost",{
 			  title: document.getElementById('createPostTitle').value ,
@@ -34,9 +51,5 @@ Template.createBlogPost.events({
 			authorName: authorName
 		  });
 		}
-	},
-	'click #publicCheck':function(e) {
-		Template.instance().publicPost = !Template.instance().publicPost;
-		console.log(Template.instance().publicPost);
 	}
 })
