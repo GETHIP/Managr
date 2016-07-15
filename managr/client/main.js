@@ -45,11 +45,13 @@ studentIndex = new EasySearch.Index({
     transform: function (doc){
       doc.url = "/profile/" + doc._id;
       doc.total = 0;
+			doc.attendanceNumber = 0;
       for(i=0;i<12;i++){
         doc.total += doc.attendance[i];
       }
       for(i in doc.attendance){
         if(doc.attendance[i] == true){
+					doc.attendanceNumber++;
           doc.attendance[i] = "green";
         }
         if(doc.attendance[i] == false){
