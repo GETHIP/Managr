@@ -1,5 +1,4 @@
 <template name="ProfilesTable">
-	{{> topNav}}
 		<ul>
 		<div class="container-fluid">
 			<div class="searchBar">
@@ -17,10 +16,11 @@
 						<th>Email</th>
 						<th>Parents Names:</th>
 						<th>GET HIP Year</th>
+						<th>Attendance</th>
 					</tr>
 				</thead>
 				<tbody>
-					{{#EasySearch.Each index=studentIndex}}
+					{{#EasySearch.Each index=studentIndex attributes=searchBarProfile}}
 		              <tr>
 						  <th><img height="70" width="70" alt="Profile Picture" src="{{picture}}"></th>
 		              <td><a href={{url}}>{{name}}</a></td>
@@ -29,6 +29,7 @@
 		    					<td><a href="mailto:{{email}}?Subject=GET%20HIP" target="_top">{{email}}</a></td>
 									<td>{{parentNames}}</td>
 		    					<td>{{getHipYear}}</td>
+									<td><a href="/profiles/attendance">{{attendanceNumber}}/12</a></td>
 		              </tr>
 					{{/EasySearch.Each}}
 				</tbody>
