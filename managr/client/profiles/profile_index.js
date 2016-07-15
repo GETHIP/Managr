@@ -172,6 +172,6 @@ Template.Profile.events({
   "click .editAboutMe" (event) {
     FlowRouter.go("/profile/edit/" + FlowRouter.getParam("id"));
   }, "click .editAttendance" (event) {
-    FlowRouter("/attendance/edit/" + FlowRouter.getParam("id"));
+    FlowRouter.go("/attendance/edit/" + FlowRouter.getParam("id"));
   }
 });
