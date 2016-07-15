@@ -4,14 +4,16 @@
   <div class="orange-bar">&nbsp;</div>
   <table class="viewAllTable">
     <tr>
-      <th class="tableHeadFormat">Assignment Name</th>
-      <th class="tableHeadFormat">Average Percentage</th>
+      <th class="tableHeadFormat assignments">Assignment Name</th>
+      <th class="tableHeadFormat assignments">Students Completed</th>
+      <th class="tableHeadFormat assignments">Average Percentage</th>
     </tr>
 
     {{#each assignments}}
       <tr class="tableRowFormat" onclick="parent.location='{{url}}'">
-        <td class="tableDataFormat">{{title}}</td>
-        <td class="tableDataFormat">{{avgPercentage}}N/A</td>
+        <td class="tableDataFormat assignments">{{title}}</td>
+        <td class="tableDataFormat assignments">{{studentsCompleted}}0/1</td>
+        <td class="tableDataFormat assignments">{{avgPercentage}}N/A</td>
       </tr>
     {{/each}}
 

@@ -205,14 +205,24 @@ header {
     box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 
 }
+
 .tableHeadFormat {
   background-color: #fcb040;
-  padding: 2% 10% 2% 10%;
+  padding-top: 2%;
+  padding-bottom: 2%;
   border-bottom: 1px solid #444444;
   color: white;
   width: 50%;
   font-size: 18px;
   text-align: center;
+}
+
+.tableHeadFormat.assignments, .tableDataFormat.assignments {
+  width: 33%;
+}
+
+.tableHeadFormat.grades, .tableDataFormat.grades {
+  width: 25%;
 }
 
 .tableHeadFormatStudent {
@@ -239,7 +249,8 @@ header {
 }
 
 .tableDataFormat {
-  padding: 2% 10% 2% 10%;
+  padding-top: 2%;
+  padding-bottom: 2%;
   color: black;
   text-align: center;
   border: 1px dotted lightgray;
