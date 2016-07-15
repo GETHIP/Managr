@@ -42,7 +42,6 @@ function createDefaultUser() {
 Meteor.startup(() => {
 	// code to run on server at startup
 	createDefaultUser();
-	Student.remove({});
   studentIndex = new EasySearch.Index({
 		name: "studentIndex",
 		collection: Student,
@@ -98,14 +97,14 @@ Meteor.startup(() => {
   });
 
   Meteor.methods({
-		'deleteComment': function(id, index){
-			var comments = Posts.findOne({"_id": id}).comments;
-			var correctId = Posts.findOne({"_id": id}).authorId;
-			if(correctId == Meteor.userId() || Roles.userIsInRole(Meteor.user()._id, "instructor")){
-				comments.splice(index, 1)
-				Posts.update({"_id": id}, {$set : {"comments" : comments}});
-			}
-		},
+	'deleteComment': function(id, index){
+		var comments = Posts.findOne({"_id": id}).comments;
+		var correctId = comments[index].authorId;
+		if(correctId == Meteor.userId() || Roles.userIsInRole(Meteor.user()._id, "instructor")){
+			comments.splice(index, 1);
+			Posts.update({"_id": id}, {$set : {comments : comments}});
+		}
+	},
     'delPost': function(id){
       correctId = Posts.findOne({"_id": id}).authorId;
       if(correctId == Meteor.userId()){
@@ -231,9 +230,9 @@ Meteor.startup(() => {
 			"userId": instructorId
 		});
 		Student.insert({
-			"name": "Dash Wedergren ",
+			"name": "Jim Smallison",
 			"age": 16,
-			"userId": "asd23",
+			"userId": studentId,
 			"strengths": ['Input', 'Command', 'Restorative', 'Learner', 'Futuristic'],
 			"description": "Programmer",
 			"grade": '10',
@@ -316,6 +315,11 @@ Meteor.startup(() => {
 			return true;
 		}
 	});
+	
+	//<= 1 because the default test user
+	//should already be loaded.
+	if (Student.find().count() <= 1) {
+
 		var StudentData = [{
 		  "name": "Dash Wedergren",
 		  "age": 16,
@@ -671,4 +675,5 @@ Meteor.startup(() => {
 
 		}
 		*/
+	}
 });
