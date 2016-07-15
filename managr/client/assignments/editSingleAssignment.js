@@ -13,13 +13,21 @@ Template.editSingleAssignment.helpers({
 					thisAssignment = a[i];
 				}
 			}
+      function numPad(n) {
+        if (n.toString().length == 1) {
+          return "0" + n.toString();
+        }
+        else {
+          return n.toString();
+        }
+      }
 	    var cleanedObj;
 	      cleanedObj = {
 	        title: thisAssignment.title,
 	        description: thisAssignment.description,
-	        dueDate: (thisAssignment.dueDate.getMonth() + 1) + "/" + thisAssignment.dueDate.getDate() + "/" +  thisAssignment.dueDate.getFullYear(),
+	        dueDate: (thisAssignment.dueDate.getFullYear() + 1) + "-" + numPad(thisAssignment.dueDate.getMonth()) + "-" +  numPad(thisAssignment.dueDate.getDate()),
 	        assigner: thisAssignment.assigner,
-	        dateAssigned: (thisAssignment.dueDate.getMonth() + 1) + "/" + thisAssignment.dueDate.getDate() + "/" +  thisAssignment.dueDate.getFullYear(),
+	        dateAssigned: (thisAssignment.dueDate.getFullYear() + 1) + "-" + numPad(thisAssignment.dueDate.getMonth()) + "-" +  numPad(thisAssignment.dueDate.getDate()),
 	        pointsPossible: thisAssignment.pointsPossible
 	      }
 	      return cleanedObj;
