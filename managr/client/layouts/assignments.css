@@ -271,10 +271,7 @@ header {
 .tableRowFormat:nth-child(odd) {
   background-color: white;
 }
-.tableRowFormat:nth-child(even):hover {
-  background-color:#FEF1DE;
-}
-.tableRowFormat:nth-child(odd):hover {
+.tableRowFormat:hover {
   background-color:#FEF1DE;
 }
 
