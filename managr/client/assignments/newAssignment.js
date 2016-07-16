@@ -32,9 +32,10 @@ Template.newAssignment.helpers({
   }
 });
 
+
 Template.newAssignment.events({
   'click #createAssignment'(event){
-      window.location = "/assignments";
+      FlowRouter.go("/assignments");
   },
   'submit .submitbtn'(event){
     event.preventDefault();
