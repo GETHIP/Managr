@@ -60,6 +60,12 @@ blogsSection.route('/editPost/:blog_id', {
 		BlazeLayout.render(blogLayout, {content: 'editPost'})
 	}
 });
+blogsSection.route('/editDraft/:draft_id', {
+	name: 'editDraft',
+	action : function(params) {
+		BlazeLayout.render(blogLayout, {content: 'createBlogPost'})
+	}
+});
 assignmentSection.route("/", {
     name: "allAssignments",
     action() {
