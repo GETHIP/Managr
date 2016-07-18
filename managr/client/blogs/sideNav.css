@@ -2,7 +2,7 @@ body {
     background-color: #f3f3f3;
 }
 p {
-    
+    padding-left: 20px;
 }
 
 /*    NavBar Below    */
@@ -37,14 +37,11 @@ li {
 #sideNav {
     background-color: #333333;
     color: white;
-  	position: absolute;
+  	position: fixed;
   	left: 0px;
     width: 200px;
     margin-top: 0px;
     box-shadow: 3px 3px 5px #888888;
-    padding-bottom: 9999px;
-    margin-bottom: -9999px;
-    overflow: hidden;
 }
 #createPostButton {
     background-color: #61c250;

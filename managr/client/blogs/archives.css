@@ -3,6 +3,7 @@
 		margin-right: 30px;
     height: auto;
 		padding-top: 30px;
+    margin-left: 0px;
 }
 .archivePosts li {
     box-shadow: 3px 3px 5px #888888;
@@ -20,7 +21,6 @@
 #timeHead{
   font-size: 35px;
   font-family: Helvetica;
-  padding-left: 10px;
 }
 
 @media (max-width: 450px) {
