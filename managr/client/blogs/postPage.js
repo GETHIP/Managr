@@ -98,6 +98,13 @@ Template.postPage.events({
 
     'click .commentDeleteButton': function(event){
       Modal.show('deletePostOrComment');
-      Meteor.call("deleteComment", FlowRouter.getParam("blog_id"), event.target.id);
     }
+
 });
+
+
+Template.deletePostOrComment.events({
+  'click .deleteButton': function(event){
+    Meteor.call("deleteComment", FlowRouter.getParam("blog_id"), event.target.id);
+  }
+})
