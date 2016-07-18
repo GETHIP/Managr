@@ -1,6 +1,7 @@
 <template name="adminSingleAssignment">
 	{{#if isInstructor}}
   <div class="marginContainer">
+    <button id="assignadeletehere" class="buttonStyle delete">Delete</button>
     {{>singleAssignmentTemplate}}
     {{>assignmentBackButton}}
     <button id="modassign" class="buttonStyle submit">Modify Assignment</button>
