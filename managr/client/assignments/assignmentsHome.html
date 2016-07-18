@@ -1,8 +1,12 @@
 <template name="assignmentsHome">
   {{#if isInstructor}}
     {{> viewAllAssignTable}}
+  {{else}}
+    {{#if isStudent}}
+      {{> studentsAllAssignments}}
+	{{else}}
+	  {{> accessDenied}}
+    {{/if}}
   {{/if}}
-  {{#if isStudent}}
-    {{> studentsAllAssignments}}
-  {{/if}}
+
 </template>

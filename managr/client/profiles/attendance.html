@@ -1,5 +1,5 @@
 <template name="attendanceUpdate">
-  {{> topNav}}
+  {{#if currentUserOrInstructor userParam}}
   <h1>Attendance</h1>
 <div class="containerAttendance">
   <form class="attendanceUpdate">
@@ -103,4 +103,7 @@
     <button type="submit" class="btn btn-warning btn-block updateAttendance">Update Attendance</button>
 </form>
 </div>
+{{else}}
+	{{> accessDenied}}
+{{/if}}
 </template>
