@@ -5,15 +5,15 @@
   <div class="orange-bar">&nbsp;</div>
   <form class="submitbtn" id="submitbtn">
     <div class="assignmentContainer">
-      <p class="noIndent assignmentFormFormat"><b>Name: {{title}}</b></p>
-      <input type="text" name="name" class="assignmentForm">
-      <p class="noIndent assignmentFormFormat"><b>Description: {{{description}}}</b></p>
+      <p class="noIndent assignmentFormFormat"><b>Name:</b></p>
+      <input type="text" value="{{title}}" name="name" class="assignmentForm" autofocus>
+      <p class="noIndent assignmentFormFormat"><b>Description:</b></p> <!--Add existing value to editor-->
       {{> WYSIWYG }}
       <!-- <textarea name="description" class="assignmentDescForm"></textarea> -->
-      <p class="noIndent assignmentFormFormat"><b>Points Possible: {{pointsPossible}}</b></p>
-      <input type="text" name="points" class="assignmentForm">
-      <p class="noIndent assignmentFormFormat"><b>Date Due: {{dueDate}}</b></p>
-      <input type="date" name="dateDue" class="assignmentForm">
+      <p class="noIndent assignmentFormFormat"><b>Points Possible:</b></p>
+      <input value="{{pointsPossible}}" type="number" name="points" class="assignmentForm">
+      <p class="noIndent assignmentFormFormat"><b>Date Due:</b></p>
+      <input value="{{dueDate}}" type="date" name="dateDue" class="assignmentForm">
     </div>
       <input type="submit" value="Update Assignment" class="buttonStyle create submitbtn" id="createAssignment">
   </form>
@@ -21,10 +21,6 @@
   </div>
   {{/with}}
 </template>
-
-
-
-
 <!-- <template name="editSingleAssignment">
     {{#with assignments}}
     <h1 id="title">Modify {{title}}</h1>

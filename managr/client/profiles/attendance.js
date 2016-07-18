@@ -23,7 +23,7 @@ Template.attendanceUpdate.events({
 			}
 		}
 		Student.update({_id: userId},{$set: {attendance: data}});
-		window.location = "/profile/" + FlowRouter.getParam("id");
+		FlowRouter.go("/profile/" + FlowRouter.getParam("id"));
 	}
 });
 

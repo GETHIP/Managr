@@ -5,7 +5,7 @@
   <form class="submitbtn" id="submitbtn">
     <div class="assignmentContainer">
       <p class="noIndent assignmentFormFormat"><b>Name:</b></p>
-      <input type="text" name="name" class="assignmentForm">
+      <input type="text" name="name" class="assignmentForm" autofocus>
       <p class="noIndent assignmentFormFormat"><b>Description:</b></p>
       {{> WYSIWYG }}
       <!-- <textarea name="description" class="assignmentDescForm"></textarea> -->
@@ -14,7 +14,7 @@
       <p class="noIndent assignmentFormFormat"><b>Date Due:</b></p>
       <input type="date" name="dateDue" class="assignmentForm">
     </div>
-      <input type="submit" value="Create Assignment" class="buttonStyle create submitbtn" id="createAssignment">
+    <input type="submit" value="Create Assignment" class="buttonStyle create submitbtn" id="createAssignment">
   </form>
   {{>assignmentBackButton}}
 </div>

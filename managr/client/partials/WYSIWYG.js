@@ -1,4 +1,4 @@
-Template.WYSIWYG.onRendered=function(){
+Template.WYSIWYG.onRendered = function(){
   $("editor").wysiwyg({
     hotKeys: {
       'ctrl+b meta+b': 'bold',
@@ -9,6 +9,22 @@ Template.WYSIWYG.onRendered=function(){
     }
   });
 }
+Template.WYSIWYG.helpers({
+  isAssignmentsRoute: function() {
+    return FlowRouter.current().route.name == "editSingleAssignment";
+  },
+  assignments: function() {
+    if (!(FlowRouter.current().path.includes("new"))) {
+      var assignment = Assignments.findOne({_id: FlowRouter.getParam("id")});
+
+	    var formattedAssignment;
+      formattedAssignment = {
+        description: assignment.description
+      }
+      return formattedAssignment;
+    }
+  }
+});
 /*(function ($) {
 	'use strict';
 	var readFileIntoDataUrl = function (fileInfo) {

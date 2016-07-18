@@ -4,33 +4,31 @@ Template.viewAllAssignTable.onCreated(function() {
 
 Template.viewAllAssignTable.helpers({
     assignments: function() {
-        var list, objects, i;
-        list = [];
-        objects = Assignments.find({}).fetch();
-        console.log("Objects: " + objects.length);
-        for (i = 0; i < objects.length; i++) {
-            if (objects.length > 0) {
-                var obj, j, aUrl, cleanedObj;
-                obj = objects[i];
-                aUrl = "/assignments/single/admin/" + obj._id.valueOf();
-                // The formatted object to be returned
-                cleanedObj = {
-                    title: obj.title,
-                    url: aUrl
-                }
-                list.push(cleanedObj);
+        var formattedAssignments, allAssignments, i;
+        formattedAssignments = [];
+
+        allAssignments = Assignments.find({}).fetch();
+        for (i = 0; i < allAssignments.length; i++) {
+            var assignment, assignmentUrl, formattedAssignment;
+            assignment = allAssignments[i];
+            assignmentUrl = "/assignments/single/admin/" + assignment._id.valueOf();
+            // The formatted object to be returned
+            formattedAssignment = {
+                title: assignment.title,
+                url: assignmentUrl
             }
+            formattedAssignments.push(formattedAssignment);
         }
-        return list;
+        return formattedAssignments;
     }
 });
 
 // Provides the assignment data to the single template from Assignments collection
 /*Template.viewAllAssignTable.events({
   'click #newAssignmentBtn'(event){
-    window.location = "/assignments/edit/new";
+    FlowRouter.go("/assignments/edit/new");
   },
 	'click #viewGradesBtn'(event) {
-		window.location = '/assignments/grades';
+		FlowRouter.go('/assignments/grades');
 	}
 });*/
