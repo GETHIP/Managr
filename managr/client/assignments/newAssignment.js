@@ -35,7 +35,7 @@ Template.newAssignment.helpers({
 
 Template.newAssignment.events({
   'click #createAssignment'(event) {
-    window.location = "/assignment";
+    window.location = "/assignments";
   },
   'submit .submitbtn'(event){
     event.preventDefault();
@@ -56,21 +56,21 @@ Template.newAssignment.events({
        pointsReceived: -1,
        completed: false,
     };
-
+  
     var allStudents = Student.find({}).fetch();
-
-    for(var i = 0; i < allStudents.length; i++) {
-      var assignments = allStudents[i].assignments;
-      if(assignments == undefined) {
-        assignments = [];
+    if(allStudents.length > 0) {
+      for(var i = 0; i < allStudents.length; i++) {
+        var assignments = allStudents[i].assignments;
+        if(assignments == undefined) {
+          assignments = [];
+        }
+        assignments.push(emptyAssignment);
+        Student.update({_id: allStudents[i]._id},
+        {
+          $set: {assignments: assignments}
+        });
       }
-      assignments.push(emptyAssignment);
-      Student.update({_id: allStudents[i]._id},
-      {
-        $set: {assignments: assignments}
-      });
     }
-
     window.location = "/assignments";
   }
 });
