@@ -173,10 +173,10 @@ header {
   float: right;
   padding: 1%;
   margin-top: 1%;
-  background-color: #da4f49;
+  background-color: #fc6959;
 }
 .buttonStyle.delete:hover {
-  background-color: #C94842;
+  background-color: #fc3b27;
 }
 
 .buttonStyle.back {
