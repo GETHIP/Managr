@@ -252,7 +252,6 @@ header {
   padding-bottom: 2%;
   color: black;
   text-align: center;
-  width: 50%;
 }
 .tableDataFormat {
   cursor: pointer;
@@ -260,10 +259,6 @@ header {
 .tableRowFormat {
   text-align: center;
   font-size: 16px;
-  background:#00FF00;
-}
-.tableRowFormat:hover {
-  /*color:#00ff00;*/
 }
 .tableRowFormat:nth-child(even) {
   background-color: #EEEEEE;
@@ -271,7 +266,7 @@ header {
 .tableRowFormat:nth-child(odd) {
   background-color: white;
 }
-.tableRowFormat:hover {
+.tableRowFormat.assignments:hover {
   background-color:#FEF1DE;
 }
 
