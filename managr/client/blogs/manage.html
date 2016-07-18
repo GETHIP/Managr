@@ -1,4 +1,5 @@
 <template name="manage">
+	{{#if isInstructor}}
 	<div class="managing">
 		<div class="managingHeader">
 			<p id="welcome">Manage Posts</p>
@@ -30,4 +31,7 @@
 			 It's a kludge, but it works. -->
 		<p id="lineCover"></p>
 	</div>
+	{{else}}
+		{{> accessDenied}}
+	{{/if}}
 </template>

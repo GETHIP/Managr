@@ -1,9 +1,5 @@
 <template name="profileAttendance">
-    <style>
-        .attendanceContainer {
-            margin-top: 100px;
-        }
-    </style>
+	{{#if isInstructor}}
     <div class="attendanceContainer">
         <h1>Attendance</h1>
 
@@ -49,4 +45,7 @@
             </table>
 
     </div>
+	{{else}}
+		{{> accessDenied}}
+	{{/if}}
 </template>

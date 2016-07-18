@@ -1,4 +1,5 @@
 <template name="viewAllAssignTable">
+	{{#if isInstructor}}
   <div class="marginContainer">
   <h1 class="titleAssignment">Assignments Overview</h1>
   <div class="orange-bar">&nbsp;</div>
@@ -21,4 +22,7 @@
   <a href="/assignments/edit/new"><button class="buttonStyle submitbtn" id="newAssignmentBtn">Create New Assignment</button></a>
   <a href="/assignments/grades"><input value="View Grades" class="buttonStyle submitbtn" id="viewGradesBtn"></a>
 </div>
+	{{else}}
+		{{> accessDenied}}
+	{{/if}}
 </template>

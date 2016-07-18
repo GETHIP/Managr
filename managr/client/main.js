@@ -97,16 +97,3 @@ Template.blogLayout.helpers({
 
 // Gives user window scope over the Assignments collection
 window.Assignments = Assignments;
-
-UI.registerHelper("isStudent", function() {
-  if(Meteor.user() == null) {
-    return false;
-  }
-  return Roles.userIsInRole(Meteor.user()._id, "student");
-});
-UI.registerHelper("isInstructor", function() {
-  if(Meteor.user() == null) {
-    return false;
-  }
-  return Roles.userIsInRole(Meteor.user()._id, "instructor");
-});

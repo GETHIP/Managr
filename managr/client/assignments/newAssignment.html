@@ -1,4 +1,5 @@
 <template name="newAssignment">
+  {{#if isInstructor}}
   <div class="marginContainer">
   <h1 class="titleAssignment">New Assignment</h1>
   <div class="orange-bar">&nbsp;</div>
@@ -17,5 +18,8 @@
     <input type="submit" value="Create Assignment" class="buttonStyle create submitbtn" id="createAssignment">
   </form>
   {{>assignmentBackButton}}
-</div>
+  </div>
+  {{else}}
+    {{> accessDenied}}
+  {{/if}}
 </template>

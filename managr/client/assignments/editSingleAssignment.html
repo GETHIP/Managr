@@ -1,4 +1,5 @@
 <template name="editSingleAssignment">
+  {{#if isInstructor}}
   {{#with assignments}}
   <div class="marginContainer">
   <h1 class="titleAssignment">Modify {{title}}</h1>
@@ -20,6 +21,9 @@
   {{>assignmentBackButton}}
   </div>
   {{/with}}
+  {{else}}
+    {{> accessDenied}}
+  {{/if}}
 </template>
 <!-- <template name="editSingleAssignment">
     {{#with assignments}}
