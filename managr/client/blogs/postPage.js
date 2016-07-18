@@ -5,10 +5,6 @@ import { Instructor } from '../../collections/instructor.js';
 function getName(id){
   insQ = Instructor.findOne({userId: id});
   stuQ = Student.findOne({userId: id});
-  console.log("Instructor: " + insQ);
-  console.log("Student:    " + stuQ);
-  console.log("Instructors: " + Instructor.find().fetch());
-  console.log("Students: " + Student.find().fetch());
   if(insQ != null){
     return insQ.name;
   }else if(stuQ != null){
@@ -69,7 +65,6 @@ Template.postPage.helpers({
 		var post = Posts.findOne({_id: blogId});
 		newDate = moment(post.date);
 		var formattedDate = moment(newDate).format("M/D/YY");
-		console.log(post.comments);
 		return {
 			title: post.title,
 			text: post.text,
@@ -86,7 +81,6 @@ Template.postPage.helpers({
 
 Template.postPage.events({
     'submit .submitComment': function(event) {
-      console.log("submitcomment");
         event.preventDefault();
         var text = null;
         if(document.getElementById('editor') != undefined){
@@ -97,12 +91,21 @@ Template.postPage.events({
           text = document.getElementById('scriptEditor').value;
           document.getElementById('scriptEditor').value = "";
         }
-
-		console.log("User ID: " + Meteor.userId());
         Meteor.call("updateComment", getName(Meteor.userId()), FlowRouter.getParam("blog_id"), Meteor.userId() , text);
     },
 
     'click .commentDeleteButton': function(event){
-      Meteor.call("deleteComment", FlowRouter.getParam("blog_id"), event.target.id);
+      Modal.show('deletePostOrComment', {
+		  blog_id: FlowRouter.getParam("blog_id"),
+		  id: event.target.id
+	  });
     }
+
 });
+
+
+Template.deletePostOrComment.events({
+  'click .deleteButton': function(event){
+    Meteor.call("deleteComment", Template.instance().data.blog_id, Template.instance().data.id);
+  }
+})

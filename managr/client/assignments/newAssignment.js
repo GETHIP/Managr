@@ -10,9 +10,8 @@ Template.newAssignment.onCreated(function() {
 
 Template.newAssignment.helpers({
   assignments: function() {
-    var formattedAssignments, assignments;
-    formattedAssignments = [];
-    assignments = Assignments.find({}).fetch();
+    var formattedAssignments = [];
+    var assignments = Assignments.find({}).fetch();
 
     for (var i = 0; i < objects.length; i++) {
         var assignment, formattedAssignment;
@@ -56,7 +55,7 @@ Template.newAssignment.events({
        pointsReceived: -1,
        completed: false,
     };
-  
+
     var allStudents = Student.find({}).fetch();
     if(allStudents.length > 0) {
       for(var i = 0; i < allStudents.length; i++) {
@@ -71,6 +70,5 @@ Template.newAssignment.events({
         });
       }
     }
-    window.location = "/assignments";
   }
 });
