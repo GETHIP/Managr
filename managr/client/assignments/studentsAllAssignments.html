@@ -13,7 +13,7 @@
           </tr>
           {{#each assignments}}
             <tr class="tableRowFormat" onclick="parent.location='{{url}}'">
-              <td class="tableDataFormatStudent">{{title}}</td>
+              <td class="tableDataFormatStudent"><div class="overflowText student">{{title}}</div></td>
               <td class="tableDataFormatStudent">{{dueDate}}</td>
               <td class="tableDataFormatStudent">{{pointsPossible}}</td>
               <td class="tableDataFormatStudent">Not Graded</td>
