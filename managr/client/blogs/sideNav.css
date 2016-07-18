@@ -42,6 +42,8 @@ li {
     width: 200px;
     margin-top: 0px;
     box-shadow: 3px 3px 5px #888888;
+    padding-bottom: 9999px;
+    margin-bottom: -9999px;
     overflow: hidden;
 }
 #createPostButton {
