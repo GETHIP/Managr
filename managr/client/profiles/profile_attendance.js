@@ -20,10 +20,10 @@ Template.profileAttendance.helpers({
 			currentValue.url = "/profile/" + currentValue._id;
 			for(i in currentValue.attendance){
 					if(currentValue.attendance[i] === true){
-							currentValue.attendance[i] = "green";
+							currentValue.attendance[i] = "Present";
 					}
 					if(currentValue.attendance[i] === false){
-							currentValue.attendance[i] = "red";
+							currentValue.attendance[i] = "Absent";
 					}
 			}
 			currentValue.parentNames = currentValue.parentNames.join(" and ");
@@ -31,23 +31,6 @@ Template.profileAttendance.helpers({
 		});
 	 	return ProfilesTable;
 	},
-	/*
-	doc.url = "/profile/" + doc._id;
-	doc.total = 0;
-	for(i=0;i<12;i++) {
-		doc.total += doc.attendance[i];
-	}
-	for(i in doc.attendance){
-			if(doc.attendance[i] == true){
-					doc.attendance[i] = "green";
-			}
-			if(doc.attendance[i] == false){
-					doc.attendance[i] = "red";
-			}
-	}
-	doc.parentNames = doc.parentNames.join(" and ");
-	return doc;
-	*/
 	studentIndex: function(){
 		return studentIndex;
 	}

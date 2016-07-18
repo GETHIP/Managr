@@ -52,10 +52,10 @@ studentIndex = new EasySearch.Index({
       for(i in doc.attendance){
         if(doc.attendance[i] == true){
 					doc.attendanceNumber++;
-          doc.attendance[i] = "green";
+          doc.attendance[i] = "Present";
         }
         if(doc.attendance[i] == false){
-          doc.attendance[i] = "red";
+          doc.attendance[i] = "Absent";
         }
       }
       doc.parentNames = doc.parentNames.join(" and ");
