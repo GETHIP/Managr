@@ -1,4 +1,5 @@
 <template name="studentsAllAssignments">
+	{{#if userIsValid}}
   <div class="marginContainer">
   <h1 class="titleAssignment">Assignments Overview</h1>
   <div class="orange-bar"> &nbsp;</div>
@@ -22,4 +23,7 @@
             {{/each}}
         </table>
     </div>
+	{{else}}
+		{{> accessDenied}}
+	{{/if}}
 </template>

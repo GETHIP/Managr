@@ -1,8 +1,12 @@
 <template name="adminSingleAssignment">
+	{{#if isInstructor}}
   <div class="marginContainer">
     {{>singleAssignmentTemplate}}
     {{>assignmentBackButton}}
     <button id="modassign" class="buttonStyle submit">Modify Assignment</button>
     {{>gradeTable}}
   </div>
+	{{else}}
+		{{> accessDenied}}
+	{{/if}}
 </template>

@@ -31,6 +31,9 @@ var wordNumbers = ["zero", "one", "two", "three", "four", "five", "six",
 "seven", "eight", "nine", "ten", "eleven", "twelve"];
 
 Template.attendanceUpdate.helpers({
+	userParam: function() {
+		return FlowRouter.getParam("id");
+	},
 	attendance: function() {
 		let userId = FlowRouter.getParam("id");
 		let attendanceBoolean = Student.findOne({"_id": userId}).attendance;

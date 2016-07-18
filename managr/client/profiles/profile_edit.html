@@ -1,5 +1,6 @@
 <template name="profileEdit">
   {{#with data}}
+  {{#if currentUserOrInstructor userId}}
   <div class="rectangle aboutMe">
     <form class="profileEdit">
     <div class="form-group">
@@ -95,5 +96,8 @@
     <br>
     <br>
   </div>
+  {{else}}
+    {{> accessDenied}}
+  {{/if}}
   {{/with}}
 </template>

@@ -1,4 +1,5 @@
 <template name="manage">
+	{{#if isInstructor}}
   <div class="managing">
     <div class="managingHeader">
       <p id="welcome">Manage Posts</p>
@@ -25,4 +26,7 @@
 {{/each}}
 </div>
 </div>
+	{{else}}
+		{{> accessDenied}}
+	{{/if}}
 </template>
