@@ -11,7 +11,7 @@ Template.singleAssignment.helpers({
         formattedAssignment = {
             title: assignment.title,
             description: assignment.description,
-            dueDate: (assignment.dueDate.getMonth() + 1) + "/" + assignment.dueDate.getDate() + "/" +  assignment.dueDate.getFullYear(),
+            dueDate: (assignment.dueDate.getMonth() + 1) + "/" + (assignment.dueDate.getDate() + 1) + "/" +  assignment.dueDate.getFullYear(),
             assigner: assignment.assigner,
             dateAssigned: (assignment.dateAssigned.getMonth() + 1) + "/" + assignment.dateAssigned.getDate() + "/" +  assignment.dateAssigned.getFullYear(),
             pointsPossible: assignment.pointsPossible
