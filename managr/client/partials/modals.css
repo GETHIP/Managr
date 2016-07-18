@@ -1,8 +1,19 @@
 .modal.fade.in{
-  top: 15%;
+  width: 600px;
+  height: 167px;
+  top: 30%;
+  box-shadow: none;
 }
 
-.modal{
-  width: 650px;
-  height: 280px;
+
+.modal-content{
+  border: none;
+}
+
+.modal-dialog{
+  margin: 0;
+}
+
+.deleteButton{
+  background-image: none;
 }

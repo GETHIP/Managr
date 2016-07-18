@@ -8,9 +8,30 @@ Template.createBlogPost.onCreated(function() {
 Template.createBlogPost.events({
 	'submit .postCreate':function(event){
 		event.preventDefault();
-		Modal.show('publishPostOrComment');
-
-
+		var authorName = Instructor.findOne({userId: Meteor.user()._id}).name;
+		var data = { };
+		if (document.getElementById('editor') != undefined) {
+			data = {
+				title: document.getElementById('createPostTitle').value ,
+				text: document.getElementById('editor').innerHTML,
+				authorId: Meteor.user()._id,
+				date: new Date(),
+				comments: [],
+				isPublic: Template.instance().publicPost,
+				authorName: authorName
+			};
+		} else {
+			data = {
+			title:document.getElementById('createPostTitle').value ,
+			text: document.getElementById('scriptEditor').value,
+			authorId: Meteor.user()._id,
+			date: new Date(),
+			comments: [],
+			isPublic: Template.instance().publicPost,
+			authorName: authorName
+			};
+		}
+		Modal.show('publishPostOrComment', data);
 	},
 	'click #publicCheck':function(e) {
 		Template.instance().publicPost = !Template.instance().publicPost;
@@ -26,7 +47,8 @@ Template.createBlogPost.events({
 Template.publishPostOrComment.events({
   'click #publish': function(e){
 		e.preventDefault();
-		console.log("Hi");
+		Meteor.call("insertPost", Template.instance().data);
+		/*
 		var authorName = Instructor.findOne({userId: Meteor.user()._id}).name;
 		console.log(isPublic);
 		if (document.getElementById('editor') != undefined) {
@@ -51,5 +73,6 @@ Template.publishPostOrComment.events({
 			authorName: authorName
 		  });
 		}
+		*/
 	}
 })
