@@ -20,3 +20,12 @@
 .choice select{
   font-size: 11px;
 }
+
+.attendanceTableRow:hover {
+  background-color:#fde8d9;
+}
+
+.attendanceTableHead {
+  background-color: #f58028;
+  color: #fff;
+}

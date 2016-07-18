@@ -1,55 +1,76 @@
+import { Instructor } from '../../collections/instructor.js';
+import { Student } from '../../collections/student.js';
+import { Assignments } from '../../collections/assignments.js';
+
 Template.newAssignment.onCreated(function() {
   Meteor.subscribe('Assignments');
+  Meteor.subscribe('Instructor');
+  Meteor.subscribe('Student');
 });
 
 Template.newAssignment.helpers({
   assignments: function() {
-    var list, objects, i;
-    list = [];
-    objects = Assignments.find({}).fetch();
-    for (i = 0; i < objects.length; i++) {
-      if (objects.length > 0) {
-        var obj, j, cleanedObj;
-        obj = objects[i];
+    var formattedAssignments, assignments;
+    formattedAssignments = [];
+    assignments = Assignments.find({}).fetch();
+
+    for (var i = 0; i < objects.length; i++) {
+        var assignment, formattedAssignment;
+        assignment = assignments[i];
         // The formatted object to be returned
-        cleanedObj = {
-          title: obj.title,
-          description: obj.description,
-          dueDate: (obj.dueDate.getMonth() + 1) + "/" + obj.dueDate.getDate() + "/" +  obj.dueDate.getFullYear(),
-          assigner: obj.assigner,
-          dateAssigned: (obj.dueDate.getMonth() + 1) + "/" + obj.dueDate.getDate() + "/" +  obj.dueDate.getFullYear(),
-          pointsPossible: obj.pointsPossible
+        formattedAssignment = {
+          title: assignment.title,
+          description: assignment.description,
+          dueDate: (assignment.dueDate.getMonth() + 1) + "/" + assignment.dueDate.getDate() + "/" +  assignment.dueDate.getFullYear(),
+          assigner: assignment.assigner,
+          dateAssigned: (assignment.dueDate.getMonth() + 1) + "/" + assignment.dueDate.getDate() + "/" +  assignment.dueDate.getFullYear(),
+          pointsPossible: assignment.pointsPossible
         }
-        list.push(cleanedObj);
-      }
+        formattedAssignments.push(formattedAssignment);
     }
-    return list;
+    return formattedAssignments;
   }
 });
 
-Template.newAssignment.events({
-    'click #createAssignment'(event){
-        window.location = "/assignments";
-    }
-});
 
 Template.newAssignment.events({
+  'click #createAssignment'(event) {
+    window.location = "/assignments";
+  },
   'submit .submitbtn'(event){
     event.preventDefault();
     const form = event.target;
-		function randInst() {
-			var myArray = ["Zach Merrill","James Getrost","Melanie Powell","Andy Elsaesser","Cooper Knaak","Max van Klinken","Logan Fitzgibbons"];
-			console.log(typeof(myArray[Math.floor(Math.random() * myArray.length)]));
-			return myArray[Math.floor(Math.random() * myArray.length)];
-		}
-    console.log(document.getElementById("editor"));
-    Assignments.insert({
+
+    var assignmentId = Assignments.insert({
       title: form.name.value,
       description: document.getElementById("editor").innerHTML,
       dueDate: form.dateDue.value,
-      assigner: randInst(),
+      assigner: Instructor.findOne({userId: Meteor.user()._id}).name,
       dateAssigned: new Date(),
       pointsPossible: form.points.value
     });
+
+    //A default template for a grade that has no score but must get added to the students
+    var emptyAssignment = {
+       assignmentId: assignmentId,
+       pointsReceived: -1,
+       completed: false,
+    };
+  
+    var allStudents = Student.find({}).fetch();
+    if(allStudents.length > 0) {
+      for(var i = 0; i < allStudents.length; i++) {
+        var assignments = allStudents[i].assignments;
+        if(assignments == undefined) {
+          assignments = [];
+        }
+        assignments.push(emptyAssignment);
+        Student.update({_id: allStudents[i]._id},
+        {
+          $set: {assignments: assignments}
+        });
+      }
+    }
+    window.location = "/assignments";
   }
 });

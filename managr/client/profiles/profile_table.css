@@ -20,3 +20,7 @@
     margin-top: 60px;
 
   }
+
+  .profileTableRow:hover {
+    background-color: #e0f5fe;
+  }

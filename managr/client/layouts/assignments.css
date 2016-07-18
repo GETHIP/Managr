@@ -204,14 +204,24 @@ header {
     box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 
 }
+
 .tableHeadFormat {
   background-color: #fcb040;
-  padding: 2% 10% 2% 10%;
+  padding-top: 2%;
+  padding-bottom: 2%;
   border-bottom: 1px solid #444444;
   color: white;
   width: 50%;
   font-size: 18px;
   text-align: center;
+}
+
+.tableHeadFormat.assignments, .tableDataFormat.assignments {
+  width: 33%;
+}
+
+.tableHeadFormat.grades, .tableDataFormat.grades {
+  width: 25%;
 }
 
 .tableHeadFormatStudent {
@@ -238,10 +248,10 @@ header {
 }
 
 .tableDataFormat {
-  padding: 2% 10% 2% 10%;
+  padding-top: 2%;
+  padding-bottom: 2%;
   color: black;
   text-align: center;
-  width: 50%;
 }
 .tableDataFormat {
   cursor: pointer;
@@ -249,10 +259,6 @@ header {
 .tableRowFormat {
   text-align: center;
   font-size: 16px;
-  background:#00FF00;
-}
-.tableRowFormat:hover {
-  /*color:#00ff00;*/
 }
 .tableRowFormat:nth-child(even) {
   background-color: #EEEEEE;
@@ -260,10 +266,7 @@ header {
 .tableRowFormat:nth-child(odd) {
   background-color: white;
 }
-.tableRowFormat:nth-child(even):hover {
-  background-color:#FEF1DE;
-}
-.tableRowFormat:nth-child(odd):hover {
+.tableRowFormat.assignments:hover {
   background-color:#FEF1DE;
 }
 

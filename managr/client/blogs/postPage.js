@@ -9,6 +9,8 @@ function getName(id){
     return insQ.name;
   }else if(stuQ != null){
     return stuQ.name;
+  } else {
+	  return undefined;
   }
 }
 
@@ -63,7 +65,6 @@ Template.postPage.helpers({
 		var post = Posts.findOne({_id: blogId});
 		newDate = moment(post.date);
 		var formattedDate = moment(newDate).format("M/D/YY");
-		console.log(post.comments);
 		return {
 			title: post.title,
 			text: post.text,
@@ -80,7 +81,6 @@ Template.postPage.helpers({
 
 Template.postPage.events({
     'submit .submitComment': function(event) {
-      console.log("submitcomment");
         event.preventDefault();
         var text = null;
         if(document.getElementById('editor') != undefined){
@@ -91,13 +91,14 @@ Template.postPage.events({
           text = document.getElementById('scriptEditor').value;
           document.getElementById('scriptEditor').value = "";
         }
-
         Meteor.call("updateComment", getName(Meteor.userId()), FlowRouter.getParam("blog_id"), Meteor.userId() , text);
-
     },
 
     'click .commentDeleteButton': function(event){
-      Modal.show('deletePostOrComment');
+      Modal.show('deletePostOrComment', {
+		  blog_id: FlowRouter.getParam("blog_id"),
+		  id: event.target.id
+	  });
     }
 
 });
@@ -105,6 +106,6 @@ Template.postPage.events({
 
 Template.deletePostOrComment.events({
   'click .deleteButton': function(event){
-    Meteor.call("deleteComment", FlowRouter.getParam("blog_id"), event.target.id);
+    Meteor.call("deleteComment", Template.instance().data.blog_id, Template.instance().data.id);
   }
 })

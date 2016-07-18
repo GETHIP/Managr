@@ -1,6 +1,6 @@
 if(Meteor.isClient) {
 	Accounts.onLogout(function() {
-		FlowRouter.go('home');
+		FlowRouter.go('login');
 	});
 }
 
@@ -54,7 +54,12 @@ blogsSection.route('/managePosts', {
 		BlazeLayout.render(blogLayout, {content: 'manage'})
 	}
 });
-
+blogsSection.route('/editPost/:blog_id', {
+	name: 'editPost',
+	action : function(params) {
+		BlazeLayout.render(blogLayout, {content: 'editPost'})
+	}
+});
 assignmentSection.route("/", {
     name: "allAssignments",
     action() {

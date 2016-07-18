@@ -10,36 +10,28 @@
         <h1><strong>
       About Me
     </strong> </h1> {{#with student}}
-    <img style="margin-left: 12px;" alt="Profile Picture" height="200" width="200" src="{{picture}}">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <p><strong>Name:</strong></p>
-                    <p>{{name}}</p>
-                    <p><strong>School:</strong></p>
-                    <p>{{school}}</p>
-                    <p><strong>Grade:</strong></p>
-                    <p>{{grade}}</p>
-                    <p><strong>Age:</strong></p>
-                    <p>{{age}}</p>
-                    <p><strong>Email:</strong></p>
-                    <p>{{email}}</p>
-                    <p><strong>Phone Number:</strong></p>
-                    <p>{{phoneNumber}}</p>
-                    <p><strong>Address:</strong></p>
-                    <p>{{address}}</p>
-                    <p><strong>T-Shirt Size:</strong></p>
-                    <p>{{tshirtSize}}</p>
-                </div>
-                <div class="col-md-6">
-                    <p><strong>Github:</strong></p>
-                    <p><a href={{github}}>Github</a></p>
-                    <p><strong>Blog:</strong></p>
-                    <p class="blogButton"><a class="blogButton">Blog</a></p>
-                    <p><strong>Parent Names:</strong></p>
-                    <p>{{parentNames}}</p>
-                    <p><strong>Top 5:</strong></p>
 
+        <!--div class="container"-->
+            <div class="row">
+                <div class="col-md-4">
+                  <img alt="Profile Picture" src="{{picture}}">
+                </div>
+                <div class="col-md-4">
+                    <p><strong>Name: </strong>{{name}}</p>
+                    <p><strong>School: </strong>{{school}}</p>
+                    <p><strong>Grade: </strong>{{grade}}</p>
+                    <p><strong>Age: </strong>{{age}}</p>
+                    <p><strong>Email: </strong>{{email}}</p>
+                    <p><strong>Phone Number: </strong>{{phoneNumber}}</p>
+                    <p><strong>Address: </strong>{{address}}</p>
+                    <p><strong>T-Shirt Size: </strong>{{tshirtSize}}</p>
+                </div>
+                <div class="col-md-4">
+                    <p><strong>Github: </strong><a href={{github}}>{{github}}</a></p>
+                    <p><strong>Blog: </strong><a class="blogButton">Blog</a></p>
+                    <p><strong>Parent Names: </strong>{{parentNames}}</p>
+                    <p><strong>Get Hip Year: </strong>{{getHipYear}}</p>
+                    <p><strong>Top 5:</strong></p>
                     <ol>
                         {{#each strengths}}
                         <li>{{this}}</li>
@@ -52,13 +44,12 @@
                         <li>{{this}}</li>
                         {{/each}}
                     </ol>
-                    <p><strong>Get Hip Year:</strong></p>
-                    <p>{{getHipYear}}</p>
+
                     {{/with}}
                 </div>
 
             </div>
-        </div>
+        <!--/div-->
         {{/with}}
       </div>
 </template>
