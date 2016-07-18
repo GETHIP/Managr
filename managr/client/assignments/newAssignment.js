@@ -34,8 +34,8 @@ Template.newAssignment.helpers({
 
 
 Template.newAssignment.events({
-  'click #createAssignment'(event){
-      FlowRouter.go("/assignments");
+  'click #createAssignment'(event) {
+    window.location = "/assignments";
   },
   'submit .submitbtn'(event){
     event.preventDefault();
@@ -51,27 +51,26 @@ Template.newAssignment.events({
     });
 
     //A default template for a grade that has no score but must get added to the students
-    var emptyGrade = {
+    var emptyAssignment = {
        assignmentId: assignmentId,
-       pointsReceived: -1
+       pointsReceived: -1,
+       completed: false,
     };
-
+  
     var allStudents = Student.find({}).fetch();
-    for(var i = 0; i < allStudents.length; i++) {
-      var grades = allStudents[i].grades;
-      if(grades == undefined) {
-        console.log("GRADES IS UNDEFINED " + i);
-        grades = [];
+    if(allStudents.length > 0) {
+      for(var i = 0; i < allStudents.length; i++) {
+        var assignments = allStudents[i].assignments;
+        if(assignments == undefined) {
+          assignments = [];
+        }
+        assignments.push(emptyAssignment);
+        Student.update({_id: allStudents[i]._id},
+        {
+          $set: {assignments: assignments}
+        });
       }
-      grades.push(emptyGrade);
-      Student.update({_id: allStudents[i]._id},
-      {
-        $set: {grades: grades}
-      });
     }
-
-    console.log("GRADES: " + allStudents[0].grades);
-    console.log("LENGTH: " + allStudents[0].grades.length);
-    FlowRouter.go("/assignments");
+    window.location = "/assignments";
   }
 });

@@ -21,14 +21,26 @@ var Address = new SimpleSchema({
     }
 });
 
-var Grade = new SimpleSchema({
+var Assignment = new SimpleSchema({
     assignmentId: {
         type: String,
         label: "Assignment ID"
     },
     pointsReceived: {
         type: Number,
+        defaultValue: -1,
         label: "Points Received"
+    },
+    completed: {
+      type: Boolean,
+      defaultValue: false,
+      label: "Completed"
+    },
+    link: {
+      type: String,
+      regEx: SimpleSchema.RegEx.Url,
+      optional: true,
+      label: "Link"
     }
 });
 
@@ -105,9 +117,9 @@ var StudentSchema = new SimpleSchema({
         type: String,
         label: 'Profile Picture'
     },
-    grades: {
-        type: [Grade],
-        label: "Assignment Grades",
+    assignments: {
+        type: [Assignment],
+        label: "Assignments",
         optional: true
     }
 });
