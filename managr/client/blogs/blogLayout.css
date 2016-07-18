@@ -1,0 +1,9 @@
+.sideNavMargins{
+  margin-left: 240px;
+}
+
+@media (max-width: 450px){
+  .sideNavMargins{
+    margin-left: 5px;
+  }
+}
