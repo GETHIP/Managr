@@ -22,8 +22,6 @@ Template.editSingleAssignment.helpers({
           return n.toString();
         }
       }
-      console.log("TITLE");
-      console.log(thisAssignment);
 	    var cleanedObj;
 	      cleanedObj = {
 	        title: thisAssignment.title,

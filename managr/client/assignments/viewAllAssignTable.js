@@ -28,9 +28,9 @@ Template.viewAllAssignTable.helpers({
 // Provides the assignment data to the single template from Assignments collection
 /*Template.viewAllAssignTable.events({
   'click #newAssignmentBtn'(event){
-    window.location = "/assignments/edit/new";
+    FlowRouter.go("/assignments/edit/new");
   },
 	'click #viewGradesBtn'(event) {
-		window.location = '/assignments/grades';
+		FlowRouter.go('/assignments/grades');
 	}
 });*/
