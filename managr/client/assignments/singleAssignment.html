@@ -1,16 +1,7 @@
 <template name="singleAssignment">
-    <div class="marginContainer">
-        {{#with assignments}}
-        <h1 class="titleAssignment">{{title}}</h1>
-        <div class="orange-bar">&nbsp;</div>
-        <div class="assignmentContainer">
-            <p class=assignmentTextFormat><b>Points Possible:</b> {{pointsPossible}}</p>
-            <p class=assignmentTextFormat><b>Instructor:</b> {{assigner}}</p>
-            <p class=assignmentTextFormat><b>Date Assigned:</b> {{dateAssigned}}</p>
-            <p class=assignmentTextFormat><b>Due Date:</b> {{dueDate}}</p>
-            <p class=assignmentTextFormat><b>Description:</b> {{{description}}}</p>
-        </div>
-    {{/with}}
+  <div class="marginContainer">
+    {{>singleAssignmentTemplate}}
     {{>assignmentBackButton}}
+    <input type="submit" value="Submit Assignment" class="buttonStyle submit" id="putthingshere"> 
   </div>
 </template>
