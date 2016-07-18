@@ -15,27 +15,15 @@ Template.WYSIWYG.helpers({
   },
   assignments: function() {
     if (!(FlowRouter.current().path.includes("new"))) {
-      var objects,thisAssignment;
-  		var a = Assignments.find({}).fetch();
-  		if (a.length != 0) {
-  			for (var i = 0; i < a.length; i++) {
-  				if (a[i]._id == FlowRouter.getParam("id")) {
-  					thisAssignment = a[i];
-  				}
-  			}
-  	    var cleanedObj;
-  	      cleanedObj = {
-  	        description: thisAssignment.description
-  	      }
-  	      return cleanedObj;
-  	    }
-    	}
-      else {
-        return {
-          description: ""
-        };
+      var thisAssignment = Assignments.findOne({_id: FlowRouter.getParam("id")});
+
+	    var cleanedObj;
+      cleanedObj = {
+        description: thisAssignment.description
       }
+      return cleanedObj;
     }
+  }
 });
 /*(function ($) {
 	'use strict';
