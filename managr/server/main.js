@@ -101,12 +101,8 @@ Meteor.startup(() => {
 
   Meteor.methods({
 		'updatePost': function(postId, text, title, vis){
-			console.log(postId);
-			console.log(text);
-			console.log(title);
-			console.log(vis);
 				Posts.update({_id: postId},
-					{$set: {text: text, isVisible: vis, title: title }
+					{$set: {text: text, isPublic: vis, title: title }
 					}
 
 				);
