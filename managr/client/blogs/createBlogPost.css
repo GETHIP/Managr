@@ -5,3 +5,13 @@
 .closeButton{
   background-image: none;
 }
+
+.createPostButton{
+  width: 100% !important;
+}
+
+.container{
+  margin-left: 0px;
+  margin-right: 0px;
+  padding-right: 0px;
+}

@@ -4,14 +4,12 @@
 }
 
 .MainCreate {
-  margin-left: 165px;
   box-shadow: 3px 3px 5px #888888;
   background-color: white;
-  margin-right: -117px;
 }
 .createHeading{
  padding-top: 30px;
- margin-left: 10px;
+ 
 }
 
 @media(max-width: 450px){
