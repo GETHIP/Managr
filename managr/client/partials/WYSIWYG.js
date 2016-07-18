@@ -15,13 +15,13 @@ Template.WYSIWYG.helpers({
   },
   assignments: function() {
     if (!(FlowRouter.current().path.includes("new"))) {
-      var thisAssignment = Assignments.findOne({_id: FlowRouter.getParam("id")});
+      var assignment = Assignments.findOne({_id: FlowRouter.getParam("id")});
 
-	    var cleanedObj;
-      cleanedObj = {
-        description: thisAssignment.description
+	    var formattedAssignment;
+      formattedAssignment = {
+        description: assignment.description
       }
-      return cleanedObj;
+      return formattedAssignment;
     }
   }
 });

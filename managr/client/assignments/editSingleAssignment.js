@@ -20,16 +20,16 @@ Template.editSingleAssignment.helpers({
     }
 
     var formattedAssignment;
-      formattedAssignment = {
-        title: assignment.title,
-        description: assignment.description,
-        dueDate: (assignment.dueDate.getFullYear() + 1) + "-" + numPad(assignment.dueDate.getMonth()) + "-" +  numPad(assignment.dueDate.getDate()),
-        assigner: assignment.assigner,
-        dateAssigned: (assignment.dueDate.getFullYear() + 1) + "-" + numPad(assignment.dueDate.getMonth()) + "-" +  numPad(assignment.dueDate.getDate()),
-        pointsPossible: assignment.pointsPossible
-      }
-      return formattedAssignment;
-  	}
+    formattedAssignment = {
+      title: assignment.title,
+      description: assignment.description,
+      dueDate: (assignment.dueDate.getFullYear() + 1) + "-" + numPad(assignment.dueDate.getMonth()) + "-" +  numPad(assignment.dueDate.getDate()),
+      assigner: assignment.assigner,
+      dateAssigned: (assignment.dueDate.getFullYear() + 1) + "-" + numPad(assignment.dueDate.getMonth()) + "-" +  numPad(assignment.dueDate.getDate()),
+      pointsPossible: assignment.pointsPossible
+    }
+    return formattedAssignment;
+  }
 });
 
 Template.editSingleAssignment.events({
