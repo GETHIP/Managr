@@ -22,6 +22,7 @@
 #postText {
     font-size: 18px;
     font-family: Helvetica;
+    padding-left: 20px;
 }
 #leaveComment {
     font-size: 11px;
