@@ -100,6 +100,13 @@ Meteor.startup(() => {
   });
 
   Meteor.methods({
+		'updatePost': function(postId, text, title, vis){
+				Posts.update({_id: postId},
+					{$set: {text: text, isPublic: vis, title: title }
+					}
+
+				);
+		},
 	'deleteComment': function(id, index){
 		var comments = Posts.findOne({"_id": id}).comments;
 		var correctId = comments[index].authorId;
@@ -318,7 +325,7 @@ Meteor.startup(() => {
 			return true;
 		}
 	});
-	
+
 	//<= 1 because the default test user
 	//should already be loaded.
 	if (Student.find().count() <= 1) {
