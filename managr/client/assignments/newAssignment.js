@@ -10,9 +10,8 @@ Template.newAssignment.onCreated(function() {
 
 Template.newAssignment.helpers({
   assignments: function() {
-    var formattedAssignments, assignments;
-    formattedAssignments = [];
-    assignments = Assignments.find({}).fetch();
+    var formattedAssignments = [];
+    var assignments = Assignments.find({}).fetch();
 
     for (var i = 0; i < objects.length; i++) {
         var assignment, formattedAssignment;

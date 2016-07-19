@@ -3,7 +3,7 @@
 	margin-right: 30px;
 	height: auto;
 	padding-top: 30px;
-	margin-left: 240px;
+	margin-left: 0px;
 }
 
 #searchEnginePost {
@@ -28,7 +28,6 @@
       background-color: #f3f3f3;
       height: auto;
       padding-top: 30px;
-      margin-left: 0px;
   }
   .blogSearchBar{
     margin-right: 15px;

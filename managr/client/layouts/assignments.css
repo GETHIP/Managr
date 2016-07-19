@@ -1,6 +1,9 @@
 html {
   box-sizing: border-box;
 }
+* {
+  outline: none !important;
+}
 /**, *:before, *:after {
   box-sizing: inherit;
 }*/
@@ -73,7 +76,11 @@ body {
   padding: 2%;
 }
 .assignmentTextFormat {
-    padding: 10px 0px 10px 0px;
+  padding: 10px 0px 10px 0px;
+}
+
+.assignmentTextFormat.desc {
+  word-wrap: break-word;
 }
 
 .assignmentFormFormat {
@@ -94,6 +101,12 @@ header {
   /*margin-top: 15px;*/
   display: inline-block;
   margin-top: 1%;
+}
+
+@media screen and (max-width: 980px) {
+  .titleAssignment {
+    margin-top: 6.5%;
+  }
 }
 
 .allAssignmentTable {
@@ -142,7 +155,6 @@ header {
 
 .buttonStyle {
   width: 100%;
-  min-width: 100%;
   background-color: #fcb040;
   border: none;
   color: white;
@@ -155,8 +167,22 @@ header {
   margin-bottom: 2%;
 }
 
+.buttonStyle.back {
+  width: 49%;
+  float: left;
+}
+.buttonStyle.wide {
+  width: 100%;
+}
+.buttonStyle.submit {
+  width: 49%;
+  float: right;
+}
+
 .buttonStyle.create {
   margin-bottom: 0;
+  float: right;
+  width: 49%;
 }
 
 .buttonDiv {
@@ -171,7 +197,7 @@ header {
   background-color: #FF9C0A;
 }
 .buttonStyle:focus {
-  outline: none;
+  outline: none !important;
 }
 .noIndent {
   padding:0 !important;
@@ -202,7 +228,6 @@ header {
     margin-top: 2%;
     margin-bottom: 2%;
     box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26);
-
 }
 
 .tableHeadFormat {
@@ -238,7 +263,8 @@ header {
   background:url(http://strictthemes.com/wp-content/plugins/stkit/assets/images/icons/16/glyphs/gray/calendar.png);
 }
 .tableDataFormatStudent {
-  padding: 2% 5% 2% 5%;
+  padding-top: 2%;
+  padding-bottom: 2%;
   color: black;
   text-align: center !important;
   width: 16.67%;
@@ -247,15 +273,102 @@ header {
   cursor: pointer;
 }
 
+.overflowText {
+  width: 420px;
+  padding-left: 16px;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.overflowText.student {
+  width: 200px;
+}
+
+@media screen and (max-width: 1200px) {
+  .overflowText {
+    width: 380px;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .overflowText {
+    width: 300px;
+  }
+}
+
+.gradeTable {
+  margin-top: 8%;
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 2%;
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+
+.gradeTable th {
+  background-color: #fcb040;
+  padding-top: 1.75%;
+  padding-bottom: 1.75%;
+  border-bottom: 1px solid #444444;
+  color: white;
+  width: 33%;
+  font-size: 16px;
+  text-align: center;
+}
+
+.gradeTable td {
+  padding-top: 1.5%;
+  padding-bottom: 1.5%;
+  color: black;
+  width: 33%;
+  font-size: 14px;
+  text-align: center;
+}
+
+.pointsInput {
+  text-align: left !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.gradeTable input {
+  width: 20%;
+  height: 100%;
+  text-align: right;
+  background-color: transparent !important;
+  border: none !important;
+  margin: 0 !important;
+  margin-left: 30% !important;
+  /*margin-right: 25% !important;*/
+  font-size: 14px !important;
+  font-family: sans-serif !important;
+}
+
+.gradeTable input:focus {
+  outline: none !important;
+}
+
+.gradeTable input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.gradeTable tr:nth-child(even) {
+  background-color: #EEEEEE;
+}
+
+.gradeTable tr:nth-child(odd) {
+  background-color: white;
+}
+
 .tableDataFormat {
   padding-top: 2%;
   padding-bottom: 2%;
   color: black;
   text-align: center;
-}
-.tableDataFormat {
+  width: 50%;
   cursor: pointer;
 }
+
 .tableRowFormat {
   text-align: center;
   font-size: 16px;

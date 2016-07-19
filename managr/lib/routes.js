@@ -144,7 +144,8 @@ profileSection.route("/profile/edit/:id", {
 
 attendanceSection.route("/attendance/edit/:id", {
     action: function(params, queryParams){
-        BlazeLayout.render("attendanceUpdate", {updateAttendance: "updateAttendance"});
+        // BlazeLayout.render("attendanceUpdate", {updateAttendance: "updateAttendance"});
+		BlazeLayout.render("main", {content: "attendanceUpdate"});
     }
 });
 

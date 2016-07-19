@@ -1,11 +1,12 @@
 <template name="newAssignment">
+  {{#if isInstructor}}
   <div class="marginContainer">
   <h1 class="titleAssignment">New Assignment</h1>
   <div class="orange-bar">&nbsp;</div>
   <form class="submitbtn" id="submitbtn">
     <div class="assignmentContainer">
       <p class="noIndent assignmentFormFormat"><b>Name:</b></p>
-      <input type="text" name="name" class="assignmentForm">
+      <input type="text" name="name" class="assignmentForm" autofocus>
       <p class="noIndent assignmentFormFormat"><b>Description:</b></p>
       {{> WYSIWYG }}
       <!-- <textarea name="description" class="assignmentDescForm"></textarea> -->
@@ -17,5 +18,8 @@
     <input type="submit" value="Create Assignment" class="buttonStyle create submitbtn" id="createAssignment">
   </form>
   {{>assignmentBackButton}}
-</div>
+  </div>
+  {{else}}
+    {{> accessDenied}}
+  {{/if}}
 </template>

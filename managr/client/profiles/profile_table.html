@@ -1,4 +1,5 @@
 <template name="ProfilesTable">
+	{{#if userIsValid}}
 		<ul>
 		<div class="container-fluid">
 			<div class="searchBar">
@@ -36,4 +37,7 @@
 			</table>
 		</div>
 	</ul>
+	{{else}}
+		{{> accessDenied}}
+	{{/if}}
 </template>

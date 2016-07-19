@@ -1,24 +1,41 @@
 <template name="createBlogPost">
-	<div class="createHeading">
-		{{> createHeader}}
-	</div>
-	<div class="container">
-		<form class="postCreate">
-			<div class="MainCreate">
-				<div class="newTitle">
-					<div class="checkBox">
-						<input name="check" id="publicCheck" type="checkbox" checked="checked">Public Post
+
+	{{#if isInstructor}}
+		<div class="createHeading">
+			{{> createHeader}}
+		</div>
+		<div class="container">
+			<!-- <form class="postCreate"> -->
+				<div class="MainCreate">
+					<div class="newTitle">
+						<div class="checkBox">
+							<input name="check" id="publicCheck" type="checkbox" checked="checked">Public Post
+						</div>
+						<input type="text" id="createPostTitle" placeholder="Title">
 					</div>
-					<input type="text" id="createPostTitle" placeholder="Title">
-				</div>
 
-				{{> tabs}}
+					{{> tabs}}
 
 				</div>
-			<input type="submit" class="postButton" value="Create Post">
-		</form>
-	</div>
-
+				<table style="width: 100%;">
+				<tbody>
+				<tr>
+				<td style="padding-right: 1%;">
+				<!-- <input type="submit" class="postButton saveDraftButton" value="Save Draft"> -->
+				<button class="postButton saveDraftButton">Save Draft</button>
+				</td>
+				<td style="padding-left: 1%;">
+				<!-- <input type="submit" class="postButton createPostButton" value="Create Post"> -->
+				<button class="postButton createPostButton">Create Post</button>
+				</td>
+				</tr>
+				</tbody>
+				</table>
+			<!-- </form> -->
+		</div>
+	{{else}}
+		{{> accessDenied}}
+	{{/if}}
 
 </template>
 
