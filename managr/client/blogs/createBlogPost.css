@@ -6,7 +6,11 @@
   background-image: none;
 }
 
-.createPostButton{
+.saveDraftButton {
+  width: 100% !important;
+}
+
+.createPostButton {
   width: 100% !important;
 }
 

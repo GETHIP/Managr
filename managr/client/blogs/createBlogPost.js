@@ -6,7 +6,7 @@ Template.createBlogPost.onCreated(function() {
 });
 
 Template.createBlogPost.events({
-	'submit .postCreate':function(event){
+	'click .postButton.createPostButton':function(event) {
 		event.preventDefault();
 		var authorName = Instructor.findOne({userId: Meteor.user()._id}).name;
 		var data = { };
@@ -32,6 +32,9 @@ Template.createBlogPost.events({
 			};
 		}
 		Modal.show('publishPostOrComment', data);
+	},
+	'click .postButton.saveDraftButton':function(e) {
+		
 	},
 	'click #publicCheck':function(e) {
 		Template.instance().publicPost = !Template.instance().publicPost;

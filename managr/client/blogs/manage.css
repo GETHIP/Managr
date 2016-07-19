@@ -23,12 +23,11 @@
   .manageButton:focus {
       outline: none;
   }
-  .manageButton {
+  .manageButton, .manageDraftButton {
     background-color: #61c250;
     color: white;
     text-align: center;
     cursor: pointer;
-    width:30%;
     text-decoration: none;
     margin-top: 10px;
     font-size: 12px;
@@ -38,13 +37,18 @@
     border:none;
     border-radius: 5px;
   }
+  .manageButton {
+	  width: 30%;
+  }
+  .manageDraftButton {
+	  width: 45%;
+  }
 
-.manageDeleteButton {
+.manageDeleteButton, .manageDraftDeleteButton {
   background-color: #B2332F;
   color: white;
   text-align: center;
   cursor: pointer;
-  width: 30%;
   text-decoration: none;
   margin-top: 10px;
   font-size: 12px;
@@ -54,6 +58,12 @@
   border:none;
   border-radius: 5px;
 }
+  .manageDeleteButton {
+	  width: 30%;
+  }
+  .manageDraftDeleteButton {
+	  width: 45%;
+  }
 .manageDeleteButton:focus {
     outline: none;
 }
@@ -65,6 +75,9 @@
 }
 #postManagingButtons{
   padding-left: 70%;
+}
+#draftManagingButtons{
+  padding-left: 79%;
 }
 #postIdentity{
   float: left;
