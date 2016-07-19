@@ -3,7 +3,7 @@
 		margin-right: 30px;
     height: auto;
 		padding-top: 30px;
-    margin-left: 240px;
+    margin-left: 0px;
 }
 .archivePosts li {
     box-shadow: 3px 3px 5px #888888;
@@ -17,9 +17,6 @@
   background-color: #61c250;
 }
 
-#archiveHeader{
-  margin-left: 240px;
-}
 
 #timeHead{
   font-size: 35px;
@@ -32,13 +29,9 @@
   		margin-right: 30px;
       height: auto;
   		padding-top: 30px;
-      margin-left: 0px;
   }
   .archivePosts li {
       box-shadow: 3px 3px 5px #888888;
       margin-bottom: 8px;
-  }
-  #archiveHeader{
-    margin-left: 0px;
   }
 }

@@ -5,3 +5,16 @@
 .closeButton{
   background-image: none;
 }
+
+.saveDraftButton {
+  width: 100% !important;
+}
+
+.createPostButton {
+  width: 100% !important;
+}
+
+.container{
+  margin-left: 0px;
+  padding-left: 0px;
+}

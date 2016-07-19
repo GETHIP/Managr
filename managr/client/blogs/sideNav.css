@@ -37,7 +37,7 @@ li {
 #sideNav {
     background-color: #333333;
     color: white;
-  	position: absolute;
+  	position: fixed;
   	left: 0px;
     width: 200px;
     margin-top: 0px;
