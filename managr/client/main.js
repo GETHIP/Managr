@@ -4,6 +4,7 @@ import { Comments } from '../collections/comments.js'
 import { Posts } from '../collections/blogPosts.js'
 import { Assignments } from "../collections/assignments.js";
 import { Student } from "../collections/student.js";
+import { nameOfUser } from '../lib/permissions.js';
 
 PostsIndex = new EasySearch.Index({
 	collection: Posts,

@@ -5,18 +5,8 @@ import { Comments } from '../collections/comments.js';
 import { Assignments } from '../collections/assignments.js';
 import { Instructor } from '../collections/instructor.js';
 import { Student } from '../collections/student.js';
+import { isStudent, isInstructor, userIsValid, currentUserOrInstructor } from '../lib/permissions.js';
 var fs = Npm.require('fs');
-
-function userIsValid() {
-	var isValid = true;
-    if(Meteor.user() == null){
-      isValid = false;
-    }
-    else if(Roles.userIsInRole(Meteor.user()._id, 'unconfirmed')){
-      isValid = false;
-    }
-	return isValid;
-}
 
 function createDefaultUser() {
 	var users = Meteor.users.find({username: "admin"}).fetch();
@@ -110,7 +100,7 @@ Meteor.startup(() => {
 	'deleteComment': function(id, index){
 		var comments = Posts.findOne({"_id": id}).comments;
 		var correctId = comments[index].authorId;
-		if(correctId == Meteor.userId() || Roles.userIsInRole(Meteor.user()._id, "instructor")){
+		if(currentUserOrInstructor(correctId)) {
 			comments.splice(index, 1);
 			Posts.update({"_id": id}, {$set : {comments : comments}});
 		}
@@ -122,10 +112,12 @@ Meteor.startup(() => {
       }
     },
     'insertPost':function(post) {
-      Posts.insert(post);
+		if (isInstructor() && post.authorId == Meteor.user()._id) {
+			Posts.insert(post);
+		}
     },
     'updateComment': function(authorName, postId, authorId, commentText){
-		if(!userIsValid()){
+		if(!userIsValid() || authorId != Meteor.user()._id){
 			return;
 		}
 		 Posts.update({_id: postId },
@@ -141,6 +133,7 @@ Meteor.startup(() => {
         });
     },
 	'testCreatePosts': function() {
+		// TODO: Delete this method.
 		var jimId = Meteor.users.findOne({username: "jim"})._id;
 		var jimName = "Jim";
 		var instructorId = Meteor.users.findOne({username: "instructor"})._id;
@@ -205,6 +198,7 @@ Meteor.startup(() => {
 
     },
 	'testCreateUsers': function() {
+		// TODO: Delete this method.
 		var instructorId = Accounts.createUser({
 			username: "instructor",
 			password: "password",
@@ -270,6 +264,9 @@ Meteor.startup(() => {
 		createDefaultUser();
 	},
 	'addStudent': function(data){
+		if (!isInstructor()) {
+			return;
+		}
 		 data.id = Accounts.createUser({
 				username: data[3],
 				password: "G3tH1pPr0gram"
@@ -329,6 +326,8 @@ Meteor.startup(() => {
 	//should already be loaded.
 	if (Student.find().count() <= 1) {
 
+		// TODO: Delete this test data.
+		
 		var StudentData = [{
 		  "name": "Dash Wedergren",
 		  "age": 16,
