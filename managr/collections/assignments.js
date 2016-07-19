@@ -1,8 +1,6 @@
 import { Mongo } from 'meteor/mongo';
 
-// An exported constant Mongo Collection object Assigments
 export const Assignments = new Mongo.Collection('Assignments');
-
 
 Assignments.allow({
   insert: function() {
@@ -22,16 +20,16 @@ Comment = new SimpleSchema({
         type: String,
         label: "Author ID"
     },
-	authorName: {
-		type: String,
-    label: "Author"
-	},
-  dateCreated: {
-    type: Date,
-    autoValue: function() {
-			return new Date();
-		}
-  }
+	  authorName: {
+		    type: String,
+        label: "Author"
+	  },
+    dateCreated: {
+        type: Date,
+        autoValue: function() {
+			      return new Date();
+		    }
+    }
 });
 
 AssignmentSchema = new SimpleSchema({
