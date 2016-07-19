@@ -5,7 +5,7 @@ import { Comments } from '../collections/comments.js';
 import { Assignments } from '../collections/assignments.js';
 import { Instructor } from '../collections/instructor.js';
 import { Student } from '../collections/student.js';
-import { isStudent, isInstructor, userIsValid, currentUserOrInstructor } from '../lib/permissions.js';
+import { isStudent, isInstructor, userIsValid, currentUserOrInstructor, nameOfUser } from '../lib/permissions.js';
 var fs = Npm.require('fs');
 
 function createDefaultUser() {

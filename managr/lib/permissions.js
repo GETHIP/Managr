@@ -34,7 +34,7 @@ export function nameOfUser(id) {
 	if (instructor != undefined) {
 		return instructor.name;
 	} else {
-		var student = Instructor.findOne({userId: id});
+		var student = Student.findOne({userId: id});
 		if (student != undefined) {
 			return student.name;
 		} else {
