@@ -22,13 +22,3 @@ Template.viewAllAssignTable.helpers({
         return formattedAssignments;
     }
 });
-
-// Provides the assignment data to the single template from Assignments collection
-/*Template.viewAllAssignTable.events({
-  'click #newAssignmentBtn'(event){
-    FlowRouter.go("/assignments/edit/new");
-  },
-	'click #viewGradesBtn'(event) {
-		FlowRouter.go('/assignments/grades');
-	}
-});*/
