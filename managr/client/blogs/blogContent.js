@@ -56,7 +56,6 @@ Template.blogContent.helpers({
 
     //Returns all Blog Posts
     postsIndex: function() {
-      console.log("post index");
         return formatDatesOfPosts(getPosts());
     },
 
@@ -66,7 +65,6 @@ Template.blogContent.helpers({
 Template.searchBox.helpers({
   searchEngine: function() {
     var post = getPosts();
-    console.log("Hello");
     return post;
   }
 });

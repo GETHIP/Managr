@@ -160,7 +160,6 @@ Meteor.startup(() => {
 			new Date(2014, 3, 1),
 			new Date(2013, 1, 1)
 		];
-    console.log(dates);
 		for (i = 1; i <= 10; i++) {
 			var id = jimId;
 			var name = jimName;
@@ -664,12 +663,6 @@ Meteor.startup(() => {
 			});
 		}
 	}
-	console.log(Student.findOne({
-		"name": "ben1"
-	}));
-	console.log(Instructor.findOne({
-		"name": "roger1"
-	}));
 
 	createDefaultUser();
 

@@ -8,9 +8,7 @@
 	// 'submit .postCreate':function(event){
 		// event.preventDefault();
 		// var isPublic = Template.instance().publicPost;
-		// console.log(Instructor.find().fetch());
 		// var authorName = Instructor.findOne({userId: Meteor.user()._id}).name;
-		// console.log(authorName);
 		// if (Template.instance().useWYSIWYG.get()) {
 			// Meteor.call("insertPost",{
 			  // title: document.getElementById('createPostTitle').value ,
@@ -36,6 +34,5 @@
 	// },
 	// 'click #publicCheck':function(e) {
 		// Template.instance().publicPost = !Template.instance().publicPost;
-		// console.log(Template.instance().publicPost);
 	// }
 // })

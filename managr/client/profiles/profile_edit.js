@@ -11,8 +11,6 @@ Template.profileEdit.events({
 	'change .uploadInput'(e) {
 		e.preventDefault();
 
-		console.log('helloo');
-
 		var reader = new FileReader();
 		var preview = document.querySelector('.profilePicturePreview');
 		var file = document.querySelector('input[type=file]').files[0];
@@ -20,7 +18,6 @@ Template.profileEdit.events({
 
 		reader.addEventListener("load", function () {
 			result = reader.result;
-			console.log(result);
 		    preview.src = result;
 			Student.update({_id: userId}, {$set: {picture: result}});
 		}, false);
@@ -29,7 +26,6 @@ Template.profileEdit.events({
 
 		let userId = FlowRouter.getParam("id");
 
-		console.log(userId);
 	},
 	"submit .profileEdit" (event) {
 		event.preventDefault();
