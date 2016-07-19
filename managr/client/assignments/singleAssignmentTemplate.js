@@ -16,7 +16,7 @@ Template.singleAssignmentTemplate.helpers({
 	        cleanedObj = {
 	            title: thisAssignment.title,
 	            description: thisAssignment.description,
-	            dueDate: (thisAssignment.dueDate.getMonth() + 1) + "/" + thisAssignment.dueDate.getDate() + "/" +  thisAssignment.dueDate.getFullYear(),
+	            dueDate: (thisAssignment.dueDate.getMonth() + 1) + "/" + (thisAssignment.dueDate.getDate() + 1) + "/" +  thisAssignment.dueDate.getFullYear(),
 	            assigner: thisAssignment.assigner,
 	            dateAssigned: (thisAssignment.dateAssigned.getMonth() + 1) + "/" + thisAssignment.dateAssigned.getDate() + "/" +  thisAssignment.dateAssigned.getFullYear(),
 	            pointsPossible: thisAssignment.pointsPossible
