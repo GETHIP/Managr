@@ -305,7 +305,24 @@ Meteor.startup(() => {
 		 		 				"city": "blank"
 		 		 		}
 		 });
-	}
+	 },
+	 'removeAssignment':function(assignmentId) {
+		 var allStudents = Student.find({}).fetch();
+		 allStudents.forEach(function(student) {
+				 var assignments = student.assignments;
+				 for(var i = 0; i < assignments.length; i++) {
+						 if(assignments[i].assignmentId == assignmentId) {
+								 assignments.splice(i, 1);
+								 Student.update({_id: student._id},
+								 {
+										 $set: {assignments: assignments}
+								 });
+								 break;
+						 }
+				 }
+		 });
+		 Assignments.remove(assignmentId);
+	 }
   });
     Meteor.publish('Assignments', function() {
         return Assignments.find();
@@ -322,6 +339,7 @@ Meteor.startup(() => {
 	Meteor.publish("Instructor", function() {
 		return Instructor.find();
 	});
+
 	//control update better
 	Student.allow({
 		update: function(userId, doc) {

@@ -33,6 +33,9 @@ var getPointsPossible = function(student) {
     var pointsPossible = 0;
     for(var i = 0; i < assignments.length; i++) {
         var assignment = Assignments.findOne({_id: assignments[i].assignmentId});
+        if(assignment == undefined) {
+            continue;
+        }
         pointsPossible += assignment.pointsPossible;
     }
     return pointsPossible;
