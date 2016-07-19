@@ -116,10 +116,11 @@ Meteor.startup(() => {
 			Posts.insert(post);
 		}
     },
-    'updateComment': function(authorName, postId, authorId, commentText){
+    'updateComment': function(postId, authorId, commentText){
 		if(!userIsValid() || authorId != Meteor.user()._id){
 			return;
 		}
+		var authorName = nameOfUser(authorId);
 		 Posts.update({_id: postId },
         {
           $push: { comments:

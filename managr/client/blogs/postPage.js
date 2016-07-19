@@ -91,7 +91,7 @@ Template.postPage.events({
           text = document.getElementById('scriptEditor').value;
           document.getElementById('scriptEditor').value = "";
         }
-        Meteor.call("updateComment", getName(Meteor.userId()), FlowRouter.getParam("blog_id"), Meteor.userId() , text);
+        Meteor.call("updateComment", FlowRouter.getParam("blog_id"), Meteor.userId() , text);
     },
 
     'click .commentDeleteButton': function(event){
