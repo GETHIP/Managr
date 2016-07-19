@@ -18,6 +18,8 @@
     font-size: 11px;
     color: #444444;
     font-family: Helvetica;
+	display: inline;
+	width: auto;
 }
 #postText {
     font-size: 18px;

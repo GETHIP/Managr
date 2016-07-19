@@ -1,7 +1,7 @@
 import { Posts } from '../../collections/blogPosts.js';
 Template.manage.helpers({
   'titles': function(){
-    return Posts.find({authorId: Meteor.userId()});
+    return Posts.find({authorId: Meteor.userId()}, { sort: { lastUpdated: -1 } });
   }
 })
 

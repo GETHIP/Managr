@@ -100,13 +100,16 @@ Meteor.startup(() => {
   });
 
   Meteor.methods({
-		'updatePost': function(postId, text, title, vis){
-				Posts.update({_id: postId},
-					{$set: {text: text, isPublic: vis, title: title }
-					}
-
-				);
-		},
+	'updatePost': function(postId, text, title, vis){
+		Posts.update({_id: postId}, {
+			$set: {
+				text: text,
+				isPublic: vis,
+				title: title,
+				lastUpdated: new Date()
+			}
+		});
+	},
 	'deleteComment': function(id, index){
 		var comments = Posts.findOne({"_id": id}).comments;
 		var correctId = comments[index].authorId;
@@ -179,6 +182,7 @@ Meteor.startup(() => {
 				authorId: id,
 				authorName: name,
 				date: dates[i - 1],
+				lastUpdated: dates[i - 1],
 				isPublic: isPublic,
 				comments: [
 					{
