@@ -20,8 +20,8 @@ Template.HTMLField.onRendered(function() {
     document.getElementById('scriptEditor').value = Session.blogPostText;
 });
 
-function responseFilter(){
-  return _id = FlowRouter.getParam("draft_id");
+function responseFilter(draft) {
+  return _id == FlowRouter.getParam("draft_id");
 }
 
 Template.tabs.onRendered(function() {
@@ -33,15 +33,10 @@ Template.tabs.onRendered(function() {
   }else if(FlowRouter.getRouteName == "editDraft"){
     document.getElementById('editor').innerHTML ="";
     document.getElementById('createPostTitle').value ="";
-    var draftText = Instructor.findOne({userId: Meteor.userId()}).drafts.filter(responseFilter);
-    console.log(draftText);
-    document.getElementById('editor').innerHTML = draftText[0].text;
-    document.getElementById('createPostTitle').value = draftText[0].title;
+    document.getElementById('editor').innerHTML = Drafts.findOne({_id: FlowRouter.getParam("draft_id")}).text;
+    document.getElementById('createPostTitle').value = Drafts.findOne({_id: FlowRouter.getParam("draft_id")}).title;
   }
 });
-
-
-
 Template.tabs.events({
 
   'click .wysiwyg':function(event) {

@@ -2,7 +2,18 @@ import { Instructor } from '../../collections/instructor.js';
 
 Template.createBlogPost.onCreated(function() {
 	Meteor.subscribe('Instructor');
+	if(FlowRouter.getRouteName() == editDraft){
+	Template.instance().publicPost = Posts.findOne({_id: FlowRouter.getParam("blog_id")}).isPublic;
+	}else{
 	Template.instance().publicPost = true;
+	}
+});
+
+Template.editPost.onRendered(function() {
+	if(FlowRouter.getRouteName() == editDraft){
+var checkBox = document.getElementById('publicCheck');
+checkBox.checked = Template.instance().publicPost;
+	}
 });
 
 Template.createBlogPost.events({
@@ -36,6 +47,21 @@ Template.createBlogPost.events({
 	'click #publicCheck':function(e) {
 		Template.instance().publicPost = !Template.instance().publicPost;
 		isPublic = Template.instance().publicPost;
+	},
+	'click .saveDraft': function(event){
+			draftDate = {
+				title:,
+				text:,
+				authorId:,
+				updated:,
+				isPublic:,
+			}
+			if(FlowRouter.getRouteName() == "createPost"){
+					Meteor.call('createDraft', draftData);
+			}else if(FlowRouter.getRouteName() == "ediDraft"){
+					Meteor.call('updateDraft', draftData, FlowRouter.getParam("draft_id"));
+			}
+
 	},
 	'getIsPublic' : function(e){
 		e.preventDefault();
