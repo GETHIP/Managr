@@ -14,7 +14,7 @@ Comment = new SimpleSchema({
     date: {
       type: Date,
       autoValue: function() {
-  			return new Date()
+  			return new Date();
   		}
     },
 
@@ -38,9 +38,15 @@ postSchema = new SimpleSchema({
     date: {
       type: Date,
       defaultValue: function() {
-  			return new Date()
+  			return new Date();
   		}
     },
+	lastUpdated: {
+		type: Date,
+		defaultValue: function() {
+			return new Date();
+		}
+	},
     comments: {
       type: [Comment]
     },

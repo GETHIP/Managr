@@ -8,9 +8,11 @@ export function formatDatesOfPosts(posts) {
     for (i = 0; i < posts.length; i++) {
         newDate = moment(posts[i].date);
         var formattedDate = moment(newDate).format("M/D/YY");
+		var formattedUpdated = moment(posts[i].lastUpdated).format("M/D/YY");
         newPosts.push({
             _id: posts[i]._id,
             date: formattedDate,
+			lastUpdated: formattedUpdated,
             title: posts[i].title,
             text: posts[i].text,
             authorId: posts[i].authorId,
@@ -36,7 +38,7 @@ export function getPosts() {
           return 0;
         }
       });
-      return s;
+      return formatDatesOfPosts(s);
     }
     var posts = Posts.find({}, { sort: {'date': -1} }).fetch();
 

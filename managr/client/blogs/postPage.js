@@ -65,14 +65,16 @@ Template.postPage.helpers({
 		var post = Posts.findOne({_id: blogId});
 		newDate = moment(post.date);
 		var formattedDate = moment(newDate).format("M/D/YY");
+		var formattedUpdate = moment(post.lastUpdated).format("M/D/YY");
 		return {
 			title: post.title,
 			text: post.text,
 			authorId: post.authorId,
-      authorName: post.authorName,
+			authorName: post.authorName,
 			comments: formatDatesOfComments(post.comments),
 			date: formattedDate,
-      isPublic: post.isPublic
+			lastUpdated: formattedUpdate,
+			isPublic: post.isPublic
 		}
 	}
 
