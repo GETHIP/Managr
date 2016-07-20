@@ -4,7 +4,6 @@ Template.singleAssignmentTemplate.onCreated(function() {
 
 Template.singleAssignmentTemplate.helpers({
     assignments: function() {
-
         var assignment = Assignments.findOne({_id: FlowRouter.getParam("id")});
 
         var formattedAssignment;

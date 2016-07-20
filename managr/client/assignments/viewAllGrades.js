@@ -42,7 +42,18 @@ var getPointsPossible = function(student) {
 }
 
 var getOverallGrade = function(student) {
-    if(getPointsPossible(student) <= 0) return "N/A";
+    if(getPointsPossible(student) <= 0) return "100.00%";
+    var numberOfCompleted = getAssignmentsCompleted(student);
+    if(numberOfCompleted <= 0 && getPointsReceived(student) <= 0) return "N/A";
+    if(numberOfCompleted > 0) {
+        var truePointsReceived = getTruePointsReceived(student);
+        if(-truePointsReceived == numberOfCompleted) {
+            return "N/A";
+        }
+    }
+
+
+
     var overallGrade = (getPointsReceived(student) / getPointsPossible(student)) * 100;
     return overallGrade.toFixed(2) + "%";
 }
