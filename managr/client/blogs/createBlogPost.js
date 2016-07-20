@@ -3,6 +3,7 @@ import { Instructor } from '../../collections/instructor.js';
 Template.createBlogPost.onCreated(function() {
 	Meteor.subscribe('Instructor');
 	Template.instance().publicPost = true;
+	console.log("createBlogPost.onCreated");
 });
 
 Template.createBlogPost.events({
