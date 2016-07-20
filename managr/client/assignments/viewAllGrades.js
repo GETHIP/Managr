@@ -48,7 +48,7 @@ var getOverallGrade = function(student) {
 }
 
 Template.viewAllGrades.helpers({
-    "students": function() {
+    students: function() {
         var studentData = [];
         Student.find({}).forEach(function(student) {
           studentData.push({

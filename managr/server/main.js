@@ -337,7 +337,18 @@ Meteor.startup(() => {
 				 }
 		 }
 	 },
-	 'addEmptyAssignmentToAllStudents':function() {
+	 'createAssignment':function(title, description, dueDate, pointsPossible) {
+		 var assignmentId = Assignments.insert({
+       title: title,
+       description: description,
+       dueDate: dueDate,
+       assigner: Instructor.findOne({userId: Meteor.user()._id}).name,
+       dateAssigned: new Date(),
+       pointsPossible: pointsPossible
+     });
+		 Meteor.call("addEmptyAssignmentToAllStudents", assignmentId);
+	 },
+	 'addEmptyAssignmentToAllStudents':function(assignmentId) {
 		 //A default template for a grade that has no score but must get added to the students
      var emptyAssignment = {
         assignmentId: assignmentId,
@@ -359,6 +370,24 @@ Meteor.startup(() => {
          });
        }
      }
+	 },
+	 'updateAssignment':function(assignmentId, title, description, dueDate, pointsPossible) {
+		 var assignment = Assignments.findOne({_id: assignmentId});
+		 var assigner = Instructor.findOne({userId: Meteor.user()._id}).name;
+
+     Assignments.update({
+       _id:assignment._id
+     },
+     {
+       $set: {
+         title: title,
+         description: description,
+         dueDate: dueDate,
+         assigner: assigner,
+         dateAssigned: new Date(),
+         pointsPossible: pointsPossible
+       }
+     });
 	 }
   });
     Meteor.publish('Assignments', function() {
