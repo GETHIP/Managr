@@ -125,7 +125,8 @@ Meteor.startup(() => {
       }
     },
     'insertPost':function(post) {
-      Posts.insert(post);
+		post.lastUpdated = new Date();
+		Posts.insert(post);
     },
     'updateComment': function(authorName, postId, authorId, commentText){
 		if(!userIsValid()){
