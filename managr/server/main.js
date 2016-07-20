@@ -1,4 +1,4 @@
-// Import meteor for server / publish and Assignments to publish
+﻿// Import meteor for server / publish and Assignments to publish
 import { Meteor } from 'meteor/meteor';
 import { Posts } from '../collections/blogPosts.js';
 import { Comments } from '../collections/comments.js';
@@ -597,9 +597,9 @@ Meteor.startup(() => {
 		  "email": "jason_huang@gallup.com",
 		  "getHipYear": 2,
 		  "phoneNumber": "402825541",
-		  "parentNames": ["Chong", "Ching"],
+		  "parentNames": ["Wei", "Mei"],
 		  "address": {
-		    "street": "8126 184th St.",
+		    "street": "6103 S. 176th St.",
 		    "city": "Omaha",
 		    "state": "Nebraska",
 		    "zipCode": 68118
