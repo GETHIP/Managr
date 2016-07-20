@@ -239,6 +239,10 @@ header {
   width: 25%;
 }
 
+.tableRowFormat:hover {
+  background-color: #FEF1DE !important;
+}
+
 .tableHeadFormatStudent {
   background-color: #fcb040;
   padding: 2% 0% 2% 0%;
@@ -314,6 +318,20 @@ header {
   text-align: center;
 }
 
+.gradeTable.studentSingle {
+  margin-top: 2%;
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+
+.gradeTable.studentSingle th, .gradeTable.studentSingle td {
+  width: 17.5%;
+}
+
+.gradeTable.titleOverride {
+  width: 47.5% !important;
+  box-shadow: none !important;
+}
+
 .pointsInput {
   text-align: left !important;
   padding: 0 !important;
@@ -347,6 +365,22 @@ header {
 
 .gradeTable tr:nth-child(odd) {
   background-color: white;
+}
+
+.gradeTable tr:hover {
+  background-color: #FEF1DE;
+}
+
+.gradeTable p {
+  padding: 0;
+  margin: 0;
+}
+
+.gradeTable span:hover, .gradeTable span:focus {
+  font-weight: lighter;
+  font-style: italic;
+  border: 1px #fcb040 solid;
+  border-radius: 3px;
 }
 
 .tableDataFormat {
