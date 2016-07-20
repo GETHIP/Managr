@@ -7,10 +7,10 @@ DraftsSchema = new SimpleSchema({
 	text: {
 		type: String
 	},
-	lastModified: {
+	lastUpdated: {
 		type: String
 	},
-	userId: {
+	authorId: {
 		type: String
 	},
 	isPublic: {

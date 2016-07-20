@@ -59,23 +59,23 @@ Template.createBlogPost.events({
 		 	draftData = {
 				title:document.getElementById('createPostTitle').value ,
 				text: document.getElementById('editor').innerHTML,
-				userId: Meteor.user()._id,
-				lastModified: new Date(),
+				authorId: Meteor.user()._id,
+				lastUpdated: new Date(),
 				isPublic: Template.instance().publicPost,
 			};
 		} else {
 			draftData = {
 				title:document.getElementById('createPostTitle').value ,
 				text: document.getElementById('scriptEditor').value,
-				userId: Meteor.user()._id,
-				lastModified: new Date(),
+				authorId: Meteor.user()._id,
+				lastUpdated: new Date(),
 				isPublic: Template.instance().publicPost,
 			};
 		}
-			if(FlowRouter.getRouteName() == "createPost"){
-					Meteor.call('createDraft', draftData);
-			}else if(FlowRouter.getRouteName() == "editDraft"){
-					Meteor.call('editDraft', draftData, FlowRouter.getParam("draft_id"));
+			if (FlowRouter.getRouteName() == "createPost") {
+				Meteor.call('createDraft', draftData);
+			} else if (FlowRouter.getRouteName() == "editDraft"){
+				Meteor.call('editDraft', draftData, FlowRouter.getParam("draft_id"));
 			}
 			FlowRouter.go("/managePosts")
 	},

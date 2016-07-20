@@ -9,7 +9,7 @@ Template.studentsAllAssignments.helpers({
         formattedAssignments = [];
         allAssignments = Assignments.find({}).fetch();
         for (i = 0; i < allAssignments.length; i++) {
-            var assignment, j, aUrl, formattedAssignment;
+            var assignment, assignmentUrl, formattedAssignment;
             assignment = allAssignments[i];
             assignmentUrl = "/assignments/single/" + assignment._id.valueOf();
 

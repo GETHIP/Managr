@@ -18,6 +18,8 @@
     font-size: 11px;
     color: #444444;
     font-family: Helvetica;
+	display: inline;
+	width: auto;
 }
 #postText {
     font-size: 18px;
@@ -32,8 +34,6 @@
 #postHeader {
     font-size: 37px;
     font-family: Helvetica;
-    /*pointer-events: none;
-  cursor: default; */
     color: #444444;
 }
 #pretag {

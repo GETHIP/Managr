@@ -111,7 +111,7 @@ var StudentSchema = new SimpleSchema({
     },
 	  userId: {
 		    type: String,
-		      label: 'userId'
+		    label: 'userId'
 	  },
     picture: {
         type: String,

@@ -8,42 +8,42 @@
     {{#each assignment}}
     <tr>
       <td>{{studentNameHere}}</td>
-      <td>{{points}}</td>
+      <td><p><span contenteditable="true">{{currentPoints}}</span> / {{points}}</p></td>
       <td>{{grade}}</td>
     </tr>
     {{/each}}
 
     <tr>
       <td>Jason Huang</td>
-      <td class="pointsInput"><input type="number" min="0">/&nbsp;100</td>
-      <td>{{grade}}n/a</td>
+      <td><p><span contenteditable="true">100</span> / 100</p></td>
+      <td>{{grade}}100%</td>
     </tr>
 
     <tr>
       <td>Emily Zhang</td>
-      <td class="pointsInput"><input type="number" min="0">/&nbsp;100</td>
+      <td><p><span contenteditable="true"></span> / 100</p></td>
       <td>{{grade}}n/a</td>
     </tr>
 
     <tr>
       <td>Matthew Meacham</td>
-      <td class="pointsInput"><input type="number" min="0">/&nbsp;100</td>
+      <td><p><span contenteditable="true"></span> / 100</p></td>
       <td>{{grade}}n/a</td>
     </tr>
 
     <tr>
       <td>Cate Longo</td>
-      <td class="pointsInput"><input type="number" min="0">/&nbsp;100</td>
+      <td><p><span contenteditable="true"></span> / 100</p></td>
       <td>{{grade}}n/a</td>
     </tr>
 
     <tr>
       <td>Thomas Gerot</td>
-      <td class="pointsInput"><input type="number" min="0">/&nbsp;100</td>
+      <td><p><span contenteditable="true"></span> / 100</p></td>
       <td>{{grade}}n/a</td>
     </tr>
 
   </table>
 
-  <input type="submit" value="Update Grades" class="buttonStyle wide" id="routeThisThomas"> 
+  <input type="submit" value="Update Grades" class="buttonStyle wide" id="routeThisThomas">
 </template>

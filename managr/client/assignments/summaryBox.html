@@ -2,17 +2,17 @@
 	<div class="sumRow">
 		<div class="sumCol first">
 			<div class="sumDiv title">Assignments</div>
-			<div class="sumDiv">Complete: 10</div>
-			<div class="sumDiv">Incomplete: 2</div>
+			<div class="sumDiv">Complete: {{completeAssignments}}</div>
+			<div class="sumDiv">Incomplete: {{incompleteAssignments}}</div>
 		</div>
 			<div class="sumCol second">
 			<div class="sumDiv title">Points</div>
-			<div class="sumDiv">Earned: 50</div>
-			<div class="sumDiv">Possible: 60</div>
+			<div class="sumDiv">Earned: {{pointsReceived}}</div>
+			<div class="sumDiv">Possible: {{pointsPossible}}</div>
 		</div>
 			<div class="sumCol third">
 			<div class="sumDiv title">Grade:</div>
-			<div class="sumDiv grade">83.33%</div>
+			<div class="sumDiv grade">{{overallGrade}}</div>
 		</div>
 	</div>
 </template>

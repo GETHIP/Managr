@@ -11,7 +11,6 @@ import {
 Template.testInsertData.events({
     'click .testClass' (event) {
         Meteor.call('testCreatePosts');
-        console.log("created");
     },
     'click .createUsers' (event) {
         Meteor.call('testCreateUsers');
