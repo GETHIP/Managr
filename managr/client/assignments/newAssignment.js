@@ -52,7 +52,7 @@ Template.newAssignment.events({
     //A default template for a grade that has no score but must get added to the students
     var emptyAssignment = {
        assignmentId: assignmentId,
-       pointsReceived: -1,
+       pointsReceived: 25,
        completed: false,
     };
 

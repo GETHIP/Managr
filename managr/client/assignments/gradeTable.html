@@ -5,45 +5,15 @@
       <th>Points</th>
       <th>Grade</th>
     </tr>
-    {{#each assignment}}
+    {{#each students}}
     <tr>
-      <td>{{studentNameHere}}</td>
-      <td>{{points}}</td>
-      <td>{{grade}}</td>
+      <td>{{studentName}}</td>
+      <td>{{pointsRecv}}</td>
+      <td>{{studentAssignmentGrade}}</td>
     </tr>
     {{/each}}
 
-    <tr>
-      <td>Jason Huang</td>
-      <td class="pointsInput"><input type="number" min="0">/&nbsp;100</td>
-      <td>{{grade}}n/a</td>
-    </tr>
-
-    <tr>
-      <td>Emily Zhang</td>
-      <td class="pointsInput"><input type="number" min="0">/&nbsp;100</td>
-      <td>{{grade}}n/a</td>
-    </tr>
-
-    <tr>
-      <td>Matthew Meacham</td>
-      <td class="pointsInput"><input type="number" min="0">/&nbsp;100</td>
-      <td>{{grade}}n/a</td>
-    </tr>
-
-    <tr>
-      <td>Cate Longo</td>
-      <td class="pointsInput"><input type="number" min="0">/&nbsp;100</td>
-      <td>{{grade}}n/a</td>
-    </tr>
-
-    <tr>
-      <td>Thomas Gerot</td>
-      <td class="pointsInput"><input type="number" min="0">/&nbsp;100</td>
-      <td>{{grade}}n/a</td>
-    </tr>
-
   </table>
 
-  <input type="submit" value="Update Grades" class="buttonStyle wide" id="routeThisThomas"> 
+  <input type="submit" value="Update Grades" class="buttonStyle wide" id="routeThisThomas">
 </template>
