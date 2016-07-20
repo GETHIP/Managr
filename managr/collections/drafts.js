@@ -12,6 +12,9 @@ DraftsSchema = new SimpleSchema({
 	},
 	userId: {
 		type: String
+	},
+	isPublic: {
+		type: Boolean
 	}
 });
 Drafts.attachSchema(DraftsSchema);
