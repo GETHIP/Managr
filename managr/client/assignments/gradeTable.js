@@ -36,7 +36,14 @@ Template.gradeTable.helpers({
 				if(index <= -1) {
 						continue;
 				}
-
+				function pr(p) {
+					if (p < 0) {
+						return "Not Graded";
+					}
+					else {
+						return p;
+					}
+				}
         studentData.push({
           studentName: student.name,
 					pointsRecv: studentAssignments[index].pointsReceived,
