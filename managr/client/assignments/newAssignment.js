@@ -49,26 +49,6 @@ Template.newAssignment.events({
       pointsPossible: form.points.value
     });
 
-    //A default template for a grade that has no score but must get added to the students
-    var emptyAssignment = {
-       assignmentId: assignmentId,
-       pointsReceived: -1,
-       completed: false,
-    };
-
-    var allStudents = Student.find({}).fetch();
-    if(allStudents.length > 0) {
-      for(var i = 0; i < allStudents.length; i++) {
-        var assignments = allStudents[i].assignments;
-        if(assignments == undefined) {
-          assignments = [];
-        }
-        assignments.push(emptyAssignment);
-        Student.update({_id: allStudents[i]._id},
-        {
-          $set: {assignments: assignments}
-        });
-      }
-    }
+    Meteor.call("addEmptyAssignmentToAllStudents");
   }
 });
