@@ -1,31 +1,57 @@
 <template name="manage">
 	{{#if isInstructor}}
-  <div class="managing">
-    <div class="managingHeader">
-      <p id="welcome">Manage Posts</p>
-      <p id="line"></p>
-    </div>
-<div class="managingCard">
-  {{#each titles}}
-  <div class="cardContents">
-  <div id="postIdentity">
-  <div class="titleManage">
-<p class="managingTitle"><b>{{title}}</b></p>
-</div>
-<div class="dateManage">
-<!-- <p class="managingSignature">#comments</p> -->
-</div>
-</div>
-<div id="postManagingButtons">
-  <a href="/blogs/{{_id}}"><button class="manageButton">View</button></a>
-<a href="/editPost/{{_id}}"><button class="manageButton">Edit</button></a>
-<button id="{{_id}}" class="manageDeleteButton">Delete</button>
-</div>
-</div>
-<p id="manageLine"></p>
-{{/each}}
-</div>
-</div>
+		<div class="managing">
+			<div class="managingHeader">
+				<p id="welcome">Manage Posts</p>
+				<p id="line"></p>
+			</div>
+			<div class="managingCard">
+				{{#each titles}}
+					<div class="cardContents">
+						<div id="postIdentity">
+							<div class="titleManage">
+								<p class="managingTitle"><b>{{title}}</b></p>
+							</div>
+							<div class="dateManage">
+							<!-- <p class="managingSignature">#comments</p> -->
+							</div>
+						</div>
+						<div id="postManagingButtons">
+							<a href="/blogs/{{_id}}"><button class="manageButton">View</button></a>
+							<a href="/editPost/{{_id}}"><button class="manageButton">Edit</button></a>
+							<button id="{{_id}}" class="manageDeleteButton">Delete</button>
+						</div>
+						</div>
+					<p id="manageLine"></p>
+				{{/each}}
+			</div>
+		</div>
+		<div class="managing">
+			<div class="managingHeader">
+				<p id="welcome">Manage Drafts</p>
+				<p id="line"></p>
+			</div>
+			<div class="managingCard">
+				{{#each drafts}}
+					<div class="cardContents">
+						<div id="postIdentity">
+							<div class="titleManage">
+								<p class="managingTitle"><b>{{title}}</b></p>
+							</div>
+							<div class="dateManage">
+							<!-- <p class="managingSignature">#comments</p> -->
+							</div>
+						</div>
+						<div id="draftManagingButtons">
+							<!-- <a href="/blogs/{{_id}}"><button class="manageButton">View</button></a> -->
+							<a href="/editDraft/{{_id}}"><button class="manageDraftButton">Edit</button></a>
+							<button id="{{_id}}" class="manageDraftDeleteButton">Delete</button>
+						</div>
+						</div>
+					<p id="manageLine"></p>
+				{{/each}}
+			</div>
+		</div>
 	{{else}}
 		{{> accessDenied}}
 	{{/if}}
