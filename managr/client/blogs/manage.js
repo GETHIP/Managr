@@ -7,6 +7,12 @@ Template.manage.helpers({
 
 Template.manage.events({
   'click .manageDeleteButton': function(event){
-    Meteor.call('delPost', event.target.id);
+    Modal.show("deletePost", event.target.id);
+  }
+});
+
+Template.deletePost.events({
+  'click .deletePostButton' : function(event){
+    Meteor.call('delPost', Template.instance().data);
   }
 });
