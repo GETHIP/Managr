@@ -2,13 +2,13 @@
   <table class="gradeTable">
     <tr>
       <th>Student Name</th>
-      <th>Points</th>
+      <th>Points Received</th>
       <th>Grade</th>
     </tr>
     {{#each students}}
-    <tr>=
+    <tr>
       <td>{{studentName}}</td>
-      <td>{{pointsRecv}}</td>
+      <td><p><span contenteditable="true">{{pointsRecv}}</span></p></td>
       <td>{{studentAssignmentGrade}}</td>
     </tr>
     {{/each}}
