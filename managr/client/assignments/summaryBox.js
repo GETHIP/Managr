@@ -51,6 +51,19 @@ var getPointsPossible = function() {
     return pointsPossible;
 }
 
+//This method doesn't remove -1 from the input
+var getTruePointsReceived = function() {
+  var student = getCurrentStudent();
+  if(student == undefined) return 0;
+
+  var studentAssignments = student.assignments;
+  var truePointsReceived = 0;
+  for(var i = 0; i < studentAssignments.length; i++) {
+      truePointsReceived += studentAssignments[i].pointsReceived;
+  }
+  return truePointsReceived;
+}
+
 Template.SummaryBox.helpers({
     "completeAssignments": function() {
         return getNumberOfCompleted();
@@ -69,8 +82,17 @@ Template.SummaryBox.helpers({
         return getPointsPossible();
     },
     "overallGrade": function() {
-        //Edge case to ensure that NaN does not show up, but rather N/A
+        //Edge case to ensure that NaN does not show up, but rather 100%
         if(getPointsPossible() <= 0) return "N/A";
+        var numberOfCompleted = getNumberOfCompleted();
+        if(numberOfCompleted <= 0 && getPointsReceived() <= 0) return "N/A";
+        if(numberOfCompleted > 0) {
+            var truePointsReceived = getTruePointsReceived();
+            if(-truePointsReceived == numberOfCompleted) {
+                return "N/A";
+            }
+        }
+
         var overallGrade = getPointsReceived() / getPointsPossible() * 100;
         return overallGrade.toFixed(2) + "%";
     }

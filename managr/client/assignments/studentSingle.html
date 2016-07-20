@@ -1,0 +1,50 @@
+<template name="studentSingle">
+  <div class="marginContainer">
+    <h1 class="titleAssignment">{{studentName}} Jason Huang</h1>
+    <div class="orange-bar">&nbsp;</div>
+
+    <table class="gradeTable studentSingle">
+      <tr>
+        <th class="gradeTable titleOverride">Assignment Name</th>
+        <th>Points</th>
+        <th>Grade</th>
+        <th>Completion</th>
+      </tr>
+
+      {{#each assignment}}
+      <tr>
+        <td class="gradeTable titleOverride">{{assignmentTitle}}</td>
+        <td><p><span contenteditable="true">100</span> / 100</p></td>
+        <td>{{percentageGrade}}</td>
+        <td>{{completion}}</td>
+      </tr>
+      {{/each}}
+
+      <tr>
+        <td class="gradeTable titleOverride">Merge Sort</td>
+        <td><p><span contenteditable="true">100</span> / 100</p></td>
+        <td>100%</td>
+        <td>Complete</td>
+      </tr>
+
+      <tr>
+        <td class="gradeTable titleOverride">Assignment</td>
+        <td><p><span contenteditable="true">91</span> / 100</p></td>
+        <td>91%</td>
+        <td>Complete</td>
+      </tr>
+
+      <tr>
+        <td class="gradeTable titleOverride">Fight Someone</td>
+        <td><p><span contenteditable="true"></span> / 100</p></td>
+        <td>n/a</td>
+        <td>Incomplete</td>
+      </tr>
+
+    </table>
+
+    {{>assignmentBackButton}}
+    <input type="submit" value="Update Grades" class="buttonStyle submit" id="routeThisThomas">
+
+</div>
+</template>

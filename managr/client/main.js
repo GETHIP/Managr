@@ -18,9 +18,11 @@ PostsIndex = new EasySearch.Index({
 		var newDate;
 		newDate = moment(doc.date);
 		var formattedDate = moment(newDate).format("M/D/YY");
+		var formattedUpdate = moment(doc.lastUpdated).format("M/D/YY");
 		newPosts = {
 			_id: doc._id,
 			date: formattedDate,
+			lastUpdated: formattedUpdate,
 			title: doc.title,
 			text: doc.text,
 			authorId: doc.authorId,
@@ -32,7 +34,7 @@ PostsIndex = new EasySearch.Index({
 	  },
 	  sort: function (searchObject, options) {
 		  return {
-			date: -1
+			lastUpdated: -1
 		  };
 	  }
 	})

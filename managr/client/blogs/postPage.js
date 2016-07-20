@@ -65,14 +65,16 @@ Template.postPage.helpers({
 		var post = Posts.findOne({_id: blogId});
 		newDate = moment(post.date);
 		var formattedDate = moment(newDate).format("M/D/YY");
+		var formattedUpdate = moment(post.lastUpdated).format("M/D/YY");
 		return {
 			title: post.title,
 			text: post.text,
 			authorId: post.authorId,
-      authorName: post.authorName,
+			authorName: post.authorName,
 			comments: formatDatesOfComments(post.comments),
 			date: formattedDate,
-      isPublic: post.isPublic
+			lastUpdated: formattedUpdate,
+			isPublic: post.isPublic
 		}
 	}
 
@@ -95,7 +97,7 @@ Template.postPage.events({
     },
 
     'click .commentDeleteButton': function(event){
-      Modal.show('deletePostOrComment', {
+      Modal.show('deleteComment', {
 		  blog_id: FlowRouter.getParam("blog_id"),
 		  id: event.target.id
 	  });
@@ -104,8 +106,8 @@ Template.postPage.events({
 });
 
 
-Template.deletePostOrComment.events({
-  'click .deleteButton': function(event){
+Template.deleteComment.events({
+  'click .deleteCommentButton': function(event){
     Meteor.call("deleteComment", Template.instance().data.blog_id, Template.instance().data.id);
   }
 })
