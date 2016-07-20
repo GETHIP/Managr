@@ -41,9 +41,9 @@ var getAverageGrade = function(assignmentId) {
     });
     var numberOfStudentsWhoCompletedTheAssignment = getNumberOfStudentsWhoCompletedTheAssignment(assignmentId);
     if(numberOfStudentsWhoCompletedTheAssignment <= 0) return "N/A";
-    
+
     var averagePoints = totalPoints / numberOfStudentsWhoCompletedTheAssignment;
-    var pointsPossible = Assignments.findOne({_id: assignmentId});
+    var pointsPossible = Assignments.findOne({_id: assignmentId}).pointsPossible;
     var averageGrade = averagePoints / pointsPossible;
     return averageGrade.toFixed(2) + "%";
 }

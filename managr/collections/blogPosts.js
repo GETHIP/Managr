@@ -32,9 +32,9 @@ postSchema = new SimpleSchema({
     authorId: {
         type: String,
     },
-	  authorName: {
+	authorName: {
 		type: String,
-	 },
+	},
     date: {
       type: Date,
       defaultValue: function() {
@@ -42,10 +42,7 @@ postSchema = new SimpleSchema({
   		}
     },
 	lastUpdated: {
-		type: Date,
-		defaultValue: function() {
-			return new Date();
-		}
+		type: Date
 	},
     comments: {
       type: [Comment]

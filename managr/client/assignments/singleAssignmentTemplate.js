@@ -4,24 +4,18 @@ Template.singleAssignmentTemplate.onCreated(function() {
 
 Template.singleAssignmentTemplate.helpers({
     assignments: function() {
-        var objects,thisAssignment;
-				var a = Assignments.find({}).fetch();
-				if (a.length != 0) {
-					for (var i = 0; i < a.length; i++) {
-						if (a[i]._id == FlowRouter.getParam("id")) {
-							thisAssignment = a[i];
-						}
-					}
-	        var cleanedObj;
-	        cleanedObj = {
-	            title: thisAssignment.title,
-	            description: thisAssignment.description,
-	            dueDate: (thisAssignment.dueDate.getMonth() + 1) + "/" + (thisAssignment.dueDate.getDate() + 1) + "/" +  thisAssignment.dueDate.getFullYear(),
-	            assigner: thisAssignment.assigner,
-	            dateAssigned: (thisAssignment.dateAssigned.getMonth() + 1) + "/" + thisAssignment.dateAssigned.getDate() + "/" +  thisAssignment.dateAssigned.getFullYear(),
-	            pointsPossible: thisAssignment.pointsPossible
-	        }
-	        return cleanedObj;
-				}
+
+        var assignment = Assignments.findOne({_id: FlowRouter.getParam("id")});
+
+        var formattedAssignment;
+        formattedAssignment = {
+            title: assignment.title,
+            description: assignment.description,
+            dueDate: (assignment.dueDate.getMonth() + 1) + "/" + (assignment.dueDate.getDate() + 1) + "/" +  assignment.dueDate.getFullYear(),
+            assigner: assignment.assigner,
+            dateAssigned: (assignment.dateAssigned.getMonth() + 1) + "/" + assignment.dateAssigned.getDate() + "/" +  assignment.dateAssigned.getFullYear(),
+            pointsPossible: assignment.pointsPossible
+        }
+        return formattedAssignment;
     }
 });
