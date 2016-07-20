@@ -63,7 +63,7 @@ blogsSection.route('/editPost/:blog_id', {
 blogsSection.route('/editDraft/:draft_id', {
 	name: 'editDraft',
 	action : function(params) {
-		BlazeLayout.render(blogLayout, {content: 'createBlogPost'})
+		BlazeLayout.render(blogLayout, {content: 'editDraft'})
 	}
 });
 assignmentSection.route("/", {
