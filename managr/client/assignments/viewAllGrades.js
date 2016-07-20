@@ -28,6 +28,16 @@ var getPointsReceived = function(student) {
     return pointsReceived;
 }
 
+//This method doesn't remove -1 from the input
+var getTruePointsReceived = function(student) {
+  var studentAssignments = student.assignments;
+  var truePointsReceived = 0;
+  for(var i = 0; i < studentAssignments.length; i++) {
+      truePointsReceived += studentAssignments[i].pointsReceived;
+  }
+  return truePointsReceived;
+}
+
 var getPointsPossible = function(student) {
     var assignments = student.assignments;
     var pointsPossible = 0;
@@ -43,6 +53,15 @@ var getPointsPossible = function(student) {
 
 var getOverallGrade = function(student) {
     if(getPointsPossible(student) <= 0) return "N/A";
+    var numberOfCompleted = getAssignmentsCompleted(student);
+    if(numberOfCompleted <= 0 && getPointsReceived(student) <= 0) return "N/A";
+    if(numberOfCompleted > 0) {
+        var truePointsReceived = getTruePointsReceived(student);
+        if(-truePointsReceived == numberOfCompleted) {
+            return "N/A";
+        }
+    }
+
     var overallGrade = (getPointsReceived(student) / getPointsPossible(student)) * 100;
     return overallGrade.toFixed(2) + "%";
 }
