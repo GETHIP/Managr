@@ -19,9 +19,16 @@ export function userIsValid() {
   return !Roles.userIsInRole(Meteor.user()._id, "unconfirmed");
 }
 
+export function isCurrentUser(id) {
+  if (Meteor.user() == null) {
+    return false;
+  }
+  return id == Meteor.user()._id;
+}
+
 export function currentUserOrInstructor(id) {
   if (Meteor.user() == null) {
     return false;
   }
-  return id == Meteor.user()._id || Roles.userIsInRole(Meteor.user()._id, "instructor");
+  return isCurrentUser(id) || Roles.userIsInRole(Meteor.user()._id, "instructor");
 }
