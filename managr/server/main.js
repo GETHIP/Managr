@@ -359,21 +359,23 @@ Meteor.startup(() => {
 		});
 		Assignments.remove(assignmentId);
 	},
-	 'submitAssignment':function(assignmentId) {
-
-		 var student = Student.findOne({userId: Meteor.user()._id});
-		 var studentAssignments = student.assignments;
-		 for(var i = 0; i < studentAssignments.length; i++) {
-				 if(studentAssignments[i].assignmentId == assignmentId) {
-						 studentAssignments[i].completed = true;
-						 var successful = Student.update({userId: Meteor.user()._id},
-						 {
-								 $set: {assignments: studentAssignments}
-						 });
-						 break;
-				 }
-		 }
-	 },
+	'submitAssignment':function(assignmentId) {
+		var student = Student.findOne({userId: Meteor.user()._id});
+		if (student != undefined) {
+			var studentAssignments = student.assignments;
+			for(var i = 0; i < studentAssignments.length; i++) {
+				if(studentAssignments[i].assignmentId == assignmentId) {
+					studentAssignments[i].completed = true;
+					var successful = Student.update({userId: Meteor.user()._id}, {
+						$set: {
+							assignments: studentAssignments
+						}
+					});
+					break;
+				}
+			}
+		}
+	},
 	'createAssignment':function(title, description, dueDate, pointsPossible) {
 		if (!isInstructor()) {
 			return;
