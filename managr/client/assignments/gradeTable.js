@@ -36,27 +36,27 @@ Template.gradeTable.helpers({
 				if(index <= -1) {
 						continue;
 				}
-				function pr(p) {
-					if (p < 0) {
+				function recievedPointsFormat(possible) {
+					if (possible < 0) {
 						return "Not Graded";
 					}
 					else {
-						return p;
+						return possible;
 					}
 				}
-				function perCalc (r,p) {
-					if (r < 0) {
+				function calculatePercentage (received,possible) {
+					if (received < 0) {
 						return "N/A";
 					}
 					else {
-						return ((studentAssignments[index].pointsReceived / assignment.pointsPossible) * 100).toFixed(1) + "%";
+						return ((received / possible) * 100).toFixed(1) + "%";
 					}
 				}
         studentData.push({
           studentName: student.name,
-					pointsRecv: pr(studentAssignments[index].pointsReceived),
+					pointsRecv: recievedPointsFormat(studentAssignments[index].pointsReceived),
 					pointsPossible: " / " + assignment.pointsPossible.toString(),
-					studentPercent: perCalc(studentAssignments[index].pointsReceived,assignment.pointsPossible)
+					studentPercent: calculatePercentage(studentAssignments[index].pointsReceived,assignment.pointsPossible)
 				});
       }
       return studentData;
