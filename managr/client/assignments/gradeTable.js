@@ -46,10 +46,10 @@ Template.gradeTable.helpers({
 				}
 				function perCalc (r,p) {
 					if (r < 0) {
-						return "Not Graded";
+						return "N/A";
 					}
 					else {
-						return (studentAssignments[index].pointsReceived / assignment.pointsPossible) + "%";
+						return ((studentAssignments[index].pointsReceived / assignment.pointsPossible) * 100).toFixed(1) + "%";
 					}
 				}
         studentData.push({
