@@ -1,3 +1,6 @@
 .loadingHeader {
-	align: center;
+	text-align: center;
+  position:relative;
+  bottom:-30px;
+  vertical-align:bottom;
 }
