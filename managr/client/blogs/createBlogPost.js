@@ -4,17 +4,17 @@ import { Drafts } from '../../collections/drafts.js';
 Template.createBlogPost.onCreated(function() {
 	Meteor.subscribe('Instructor');
 	Meteor.subscribe('Drafts');
-	if(FlowRouter.getRouteName() == "editDraft"){
-	Template.instance().publicPost = Drafts.findOne({_id: FlowRouter.getParam("draft_id")}).isPublic;
-	}else{
-	Template.instance().publicPost = true;
+	if (FlowRouter.getRouteName() == "editDraft") {
+		Template.instance().publicPost = Drafts.findOne({_id: FlowRouter.getParam("draft_id")}).isPublic;
+	} else {
+		Template.instance().publicPost = true;
 	}
 });
 
 Template.createBlogPost.onRendered(function() {
 	if(FlowRouter.getRouteName() == "editDraft"){
-var checkBox = document.getElementById('publicCheck');
-checkBox.checked = Template.instance().publicPost;
+		var checkBox = document.getElementById('publicCheck');
+		checkBox.checked = Template.instance().publicPost;
 	}
 });
 

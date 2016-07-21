@@ -71,6 +71,9 @@ Meteor.startup(() => {
 			return true;
 		}
   });
+  Meteor.publish("dummyUsers", function() {
+	return Meteor.users.find({_id: "x"}); 
+  });
   Meteor.publish("Comments", function(){
     return Comments.find();
   });
