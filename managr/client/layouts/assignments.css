@@ -121,12 +121,12 @@ header {
 .assignmentDescForm:focus {
   outline: none;
   border-radius: 6px;
-  border: 2px solid orange;
+  border: 2px solid #fcb040;
 }
 .orange-bar {
   max-width: 100%;
   max-height: 4px;
-  background: orange;
+  background: #fcb040;
   margin-top: .5%;
   margin-bottom: 2%;
 }
@@ -206,7 +206,7 @@ header {
   border-radius: 6px !important;
   border-color: white !important;
   box-shadow: white !important;
-  border: 2px solid orange !important;
+  border: 2px solid #fcb040 !important;
 }
 .assignmentForm::-webkit-inner-spin-button {
     display: none;

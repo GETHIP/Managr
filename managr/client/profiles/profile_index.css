@@ -1,99 +1,20 @@
-.nameLine {
-    display: block !important;
-    margin: 0 auto !important;
-    margin-bottom: 1em !important;
-    max-width: 90% !important;
-    min-width: 90% !important;
-    border-style: solid !important;
-    border-width: 2px !important;
-    border-color: #0397d7 !important;
-}
 .profileBody {
     background-color: #f3f3f3;
     box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26) !important;
 }
 
-.assignmentsTable{
-  background-color: #f3f3f3;
-  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26) !important;
-  max-width: 90%;
-  min-width: 90%;
-  margin: 0 auto;
-}
 .aboutMe {
     background-color: white;
-    max-width: 90%;
-    min-width: 90%;
-    margin: 0 auto;
-    margin-bottom: 1em;
+    width: 100%;
+    margin-bottom: 2%;
     padding-bottom: 2em;
     padding-left: 2em;
-    padding-top: -0.5em;
     text-align: left;
     box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26);
-}
-.columnA {
-  max-width: 50%;
-  min-width: 50%;
-  align-content: left;
-}
-.columnB {
-  max-width: 50%;
-  min-width: 50%;
-  align-content: right;
-}
-.aboutMe {
     padding-top: 1.5em;
     color: black;
 }
-.attendanceTable{
-  background-color: #f3f3f3  !important;
-  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26) !important;
-  max-width: 100%  !important;
-  min-width: 100%  !important;
-  margin: 0 auto  !important;
-}
-.attendanceContainer{
-  display: block  !important;
-  margin: 0 auto  !important;
-  max-width: 90%  !important;
-  min-width: 90%  !important;
-}
 
-.assignmentsContainer{
-  display: block  !important;
-  margin: 0 auto  !important;
-  max-width: 90%  !important;
-  min-width: 90%  !important;
-  text-align: center;
-
-}
-
-
-.name-holder {
-    margin: 0 auto;
-    max-width: 90%;
-    min-width: 90%;
-    text-align: left;
-    padding-top: .5em
-}
-
-.editAboutMe{
-  max-width: 90% !important;
-  display: block  !important;
-  margin: 0 auto  !important;
-  background-color: #0397d7 !important;
-  background-image: none;
-}
-
-.editAttendance{
-  max-width: 90% !important;
-  display: block  !important;
-  margin: 0 auto  !important;
-  background-color: #0397d7 !important;
-  margin-top: 1em !important;
-  background-image: none;
-}
 .assignmentHeader{
 text-align: left;
 
@@ -110,3 +31,66 @@ margin-right: 2em  !important;
 right: 0  !important;
 left: 0 ;
 }
+
+.buttonStyle.editAboutMe {
+  width: 49%;
+  float: right;
+  background-color: #0397d7;
+}
+
+.buttonStyle.profileBack {
+  width: 49%;
+  float: left;
+  background-color: #0397d7;
+}
+
+.buttonStyle.editAttendance {
+  width: 100%;
+  background-color: #0397d7;
+  margin-bottom: 5%;
+}
+
+.buttonStyle.editAttendance:hover, .buttonStyle.profileBack:hover, .buttonStyle.editAboutMe:hover {
+  background-color: #0274a5;
+}
+
+.titleProfile.names {
+  margin-top: 5%;
+}
+
+.attendTable {
+  margin-top: 1%;
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 2%;
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+
+.attendTable th {
+  background-color: #0397d7;
+  padding-top: 1.75%;
+  padding-bottom: 1.75%;
+  border-bottom: 1px solid #444444;
+  color: white;
+  width: 8.33%;
+  font-size: 16px;
+  text-align: center;
+}
+
+.attendTable td {
+  padding-top: 1.5%;
+  padding-bottom: 1.5%;
+  color: black;
+  width: 8.33%;
+  font-size: 14px;
+  text-align: center;
+}
+
+
+
+
+
+
+
+
+

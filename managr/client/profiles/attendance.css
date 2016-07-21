@@ -1,31 +1,25 @@
-#attendance {
-    color: white;
-    background-color: #fcb040 !important;
-}
-.containerAttendance {
-  display: block;
-  margin: 0 auto;
-  max-width: 90%;
-  min-width: 90%;
-}
-.updateAttendance{
-  background-color: #f58028 !important;
-  margin: 0 auto;
-  display: block;
-  max-width: 100% !important;
-  min-width: 100% !important;
-  background-image: none;
-}
-
-.choice select{
-  font-size: 11px;
-}
-
-.attendanceTableRow:hover {
-  background-color:#fde8d9;
-}
-
-.attendanceTableHead {
+.attendTable.attend th {
   background-color: #f58028;
-  color: #fff;
+  padding-top: 1.5%;
+  padding-bottom: 1.5%;
+}
+.attendTable.attend td {
+  padding: 0;
+  padding-top: 1%;
+}
+
+.blueBar.orange {
+  background-color: #f58028; 
+}
+
+.buttonStyle.updateAttendance {
+  width: 49%;
+  float: right;
+  background-color: #f58028; 
+}
+
+.buttonStyle.updateAttendBack {
+  width: 49%;
+  float: left;
+  background-color: #f58028; 
 }
