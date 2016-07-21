@@ -8,11 +8,11 @@
     {{#each students}}
     <tr>
       <td>{{studentName}}</td>
-      <td><p><span contenteditable="true" onclick="document.execCommand('selectAll',false,null)">{{pointsRecv}}</span>{{pointsPossible}} / 10</p></td>
-      <td>{{studentAssignmentGrade}}</td>
+      <td><p><span id="{{studentId}}" contenteditable="true" onclick="document.execCommand('selectAll',false,null)">{{pointsReceived}}</span> / {{pointsPossible}}</p></td>
+      <td>{{studentPercent}}</td>
     </tr>
     {{/each}}
   </table>
 
-  <button class="buttonStyle wide" id="routeThisThomas">Update Grades</button>
+  <button class="buttonStyle wide" id="updateGrades">Update Grades</button>
 </template>

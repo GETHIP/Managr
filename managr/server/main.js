@@ -37,7 +37,8 @@ function createDefaultUser() {
 		"strengths": ['Arranger', 'Woo', 'Communication', 'Maximizer', 'Activator'],
 		"description": "Admin",
 		"email": "x",
-		"userId": adminId
+		"userId": adminId,
+		"drafts": []
 	});
 }
 
@@ -72,7 +73,7 @@ Meteor.startup(() => {
 		}
   });
   Meteor.publish("dummyUsers", function() {
-	return Meteor.users.find({_id: "x"}); 
+	return Meteor.users.find({_id: "x"});
   });
   Meteor.publish("Comments", function(){
     return Comments.find();
@@ -94,7 +95,7 @@ Meteor.startup(() => {
   });
 
 	Meteor.publish("Drafts", function(){
-		return Drafts.find();
+		return Drafts.find();;
 	});
 
   Posts.allow({
@@ -292,6 +293,7 @@ Meteor.startup(() => {
 			"grade": '10',
 			"attendance": [true, false, true, true, false, false, true, true, false,
 				true, true, false
+
 			],
 			"school": "Mount Michael",
 			"email": "dash_wedergren@gallup.com",
@@ -429,7 +431,25 @@ Meteor.startup(() => {
          pointsPossible: pointsPossible
        }
      });
+	 },
+	 'updateGradeForStudent': function(studentId, assignmentId, newGrade) {
+			var student = Student.findOne({_id: studentId});
+
+			if(student != undefined) {
+				var studentAssignments = student.assignments;
+				for(var j = 0; j < studentAssignments.length; j++) {
+					if(studentAssignments[j].assignmentId == assignmentId) {
+						studentAssignments[j].pointsReceived = newGrade;
+						Student.update({_id: student._id},
+		        {
+		          $set: {assignments: studentAssignments}
+		        });
+						break;
+					}
+				}
+			}
 	 }
+
   });
     Meteor.publish('Assignments', function() {
         return Assignments.find();
