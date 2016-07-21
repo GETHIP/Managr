@@ -2,47 +2,16 @@
   <table class="gradeTable">
     <tr>
       <th>Student Name</th>
-      <th>Points</th>
+      <th>Points Received</th>
       <th>Grade</th>
     </tr>
-    {{#each assignment}}
+    {{#each students}}
     <tr>
-      <td>{{studentNameHere}}</td>
-      <td><p><span contenteditable="true">{{currentPoints}}</span> / {{points}}</p></td>
-      <td>{{grade}}</td>
+      <td>{{studentName}}</td>
+      <td><p><span contenteditable="true">{{pointsRecv}}</span>{{pointsPossible}} / 10</p></td>
+      <td>{{studentAssignmentGrade}}</td>
     </tr>
     {{/each}}
-
-    <tr>
-      <td>Jason Huang</td>
-      <td><p><span contenteditable="true">100</span> / 100</p></td>
-      <td>{{grade}}100%</td>
-    </tr>
-
-    <tr>
-      <td>Emily Zhang</td>
-      <td><p><span contenteditable="true"></span> / 100</p></td>
-      <td>{{grade}}n/a</td>
-    </tr>
-
-    <tr>
-      <td>Matthew Meacham</td>
-      <td><p><span contenteditable="true"></span> / 100</p></td>
-      <td>{{grade}}n/a</td>
-    </tr>
-
-    <tr>
-      <td>Cate Longo</td>
-      <td><p><span contenteditable="true"></span> / 100</p></td>
-      <td>{{grade}}n/a</td>
-    </tr>
-
-    <tr>
-      <td>Thomas Gerot</td>
-      <td><p><span contenteditable="true"></span> / 100</p></td>
-      <td>{{grade}}n/a</td>
-    </tr>
-
   </table>
 
   <input type="submit" value="Update Grades" class="buttonStyle wide" id="routeThisThomas">
