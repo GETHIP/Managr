@@ -2,7 +2,12 @@ import { Assignments } from '../../collections/assignments.js';
 import { Student } from '../../collections/student.js';
 
 Template.adminSingleAssignment.onCreated(function() {
-		Meteor.subscribe("Assignments");
+		Meteor.subscribe("Assignments", function() {
+				var assignment = Assignments.findOne({_id: FlowRouter.getParam("id")});
+				if(assignment == undefined) {
+						FlowRouter.go("/assignments");
+				}
+		});
 		Meteor.subscribe("Student");
 });
 
