@@ -21,6 +21,7 @@ checkBox.checked = Template.instance().publicPost;
 Template.createBlogPost.events({
 	'click .postButton.createPostButton':function(event) {
 		event.preventDefault();
+		console.log(Instructor.find().count());
 		var authorName = Instructor.findOne({userId: Meteor.user()._id}).name;
 		var data = { };
 		if (document.getElementById('editor') != undefined) {
