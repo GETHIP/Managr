@@ -8,11 +8,11 @@
     {{#each students}}
     <tr>
       <td>{{studentName}}</td>
-      <td><p><span contenteditable="true">{{pointsReceived}}</span> / {{pointsPossible}}</p></td>
+      <td><p><span id="{{studentId}}" contenteditable="true">{{pointsReceived}}</span> / {{pointsPossible}}</p></td>
       <td>{{studentPercent}}</td>
     </tr>
     {{/each}}
   </table>
 
-  <input type="submit" value="Update Grades" class="buttonStyle wide" id="routeThisThomas">
+  <input type="submit" value="Update Grades" class="buttonStyle wide" id="updateGrades">
 </template>

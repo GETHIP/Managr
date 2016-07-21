@@ -4,6 +4,34 @@ Template.gradeTable.onCreated(function() {
 		Meteor.subscribe("Student");
 });
 
+Template.adminSingleAssignment.events({
+		"click #updateGrades"(event) {
+				event.preventDefault();
+
+				var assignmentId = FlowRouter.getParam("id");
+
+				var spanInputs = document.getElementsByTagName("SPAN");
+				for(var i = 0; i < spanInputs.length; i++) {
+	 				if(spanInputs[i].id == "" || spanInputs[i].innerHTML == "") {
+	 						continue;
+	 				}
+
+	 				var studentId = spanInputs[i].id;
+					var newGradeString = spanInputs[i].innerHTML;
+					var newGrade;
+					if(isNaN(newGradeString)) {
+							newGrade = -1;
+					} else {
+						newGrade = Number(spanInputs[i].innerHTML);
+					}
+
+					Meteor.call("updateGradeForStudent", studentId, assignmentId, newGrade);
+				}
+
+				FlowRouter.go("/assignments/single/admin/" + assignmentId);
+		}
+});
+
 Template.gradeTable.helpers({
     students: function() {
 			var assignment = Assignments.findOne({_id: FlowRouter.getParam("id")});
@@ -45,10 +73,11 @@ Template.gradeTable.helpers({
 				}
 
         studentData.push({
-          studentName: student.name,
-					pointsReceived: normalizePointsReceived(studentAssignments[index].pointsReceived),
-					pointsPossible: assignment.pointsPossible.toString(),
-					studentPercent: calculatePercentage(studentAssignments[index].pointsReceived, assignment.pointsPossible)
+          	studentName: student.name,
+						studentId: student._id,
+						pointsReceived: normalizePointsReceived(studentAssignments[index].pointsReceived),
+						pointsPossible: assignment.pointsPossible.toString(),
+						studentPercent: calculatePercentage(studentAssignments[index].pointsReceived, assignment.pointsPossible)
 				});
       }
       return studentData;

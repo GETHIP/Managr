@@ -91,7 +91,7 @@ Meteor.startup(() => {
   });
 
 	Meteor.publish("Drafts", function(){
-		return Drafts.find();
+		return Drafts.find();;
 	});
 
   Posts.allow({
@@ -425,7 +425,25 @@ Meteor.startup(() => {
          pointsPossible: pointsPossible
        }
      });
+	 },
+	 'updateGradeForStudent': function(studentId, assignmentId, newGrade) {
+			var student = Student.findOne({_id: studentId});
+
+			if(student != undefined) {
+				var studentAssignments = student.assignments;
+				for(var j = 0; j < studentAssignments.length; j++) {
+					if(studentAssignments[j].assignmentId == assignmentId) {
+						studentAssignments[j].pointsReceived = newGrade;
+						Student.update({_id: student._id},
+		        {
+		          $set: {assignments: studentAssignments}
+		        });
+						break;
+					}
+				}
+			}
 	 }
+
   });
     Meteor.publish('Assignments', function() {
         return Assignments.find();
