@@ -1,12 +1,22 @@
 .publishButton{
   background-image: none;
+  background-color: #61c250;
+}
+
+.publishButton:hover, .publishButton:active, .publishButton:active:hover, .publishButton:active:focus, .publishButton:focus{
+  background-color: #61c250;
+  border-color: #61c250;
 }
 
 .closeButton{
   background-image: none;
 }
 
-.createPostButton{
+.saveDraftButton {
+  width: 100% !important;
+}
+
+.createPostButton {
   width: 100% !important;
 }
 

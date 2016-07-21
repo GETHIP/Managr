@@ -1,4 +1,5 @@
 export const Instructor = new Mongo.Collection('Instructor');
+import { postSchema } from '/collections/blogPosts.js';
 
 var InstructorSchema = new SimpleSchema({
     name: {
@@ -24,6 +25,9 @@ var InstructorSchema = new SimpleSchema({
 	  userId: {
 		    type: String,
 		    label: 'userId'
-	  }
+	  },
+    drafts: {
+      type: [postSchema]
+    }
 });
 Instructor.attachSchema(InstructorSchema);

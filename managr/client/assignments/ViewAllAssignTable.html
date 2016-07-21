@@ -20,10 +20,11 @@
 
   </table>
   <a href="/assignments/edit/new"><button class="buttonStyle back submitbtn" id="newAssignmentBtn">Create New Assignment</button></a>
-  <a href="/assignments/grades"><input value="View Grades" class="buttonStyle create submitbtn" id="viewGradesBtn"></a>
+  <a href="/assignments/grades"><button class="buttonStyle create submitbtn" id="viewGradesBtn">View Grades</button></a>
 </div>
 	{{else}}
 		<!-- {{> accessDenied}} -->
 		{{> loading}}
 	{{/if}}
+
 </template>
