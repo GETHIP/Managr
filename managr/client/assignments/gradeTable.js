@@ -33,7 +33,7 @@ Template.gradeTable.helpers({
 				}
 
 				//In the future, should assignments be made specific to only certain students, this line will prevent students without the assignment showing up in the table
-				if(index <= -1) {
+				if (index <= -1) {
 						continue;
 				}
 				function recievedPointsFormat(possible) {
@@ -54,8 +54,8 @@ Template.gradeTable.helpers({
 				}
         studentData.push({
           studentName: student.name,
-					pointsRecv: recievedPointsFormat(studentAssignments[index].pointsReceived),
-					pointsPossible: " / " + assignment.pointsPossible.toString(),
+					recievedPoints: recievedPointsFormat(studentAssignments[index].pointsReceived),
+					possiblePoints: " / " + assignment.pointsPossible.toString(),
 					studentPercent: calculatePercentage(studentAssignments[index].pointsReceived,assignment.pointsPossible)
 				});
       }
