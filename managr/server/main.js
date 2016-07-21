@@ -37,7 +37,8 @@ function createDefaultUser() {
 		"strengths": ['Arranger', 'Woo', 'Communication', 'Maximizer', 'Activator'],
 		"description": "Admin",
 		"email": "x",
-		"userId": adminId
+		"userId": adminId,
+		"drafts": []
 	});
 }
 
@@ -72,7 +73,7 @@ Meteor.startup(() => {
 		}
   });
   Meteor.publish("dummyUsers", function() {
-	return Meteor.users.find({_id: "x"}); 
+	return Meteor.users.find({_id: "x"});
   });
   Meteor.publish("Comments", function(){
     return Comments.find();
@@ -292,6 +293,7 @@ Meteor.startup(() => {
 			"grade": '10',
 			"attendance": [true, false, true, true, false, false, true, true, false,
 				true, true, false
+
 			],
 			"school": "Mount Michael",
 			"email": "dash_wedergren@gallup.com",
