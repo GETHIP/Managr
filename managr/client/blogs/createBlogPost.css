@@ -8,6 +8,18 @@
   border-color: #61c250;
 }
 
+.buttonWidth {
+  width: 100%;
+}
+
+.buttonRight {
+  padding-right: 1%;
+}
+
+.buttonLeft {
+  padding-left: 1%;
+}
+
 .closeButton{
   background-image: none;
 }

@@ -1,4 +1,4 @@
-// Import meteor for server / publish and Assignments to publish
+﻿// Import meteor for server / publish and Assignments to publish
 import { Meteor } from 'meteor/meteor';
 import { Posts } from '../collections/blogPosts.js';
 import { Comments } from '../collections/comments.js';
@@ -271,7 +271,8 @@ Meteor.startup(() => {
 			"strengths": ['Arranger', 'Woo', 'Communication', 'Maximizer', 'Activator'],
 			"description": "Teacher",
 			"email": "Teacher@teacher.com",
-			"userId": instructorId
+			"userId": instructorId,
+			"drafts": []
 		});
 		Student.insert({
 			"name": "Jim Smallison",
@@ -454,10 +455,6 @@ Meteor.startup(() => {
 			return true;
 		}
 	});
-
-	//<= 1 because the default test user
-	//should already be loaded.
-	if (Student.find().count() <= 1) {
 
 		// TODO: Delete this test data.
 		

@@ -21,7 +21,7 @@ Template.manage.events({
     Modal.show("deletePost", event.target.id);
   },
   'click .manageDraftDeleteButton': function(event){
-    Meteor.call('delDraft', event.target.id);
+    Modal.show('deleteDraft', event.target.id);
    }
 });
 
@@ -30,3 +30,9 @@ Template.deletePost.events({
     Meteor.call('delPost', Template.instance().data);
   }
 });
+
+Template.deleteDraft.events({
+  'click .deleteDraftButton' : function(event){
+    Meteor.call('delDraft', Template.instance().data);
+  }
+})
