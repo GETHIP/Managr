@@ -26,6 +26,12 @@ Template.adminSingleAssignment.events({
 					}
 
 					Meteor.call("updateGradeForStudent", studentId, assignmentId, newGrade);
+
+					if(newGrade < 0) {
+							spanInputs[i].innerHTML = "Not Graded";
+					} else {
+							spanInputs[i].innerHTML = newGrade;
+					}
 				}
 
 				FlowRouter.go("/assignments/single/admin/" + assignmentId);
@@ -57,7 +63,7 @@ Template.gradeTable.helpers({
 				if (index <= -1) {
 						continue;
 				}
-				function recievedPointsFormat(possible) {
+				function formatPointsReceived(possible) {
 					if (possible < 0) {
 						return "Not Graded";
 					}
@@ -65,7 +71,7 @@ Template.gradeTable.helpers({
 						return possible;
 					}
 				}
-				function calculatePercentage (received,possible) {
+				function calculatePercentage (received, possible) {
 					if (received < 0) {
 						return "N/A";
 					}
@@ -77,7 +83,7 @@ Template.gradeTable.helpers({
         studentData.push({
           	studentName: student.name,
 						studentId: student._id,
-						pointsReceived: normalizePointsReceived(studentAssignments[index].pointsReceived),
+						pointsReceived: formatPointsReceived(studentAssignments[index].pointsReceived),
 						pointsPossible: assignment.pointsPossible.toString(),
 						studentPercent: calculatePercentage(studentAssignments[index].pointsReceived, assignment.pointsPossible)
 				});
