@@ -277,7 +277,8 @@ Meteor.startup(() => {
 			"strengths": ['Arranger', 'Woo', 'Communication', 'Maximizer', 'Activator'],
 			"description": "Teacher",
 			"email": "Teacher@teacher.com",
-			"userId": instructorId
+			"userId": instructorId,
+			"drafts": []
 		});
 		Student.insert({
 			"name": "Jim Smallison",
