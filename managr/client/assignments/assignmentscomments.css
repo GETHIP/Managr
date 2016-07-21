@@ -34,17 +34,17 @@
     color: #444444;
 }
 #name1:focus {
-    border-color: #f58028;
+    border-color: #fcb040;
     outline: none;
     color: #444444;
 }
 #comment1:focus {
-  border-color: #f58028;
+  border-color: #fcb040;
   outline: none;
   color: #444444;
 }
 .assignmentButton{
-    background-color: #f58028;
+    background-color: #fcb040;
     border: none;
     color: white;
     padding: 15px 32px;

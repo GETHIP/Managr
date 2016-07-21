@@ -1,3 +1,7 @@
 <template name="accessDenied">
-  <h1>You do not have permissions to view this page.</h1>
+	{{#if ready}}
+		<h1>You do not have permissions to view this page.</h1>
+	{{else}}
+		{{> loading}}
+	{{/if}}
 </template>

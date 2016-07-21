@@ -54,22 +54,24 @@ Template.gradeTable.helpers({
 				}
 
 				//In the future, should assignments be made specific to only certain students, this line will prevent students without the assignment showing up in the table
-				if(index <= -1) {
+				if (index <= -1) {
 						continue;
 				}
-
-				function normalizePointsReceived(pointsReceived) {
-					if (pointsReceived < 0) {
+				function recievedPointsFormat(possible) {
+					if (possible < 0) {
 						return "Not Graded";
 					}
-					return pointsReceived;
+					else {
+						return possible;
+					}
 				}
-
-				function calculatePercentage (pointsReceived, pointsPossible) {
-					if (pointsReceived < 0) {
+				function calculatePercentage (received,possible) {
+					if (received < 0) {
 						return "N/A";
 					}
-					return ((studentAssignments[index].pointsReceived / assignment.pointsPossible) * 100).toFixed(1) + "%";
+					else {
+						return ((received / possible) * 100).toFixed(1) + "%";
+					}
 				}
 
         studentData.push({
