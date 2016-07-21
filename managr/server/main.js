@@ -774,5 +774,4 @@ Meteor.startup(() => {
 			StudentData[i].userId = "as890ad";
 			Student.insert(StudentData[i]);
 		}
-	}
 });
