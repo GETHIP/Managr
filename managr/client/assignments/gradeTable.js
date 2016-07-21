@@ -12,14 +12,14 @@ Template.gradeTable.helpers({
 			}
 			console.log(assignment.pointsPossible);
       var studentData = [];
-			function calcGrade(r,p) {
-				if (r < 0) {
-					return "N/A";
-				}
-				else {
-					return ((r / p) * 100).toFixed(1).toString() + "%";
-				}
-			}
+			// function calcGrade(r,p) {
+			// 	if (r < 0) {
+			// 		return "Not Graded";
+			// 	}
+			// 	else {
+			// 		return ((r / p) * 100).toFixed(1).toString() + "%";
+			// 	}
+			// }
 			var allStudents = Student.find({}).fetch();
 			for(var j = 0; j < allStudents.length; j++) {
 				var student = allStudents[j];
@@ -44,10 +44,19 @@ Template.gradeTable.helpers({
 						return p;
 					}
 				}
+				function perCalc (r,p) {
+					if (r < 0) {
+						return "N/A";
+					}
+					else {
+						return ((studentAssignments[index].pointsReceived / assignment.pointsPossible) * 100).toFixed(1) + "%";
+					}
+				}
         studentData.push({
           studentName: student.name,
-					pointsRecv: studentAssignments[index].pointsReceived,
-					studentAssignmentGrade: calcGrade(studentAssignments[index].pointsReceived, assignment.pointsPossible)
+					pointsRecv: pr(studentAssignments[index].pointsReceived),
+					pointsPossible: " / " + assignment.pointsPossible.toString(),
+					studentPercent: perCalc(studentAssignments[index].pointsReceived,assignment.pointsPossible)
 				});
       }
       return studentData;
