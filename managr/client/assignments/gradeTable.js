@@ -10,16 +10,9 @@ Template.gradeTable.helpers({
 			if (assignment == undefined) {
 				return [];
 			}
-			console.log(assignment.pointsPossible);
+
       var studentData = [];
-			// function calcGrade(r,p) {
-			// 	if (r < 0) {
-			// 		return "Not Graded";
-			// 	}
-			// 	else {
-			// 		return ((r / p) * 100).toFixed(1).toString() + "%";
-			// 	}
-			// }
+
 			var allStudents = Student.find({}).fetch();
 			for(var j = 0; j < allStudents.length; j++) {
 				var student = allStudents[j];
@@ -52,6 +45,7 @@ Template.gradeTable.helpers({
 						return ((received / possible) * 100).toFixed(1) + "%";
 					}
 				}
+
         studentData.push({
           studentName: student.name,
 					recievedPoints: recievedPointsFormat(studentAssignments[index].pointsReceived),
