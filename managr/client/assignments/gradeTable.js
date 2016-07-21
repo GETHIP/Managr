@@ -10,16 +10,9 @@ Template.gradeTable.helpers({
 			if (assignment == undefined) {
 				return [];
 			}
-			console.log(assignment.pointsPossible);
+
       var studentData = [];
-			// function calcGrade(r,p) {
-			// 	if (r < 0) {
-			// 		return "Not Graded";
-			// 	}
-			// 	else {
-			// 		return ((r / p) * 100).toFixed(1).toString() + "%";
-			// 	}
-			// }
+
 			var allStudents = Student.find({}).fetch();
 			for(var j = 0; j < allStudents.length; j++) {
 				var student = allStudents[j];
@@ -36,27 +29,26 @@ Template.gradeTable.helpers({
 				if(index <= -1) {
 						continue;
 				}
-				function pr(p) {
-					if (p < 0) {
+
+				function normalizePointsReceived(pointsReceived) {
+					if (pointsReceived < 0) {
 						return "Not Graded";
 					}
-					else {
-						return p;
-					}
+					return pointsReceived;
 				}
-				function perCalc (r,p) {
-					if (r < 0) {
+
+				function calculatePercentage (pointsReceived, pointsPossible) {
+					if (pointsReceived < 0) {
 						return "N/A";
 					}
-					else {
-						return ((studentAssignments[index].pointsReceived / assignment.pointsPossible) * 100).toFixed(1) + "%";
-					}
+					return ((studentAssignments[index].pointsReceived / assignment.pointsPossible) * 100).toFixed(1) + "%";
 				}
+
         studentData.push({
           studentName: student.name,
-					pointsRecv: pr(studentAssignments[index].pointsReceived),
-					pointsPossible: " / " + assignment.pointsPossible.toString(),
-					studentPercent: perCalc(studentAssignments[index].pointsReceived,assignment.pointsPossible)
+					pointsReceived: normalizePointsReceived(studentAssignments[index].pointsReceived),
+					pointsPossible: assignment.pointsPossible.toString(),
+					studentPercent: calculatePercentage(studentAssignments[index].pointsReceived, assignment.pointsPossible)
 				});
       }
       return studentData;
