@@ -1,11 +1,31 @@
 
 /* CSS declarations go here */
+
 html {
   background-color: #f3f3f3;
 }
 /*Entire site CSS*/
 
 /*Blogs CSS*/
+
+#login-buttons .login-button, .accounts-dialog .login-button {
+  background-color: #61c250 !important;
+  border-color: #398439;
+}
+
+#login-buttons .login-button:hover, .accounts-dialog .login-button:hover {
+  background-color: #61d250 !important;
+}
+
+#login-buttons.login-buttons-dropdown-align-right .login-close-text {
+  color: #61c250;
+}
+
+#login-buttons.login-buttons-dropdown-align-right:hover .login-close-text:hover {
+  color: #61d250;
+}
+
+
 .userLoggedIn{
   margin-top: 50px;
 }
