@@ -122,3 +122,10 @@
     background-color: #C43834;
     text-decoration: none;
 }
+
+#manageLine:last-child{
+	width: 99%;
+	height: 3px;
+	background-color: white;
+	margin-top: 15px;
+}
