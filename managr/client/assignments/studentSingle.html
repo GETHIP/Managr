@@ -14,7 +14,7 @@
       {{#each assignment}}
       <tr>
         <td class="gradeTable titleOverride">{{assignmentTitle}}</td>
-        <td><p><span contenteditable="true">100</span> / 100</p></td>
+        <td><p><span contenteditable="true" onclick="document.execCommand('selectAll',false,null)">100</span> / 100</p></td>
         <td>{{percentageGrade}}</td>
         <td>{{completion}}</td>
       </tr>
@@ -22,21 +22,21 @@
 
       <tr>
         <td class="gradeTable titleOverride">Merge Sort</td>
-        <td><p><span contenteditable="true">100</span> / 100</p></td>
+        <td><p><span contenteditable="true" onclick="document.execCommand('selectAll',false,null)">100</span> / 100</p></td>
         <td>100%</td>
         <td>Complete</td>
       </tr>
 
       <tr>
         <td class="gradeTable titleOverride">Assignment</td>
-        <td><p><span contenteditable="true">91</span> / 100</p></td>
+        <td><p><span contenteditable="true" onclick="document.execCommand('selectAll',false,null)">91</span> / 100</p></td>
         <td>91%</td>
         <td>Complete</td>
       </tr>
 
       <tr>
         <td class="gradeTable titleOverride">Fight Someone</td>
-        <td><p><span contenteditable="true"></span> / 100</p></td>
+        <td><p><span contenteditable="true" onclick="document.execCommand('selectAll',false,null)"></span> / 100</p></td>
         <td>n/a</td>
         <td>Incomplete</td>
       </tr>
@@ -44,7 +44,7 @@
     </table>
 
     {{>assignmentBackButton}}
-    <input type="submit" value="Update Grades" class="buttonStyle submit" id="routeThisThomas">
+    <button class="buttonStyle submit" id="routeThisThomas">Update Grades</button>
 
 </div>
 </template>
