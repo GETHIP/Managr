@@ -20,8 +20,17 @@
   padding-left: 1%;
 }
 
-.closeButton{
+.missingFieldsCloseButton, .missingFieldsCloseButton:active, .missingFieldsCloseButton:active:hover, .missingFieldsCloseButton:focus, .missingFieldsCloseButton:active:focus{
   background-image: none;
+  background-color: #61c250;
+  border-color: #61c250;
+  color: white;
+  text-shadow: none;
+}
+
+.missingFieldsCloseButton:hover{
+  background-color: #61d250;
+  color: white;
 }
 
 .saveDraftButton {
