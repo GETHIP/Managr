@@ -53,6 +53,21 @@ export function blogsMethods() {
 			post.lastUpdated = new Date();
 			Posts.insert(post);
 		},
+		'convertPostToDraft':function(postId) {
+			//By also specifiying the user id of the current logged in user,
+			//users cannot affect other users' posts.
+			var post = Posts.findOne({_id: postId, authorId: Meteor.user()._id});
+			if (post != undefined) {
+				Posts.remove({_id: postId});
+				Drafts.insert({
+					title: post.title,
+					text: post.text,
+					lastUpdated: post.lastUpdated,
+					authorId: post.authorId,
+					isPublic: post.isPublic
+				});
+			}
+		},
 		'updateComment': function(postId, authorId, commentText) {
 			if(!userIsValid() || authorId != Meteor.user()._id){
 				return;
