@@ -28,22 +28,23 @@ var getNumberOfStudentsWhoCompletedTheAssignment = function(assignmentId) {
 var getAverageGrade = function(assignmentId) {
     var allStudents = Student.find({});
     var totalPoints = 0;
+    var numberOfStudentsWhoHaveTheAssignmentedGraded = 0;
     allStudents.forEach(function(student) {
         var assignments = student.assignments;
         for(var i = 0; i < assignments.length; i++) {
-          if(assignments[i].assignmentId == assignmentId && assignments[i].completed) {
-              if(assignments[i].pointsReceived > 0) {
-                  totalPoints += assignments[i].pointsReceived;
-              }
+          if(assignments[i].assignmentId == assignmentId && assignments[i].pointsReceived > 0) {
+              totalPoints += assignments[i].pointsReceived;
+              numberOfStudentsWhoHaveTheAssignmentedGraded++;
               break;
           }
         }
     });
 
-    var numberOfStudentsWhoCompletedTheAssignment = getNumberOfStudentsWhoCompletedTheAssignment(assignmentId);
-    if(numberOfStudentsWhoCompletedTheAssignment <= 0) return "N/A";
-
-    var averagePoints = totalPoints / numberOfStudentsWhoCompletedTheAssignment;
+    if(numberOfStudentsWhoHaveTheAssignmentedGraded <= 0) {
+        return "N/A";
+    }
+    
+    var averagePoints = totalPoints / numberOfStudentsWhoHaveTheAssignmentedGraded;
     var pointsPossible = Assignments.findOne({_id: assignmentId}).pointsPossible;
     var averageGrade = averagePoints / pointsPossible * 100;
 
