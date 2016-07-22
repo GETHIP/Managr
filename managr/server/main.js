@@ -67,10 +67,23 @@ Meteor.startup(() => {
 			return true;
 		}
 	});
+	/*
+
+	userIndex = new EasySearch.Index({
+		name: "userIndex",
+		collection: Meteor.users,
+		fields: ['username'],
+		engine: new EasySearch.Minimongo({
+			permission: function(){
+			  return true;
+			}
+		})
+	});
+	*/
 
 	allowAll();
 	publishAll();
-  
+
 	Meteor.methods({
 		'testCreatePosts': function() {
 			var jimId = Meteor.users.findOne({username: "jim"})._id;
@@ -209,10 +222,9 @@ Meteor.startup(() => {
 	blogsMethods();
 	assignmentsMethods();
 	profilesMethods();
-	
+
     UploadServer.init({
         tmpDir: process.env.PWD + '/.uploads/tmp',
         uploadDir: process.env.PWD + '/.uploads/'
-    })
-
+    });
 });

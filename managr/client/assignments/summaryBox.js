@@ -82,10 +82,14 @@ Template.SummaryBox.helpers({
         return getPointsPossible();
     },
     "overallGrade": function() {
-        //Edge case to ensure that NaN does not show up, but rather 100%
-        if(getPointsPossible() <= 0) return "N/A";
+        //Edge cases to ensure that NaN does not show up, but rather N/A
+        if(getPointsPossible() <= 0){
+            return "N/A";
+        }
         var numberOfCompleted = getNumberOfCompleted();
-        if(numberOfCompleted <= 0 && getPointsReceived() <= 0) return "N/A";
+        if(numberOfCompleted <= 0 && getPointsReceived() <= 0){
+            return "N/A";
+        }
         if(numberOfCompleted > 0) {
             var truePointsReceived = getTruePointsReceived();
             if(-truePointsReceived == numberOfCompleted) {
@@ -93,7 +97,29 @@ Template.SummaryBox.helpers({
             }
         }
 
-        var overallGrade = getPointsReceived() / getPointsPossible() * 100;
+        var today = new Date();
+        var student = getCurrentStudent();
+        var studentAssignments = student.assignments;
+        var pointsReceived = 0;
+        var pointsPossible = 0;
+        for(var i = 0; i < studentAssignments.length; i++) {
+            var assignment = Assignments.findOne({_id: studentAssignments[i].assignmentId});
+            //If it's overdue then we just add pointsPossible because the student hasn't marked it as completed and therefore has received no score, but it's late so we count it as a zero
+            if(assignment.dueDate < today && !studentAssignments[i].completed) {
+                pointsPossible += assignment.pointsPossible;
+            } else {
+                if(studentAssignments[i].pointsReceived > 0) {
+                    pointsReceived += studentAssignments[i].pointsReceived;
+                    pointsPossible += assignment.pointsPossible;
+                }
+            }
+        }
+
+        if(pointsPossible <= 0) {
+            return "N/A";
+        }
+
+        var overallGrade = pointsReceived / pointsPossible * 100;
         return overallGrade.toFixed(2) + "%";
     }
 });
