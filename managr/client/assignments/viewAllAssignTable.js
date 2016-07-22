@@ -44,7 +44,7 @@ var getAverageGrade = function(assignmentId) {
 
     var averagePoints = totalPoints / numberOfStudentsWhoCompletedTheAssignment;
     var pointsPossible = Assignments.findOne({_id: assignmentId}).pointsPossible;
-    var averageGrade = averagePoints / pointsPossible;
+    var averageGrade = averagePoints / pointsPossible * 100;
     return averageGrade.toFixed(2) + "%";
 }
 

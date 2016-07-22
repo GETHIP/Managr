@@ -88,6 +88,9 @@ Template.gradeTable.helpers({
 						studentPercent: calculatePercentage(studentAssignments[index].pointsReceived, assignment.pointsPossible)
 				});
       }
+			studentData.sort(function(a,b) {
+					return a.studentName.localeCompare(b.studentName);
+			});
       return studentData;
     }
 });
