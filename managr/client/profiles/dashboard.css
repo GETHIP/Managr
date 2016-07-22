@@ -128,10 +128,21 @@
 }
 
 .buttonStyle.newAccount {
+	float: right;
+	width: 49%;
+	color: white;
+	background-color: #333333;
+}
+
+.buttonStyle.cancelUserCreate {
 	float: left;
 	width: 49%;
-	color: white !important;
+	color: white;
 	background-color: #333333;
+}
+
+.buttonStyle.cancelUserCreate:hover {
+	background-color: black;
 }
 
 .buttonStyle.deleteUserButton:hover {
@@ -146,8 +157,34 @@
 	background-color: black; 
 }
 
-.newAccountContainer {
-    margin-top: 60px;
+.sectionFormDiv.createUser {
+	margin: 0;
+	margin-bottom: 2%; 
 }
+
+.questionDiv.createUser input:focus {
+  border-color: black;  
+} 
+
+.questionDiv.createUser p {
+	padding: 0;
+	padding-bottom: .25%;
+}
+
+.questionDiv.createUser {
+	width: 60%;
+}
+
+.newAccountContainer {
+ 	width: 100%;
+ 	background: white;
+  	box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  	margin-bottom: 2%;
+  	margin-top: 8%;
+  	padding: 4%;
+  	height: 32em;
+}
+
+
 
 
