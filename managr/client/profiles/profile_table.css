@@ -1,24 +1,85 @@
 .searchBar input[type=text]  {
-      width:30%;
-      display:inline-block;
-      margin: 0 auto;
-     border: 2px solid #ccc;
-     border-radius: 4px;
-     font-size: 14px;
-     background-color: white;
-     background-image: url('photos/magnifying-glass.png');
-     background-position: 10px 10px;
-     background-repeat: no-repeat;
-     padding: 5px;
-     position: relative;
+  width:30%;
+  height: 30px;
+  display:inline-block;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  background-color: white;
+  background-image: url('photos/magnifying-glass.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  position: relative;
 }
 
-  #searchText {
-    display: inline-block;
-    margin-top: 60px;
+.searchBar input[type=text]:hover, .searchBar input[type=text]:focus  {
+  border: 2px solid #0397d7;
+}
 
-  }
+.blueBar {
+  max-width: 100%;
+  max-height: 4px;
+  background-color: #0397d7;
+  margin-top: .5%;
+  margin-bottom: 2%;
+}
 
-  .profileTableRow:hover {
-    background-color: #e0f5fe;
-  }
+.searchText {
+  margin: 0;
+  padding: 0;
+  font-size: 25px;
+  display: inline-block; 
+
+}
+
+.profileTable {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: .5%;
+  margin-bottom: 4%;
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+
+.profileTable th {
+  color: white;
+  font-size: 18px;
+  text-align: center;
+  background-color: #0397d7;
+  padding-top: 2.5%;
+  padding-left: 1%;
+  padding-right: 1%;
+  padding-bottom: 2.5%;
+  border-bottom: 1px solid #444444;   
+}
+
+.profileTable td {
+  text-align: center;
+
+}
+
+.profileTable tr:nth-child(even) {
+  background-color: #EEEEEE;
+}
+
+.profileTable tr:nth-child(odd) {
+  background-color: white;
+}
+
+.profileTable tr:hover {
+  background-color: #e0f5fe;
+  cursor: pointer;
+}
+
+.proPicture {
+  padding: .5%; 
+}
+
+.titleProfile {
+  font-family: arial, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 40px;
+  display: inline-block;
+  margin-top: 1%;
+  width: 90%;
+}
