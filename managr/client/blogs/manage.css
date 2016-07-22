@@ -21,7 +21,7 @@
 	text-decoration: none;
 }
 .manageButton:focus {
-	
+
 }
 .manageButton, .manageDraftButton {
 	background-color: #61c250;
@@ -109,4 +109,23 @@
 	height: 3px;
 	background-color: white;
 	margin-top: -13px;
+}
+
+.manageDraftButton:hover {
+	color: white;
+	background-color: #61d250;
+	text-decoration: none;
+}
+
+.manageDraftDeleteButton:hover{
+		color: white;
+    background-color: #C43834;
+    text-decoration: none;
+}
+
+#manageLine:last-child{
+	width: 99%;
+	height: 3px;
+	background-color: white;
+	margin-top: 15px;
 }
