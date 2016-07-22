@@ -1,42 +1,41 @@
 <template name="ProfilesTable">
 	{{#if userIsValid}}
-		<ul>
-		<div class="container-fluid">
+		<div class="marginContainer">
+			<h1 class="titleProfile">Profiles Overview</h1>
+			<div class="blueBar">&nbsp;</div>
 			<div class="searchBar">
-				<h3 id="searchText">Search:</h3>
+				<h1 class="searchText">Search:</h1>
 			{{> EasySearch.Input index=studentIndex attributes=searchBarProfile}}
 		</div>
-			<table class="table" style="margin-top:10px;">
-				<thead style="background-color:#0397d7; color:white;">
+			<table class="profileTable">
+				<!-- <thead> -->
 					<!--table content should correspond -->
 					<tr>
 						<th>Picture</th>
 						<th>Name</th>
+						<th>Attendance</th>
 						<th>School</th>
 						<th>Grade</th>
 						<th>Email</th>
-						<th>Parents Names:</th>
-						<th>GET HIP Year</th>
-						<th>Attendance</th>
+						<th>Year</th>
 					</tr>
-				</thead>
-				<tbody>
+				<!-- </thead> -->
+				<!-- <tbody> -->
 					{{#EasySearch.Each index=studentIndex attributes=searchBarProfile}}
-		              <tr class="tableRowFormat profileTableRow">
-						  <th><img height="70" width="70" alt="Profile Picture" src="{{picture}}"></th>
-		              <td><a href={{url}}>{{name}}</a></td>
-		    					<td>{{school}}</td>
-		    					<td>{{grade}}</td>
-		    					<td><a href="mailto:{{email}}?Subject=GET%20HIP" target="_top">{{email}}</a></td>
-									<td>{{parentNames}}</td>
-		    					<td>{{getHipYear}}</td>
-									<td><a href="/profiles/attendance">{{attendanceNumber}}/12</a></td>
+						<tr onclick="FlowRouter.go('{{url}}')">
+		             <!--  <tr onclick="parent.location='{{url}}'"   "FlowRouter.go("/profile/edit/" + FlowRouter.getParam("id"));> -->
+						<td class="proPicture"><img height="70" width="70" alt="Profile Picture" src="{{picture}}"></td>
+		              	<td>{{name}}</td>
+		              	<td>{{attendanceNumber}}/12</td>
+    					<td>{{school}}</td>
+    					<td>{{grade}}</td>
+    					<td><a href="mailto:{{email}}?Subject=GET%20HIP" target="_top">{{email}}</a></td>
+    					<td>{{getHipYear}}</td>
 		              </tr>
 					{{/EasySearch.Each}}
-				</tbody>
+				<!-- </tbody> -->
 			</table>
 		</div>
-	</ul>
 	{{else}}
 		{{> accessDenied}}
 	{{/if}}

@@ -4,6 +4,40 @@ Template.gradeTable.onCreated(function() {
 		Meteor.subscribe("Student");
 });
 
+Template.adminSingleAssignment.events({
+		"click #updateGrades"(event) {
+				event.preventDefault();
+
+				var assignmentId = FlowRouter.getParam("id");
+
+				var spanInputs = document.getElementsByTagName("SPAN");
+				for(var i = 0; i < spanInputs.length; i++) {
+	 				if(spanInputs[i].id == "" || spanInputs[i].innerHTML == "") {
+	 						continue;
+	 				}
+
+	 				var studentId = spanInputs[i].id;
+					var newGradeString = spanInputs[i].innerHTML;
+					var newGrade;
+					if(isNaN(newGradeString)) {
+							newGrade = -1;
+					} else {
+						newGrade = Number(spanInputs[i].innerHTML);
+					}
+
+					Meteor.call("updateGradeForStudent", studentId, assignmentId, newGrade);
+
+					if(newGrade < 0) {
+							spanInputs[i].innerHTML = "Not Graded";
+					} else {
+							spanInputs[i].innerHTML = newGrade;
+					}
+				}
+
+				FlowRouter.go("/assignments/single/admin/" + assignmentId);
+		}
+});
+
 Template.gradeTable.helpers({
     students: function() {
 			var assignment = Assignments.findOne({_id: FlowRouter.getParam("id")});
@@ -29,7 +63,7 @@ Template.gradeTable.helpers({
 				if (index <= -1) {
 						continue;
 				}
-				function recievedPointsFormat(possible) {
+				function formatPointsReceived(possible) {
 					if (possible < 0) {
 						return "Not Graded";
 					}
@@ -37,7 +71,7 @@ Template.gradeTable.helpers({
 						return possible;
 					}
 				}
-				function calculatePercentage (received,possible) {
+				function calculatePercentage (received, possible) {
 					if (received < 0) {
 						return "N/A";
 					}
@@ -47,10 +81,11 @@ Template.gradeTable.helpers({
 				}
 
         studentData.push({
-          studentName: student.name,
-					recievedPoints: recievedPointsFormat(studentAssignments[index].pointsReceived),
-					possiblePoints: " / " + assignment.pointsPossible.toString(),
-					studentPercent: calculatePercentage(studentAssignments[index].pointsReceived,assignment.pointsPossible)
+          	studentName: student.name,
+						studentId: student._id,
+						pointsReceived: formatPointsReceived(studentAssignments[index].pointsReceived),
+						pointsPossible: assignment.pointsPossible.toString(),
+						studentPercent: calculatePercentage(studentAssignments[index].pointsReceived, assignment.pointsPossible)
 				});
       }
       return studentData;

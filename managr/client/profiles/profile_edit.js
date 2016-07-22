@@ -43,7 +43,7 @@ Template.profileEdit.events({
 
 		var userId = FlowRouter.getParam("id");
 	},
-	"submit .profileEdit" (event) {
+	'submit .profileEdit' (event) {
 		event.preventDefault();
 		let userId = FlowRouter.getParam("id");
 		const email = event.target.email.value;

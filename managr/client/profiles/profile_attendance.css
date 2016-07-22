@@ -1,3 +1,51 @@
-.attendanceContainer {
-	margin-top: 100px;
+.titleProfile.attend {
+	margin-top: 5.5%;
+}
+
+.attendTableComplete {
+	margin-top: 1%;
+	margin-bottom: 10%; 
+  	border-collapse: collapse;
+  	width: 100%;
+  	margin-bottom: 2%;
+  	box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+
+}
+
+.attendTableComplete td{
+	padding-top: 1.5%;
+  	padding-bottom: 1.5%;
+  	color: black;
+  	width: 6.66%;
+  	font-size: 14px;
+  	text-align: center;
+  	font-weight: normal;
+}
+
+.attendTableComplete th {
+	background-color: #f58028;
+	padding-top: 1.75%;
+  	padding-bottom: 1.75%;
+  	border-bottom: 1px solid #444444;
+  	color: white;
+  	width: 6.66%;
+  	font-size: 16px;
+  	text-align: center;
+}
+
+.attendSpacingOverride {
+	width: 10% !important;
+}
+
+.attendTableComplete tr:nth-child(even) {
+  background-color: #EEEEEE;
+}
+
+.attendTableComplete tr:nth-child(odd) {
+  background-color: white;
+}
+
+.attendTableComplete tr:hover {
+  cursor: pointer;
+  background-color: #fcd6ba;
 }

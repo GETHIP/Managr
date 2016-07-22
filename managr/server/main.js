@@ -5,6 +5,7 @@ import { Comments } from '../collections/comments.js';
 import { Assignments } from '../collections/assignments.js';
 import { Instructor } from '../collections/instructor.js';
 import { Student } from '../collections/student.js';
+import { isStudent, isInstructor, userIsValid, currentUserOrInstructor, nameOfUser } from '../lib/permissions.js';
 import { Drafts } from '../collections/drafts.js';
 import { publishAll } from './publish.js';
 import { allowAll } from './allow.js';
@@ -31,30 +32,31 @@ function createDefaultUser() {
 		"strengths": ['Arranger', 'Woo', 'Communication', 'Maximizer', 'Activator'],
 		"description": "Admin",
 		"email": "x",
-		"userId": adminId
+		"userId": adminId,
+		"drafts": []
 	});
 }
 
 Meteor.startup(() => {
 	// code to run on server at startup
 	createDefaultUser();
-  studentIndex = new EasySearch.Index({
+	studentIndex = new EasySearch.Index({
 		name: "studentIndex",
 		collection: Student,
-    fields: ['name'],
-    engine: new EasySearch.Minimongo({
+		fields: ['name'],
+		engine: new EasySearch.Minimongo({
 			transform: function (doc){
 				doc.url = "/profile/" + doc._id;
 				doc.attendanceNumber = 0;
 				for(i in doc.attendance){
-						if(doc.attendance[i] === true){
-								attendanceNumber++;
-								doc.attendance[i] = "Present";
-								doc.attendanceNumber++;
-						}
-						if(doc.attendance[i] === false){
-								doc.attendance[i] = "Absent";
-						}
+					if(doc.attendance[i] === true){
+						attendanceNumber++;
+						doc.attendance[i] = "Present";
+						doc.attendanceNumber++;
+					}
+					if(doc.attendance[i] === false){
+						doc.attendance[i] = "Absent";
+					}
 				}
 				doc.attendance = doc.attendance.join(" | ");
 				doc.parentNames = doc.parentNames.join(" and ");
@@ -64,7 +66,7 @@ Meteor.startup(() => {
 		permission: function(){
 			return true;
 		}
-  });
+	});
 
 	allowAll();
 	publishAll();
@@ -200,8 +202,8 @@ Meteor.startup(() => {
 			});
 		},
 		'createDefaultUser': function() {
-		createDefaultUser();
-	},
+			createDefaultUser();
+		},
 	});
 
 	blogsMethods();
@@ -212,6 +214,5 @@ Meteor.startup(() => {
         tmpDir: process.env.PWD + '/.uploads/tmp',
         uploadDir: process.env.PWD + '/.uploads/'
     })
-
 
 });
