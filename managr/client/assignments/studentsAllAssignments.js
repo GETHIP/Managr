@@ -6,6 +6,13 @@ Template.studentsAllAssignments.onCreated(function() {
   Meteor.subscribe('Assignments');
 });
 
+var formatPointsReceived = function(pointsReceived) {
+    if(pointsReceived < 0) {
+        return "Not Graded";
+    }
+    return pointsReceived;
+}
+
 // Provides the table template with all the listed assignments
 Template.studentsAllAssignments.helpers({
     assignments: function() {
@@ -14,28 +21,27 @@ Template.studentsAllAssignments.helpers({
 
         var student = Student.findOne({userId: Meteor.user()._id});
 
-        console.log("STUDENT: " + student);
-        console.log("NAME: " + student.name);
-        console.log("ASSIGNMENTS: " + student.assignments);
-
         studentAssignments = student.assignments;
         for (i = 0; i < studentAssignments.length; i++) {
             var assignment, assignmentUrl, formattedAssignment;
             assignment = Assignments.findOne({_id: studentAssignments[i].assignmentId});
-            
+
             assignmentUrl = "/assignments/single/" + assignment._id;
 
             formattedAssignment = {
                 title: assignment.title,
-                description: assignment.description,
-                dueDate: (assignment.dueDate.getMonth() + 1) + "/" + (assignment.dueDate.getDate() + 1) + "/" +  assignment.dueDate.getFullYear(),
+                dueDate: (assignment.dueDate.getMonth() + 1) + "/" + assignment.dueDate.getDate() + "/" +  assignment.dueDate.getFullYear(),
                 assigner: assignment.assigner,
-                dateAssigned: (assignment.dateAssigned.getMonth() + 1) + "/" + assignment.dateAssigned.getDate()  + "/" +  assignment.dateAssigned.getFullYear(),
                 pointsPossible: assignment.pointsPossible,
+                pointsReceived: formatPointsReceived(studentAssignments[i].pointsReceived),
                 url: assignmentUrl
             }
             formattedAssignments.push(formattedAssignment);
         }
+        //Sort the formattedAssignments array by their dueDate
+        formattedAssignments.sort(function(a, b) {
+            return a.dueDate > b.dueDate;
+        });
         return formattedAssignments;
     }
 });
