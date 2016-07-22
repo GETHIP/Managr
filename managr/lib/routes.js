@@ -120,6 +120,23 @@ assignmentSection.route("/edit/grades", {
         });
     }
 });
+
+profileSection.route('/dashboard', {
+	action: function(params, queryParams) {
+		BlazeLayout.render('Profile', {
+			body: 'dashboard'
+		})
+	}
+});
+
+profileSection.route('/dashboard/new', {
+	action: function(params, queryParams) {
+		BlazeLayout.render('Profile', {
+			body: 'newUser'
+		})
+	}
+})
+
 profileSection.route("/profile/:id", {
   action: function(params, queryParams){
     BlazeLayout.render("Profile", {
