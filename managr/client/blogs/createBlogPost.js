@@ -33,6 +33,16 @@ Template.createBlogPost.events({
 				isPublic: Template.instance().publicPost,
 				authorName: authorName
 			};
+			if(document.getElementById('createPostTitle').value == "" && document.getElementById('editor').innerHTML == ""){
+				Modal.show("missingFields", "Please enter a title and body text before posting.");
+			}
+			if(document.getElementById('createPostTitle').value == ""){
+				Modal.show("missingFields", "Please enter a title before posting.");
+			}
+			if(document.getElementById('editor').innerHTML == ""){
+				Modal.show("missingFields", "Please enter body text before posting.");
+			}
+
 		} else {
 			data = {
 				title:document.getElementById('createPostTitle').value ,
@@ -43,8 +53,18 @@ Template.createBlogPost.events({
 				isPublic: Template.instance().publicPost,
 				authorName: authorName
 			};
+			if(document.getElementById('createPostTitle').value == "" && document.getElementById('scriptEditor').value == ""){
+				Modal.show("missingFields", "Please enter a title and body text before posting.");
+			}
+			if(document.getElementById('createPostTitle').value == ""){
+				Modal.show("missingFields", "Please enter a title before posting.");
+			}
+			if(document.getElementById('scriptEditor').value == ""){
+				Modal.show("missingFields", "Please enter body text before posting.");
+			}
+
 		}
-		Modal.show('publishPostOrComment', data);
+		Modal.show('publishPost', data);
 	},
 	'click .postButton.saveDraftButton':function(e) {
 
@@ -86,7 +106,7 @@ Template.createBlogPost.events({
 })
 
 
-Template.publishPostOrComment.events({
+Template.publishPost.events({
   'click #publish': function(e){
 		e.preventDefault();
 		Meteor.call("insertPost", Template.instance().data);
@@ -98,4 +118,10 @@ Template.publishPostOrComment.events({
 	'click #publicCheck':function(e) {
 		Template.instance().publicPost = !Template.instance().publicPost;
 	}
-})
+});
+
+Template.missingFields.helpers({
+	text: function() {
+		return Template.instance().data;
+	}
+});

@@ -85,15 +85,34 @@ Template.postPage.events({
     'submit .submitComment': function(event) {
         event.preventDefault();
         var text = null;
+        var clearEditor = function() { };
         if(document.getElementById('editor') != undefined){
+          clearEditor = function() {
+            document.getElementById('editor').innerHTML = "";
+          }
           text = document.getElementById('editor').innerHTML;
-          document.getElementById('editor').innerHTML = "";
+          if(document.getElementById('editor').innerHTML == ""){
+    				Modal.show("missingFields", "Please enter some text before posting a comment.");
+    			}
+
         }
         else{
+          clearEditor = function() {
+            document.getElementById('scriptEditor').value = "";
+          }
           text = document.getElementById('scriptEditor').value;
-          document.getElementById('scriptEditor').value = "";
+          if(document.getElementById('scriptEditor').value == ""){
+    				Modal.show("missingFields", "Please enter some script text before posting a comment.");
+    			}
+
         }
-        Meteor.call("updateComment", FlowRouter.getParam("blog_id"), Meteor.userId() , text);
+        var data = {
+          clearEditor: clearEditor,
+          text: text
+        };
+        Modal.show('postComment', data);
+
+  //      Meteor.call("updateComment", FlowRouter.getParam("blog_id"), Meteor.userId() , text);
     },
 
     'click .commentDeleteButton': function(event){
@@ -105,6 +124,14 @@ Template.postPage.events({
 
 });
 
+Template.postComment.events({
+  'click #publish' : function(event){
+    event.preventDefault();
+		Meteor.call("updateComment", FlowRouter.getParam("blog_id"), Meteor.userId(), Template.instance().data.text);
+    Template.instance().data.clearEditor();
+
+  }
+})
 
 Template.deleteComment.events({
   'click .deleteCommentButton': function(event){
