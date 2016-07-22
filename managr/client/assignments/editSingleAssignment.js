@@ -36,21 +36,14 @@ Template.editSingleAssignment.events({
     event.preventDefault();
     const form = event.target;
 
-    var assignment = Assignments.findOne({_id: FlowRouter.getParam("id")});
+    var assignmentId = FlowRouter.getParam("id");
+    var title = form.name.value;
+    var description = document.getElementById("editor").innerHTML;
+    var dueDate = form.dateDue.value;
+    var pointsPossible = form.points.value;
 
-    Assignments.update({
-      _id:assignment._id
-    },
-    {
-      $set: {
-        title: form.name.value,
-        description: document.getElementById("editor").innerHTML,
-        dueDate: form.dateDue.value,
-        assigner: Instructor.findOne({userId: Meteor.user()._id}).name,
-        dateAssigned: new Date(),
-        pointsPossible: form.points.value
-      }
-    });
+    Meteor.call("updateAssignment", assignmentId, title, description, dueDate, pointsPossible);
+
     FlowRouter.go("/assignments");
   }
 });

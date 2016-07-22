@@ -4,6 +4,7 @@ import { Comments } from '../collections/comments.js'
 import { Posts } from '../collections/blogPosts.js'
 import { Assignments } from "../collections/assignments.js";
 import { Student } from "../collections/student.js";
+import { nameOfUser } from '../lib/permissions.js';
 
 PostsIndex = new EasySearch.Index({
 	collection: Posts,
@@ -17,9 +18,11 @@ PostsIndex = new EasySearch.Index({
 		var newDate;
 		newDate = moment(doc.date);
 		var formattedDate = moment(newDate).format("M/D/YY");
+		var formattedUpdate = moment(doc.lastUpdated).format("M/D/YY");
 		newPosts = {
 			_id: doc._id,
 			date: formattedDate,
+			lastUpdated: formattedUpdate,
 			title: doc.title,
 			text: doc.text,
 			authorId: doc.authorId,
@@ -31,7 +34,7 @@ PostsIndex = new EasySearch.Index({
 	  },
 	  sort: function (searchObject, options) {
 		  return {
-			date: -1
+			lastUpdated: -1
 		  };
 	  }
 	})

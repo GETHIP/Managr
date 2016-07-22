@@ -60,6 +60,12 @@ blogsSection.route('/editPost/:blog_id', {
 		BlazeLayout.render(blogLayout, {content: 'editPost'})
 	}
 });
+blogsSection.route('/editDraft/:draft_id', {
+	name: 'editDraft',
+	action : function(params) {
+		BlazeLayout.render(blogLayout, {content: 'editDraft'})
+	}
+});
 assignmentSection.route("/", {
     name: "allAssignments",
     action() {
@@ -189,6 +195,7 @@ FlowRouter.route('/blogs/:year/:month', {
 FlowRouter.route('/createPost', {
 	name: 'createPost',
 	action() {
+		BlazeLayout.reset();
 		BlazeLayout.render(blogLayout, {content: 'createBlogPost'});
 }
 });

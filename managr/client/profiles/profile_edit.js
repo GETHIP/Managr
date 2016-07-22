@@ -33,11 +33,6 @@ Template.profileEdit.events({
                 ctx.drawImage(img, 0, 0, 100, 100);
 
                 Student.update({_id: userId}, {$set: {picture: canvas.toDataURL()}});
-
-                canvas.width = 500;
-                canvas.height = 500;
-                img.width = canvas.width;
-                img.height = canvas.height;
             }
 
             img.src = reader.result;
@@ -48,7 +43,7 @@ Template.profileEdit.events({
 
 		var userId = FlowRouter.getParam("id");
 	},
-	"submit .profileEdit" (event) {
+	'submit .profileEdit' (event) {
 		event.preventDefault();
 		let userId = FlowRouter.getParam("id");
 		const email = event.target.email.value;

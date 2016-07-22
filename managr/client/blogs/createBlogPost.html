@@ -5,7 +5,7 @@
 			{{> createHeader}}
 		</div>
 		<div class="container">
-			<form class="postCreate">
+			<!-- <form class="postCreate"> -->
 				<div class="MainCreate">
 					<div class="newTitle">
 						<div class="checkBox">
@@ -17,8 +17,19 @@
 					{{> tabs}}
 
 				</div>
-				<input type="submit" class="postButton createPostButton" value="Create Post">
-			</form>
+				<table class=buttonWidth>
+					<tbody>
+						<tr>
+							<td class=buttonRight>
+								<button class="postButton saveDraftButton">Save Draft</button>
+							</td>
+							<td class=buttonLeft>
+								<button class="postButton createPostButton">Publish Post</button>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			<!-- </form> -->
 		</div>
 	{{else}}
 		{{> accessDenied}}

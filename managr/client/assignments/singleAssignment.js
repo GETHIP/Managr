@@ -1,5 +1,14 @@
+import { Assignments } from '../../collections/assignments.js';
+import { Student } from '../../collections/student.js';
+
 Template.singleAssignment.onCreated(function() {
-  Meteor.subscribe('Assignments');
+  Meteor.subscribe('Assignments', function() {
+      var assignment = Assignments.findOne({_id: FlowRouter.getParam("id")});
+      if(assignment == undefined) {
+          FlowRouter.go("/assignments");
+      }
+  });
+    Meteor.subscribe('Student');
 });
 
 Template.singleAssignment.helpers({
@@ -18,5 +27,16 @@ Template.singleAssignment.helpers({
         }
         return formattedAssignment;
 			}
+    }
+});
+
+Template.singleAssignment.events({
+    'click #submitAssignment'(event) {
+        event.preventDefault();
+
+        var assignmentId = FlowRouter.getParam("id");
+        Meteor.call("submitAssignment", assignmentId);
+
+        FlowRouter.go("/assignments");
     }
 });

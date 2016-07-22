@@ -33,42 +33,17 @@ Template.newAssignment.helpers({
 
 
 Template.newAssignment.events({
-  'click #createAssignment'(event) {
-    window.location = "/assignments";
-  },
   'submit .submitbtn'(event){
     event.preventDefault();
     const form = event.target;
 
-    var assignmentId = Assignments.insert({
-      title: form.name.value,
-      description: document.getElementById("editor").innerHTML,
-      dueDate: form.dateDue.value,
-      assigner: Instructor.findOne({userId: Meteor.user()._id}).name,
-      dateAssigned: new Date(),
-      pointsPossible: form.points.value
-    });
+    var title = form.name.value;
+    var description = document.getElementById("editor").innerHTML;
+    var dueDate = form.dateDue.value;
+    var pointsPossible = form.points.value;
 
-    //A default template for a grade that has no score but must get added to the students
-    var emptyAssignment = {
-       assignmentId: assignmentId,
-       pointsReceived: -1,
-       completed: false,
-    };
+    Meteor.call("createAssignment", title, description, dueDate, pointsPossible);
 
-    var allStudents = Student.find({}).fetch();
-    if(allStudents.length > 0) {
-      for(var i = 0; i < allStudents.length; i++) {
-        var assignments = allStudents[i].assignments;
-        if(assignments == undefined) {
-          assignments = [];
-        }
-        assignments.push(emptyAssignment);
-        Student.update({_id: allStudents[i]._id},
-        {
-          $set: {assignments: assignments}
-        });
-      }
-    }
+    FlowRouter.go("/assignments");
   }
 });

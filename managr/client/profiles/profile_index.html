@@ -1,20 +1,21 @@
 <template name="Profile">
     {{> topNav}}
     <body class="profileBody">
-        {{> studentName}} {{> Template.dynamic template=body}} {{> Template.dynamic template=editAboutMe}} {{> Template.dynamic template=attendanceBody}} {{> Template.dynamic template=assignmentsBody}}
+        <div class="marginContainer">
+            {{> studentName}} {{> Template.dynamic template=body}} {{> Template.dynamic template=editAboutMe}} {{> Template.dynamic template=attendanceBody}}
+        </div>
     </body>
 </template>
 
 <template name="aboutme">
     <div class="aboutMe">
-        <h1><strong>
-      About Me
-    </strong> </h1> {{#with student}}
+        <h1><strong> About Me </strong> </h1> 
 
+        {{#with student}}
         <!--div class="container"-->
             <div class="row">
                 <div class="col-md-4">
-                  <img alt="Profile Picture" src="{{picture}}">
+                  <img style="width: 300px;" alt="Profile Picture" src="{{picture}}">
                 </div>
                 <div class="col-md-4">
                     <p><strong>Name: </strong>{{name}}</p>
@@ -55,46 +56,47 @@
 </template>
 
 <template name="attendanceBody">
-    <div class="attendanceContainer">
-        <h2>Attendance</h2>
-        <table class="table table-bordered attendanceTable">
-            <thead class="color">
-                <tr class="attendanceSize">
-                    <th>Week One</th>
-                    <th>Week Two</th>
-                    <th>Week Three</th>
-                    <th>Week Four</th>
-                    <th>Week Five</th>
-                    <th>Week Six</th>
-                    <th>Week Seven</th>
-                    <th>Week Eight</th>
-                    <th>Week Nine</th>
-                    <th>Week Ten</th>
-                    <th>Week Eleven</th>
-                    <th>Week Twelve</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="attendanceSize">
-                    {{#each attendance}}
-                    <td>{{this}}</td>
-                    {{/each}}
-                </tr>
-            </tbody>
-        </table>
+    <div>
+        <h1 class="titleProfile">Attendance</h1>
+        <div class="attendTableTitle blue"> Weeks
+            <table class="attendTable">
+                <!-- <thead class="color"> -->
+                    <tr class="attendanceSize">
+                        <th>One</th>
+                        <th>Two</th>
+                        <th>Three</th>
+                        <th>Four</th>
+                        <th>Five</th>
+                        <th>Six</th>
+                        <th>Seven</th>
+                        <th>Eight</th>
+                        <th>Nine</th>
+                        <th>Ten</th>
+                        <th>Eleven</th>
+                        <th>Twelve</th>
+                    </tr>
+                <!-- </thead> -->
+                <!-- <tbody> -->
+                    <tr class="attendanceSize">
+                        {{#each attendance}}
+                        <td>{{this}}</td>
+                        {{/each}}
+                    </tr>
+                <!-- </tbody> -->
+            </table>
+        </div>
     </div>
-    <button type="button" class="btn btn-primary btn-block editAttendance">Edit Attendance</button>
+    <button type="button" class="buttonStyle editAttendance">Edit Attendance</button>
 </template>
 
 <template name="studentName">
     {{#with studentName}}
-    <div style="margin-top: 2em;" class="name-holder">
-        <h1>{{ studentName.name }}</h1>
-    </div>
-    <hr class="nameLine"> {{/with}}
+        <h1 class="titleProfile names">{{studentName.name}}</h1>
+        <div class="blueBar">&nbsp;</div> 
+    {{/with}}
 </template>
 
-<template name="assignmentsBody">
+<!-- <template name="assignmentsBody">
     <div class="assignmentsContainer">
         <h2 class="assignmentHeader">Assignments</h2>
         <table class="table table-bordered assignmentsTable">
@@ -121,11 +123,10 @@
                 {{/each}}
             </tbody>
         </table>
-        <br>
-        <br>
     </div>
-</template>
+</template> -->
 
 <template name="editAboutMe">
-    <button type="button" class="btn btn-primary btn-block editAboutMe">Edit About Me</button>
+    <button type="button" class="buttonStyle profileBack">Back</button>
+    <button type="button" class="buttonStyle editAboutMe">Edit About Me</button>
 </template>

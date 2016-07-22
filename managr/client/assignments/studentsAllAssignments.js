@@ -1,4 +1,8 @@
+import { Student } from '../../collections/student.js';
+import { Assignments } from '../../collections/assignments.js';
+
 Template.studentsAllAssignments.onCreated(function() {
+  Meteor.subscribe('Student');
   Meteor.subscribe('Assignments');
 });
 
@@ -7,11 +11,19 @@ Template.studentsAllAssignments.helpers({
     assignments: function() {
         var formattedAssignments, allAssignments, i;
         formattedAssignments = [];
-        allAssignments = Assignments.find({}).fetch();
-        for (i = 0; i < allAssignments.length; i++) {
-            var assignment, j, aUrl, formattedAssignment;
-            assignment = allAssignments[i];
-            assignmentUrl = "/assignments/single/" + assignment._id.valueOf();
+
+        var student = Student.findOne({userId: Meteor.user()._id});
+
+        console.log("STUDENT: " + student);
+        console.log("NAME: " + student.name);
+        console.log("ASSIGNMENTS: " + student.assignments);
+
+        studentAssignments = student.assignments;
+        for (i = 0; i < studentAssignments.length; i++) {
+            var assignment, assignmentUrl, formattedAssignment;
+            assignment = Assignments.findOne({_id: studentAssignments[i].assignmentId});
+            
+            assignmentUrl = "/assignments/single/" + assignment._id;
 
             formattedAssignment = {
                 title: assignment.title,
