@@ -1,31 +1,29 @@
 <template name="profileAttendance">
 	{{#if isInstructor}}
-    <div class="attendanceContainer">
-        <h1>Attendance</h1>
-
-            <table class="table">
-                <thead>
-                    <tr class="attendanceTableHead">
-                        <th>Name</th>
-                        <th>Week One</th>
-                        <th>Week Two</th>
-                        <th>Week Three</th>
-                        <th>Week Four</th>
-                        <th>Week Five</th>
-                        <th>Week Six</th>
-                        <th>Week Seven</th>
-                        <th>Week Eight</th>
-                        <th>Week Nine</th>
-                        <th>Week Ten</th>
-                        <th>Week Eleven</th>
-                        <th>Week Twelve</th>
-                        <th>Total Present</th>
+    <div class="">
+        <h1 class="titleProfile attend">Attendance Overview</h1>
+        <div class="blueBar orange">&nbsp;</div>
+        <div class="attendTableTitle extMargin"> Weeks
+            <table class="attendTableComplete">
+                    <tr>
+                        <th class="attendSpacingOverride">Name</th>
+                        <th>One</th>
+                        <th>Two</th>
+                        <th>Three</th>
+                        <th>Four</th>
+                        <th>Five</th>
+                        <th>Six</th>
+                        <th>Seven</th>
+                        <th>Eight</th>
+                        <th>Nine</th>
+                        <th>Ten</th>
+                        <th>Eleven</th>
+                        <th>Twelve</th>
+                        <th class="attendSpacingOverride">Total Present</th>
                     </tr>
-                </thead>
-                <tbody>
                   {{#EasySearch.Each index=studentIndex}}
-                    <tr class="tableRowFormat attendanceTableRow">
-                        <td><a href={{url}}>{{name}}</a></td>
+                    <tr onclick="FlowRouter.go('{{url}}')">
+                        <td>{{name}}</td>
                         <td>{{attendance.[0]}}</td>
                         <td>{{attendance.[1]}}</td>
                         <td>{{attendance.[2]}}</td>
@@ -41,9 +39,8 @@
                         <td>{{total}}</td>
                     </tr>
                     {{/EasySearch.Each}}
-                </tbody>
             </table>
-
+        </div>
     </div>
 	{{else}}
 		{{> accessDenied}}
