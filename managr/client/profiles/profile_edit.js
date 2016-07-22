@@ -12,41 +12,20 @@ Template.profileEdit.events({
 		e.preventDefault();
 
 		var reader = new FileReader();
+		var preview = document.querySelector('.profilePicturePreview');
 		var file = document.querySelector('input[type=file]').files[0];
 		var result;
 
 		reader.addEventListener("load", function () {
-
-            var img = new Image();
-            var canvas = document.getElementById('profileCanvas');
-            var ctx = canvas.getContext('2d');
-
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            img.onload = function() {
-
-                canvas.width = 100;
-                canvas.height = 100;
-                img.width = canvas.width;
-                img.height = canvas.height;
-
-                ctx.drawImage(img, 0, 0, 100, 100);
-
-                Student.update({_id: userId}, {$set: {picture: canvas.toDataURL()}});
-
-                canvas.width = 500;
-                canvas.height = 500;
-                img.width = canvas.width;
-                img.height = canvas.height;
-            }
-
-            img.src = reader.result;
-
+			result = reader.result;
+		    preview.src = result;
+			Student.update({_id: userId}, {$set: {picture: result}});
 		}, false);
 
-        reader.readAsDataURL(file);
+		reader.readAsDataURL(file);
 
-		var userId = FlowRouter.getParam("id");
+		let userId = FlowRouter.getParam("id");
+
 	},
 	"submit .profileEdit" (event) {
 		event.preventDefault();
