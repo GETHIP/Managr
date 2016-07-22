@@ -14,15 +14,32 @@ Template.editPost.onRendered(function() {
 
 Template.editPost.events({
 	'submit .postCreate':function(event){
-    event.preventDefault();
+		event.preventDefault();
 		var isPublic = Template.instance().publicPost;
 		var authorName = Instructor.findOne({userId: Meteor.user()._id}).name;
 		if (document.getElementById('editor') != undefined) {
-      Meteor.call("updatePost", FlowRouter.getParam("blog_id"), document.getElementById('editor').innerHTML, document.getElementById('createPostTitle').value, isPublic);
-		}else{
-      Meteor.call("updatePost", FlowRouter.getParam("blog_id"), document.getElementById('scriptEditor').value, document.getElementById('createPostTitle').value, isPublic);
+			if(document.getElementById('createPostTitle').value == "" && document.getElementById('editor').innerHTML == ""){
+				Modal.show("missingFields", "Please enter a title and body text before posting.");
+			} else if(document.getElementById('createPostTitle').value == ""){
+				Modal.show("missingFields", "Please enter a title before posting.");
+			} else if(document.getElementById('editor').innerHTML == ""){
+				Modal.show("missingFields", "Please enter body text before posting.");
+			} else {
+				Meteor.call("updatePost", FlowRouter.getParam("blog_id"), document.getElementById('editor').innerHTML, document.getElementById('createPostTitle').value, isPublic);
+				FlowRouter.go("/blogs/"+FlowRouter.getParam("blog_id"));
+			}
+		} else {
+			if(document.getElementById('createPostTitle').value == "" && document.getElementById('scriptEditor').value == ""){
+				Modal.show("missingFields", "Please enter a title and body text before posting.");
+			} else if(document.getElementById('createPostTitle').value == ""){
+				Modal.show("missingFields", "Please enter a title before posting.");
+			} else if(document.getElementById('scriptEditor').value == ""){
+				Modal.show("missingFields", "Please enter body text before posting.");
+			} else {
+				Meteor.call("updatePost", FlowRouter.getParam("blog_id"), document.getElementById('scriptEditor').value, document.getElementById('createPostTitle').value, isPublic);
+				FlowRouter.go("/blogs/"+FlowRouter.getParam("blog_id"));
+			}
 		}
-		FlowRouter.go("/blogs/"+FlowRouter.getParam("blog_id"));
 	},
 
 	'click #publicCheck':function(e) {
