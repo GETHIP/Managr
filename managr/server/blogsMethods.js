@@ -9,13 +9,13 @@ import { isStudent, isInstructor, userIsValid, currentUserOrInstructor, nameOfUs
 
 export function blogsMethods() {
 	Meteor.methods({
-		'delDraft' : function(id){
+		'delDraft' : function(id) {
 			Drafts.remove({"_id" : id});
 		},
-		'createDraft': function(draft){
+		'createDraft': function(draft) {
 			Drafts.insert(draft);
 		},
-		'editDraft': function(draft, id){
+		'editDraft': function(draft, id) {
 			Drafts.update({"_id": id}, {
 				$set: {
 					title: draft.title,
@@ -25,7 +25,7 @@ export function blogsMethods() {
 				}
 			});
 		},
-		'updatePost': function(postId, text, title, vis){
+		'updatePost': function(postId, text, title, vis) {
 			Posts.update({_id: postId}, {
 				$set: {
 					text: text,
@@ -35,7 +35,7 @@ export function blogsMethods() {
 				}
 			});
 		},
-		'deleteComment': function(id, index){
+		'deleteComment': function(id, index) {
 			var comments = Posts.findOne({"_id": id}).comments;
 			var correctId = comments[index].authorId;
 			if(correctId == Meteor.userId() || Roles.userIsInRole(Meteor.user()._id, "instructor")){
@@ -43,30 +43,30 @@ export function blogsMethods() {
 				Posts.update({"_id": id}, {$set : {comments : comments}});
 			}
 		},
-		'delPost': function(id){
+		'delPost': function(id) {
 		  correctId = Posts.findOne({"_id": id}).authorId;
 		  if(correctId == Meteor.userId()){
 			Posts.remove({"_id": id});
 		  }
 		},
-		'insertPost':function(post) {
+		'insertPost':function(post){
 			post.lastUpdated = new Date();
 			Posts.insert(post);
 		},
-		'updateComment': function(authorName, postId, authorId, commentText){
-			if(!userIsValid()){
+		'updateComment': function(postId, authorId, commentText) {
+			if(!userIsValid() || authorId != Meteor.user()._id){
 				return;
 			}
-			 Posts.update({_id: postId },
-			{
-			  $push: { comments:
-				{
-				  text: commentText,
-				  authorId: authorId,
-				  date: new Date(),
-				  authorName: authorName
+			var authorName = nameOfUser(authorId);
+			Posts.update({_id: postId }, {
+				$push: {
+					comments: {
+						text: commentText,
+						authorId: authorId,
+						date: new Date(),
+						authorName: authorName
+					}
 				}
-			  }
 			});
 		},
 	});

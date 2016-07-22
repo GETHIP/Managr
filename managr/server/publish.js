@@ -43,5 +43,9 @@ export function publishAll() {
 	Meteor.publish("Student", function() {
 		return Student.find();
 	});
-
+	
+	Meteor.publish('userData', function() {
+		return Meteor.users.find({});
+	});
+	
 }
