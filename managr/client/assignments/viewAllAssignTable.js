@@ -32,7 +32,7 @@ var getAverageGrade = function(assignmentId) {
     allStudents.forEach(function(student) {
         var assignments = student.assignments;
         for(var i = 0; i < assignments.length; i++) {
-          if(assignments[i].assignmentId == assignmentId && assignments[i].pointsReceived > 0) {
+          if(assignments[i].assignmentId == assignmentId && assignments[i].pointsReceived >= 0) {
               totalPoints += assignments[i].pointsReceived;
               numberOfStudentsWhoHaveTheAssignmentedGraded++;
               break;
@@ -43,7 +43,7 @@ var getAverageGrade = function(assignmentId) {
     if(numberOfStudentsWhoHaveTheAssignmentedGraded <= 0) {
         return "N/A";
     }
-    
+
     var averagePoints = totalPoints / numberOfStudentsWhoHaveTheAssignmentedGraded;
     var pointsPossible = Assignments.findOne({_id: assignmentId}).pointsPossible;
     var averageGrade = averagePoints / pointsPossible * 100;
