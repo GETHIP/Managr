@@ -42,12 +42,6 @@ Template.editSingleAssignment.events({
     var dueDate = form.dateDue.value;
     var pointsPossible = form.points.value;
 
-    console.log("ASSIGNMENT ID: " + assignmentId);
-    console.log("TITLE: " + title);
-    console.log("DESCRIPTION: " + description);
-    console.log("DUE DATE: " + dueDate);
-    console.log("POINTS POSSIBLE: " + pointsPossible);
-
     Meteor.call("updateAssignment", assignmentId, title, description, dueDate, pointsPossible);
 
     FlowRouter.go("/assignments");
