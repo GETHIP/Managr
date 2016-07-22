@@ -50,8 +50,7 @@ Template.createBlogPost.events({
 				Modal.show("missingFields");
 			}
 		}
-		console.log(document.getElementById('createPostTitle').value);
-		Modal.show('publishPostOrComment', data);
+		Modal.show('publishPost', data);
 	},
 	'click .postButton.saveDraftButton':function(e) {
 
@@ -93,7 +92,7 @@ Template.createBlogPost.events({
 })
 
 
-Template.publishPostOrComment.events({
+Template.publishPost.events({
   'click #publish': function(e){
 		e.preventDefault();
 		Meteor.call("insertPost", Template.instance().data);

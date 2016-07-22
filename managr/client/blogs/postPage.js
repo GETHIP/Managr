@@ -87,13 +87,21 @@ Template.postPage.events({
         var text = null;
         if(document.getElementById('editor') != undefined){
           text = document.getElementById('editor').innerHTML;
-          document.getElementById('editor').innerHTML = "";
+          if(document.getElementById('editor').innerHTML == ""){
+    				Modal.show("missingFields");
+    			}
+
         }
         else{
           text = document.getElementById('scriptEditor').value;
-          document.getElementById('scriptEditor').value = "";
+          if(document.getElementById('scriptEditor').value == ""){
+    				Modal.show("missingFields");
+    			}
+
         }
-        Meteor.call("updateComment", FlowRouter.getParam("blog_id"), Meteor.userId() , text);
+        Modal.show('postComment', text);
+        
+  //      Meteor.call("updateComment", FlowRouter.getParam("blog_id"), Meteor.userId() , text);
     },
 
     'click .commentDeleteButton': function(event){
@@ -105,6 +113,13 @@ Template.postPage.events({
 
 });
 
+Template.postComment.events({
+  'click #publish' : function(event){
+    event.preventDefault();
+		Meteor.call("updateComment", FlowRouter.getParam("blog_id"), Meteor.userId());
+
+  }
+})
 
 Template.deleteComment.events({
   'click .deleteCommentButton': function(event){
