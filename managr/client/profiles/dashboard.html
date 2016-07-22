@@ -1,0 +1,55 @@
+<template name="dashboard">
+        <div class="dashboardContainer">
+            <button><a href="/dashboard/new">Add new Account</a></button>
+    		<table border="1">
+                <thead>
+                    <tr>
+                        <td>Username</td>
+                        <td>Role</td>
+                        <td></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each users}}
+                        <tr>
+                            <td>{{ username }}</td>
+                            <td>
+                                <select class="rolesSelector">
+                                    <option {{userHasRole roles 'student'}}>student</option>
+                                    <option {{userHasRole roles 'instructor'}}>instructor</option>
+                                    <option {{userHasRole roles 'unconfirmed'}}>unconfirmed</option>
+                                </select>
+                                <!-- <script>
+                                    $(document).ready({
+                                        console.log('{{roles}}')
+                                        $('.rolesSelector').val('{{roles}}');
+                                    });
+                                </script> -->
+                            </td>
+                            <td><button class="deleteUserButton" id="{{username}}">Delete</button></td>
+                        </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+</template>
+
+<template name="newUser">
+    <div class="newAccountContainer">
+        <form class="newAccountForm">
+            <p>Name: <input name="name" class="name" type="text"></p>
+            <p>Username: <input name="username" class="username" type="text"></p>
+            <p>Password: <input name="password" class="password" type="password"></p>
+            <p>Verify Password: <input name="verify" class="verify" type="password"></p>
+            <p>
+                <select name="role">
+                    <option value="Student">Student</option>
+                    <option value="Instructor">Instructor</option>
+                    <option value="Unconfirmed">Unconfirmed</option>
+                </select>
+            </p>
+            <button><a href="/dashboard/">Cancel</a></button>
+            <button type="submit" value="Create" class="newAccount">Create</button>
+        </form>
+    </div>
+</template>

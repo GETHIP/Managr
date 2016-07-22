@@ -5,10 +5,9 @@
 }
 
 .buttonBottom {
-  display:inline-block;
   margin-bottom: inherit;
   text-align: center;
-  margin-left: 70px;
+  margin: 0 auto;
 }
 
 .reportsButton{
