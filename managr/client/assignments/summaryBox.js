@@ -104,15 +104,8 @@ Template.SummaryBox.helpers({
         var pointsPossible = 0;
         for(var i = 0; i < studentAssignments.length; i++) {
             var assignment = Assignments.findOne({_id: studentAssignments[i].assignmentId});
-            var dueDate = new Date(studentAssignments[i].dueDate);
-            //The plus one on getMonth is unnecessary here because it is a comparison of relative values, adding plus one on both sides will have no effect on the comparison
-            var overdue = (today.getDate() > dueDate.getDate()) && (today.getMonth() >= dueDate.getMonth()) && (today.getFullYear() >= dueDate.getFullYear());
-            console.log("OVERDUE: " + overdue);
-
-            console.log("DATE: " + (today.getTime() - dueDate.getTime()));
-
-            //If it's overdue then we just add pointsPossible because the student hasn't marked it as completed and therefore has received no score
-            if(overdue && !studentAssignments[i].completed) {
+            //If it's overdue then we just add pointsPossible because the student hasn't marked it as completed and therefore has received no score, but it's late so we count it as a zero
+            if(assignment.dueDate < today && !studentAssignments[i].completed) {
                 pointsPossible += assignment.pointsPossible;
             } else {
                 if(studentAssignments[i].pointsReceived > 0) {

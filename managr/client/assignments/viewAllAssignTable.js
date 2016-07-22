@@ -45,6 +45,11 @@ var getAverageGrade = function(assignmentId) {
     var averagePoints = totalPoints / numberOfStudentsWhoCompletedTheAssignment;
     var pointsPossible = Assignments.findOne({_id: assignmentId}).pointsPossible;
     var averageGrade = averagePoints / pointsPossible * 100;
+
+    if(isNaN(averageGrade)) {
+        return "N/A";
+    }
+
     return averageGrade.toFixed(2) + "%";
 }
 

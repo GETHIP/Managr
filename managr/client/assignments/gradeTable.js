@@ -74,6 +74,8 @@ Template.gradeTable.helpers({
 				function calculatePercentage (received, possible) {
 					if (received < 0) {
 						return "N/A";
+					} else if(received == 0 && possible == 0) {
+						return "100%";
 					}
 					else {
 						return ((received / possible) * 100).toFixed(1) + "%";
