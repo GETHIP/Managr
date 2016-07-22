@@ -3,13 +3,16 @@ import { Mongo } from 'meteor/mongo';
 export const Assignments = new Mongo.Collection('Assignments');
 
 Assignments.allow({
-  insert: function() {
+  insert: function(userId, doc) {
+    if(Meteor.user.findOne({_id: userId})._id ===  Meteor.user()._id) {
+      return true;
+    }
+    return false;
+  },
+  update: function(userId, doc) {
     return true;
   },
-  update: function() {
-    return true;
-  },
-  remove: function() {
+  remove: function(userId, doc) {
     return true;
   }
 });

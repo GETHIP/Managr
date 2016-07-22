@@ -63,6 +63,7 @@ Template.gradeTable.helpers({
 				if (index <= -1) {
 						continue;
 				}
+
 				function formatPointsReceived(possible) {
 					if (possible < 0) {
 						return "Not Graded";
@@ -74,6 +75,12 @@ Template.gradeTable.helpers({
 				function calculatePercentage (received, possible) {
 					if (received < 0) {
 						return "N/A";
+					} else if(received >= 0 && possible == 0) {
+						if(received == 0) {
+							return "100%";
+						} else {
+							return received * 100 + "%";
+						}
 					}
 					else {
 						return ((received / possible) * 100).toFixed(1) + "%";
@@ -88,6 +95,9 @@ Template.gradeTable.helpers({
 						studentPercent: calculatePercentage(studentAssignments[index].pointsReceived, assignment.pointsPossible)
 				});
       }
+			studentData.sort(function(a,b) {
+					return a.studentName.localeCompare(b.studentName);
+			});
       return studentData;
     }
 });
