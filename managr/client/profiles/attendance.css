@@ -19,6 +19,11 @@
   background-color: #f58028; 
 }
 
+.buttonStyle.updateAttendance:hover, .buttonStyle.updateAttendBack:hover  {
+  background-color: #e0660a; 
+}
+
+
 .buttonStyle.updateAttendBack {
   width: 49%;
   float: left;
