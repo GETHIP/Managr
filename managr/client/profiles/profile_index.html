@@ -58,31 +58,33 @@
 <template name="attendanceBody">
     <div>
         <h1 class="titleProfile">Attendance</h1>
-        <table class="attendTable">
-            <!-- <thead class="color"> -->
-                <tr class="attendanceSize">
-                    <th>One</th>
-                    <th>Two</th>
-                    <th>Three</th>
-                    <th>Four</th>
-                    <th>Five</th>
-                    <th>Six</th>
-                    <th>Seven</th>
-                    <th>Eight</th>
-                    <th>Nine</th>
-                    <th>Ten</th>
-                    <th>Eleven</th>
-                    <th>Twelve</th>
-                </tr>
-            <!-- </thead> -->
-            <!-- <tbody> -->
-                <tr class="attendanceSize">
-                    {{#each attendance}}
-                    <td>{{this}}</td>
-                    {{/each}}
-                </tr>
-            <!-- </tbody> -->
-        </table>
+        <div class="attendTableTitle blue"> Weeks
+            <table class="attendTable">
+                <!-- <thead class="color"> -->
+                    <tr class="attendanceSize">
+                        <th>One</th>
+                        <th>Two</th>
+                        <th>Three</th>
+                        <th>Four</th>
+                        <th>Five</th>
+                        <th>Six</th>
+                        <th>Seven</th>
+                        <th>Eight</th>
+                        <th>Nine</th>
+                        <th>Ten</th>
+                        <th>Eleven</th>
+                        <th>Twelve</th>
+                    </tr>
+                <!-- </thead> -->
+                <!-- <tbody> -->
+                    <tr class="attendanceSize">
+                        {{#each attendance}}
+                        <td>{{this}}</td>
+                        {{/each}}
+                    </tr>
+                <!-- </tbody> -->
+            </table>
+        </div>
     </div>
     <button type="button" class="buttonStyle editAttendance">Edit Attendance</button>
 </template>

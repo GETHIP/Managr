@@ -6,6 +6,7 @@
 .attendTable.attend td {
   padding: 0;
   padding-top: 1%;
+  background-color: white; 
 }
 
 .blueBar.orange {
@@ -22,4 +23,17 @@
   width: 49%;
   float: left;
   background-color: #f58028; 
+}
+
+.attendTableTitle {
+  width: 100%;
+  text-align: center;
+  background-color: #f79d59; 
+  color: white;
+  font-weight: bold;
+  padding-top: 1%;
+}
+
+.attendTableTitle.extMargin {
+  margin-bottom: 6%;
 }

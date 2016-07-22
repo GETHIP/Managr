@@ -2,7 +2,8 @@
   <div class="marginContainer">
   {{#if currentUserOrInstructor userParam}}
   <h1 class="titleProfile">Attendance</h1>
-  <div class="blueBar orange">&nbsp;</div> 
+  <div class="blueBar orange">&nbsp;</div>
+  <div class="attendTableTitle"> Weeks
     <form class="attendanceUpdate">
       <table class= "attendTable attend">
         <!-- <thead id="attendance"> -->
@@ -104,6 +105,7 @@
       <button type="submit" class="buttonStyle updateAttendBack">Cancel</button>
       <button type="submit" class="buttonStyle updateAttendance">Update Attendance</button>
     </form>
+  </div>
   {{else}}
   {{> accessDenied}}
   {{/if}}
