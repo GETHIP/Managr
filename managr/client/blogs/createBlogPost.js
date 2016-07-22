@@ -33,6 +33,9 @@ Template.createBlogPost.events({
 				isPublic: Template.instance().publicPost,
 				authorName: authorName
 			};
+			if(document.getElementById('createPostTitle').value == "" || document.getElementById('editor').innerHTML == ""){
+				Modal.show("missingFields");
+			}
 		} else {
 			data = {
 				title:document.getElementById('createPostTitle').value ,
@@ -43,7 +46,11 @@ Template.createBlogPost.events({
 				isPublic: Template.instance().publicPost,
 				authorName: authorName
 			};
+			if(document.getElementById('createPostTitle').value == "" || document.getElementById('scriptEditor').value == ""){
+				Modal.show("missingFields");
+			}
 		}
+		console.log(document.getElementById('createPostTitle').value);
 		Modal.show('publishPostOrComment', data);
 	},
 	'click .postButton.saveDraftButton':function(e) {
