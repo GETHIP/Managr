@@ -426,14 +426,16 @@ Meteor.startup(() => {
 		var assignment = Assignments.findOne({_id: assignmentId});
 		var assigner = Instructor.findOne({userId: Meteor.user()._id}).name;
 
-		Assignments.update({_id:assignment._id, authorId: Meteor.user()._id}, {
+		console.log("ASSIGNMENT: " + assignment);
+		console.log("ASSIGNER: " + assigner);
+
+		Assignments.update({_id: assignment._id}, {
 			$set: {
 				title: title,
 				description: description,
 				dueDate: dueDate,
 				assigner: assigner,
-				dateAssigned: new Date(),
-				pointsPossible: pointsPossible
+ 				pointsPossible: pointsPossible
 			}
 		});
 	 },
@@ -480,7 +482,7 @@ Meteor.startup(() => {
 	});
 
 		// TODO: Delete this test data.
-		
+
 		var StudentData = [{
 		  "name": "Dash Wedergren",
 		  "age": 16,

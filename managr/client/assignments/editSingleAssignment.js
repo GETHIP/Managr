@@ -22,9 +22,9 @@ Template.editSingleAssignment.helpers({
     var formattedAssignment = {
       title: assignment.title,
       description: assignment.description,
-      dueDate: (assignment.dueDate.getFullYear()) + "-" + numPad(assignment.dueDate.getMonth() + 1) + "-" +  numPad(assignment.dueDate.getDate() + 1),
+      dueDate: (assignment.dueDate.getFullYear()) + "-" + numPad(assignment.dueDate.getMonth() + 1) + "-" +  numPad(assignment.dueDate.getDate()),
       assigner: assignment.assigner,
-      dateAssigned: (assignment.dueDate.getFullYear() + 1) + "-" + numPad(assignment.dueDate.getMonth()) + "-" +  numPad(assignment.dueDate.getDate()),
+      dateAssigned: assignment.dueDate.getFullYear() + "-" + numPad(assignment.dueDate.getMonth()) + "-" +  numPad(assignment.dueDate.getDate()),
       pointsPossible: assignment.pointsPossible
     }
     return formattedAssignment;
@@ -41,6 +41,12 @@ Template.editSingleAssignment.events({
     var description = document.getElementById("editor").innerHTML;
     var dueDate = form.dateDue.value;
     var pointsPossible = form.points.value;
+
+    console.log("ASSIGNMENT ID: " + assignmentId);
+    console.log("TITLE: " + title);
+    console.log("DESCRIPTION: " + description);
+    console.log("DUE DATE: " + dueDate);
+    console.log("POINTS POSSIBLE: " + pointsPossible);
 
     Meteor.call("updateAssignment", assignmentId, title, description, dueDate, pointsPossible);
 
