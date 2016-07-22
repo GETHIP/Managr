@@ -1,37 +1,34 @@
 <template name="dashboard">
-        <div class="dashboardContainer">
-            <button><a href="/dashboard/new">Add new Account</a></button>
-    		<table border="1">
-                <thead>
-                    <tr>
-                        <td>Username</td>
-                        <td>Role</td>
-                        <td></td>
-                    </tr>
-                </thead>
-                <tbody>
-                    {{#each users}}
-                        <tr>
-                            <td>{{ username }}</td>
-                            <td>
-                                <select class="rolesSelector">
-                                    <option {{userHasRole roles 'student'}}>student</option>
-                                    <option {{userHasRole roles 'instructor'}}>instructor</option>
-                                    <option {{userHasRole roles 'unconfirmed'}}>unconfirmed</option>
-                                </select>
-                                <!-- <script>
-                                    $(document).ready({
-                                        console.log('{{roles}}')
-                                        $('.rolesSelector').val('{{roles}}');
-                                    });
-                                </script> -->
-                            </td>
-                            <td><button class="deleteUserButton" id="{{username}}">Delete</button></td>
-                        </tr>
-                    {{/each}}
-                </tbody>
-            </table>
-        </div>
+    <h1 class="titleDashboard">Dashboard</h1>
+    <div class="blueBar black">&nbsp;</div>
+    <div class="dashboardContainer">
+        <table class="dashTable">
+            <thead>
+                <tr>
+                    <th class="dashTableWidthOverride">Username</th>
+                    <th>Role</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each users}}
+                <tr>
+                    <td>{{ username }}</td>
+                    <td class="selectorDiv">
+                        <select class="dashTableSelect">
+                            <option {{userHasRole roles 'instructor'}}>Instructor</option>
+                            <option {{userHasRole roles 'student'}}>Student</option>
+                            <option {{userHasRole roles 'unconfirmed'}}>Unconfirmed</option>
+                        </select>
+
+                    </td>
+                    <td><button class="buttonStyle deleteUserButton" id="{{username}}">Delete</button></td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+        <button class="buttonStyle newAccount" onclick="FlowRouter.go('/dashboard/new')">Add new Account</button>
+    </div>
 </template>
 
 <template name="newUser">
