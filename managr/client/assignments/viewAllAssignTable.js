@@ -39,6 +39,7 @@ var getAverageGrade = function(assignmentId) {
           }
         }
     });
+
     var numberOfStudentsWhoCompletedTheAssignment = getNumberOfStudentsWhoCompletedTheAssignment(assignmentId);
     if(numberOfStudentsWhoCompletedTheAssignment <= 0) return "N/A";
 
@@ -72,6 +73,10 @@ Template.viewAllAssignTable.helpers({
             }
             formattedAssignments.push(formattedAssignment);
         }
+        //sort these assignments by the date they were created
+        formattedAssignments.sort(function(a, b) {
+            return a.dateAssigned > b.dateAssigned;
+        });
         return formattedAssignments;
     }
 });

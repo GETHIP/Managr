@@ -63,6 +63,7 @@ Template.gradeTable.helpers({
 				if (index <= -1) {
 						continue;
 				}
+				
 				function formatPointsReceived(possible) {
 					if (possible < 0) {
 						return "Not Graded";
