@@ -7,7 +7,7 @@ import { Student } from '../collections/student.js';
 import { Drafts } from '../collections/drafts.js';
 
 export function publishAll() {
-	
+
 	Meteor.publish('Assignments', function() {
         return Assignments.find();
     });
@@ -23,7 +23,7 @@ export function publishAll() {
 	Meteor.publish("Instructor", function() {
 		return Instructor.find();
 	});
-	
+
 	Meteor.publish("Posts", function(){
 		var isValid = true;
 		if(!this.userId){
@@ -39,13 +39,20 @@ export function publishAll() {
 			return Posts.find({isPublic: true});
 		}
 	});
-	
+
 	Meteor.publish("Student", function() {
 		return Student.find();
 	});
-	
+
 	Meteor.publish('userData', function() {
 		return Meteor.users.find({});
 	});
-	
+
+	Meteor.publish('dummyUsers', function() {
+		//We don't want to actually return any data,
+		//we just want to force the accessDenied template
+		//to wait for the users to load from the server.
+		return Meteor.users.find({_id: ""});
+	});
+
 }
