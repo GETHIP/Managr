@@ -45,7 +45,7 @@
   outline: none;
   border-radius: 6px;
   border-color: white;
-  box-shadow: white;
+  box-shadow: none !important;
   border: 2px solid lightgray;
   padding: 1em;
 }

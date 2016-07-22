@@ -31,12 +31,15 @@ Template.singleAssignment.helpers({
 });
 
 Template.singleAssignment.events({
-    'click #submitAssignment'(event) {
-        event.preventDefault();
+    // 'click #submitAssignment'(event) {
+    //     event.preventDefault();
 
-        var assignmentId = FlowRouter.getParam("id");
-        Meteor.call("submitAssignment", assignmentId);
+    //     var assignmentId = FlowRouter.getParam("id");
+    //     Meteor.call("submitAssignment", assignmentId);
 
-        FlowRouter.go("/assignments");
+    //     FlowRouter.go("/assignments");
+    // },
+    'click #submitAssignment': function(event){
+      Modal.show('submitAssignmentModal');
     }
 });
