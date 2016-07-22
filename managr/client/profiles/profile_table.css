@@ -58,11 +58,11 @@
 
 }
 
-.profileTable tr:nth-child(even) {
+.profileTable tr:nth-child(odd) {
   background-color: #EEEEEE;
 }
 
-.profileTable tr:nth-child(odd) {
+.profileTable tr:nth-child(even) {
   background-color: white;
 }
 
