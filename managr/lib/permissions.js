@@ -1,25 +1,37 @@
 import { Instructor } from '../collections/instructor.js';
 import { Student } from '../collections/student.js';
 
+export function userIsStudent(id) {
+	if (id == null) {
+		return false;
+	}
+	return Roles.userIsInRole(id, "student");
+}
+
+export function userIsInstructor(id) {
+	if (id == null) {
+		return false;
+	}
+	return Roles.userIsInRole(id, "instructor");
+}
+
+export function userIdIsValid(id) {
+	if (id == null) {
+		return false;
+	}
+	return !Roles.userIsInRole(Meteor.user()._id, "unconfirmed");
+}
+
 export function isStudent() {
-  if(Meteor.user() == null) {
-    return false;
-  }
-  return Roles.userIsInRole(Meteor.user()._id, "student");
+	return userIsStudent(Meteor.userId());
 }
 
 export function isInstructor() {
-  if(Meteor.user() == null) {
-    return false;
-  }
-  return Roles.userIsInRole(Meteor.user()._id, "instructor");
+	return userIsInstructor(Meteor.userId());
 }
 
 export function userIsValid() {
-  if (Meteor.user() == null) {
-    return false;
-  }
-  return !Roles.userIsInRole(Meteor.user()._id, "unconfirmed");
+	return userIdIsValid(Meteor.userId());
 }
 
 export function isCurrentUser(id) {

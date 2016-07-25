@@ -5,12 +5,17 @@ import { Assignments } from '../collections/assignments.js';
 import { Instructor } from '../collections/instructor.js';
 import { Student } from '../collections/student.js';
 import { Drafts } from '../collections/drafts.js';
+import { userIsStudent, userIsInstructor, userIdIsValid } from '../lib/permissions.js';
+import { isStudent, isInstructor, userIsValid, currentUserOrInstructor, nameOfUser } from '../lib/permissions.js';
 
 export function allowAll() {
 
 	Posts.allow({
 		'insert': function(userId, doc) {
-			true;
+			if (Meteor.user()._id == null) {
+				return false;
+			}
+			return Meteor.user()._id == userId && isInstructor();
 		},
 		'update': function(userId, doc){
 			true;
