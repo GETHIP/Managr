@@ -13,7 +13,7 @@ Template.editPost.onRendered(function() {
 });
 
 Template.editPost.events({
-	'submit .postCreate':function(event){
+	'click .createPostButton':function(event){
 		event.preventDefault();
 		var isPublic = Template.instance().publicPost;
 		var authorName = Instructor.findOne({userId: Meteor.user()._id}).name;
@@ -41,8 +41,13 @@ Template.editPost.events({
 			}
 		}
 	},
-
 	'click #publicCheck':function(e) {
 		Template.instance().publicPost = !Template.instance().publicPost;
+	},
+	'click .saveDraftButton':function(event) {
+		event.preventDefault();
+		var blogId = FlowRouter.getParam("blog_id");
+		FlowRouter.go("/managePosts");
+		Meteor.call('convertPostToDraft', blogId);
 	}
 });
