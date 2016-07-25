@@ -1,8 +1,8 @@
 .navbar .nav > .active > a:hover, .navbar .nav > .active > a:focus {
-background-color: #444444;
-border-bottom-width: 3px;
-border-bottom-style: solid;
-padding: 15px 15px 12px 15px;
+	background-color: #444444;
+	border-bottom-width: 4px;
+	border-bottom-style: solid;
+	padding: 15px 15px 12px 15px;
 }
 
 

@@ -2,7 +2,7 @@ import { Mongo } from 'meteor/mongo';
 
 export const Assignments = new Mongo.Collection('Assignments');
 
-Assignments.allow({
+/*(Assignments.allow({
   insert: function(userId, doc) {
     if(Meteor.user.findOne({_id: userId})._id ===  Meteor.user()._id) {
       return true;
@@ -15,7 +15,7 @@ Assignments.allow({
   remove: function(userId, doc) {
     return true;
   }
-});
+});*/
 
 Comment = new SimpleSchema({
     text: {
