@@ -14,7 +14,16 @@
         {{/if}}
       </td>
       <td>{{studentName}}</td>
-      <td><p><span id="{{studentId}}" contenteditable="true" onclick="document.execCommand('selectAll',false,null)">{{pointsReceived}}</span> / {{pointsPossible}}</p></td>
+      <td><p><input class="pointsReceievedField" type="number" id="{{studentId}}" value="{{pointsReceived}}" onclick="document.execCommand('selectAll',false,null)"> / {{pointsPossible}}</p></td>
+      <script>
+      //TODO: Remove inline javascript
+      $("#{{studentId}}").on("keyup keypress", function() {
+          if ($(this).val().length > 1) {
+            return false;
+          }
+      });
+
+      </script>
       <td>{{studentPercent}}</td>
     </tr>
     {{/each}}

@@ -10,27 +10,27 @@ Template.adminSingleAssignment.events({
 
 				var assignmentId = FlowRouter.getParam("id");
 
-				var spanInputs = document.getElementsByTagName("SPAN");
-				for(var i = 0; i < spanInputs.length; i++) {
-	 				if(spanInputs[i].id == "" || spanInputs[i].innerHTML == "") {
+				var inputs = document.getElementsByTagName("INPUT");
+				for(var i = 0; i < inputs.length; i++) {
+	 				if(inputs[i].id == "" || inputs[i].value == "" || inputs[i].value == "Back") {
 	 						continue;
 	 				}
 
-	 				var studentId = spanInputs[i].id;
-					var newGradeString = spanInputs[i].innerHTML;
+	 				var studentId = inputs[i].id;
+					var newGradeString = inputs[i].value;
 					var newGrade;
 					if(isNaN(newGradeString)) {
 							newGrade = -1;
 					} else {
-						newGrade = Number(spanInputs[i].innerHTML);
+						newGrade = Number(inputs[i].value);
 					}
 
 					Meteor.call("updateGradeForStudent", studentId, assignmentId, newGrade);
 
 					if(newGrade < 0) {
-							spanInputs[i].innerHTML = "Not Graded";
+							inputs[i].value = "Not Graded";
 					} else {
-							spanInputs[i].innerHTML = newGrade;
+							inputs[i].value = newGrade;
 					}
 				}
 
