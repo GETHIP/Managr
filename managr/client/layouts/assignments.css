@@ -262,10 +262,15 @@ header {
   padding: 2% 0% 2% 0%;
   border-bottom: 1px solid #444444;
   color: white;
-  width: 16.67%;
+  width: 19%;
   font-size: 18px;
-  text-align: center;
+  text-align: center
 }
+
+.tableHeadFormatStudent.check, .tableDataFormatStudent.check  {
+  width: 5%;
+}
+
 ::-webkit-calendar-picker-indicator {
   color:rgba(0,0,0,0);
   background:url(http://strictthemes.com/wp-content/plugins/stkit/assets/images/icons/16/glyphs/gray/calendar.png);
@@ -318,7 +323,7 @@ header {
   padding-bottom: 1.75%;
   border-bottom: 1px solid #444444;
   color: white;
-  width: 33%;
+  width: 31.66%;
   font-size: 16px;
   text-align: center;
 }
@@ -327,9 +332,13 @@ header {
   padding-top: 1.5%;
   padding-bottom: 1.5%;
   color: black;
-  width: 33%;
+  width: 31.66%;
   font-size: 14px;
   text-align: center;
+}
+
+.gradeTableWidthOverride {
+  width: 5% !important;
 }
 
 .gradeTable.studentSingle {
@@ -373,11 +382,11 @@ header {
   margin: 0;
 }
 
-.gradeTable tr:nth-child(even) {
+.gradeTable tr:nth-child(odd) {
   background-color: #EEEEEE;
 }
 
-.gradeTable tr:nth-child(odd) {
+.gradeTable tr:nth-child(even) {
   background-color: white;
 }
 
@@ -410,10 +419,10 @@ header {
   text-align: center;
   font-size: 16px;
 }
-.tableRowFormat:nth-child(even) {
+.tableRowFormat:nth-child(odd) {
   background-color: #EEEEEE;
 }
-.tableRowFormat:nth-child(odd) {
+.tableRowFormat:nth-child(even) {
   background-color: white;
 }
 .tableRowFormat.assignments:hover {

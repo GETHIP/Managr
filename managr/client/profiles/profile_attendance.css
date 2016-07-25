@@ -37,11 +37,11 @@
 	width: 10% !important;
 }
 
-.attendTableComplete tr:nth-child(even) {
+.attendTableComplete tr:nth-child(odd) {
   background-color: #EEEEEE;
 }
 
-.attendTableComplete tr:nth-child(odd) {
+.attendTableComplete tr:nth-child(even) {
   background-color: white;
 }
 
