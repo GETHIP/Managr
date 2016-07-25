@@ -155,14 +155,14 @@ profileSection.route("/profile/:id", {
 
 profileSection.route("/profile/edit/:id", {
   action: function(parmas, queryParams){
-    BlazeLayout.render("Profile", {body: "profileEdit", attendance: "attendance", assignments: "assignments"});
+    BlazeLayout.render(main, {content: "profileEdit", attendance: "attendance", assignments: "assignments"});
   }
 });
 
 attendanceSection.route("/attendance/edit/:id", {
     action: function(params, queryParams){
         // BlazeLayout.render("attendanceUpdate", {updateAttendance: "updateAttendance"});
-		BlazeLayout.render("main", {content: "attendanceUpdate"});
+		BlazeLayout.render(main, {content: "attendanceUpdate"});
     }
 });
 
@@ -174,7 +174,7 @@ FlowRouter.route("/assignments/:id", {
 
 profileSection.route('/profiles/attendance', {
 	action: function(params, queryParams) {
-		BlazeLayout.render('Profile', {body: 'profileAttendance'});
+		BlazeLayout.render(main, {content: 'profileAttendance'});
 	}
 })
 

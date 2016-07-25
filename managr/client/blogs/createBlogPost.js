@@ -1,5 +1,6 @@
 import { Instructor } from '../../collections/instructor.js';
 import { Drafts } from '../../collections/drafts.js';
+import { Posts } from '../../collections/blogPosts.js';
 
 Template.createBlogPost.onCreated(function() {
 	Meteor.subscribe('Instructor');
@@ -64,6 +65,7 @@ Template.createBlogPost.events({
 			}
 
 		}
+		
 		Modal.show('publishPost', data);
 	},
 	'click .postButton.saveDraftButton':function(e) {
