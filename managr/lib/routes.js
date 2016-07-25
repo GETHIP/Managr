@@ -129,27 +129,24 @@ assignmentSection.route("/edit/grades", {
 
 profileSection.route('/dashboard', {
 	action: function(params, queryParams) {
-		BlazeLayout.render('Profile', {
-			body: 'dashboard'
-		})
+		BlazeLayout.render(main, { content: 'dashboard' });
 	}
 });
 
 profileSection.route('/dashboard/new', {
 	action: function(params, queryParams) {
-		BlazeLayout.render('Profile', {
-			body: 'newUser'
-		})
+		BlazeLayout.render(main, { content: 'newUser' });
 	}
 })
 
 profileSection.route("/profile/:id", {
   action: function(params, queryParams){
-    BlazeLayout.render("Profile", {
-			body: "aboutme",
-			attendanceBody: "attendanceBody",
-			editAboutMe:"editAboutMe"
-		});
+    // BlazeLayout.render("Profile", {
+			// body: "aboutme",
+			// attendanceBody: "attendanceBody",
+			// editAboutMe:"editAboutMe"
+		// });
+	BlazeLayout.render(main, { content: "aboutme" });
   }
 });
 
@@ -201,6 +198,6 @@ FlowRouter.route('/createPost', {
 });
 FlowRouter.route("/reports", {
     action: function(params, queryParams){
-        BlazeLayout.render("Profile", {body: "reports"});
+        BlazeLayout.render(main, {content: "reports"});
     }
 })

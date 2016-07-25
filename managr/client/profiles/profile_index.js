@@ -28,10 +28,20 @@ Template.aboutme.helpers({
 
 Template.aboutme.events({
 	'click .blogButton'(event){
-			let userId = FlowRouter.getParam("id");
-			let blogURL = Student.findOne({"_id": userId}).blog;
-			FlowRouter.go(blogURL);
+		let userId = FlowRouter.getParam("id");
+		let blogURL = Student.findOne({"_id": userId}).blog;
+		FlowRouter.go(blogURL);
+	},
+	"click .editAboutMe" (event) {
+		FlowRouter.go("/profile/edit/" + FlowRouter.getParam("id"));
+	}, 
+	"click .editAttendance" (event) {
+		FlowRouter.go("/attendance/edit/" + FlowRouter.getParam("id"));
+	},  
+	"click .profileBack" (event) {
+		FlowRouter.go("/profiles/");
 	}
+
 });
 
 Template.attendanceBody.onCreated(function() {
@@ -168,15 +178,6 @@ Template.studentName.helpers({
 //   }
 // });
 
-Template.Profile.events({
-  "click .editAboutMe" (event) {
-    FlowRouter.go("/profile/edit/" + FlowRouter.getParam("id"));
-  }, 
-  "click .editAttendance" (event) {
-    FlowRouter.go("/attendance/edit/" + FlowRouter.getParam("id"));
-  },  
-  "click .profileBack" (event) {
-    FlowRouter.go("/profiles/");
-  }
+Template.aboutme.events({
 
 });
