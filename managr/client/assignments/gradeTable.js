@@ -12,26 +12,26 @@ Template.adminSingleAssignment.events({
 
 				var inputs = document.getElementsByTagName("INPUT");
 				for(var i = 0; i < inputs.length; i++) {
-	 				if(inputs[i].id == "" || inputs[i].value == "" || inputs[i].value == "Back") {
-	 						continue;
-	 				}
+		 				if(inputs[i].id == "" || inputs[i].value == "" || inputs[i].value == "Back") {
+		 						continue;
+		 				}
 
-	 				var studentId = inputs[i].id;
-					var newGradeString = inputs[i].value;
-					var newGrade;
-					if(isNaN(newGradeString)) {
-							newGrade = -1;
-					} else {
-						newGrade = Number(inputs[i].value);
-					}
+		 				var studentId = inputs[i].id;
+						var newGradeString = inputs[i].value;
+						var newGrade;
+						if(isNaN(newGradeString)) {
+								newGrade = -1;
+						} else {
+							newGrade = Number(inputs[i].value);
+						}
 
-					Meteor.call("updateGradeForStudent", studentId, assignmentId, newGrade);
+						Meteor.call("updateGradeForStudent", studentId, assignmentId, newGrade);
 
-					if(newGrade < 0) {
-							inputs[i].value = "Not Graded";
-					} else {
-							inputs[i].value = newGrade;
-					}
+						if(newGrade < 0) {
+								inputs[i].value = "Not Graded";
+						} else {
+								inputs[i].value = newGrade;
+						}
 				}
 
 				FlowRouter.go("/assignments/single/admin/" + assignmentId);
