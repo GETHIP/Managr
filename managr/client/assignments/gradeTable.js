@@ -96,8 +96,8 @@ Template.gradeTable.helpers({
 						completed: studentAssignments[index].completed;
 				});
       }
-			studentData.sort(function(a,b) {
-					return a.studentName.localeCompare(b.studentName);
+			studentData.sort(function(student1, student2) {
+					return student1.studentName.localeCompare(student2.studentName);
 			});
       return studentData;
     }
