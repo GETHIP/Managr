@@ -28,13 +28,14 @@ export function assignmentsMethods() {
 			});
 			Assignments.remove(assignmentId);
 		},
-		'submitAssignment':function(assignmentId) {
+		'submitAssignment':function(assignmentId, assignmentUrl) {
 			var student = Student.findOne({userId: Meteor.user()._id});
 			if (student != undefined) {
 				var studentAssignments = student.assignments;
 				for(var i = 0; i < studentAssignments.length; i++) {
 					if(studentAssignments[i].assignmentId == assignmentId) {
 						studentAssignments[i].completed = true;
+						studentAssignments[i].link = assignmentUrl;
 						var successful = Student.update({userId: Meteor.user()._id}, {
 							$set: {
 								assignments: studentAssignments

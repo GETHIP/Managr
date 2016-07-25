@@ -22,7 +22,7 @@ Template.editSingleAssignment.helpers({
     var formattedAssignment = {
       title: assignment.title,
       description: assignment.description,
-      dueDate: (assignment.dueDate.getFullYear()) + "-" + numPad(assignment.dueDate.getMonth() + 1) + "-" +  numPad(assignment.dueDate.getDate()),
+      dueDate: (assignment.dueDate.getFullYear()) + "-" + numPad(assignment.dueDate.getMonth()) + "-" +  numPad(assignment.dueDate.getDate()),
       assigner: assignment.assigner,
       dateAssigned: assignment.dueDate.getFullYear() + "-" + numPad(assignment.dueDate.getMonth()) + "-" +  numPad(assignment.dueDate.getDate()),
       pointsPossible: assignment.pointsPossible
