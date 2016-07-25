@@ -179,6 +179,20 @@ header {
   width: 49%;
 }
 
+.buttonStyle.submitAssignment {
+  width: 15%;
+  font-size: 14px;
+  float: right;
+  padding: 1%;
+}
+
+.buttonStyle.delete.assignment {
+  width: 15%;
+  font-size: 14px;
+  float: right;
+  margin: 0;
+}
+
 .buttonDiv {
   width:100%;
 }
@@ -199,13 +213,13 @@ header {
     padding: 1em 1em !important;
     margin: 0px !important;
     box-sizing: border-box !important;
-    box-shadow: white !important;
+    box-shadow: none !important;
 }
 .assignmentForm:focus {
   outline: none !important;
   border-radius: 6px !important;
   border-color: white !important;
-  box-shadow: white !important;
+  box-shadow: none !important;
   border: 2px solid #fcb040 !important;
 }
 .assignmentForm::-webkit-inner-spin-button {
@@ -213,11 +227,11 @@ header {
 }
 
 .viewAllTable {
-    border-collapse: collapse;
-    width: 100%;
-    margin-top: 2%;
-    margin-bottom: 2%;
-    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 }
 
 .tableHeadFormat {
@@ -248,10 +262,15 @@ header {
   padding: 2% 0% 2% 0%;
   border-bottom: 1px solid #444444;
   color: white;
-  width: 16.67%;
+  width: 19%;
   font-size: 18px;
-  text-align: center;
+  text-align: center
 }
+
+.tableHeadFormatStudent.check, .tableDataFormatStudent.check  {
+  width: 5%;
+}
+
 ::-webkit-calendar-picker-indicator {
   color:rgba(0,0,0,0);
   background:url(http://strictthemes.com/wp-content/plugins/stkit/assets/images/icons/16/glyphs/gray/calendar.png);
@@ -304,7 +323,7 @@ header {
   padding-bottom: 1.75%;
   border-bottom: 1px solid #444444;
   color: white;
-  width: 33%;
+  width: 31.66%;
   font-size: 16px;
   text-align: center;
 }
@@ -313,9 +332,13 @@ header {
   padding-top: 1.5%;
   padding-bottom: 1.5%;
   color: black;
-  width: 33%;
+  width: 31.66%;
   font-size: 14px;
   text-align: center;
+}
+
+.gradeTableWidthOverride {
+  width: 5% !important;
 }
 
 .gradeTable.studentSingle {
@@ -359,11 +382,11 @@ header {
   margin: 0;
 }
 
-.gradeTable tr:nth-child(even) {
+.gradeTable tr:nth-child(odd) {
   background-color: #EEEEEE;
 }
 
-.gradeTable tr:nth-child(odd) {
+.gradeTable tr:nth-child(even) {
   background-color: white;
 }
 
@@ -396,10 +419,10 @@ header {
   text-align: center;
   font-size: 16px;
 }
-.tableRowFormat:nth-child(even) {
+.tableRowFormat:nth-child(odd) {
   background-color: #EEEEEE;
 }
-.tableRowFormat:nth-child(odd) {
+.tableRowFormat:nth-child(even) {
   background-color: white;
 }
 .tableRowFormat.assignments:hover {
@@ -456,3 +479,95 @@ header {
 .sumCol.third {
   margin-left: 2.5%;
 }
+
+.model-content.assignment {
+  position: relative;
+  background-color: yellow;
+  margin: 10%;
+  padding: 0;
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 5s;
+}
+
+@-webkit-keyframes animatetop {
+  from {top: -300px; opacity:0;}
+  to {top: 0; opacity: 1}
+}
+
+@keyframes animatetop {
+  from {top: -300px; opacity:0;}
+  to {top: 0; opacity: 1}
+}
+
+.assignmentModal-close {
+  color: black;
+  float: right;
+  font-size: 24px;
+  font-weight: normal;
+  background-color: rgba(0,0,0,0); 
+  border: none; 
+}
+
+.assignmentModal-close:hover {
+  color: #fc3b27;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-header.assignment {
+  color: yellow;
+  padding: 5px 10px;
+  color: black;
+  height: 2.5em;
+}
+
+.modal-body.assignment {
+  padding: 2% 2%;
+  height: 5em;
+}
+
+.modal-body.assignment p {
+  padding: 0;
+  margin: 0;
+  padding-left: .5%;
+
+}
+
+.modal-body.assignment input {
+  border-radius: 6px;
+  border: 2px solid lightgrey;
+  width: 100%;
+  padding: 1em 1em;
+  margin-top: 1%;
+  box-sizing: border-box;
+  box-shadow: white;
+}
+.modal-body.assignment input:focus {
+  outline: none;
+  border-radius: 6px;
+  border-color: white;
+  box-shadow: none;
+  border: 2px solid #fcb040;
+}
+
+.modal-footer.assignment {
+  color: yellow;
+  padding: 5px 10px;
+  color: black;
+  height: 3em;
+}
+
+.modal.fade.assignment {
+  height: 10em;
+}
+
+.modal-title.assignment {
+  font-weight: normal;
+  font-size: 20px;
+  padding-top: .5%;
+  margin: 0;
+}
+
+
+

@@ -1,7 +1,190 @@
 .dashboardContainer {
-    margin-top: 50px;
-    display: block;
+    /*display: block;*/
+    width: 100%;
 }
+
+.dashTable {
+  margin-top: 2%;
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 2%;
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+
+.dashTable th {
+  background-color: #333333;
+  padding-top: 1.75%;
+  padding-bottom: 1.75%;
+  border-bottom: 1px solid #444444;
+  color: white;
+  width: 20%;
+  font-size: 16px;
+  text-align: center;
+}
+
+.dashTable td {
+  padding-top: 1%;
+  padding-bottom: 1%;
+  color: black;
+  width: 20%;
+  font-size: 14px;
+  text-align: center;
+}
+
+.dashTableWidthOverride {
+  width: 60% !important;
+}
+
+.dashTable.studentSingle {
+  margin-top: 2%;
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+
+.dashTable.studentSingle th, .dashTable.studentSingle td {
+  width: 17.5%;
+}
+
+.dashTable.titleOverride {
+  width: 60% !important;
+  box-shadow: none !important;
+}
+
+.pointsInput {
+  text-align: left !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.dashTable input {
+  width: 20%;
+  height: 100%;
+  text-align: right;
+  background-color: transparent !important;
+  border: none !important;
+  margin: 0 !important;
+  margin-left: 30% !important;
+  font-size: 14px !important;
+  font-family: sans-serif !important;
+}
+
+.dashTable input:focus {
+  outline: none !important;
+}
+
+.dashTable input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.dashTable tr:nth-child(even) {
+  background-color: #EEEEEE;
+}
+
+.dashTable tr:nth-child(odd) {
+  background-color: white;
+}
+
+.dashTable tr:hover {
+  background-color: #cccccc;
+}
+
+.dashTable p {
+  padding: 0;
+  margin: 0;
+}
+
+.dashTable span:hover, .dashTable span:focus {
+  font-weight: lighter;
+  font-style: italic;
+  border: 1px #fcb040 solid;
+  border-radius: 3px;
+}
+
+.dashTableSelect {
+ 	width: 100%;
+ 	margin: 0;
+}
+
+.titleDashboard {
+  font-family: arial, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 40px;
+  margin-top: 5%;
+  width: 90%;
+}
+
+.selectorDiv {
+	padding: 0 !important;
+}
+
+.buttonStyle.deleteUserButton {
+	width: 30%;
+	color: white;
+	padding-top: 3%;
+	padding-bottom: 3%;
+	background-color: #333333;
+	font-size: 13px !important;
+}
+
+.buttonStyle.newAccount {
+	float: right;
+	width: 49%;
+	color: white;
+	background-color: #333333;
+}
+
+.buttonStyle.cancelUserCreate {
+	float: left;
+	width: 49%;
+	color: white;
+	background-color: #333333;
+}
+
+.buttonStyle.cancelUserCreate:hover {
+	background-color: black;
+}
+
+.buttonStyle.deleteUserButton:hover {
+	background-color: black;
+}
+
+.blueBar.black {
+	background-color: #333333; 
+}
+
+.buttonStyle.newAccount:hover {
+	background-color: black; 
+}
+
+.sectionFormDiv.createUser {
+	margin: 0;
+	margin-bottom: 2%; 
+}
+
+.questionDiv.createUser input:focus {
+  border-color: black;  
+} 
+
+.questionDiv.createUser p {
+	padding: 0;
+	padding-bottom: .25%;
+}
+
+.questionDiv.createUser {
+	width: 60%;
+}
+
 .newAccountContainer {
-    margin-top: 60px;
+ 	width: 100%;
+ 	background: white;
+  	box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  	margin-bottom: 2%;
+  	margin-top: 8%;
+  	padding: 4%;
+  	height: 32em;
 }
+
+
+
+

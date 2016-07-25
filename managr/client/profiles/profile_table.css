@@ -4,6 +4,7 @@
   display:inline-block;
   border: 2px solid #ccc;
   border-radius: 4px;
+  box-shadow: none !important;
   font-size: 14px;
   background-color: white;
   background-image: url('photos/magnifying-glass.png');
@@ -57,11 +58,11 @@
 
 }
 
-.profileTable tr:nth-child(even) {
+.profileTable tr:nth-child(odd) {
   background-color: #EEEEEE;
 }
 
-.profileTable tr:nth-child(odd) {
+.profileTable tr:nth-child(even) {
   background-color: white;
 }
 
