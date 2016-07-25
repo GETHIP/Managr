@@ -92,7 +92,8 @@ Template.gradeTable.helpers({
 						studentId: student._id,
 						pointsReceived: formatPointsReceived(studentAssignments[index].pointsReceived),
 						pointsPossible: assignment.pointsPossible.toString(),
-						studentPercent: calculatePercentage(studentAssignments[index].pointsReceived, assignment.pointsPossible)
+						studentPercent: calculatePercentage(studentAssignments[index].pointsReceived, assignment.pointsPossible),
+						completed: studentAssignments[index].completed;
 				});
       }
 			studentData.sort(function(a,b) {
