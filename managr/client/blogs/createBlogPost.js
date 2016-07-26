@@ -2,6 +2,20 @@ import { Instructor } from '../../collections/instructor.js';
 import { Drafts } from '../../collections/drafts.js';
 import { Posts } from '../../collections/blogPosts.js';
 
+function displayModals(title, text) {
+	if (title == "" && text == "") {
+		Modal.show("missingFields", "Please enter a title and body text before posting.");
+		return true;
+	} else if (title == "") {
+		Modal.show("missingFields", "Please enter a title before posting.");
+		return true;
+	} else if (text == "") {
+		Modal.show("missingFields", "Please enter body text before posting.");
+		return true;
+	}
+	return false;
+}
+
 Template.createBlogPost.onCreated(function() {
 	Meteor.subscribe('Instructor');
 	Meteor.subscribe('Drafts');
@@ -34,19 +48,12 @@ Template.createBlogPost.events({
 				isPublic: Template.instance().publicPost,
 				authorName: authorName
 			};
-			if(document.getElementById('createPostTitle').value == "" && document.getElementById('editor').innerHTML == ""){
-				Modal.show("missingFields", "Please enter a title and body text before posting.");
-			}
-			if(document.getElementById('createPostTitle').value == ""){
-				Modal.show("missingFields", "Please enter a title before posting.");
-			}
-			if(document.getElementById('editor').innerHTML == ""){
-				Modal.show("missingFields", "Please enter body text before posting.");
-			}
-
+			var title = document.getElementById('createPostTitle').value;
+			var text = document.getElementById('editor').innerHTML;
+			displayModals(title, text);
 		} else {
 			data = {
-				title:document.getElementById('createPostTitle').value ,
+				title:document.getElementById('createPostTitle').value,
 				text: document.getElementById('scriptEditor').value,
 				authorId: Meteor.user()._id,
 				date: new Date(),
@@ -54,16 +61,9 @@ Template.createBlogPost.events({
 				isPublic: Template.instance().publicPost,
 				authorName: authorName
 			};
-			if(document.getElementById('createPostTitle').value == "" && document.getElementById('scriptEditor').value == ""){
-				Modal.show("missingFields", "Please enter a title and body text before posting.");
-			}
-			if(document.getElementById('createPostTitle').value == ""){
-				Modal.show("missingFields", "Please enter a title before posting.");
-			}
-			if(document.getElementById('scriptEditor').value == ""){
-				Modal.show("missingFields", "Please enter body text before posting.");
-			}
-
+			var title = document.getElementById('createPostTitle').value;
+			var text = document.getElementById('scriptEditor').value;
+			displayModals(title, text);
 		}
 		
 		Modal.show('publishPost', data);
@@ -78,6 +78,11 @@ Template.createBlogPost.events({
 	'click .saveDraftButton': function(event){
 		var draftData;
 		if (document.getElementById('editor') != undefined) {
+			var title = document.getElementById('createPostTitle').value;
+			var text = document.getElementById('editor').innerHTML;
+			// if (displayModals(title, text)) {
+				// return;
+			// }
 		 	draftData = {
 				title:document.getElementById('createPostTitle').value ,
 				text: document.getElementById('editor').innerHTML,
@@ -86,6 +91,11 @@ Template.createBlogPost.events({
 				isPublic: Template.instance().publicPost,
 			};
 		} else {
+			var title = document.getElementById('createPostTitle').value;
+			var text = document.getElementById('scriptEditor').value;
+			// if (displayModals(title, text)) {
+				// return;
+			// }
 			draftData = {
 				title:document.getElementById('createPostTitle').value ,
 				text: document.getElementById('scriptEditor').value,
@@ -94,12 +104,12 @@ Template.createBlogPost.events({
 				isPublic: Template.instance().publicPost,
 			};
 		}
-			if (FlowRouter.getRouteName() == "createPost") {
-				Meteor.call('createDraft', draftData);
-			} else if (FlowRouter.getRouteName() == "editDraft"){
-				Meteor.call('editDraft', draftData, FlowRouter.getParam("draft_id"));
-			}
-			FlowRouter.go("/managePosts")
+		if (FlowRouter.getRouteName() == "createPost") {
+			Meteor.call('createDraft', draftData);
+		} else if (FlowRouter.getRouteName() == "editDraft"){
+			Meteor.call('editDraft', draftData, FlowRouter.getParam("draft_id"));
+		}
+		FlowRouter.go("/managePosts")
 	},
 	'getIsPublic' : function(e){
 		e.preventDefault();

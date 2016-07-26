@@ -10,23 +10,37 @@ import { isStudent, isInstructor, userIsValid, currentUserOrInstructor, nameOfUs
 export function blogsMethods() {
 	Meteor.methods({
 		'delDraft' : function(id) {
-			Drafts.remove({"_id" : id});
+			Drafts.remove({"_id" : id, authorId: Meteor.user()._id});
 		},
 		'createDraft': function(draft) {
-			Drafts.insert(draft);
+			if (!isInstructor()) {
+				return;
+			}
+			draft.authorId = Meteor.user()._id;
+			if (draft.title == "") {
+				draft.title = "Untitled";
+			}
+			Drafts.insert(draft, {
+				removeEmptyStrings: false
+			});
 		},
 		'editDraft': function(draft, id) {
-			Drafts.update({"_id": id}, {
+			if (draft.title == "") {
+				draft.title = "Untitled";
+			}
+			Drafts.update({"_id": id, authorId: Meteor.user()._id}, {
 				$set: {
 					title: draft.title,
 					text: draft.text,
 					lastUpdated: draft.lastUpdated,
 					isPublic: draft.isPublic
 				}
+			}, {
+				removeEmptyStrings: false
 			});
 		},
 		'updatePost': function(postId, text, title, vis) {
-			Posts.update({_id: postId}, {
+			Posts.update({_id: postId, authorId: Meteor.user()._id}, {
 				$set: {
 					text: text,
 					isPublic: vis,
@@ -36,7 +50,7 @@ export function blogsMethods() {
 			});
 		},
 		'deleteComment': function(id, index) {
-			var comments = Posts.findOne({"_id": id}).comments;
+			var comments = Posts.findOne({"_id": id, authorId: Meteor.user()._id}).comments;
 			var correctId = comments[index].authorId;
 			if(correctId == Meteor.userId() || Roles.userIsInRole(Meteor.user()._id, "instructor")){
 				comments.splice(index, 1);
