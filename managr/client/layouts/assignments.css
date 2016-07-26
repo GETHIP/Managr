@@ -362,13 +362,13 @@ header {
 }
 
 .gradeTable input {
-  width: 30px;
+  width: 50px;
   height: 100%;
   text-align: right;
   background-color: #ECECEC !important;
   border: none !important;
-  margin: 0 !important;
-  margin-left: 30% !important;
+  margin: 0 !important ;
+  margin-left: 30% !important ;
   font-size: 14px !important;
   font-family: sans-serif !important;
 }
