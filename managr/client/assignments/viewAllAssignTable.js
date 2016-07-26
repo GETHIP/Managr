@@ -6,17 +6,28 @@ Template.viewAllAssignTable.onCreated(function() {
     Meteor.subscribe("Student");
 });
 
-var getNumberOfStudents = function() {
-    return Student.find({}).fetch().length;
+var getNumberOfStudentsOnAssignment = function(assignment) {
+    var allStudents = Student.find({}).fetch();
+    var numberOfStudentsOnAssignment = 0;
+    for(var i = 0; i < allStudents.length; i++) {
+        var studentAssignments = allStudents[i].assignments;
+        for(var j = 0; j < studentAssignments.length; j++) {
+            if(studentAssignments[j].assignmentId == assignment._id) {
+                numberOfStudentsOnAssignment++;
+                break;
+            }
+        }
+    }
+    return numberOfStudentsOnAssignment;
 }
 
-var getNumberOfStudentsWhoCompletedTheAssignment = function(assignmentId) {
+var getNumberOfStudentsWhoCompletedTheAssignment = function(assignment) {
     var allStudents = Student.find({});
     var completed = 0;
     allStudents.forEach(function(student) {
-        var assignments = student.assignments;
-        for(var i = 0; i < assignments.length; i++) {
-            if(assignments[i].assignmentId == assignmentId && assignments[i].completed) {
+        var studentAssignments = student.assignments;
+        for(var i = 0; i < studentAssignments.length; i++) {
+            if(studentAssignments[i].assignmentId == assignment._id && studentAssignments[i].completed) {
                 completed++;
                 break;
             }
@@ -25,15 +36,15 @@ var getNumberOfStudentsWhoCompletedTheAssignment = function(assignmentId) {
     return completed;
 }
 
-var getAverageGrade = function(assignmentId) {
+var getAverageGrade = function(assignment) {
     var allStudents = Student.find({});
     var totalPoints = 0;
     var numberOfStudentsWhoHaveTheAssignmentedGraded = 0;
     allStudents.forEach(function(student) {
-        var assignments = student.assignments;
-        for(var i = 0; i < assignments.length; i++) {
-          if(assignments[i].assignmentId == assignmentId && assignments[i].pointsReceived >= 0) {
-              totalPoints += assignments[i].pointsReceived;
+        var studentAssignments = student.assignments;
+        for(var i = 0; i < studentAssignments.length; i++) {
+          if(studentAssignments[i].assignmentId == assignment._id && studentAssignments[i].pointsReceived >= 0) {
+              totalPoints += studentAssignments[i].pointsReceived;
               numberOfStudentsWhoHaveTheAssignmentedGraded++;
               break;
           }
@@ -45,7 +56,7 @@ var getAverageGrade = function(assignmentId) {
     }
 
     var averagePoints = totalPoints / numberOfStudentsWhoHaveTheAssignmentedGraded;
-    var pointsPossible = Assignments.findOne({_id: assignmentId}).pointsPossible;
+    var pointsPossible = assignment.pointsPossible;
     var averageGrade = averagePoints / pointsPossible * 100;
 
     if(isNaN(averageGrade)) {
@@ -67,9 +78,9 @@ Template.viewAllAssignTable.helpers({
             assignmentUrl = "/assignments/single/admin/" + assignment._id.valueOf();
             formattedAssignment = {
                 title: assignment.title,
-                studentsCompleted: getNumberOfStudentsWhoCompletedTheAssignment(assignment._id),
-                allStudents: getNumberOfStudents(),
-                averageGrade: getAverageGrade(assignment._id),
+                studentsCompleted: getNumberOfStudentsWhoCompletedTheAssignment(assignment),
+                allStudents: getNumberOfStudentsOnAssignment(assignment),
+                averageGrade: getAverageGrade(assignment),
                 url: assignmentUrl
             }
             formattedAssignments.push(formattedAssignment);

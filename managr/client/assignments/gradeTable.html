@@ -15,14 +15,6 @@
         </td>
         <td>{{studentName}}</td>
         <td><p><input class="pointsReceievedField" type="number" id="{{studentId}}" value="{{pointsReceived}}" onclick="document.execCommand('selectAll',false,null)"> / {{pointsPossible}}</p></td>
-        <script>
-        //TODO: Remove inline javascript
-        $("#{{studentId}}").on("keyup keypress", function() {
-            if ($("this").val().length > {{pointsPossible}}.toString().length) {
-              return false;
-            }
-        });
-        </script>
         <td>{{studentPercent}}</td>
       </tr>
     {{/each}}

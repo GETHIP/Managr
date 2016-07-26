@@ -7,10 +7,10 @@ Template.viewAllGrades.onCreated(function() {
 });
 
 var getAssignmentsCompleted = function(student) {
-    var assignments = student.assignments;
+    var studentAssignments = student.assignments;
     var completed = 0;
-    for(var i = 0; i < assignments.length; i++) {
-        if(assignments[i].completed) {
+    for(var i = 0; i < studentAssignments.length; i++) {
+        if(studentAssignments[i].completed) {
             completed++;
         }
     }
@@ -18,11 +18,12 @@ var getAssignmentsCompleted = function(student) {
 }
 
 var getPointsReceived = function(student) {
-    var assignments = student.assignments;
+    var studentAssignments = student.assignments;
     var pointsReceived = 0;
-    for(var i = 0; i < assignments.length; i++) {
-        if(assignments[i].pointsReceived > 0) {
-            pointsReceived += assignments[i].pointsReceived;
+    var today = new Date();
+    for(var i = 0; i < studentAssignments.length; i++) {
+        if(studentAssignments[i].pointsReceived > 0 || studentAssignments[i].dueDate < today) {
+            pointsReceived += studentAssignments[i].pointsReceived;
         }
     }
     return pointsReceived;
@@ -51,18 +52,41 @@ var getPointsPossible = function(student) {
     return pointsPossible;
 }
 
+//This method is slightly more complex than what would be expected because we must account for overdue assignments as well
 var getOverallGrade = function(student) {
     if(getPointsPossible(student) <= 0) return "N/A";
     var numberOfCompleted = getAssignmentsCompleted(student);
     if(numberOfCompleted <= 0 && getPointsReceived(student) <= 0) return "N/A";
     if(numberOfCompleted > 0) {
+        //This will catch if all the assignments have been completed, but not yet graded
         var truePointsReceived = getTruePointsReceived(student);
         if(-truePointsReceived == numberOfCompleted) {
             return "N/A";
         }
     }
 
-    var overallGrade = (getPointsReceived(student) / getPointsPossible(student)) * 100;
+    var today = new Date();
+    var studentAssignments = student.assignments;
+    var pointsReceived = 0;
+    var pointsPossible = 0;
+    for(var i = 0; i < studentAssignments.length; i++) {
+        var assignment = Assignments.findOne({_id: studentAssignments[i].assignmentId});
+        //If it's overdue then we just add pointsPossible because the student hasn't marked it as completed and therefore has received no score, but it's late so we count it as a zero
+        if(assignment.dueDate < today && !studentAssignments[i].completed) {
+            pointsPossible += assignment.pointsPossible;
+        } else {
+            if(studentAssignments[i].pointsReceived > 0) {
+                pointsReceived += studentAssignments[i].pointsReceived;
+                pointsPossible += assignment.pointsPossible;
+            }
+        }
+    }
+
+    if(pointsPossible <= 0) {
+        return "N/A";
+    }
+    
+    var overallGrade = pointsReceived / pointsPossible * 100;
     return overallGrade.toFixed(2) + "%";
 }
 
@@ -79,7 +103,9 @@ Template.viewAllGrades.helpers({
             overallGrade: getOverallGrade(student)
           });
         });
-        studentData.sort(function(a,b) {return a.studentName.localeCompare(b.studentName);});
+        studentData.sort(function(student1, student2) {
+            return student1.studentName.localeCompare(student2.studentName);
+        });
         return studentData;
     }
 });
