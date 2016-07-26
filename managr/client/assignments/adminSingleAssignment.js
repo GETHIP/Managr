@@ -25,7 +25,6 @@ Template.adminSingleAssignment.events({
 });
 
 Template.deleteAssignmentModal.events({
-
 		"click #confirmDeleteAssignment"(event) {
 				event.preventDefault();
 		 		var assignmentId = FlowRouter.getParam("id");
