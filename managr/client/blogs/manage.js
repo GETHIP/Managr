@@ -24,15 +24,3 @@ Template.manage.events({
     Modal.show('deleteDraft', event.target.id);
    }
 });
-
-Template.deletePost.events({
-  'click .deletePostButton' : function(event){
-    Meteor.call('delPost', Template.instance().data);
-  }
-});
-
-Template.deleteDraft.events({
-  'click .deleteDraftButton' : function(event){
-    Meteor.call('delDraft', Template.instance().data);
-  }
-})
