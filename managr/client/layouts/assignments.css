@@ -362,10 +362,10 @@ header {
 }
 
 .gradeTable input {
-  width: 20%;
+  width: 30px;
   height: 100%;
   text-align: right;
-  background-color: transparent !important;
+  background-color: #ECECEC !important;
   border: none !important;
   margin: 0 !important;
   margin-left: 30% !important;

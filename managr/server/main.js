@@ -1,4 +1,4 @@
-﻿// Import meteor for server / publish and Assignments to publish
+// Import meteor for server / publish and Assignments to publish
 import { Meteor } from 'meteor/meteor';
 import { Posts } from '../collections/blogPosts.js';
 import { Comments } from '../collections/comments.js';
@@ -68,7 +68,6 @@ Meteor.startup(() => {
 		}
 	});
 	/*
-
 	userIndex = new EasySearch.Index({
 		name: "userIndex",
 		collection: Meteor.users,

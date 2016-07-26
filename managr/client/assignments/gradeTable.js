@@ -10,28 +10,28 @@ Template.adminSingleAssignment.events({
 
 				var assignmentId = FlowRouter.getParam("id");
 
-				var spanInputs = document.getElementsByTagName("SPAN");
-				for(var i = 0; i < spanInputs.length; i++) {
-	 				if(spanInputs[i].id == "" || spanInputs[i].innerHTML == "") {
-	 						continue;
-	 				}
+				var inputs = document.getElementsByTagName("INPUT");
+				for(var i = 0; i < inputs.length; i++) {
+		 				if(inputs[i].id == "" || inputs[i].value == "" || inputs[i].value == "Back") {
+		 						continue;
+		 				}
 
-	 				var studentId = spanInputs[i].id;
-					var newGradeString = spanInputs[i].innerHTML;
-					var newGrade;
-					if(isNaN(newGradeString)) {
-							newGrade = -1;
-					} else {
-						newGrade = Number(spanInputs[i].innerHTML);
-					}
+		 				var studentId = inputs[i].id;
+						var newGradeString = inputs[i].value;
+						var newGrade;
+						if(isNaN(newGradeString)) {
+								newGrade = -1;
+						} else {
+							newGrade = Number(inputs[i].value);
+						}
 
-					Meteor.call("updateGradeForStudent", studentId, assignmentId, newGrade);
+						Meteor.call("updateGradeForStudent", studentId, assignmentId, newGrade);
 
-					if(newGrade < 0) {
-							spanInputs[i].innerHTML = "Not Graded";
-					} else {
-							spanInputs[i].innerHTML = newGrade;
-					}
+						if(newGrade < 0) {
+								inputs[i].value = "Not Graded";
+						} else {
+								inputs[i].value = newGrade;
+						}
 				}
 
 				FlowRouter.go("/assignments/single/admin/" + assignmentId);
@@ -92,11 +92,12 @@ Template.gradeTable.helpers({
 						studentId: student._id,
 						pointsReceived: formatPointsReceived(studentAssignments[index].pointsReceived),
 						pointsPossible: assignment.pointsPossible.toString(),
-						studentPercent: calculatePercentage(studentAssignments[index].pointsReceived, assignment.pointsPossible)
+						studentPercent: calculatePercentage(studentAssignments[index].pointsReceived, assignment.pointsPossible),
+						completed: studentAssignments[index].completed
 				});
       }
-			studentData.sort(function(a,b) {
-					return a.studentName.localeCompare(b.studentName);
+			studentData.sort(function(student1, student2) {
+					return student1.studentName.localeCompare(student2.studentName);
 			});
       return studentData;
     }

@@ -12,7 +12,7 @@ Template.profileEdit.events({
 		e.preventDefault();
 
 		var reader = new FileReader();
-		var file = document.querySelector('input[type=file]').files[0];
+		var file = document.querySelector(input[type=file]).files[0];
 		var result;
 
 		reader.addEventListener("load", function () {
@@ -43,7 +43,7 @@ Template.profileEdit.events({
 
 		var userId = FlowRouter.getParam("id");
 	},
-	'submit .profileEdit' (event) {
+	'submit .profileEdit'(event){
 		event.preventDefault();
 		let userId = FlowRouter.getParam("id");
 		const email = event.target.email.value;
@@ -119,7 +119,8 @@ Template.profileEdit.events({
       parentNames: [parentNames1, parentNames2]
     };
 
-    Student.update({_id: userId},{$set: data});
+    //Student.update({_id: userId},{$set: data});
+    Meteor.call('updateStudent',userId, data);
     FlowRouter.go("/profile/" + FlowRouter.getParam("id"));
   }
 });

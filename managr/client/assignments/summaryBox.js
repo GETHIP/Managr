@@ -65,23 +65,23 @@ var getTruePointsReceived = function() {
 }
 
 Template.SummaryBox.helpers({
-    "completeAssignments": function() {
+    completeAssignments: function() {
         return getNumberOfCompleted();
     },
-    "incompleteAssignments": function() {
+    incompleteAssignments: function() {
         var student = getCurrentStudent();
         if(student == undefined) return 0;
 
         var assignments = student.assignments;
         return assignments.length - getNumberOfCompleted();
     },
-    "pointsReceived": function() {
+    pointsReceived: function() {
         return getPointsReceived();
     },
-    "pointsPossible": function() {
+    pointsPossible: function() {
         return getPointsPossible();
     },
-    "overallGrade": function() {
+    overallGrade: function() {
         //Edge cases to ensure that NaN does not show up, but rather N/A
         if(getPointsPossible() <= 0){
             return "N/A";

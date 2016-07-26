@@ -8,15 +8,17 @@
       <th class="gradeTableWidthOverride">GitHub Link</th>
     </tr>
     {{#each students}}
-    <tr>
-      <td class="gradeTableWidthOverride"><i class="fa fa-check" aria-hidden="true"></i></td>
-      <td>{{studentName}}</td>
-      <td><p><span id="{{studentId}}" contenteditable="true" onclick="document.execCommand('selectAll',false,null)">{{pointsReceived}}</span> / {{pointsPossible}}</p></td>
-      <td>{{studentPercent}}</td>
-      <td class="gradeTableWidthOverride"><i class="fa fa-external-link" aria-hidden="true"></i></td>
-
-
-    </tr>
+      <tr>
+        <td class="gradeTableWidthOverride">
+          {{#if completed}}
+            <i class="fa fa-check" aria-hidden="true"></i>
+          {{/if}}
+        </td>
+        <td>{{studentName}}</td>
+        <td><p><input class="pointsReceievedField" type="number" id="{{studentId}}" value="{{pointsReceived}}" onclick="document.execCommand('selectAll',false,null)"> / {{pointsPossible}}</p></td>
+        <td>{{studentPercent}}</td>
+        <td class="gradeTableWidthOverride"><i class="fa fa-external-link" aria-hidden="true"></i></td>
+      </tr>
     {{/each}}
   </table>
 
