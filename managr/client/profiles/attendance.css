@@ -6,34 +6,34 @@
 .attendTable.attend td {
   padding: 0;
   padding-top: 1%;
-  background-color: white; 
+  background-color: white;
 }
 
 .blueBar.orange {
-  background-color: #f58028; 
+  background-color: #f58028;
 }
 
 .buttonStyle.updateAttendance {
   width: 49%;
   float: right;
-  background-color: #f58028; 
+  background-color: #f58028;
 }
 
 .buttonStyle.updateAttendance:hover, .buttonStyle.updateAttendBack:hover  {
-  background-color: #e0660a; 
+  background-color: #e0660a;
 }
 
 
 .buttonStyle.updateAttendBack {
   width: 49%;
   float: left;
-  background-color: #f58028; 
+  background-color: #f58028;
 }
 
 .attendTableTitle {
   width: 100%;
   text-align: center;
-  background-color: #f79d59; 
+  background-color: #f79d59;
   color: white;
   font-weight: bold;
   padding-top: 1%;
