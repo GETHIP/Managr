@@ -10,21 +10,69 @@ export function profilesMethods() {
 	
 	Meteor.methods({
 		'deleteUser': function(userId) {
-			console.log(userId.userId);
-			Meteor.users.remove({_id: userId.userId});
+			if (!isInstructor()) {
+				return;
+			}
+			Meteor.users.remove({_id: userId});
 		},
 		'createUserAccount': function(user) {
-			console.log(user.user);
+			if (!isInstructor()) {
+				return;
+			}
+			if (!user.roles.includes('instructor') && !user.roles.includes('student')) {
+				return;
+			}
 			let account = Accounts.createUser({
-				username: user.user.username,
-				password: user.user.password
+				username: user.username,
+				password: user.password
 			});
 
-			console.log(account);
-
-			Roles.addUsersToRoles(account, user.user.roles);
+			Roles.addUsersToRoles(account, user.roles);
+			
+			if (user.roles.includes('instructor')) {
+				Instructor.insert({
+					name: user.name,
+					picture: "x",
+					strengths: ["Achiever", "Activator", "Analytical", "Arranger", "Competition"],
+					description: "none",
+					email: "none",
+					userId: account,
+					drafts: []
+				});
+			} else if (user.roles.includes('student')) {
+				//It's guaranteed that a non-instructor user
+				//is a student, but we're just being explicit.
+				Student.insert({
+					"name": user.name,
+					"userId": account,
+					"school": "School",
+					"age": 0,
+					"email": "none",
+					"parentNames": ["none", "none"],
+					"description": "none",
+					"grade": 0,
+					"getHipYear": 0,
+					"phoneNumber": "none",
+					"strengths": ["Achiever", "Activator", "Analytical", "Arranger", "Competition"],
+					"attendance": [false, false, false, false, false, false, false, false, false, false, false, false],
+					"github": "none",
+					"tshirtSize": "none",
+					"blog": "none",
+					"ep10": [undefined],
+					"picture": "x",
+					"address": {
+						"street": "none",
+						"zipCode": 0,
+						"state": "none",
+						"city": "none"
+					}
+				});
+			}
 		},
 		'addStudent': function(data){
+			if (!isInstructor()) {
+				return false;
+			}
 			 data.id = Accounts.createUser({
 					username: data[3],
 					password: "G3tH1pPr0gram"
