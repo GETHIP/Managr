@@ -1,0 +1,21 @@
+<template name="submitAssignmentModal">
+	<div class="modal fade assignment" id="modal">
+		<div class="">
+			<div class="modal-content assignment">
+        <form id="confirmDeleteAssignment">
+  				<div class="modal-header assignment">
+  					<button type="button" class="assignmentModal-close" data-dismiss="modal">x</button>
+  					<h4 class="modal-title assignment">Submission</h4>
+  				</div>
+  				<div class="modal-body assignment">
+    					 <p>Enter your project's URL:</p>
+    					 <input name="assignmentUrl" type="text" value="{{assignmentUrl}}" placeholder="https://github.com/student/project">
+  				</div>
+  				<div class="modal-footer assignment">
+  					<button type="submit" class="buttonStyle submitAssignment" id="confirmDeleteAssignment">Submit</button>
+  				</div>
+        </form>
+			</div>
+		</div>
+	</div>
+</template>

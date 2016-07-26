@@ -135,8 +135,9 @@
 }
 
 .buttonStyle.cancelUserCreate {
-	float: left;
-	width: 49%;
+	margin-left: 10px;
+	margin-right: 10px;
+	width: 100%;
 	color: white;
 	background-color: #333333;
 }

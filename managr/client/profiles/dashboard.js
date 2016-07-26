@@ -1,24 +1,22 @@
 import { Student } from '../../collections/student.js';
+import { nameOfUser } from '../../lib/permissions.js';
 
 Template.dashboard.onCreated(function() {
   var self = this;
   self.autorun(function() {
     self.subscribe('Student');
-    self.subscribe('userData');
-  });
-});
-
-Template.newUser.onCreated(function() {
-  var self = this;
-  self.autorun(function() {
-    self.subscribe('Student');
+    self.subscribe('Instructor');
     self.subscribe('userData');
   });
 });
 
 Template.dashboard.helpers({
     users: function() {
-        var users = Meteor.users.find({});
+        var users = Meteor.users.find({}).map((u) => {
+			u.name = nameOfUser(u._id);
+			u.role = u.roles[0].charAt(0).toUpperCase() + u.roles[0].slice(1);
+			return u;
+		});
         /*for(var i in users) {
             users[i].selected = users;
         }*/
@@ -40,22 +38,15 @@ Template.dashboard.helpers({
 });
 
 Template.dashboard.events({
+	'click #newUserButton':function(e) {
+		FlowRouter.go('/dashboard/new');
+	},
+	'click #importUsersButton':function(e) {
+		console.log("import students");
+	},
     'click .deleteUserButton'(e) {
-        var a = confirm('Are you sure you want to delete this user?');
-        if(a != null) {
-
-            var user = Meteor.users.findOne({username: e.target.id});
-
-            var id = user._id;
-
-            console.log(user);
-
-            Meteor.call('deleteUser', {
-                userId: id
-            });
-
-            console.log(id);
-            console.log(e.target.id);
-        }
+        var user = Meteor.users.findOne({username: e.target.id});
+		console.log(user);
+		Modal.show('deleteUserModal', user);
     }
 });

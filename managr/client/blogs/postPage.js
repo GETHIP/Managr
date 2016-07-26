@@ -123,18 +123,3 @@ Template.postPage.events({
     }
 
 });
-
-Template.postComment.events({
-  'click #publish' : function(event){
-    event.preventDefault();
-		Meteor.call("updateComment", FlowRouter.getParam("blog_id"), Meteor.userId(), Template.instance().data.text);
-    Template.instance().data.clearEditor();
-
-  }
-})
-
-Template.deleteComment.events({
-  'click .deleteCommentButton': function(event){
-    Meteor.call("deleteComment", Template.instance().data.blog_id, Template.instance().data.id);
-  }
-})

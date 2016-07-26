@@ -13,7 +13,9 @@ export function blogsMethods() {
 			Drafts.remove({"_id" : id});
 		},
 		'createDraft': function(draft) {
-			Drafts.insert(draft);
+			Drafts.insert(draft, {
+				removeEmptyStrings: false
+			});
 		},
 		'editDraft': function(draft, id) {
 			Drafts.update({"_id": id}, {

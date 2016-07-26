@@ -21,15 +21,25 @@
                     <select name="role">
                         <option value="Student">Student</option>
                         <option value="Instructor">Instructor</option>
-                        <option value="Unconfirmed">Unconfirmed</option>
                     </select>
                 </p>
             </div>
+			
             <div class="sectionFormDiv createUser">&nbsp;</div>&nbsp;
         </div>
-        <button type="submit" value="Create" class="buttonStyle newAccount">Create</button>
+		<div class="container-fluid">
+			<div class="row">
+				<!-- <button id="createUserButton" type="submit" value="Create"></button> -->
+				<div class="col-xs-6">
+					<button type="button" id="cancelButton" class="buttonStyle cancelUserCreate">Cancel</button>
+				</div>
+				<div class="col-xs-6">
+					<button id="createUserButton" type="submit" value="Create" class="buttonStyle cancelUserCreate">Create</button>
+				</div>
+			</div>
+		</div>
     </form>
-    <button class="buttonStyle cancelUserCreate" onclick="FlowRouter.go('/dashboard')">Cancel</button>
+    <!-- <button class="buttonStyle cancelUserCreate">Cancel</button> -->
 	{{else}}
 		{{> accessDenied}}
 	{{/if}}
