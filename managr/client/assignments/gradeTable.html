@@ -1,10 +1,11 @@
 <template name="gradeTable">
   <table class="gradeTable">
     <tr>
-      <th class="gradeTableWidthOverride"></th>
+      <th class="gradeTableWidthOverride">Status</th>
       <th>Student Name</th>
       <th>Points Received</th>
       <th>Grade</th>
+      <th class="gradeTableWidthOverride">GitHub Link</th>
     </tr>
     {{#each students}}
     <tr>
@@ -12,6 +13,9 @@
       <td>{{studentName}}</td>
       <td><p><span id="{{studentId}}" contenteditable="true" onclick="document.execCommand('selectAll',false,null)">{{pointsReceived}}</span> / {{pointsPossible}}</p></td>
       <td>{{studentPercent}}</td>
+      <td class="gradeTableWidthOverride"><i class="fa fa-external-link" aria-hidden="true"></i></td>
+
+
     </tr>
     {{/each}}
   </table>
