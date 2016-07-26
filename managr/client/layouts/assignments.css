@@ -72,6 +72,23 @@ body {
   margin-top: 15px;
   margin-bottom: 5px;
 }
+
+.selectStudents {
+  border: 2px solid #CCCCCC;
+  border-radius: 5px;
+  overflow-y: scroll;
+  max-height: 250px;
+  padding: 15px;
+}
+.selectStudents hr {
+  border-color: #CCCCCC;
+}
+.selectStudents input[type="checkbox"] {
+  position: relative;
+  bottom: 3px;
+}
+
+
 header {
   padding: 20px 15px 15px 15px;
   position: relative;
