@@ -20,9 +20,9 @@ Template.newAssignment.helpers({
         formattedAssignment = {
           title: assignment.title,
           description: assignment.description,
-          dueDate: (assignment.dueDate.getMonth() + 1) + "/" + assignment.dueDate.getDate() + "/" +  assignment.dueDate.getFullYear(),
+          dueDate: assignment.dueDate.getMonth() + "/" + assignment.dueDate.getDate() + "/" +  assignment.dueDate.getFullYear(),
           assigner: assignment.assigner,
-          dateAssigned: (assignment.dueDate.getMonth() + 1) + "/" + assignment.dueDate.getDate() + "/" +  assignment.dueDate.getFullYear(),
+          dateAssigned: assignment.dateAssigned.getMonth() + "/" + assignment.dateAssigned.getDate() + "/" +  assignment.dateAssigned.getFullYear(),
           pointsPossible: assignment.pointsPossible
         }
         formattedAssignments.push(formattedAssignment);
@@ -31,7 +31,6 @@ Template.newAssignment.helpers({
   }
 });
 
-
 Template.newAssignment.events({
   'submit .submitbtn'(event){
     event.preventDefault();
@@ -39,7 +38,9 @@ Template.newAssignment.events({
 
     var title = form.name.value;
     var description = document.getElementById("editor").innerHTML;
-    var dueDate = form.dateDue.value;
+    var dueDate = new Date(form.dateDue.value);
+    dueDate.setMonth(dueDate.getMonth() + 1);
+    dueDate.setDate(dueDate.getDate() + 1);
     var pointsPossible = form.points.value;
 
     Meteor.call("createAssignment", title, description, dueDate, pointsPossible);

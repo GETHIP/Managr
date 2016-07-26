@@ -2,6 +2,6 @@
   <div class="marginContainer">
     {{>singleAssignmentTemplate}}
     {{>assignmentBackButton}}
-    <input type="submit" value="Submit Assignment" class="buttonStyle submit" id="submitAssignment"> 
+    <input type="submit" value="{{#if completed}}Resubmit{{else}}Submit{{/if}} Assignment" class="buttonStyle submit" id="submitAssignment">
   </div>
 </template>

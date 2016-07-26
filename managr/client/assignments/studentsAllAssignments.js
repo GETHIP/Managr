@@ -30,8 +30,9 @@ Template.studentsAllAssignments.helpers({
 
             formattedAssignment = {
                 title: assignment.title,
-                dueDate: (assignment.dueDate.getMonth() + 1) + "/" + assignment.dueDate.getDate() + "/" +  assignment.dueDate.getFullYear(),
+                dueDate: assignment.dueDate.getMonth() + "/" + assignment.dueDate.getDate() + "/" +  assignment.dueDate.getFullYear(),
                 assigner: assignment.assigner,
+                completed: studentAssignments[i].completed,
                 pointsPossible: assignment.pointsPossible,
                 pointsReceived: formatPointsReceived(studentAssignments[i].pointsReceived),
                 url: assignmentUrl
