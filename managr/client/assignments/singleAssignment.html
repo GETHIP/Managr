@@ -2,7 +2,7 @@
   <div class="marginContainer">
     {{>singleAssignmentTemplate}}
     {{>assignmentBackButton}}
-    <input type="submit" value="Submit Assignment" class="buttonStyle submit" id="submitAssignment">
+    <input type="submit" value="{{#if completed}}Resubmit{{else}}Submit{{/if}} Assignment" class="buttonStyle submit" id="submitAssignment">
   </div>
 </template>
 
@@ -17,7 +17,7 @@
   				</div>
   				<div class="modal-body assignment">
     					 <p>Enter your project's URL:</p>
-    					 <input name="assignmentUrl" type="text" placeholder="https://github.com/student/project">
+    					 <input name="assignmentUrl" type="text" value="{{assignmentUrl}}" placeholder="https://github.com/student/project">
   				</div>
   				<div class="modal-footer assignment">
   					<button type="submit" class="buttonStyle submitAssignment" id="confirmDeleteAssignment">Submit</button>

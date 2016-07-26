@@ -18,7 +18,7 @@
         <script>
         //TODO: Remove inline javascript
         $("#{{studentId}}").on("keyup keypress", function() {
-            if ($("this").val().length > 1) {
+            if ($("this").val().length > {{pointsPossible}}.toString().length) {
               return false;
             }
         });

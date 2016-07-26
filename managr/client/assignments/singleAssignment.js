@@ -2,12 +2,12 @@ import { Assignments } from '../../collections/assignments.js';
 import { Student } from '../../collections/student.js';
 
 Template.singleAssignment.onCreated(function() {
-  Meteor.subscribe('Assignments', function() {
-      var assignment = Assignments.findOne({_id: FlowRouter.getParam("id")});
-      if(assignment == undefined) {
-          FlowRouter.go("/assignments");
-      }
-  });
+    Meteor.subscribe('Assignments', function() {
+        var assignment = Assignments.findOne({_id: FlowRouter.getParam("id")});
+        if(assignment == undefined) {
+            FlowRouter.go("/assignments");
+        }
+    });
     Meteor.subscribe('Student');
 });
 
@@ -27,12 +27,42 @@ Template.singleAssignment.helpers({
         }
         return formattedAssignment;
 			}
+    },
+    completed: function() {
+        var studentAssignment = findStudentAssignment();
+        if(studentAssignment == undefined) return false;
+        return studentAssignment.completed;
     }
 });
 
 Template.singleAssignment.events({
     'click #submitAssignment': function(event){
-      Modal.show('submitAssignmentModal');
+        Modal.show('submitAssignmentModal');
+    }
+});
+
+var findStudentAssignment = function() {
+    var assignmentId = FlowRouter.getParam("id");
+    var student = Student.findOne({userId: Meteor.user()._id});
+    var studentAssignments = student.assignments;
+    for(var i = 0; i < studentAssignments.length; i++) {
+        if(studentAssignments[i].assignmentId == assignmentId) {
+            return studentAssignments[i];
+        }
+    }
+    return undefined;
+}
+
+Template.submitAssignmentModal.onCreated(function() {
+    Meteor.subscribe('Assignments')
+    Meteor.subscribe('Student');
+});
+
+Template.submitAssignmentModal.helpers({
+    assignmentUrl: function() {
+        var studentAssignment = findStudentAssignment();
+        if(studentAssignment == undefined) return "";
+        return studentAssignment.link;
     }
 });
 
