@@ -5,6 +5,7 @@ import { Comments } from '../collections/comments.js';
 import { Assignments } from '../collections/assignments.js';
 import { Instructor } from '../collections/instructor.js';
 import { Student } from '../collections/student.js';
+import { Groups } from '../collections/groups.js';
 import { isStudent, isInstructor, userIsValid, currentUserOrInstructor, nameOfUser } from '../lib/permissions.js';
 import { Drafts } from '../collections/drafts.js';
 import { publishAll } from './publish.js';
@@ -12,6 +13,7 @@ import { allowAll } from './allow.js';
 import { blogsMethods } from './blogsMethods.js';
 import { assignmentsMethods } from './assignmentsMethods.js';
 import { profilesMethods } from './profilesMethods.js';
+import { groupsMethods } from './groupsMethods.js';
 
 var fs = Npm.require('fs');
 
@@ -221,6 +223,7 @@ Meteor.startup(() => {
 	blogsMethods();
 	assignmentsMethods();
 	profilesMethods();
+	groupsMethods();
 
     UploadServer.init({
         tmpDir: process.env.PWD + '/.uploads/tmp',

@@ -18,22 +18,17 @@
       <p class="noIndent assignmentFormFormat"><b>Assign Students:</b></p>
       <div class="selectStudents">
         <p class="noIndent">Groups:</p>
-        <label for="FRONT"><input type="checkbox" id="FRONT"/> FRONT END</label>
-        <label for="BACK"><input type="checkbox" id="BACK"/> BACK END</label>
+        {{#each group in groups}}
+          <label for="group{{group.id}}"><input type="checkbox" id="group{{group.id}}"/> {{group.name}}</label>
+        {{/each}}
+
         <hr />
+
         <p class="noIndent">Students:</p>
-        <label for="STUDENT1"><input type="checkbox" id="STUDENT1"/> JOHN SMITH</label>
-        <label for="STUDENT2"><input type="checkbox" id="STUDENT2"/> COOPER KNAAK</label>
-        <label for="STUDENT1"><input type="checkbox" id="STUDENT1"/> JOHN SMITH</label>
-        <label for="STUDENT2"><input type="checkbox" id="STUDENT2"/> COOPER KNAAK</label>
-        <label for="STUDENT1"><input type="checkbox" id="STUDENT1"/> JOHN SMITH</label>
-        <label for="STUDENT2"><input type="checkbox" id="STUDENT2"/> COOPER KNAAK</label>
-        <label for="STUDENT1"><input type="checkbox" id="STUDENT1"/> JOHN SMITH</label>
-        <label for="STUDENT2"><input type="checkbox" id="STUDENT2"/> COOPER KNAAK</label>
+        {{#each student in students}}
+          <label for="student{{student.id}}"><input type="checkbox" id="student{{student.id}}"/> {{student.name}}</label>
+        {{/each}}
       </div>
-
-
-
     </div>
     <input type="submit" value="Create Assignment" class="buttonStyle create submitbtn" id="createAssignment">
   </form>

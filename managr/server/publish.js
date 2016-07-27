@@ -4,6 +4,7 @@ import { Comments } from '../collections/comments.js';
 import { Assignments } from '../collections/assignments.js';
 import { Instructor } from '../collections/instructor.js';
 import { Student } from '../collections/student.js';
+import { Groups } from '../collections/groups.js';
 import { Drafts } from '../collections/drafts.js';
 
 export function publishAll() {
@@ -42,6 +43,10 @@ export function publishAll() {
 
 	Meteor.publish("Student", function() {
 		return Student.find();
+	});
+
+	Meteor.publish("Groups", function() {
+		return Groups.find();
 	});
 
 	Meteor.publish('userData', function() {

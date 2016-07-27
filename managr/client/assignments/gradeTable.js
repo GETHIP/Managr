@@ -87,13 +87,22 @@ Template.gradeTable.helpers({
 					}
 				}
 
+				var today = new Date();
+				var status = "Incomplete";
+				if(studentAssignments[index].completed) {
+					status = "Completed";
+				} else if(assignment.dueDate < today) {
+					status = "Late";
+				}
+
         studentData.push({
           	studentName: student.name,
 						studentId: student._id,
 						pointsReceived: formatPointsReceived(studentAssignments[index].pointsReceived),
 						pointsPossible: assignment.pointsPossible.toString(),
 						studentPercent: calculatePercentage(studentAssignments[index].pointsReceived, assignment.pointsPossible),
-						completed: studentAssignments[index].completed
+						status: status,
+						assignmentUrl: studentAssignments[index].link
 				});
       }
 			studentData.sort(function(student1, student2) {

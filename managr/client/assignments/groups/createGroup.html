@@ -1,0 +1,30 @@
+<template name="createGroup">
+  {{#if isInstructor}}
+  <div class="marginContainer">
+    <form id="createGroupForm">
+      <h1 class="titleAssignment">Create Group</h1>
+      <div class="orange-bar">&nbsp;</div>
+
+      <p class="noIndent assignmentFormFormat"><b>Group Name:</b></p>
+      <input type="text" name="groupName" class="assignmentForm" autofocus required>
+
+      <p class="noIndent assignmentFormFormat"><b>Assign Students:</b></p>
+      <div class="selectStudents">
+        <p class="noIndent">Groups:</p>
+        {{#each group in groups}}
+            <label for="group{{group.groupId}}"><input type="checkbox" id="group{{group.groupId}}"/> {{group.name}}</label>
+        {{/each}}
+
+        <hr />
+
+        <p class="noIndent">Students:</p>
+        {{#each student in students}}
+            <label for="student{{student.studentId}}"><input type="checkbox" id="student{{studebt.studentId}}"/> {{student.name}}</label>
+        {{/each}}
+
+      </div>
+      <button class="buttonStyle create submitbtn createGroupButton" type="submit" value="Create Group" id="createGroupButton">Create Group</button>
+    </form>
+  </div>
+  {{else}} {{> accessDenied}} {{/if}}
+</template>
