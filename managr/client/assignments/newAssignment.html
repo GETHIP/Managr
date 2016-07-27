@@ -14,6 +14,21 @@
       <input type="number" name="points" class="assignmentForm" required>
       <p class="noIndent assignmentFormFormat"><b>Date Due:</b></p>
       <input type="date" name="dateDue" class="assignmentForm" required>
+
+      <p class="noIndent assignmentFormFormat"><b>Assign Students:</b></p>
+      <div class="selectStudents">
+        <p class="noIndent">Groups:</p>
+        {{#each group in groups}}
+          <label for="group{{group.id}}"><input type="checkbox" id="group{{group.id}}"/> {{group.name}}</label>
+        {{/each}}
+
+        <hr />
+
+        <p class="noIndent">Students:</p>
+        {{#each student in students}}
+          <label for="student{{student.id}}"><input type="checkbox" id="student{{student.id}}"/> {{student.name}}</label>
+        {{/each}}
+      </div>
     </div>
     <input type="submit" value="Create Assignment" class="buttonStyle create submitbtn" id="createAssignment">
   </form>

@@ -1,0 +1,43 @@
+<template name="groups">
+    {{#if isInstructor}}
+    <div class="marginContainer">
+        <h1 class="titleAssignment">Groups Overview</h1>
+        <div class="orange-bar">&nbsp;</div>
+
+        <table class="groupsTable table">
+            <thead>
+                <tr>
+                    <th class="groupsTableHead">Name</th>
+                    <th class="groupsTableHead">Students</th>
+                    <th class="groupsTableHead"></th>
+                </tr>
+            </thead>
+            {{#each group in groups}}
+              <tr class="tableRowFormat">
+                  <td>{{group.name}}</td>
+                  <td>
+                      <div class="namesInGroup">
+                          <ol>
+                              {{#each student in group.students}}
+                                  <li>
+                                     {{student.name}}
+                                  </li>
+                              {{/each}}
+                          </ol>
+                      </div>
+                  </td>
+                  <td>
+                      <div class="buttonCollection">
+                          <button class="groupButton editGroup" id="{{group.groupId}}">Edit</button>
+                          <button class="groupButton deleteGroup" id="{{group.groupId}}">Delete</button>
+                      </div>
+                  </td>
+              </tr>
+            {{/each}}
+        </table>
+        <button class="buttonStyle back submitbtn" id="backButton">Back</button>
+        <button class="buttonStyle create submitbtn" id="createGroupButton">Create Group</button>
+
+    </div>
+    {{else}} {{> accessDenied}} {{/if}}
+</template>
