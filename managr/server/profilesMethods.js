@@ -49,67 +49,67 @@ function populateStudentObject(student) {
 			student.name = student["first name"] + " " + student["last name"];
 		}
 	}
-	
+
 	if (student.school == undefined) {
 		student.school = "none";
 	}
-	
+
 	if (student.age == undefined) {
 		student.age = 0;
 	}
-	
+
 	if (student.email == undefined) {
 		student.email = "none@none";
 	}
-	
+
 	if (student.parentnames == undefined) {
 		student.parentnames = ["none", "none"]
 	}
-	
+
 	if (student.description == undefined) {
 		student.description = "none";
 	}
-	
+
 	if (student.grade == undefined) {
 		student.grade = 0;
 	}
-	
+
 	if (student.gethipyear == undefined) {
 		student.gethipyear = 0;
 	}
-	
+
 	if (student.phonenumber == undefined) {
 		student.phonenumber = "none";
 	}
-	
+
 	if (student.blog == undefined) {
 		student.blog = "none";
 	}
-	
+
 	if (student.strengths == undefined) {
 		student.strengths = ["Achiever", "Activator", "Analytical", "Arranger", "Competition"];
 	}
-	
+
 	if (student.attendance == undefined) {
 		student.attendance = [false, false, false, false, false, false, false, false, false, false, false, false]
 	}
-	
+
 	if (student.github == undefined) {
 		student.github = "none";
 	}
-	
+
 	if (student.tshirtsize == undefined) {
 		student.tshirtsize = "none";
 	}
-	
+
 	if (student.ep10 == undefined) {
 		student.ep10 = [undefined];
 	}
-	
+
 	if (student.picture == undefined) {
 		student.picture = "none";
 	}
-	
+
 	if (student.address == undefined) {
 		student.address = {
 			street: "none",
@@ -123,14 +123,14 @@ function populateStudentObject(student) {
 }
 
 export function profilesMethods() {
-	
+
 	Meteor.methods({
 		'deleteUser': function(userId) {
 			if (!isInstructor()) {
 				return;
 			}
 			Meteor.users.remove({_id: userId});
-			
+
 			//Only one of these will actually have any affect, because
 			//a user can only be a student or an instructor.
 			Student.remove({userId: userId});
@@ -149,7 +149,7 @@ export function profilesMethods() {
 			});
 
 			Roles.addUsersToRoles(account, user.roles);
-			
+
 			if (user.roles.includes('instructor')) {
 				Instructor.insert({
 					name: user.name,
@@ -186,7 +186,8 @@ export function profilesMethods() {
 						"zipCode": 0,
 						"state": "none",
 						"city": "none"
-					}
+					},
+					assignments: []
 				});
 			}
 		},
@@ -225,7 +226,8 @@ export function profilesMethods() {
 				"tshirtSize": data.tshirtsize,
 				"ep10": data.ep10,
 				"picture": data.picture,
-				"address": data.address
+				"address": data.address,
+				"assignments": []
 			});
 			return errorMessage;
 		},

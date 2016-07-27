@@ -22,17 +22,18 @@ var getNumberOfStudentsOnAssignment = function(assignment) {
 }
 
 var getNumberOfStudentsWhoCompletedTheAssignment = function(assignment) {
-    var allStudents = Student.find({});
+    var allStudents = Student.find({}).fetch();
     var completed = 0;
-    allStudents.forEach(function(student) {
-        var studentAssignments = student.assignments;
-        for(var i = 0; i < studentAssignments.length; i++) {
-            if(studentAssignments[i].assignmentId == assignment._id && studentAssignments[i].completed) {
-                completed++;
-                break;
-            }
-        }
-    });
+    for(var j = 0; j < allStudents.length; j++) {
+      var studentAssignments = allStudents[j].assignments;
+      for(var i = 0; i < studentAssignments.length; i++) {
+          if(studentAssignments[i].assignmentId == assignment._id && studentAssignments[i].completed) {
+              completed++;
+              break;
+          }
+      }
+    }
+
     return completed;
 }
 
@@ -79,15 +80,15 @@ Template.viewAllAssignTable.helpers({
             formattedAssignment = {
                 title: assignment.title,
                 studentsCompleted: getNumberOfStudentsWhoCompletedTheAssignment(assignment),
-                allStudents: getNumberOfStudentsOnAssignment(assignment),
+                numberOfStudents: getNumberOfStudentsOnAssignment(assignment),
                 averageGrade: getAverageGrade(assignment),
                 url: assignmentUrl
             }
             formattedAssignments.push(formattedAssignment);
         }
         //sort these assignments by the date they were created
-        formattedAssignments.sort(function(a, b) {
-            return a.dateAssigned > b.dateAssigned;
+        formattedAssignments.sort(function(assignment1, assignment2) {
+            return assignment1.dateAssigned > assignment2.dateAssigned;
         });
         return formattedAssignments;
     }
