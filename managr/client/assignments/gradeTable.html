@@ -9,15 +9,15 @@
     </tr>
     {{#each students}}
       <tr>
-        <td class="gradeTableWidthOverride">
-          {{#if completed}}
-            <i class="fa fa-check" aria-hidden="true"></i>
-          {{/if}}
-        </td>
+        <td class="gradeTableWidthOverride">{{status}}</td>
         <td>{{studentName}}</td>
         <td><p><input class="pointsReceievedField" type="number" id="{{studentId}}" value="{{pointsReceived}}" onclick="document.execCommand('selectAll',false,null)"> / {{pointsPossible}}</p></td>
         <td>{{studentPercent}}</td>
-        <td class="gradeTableWidthOverride"><i class="fa fa-external-link" aria-hidden="true"></i></td>
+        <td class="gradeTableWidthOverride">
+          <a href="{{assignmentUrl}}" target="_blank">
+            <i class="fa fa-external-link" aria-hidden="true"></i>
+          </a>
+        </td>
       </tr>
     {{/each}}
   </table>

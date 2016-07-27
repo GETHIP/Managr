@@ -6,6 +6,7 @@ import { Instructor } from '../collections/instructor.js';
 import { Student } from '../collections/student.js';
 import { Drafts } from '../collections/drafts.js';
 import { isStudent, isInstructor, userIsValid, currentUserOrInstructor, nameOfUser } from '../lib/permissions.js';
+import { createStudentIdsArray }  from './groupsMethods.js';
 
 export function assignmentsMethods() {
 	Meteor.methods({
@@ -46,7 +47,7 @@ export function assignmentsMethods() {
 				}
 			}
 		},
-		'createAssignment':function(title, description, dueDate, pointsPossible) {
+		'createAssignment':function(title, description, dueDate, pointsPossible, groupIds, studentIds) {
 			if (!isInstructor()) {
 				return;
 			}
@@ -58,32 +59,32 @@ export function assignmentsMethods() {
 				dateAssigned: new Date(),
 				pointsPossible: pointsPossible
 			});
-			Meteor.call("addEmptyAssignmentToAllStudents", assignmentId);
+			Meteor.call("addEmptyAssignmentToStudents", assignmentId, groupIds, studentIds);
 		},
-		'addEmptyAssignmentToAllStudents':function(assignmentId) {
+		'addEmptyAssignmentToStudents':function(assignmentId, groupIds, studentIds) {
 			 if (!isInstructor()) {
 				 return;
 			 }
 			 //A default template for a grade that has no score but must get added to the students
 			 var emptyAssignment = {
-				assignmentId: assignmentId,
-				pointsReceived: -1,
-				completed: false
+				 assignmentId: assignmentId,
+				 pointsReceived: -1,
+				 completed: false
 			 };
 
-			 var allStudents = Student.find({}).fetch();
-			 if(allStudents.length > 0) {
-			   for(var i = 0; i < allStudents.length; i++) {
-				 var assignments = allStudents[i].assignments;
-				 if(assignments == undefined) {
-				   assignments = [];
+			 var studentIdsToAddAssignmentTo = createStudentIdsArray(groupIds, studentIds);
+			 console.log("ARRAY: " + studentIdsToAddAssignmentTo);
+
+			 for(var i = 0; i < studentIdsToAddAssignmentTo.length; i++) {
+				 var assignments = Student.findOne({_id: studentIdsToAddAssignmentTo[i]}).assignments;
+			 	 if(assignments == undefined) {
+				 	 assignments = [];
 				 }
 				 assignments.push(emptyAssignment);
-				 Student.update({_id: allStudents[i]._id},
+				 Student.update({_id: studentIdsToAddAssignmentTo[i]},
 				 {
 				   $set: {assignments: assignments}
 				 });
-			   }
 			 }
 		},
 		'updateAssignment':function(assignmentId, title, description, dueDate, pointsPossible) {

@@ -194,10 +194,28 @@ FlowRouter.route('/createPost', {
 	action() {
 		BlazeLayout.reset();
 		BlazeLayout.render(blogLayout, {content: 'createBlogPost'});
-}
+	}
 });
-FlowRouter.route("/reports", {
+FlowRouter.route('/reports', {
     action: function(params, queryParams){
-        BlazeLayout.render(main, {content: "reports"});
+        BlazeLayout.render(main, {content: 'reports'});
     }
-})
+});
+FlowRouter.route('/groups', {
+	name: 'groups',
+	action: function() {
+		BlazeLayout.render(main, { content: 'groups' });
+	}
+});
+FlowRouter.route('/groups/create', {
+	name: 'createGroup',
+	action: function() {
+		BlazeLayout.render(main, {content: 'createGroup'});
+	}
+});
+FlowRouter.route('/groups/edit/:id', {
+	name: 'editGroup',
+	action: function() {
+		BlazeLayout.render(main, {content: 'editGroup'});
+	}
+});
