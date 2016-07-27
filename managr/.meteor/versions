@@ -62,6 +62,7 @@ localstorage@1.0.11
 logging@1.0.14
 matb33:bootstrap-base@10.0.0
 matb33:bootstrap-glyphicons@10.0.0
+maxharris9:csv-import@1.0.1
 mcrider:bootstrap-wysiwyg@0.1.0
 mdg:validation-error@0.5.1
 meteor@1.1.16

@@ -8,6 +8,7 @@ Template.dashboard.onCreated(function() {
     self.subscribe('Instructor');
     self.subscribe('userData');
   });
+  Template.instance().importingStudents = new ReactiveVar(false);
 });
 
 Template.dashboard.helpers({
@@ -34,15 +35,30 @@ Template.dashboard.helpers({
         return {
             value: role
         };
-    }
+    },
+	importingStudents: function() {
+		return Template.instance().importingStudents.get();
+	}
 });
 
 Template.dashboard.events({
 	'click #newUserButton':function(e) {
 		FlowRouter.go('/dashboard/new');
 	},
-	'click #importUsersButton':function(e) {
-		console.log("import students");
+	'change #usersFile':function(e) {
+		var fileReader = new FileReader();
+		var templateInstance = Template.instance();
+		fileReader.onload = function(result) {
+			var csvArray = csvToArray(result.target.result, ',');
+			for (i in csvArray) {
+				Meteor.call('addStudent', csvArray[i], function(error, result) {
+					if (result != "") {
+						alert("Failed to create students...");
+					}
+				});
+			}
+		};
+		fileReader.readAsText(e.target.files[0]);
 	},
     'click .deleteUserButton'(e) {
         var user = Meteor.users.findOne({username: e.target.id});
