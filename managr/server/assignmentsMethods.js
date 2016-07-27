@@ -14,19 +14,20 @@ export function assignmentsMethods() {
 			if (!isInstructor()) {
 				return;
 			}
-			var allStudents = Student.find({}).fetch();
-			allStudents.forEach(function(student) {
-				var assignments = student.assignments;
-				for(var i = 0; i < assignments.length; i++) {
-					if(assignments[i].assignmentId == assignmentId) {
-						assignments.splice(i, 1);
+			var allStudents = Student.find({});
+			for(var j = 0; j < allStudents.length; j++) {
+				var studentAssignments = student.assignments;
+				for(var i = 0; i < studentAssignments.length; i++) {
+					if(studentAssignments[i].assignmentId == assignmentId) {
+						studentAssignments.splice(i, 1);
 						Student.update({_id: student._id}, {
-							$set: {assignments: assignments}
+							$set: {assignments: studentAssignments}
 						});
 						break;
 					}
 				}
-			});
+			}
+
 			Assignments.remove(assignmentId);
 		},
 		'submitAssignment':function(assignmentId, assignmentUrl) {
@@ -73,7 +74,6 @@ export function assignmentsMethods() {
 			 };
 
 			 var studentIdsToAddAssignmentTo = createStudentIdsArray(groupIds, studentIds);
-			 console.log("ARRAY: " + studentIdsToAddAssignmentTo);
 
 			 for(var i = 0; i < studentIdsToAddAssignmentTo.length; i++) {
 				 var assignments = Student.findOne({_id: studentIdsToAddAssignmentTo[i]}).assignments;
