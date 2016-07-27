@@ -28,11 +28,19 @@ Template.studentsAllAssignments.helpers({
 
             assignmentUrl = "/assignments/single/" + assignment._id;
 
+            var status = "Incomplete";
+            var today = new Date();
+            if(studentAssignments[i].completed) {
+                status = "Complete";
+            } else if(assignment.dueDate < today) {
+                status = "Late";
+            }
+
             formattedAssignment = {
                 title: assignment.title,
                 dueDate: assignment.dueDate.getMonth() + "/" + assignment.dueDate.getDate() + "/" +  assignment.dueDate.getFullYear(),
                 assigner: assignment.assigner,
-                completed: studentAssignments[i].completed,
+                status: status,
                 pointsPossible: assignment.pointsPossible,
                 pointsReceived: formatPointsReceived(studentAssignments[i].pointsReceived),
                 url: assignmentUrl
