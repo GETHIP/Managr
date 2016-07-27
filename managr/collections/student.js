@@ -29,6 +29,7 @@ var Assignment = new SimpleSchema({
     pointsReceived: {
         type: Number,
         defaultValue: -1,
+        decimal: true,
         label: "Points Received"
     },
     completed: {

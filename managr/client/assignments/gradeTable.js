@@ -22,7 +22,7 @@ Template.adminSingleAssignment.events({
 						if(isNaN(newGradeString)) {
 								newGrade = -1;
 						} else {
-							newGrade = Number(inputs[i].value);
+								newGrade = Number(newGradeString);
 						}
 
 						Meteor.call("updateGradeForStudent", studentId, assignmentId, newGrade);

@@ -1,6 +1,6 @@
 <template name="assignmentsHome">
-   <a href="/groups"><button id="groupsbutton" class="buttonStyle groups">Groups</button></a>
   {{#if isInstructor}}
+    <a href="/groups"><button id="groupsbutton" class="buttonStyle groups">Groups</button></a>
     {{> viewAllAssignTable}}
   {{else}}
     {{#if isStudent}}
