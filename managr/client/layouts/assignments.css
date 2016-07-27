@@ -129,6 +129,7 @@ header {
   background: #fcb040;
   margin-top: .5%;
   margin-bottom: 2%;
+
 }
 
 .marginContainer {
@@ -568,3 +569,16 @@ header {
   padding-top: .5%;
   margin: 0;
 }
+
+.buttonStyle.groups {
+  width: 10%;
+   float: right;
+   padding: 1%;
+   margin-top: 1%;
+   background-color: #fcb040;
+   margin-right: 5%;
+   margin-bottom: -5%;
+ }
+ .buttonStyle.groups:hover {
+   background-color: #FF9C0A;
+ }

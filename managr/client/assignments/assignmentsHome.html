@@ -1,4 +1,5 @@
 <template name="assignmentsHome">
+   <button id="groupsbutton" class="buttonStyle groups">Groups</button>
   {{#if isInstructor}}
     {{> viewAllAssignTable}}
   {{else}}
@@ -8,5 +9,4 @@
 	  {{> accessDenied}}
     {{/if}}
   {{/if}}
-
 </template>
