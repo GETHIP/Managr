@@ -49,3 +49,7 @@
   cursor: pointer;
   background-color: #fcd6ba;
 }
+.marginContainer {
+  margin-left: 5%;
+  margin-right: 5%;
+}
