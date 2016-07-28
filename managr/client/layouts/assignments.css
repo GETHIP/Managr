@@ -589,10 +589,11 @@ header {
   box-shadow: none;
   border: 2px solid #fcb040;
 }
-
+.assignment .modal-body {
+  overflow-y: hidden;
+}
 .modal-footer.assignment {
-  color: yellow;
-  padding: 5px 10px;
+  padding: 3px 10px;
   color: black;
   height: 3em;
 }
