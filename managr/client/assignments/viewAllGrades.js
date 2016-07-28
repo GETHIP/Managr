@@ -4,6 +4,9 @@ import { Assignments } from '../../collections/assignments.js';
 Template.viewAllGrades.onCreated(function() {
     Meteor.subscribe('Student');
     Meteor.subscribe('Assignments');
+
+    Template.instance().sortDescriptor = new ReactiveVar("studentNameSort");
+    Template.instance().sortAscending = new ReactiveVar(true);
 });
 
 var getAssignmentsCompleted = function(student) {
@@ -85,7 +88,7 @@ var getOverallGrade = function(student) {
     if(pointsPossible <= 0) {
         return "N/A";
     }
-    
+
     var overallGrade = pointsReceived / pointsPossible * 100;
     return overallGrade.toFixed(2) + "%";
 }
@@ -103,9 +106,34 @@ Template.viewAllGrades.helpers({
             overallGrade: getOverallGrade(student)
           });
         });
+
+        var sortDescriptor = Template.instance().sortDescriptor.get();
+        var sortDirection = Template.instance().sortAscending.get() ? 1 : -1;
         studentData.sort(function(student1, student2) {
-            return student1.studentName.localeCompare(student2.studentName);
+            if (sortDescriptor == "studentNameSort") {
+                return (student1.studentName.localeCompare(student2.studentName)) * sortDirection;
+            } else if(sortDescriptor == "assignmentsCompletedSort") {
+                return (student2.assignmentsCompleted - student1.assignmentsCompleted) * sortDirection;
+            } else if(sortDescriptor == "pointsReceivedSort") {
+                return (student2.pointsReceived - student1.pointsReceived) * sortDirection;
+            } else if(sortDescriptor == "overallGradeSort") {
+                //The overall grade is technically a string because the function appends a "%" to it, so we must use localeCompare
+                return (student1.overallGrade.localeCompare(student2.overallGrade)) * sortDirection;
+            }
         });
         return studentData;
+    }
+});
+
+Template.viewAllGrades.events({
+    'click .sortIcon': function(event) {
+        var sortDescriptor = Template.instance().sortDescriptor.get();
+
+        if(event.target.id == sortDescriptor) {
+          Template.instance().sortAscending.set(!Template.instance().sortAscending.get());
+        } else {
+          Template.instance().sortDescriptor.set(event.target.id);
+          Template.instance().sortAscending.set(true);
+        }
     }
 });

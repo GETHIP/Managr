@@ -100,7 +100,6 @@ export function assignmentsMethods() {
 			};
 
 			var studentIdsToAddAssignmentTo = createStudentIdsArray(groupIds, studentIds);
-			console.log("STUDENT IDS: " + studentIdsToAddAssignmentTo);
 
 			//This next case handles the case where an instructor unassigns a student an assignment
 			for(var j = 0; j < originallyCheckedIds.length; j++) {

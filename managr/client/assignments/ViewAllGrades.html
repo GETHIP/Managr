@@ -4,10 +4,10 @@
         <div class="orange-bar">&nbsp;</div>
         <table class="viewAllTable">
             <tr>
-                <th class="tableHeadFormat grades">Student Name &nbsp;<i class="fa fa-sort" aria-hidden="true"></i></th>
-                <th class="tableHeadFormat grades">Assignments Completed &nbsp;<i class="fa fa-sort" aria-hidden="true"></i></th>
-                <th class="tableHeadFormat grades">Points Earned &nbsp;<i class="fa fa-sort" aria-hidden="true"></i></th>
-                <th class="tableHeadFormat grades">Total Grade &nbsp;<i class="fa fa-sort" aria-hidden="true"></i></th>
+                <th class="tableHeadFormat grades">Student Name &nbsp;<i class="fa fa-sort sortIcon" aria-hidden="true" id="studentNameSort"></i></th>
+                <th class="tableHeadFormat grades">Assignments Completed &nbsp;<i class="fa fa-sort sortIcon" aria-hidden="true" id="assignmentsCompletedSort"></i></th>
+                <th class="tableHeadFormat grades">Points Earned &nbsp;<i class="fa fa-sort sortIcon" aria-hidden="true" id="pointsReceivedSort"></i></th>
+                <th class="tableHeadFormat grades">Total Grade &nbsp;<i class="fa fa-sort sortIcon" aria-hidden="true" id="overallGradeSort"></i></th>
             </tr>
             {{#each students}}
             <tr class="tableRowFormat">

@@ -296,6 +296,10 @@ header {
   background-color: #FEF1DE !important;
 }
 
+.sortIcon {
+  cursor: pointer;
+}
+
 .tableHeadFormatStudent {
   background-color: #fcb040;
   padding: 2% 0% 2% 0%;
