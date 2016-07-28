@@ -1,5 +1,6 @@
 <template name="newUser">
 	{{#if isInstructor}}
+	<div class="marginContainer">
     <form class="newAccountForm">
         <div class="newAccountContainer">
             <div class="sectionFormDiv createUser">Create a New User</div>
@@ -16,7 +17,7 @@
                 <p>Verify Password: <input name="verify" class="verify" type="password"></p>
             </div>
             <div class="questionDiv createUser">
-                <p> 
+                <p>
                     Select a role: <br>
                     <select name="role">
                         <option value="Student">Student</option>
@@ -24,7 +25,7 @@
                     </select>
                 </p>
             </div>
-			
+
             <div class="sectionFormDiv createUser">&nbsp;</div>&nbsp;
         </div>
 		<div class="container-fluid">
@@ -39,6 +40,7 @@
 			</div>
 		</div>
     </form>
+	</div>
     <!-- <button class="buttonStyle cancelUserCreate">Cancel</button> -->
 	{{else}}
 		{{> accessDenied}}
