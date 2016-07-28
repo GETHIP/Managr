@@ -36,6 +36,9 @@ Template.groups.helpers({
             }
             formattedGroups.push(formattedGroup);
         }
+        formattedGroups.sort(function(group1, group2) {
+            return group1.name.localeCompare(group2.name);
+        });
         return formattedGroups;
     }
 });
@@ -50,7 +53,7 @@ Template.groups.events({
     'click .editGroup': function(event) {
         event.preventDefault();
         const target = event.target;
-        
+
         FlowRouter.go("/groups/edit/" + target.id);
     },
     'click .deleteGroup': function(event) {
