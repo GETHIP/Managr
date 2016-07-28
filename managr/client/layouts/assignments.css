@@ -593,13 +593,13 @@ header {
   overflow-y: hidden;
 }
 .modal-footer.assignment {
-  padding: 3px 10px;
+  padding: 10px 10px;
   color: black;
-  height: 3em;
+  height: 5em;
 }
 
 .modal.fade.assignment {
-  height: 10em;
+  height: 11em;
 }
 
 .modal-title.assignment {

@@ -6,8 +6,7 @@
 .aboutMe {
   background-color: white;
   width: 100%;
-  margin-bottom: 2%;
-  padding-bottom: 2em;
+  margin-bottom: 1em;
   padding-left: 2em;
   text-align: left;
   box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26);
@@ -16,7 +15,7 @@
 }
 
 .aboutMe.edit {
-  padding: 5%; 
+  padding: 5%;
 }
 
 .profileEdit {
@@ -27,14 +26,14 @@
   float: left;
   display: inline-block;
   width: 45%;
-  margin-bottom: .75%; 
+  margin-bottom: .75%;
 }
 
 .questionDiv.right {
   margin-left: 10%;
 }
 
- 
+
 .questionDiv label {
   font-size: 15px;
   /*font-weight: bold;*/
@@ -73,7 +72,7 @@
 }
 
 .questionDiv input:focus {
-  border-color: 0397d7;  
+  border-color: 0397d7;
 }
 
 .assignmentHeader{
@@ -85,18 +84,19 @@ text-align: left;
   width: 49%;
   float: right;
   background-color: #0397d7;
+  margin-top: 2em;
 }
 
 .buttonStyle.profileBack {
   width: 49%;
   float: left;
   background-color: #0397d7;
+  margin-top: 2em;
 }
 
 .buttonStyle.editAttendance {
   width: 100%;
   background-color: #0397d7;
-  margin-bottom: 5%;
 }
 
 .buttonStyle.proWide {
@@ -143,12 +143,5 @@ text-align: left;
 }
 
 .attendTableTitle.blue {
-  background-color: #11b5fc; 
+  background-color: #11b5fc;
 }
-
-
-
-
-
-
-
