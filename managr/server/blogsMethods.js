@@ -50,9 +50,9 @@ export function blogsMethods() {
 			});
 		},
 		'deleteComment': function(id, index) {
-			var comments = Posts.findOne({"_id": id, authorId: Meteor.user()._id}).comments;
+			var comments = Posts.findOne({"_id": id}).comments;
 			var correctId = comments[index].authorId;
-			if(correctId == Meteor.userId() || Roles.userIsInRole(Meteor.user()._id, "instructor")){
+			if(currentUserOrInstructor(correctId)) {
 				comments.splice(index, 1);
 				Posts.update({"_id": id}, {$set : {comments : comments}});
 			}

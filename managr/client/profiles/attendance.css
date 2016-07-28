@@ -1,3 +1,4 @@
+
 .attendTable.attend th {
   background-color: #f58028;
   padding-top: 1.5%;
@@ -41,4 +42,9 @@
 
 .attendTableTitle.extMargin {
   margin-bottom: 6%;
+}
+
+.marginContainer {
+  margin-left: 5%;
+  margin-right: 5%;
 }

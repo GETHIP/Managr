@@ -1,6 +1,6 @@
 <template name="attendanceUpdate">
-  <div class="marginContainer">
   {{#if currentUserOrInstructor userParam}}
+  <div class="marginContainer">
   <h1 class="titleProfile">Attendance</h1>
   <div class="blueBar orange">&nbsp;</div>
   <div class="attendTableTitle"> Weeks
@@ -106,8 +106,11 @@
       <button type="submit" class="buttonStyle updateAttendance">Update Attendance</button>
     </form>
   </div>
+  </div>
   {{else}}
   {{> accessDenied}}
   {{/if}}
-  </div>
+
+
+
 </template>

@@ -207,7 +207,7 @@ export function profilesMethods() {
 				username: generateUsername(data.name),
 				password: generatePassword(data.name)
 			});
-			Roles.addUsersToRoles(data.id, 'Student');
+			Roles.addUsersToRoles(data.id, 'student');
 			Student.insert({
 				"name": data.name,
 				"userId": data.id,

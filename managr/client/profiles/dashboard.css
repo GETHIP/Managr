@@ -2,7 +2,10 @@
     /*display: block;*/
     width: 100%;
 }
-
+.marginContainer {
+  margin-left: 5%;
+  margin-right: 5%;
+}
 .dashTable {
   margin-top: 2%;
   border-collapse: collapse;
@@ -151,21 +154,21 @@
 }
 
 .blueBar.black {
-	background-color: #333333; 
+	background-color: #333333;
 }
 
 .buttonStyle.newAccount:hover {
-	background-color: black; 
+	background-color: black;
 }
 
 .sectionFormDiv.createUser {
 	margin: 0;
-	margin-bottom: 2%; 
+	margin-bottom: 2%;
 }
 
 .questionDiv.createUser input:focus {
-  border-color: black;  
-} 
+  border-color: black;
+}
 
 .questionDiv.createUser p {
 	padding: 0;

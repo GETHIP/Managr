@@ -32,7 +32,12 @@ var wordNumbers = ["zero", "one", "two", "three", "four", "five", "six",
 
 Template.attendanceUpdate.helpers({
 	userParam: function() {
-		return FlowRouter.getParam("id");
+		var student = Student.findOne({_id: FlowRouter.getParam("id")});
+		if (student == undefined) {
+			return undefined;
+		} else {
+			return student.userId;
+		}
 	},
 	attendance: function() {
 		let userId = FlowRouter.getParam("id");
