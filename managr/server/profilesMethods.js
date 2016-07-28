@@ -234,5 +234,11 @@ export function profilesMethods() {
 		 'updateStudent': function(id, data){
 		 	Student.update({_id: id},{$set: data});
 		 },
+		'updateAttendance':function(id, attendance) {
+			if (!currentUserOrInstructor(id)) {
+				return;
+			}
+			Student.update({userId: id}, { $set: { attendance: attendance } });
+		}
 	});
 }
