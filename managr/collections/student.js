@@ -39,6 +39,7 @@ var Assignment = new SimpleSchema({
     },
     link: {
       type: String,
+      regEx: SimpleSchema.RegEx.Url,
       optional: true,
       label: "Link"
     }
