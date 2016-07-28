@@ -22,7 +22,10 @@ Template.attendanceUpdate.events({
 				data.push(false);
 			}
 		}
-		Student.update({_id: userId},{$set: {attendance: data}});
+		var student = Student.findOne({_id: userId});
+		if (student != undefined) {
+			Meteor.call('updateAttendance', student.userId, data);
+		}
 		FlowRouter.go("/profile/" + FlowRouter.getParam("id"));
 	}
 });

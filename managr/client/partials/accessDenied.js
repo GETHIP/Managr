@@ -3,7 +3,6 @@ Template.accessDenied.onCreated(function() {
 	var inst = Template.instance();
 	Meteor.subscribe("dummyUsers", {
 		onReady: function() {
-			console.log("Ready");
 			inst.ready.set(true);
 		}
 	});
