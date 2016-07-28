@@ -13,18 +13,19 @@
               <th class="tableHeadFormatStudent check">Status</th>
               <th class="tableHeadFormatStudent">Title</th>
               <th class="tableHeadFormatStudent">Due Date</th>
-              <th class="tableHeadFormatStudent">Points Possible</th>
-              <th class="tableHeadFormatStudent">Points Received</th>
+              <th class="tableHeadFormatStudent">Points</th>
               <th class="tableHeadFormatStudent">Instructor</th>
+              <th class="tableHeadFormatStudent">GitHub Link</th>
           </tr>
           {{#each assignments}}
             <tr class="tableRowFormat" onclick="FlowRouter.go('{{url}}')">
-              <td class="tableDataFormatStudent check">{{status}}</td>
+              <td class="tableDataFormatStudent">{{status}}</td>
               <td class="tableDataFormatStudent"><div class="overflowText student">{{title}}</div></td>
               <td class="tableDataFormatStudent">{{dueDate}}</td>
-              <td class="tableDataFormatStudent">{{pointsPossible}}</td>
-              <td class="tableDataFormatStudent">{{pointsReceived}}</td>
+              <td class="tableDataFormatStudent">{{pointsReceived}} / {{pointsPossible}}</td>
               <td class="tableDataFormatStudent">{{assigner}}</td>
+              <td class="tableDataFormatStudent">{{Link}}<i class="fa fa-external-link" aria-hidden="true"></i></td>
+
             </tr>
             {{/each}}
         </table>
