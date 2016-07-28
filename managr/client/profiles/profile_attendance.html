@@ -1,5 +1,6 @@
 <template name="profileAttendance">
 	{{#if isInstructor}}
+	<div class="marginContainer">
     <div class="">
         <h1 class="titleProfile attend">Attendance Overview</h1>
         <div class="blueBar orange">&nbsp;</div>
@@ -42,6 +43,7 @@
             </table>
         </div>
     </div>
+	</div>
 	{{else}}
 		{{> accessDenied}}
 	{{/if}}

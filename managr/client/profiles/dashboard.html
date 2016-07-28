@@ -1,5 +1,6 @@
 <template name="dashboard">
 	{{#if isInstructor}}
+	  <div class="marginContainer">
     <h1 class="titleDashboard">Dashboard</h1>
     <div class="blueBar black">&nbsp;</div>
     <div class="dashboardContainer">
@@ -52,8 +53,8 @@
 			</div>
 		</div>
     </div>
+	</div>
 	{{else}}
 		{{> accessDenied}}
 	{{/if}}
 </template>
-
