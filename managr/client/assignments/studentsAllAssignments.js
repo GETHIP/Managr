@@ -25,8 +25,8 @@ var getStatus = function(studentAssignment, assignment) {
 }
 
 var getCompletedAssignmentLink = function(studentAssignment) {
-    var link = "";
-    if(studentAssignment.completed) {
+    var link = undefined;
+    if(studentAssignment.completed && studentAssignment.link != "") {
         link = studentAssignment.link;
     }
     return link;

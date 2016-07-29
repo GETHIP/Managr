@@ -48,7 +48,7 @@ export function assignmentsMethods() {
 				}
 			}
 		},
-		'createAssignment':function(title, description, dueDate, pointsPossible, groupIds, studentIds) {
+		'createAssignment':function(title, description, dueDate, pointsPossible, studentIds) {
 			if (!isInstructor()) {
 				return;
 			}
@@ -60,9 +60,9 @@ export function assignmentsMethods() {
 				dateAssigned: new Date(),
 				pointsPossible: pointsPossible
 			});
-			Meteor.call("addEmptyAssignmentToStudents", assignmentId, groupIds, studentIds);
+			Meteor.call("addEmptyAssignmentToStudents", assignmentId, studentIds);
 		},
-		'addEmptyAssignmentToStudents':function(assignmentId, groupIds, studentIds) {
+		'addEmptyAssignmentToStudents':function(assignmentId, studentIds) {
 			 if (!isInstructor()) {
 				 return;
 			 }
@@ -73,15 +73,13 @@ export function assignmentsMethods() {
 				 completed: false
 			 };
 
-			 var studentIdsToAddAssignmentTo = createStudentIdsArray(groupIds, studentIds);
-
-			 for(var i = 0; i < studentIdsToAddAssignmentTo.length; i++) {
-				 var assignments = Student.findOne({_id: studentIdsToAddAssignmentTo[i]}).assignments;
+			 for(var i = 0; i < studentIds.length; i++) {
+				 var assignments = Student.findOne({_id: studentIds[i]}).assignments;
 			 	 if(assignments == undefined) {
 				 	 assignments = [];
 				 }
 				 assignments.push(emptyAssignment);
-				 Student.update({_id: studentIdsToAddAssignmentTo[i]},
+				 Student.update({_id: studentIds[i]},
 				 {
 				   $set: {assignments: assignments}
 				 });
@@ -89,7 +87,7 @@ export function assignmentsMethods() {
 		},
 		//originallyCheckedIds are the studentIds that originally had the assignment, we will use this to compare to
 		//new studentIds and be able to remove the students taht no longer need it
-		'updateAssignment':function(assignmentId, title, description, dueDate, pointsPossible, groupIds, studentIds, originallyCheckedIds) {
+		'updateAssignment':function(assignmentId, title, description, dueDate, pointsPossible, studentIds, originallyCheckedIds) {
 			var assignment = Assignments.findOne({_id: assignmentId});
 			var assigner = Instructor.findOne({userId: Meteor.user()._id}).name;
 
@@ -99,12 +97,10 @@ export function assignmentsMethods() {
 				completed: false
 			};
 
-			var studentIdsToAddAssignmentTo = createStudentIdsArray(groupIds, studentIds);
-
 			//This next case handles the case where an instructor unassigns a student an assignment
 			for(var j = 0; j < originallyCheckedIds.length; j++) {
-				if(studentIdsToAddAssignmentTo.indexOf(originallyCheckedIds[j]) == -1) {
-					//We must remove the studentId originallyCheckedIds[j] because its not in the studentIdsToAddAssignmentTo
+				if(studentIds.indexOf(originallyCheckedIds[j]) == -1) {
+					//We must remove the studentId originallyCheckedIds[j] because its not in the studentIds
 					var student = Student.findOne({_id: originallyCheckedIds[j]});
 					if(student == undefined) {
 						continue;
@@ -126,8 +122,8 @@ export function assignmentsMethods() {
 			}
 
 			//Next we add the assignment to those that don't have it
-			for(var i = 0; i < studentIdsToAddAssignmentTo.length; i++) {
-				var student = Student.findOne({_id: studentIdsToAddAssignmentTo[i]});
+			for(var i = 0; i < studentIds.length; i++) {
+				var student = Student.findOne({_id: studentIds[i]});
 				if(student == undefined) {
 					continue;
 				}

@@ -17,58 +17,29 @@ export function groupsMethods() {
       Groups.remove(groupId);
     },
 
-    'createGroup': function(groupName, groupIds, studentIds) {
+    'createGroup': function(groupName, studentIds) {
       if(!isInstructor()) {
         return;
       }
 
-			var studentIdsArray = createStudentIdsArray(groupIds, studentIds);
 
       Groups.insert({
         name: groupName,
-        studentIds: studentIdsArray
+        studentIds: studentIds
       });
     },
 
-		'updateGroup': function(groupId, groupName, groupIds, studentIds) {
+		'updateGroup': function(groupId, groupName, studentIds) {
 			if(!isInstructor()) {
 				return;
 			}
 
-			var studentIdsArray = createStudentIdsArray(groupIds, studentIds);
-
 			Groups.update({_id: groupId}, {
 				$set: {
 					name: groupName,
-					studentIds: studentIdsArray
+					studentIds: studentIds
 				}
       });
 		}
 	});
-}
-
-export function createStudentIdsArray(groupIds, studentIds) {
-	var studentIdsArray = [];
-	//First add all students from the groups
-	for(var i = 0; i < groupIds.length; i++) {
-		var group = Groups.findOne({_id: groupIds[i]});
-		if(group == undefined) {
-			continue;
-		}
-
-		var studentIdsInGroup = group.studentIds;
-		for(var j = 0; j < studentIdsInGroup.length; j++) {
-			if(studentIdsArray.indexOf(studentIdsInGroup[j]) == -1) {
-				studentIdsArray.push(studentIdsInGroup[j]);
-			}
-		}
-	}
-
-	//Now add all the students that are just standalone
-	for(var i = 0; i < studentIds.length; i++) {
-		if(studentIdsArray.indexOf(studentIds[i]) == -1) {
-			studentIdsArray.push(studentIds[i]);
-		}
-	}
-	return studentIdsArray;
 }

@@ -19,15 +19,15 @@
       <p class="noIndent assignmentFormFormat"><b>Assign Students:</b></p>
       <div class="selectStudents">
         <p class="noIndent">Groups:</p>
-        {{#each group in groups}}
-          <label for="group{{group.id}}"><input type="checkbox" checked="{{group.checked}}" id="group{{group.id}}"/> {{group.name}}</label>
+        {{#each groups}}
+          <label for="{{id}}"><input type="checkbox" class="groupCheckBox" checked="{{checked}}" id="{{id}}"/> {{name}}</label>
         {{/each}}
 
         <hr />
 
         <p class="noIndent">Students:</p>
-        {{#each student in students}}
-          <label for="student{{student.id}}"><input type="checkbox" checked="{{student.checked}}" id="student{{student.id}}"/> {{student.name}}</label>
+        {{#each students}}
+          <label for="{{id}}"><input type="checkbox" checked="{{checked}}" id="{{id}}"/> {{name}}</label>
         {{/each}}
       </div>
     </div>
