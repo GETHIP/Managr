@@ -100,7 +100,7 @@ header {
   font-size: 40px;
   display: inline-block;
   margin-top: 1%;
-  width: 100%;
+  /* width: 100%; */
 }
 
 @media screen and (max-width: 980px) {
@@ -610,13 +610,14 @@ header {
 }
 
 .buttonStyle.groups {
-  width: 10%;
+   width: 10%;
    float: right;
    padding: 1%;
    margin-top: 1%;
    background-color: #fcb040;
    margin-right: 5%;
    margin-bottom: -5%;
+   /* margin-bottom: 100px; */
  }
  .groups:hover {
    background-color: #FF9C0A;
