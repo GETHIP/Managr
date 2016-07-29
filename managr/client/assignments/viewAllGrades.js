@@ -90,7 +90,7 @@ var getOverallGrade = function(student) {
     }
 
     var overallGrade = pointsReceived / pointsPossible * 100;
-    return overallGrade.toFixed(2) + "%";
+    return overallGrade.toFixed(2);
 }
 
 Template.viewAllGrades.helpers({
@@ -117,8 +117,7 @@ Template.viewAllGrades.helpers({
             } else if(sortDescriptor == "pointsReceivedSort") {
                 return (student2.pointsReceived - student1.pointsReceived) * sortDirection;
             } else if(sortDescriptor == "overallGradeSort") {
-                //The overall grade is technically a string because the function appends a "%" to it, so we must use localeCompare
-                return (student1.overallGrade.localeCompare(student2.overallGrade)) * sortDirection;
+                return (student2.overallGrade - student1.overallGrade) * sortDirection;
             }
         });
         return studentData;
