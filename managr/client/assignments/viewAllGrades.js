@@ -57,9 +57,15 @@ var getPointsPossible = function(student) {
 
 //This method is slightly more complex than what would be expected because we must account for overdue assignments as well
 var getOverallGrade = function(student) {
-    if(getPointsPossible(student) <= 0) return "N/A";
+    if(getPointsPossible(student) <= 0){
+        return "N/A";
+    }
+
     var numberOfCompleted = getAssignmentsCompleted(student);
-    if(numberOfCompleted <= 0 && getPointsReceived(student) <= 0) return "N/A";
+    if(numberOfCompleted <= 0 && getPointsReceived(student) <= 0) {
+        return "N/A";
+    }
+
     if(numberOfCompleted > 0) {
         //This will catch if all the assignments have been completed, but not yet graded
         var truePointsReceived = getTruePointsReceived(student);
@@ -74,11 +80,12 @@ var getOverallGrade = function(student) {
     var pointsPossible = 0;
     for(var i = 0; i < studentAssignments.length; i++) {
         var assignment = Assignments.findOne({_id: studentAssignments[i].assignmentId});
+
         //If it's overdue then we just add pointsPossible because the student hasn't marked it as completed and therefore has received no score, but it's late so we count it as a zero
-        if(assignment.dueDate < today && !studentAssignments[i].completed) {
+        if(assignment.dueDate.getTime() < today.getTime() && !studentAssignments[i].completed && studentAssignments[i].pointsReceived < 0) {
             pointsPossible += assignment.pointsPossible;
         } else {
-            if(studentAssignments[i].pointsReceived > 0) {
+            if(studentAssignments[i].pointsReceived >= 0) {
                 pointsReceived += studentAssignments[i].pointsReceived;
                 pointsPossible += assignment.pointsPossible;
             }

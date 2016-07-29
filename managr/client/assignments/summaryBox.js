@@ -105,10 +105,10 @@ Template.SummaryBox.helpers({
         for(var i = 0; i < studentAssignments.length; i++) {
             var assignment = Assignments.findOne({_id: studentAssignments[i].assignmentId});
             //If it's overdue then we just add pointsPossible because the student hasn't marked it as completed and therefore has received no score, but it's late so we count it as a zero
-            if(assignment.dueDate < today && !studentAssignments[i].completed) {
+            if(assignment.dueDate < today && !studentAssignments[i].completed && studentAssignments[i].pointsReceived < 0) {
                 pointsPossible += assignment.pointsPossible;
             } else {
-                if(studentAssignments[i].pointsReceived > 0) {
+                if(studentAssignments[i].pointsReceived >= 0) {
                     pointsReceived += studentAssignments[i].pointsReceived;
                     pointsPossible += assignment.pointsPossible;
                 }
