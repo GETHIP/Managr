@@ -13,6 +13,25 @@ var formatPointsReceived = function(pointsReceived) {
     return pointsReceived;
 }
 
+var getStatus = function(studentAssignment, assignment) {
+    var status = "Incomplete";
+    var today = new Date();
+    if(studentAssignment.completed) {
+        status = "Complete";
+    } else if(assignment.dueDate < today) {
+        status = "Late";
+    }
+    return status;
+}
+
+var getCompletedAssignmentLink = function(studentAssignment) {
+    var link = "";
+    if(studentAssignment.completed) {
+        link = studentAssignment.link;
+    }
+    return link;
+}
+
 // Provides the table template with all the listed assignments
 Template.studentsAllAssignments.helpers({
     assignments: function() {
@@ -28,22 +47,15 @@ Template.studentsAllAssignments.helpers({
 
             assignmentUrl = "/assignments/single/" + assignment._id;
 
-            var status = "Incomplete";
-            var today = new Date();
-            if(studentAssignments[i].completed) {
-                status = "Complete";
-            } else if(assignment.dueDate < today) {
-                status = "Late";
-            }
-
             formattedAssignment = {
                 title: assignment.title,
                 dueDate: assignment.dueDate.getMonth() + "/" + assignment.dueDate.getDate() + "/" +  assignment.dueDate.getFullYear(),
                 assigner: assignment.assigner,
-                status: status,
+                status: getStatus(studentAssignments[i], assignment),
                 pointsPossible: assignment.pointsPossible,
                 pointsReceived: formatPointsReceived(studentAssignments[i].pointsReceived),
-                url: assignmentUrl
+                url: assignmentUrl,
+                completedAssignmentLink: getCompletedAssignmentLink(studentAssignments[i])
             }
             formattedAssignments.push(formattedAssignment);
         }
