@@ -239,6 +239,14 @@ export function profilesMethods() {
 				return;
 			}
 			Student.update({userId: id}, { $set: { attendance: attendance } });
+		},
+		'updateProfilePicture':function(id, picture) {
+			var student = Student.findOne({_id: id});
+			if (student.userId == Meteor.userId()) {
+				Student.update({_id: id, userId: Meteor.userId()}, { $set: { picture: picture }});
+			} else if (isInstructor()) {
+				Student.update({_id: id}, { $set: { picture: picture }});
+			}
 		}
 	});
 }
