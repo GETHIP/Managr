@@ -127,6 +127,29 @@ Template.reports.events({
 
 Template.reports.helpers({
   reports: function(){
+	var report = Session.get("reports");
+	return Student.find({}).map((student) => {
+		if (report == "tShirtSizeReport") {
+			student.report = student.tshirtSize;
+		} else if (report == "emailReport") {
+			student.report = student.email;
+		} else if (report == "nameReport") {
+			student.report = student.name;
+		} else if (report == "ageReport") {
+			student.report = student.age;
+		} else if (report == "schoolReport") {
+			student.report = student.school;
+		} else if (report == "addressReport") {
+			var address = student.address.street;
+			address += " " + student.address.city;
+			address += " " + student.address.state;
+			address += " " + student.address.zipCode;
+			student.report = address;
+		} else {
+			student.report = "All Fields";
+		}
+		return student;
+	});
     let students = Student.find({});
     let array = [];
     let checked = Session.get("checked");

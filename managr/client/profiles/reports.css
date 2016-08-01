@@ -1,11 +1,23 @@
-.reportsTable {
+.reportsRow {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+table.reportsTable {
   min-width: 90% !important;
   max-width: 90% !important;
-  margin: 70px auto !important;
+	margin-left: 70px;
+	margin-right: 70px;
+}
+thead.reportsTable {
+	background-color: #0397d7;
+	color: white;
+}
+td.reportsTable {
+	width: 50%;
 }
 
 .buttonBottom {
-  margin-bottom: inherit;
   text-align: center;
   margin: 0 auto;
 }
