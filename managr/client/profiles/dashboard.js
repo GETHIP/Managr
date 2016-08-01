@@ -60,9 +60,44 @@ Template.dashboard.events({
 		};
 		fileReader.readAsText(e.target.files[0]);
 	},
-    'click .deleteUserButton'(e) {
+    'click .deleteUserButton':function(e) {
         var user = Meteor.users.findOne({username: e.target.id});
 		console.log(user);
 		Modal.show('deleteUserModal', user);
-    }
+    },
+	'click #dummyCSVButton':function(e) {
+		var fields = [
+			"Name",
+			"School",
+			"Age",
+			"Email",
+			"Description",
+			"Grade",
+			"GetHipYear",
+			"PhoneNumber",
+			"Blog",
+			"Github",
+			"TShirtSize",
+			"Street",
+			"City",
+			"State",
+			"ZipCode",
+			"Parent 1",
+			"Parent 2",
+			"Strength 1",
+			"Strength 2",
+			"Strength 3",
+			"Strength 4",
+			"Strength 5",
+			"EP 10 1",
+			"EP 10 2",
+			"EP 10 3",
+			"EP 10 4"
+		];
+		var columns = fields.join(",");
+		console.log(columns);
+		let csv = Papa.unparse({ fields: fields });
+		csv = new Blob([csv], { type: 'text/csv' } );
+		saveAs(csv, "Students.csv");
+	}
 });

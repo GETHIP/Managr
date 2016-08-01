@@ -36,6 +36,18 @@ function makeObjectKeysLowercase(obj) {
 	return lowercaseObj;
 }
 
+function pushIfValid(arr, value) {
+	if (value != undefined) {
+		arr.push(value);
+	}
+}
+
+function padEmptyStrings(arr, length) {
+	while (arr.length < length) {
+		arr.push("");
+	}
+}
+
 function populateStudentObject(student) {
 
 	//We assume all keys are lowercase.
@@ -61,76 +73,85 @@ function populateStudentObject(student) {
 	if (student.email == undefined) {
 		student.email = "none@none";
 	}
-	/*
-	if (student.parentnames == undefined) {
-		student.parentnames = ["none", "none"]
-	}
-	*/
+
+	var parentNames = [];
+	pushIfValid(student["Parent 1"]);
+	pushIfValid(student["Parent 2"]);
+	padEmptyStrings(parentNames, 2);
+	student["parentnames"] = parentNames;
 	
-	//See comment below about strengths field.
-	student.parentnames = ["none", "none"];
+	if (student["description"] == undefined) {
+		student["description"] = "none";
+	}
+
+	if (student["grade"] == undefined) {
+		student["grade"] = 0;
+	}
+
+	if (student["gethipyear"] == undefined) {
+		student["gethipyear"] = 0;
+	}
+
+	if (student["phonenumber"] == undefined) {
+		student["phonenumber"] = "none";
+	}
+
+	if (student["blog"] == undefined) {
+		student["blog"] = "none";
+	}
+
+	var strengths = [];
+	for (var i = 1; i <= 5; i++) {
+		pushIfValid(strengths, student["Strength " + i]);
+	}
+	padEmptyStrings(strengths, 5);
+	student["strengths"] = strengths;
 	
-	if (student.description == undefined) {
-		student.description = "none";
+	//It doesn't make sense to supply a value for attendance, so
+	//we just overwrite whatever is there.
+	student["attendance"] = [false, false, false, false, false, false, false, false, false, false, false, false]
+
+	if (student["github"] == undefined) {
+		student["github"] = "none";
 	}
 
-	if (student.grade == undefined) {
-		student.grade = 0;
+	if (student["tshirtsize"] == undefined) {
+		student["tshirtsize"] = "none";
 	}
-
-	if (student.gethipyear == undefined) {
-		student.gethipyear = 0;
-	}
-
-	if (student.phonenumber == undefined) {
-		student.phonenumber = "none";
-	}
-
-	if (student.blog == undefined) {
-		student.blog = "none";
-	}
-	/*
-	if (student.strengths == undefined) {
-		student.strengths = ["Achiever", "Activator", "Analytical", "Arranger", "Competition"];
-	}
-	*/
 	
-	//We can't insert a student into the database if the strengths are not an array,
-	//but I'm not sure how to parse an array from a CSV file (or what format that would
-	//even be in), so we're setting a default value that ignores whatever came in.
-	student.strengths = ["Achiever", "Activator", "Analytical", "Arranger", "Competition"];
-	if (student.attendance == undefined) {
-		student.attendance = [false, false, false, false, false, false, false, false, false, false, false, false]
+	var ep10 = [];
+	for (var i = 1; i <= 4; i++) {
+		pushIfValid(ep10, student["EP 10 " + i]);
+	}
+	padEmptyStrings(ep10, 4);
+	student["ep10"] = ep10;
+
+	if (student["picture"] == undefined) {
+		student["picture"] = "none";
 	}
 
-	if (student.github == undefined) {
-		student.github = "none";
+	var address = {
+		"street": "none",
+		"city": "none",
+		"state": "none",
+		"zipCode": 0
+	};
+	if (student["street"] != undefined) {
+		address["street"] = student["street"];
 	}
-
-	if (student.tshirtsize == undefined) {
-		student.tshirtsize = "none";
+	if (student["city"] != undefined) {
+		address["city"] = student["city"];
 	}
-	/*
-	if (student.ep10 == undefined) {
-		student.ep10 = [undefined];
+	if (student["state"] != undefined) {
+		address["state"] = student["state"];
 	}
-	*/
-	
-	//See comment above about strengths field.
-	student.ep10 = [undefined];
-
-	if (student.picture == undefined) {
-		student.picture = "none";
-	}
-
-	if (student.address == undefined) {
-		student.address = {
-			street: "none",
-			zipCode: 0,
-			city: "none",
-			state: "none"
+	if (student["zipcode"] != undefined) {
+		if (student["zipcode"] != "") {
+			address["zipCode"] = student["zipcode"];
 		}
 	}
+	student.address = address;
+	
 	//No message means no error.
 	return "";
 }
@@ -212,13 +233,13 @@ export function profilesMethods() {
 				return false;
 			}
 			data = makeObjectKeysLowercase(data);
+			console.log(data);
 			var errorMessage = populateStudentObject(data);
 			if (errorMessage != "") {
 				console.log(errorMessage);
 				return errorMessage;
 			}
-			console.log(generateUsername(data.name));
-			console.log("Data: ", data);
+
 			data.id = Accounts.createUser({
 				username: generateUsername(data.name),
 				password: generatePassword(data.name)
@@ -244,12 +265,12 @@ export function profilesMethods() {
 				"picture": data.picture,
 				"address": data.address,
 				"assignments": []
-			});
+			}, { removeEmptyStrings: false });
 			return errorMessage;
 		},
-		 'updateStudent': function(id, data){
-		 	Student.update({_id: id},{$set: data});
-		 },
+		'updateStudent': function(id, data){
+			Student.update({_id: id},{$set: data});
+		},
 		'updateAttendance':function(id, attendance) {
 			if (!currentUserOrInstructor(id)) {
 				return;
@@ -265,4 +286,5 @@ export function profilesMethods() {
 			}
 		}
 	});
+	
 }
