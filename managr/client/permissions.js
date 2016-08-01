@@ -1,4 +1,4 @@
-import { isStudent, isInstructor, userIsValid, currentUserOrInstructor } from '../lib/permissions.js';
+import { isStudent, isInstructor, userIsValid, currentUserOrInstructor, isCurrentUser } from '../lib/permissions.js';
 
 UI.registerHelper("isStudent", function() {
   return isStudent();
@@ -11,4 +11,7 @@ UI.registerHelper("userIsValid", function() {
 });
 UI.registerHelper("currentUserOrInstructor", function(id) {
   return currentUserOrInstructor(id);
+});
+UI.registerHelper("isCurrentUser", function(id) {
+	return isCurrentUser(id);
 });

@@ -31,7 +31,11 @@
                         </select>
  -->
                     </td>
-                    <td><button class="buttonStyle deleteUserButton" id="{{username}}">Delete</button></td>
+                    <td>
+						{{#unless isCurrentUser _id}}
+							<button class="buttonStyle deleteUserButton" id="{{username}}">Delete</button>
+						{{/unless}}
+					</td>
                 </tr>
 				{{/each}}
             </tbody>
