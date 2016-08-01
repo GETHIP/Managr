@@ -61,11 +61,15 @@ function populateStudentObject(student) {
 	if (student.email == undefined) {
 		student.email = "none@none";
 	}
-
+	/*
 	if (student.parentnames == undefined) {
 		student.parentnames = ["none", "none"]
 	}
-
+	*/
+	
+	//See comment below about strengths field.
+	student.parentnames = ["none", "none"];
+	
 	if (student.description == undefined) {
 		student.description = "none";
 	}
@@ -85,11 +89,16 @@ function populateStudentObject(student) {
 	if (student.blog == undefined) {
 		student.blog = "none";
 	}
-
+	/*
 	if (student.strengths == undefined) {
 		student.strengths = ["Achiever", "Activator", "Analytical", "Arranger", "Competition"];
 	}
-
+	*/
+	
+	//We can't insert a student into the database if the strengths are not an array,
+	//but I'm not sure how to parse an array from a CSV file (or what format that would
+	//even be in), so we're setting a default value that ignores whatever came in.
+	student.strengths = ["Achiever", "Activator", "Analytical", "Arranger", "Competition"];
 	if (student.attendance == undefined) {
 		student.attendance = [false, false, false, false, false, false, false, false, false, false, false, false]
 	}
@@ -101,10 +110,14 @@ function populateStudentObject(student) {
 	if (student.tshirtsize == undefined) {
 		student.tshirtsize = "none";
 	}
-
+	/*
 	if (student.ep10 == undefined) {
 		student.ep10 = [undefined];
 	}
+	*/
+	
+	//See comment above about strengths field.
+	student.ep10 = [undefined];
 
 	if (student.picture == undefined) {
 		student.picture = "none";
