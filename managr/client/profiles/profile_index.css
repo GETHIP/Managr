@@ -16,10 +16,12 @@
 
 .aboutMe.edit {
   padding: 5%;
+  padding-top: 24px;
 }
 
 .profileEdit {
   padding: 0;
+  padding-top: 24px;
 }
 
 .questionDiv {
