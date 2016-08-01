@@ -1,6 +1,7 @@
 <template name="profileEdit">
   {{#with data}}
   {{#if currentUserOrInstructor userId}}
+  <div class= "marginContainer">
   <form class="profileEdit">
     <div class="aboutMe edit">
       <div class="">
@@ -121,6 +122,7 @@
     <button type="submit" class="buttonStyle proWide" style="background-image:none;">Update About Me</button>
   </div>
   </form>
+</div>
   {{else}}
 	{{> accessDenied}}
   {{/if}}
