@@ -129,6 +129,9 @@ export function profilesMethods() {
 			if (!isInstructor()) {
 				return;
 			}
+			if (userId == Meteor.userId()) {
+				return;
+			}
 			Meteor.users.remove({_id: userId});
 
 			//Only one of these will actually have any affect, because
