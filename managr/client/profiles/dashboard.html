@@ -55,6 +55,25 @@
 		<label class="buttonStyle cancelUserCreate rightFloatingButton" for="usersFile">Import Students</label>
 		<input class="inputfile" id="usersFile" type="file"/>
     </div>
+    <h1 class="titleDashboard">
+			Importing Instructions:
+		</h1>
+		<div class="blueBar black">&nbsp;</div>
+		To bulk import students, make an excel document saved as a CSV file where the students are rows, and attributes of the students are columns. The order and quantity of students and attributes does not matter, however the columns must be labled exactly as one or more of the following: 
+		<ul>
+			<li>"name"</li>
+			<li>"school"</li>
+			<li>"age"</li>
+			<li>"email"</li>
+			<li>"description"</li>
+			<li>"grade"</li>
+			<li>"gethipyear"</li>
+			<li>"phonenumber"</li>
+			<li>"blog"</li>
+			<li>"github"</li>
+			<li>"tshirtsize"</li>
+		</ul>
+		once completed, save as a CSV file and you're ready to import!
 	</div>
 	{{else}}
 		{{> accessDenied}}
