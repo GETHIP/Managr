@@ -8,7 +8,7 @@
 </template>
 
 <template name="aboutme">
-    <div class="marginContainer">
+    <div class="marginContainer profilesCard">
         <h1><strong> About Me </strong> </h1>
 
         {{#with student}}
@@ -129,6 +129,28 @@
 </template> -->
 
 <template name="editAboutMe">
-    <button type="button" class="buttonStyle profileBack">Back</button>
-    <button type="button" class="buttonStyle editAboutMe">Edit About Me</button>
+	<table class="editAboutMeTable">
+		<thead>
+			<tr>
+				<th></th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="editTableRowLeft"><button type="button" class="buttonStyle profileBack">Back</button></td>
+				<td class="editTableRowRight"><button type="button" class="buttonStyle editAboutMe">Edit About Me</button></td>
+			</tr>
+		</tbody>
+	</table>
+<!-- 	<div class="container-fluid">
+		<div class="row">
+			<div class="col-xs-6">
+				<button type="button" class="buttonStyle profileBack">Back</button>
+			</div>
+			<div class="col-xs-6">
+				<button type="button" class="buttonStyle editAboutMe">Edit About Me</button>
+			</div>
+		</div>
+	</div> -->
 </template>
