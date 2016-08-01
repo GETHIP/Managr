@@ -84,16 +84,16 @@ text-align: left;
 
 .buttonStyle.editAboutMe {
   float: right;
-  width: 44%;
-  margin-right: 5%;
+  width: 42%;
+  margin-right: 7%;
   background-color: #0397d7;
   margin-top: 1em;
 }
 
 .buttonStyle.profileBack {
   float: left;
-  width: 44%;
-  margin-left: 5%;
+  width: 42%;
+  margin-left: 7%;
   background-color: #0397d7;
   margin-top: 1em;
 }
