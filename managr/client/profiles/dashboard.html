@@ -33,7 +33,13 @@
                     </td>
                     <td>
 						{{#unless isCurrentUser _id}}
-							<button class="buttonStyle deleteUserButton" id="{{username}}">Delete</button>
+							<button class="buttonStyle deleteUserButton realDeleteUserButton" id="{{username}}">Delete</button>
+							{{#if showArchiveButton}}
+								<button class="buttonStyle deleteUserButton" id="archiveButton">Archive</button>
+							{{/if}}
+							{{#if showUnarchiveButton}}
+								<button class="buttonStyle deleteUserButton" id="unarchiveButton">Unarchive</button>
+							{{/if}}
 						{{/unless}}
 					</td>
                 </tr>
