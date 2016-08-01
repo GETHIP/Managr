@@ -42,12 +42,6 @@ blogsSection.route('/blogs/:blog_id', {
 		BlazeLayout.render(blogLayout, {content: 'postPage'})
 	}
 });
-blogsSection.route('/testBlogs', {
-	name: 'testBlogs',
-	action: function() {
-		BlazeLayout.render('testInsertData');
-	}
-})
 blogsSection.route('/managePosts', {
 	name: 'managePosts',
 	action : function(params) {
