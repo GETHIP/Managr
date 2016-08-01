@@ -10,9 +10,8 @@ Template.profileEdit.onCreated(function() {
 Template.profileEdit.events({
 	'change .uploadInput'(e) {
 		e.preventDefault();
-
 		var reader = new FileReader();
-		var file = document.querySelector(input[type=file]).files[0];
+		var file = document.querySelector("input[type=file]").files[0];
 		var result;
 
 		reader.addEventListener("load", function () {
@@ -31,8 +30,9 @@ Template.profileEdit.events({
                 img.height = canvas.height;
 
                 ctx.drawImage(img, 0, 0, 100, 100);
-
-                Student.update({_id: userId}, {$set: {picture: canvas.toDataURL()}});
+				
+				var studentId = FlowRouter.getParam("id");
+				Meteor.call('updateProfilePicture', studentId, canvas.toDataURL());
             }
 
             img.src = reader.result;
@@ -41,7 +41,6 @@ Template.profileEdit.events({
 
         reader.readAsDataURL(file);
 
-		var userId = FlowRouter.getParam("id");
 	},
 	'submit .profileEdit'(event){
 		event.preventDefault();
