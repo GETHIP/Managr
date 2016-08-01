@@ -81,17 +81,17 @@ text-align: left;
 }
 
 .buttonStyle.editAboutMe {
-  width: 100%;
+  float: right;
+  width: 49%;
   background-color: #0397d7;
-  margin-top: 2em;
-  /* margin-left: 16px; */
+  margin-top: 1em;
 }
 
 .buttonStyle.profileBack {
-  width: 100%;
+  float: left;
+  width: 49%;
   background-color: #0397d7;
-  margin-top: 2em;
-  /* margin-right: 16px; */
+  margin-top: 1em;
 }
 
 .buttonStyle.editAttendance {
@@ -151,7 +151,9 @@ text-align: left;
 	box-shadow: 3px 3px 5px #888888;
 	margin-top: 64px;
 	margin-bottom: 16px;
-	padding: 24px;
+	padding-left: 24px;
+	padding-right: 24px;
+	padding-top: 24px;
 }
 
 .editTableRowLeft {
