@@ -19,14 +19,14 @@
       <div class="selectStudents">
         <p class="noIndent">Groups:</p>
         {{#each groups}}
-          <label for="{{id}}"><input type="checkbox" class="groupCheckBox" id="{{id}}"/> {{name}}</label>
+          <label for="{{id}}"><input type="checkbox" class="groupCheckBox" id="{{id}}" checked="true"/> {{name}}</label>
         {{/each}}
 
         <hr />
 
         <p class="noIndent">Students:</p>
         {{#each students}}
-          <label for="{{id}}"><input type="checkbox" id="{{id}}"/> {{name}}</label>
+          <label for="{{id}}"><input type="checkbox" id="{{id}}" checked="true"/> {{name}}</label>
         {{/each}}
       </div>
     </div>
