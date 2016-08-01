@@ -36,7 +36,7 @@
 				{{/each}}
             </tbody>
         </table>
-		<div class="container-fluid">
+<!-- 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-xs-6">
 					<button class="buttonStyle cancelUserCreate" id="newUserButton">Add new Account</button>
@@ -44,14 +44,12 @@
 				<div class="col-xs-6">
 					<label class="buttonStyle cancelUserCreate" for="usersFile">Import Students</label>
 					<input class="inputfile" id="usersFile" type="file"/>
-<!-- 					{{#if importingStudents}}
-						<input type="file" class="form-control" id="importUsersFile"/>
-					{{else}}
-						<button class="buttonStyle cancelUserCreate" id="importUsersButton">Import Students</button>
-					{{/if}} -->
 				</div>
 			</div>
-		</div>
+		</div> -->
+		<button class="buttonStyle cancelUserCreate leftFloatingButton" id="newUserButton">Add new Account</button>
+		<label class="buttonStyle cancelUserCreate rightFloatingButton" for="usersFile">Import Students</label>
+		<input class="inputfile" id="usersFile" type="file"/>
     </div>
 	</div>
 	{{else}}
