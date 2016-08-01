@@ -1,7 +1,6 @@
 import { Student } from '../../collections/student.js';
 
-function csvDownload(array, name){
-	console.log(array);
+function csvDownload(array, name) {
 	let csv = Papa.unparse(array);
 	csv = new Blob([csv], { type: 'text/csv' } );
 	saveAs(csv, name + ".csv");
@@ -104,25 +103,6 @@ Template.reports.events({
       break;
     }
   },
-		'change #uploadCsv' (event){
-			event.preventDefault();
-			var reader = new FileReader();
-			var file = document.querySelector('#uploadCsv').files[0];
-			var data;
-			reader.readAsText(file);
-			reader.addEventListener("load", function (file) {
-				data = Papa.parse(reader.result);
-				data = data.data;
-				for(i=1;i<data.length-1;i++){
-				    if(data[i][4].indexOf("and") === -1){
-								data[i][4] = [data[i][4]];
-				    }else{
-				    		data[i][4] = data[i][4].split(" and ");
-					  }
-						Meteor.call('addStudent', data[i]);
-				}
-			}, false);
-		}
 });
 
 Template.reports.helpers({
