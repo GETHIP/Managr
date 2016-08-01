@@ -137,15 +137,15 @@
 	background-color: #333333;
 }
 
-.buttonStyle.cancelUserCreate {
-	margin-left: 10px;
-	margin-right: 10px;
-	width: 100%;
+.cancelUserCreate {
+	/* margin-left: 10px; */
+	/* margin-right: 10px; */
+	/* width: 100%; */
 	color: white;
 	background-color: #333333;
 }
 
-.buttonStyle.cancelUserCreate:hover {
+.cancelUserCreate:hover {
 	background-color: black;
 }
 
@@ -196,4 +196,14 @@
 	overflow: hidden;
 	position: absolute;
 	z-index: -1;
+}
+
+.leftFloatingButton {
+	width: 49%;
+	float: left;
+}
+
+.rightFloatingButton {
+	width: 49%;
+	float: right;
 }
