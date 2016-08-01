@@ -1,9 +1,10 @@
 import { Student } from '../../collections/student.js';
 
 function csvDownload(array, name){
-  let csv = Papa.unparse(array);
-  csv = new Blob([csv], { type: 'text/csv' } );
-  saveAs(csv, name + ".csv");
+	console.log(array);
+	let csv = Papa.unparse(array);
+	csv = new Blob([csv], { type: 'text/csv' } );
+	saveAs(csv, name + ".csv");
 }
 
 Template.reports.onCreated(function() {
