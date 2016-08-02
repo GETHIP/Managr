@@ -5,3 +5,10 @@ var GlobalsSchema = new SimpleSchema({
 	}
 });
 Globals.attachSchema(GlobalsSchema);
+Globals.numberOfWeeks = function() {
+	var global = this.findOne({});
+	if (global == undefined) {
+		return undefined;
+	}
+	return global.numberOfWeeks;
+}
