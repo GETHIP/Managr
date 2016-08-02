@@ -1,4 +1,5 @@
 <template name="viewAllGrades">
+    {{#if isInstructor}}
     <div class="marginContainer">
         <h1 class="titleAssignment">Student Grade Overview</h1>
         <div class="orange-bar">&nbsp;</div>
@@ -20,4 +21,7 @@
         </table>
         <a href="/assignments"><button value="Back" class="buttonStyle submitbtn" id="backGradesBtn">Back to Assignments</button></a>
     </div>
+    {{else}}
+        {{>accessDenied}}
+    {{/if}}
 </template>

@@ -42,8 +42,9 @@ Template.profileEdit.events({
         reader.readAsDataURL(file);
 
 	},
-	'submit .profileEdit'(event){
+	'submit .profileEdit'(event) {
 		event.preventDefault();
+		
 		let userId = FlowRouter.getParam("id");
 
 		const email = event.target.email.value;
@@ -72,6 +73,11 @@ Template.profileEdit.events({
 		const ep2 = event.target.ep2.value;
 		const ep3 = event.target.ep3.value;
 		const ep4 = event.target.ep4.value;
+		
+		if (name == "") {
+			Modal.show('missingFields', 'Name field is required.');
+			return;
+		}
 
 		var data = {
 			email: email,
