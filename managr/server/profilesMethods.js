@@ -224,7 +224,8 @@ export function profilesMethods() {
 						"state": "none",
 						"city": "none"
 					},
-					assignments: []
+					"assignments": [],
+					"isArchived": false
 				});
 			}
 		},
@@ -264,7 +265,8 @@ export function profilesMethods() {
 				"ep10": data.ep10,
 				"picture": data.picture,
 				"address": data.address,
-				"assignments": []
+				"assignments": [],
+				"isArchived": false
 			}, { removeEmptyStrings: false });
 			return errorMessage;
 		},
@@ -284,6 +286,15 @@ export function profilesMethods() {
 			} else if (isInstructor()) {
 				Student.update({_id: id}, { $set: { picture: picture }});
 			}
+		},
+		'archiveStudent':function(id, isArchived) {
+			if (!isInstructor()) {
+				return;
+			}
+			//This does nothing if you try to archive, say,
+			//an instructor, so we have no need to verify
+			//that the id is a student.
+			Student.update({ userId: id }, { $set: { isArchived: isArchived } });
 		}
 	});
 	

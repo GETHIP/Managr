@@ -42,7 +42,7 @@ export function publishAll() {
 	});
 
 	Meteor.publish("Student", function() {
-		return Student.find();
+		return Student.find({ isArchived: false });
 	});
 
 	Meteor.publish("Groups", function() {
