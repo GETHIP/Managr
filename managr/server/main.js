@@ -14,6 +14,7 @@ import { blogsMethods } from './blogsMethods.js';
 import { assignmentsMethods } from './assignmentsMethods.js';
 import { profilesMethods } from './profilesMethods.js';
 import { groupsMethods } from './groupsMethods.js';
+import { dashboardMethods } from './dashboardMethods.js';
 
 var fs = Npm.require('fs');
 
@@ -224,6 +225,7 @@ Meteor.startup(() => {
 	assignmentsMethods();
 	profilesMethods();
 	groupsMethods();
+	dashboardMethods();
 
     UploadServer.init({
         tmpDir: process.env.PWD + '/.uploads/tmp',

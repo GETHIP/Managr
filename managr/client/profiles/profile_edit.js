@@ -42,8 +42,9 @@ Template.profileEdit.events({
         reader.readAsDataURL(file);
 
 	},
-	'submit .profileEdit'(event){
+	'submit .profileEdit'(event) {
 		event.preventDefault();
+		
 		let userId = FlowRouter.getParam("id");
 		const email = event.target.email.value;
 		const age = event.target.age.value;
@@ -71,6 +72,11 @@ Template.profileEdit.events({
 		const ep2 = event.target.ep2.value;
 		const ep3 = event.target.ep3.value;
 		const ep4 = event.target.ep4.value;
+		
+		if (name == "") {
+			Modal.show('missingFields', 'Name field is required.');
+			return;
+		}
 
 		var data = {
 			email: email,
@@ -95,31 +101,8 @@ Template.profileEdit.events({
 			parentNames: [parentNames1, parentNames2]
 		};
 
-    var data = {
-      email: email,
-      age: age,
-      school: school,
-      getHipYear: getHipYear,
-      grade: grade,
-      github: github,
-      name: name,
-      description: description,
-      phoneNumber: phoneNumber,
-      tshirtSize: tshirtSize,
-      blog: blog,
-      address: {
-        street: street,
-        city: city,
-        state: state,
-        zipCode: zipCode
-      },
-      strengths: [strength1, strength2, strength3, strength4, strength5],
-      ep10: [ep1, ep2, ep3, ep4],
-      parentNames: [parentNames1, parentNames2]
-    };
-
     //Student.update({_id: userId},{$set: data});
-    Meteor.call('updateStudent',userId, data);
+    Meteor.call('updateStudent', userId, data);
     FlowRouter.go("/profile/" + FlowRouter.getParam("id"));
   }
 });

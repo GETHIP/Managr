@@ -85,7 +85,8 @@ Template.dashboard.events({
     },
 	'click #dummyCSVButton':function(e) {
 		var fields = [
-			"Name",
+			"FirstName",
+			"LastName",
 			"School",
 			"Age",
 			"Email",
