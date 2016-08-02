@@ -68,10 +68,17 @@ Template.dashboard.events({
 		var templateInstance = Template.instance();
 		fileReader.onload = function(result) {
 			var csvArray = csvToArray(result.target.result, ',');
+			var alreadyFailed = false;
 			for (i in csvArray) {
 				Meteor.call('addStudent', csvArray[i], function(error, result) {
-					if (result != "") {
-						alert("Failed to create students...");
+					if (result != "" && !alreadyFailed) {
+						alreadyFailed = true;
+						Modal.show('warningModal', {
+							title: 'Error',
+							text: 'Loading users failed. Some users might not have loaded correctly.',
+							confirmText: 'Dismiss',
+							confirmCallback: () => {}
+						});
 					}
 				});
 			}
