@@ -3,13 +3,15 @@
 	  <div class="marginContainer">
     <h1 class="titleDashboard">Dashboard</h1>
     <div class="blueBar black">&nbsp;</div>
-	<div class="dashboardContainer">
+	<div class="formdashboardContainer">
 		<form id="numberOfWeeksForm">
-			<label for="numberOfWeeks">Number of Weeks</label>
-			<input type="text" name="numberOfWeeks" value="{{numberOfWeeks}}"/>
-			<button type="submit" class="buttonStyle deleteUserButton">Change</button>
-		</form>
-		<button class="buttonStyle deleteUserButton">Reset Attendance</button>
+			<div class="sectionFormDiv numberOfWeeks">GETHIP Number of Weeks</div>
+			<div class="questionDiv numberOfWeeks">
+					<p>Number of Weeks: <input name="numberOfWeeks" class="numberOfweeks" type="text"></p>
+			</div>
+			<button type="submit" class="buttonStyle deleteFormButton">Change</button>
+		<button type="submit" class="buttonStyle deleteResetButton">Reset Attendance</button>
+	</form>
 	</div>
     <div class="dashboardContainer">
         <table class="dashTable">
