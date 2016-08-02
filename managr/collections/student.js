@@ -122,6 +122,9 @@ var StudentSchema = new SimpleSchema({
         type: [Assignment],
         label: "Assignments",
         optional: true
-    }
+    },
+	isArchived: {
+		type: Boolean
+	},
 });
 Student.attachSchema(StudentSchema);

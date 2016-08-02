@@ -28,10 +28,12 @@ td.reportsTable {
   margin: 0 auto;
   background-color: #0397d7 !important;
   background-image: none;
+  margin-top: 2%;
 }
 .reportsSelect{
   display: inline-block;
   margin: 0 auto;
+  margin-top: 2%;
 }
 .form-group{
   margin-left: 50px;
