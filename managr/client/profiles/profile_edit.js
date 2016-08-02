@@ -30,7 +30,7 @@ Template.profileEdit.events({
                 img.height = canvas.height;
 
                 ctx.drawImage(img, 0, 0, 100, 100);
-				
+
 				var studentId = FlowRouter.getParam("id");
 				Meteor.call('updateProfilePicture', studentId, canvas.toDataURL());
             }
@@ -45,6 +45,7 @@ Template.profileEdit.events({
 	'submit .profileEdit'(event){
 		event.preventDefault();
 		let userId = FlowRouter.getParam("id");
+
 		const email = event.target.email.value;
 		const age = event.target.age.value;
 		const school = event.target.school.value;
@@ -95,35 +96,10 @@ Template.profileEdit.events({
 			parentNames: [parentNames1, parentNames2]
 		};
 
-    var data = {
-      email: email,
-      age: age,
-      school: school,
-      getHipYear: getHipYear,
-      grade: grade,
-      github: github,
-      name: name,
-      description: description,
-      phoneNumber: phoneNumber,
-      tshirtSize: tshirtSize,
-      blog: blog,
-      address: {
-        street: street,
-        city: city,
-        state: state,
-        zipCode: zipCode
-      },
-      strengths: [strength1, strength2, strength3, strength4, strength5],
-      ep10: [ep1, ep2, ep3, ep4],
-      parentNames: [parentNames1, parentNames2]
-    };
-
-    //Student.update({_id: userId},{$set: data});
     Meteor.call('updateStudent',userId, data);
-    FlowRouter.go("/profile/" + FlowRouter.getParam("id"));
+    FlowRouter.go("/profile/" + userId);
   }
 });
-
 
 Template.profileEdit.helpers({
   data: function() {
