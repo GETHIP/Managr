@@ -9,7 +9,7 @@ import { Globals } from '../collections/globals.js';
 import { isStudent, isInstructor, userIsValid, currentUserOrInstructor, nameOfUser } from '../lib/permissions.js';
 import { generateUsername, generatePassword, makeObjectKeysLowercase,
 		pushIfValid, padEmptyStrings, populateStudentObject } from './dashboardUtilities.js';
-
+		
 export function dashboardMethods() {
 
 	Meteor.methods({
@@ -88,7 +88,6 @@ export function dashboardMethods() {
 				return false;
 			}
 			data = makeObjectKeysLowercase(data);
-			console.log("Data: ", data);
 			var errorMessage = populateStudentObject(data);
 			if (errorMessage != "") {
 				console.log(errorMessage);
@@ -150,7 +149,7 @@ export function dashboardMethods() {
 				if (students[i].attendance.length > numberOfWeeks) {
 					students[i].attendance.splice(numberOfWeeks);
 				}
-				Student.update({_id: students[i]._id}, { $set: { numberOfWeeks: students[i].numberOfWeeks } });
+				Student.update({_id: students[i]._id}, { $set: { attendance: students[i].attendance } });
 			}
 		},
 		'resetAttendance':function() {
@@ -165,7 +164,7 @@ export function dashboardMethods() {
 			for (var i = 0; i < numberOfWeeks; i++) {
 				attendance.push(false);
 			}
-			Student.update({}, { $set: { attendance: attendance } });
+			Student.update({}, { $set: { attendance: attendance } }, { multi: true });
 		}
 	});
 }

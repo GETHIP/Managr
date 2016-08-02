@@ -87,9 +87,11 @@ Meteor.startup(() => {
 	allowAll();
 	publishAll();
 
-	Globals.insert({
-		numberOfWeeks: 12
-	});
+	if (Globals.find().count() < 1) {
+		Globals.insert({
+			numberOfWeeks: 12
+		});
+	}
 	
 	Meteor.methods({
 		'testCreatePosts': function() {

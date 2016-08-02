@@ -166,9 +166,10 @@ Template.dashboard.events({
 				text: 'Are you sure you want to change the number of weeks (this does not reset attendance)?',
 				confirmText: 'Confirm',
 				confirmCallback: function(callbackData) {
+					console.log(callbackData);
 					Meteor.call('updateNumberOfWeeks', callbackData);
 				},
-				callbackData: event.target.value
+				callbackData: event.target.numberOfWeeks.value
 			});
 		}
 	},
