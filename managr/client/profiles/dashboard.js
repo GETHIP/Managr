@@ -1,4 +1,5 @@
 import { Student } from '../../collections/student.js';
+import { Instructor } from '../../collections/instructor.js';
 import { nameOfUser } from '../../lib/permissions.js';
 
 Template.dashboard.onCreated(function() {
@@ -47,12 +48,14 @@ Template.dashboard.helpers({
 		return Template.instance().importingStudents.get();
 	},
 	showArchiveButton: function() {
-		return Student.findOne({ userId: this._id }) != undefined;
+		return Student.findOne({ userId: this._id }) != undefined && Instructor.findOne({ userId: this._id }) == undefined;
 	},
 	showUnarchiveButton: function() {
 		//We don't publish the student documents of archived users.
 		//Hence, Student.findOne will return undefined.
-		return Student.findOne({ userId: this._id }) == undefined;
+		//We also want to make sure the user is not an instructor,
+		//because instructors don't exist in the students collection.
+		return Student.findOne({ userId: this._id }) == undefined && Instructor.findOne({ userId: this._id }) == undefined;
 	}
 });
 

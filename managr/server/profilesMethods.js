@@ -291,6 +291,9 @@ export function profilesMethods() {
 			if (!isInstructor()) {
 				return;
 			}
+			//This does nothing if you try to archive, say,
+			//an instructor, so we have no need to verify
+			//that the id is a student.
 			Student.update({ userId: id }, { $set: { isArchived: isArchived } });
 		}
 	});
