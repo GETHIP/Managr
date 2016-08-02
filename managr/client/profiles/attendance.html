@@ -6,9 +6,9 @@
   <div class="attendTableTitle"> Weeks
     <form class="attendanceUpdate">
       <table class= "attendTable attend">
-        <!-- <thead id="attendance"> -->
+        <thead>
           <tr>
-            <th>One</th>
+<!--             <th>One</th>
             <th>Two</th>
             <th>Three</th>
             <th>Four</th>
@@ -19,10 +19,13 @@
             <th>Nine</th>
             <th>Ten</th>
             <th>Eleven</th>
-            <th>Twelve</th>
+            <th>Twelve</th> -->
+			{{#each headers}}
+				<th>{{this}}</th>
+			{{/each}}
           </tr>
-        <!-- </thead> -->
-        <!-- <tbody class="choice"> -->
+        </thead>
+        <tbody>
           <tr>
             {{#with attendance}}
             <td>
@@ -99,7 +102,7 @@
             </td>
             {{/with}}
           </tr>
-        <!-- </tbody> -->
+        </tbody>
       </table>
 
       <button type="submit" class="buttonStyle updateAttendBack">Cancel</button>

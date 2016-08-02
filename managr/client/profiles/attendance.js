@@ -1,10 +1,13 @@
 import { Student } from '../../collections/student.js';
 
+const attendanceColumnsPerPage = 6;
+
 Template.attendanceUpdate.onCreated(function() {
   var self = this;
   self.autorun(function() {
     self.subscribe('Student');
   });
+  Template.instance().attendancePage = new ReactiveVar(0);
 });
 
 Template.attendanceUpdate.events({
@@ -44,7 +47,23 @@ Template.attendanceUpdate.helpers({
 	},
 	attendance: function() {
 		let userId = FlowRouter.getParam("id");
-		let attendanceBoolean = Student.findOne({"_id": userId}).attendance;
+		let attendanceArray = Student.findOne({"_id": userId}).attendance;
+		var attendance = [];
+		var attendancePage = Template.instance().attendancePage.get();
+		var startIndex = attendanceColumnsPerPage * attendancePage;
+		for (var i = startIndex; i < startIndex && i < attendanceArray.length; i++) {
+			var attendanceObj = {};
+			if (attendanceArray[i]) {
+				attendanceObj.selectedPresent = "selected";
+				attendanceObj.selectedAbsent = "";
+			} else {
+				attendanceObj.selectedPresent = "";
+				attendanceObj.selectedAbsent = "selected";
+			}
+			attendance.push(attendanceObj);
+		}
+		return attendance;
+		/*
 		let attendance = {};
 		for (i = 1; i < 13; i++) {
 			if (attendanceBoolean[i - 1] === true) {
@@ -56,5 +75,14 @@ Template.attendanceUpdate.helpers({
 			}
 		};
 		return attendance;
+		*/
+	},
+	headers: function() {
+		var attendancePage = Template.instance().attendancePage.get();
+		var headers = [];
+		for (var i = 1; i <= attendanceColumnsPerPage; i++) {
+			headers.push(i + attendanceColumnsPerPage * attendancePage);
+		}
+		return headers;
 	}
 });
