@@ -124,6 +124,11 @@ Template.viewAllGrades.helpers({
             } else if(sortDescriptor == "pointsReceivedSort") {
                 return (student2.pointsReceived - student1.pointsReceived) * sortDirection;
             } else if(sortDescriptor == "overallGradeSort") {
+                if(student1.overallGrade == "N/A") {
+                    return 1;
+                }  else if(student2.overallGrade == "N/A") {
+                    return -1;
+                }
                 return (student2.overallGrade - student1.overallGrade) * sortDirection;
             }
         });
