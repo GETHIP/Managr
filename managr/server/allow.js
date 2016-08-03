@@ -8,6 +8,7 @@ import { Groups } from '../collections/groups.js';
 import { Drafts } from '../collections/drafts.js';
 import { userIsStudent, userIsInstructor, userIdIsValid } from '../lib/permissions.js';
 import { isStudent, isInstructor, userIsValid, currentUserOrInstructor, nameOfUser } from '../lib/permissions.js';
+import { Globals } from '../collections/globals.js';
 
 export function allowAll() {
 
@@ -77,6 +78,18 @@ export function allowAll() {
 	});
 
 	Posts.allow({
+		'insert': function(userId, doc) {
+			return false;
+		},
+		'update': function(userId, doc) {
+			return false;
+		},
+		'remove': function(userId, doc) {
+			return false;
+		}
+	});
+
+	Globals.allow({
 		'insert': function(userId, doc) {
 			return false;
 		},

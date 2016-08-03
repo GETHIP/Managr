@@ -6,10 +6,11 @@ import { Instructor } from '../collections/instructor.js';
 import { Student } from '../collections/student.js';
 import { Groups } from '../collections/groups.js';
 import { Drafts } from '../collections/drafts.js';
+import { Globals } from '../collections/globals.js';
 
 export function publishAll() {
 
-	Meteor.publish('Assignments', function() {
+	Meteor.publish("Assignments", function() {
         return Assignments.find();
     });
 
@@ -49,15 +50,18 @@ export function publishAll() {
 		return Groups.find();
 	});
 
-	Meteor.publish('userData', function() {
+	Meteor.publish("userData", function() {
 		return Meteor.users.find({});
 	});
 
-	Meteor.publish('dummyUsers', function() {
+	Meteor.publish("dummyUsers", function() {
 		//We don't want to actually return any data,
 		//we just want to force the accessDenied template
 		//to wait for the users to load from the server.
 		return Meteor.users.find({_id: ""});
 	});
 
+	Meteor.publish("Globals", function() {
+		return Globals.find({});
+	});
 }

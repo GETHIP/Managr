@@ -12,6 +12,8 @@ Template.warningModal.helpers({
 
 Template.warningModal.events({
 	'click .deleteCommentButton': function(event){
-		Template.instance().data.confirmCallback(Template.instance().data.callbackData);
+		if (_.has(Template.instance().data, 'confirmCallback')) {
+			Template.instance().data.confirmCallback(Template.instance().data.callbackData);
+		}
 	}
 })

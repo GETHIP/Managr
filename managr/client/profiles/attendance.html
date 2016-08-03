@@ -3,103 +3,37 @@
   <div class="marginContainer">
   <h1 class="titleProfile">Attendance</h1>
   <div class="blueBar orange">&nbsp;</div>
-  <div class="attendTableTitle"> Weeks
+  <div class="attendTableTitle">
+  
+	{{> attendanceWeeksHeader buttonClass="buttonStyle editCaretButton"}}
+	<!-- <button class="buttonStyle updateAttendBack" id="leftCaretButton"><i class="fa fa-caret-left" aria-hidden="true"></i></button>
+	<p>Weeks</p>
+	<b>utton class="buttonStyle updateAttendBack" id="rightCaretButton"><i class="fa fa-caret-right" aria-hidden="true"></i></button-->
+	
     <form class="attendanceUpdate">
-      <table class= "attendTable attend">
-        <!-- <thead id="attendance"> -->
+      <table class="attendTable attend">
+        <thead>
           <tr>
-            <th>One</th>
-            <th>Two</th>
-            <th>Three</th>
-            <th>Four</th>
-            <th>Five</th>
-            <th>Six</th>
-            <th>Seven</th>
-            <th>Eight</th>
-            <th>Nine</th>
-            <th>Ten</th>
-            <th>Eleven</th>
-            <th>Twelve</th>
+			{{#each headers}}
+				<th>{{this}}</th>
+			{{/each}}
           </tr>
-        <!-- </thead> -->
-        <!-- <tbody class="choice"> -->
+        </thead>
+        <tbody>
           <tr>
-            {{#with attendance}}
+            {{#each attendance}}
             <td>
-              <select class="form-control" id="week1">
-                <option {{oneone}}>Present</option>
-                <option {{onetwo}}>Absent</option>
+              <select class="form-control" id="weekSelector">
+                <option {{selectedPresent}}>Present</option>
+                <option {{selectedAbsent}}>Absent</option>
               </select>
             </td>
-            <td>
-              <select class="form-control" id="week2">
-                <option {{twoone}}>Present</option>
-                <option {{twotwo}}>Absent</option>
-              </select>
-            </td>
-            <td>
-              <select class="form-control" id="week3">
-                <option {{threeone}}>Present</option>
-                <option {{threetwo}}>Absent</option>
-              </select>
-            </td>
-            <td>
-              <select class="form-control" id="week4">
-                <option {{fourone}}>Present</option>
-                <option {{fourtwo}}>Absent</option>
-              </select>
-            </td>
-            <td>
-              <select class="form-control" id="week5">
-                <option {{fiveone}}>Present</option>
-                <option {{fivetwo}}>Absent</option>
-              </select>
-            </td>
-            <td>
-              <select class="form-control" id="week6">
-                <option {{sixone}}>Present</option>
-                <option {{sixtwo}}>Absent</option>
-              </select>
-            </td>
-            <td>
-              <select class="form-control" id="week7">
-                <option {{sevenone}}>Present</option>
-                <option {{seventwo}}>Absent</option>
-              </select>
-            </td>
-            <td>
-              <select class="form-control" id="week8">
-                <option {{eightone}}>Present</option>
-                <option {{eighttwo}}>Absent</option>
-              </select>
-            </td>
-            <td>
-              <select class="form-control" id="week9">
-                <option {{nineone}}>Present</option>
-                <option {{ninetwo}}>Absent</option>
-              </select>
-            </td>
-            <td>
-              <select class="form-control" id="week10">
-                <option {{tenone}}>Present</option>
-                <option {{tentwo}}>Absent</option>
-              </select>
-            </td>
-            <td>
-              <select class="form-control" id="week11">
-                <option {{elevenone}}>Present</option>
-                <option {{eleventwo}}>Absent</option>
-              </select>
-            </td>
-            <td>
-              <select class="form-control" id="week12">
-                <option {{twelveone}}>Present</option>
-                <option {{twelvetwo}}>Absent</option>
-              </select>
-            </td>
-            {{/with}}
+			{{/each}}
+			{{#each emptyAttendance}}
+				<td></td>
+			{{/each}}
           </tr>
-        <!-- </tbody> -->
+        </tbody>
       </table>
 
       <button type="submit" class="buttonStyle updateAttendBack">Cancel</button>

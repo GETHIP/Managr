@@ -1,6 +1,7 @@
 import { Student } from '../../collections/student.js';
 import { Instructor } from '../../collections/instructor.js';
 import { nameOfUser } from '../../lib/permissions.js';
+import { Globals } from '../../collections/globals.js';
 
 Template.dashboard.onCreated(function() {
   var self = this;
@@ -8,6 +9,7 @@ Template.dashboard.onCreated(function() {
     self.subscribe('Student');
     self.subscribe('Instructor');
     self.subscribe('userData');
+	self.subscribe('Globals');
   });
   Template.instance().importingStudents = new ReactiveVar(false);
 });
@@ -56,6 +58,9 @@ Template.dashboard.helpers({
 		//We also want to make sure the user is not an instructor,
 		//because instructors don't exist in the students collection.
 		return Student.findOne({ userId: this._id }) == undefined && Instructor.findOne({ userId: this._id }) == undefined;
+	},
+	numberOfWeeks: function() {
+		return Globals.numberOfWeeks();
 	}
 });
 
@@ -145,5 +150,37 @@ Template.dashboard.events({
 			isArchived: false
 		});
 		// Meteor.call('archiveStudent', this._id, false);
+	},
+	'submit #numberOfWeeksForm':function(event) {
+		event.preventDefault();
+		if (event.target.value <= 0) {
+			Modal.show('warningModal', {
+				title: 'Error',
+				text: 'Number of weeks must be positive.',
+				confirmText: 'Dismiss.'
+			});
+			return;
+		} else {
+			Modal.show('warningModal', {
+				title: 'Confirmation',
+				text: 'Are you sure you want to change the number of weeks (this does not reset attendance)?',
+				confirmText: 'Confirm',
+				confirmCallback: function(callbackData) {
+					console.log(callbackData);
+					Meteor.call('updateNumberOfWeeks', callbackData);
+				},
+				callbackData: event.target.numberOfWeeks.value
+			});
+		}
+	},
+	'click #resetAttendanceButton':function(event) {
+		Modal.show('warningModal', {
+			title: 'Confirmation',
+			text: 'Are you sure you want to reset the attendance of all (including archived) students?',
+			confirmText: 'Confirm',
+			confirmCallback: function(callbackData) {
+				Meteor.call('resetAttendance');
+			}
+		});
 	}
 });
