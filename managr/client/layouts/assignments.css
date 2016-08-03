@@ -10,6 +10,9 @@ body {
   background: #f3f3f3;
   overflow-x: hidden;
 }
+.clickable {
+    cursor: pointer;
+}
 .summaryDiv {
   width: 100%;
   border: none;

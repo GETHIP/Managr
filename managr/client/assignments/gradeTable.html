@@ -9,11 +9,11 @@
     </tr>
     {{#each students}}
       <tr>
-        <td class="gradeTableWidthOverride">{{status}}</td>
-        <td>{{studentName}}</td>
-        <td><p><input class="pointsReceievedField" type="number" step="any" id="{{studentId}}" value="{{pointsReceived}}" onclick="document.execCommand('selectAll',false,null)"> / {{pointsPossible}}</p></td>
-        <td>{{studentPercent}}</td>
-        <td class="gradeTableWidthOverride">
+        <td class="gradeTableWidthOverride clickable" id="{{studentId}}">{{status}}</td>
+        <td class="clickable" id="{{studentId}}">{{studentName}}</td>
+        <td id="{{studentId}}"><p><input class="pointsReceievedField" type="number" step="any" id="{{studentId}}" value="{{pointsReceived}}" onclick="document.execCommand('selectAll',false,null)"> / {{pointsPossible}}</p></td>
+        <td class="clickable" id="{{studentId}}">{{studentPercent}}</td>
+        <td class="gradeTableWidthOverride" id="{{studentId}}">
           <a href="{{assignmentUrl}}" target="_blank">
             <i class="fa fa-external-link" aria-hidden="true"></i>
           </a>

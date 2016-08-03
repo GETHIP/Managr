@@ -46,6 +46,10 @@ Template.gradeTable.events({
 				Meteor.call("updateGradeForStudent", studentId, assignmentId, newGrade);
 
 				setInputText(input, newGrade);
+		},
+		'click .clickable'(event) {
+				event.preventDefault();
+				FlowRouter.go("/assignments/grades/student/" + event.target.id);
 		}
 });
 
