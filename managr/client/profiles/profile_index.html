@@ -59,32 +59,27 @@
 
 <template name="attendanceBody">
     <div>
-        <h1 class="titleProfile">Attendance</h1>
-        <div class="attendTableTitle blue"> Weeks
+		<h1 class="titleProfile">Attendance</h1>
+        <div class="attendTableTitle blue">
+			{{> attendanceWeeksHeader buttonClass="buttonStyle caretButton"}}
             <table class="attendTable">
-                <!-- <thead class="color"> -->
+                <thead>
                     <tr class="attendanceSize">
-                        <th>One</th>
-                        <th>Two</th>
-                        <th>Three</th>
-                        <th>Four</th>
-                        <th>Five</th>
-                        <th>Six</th>
-                        <th>Seven</th>
-                        <th>Eight</th>
-                        <th>Nine</th>
-                        <th>Ten</th>
-                        <th>Eleven</th>
-                        <th>Twelve</th>
+						{{#each headers}}
+							<th>{{this}}</th>
+						{{/each}}
                     </tr>
-                <!-- </thead> -->
-                <!-- <tbody> -->
+                </thead>
+                <tbody>
                     <tr class="attendanceSize">
                         {{#each attendance}}
-                        <td>{{this}}</td>
+							<td>{{text}}</td>
+                        {{/each}}
+                        {{#each emptyAttendance}}
+							<td></td>
                         {{/each}}
                     </tr>
-                <!-- </tbody> -->
+                </tbody>
             </table>
         </div>
     </div>

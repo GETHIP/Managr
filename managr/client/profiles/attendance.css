@@ -20,8 +20,16 @@
   background-color: #f58028;
 }
 
-.buttonStyle.updateAttendance:hover, .buttonStyle.updateAttendBack:hover  {
+.buttonStyle.updateAttendance:hover, .buttonStyle.updateAttendBack:hover {
   background-color: #e0660a;
+}
+
+.editCaretButton {
+	width: 100%;
+	background-color: #f58028;
+}
+.editCaretButton:hover {
+	background-color: #e0660a;
 }
 
 

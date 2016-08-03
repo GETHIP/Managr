@@ -22,19 +22,6 @@ Template.attendanceUpdate.events({
 	"submit .attendanceUpdate" (event) {
 		event.preventDefault();
 		let userId = FlowRouter.getParam("id");
-		/*
-		let data = [];
-		for (i = 1; i < 13; i++) {
-			let week = event.target["week" + i];
-			let weeks = week.value;
-			if (weeks === "Present" || weeks === true) {
-				data.push(true);
-			}
-			if (weeks === "Absent" || weeks === false) {
-				data.push(false);
-			}
-		}
-		*/
 		var student = Student.findOne({_id: userId});
 		if (student != undefined) {
 			Meteor.call('updateAttendance', student.userId, Template.instance().attendance.get());
@@ -57,9 +44,6 @@ Template.attendanceUpdate.events({
 	}
 });
 
-var wordNumbers = ["zero", "one", "two", "three", "four", "five", "six",
-"seven", "eight", "nine", "ten", "eleven", "twelve"];
-
 Template.attendanceUpdate.helpers({
 	userParam: function() {
 		var student = Student.findOne({_id: FlowRouter.getParam("id")});
@@ -70,46 +54,24 @@ Template.attendanceUpdate.helpers({
 		}
 	},
 	attendance: function() {
+		//This is no longer needed to actually run the function,
+		//but it is needed to maintain reactivity.
 		var attendancePage = Template.instance().attendancePage.get();
 		let attendanceArray = Template.instance().attendance.get();
 		if (attendanceArray == undefined) {
 			return [];
 		}
-		var attendance = [];
-		for (var i = AttendanceUtilities.startIndex(); i < AttendanceUtilities.endIndex() && i < attendanceArray.length; i++) {
-			var attendanceObj = {
-				index: i
-			};
-			if (attendanceArray[i]) {
-				attendanceObj.selectedPresent = "selected";
-				attendanceObj.selectedAbsent = "";
-			} else {
-				attendanceObj.selectedPresent = "";
-				attendanceObj.selectedAbsent = "selected";
-			}
-			attendance.push(attendanceObj);
-		}
-		return attendance;
-		/*
-		let attendance = {};
-		for (i = 1; i < 13; i++) {
-			if (attendanceBoolean[i - 1] === true) {
-				attendance[wordNumbers[i] + "one"] = "selected";
-				attendance[wordNumbers[i] + "two"] = "";
-			} else {
-				attendance[wordNumbers[i] + "one"] = "";
-				attendance[wordNumbers[i] + "two"] = "selected";
-			}
-		};
-		return attendance;
-		*/
+		return AttendanceUtilities.attendance(attendanceArray);
 	},
 	headers: function() {
+		//This is no longer needed to actually run the function,
+		//but it is needed to maintain reactivity.
 		var attendancePage = Template.instance().attendancePage.get();
-		var headers = [];
-		for (var i = AttendanceUtilities.startIndex(); i < AttendanceUtilities.endIndex(); i++) {
-			headers.push(i + 1);
-		}
-		return headers;
+		return AttendanceUtilities.headers();
 	},
+	emptyAttendance: function() {
+		//Force reactivity;
+		var attendancePage = Template.instance().attendancePage.get();
+		return AttendanceUtilities.emptyAttendance();
+	}
 });

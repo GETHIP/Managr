@@ -1,9 +1,11 @@
 import { Student } from '../../collections/student.js';
+import { AttendanceUtilities } from './attendanceUtilities.js';
 
 Template.aboutme.onCreated(function() {
   var self = this;
   self.autorun(function() {
     self.subscribe('Student');
+	self.subscribe('Globals');
   });
 });
 
@@ -27,7 +29,7 @@ Template.aboutme.helpers({
 });
 
 Template.aboutme.events({
-	'click .blogButton'(event){
+	"click .blogButton"(event){
 		let userId = FlowRouter.getParam("id");
 		let blogURL = Student.findOne({"_id": userId}).blog;
 		FlowRouter.go(blogURL);
@@ -41,31 +43,47 @@ Template.aboutme.events({
 	"click .profileBack" (event) {
 		FlowRouter.go("/profiles/");
 	}
-
 });
 
 Template.attendanceBody.onCreated(function() {
   var self = this;
   self.autorun(function() {
     self.subscribe('Student');
+	self.subscribe('Globals');
   });
+  Template.instance().attendancePage = new ReactiveVar(0);
+  AttendanceUtilities.attendancePage = 0;
 });
 
 Template.attendanceBody.helpers({
+	headers: function() {
+		//Force reactivity.
+		var attendancePage = Template.instance().attendancePage.get();
+		return AttendanceUtilities.headers();
+	},
   attendance: function() {
     let userId = FlowRouter.getParam("id");
     let attendance = [];
     let rawAttendance = Student.findOne({"_id": userId}).attendance;
-    for(i in rawAttendance){
-      if(rawAttendance[i] === true){
-        attendance.push("Present");
-      }
-      if(rawAttendance[i] === false){
-        attendance.push("Absent");
-      }
-    }
-    return attendance;
+	//Force reactivity.
+	var attendancePage = Template.instance().attendancePage.get();
+	return AttendanceUtilities.attendance(rawAttendance);
+  },
+  emptyAttendance: function() {
+	var attendancePage = Template.instance().attendancePage.get();
+	return AttendanceUtilities.emptyAttendance();
   }
+});
+
+Template.attendanceBody.events({
+	'click #leftCaretButton':function() {
+		AttendanceUtilities.decrementPage();
+		Template.instance().attendancePage.set(AttendanceUtilities.attendancePage);
+	},
+	'click #rightCaretButton':function() {
+		AttendanceUtilities.incrementPage();
+		Template.instance().attendancePage.set(AttendanceUtilities.attendancePage);
+	}
 });
 
 Template.studentName.onCreated(function() {
@@ -84,100 +102,3 @@ Template.studentName.helpers({
   }
 });
 
-// Template.assignmentsBody.onCreated(function() {
-//   var self = this;
-//   self.autorun(function() {
-//     self.subscribe('Student');
-//   });
-// });
-
-// Template.assignmentsBody.helpers({
-//   assignments: function() {
-//     let userId = FlowRouter.getParam("id");
-//     let assignments = [];
-//     assignments = Student.findOne({
-//       "_id": userId
-//     }).assignments;
-//     for (var i in assignments) {
-
-//       //put the date in the format: Sunday June 4, 2016
-//       var dateAssigned = assignments[i].dateAssigned;
-//       var dueDate = assignments[i].dueDate;
-
-//       assignments[i].dateAssigned = getDay(dateAssigned.getDay()) + ' ' + getMonth(dateAssigned.getMonth()) + ' ' + dateAssigned.getDate() + ', ' + dateAssigned.getFullYear();
-//       assignments[i].dueDate = getDay(dueDate.getDay()) + ' ' + getMonth(dueDate.getMonth()) + ' ' + dueDate.getDate() + ', ' + dueDate.getFullYear();
-
-//       function getDay(day) {
-//         switch (day) {
-//           case 0:
-//           return 'Sunday';
-//           break;
-//           case 1:
-//           return 'Monday';
-//           break;
-//           case 2:
-//           return 'Tuesday';
-//           break;
-//           case 3:
-//           return 'Wednesday';
-//           break;
-//           case 4:
-//           return 'Thursday';
-//           break;
-//           case 5:
-//           return 'Friday';
-//           break;
-//           case 6:
-//           return 'Saturday';
-//           break;
-//         }
-//       }
-
-//       function getMonth(month) {
-//         switch (month) {
-//           case 0:
-//           return 'January';
-//           break;
-//           case 1:
-//           return 'February';
-//           break;
-//           case 2:
-//           return 'March';
-//           break;
-//           case 3:
-//           return 'April';
-//           break;
-//           case 4:
-//           return 'May';
-//           break;
-//           case 5:
-//           return 'June';
-//           break;
-//           case 6:
-//           return 'July';
-//           break;
-//           case 7:
-//           return 'August';
-//           break;
-//           case 8:
-//           return 'September';
-//           break;
-//           case 9:
-//           return 'October';
-//           break;
-//           case 10:
-//           return 'November';
-//           break;
-//           case 11:
-//           return 'December';
-//           break;
-//         }
-//       }
-//     }
-//     return assignments;
-//   }
-// });
-
-Template.aboutme.events({
-
-});

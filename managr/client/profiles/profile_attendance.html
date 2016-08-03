@@ -4,42 +4,30 @@
     <div class="">
         <h1 class="titleProfile attend">Attendance Overview</h1>
         <div class="blueBar orange">&nbsp;</div>
-        <div class="attendTableTitle extMargin"> Weeks
+        <div class="attendTableTitle extMargin">
+			{{> attendanceWeeksHeader buttonClass="buttonStyle editCaretButton"}}
             <table class="attendTableComplete">
                     <tr>
                         <th class="attendSpacingOverride">Name</th>
-                        <th>One</th>
-                        <th>Two</th>
-                        <th>Three</th>
-                        <th>Four</th>
-                        <th>Five</th>
-                        <th>Six</th>
-                        <th>Seven</th>
-                        <th>Eight</th>
-                        <th>Nine</th>
-                        <th>Ten</th>
-                        <th>Eleven</th>
-                        <th>Twelve</th>
+                        {{#each headers}}
+							<th>{{this}}</th>
+						{{/each}}
                         <th class="attendSpacingOverride">Total Present</th>
                     </tr>
-                  {{#EasySearch.Each index=studentIndex}}
+                  <!-- {{#EasySearch.Each index=studentIndex}} -->
+				  {{#each ProfilesTable}}
                     <tr onclick="FlowRouter.go('{{url}}')">
                         <td>{{name}}</td>
-                        <td>{{attendance.[0]}}</td>
-                        <td>{{attendance.[1]}}</td>
-                        <td>{{attendance.[2]}}</td>
-                        <td>{{attendance.[3]}}</td>
-                        <td>{{attendance.[4]}}</td>
-                        <td>{{attendance.[5]}}</td>
-                        <td>{{attendance.[6]}}</td>
-                        <td>{{attendance.[7]}}</td>
-                        <td>{{attendance.[8]}}</td>
-                        <td>{{attendance.[9]}}</td>
-                        <td>{{attendance.[10]}}</td>
-                        <td>{{attendance.[11]}}</td>
+						{{#each attendance}}
+							<td>{{text}}</td>
+						{{/each}}
+                        {{#each emptyAttendance}}
+							<td>{{this}}</td>
+						{{/each}}
                         <td>{{total}}</td>
                     </tr>
-                    {{/EasySearch.Each}}
+					{{/each}}
+                    <!-- {{/EasySearch.Each}} -->
             </table>
         </div>
     </div>

@@ -5,9 +5,10 @@
   <div class="blueBar orange">&nbsp;</div>
   <div class="attendTableTitle">
   
-	<button class="buttonStyle updateAttendBack" id="leftCaretButton"><i class="fa fa-caret-left" aria-hidden="true"></i></button>
+	{{> attendanceWeeksHeader buttonClass="buttonStyle editCaretButton"}}
+	<!-- <button class="buttonStyle updateAttendBack" id="leftCaretButton"><i class="fa fa-caret-left" aria-hidden="true"></i></button>
 	<p>Weeks</p>
-	<button class="buttonStyle updateAttendBack" id="rightCaretButton"><i class="fa fa-caret-right" aria-hidden="true"></i></button>
+	<b>utton class="buttonStyle updateAttendBack" id="rightCaretButton"><i class="fa fa-caret-right" aria-hidden="true"></i></button-->
 	
     <form class="attendanceUpdate">
       <table class="attendTable attend">
@@ -27,6 +28,9 @@
                 <option {{selectedAbsent}}>Absent</option>
               </select>
             </td>
+			{{/each}}
+			{{#each emptyAttendance}}
+				<td></td>
 			{{/each}}
           </tr>
         </tbody>
