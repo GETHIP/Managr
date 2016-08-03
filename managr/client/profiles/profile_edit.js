@@ -24,15 +24,15 @@ Template.profileEdit.events({
 
             img.onload = function() {
 
-                canvas.width = 100;
-                canvas.height = 100;
+                canvas.width = 275;
+                canvas.height = 275;
                 img.width = canvas.width;
                 img.height = canvas.height;
 
-                ctx.drawImage(img, 0, 0, 100, 100);
+                ctx.drawImage(img, 0, 0, 275, 275);
 
-				var studentId = FlowRouter.getParam("id");
-				Meteor.call('updateProfilePicture', studentId, canvas.toDataURL());
+				        var studentId = FlowRouter.getParam("id");
+				        Meteor.call('updateProfilePicture', studentId, canvas.toDataURL());
             }
 
             img.src = reader.result;
@@ -44,7 +44,7 @@ Template.profileEdit.events({
 	},
 	'submit .profileEdit'(event) {
 		event.preventDefault();
-		
+
 		let userId = FlowRouter.getParam("id");
 
 		const email = event.target.email.value;
@@ -73,7 +73,7 @@ Template.profileEdit.events({
 		const ep2 = event.target.ep2.value;
 		const ep3 = event.target.ep3.value;
 		const ep4 = event.target.ep4.value;
-		
+
 		if (name == "") {
 			Modal.show('missingFields', 'Name field is required.');
 			return;
