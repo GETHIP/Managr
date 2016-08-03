@@ -113,19 +113,49 @@ Template.studentSingle.events({
             }
 
             var assignmentId = inputs[i].id;
-            var newGradeString = inputs[i].value;
-            var newGrade;
-            if(isNaN(newGradeString)) {
-                newGrade = -1
-            } else {
-                newGrade = Number(newGradeString);
-            }
+            var newGrade = formatNewGrade(inputs[i].value);
 
             Meteor.call("updateGradeForStudent", student._id, assignmentId, newGrade);
 
-            if(newGrade >= 0) {
-                inputs[i].value = newGrade;
-            }
+            setInputText(inputs[i], newGrade);
         }
-    }
+    },
+		'keyup .pointsReceievedField'(event) {
+				const input = event.target;
+				const assignmentId = input.id;
+				const studentId = FlowRouter.getParam("id");
+
+				//This workaround will prevent the input from default to 0, and will enable a person to leave it blank rather
+				//than having to enter a value
+				var newGrade;
+				if(input.value != "") {
+						newGrade = formatNewGrade(input.value);
+						if(newGrade < 0) {
+								return;
+						}
+				} else {
+						newGrade = -1;
+				}
+
+				Meteor.call("updateGradeForStudent", studentId, assignmentId, newGrade);
+
+				setInputText(input, newGrade);
+		}
 });
+
+
+var setInputText = function(inputField, newGrade) {
+		if(newGrade < 0) {
+				inputField.value = "";
+		} else {
+				inputField.value = newGrade;
+		}
+}
+
+var formatNewGrade = function(newGradeString) {
+		var newGrade = Number(newGradeString);
+		if(isNaN(newGradeString)) {
+				newGrade = -1;
+		}
+		return newGrade;
+}
