@@ -261,14 +261,32 @@
   border-color: black;
 }
 
-.questionDiv.numberOfWeeks p {
-	padding: 0;
-	padding-bottom: .25%;
-}
-
 .questionDiv.numberOfWeeks {
 	width: 50%;
 }
 .numberOfWeeksLabel {
+	padding: 0px;
 	margin-bottom: 4px;
+}
+
+.weeksTable {
+	width: 100%;
+}
+.weeksTableInput {
+	width: 45%;
+	margin-right: 5%;
+}
+.weeksTableButton {
+	width: 20%;
+}
+.weeksTableSpacer {
+	width: 5%;
+}
+button.weeksTable {
+	padding-top: 0.4em;
+	padding-bottom: 0.4em;
+}
+input.weeksTable {
+	margin-bottom: 0px;
+	height: 100%;
 }
