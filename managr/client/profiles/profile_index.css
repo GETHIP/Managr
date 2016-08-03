@@ -28,7 +28,7 @@
   float: left;
   display: inline-block;
   width: 45%;
-  margin-bottom: .75%;
+  /* margin-bottom: .75%; */
 }
 
 .questionDiv.right {

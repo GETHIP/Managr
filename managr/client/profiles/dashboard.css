@@ -272,21 +272,32 @@
 .weeksTable {
 	width: 100%;
 }
+
 .weeksTableInput {
 	width: 45%;
 	margin-right: 5%;
 }
+
 .weeksTableButton {
 	width: 20%;
 }
+
 .weeksTableSpacer {
 	width: 5%;
 }
+
 button.weeksTable {
 	padding-top: 0.4em;
 	padding-bottom: 0.4em;
 }
+
 input.weeksTable {
 	margin-bottom: 0px;
 	height: 100%;
+}
+
+.newUserInputDiv {
+  float: left;
+  display: inline-block;
+  width: 45%;
 }
