@@ -111,14 +111,13 @@ assignmentSection.route('/grades', {
     }
 });
 
-// Spreadsheet of grades
-assignmentSection.route("/edit/grades", {
-    name: "editGrades",
-    action() {
-        BlazeLayout.render(main,{
-            content: "editGrades"
-        });
-    }
+assignmentSection.route("/grades/student/:id", {
+		name: "studentSingle",
+		action() {
+				BlazeLayout.render(main, {
+						content: "studentSingle"
+				});
+		}
 });
 
 profileSection.route('/dashboard', {

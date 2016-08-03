@@ -88,10 +88,11 @@ Template.gradeTable.helpers({
 				}
 
 				var today = new Date();
+				today.setMonth(today.getMonth() + 1);
 				var status = "Incomplete";
 				if(studentAssignments[index].completed) {
 					status = "Completed";
-				} else if(assignment.dueDate < today) {
+				} else if(new Date(assignment.dueDate) < today) {
 					status = "Late";
 				}
 
