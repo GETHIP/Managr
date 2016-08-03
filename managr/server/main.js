@@ -43,33 +43,7 @@ function createDefaultUser() {
 Meteor.startup(() => {
 	// code to run on server at startup
 	createDefaultUser();
-	studentIndex = new EasySearch.Index({
-		name: "studentIndex",
-		collection: Student,
-		fields: ['name','school','email','grade','getHipYear','parentNames'],
-		engine: new EasySearch.Minimongo({
-			transform: function (doc){
-				doc.url = "/profile/" + doc._id;
-				doc.attendanceNumber = 0;
-				for(i in doc.attendance){
-					if(doc.attendance[i] === true){
-						attendanceNumber++;
-						doc.attendance[i] = "Present";
-						doc.attendanceNumber++;
-					}
-					if(doc.attendance[i] === false){
-						doc.attendance[i] = "Absent";
-					}
-				}
-				doc.attendance = doc.attendance.join(" | ");
-				doc.parentNames = doc.parentNames.join(" and ");
-				return doc;
-			}
-		}),
-		permission: function(){
-			return true;
-		}
-	});
+
 	/*
 	userIndex = new EasySearch.Index({
 		name: "userIndex",
