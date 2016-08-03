@@ -109,7 +109,7 @@ text-align: left;
   margin-bottom: 5%;
 }
 
-.buttonStyle.editAttendance:hover, .buttonStyle.profileBack:hover, .buttonStyle.editAboutMe:hover {
+.buttonStyle.editAttendance:hover, .buttonStyle.profileBack:hover, .buttonStyle.editAboutMe:hover, .caretButton:hover {
   background-color: #0274a5;
 }
 
@@ -169,4 +169,8 @@ text-align: left;
 }
 .editAboutMeTable {
 	width: 100%;
+}
+
+.caretButton {
+  background-color: #0397d7;
 }

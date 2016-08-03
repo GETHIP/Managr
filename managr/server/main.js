@@ -15,6 +15,7 @@ import { assignmentsMethods } from './assignmentsMethods.js';
 import { profilesMethods } from './profilesMethods.js';
 import { groupsMethods } from './groupsMethods.js';
 import { dashboardMethods } from './dashboardMethods.js';
+import { Globals } from '../collections/globals.js';
 
 var fs = Npm.require('fs');
 
@@ -86,6 +87,12 @@ Meteor.startup(() => {
 	allowAll();
 	publishAll();
 
+	if (Globals.find().count() < 1) {
+		Globals.insert({
+			numberOfWeeks: 12
+		});
+	}
+	
 	Meteor.methods({
 		'testCreatePosts': function() {
 			var jimId = Meteor.users.findOne({username: "jim"})._id;

@@ -3,6 +3,16 @@
 	  <div class="marginContainer">
     <h1 class="titleDashboard">Dashboard</h1>
     <div class="blueBar black">&nbsp;</div>
+	<div class="formdashboardContainer">
+		<form id="numberOfWeeksForm">
+			<div class="questionDiv numberOfWeeks">
+				<p class="numberOfWeeksLabel">Number of Weeks:</p>
+				<input name="numberOfWeeks" class="numberOfweeks" type="text" value="{{numberOfWeeks}}">
+			</div>
+			<button type="submit" class="buttonStyle deleteFormButton">Change</button>
+			<button type="click" class="buttonStyle deleteResetButton" id="resetAttendanceButton">Reset Attendance</button>
+		</form>
+	</div>
     <div class="dashboardContainer">
         <table class="dashTable">
             <thead>
