@@ -10,7 +10,8 @@ PostsIndex = new EasySearch.Index({
 	collection: Posts,
 	fields: ['title', 'text', 'comments', 'authorName'],
 	defaultSearchOptions: {
-		sortBy: 'date'
+		sortBy: 'date',
+		limit: 1000
 	},
 	engine: new EasySearch.Minimongo({
 	  transform: function(doc){
@@ -44,6 +45,8 @@ studentIndex = new EasySearch.Index({
   name: "studentIndex",
   collection: Student,
   fields: ['name','school','email','grade','getHipYear','parentNames'],
+	defaultLimit: 100,
+	limit: 100,
   engine: new EasySearch.Minimongo({
     transform: function (doc){
       doc.url = "/profile/" + doc._id;
@@ -67,6 +70,9 @@ studentIndex = new EasySearch.Index({
   }),
   permission: function(){
     return true;
+  },
+  defaultSearchOptions: {
+    limit: 1000
   }
 });
 
