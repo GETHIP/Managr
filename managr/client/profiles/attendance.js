@@ -1,19 +1,28 @@
 import { Student } from '../../collections/student.js';
-
-const attendanceColumnsPerPage = 6;
+import { Globals } from '../../collections/globals.js';
+import { AttendanceUtilities } from './attendanceUtilities.js';
 
 Template.attendanceUpdate.onCreated(function() {
-  var self = this;
-  self.autorun(function() {
-    self.subscribe('Student');
-  });
-  Template.instance().attendancePage = new ReactiveVar(0);
+	var self = this;
+	var templateInstance = Template.instance();
+	templateInstance.attendance = new ReactiveVar([]);
+	self.autorun(function() {
+		self.subscribe('Student', function() {
+			templateInstance.attendance.set(Student.findOne({_id: FlowRouter.getParam("id")}).attendance);
+			//Get the template to re-render reactively.
+			templateInstance.attendancePage.set(AttendanceUtilities.attendancePage);
+		});
+		self.subscribe('Globals');
+	});
+	Template.instance().attendancePage = new ReactiveVar(0);
+	AttendanceUtilities.attendancePage = 0;
 });
 
 Template.attendanceUpdate.events({
 	"submit .attendanceUpdate" (event) {
 		event.preventDefault();
 		let userId = FlowRouter.getParam("id");
+		/*
 		let data = [];
 		for (i = 1; i < 13; i++) {
 			let week = event.target["week" + i];
@@ -25,11 +34,26 @@ Template.attendanceUpdate.events({
 				data.push(false);
 			}
 		}
+		*/
 		var student = Student.findOne({_id: userId});
 		if (student != undefined) {
-			Meteor.call('updateAttendance', student.userId, data);
+			Meteor.call('updateAttendance', student.userId, Template.instance().attendance.get());
 		}
+		
 		FlowRouter.go("/profile/" + FlowRouter.getParam("id"));
+	},
+	"change #weekSelector" (event) {
+		var attendance = Template.instance().attendance.get();
+		attendance[this.index] = (event.target.value === "Present" || event.target.value === true);
+		Template.instance().attendance.set(attendance);
+	},
+	"click #leftCaretButton" (event) {
+		AttendanceUtilities.decrementPage();
+		Template.instance().attendancePage.set(AttendanceUtilities.attendancePage);
+	},
+	"click #rightCaretButton" (event) {
+		AttendanceUtilities.incrementPage();
+		Template.instance().attendancePage.set(AttendanceUtilities.attendancePage);
 	}
 });
 
@@ -46,13 +70,16 @@ Template.attendanceUpdate.helpers({
 		}
 	},
 	attendance: function() {
-		let userId = FlowRouter.getParam("id");
-		let attendanceArray = Student.findOne({"_id": userId}).attendance;
-		var attendance = [];
 		var attendancePage = Template.instance().attendancePage.get();
-		var startIndex = attendanceColumnsPerPage * attendancePage;
-		for (var i = startIndex; i < startIndex && i < attendanceArray.length; i++) {
-			var attendanceObj = {};
+		let attendanceArray = Template.instance().attendance.get();
+		if (attendanceArray == undefined) {
+			return [];
+		}
+		var attendance = [];
+		for (var i = AttendanceUtilities.startIndex(); i < AttendanceUtilities.endIndex() && i < attendanceArray.length; i++) {
+			var attendanceObj = {
+				index: i
+			};
 			if (attendanceArray[i]) {
 				attendanceObj.selectedPresent = "selected";
 				attendanceObj.selectedAbsent = "";
@@ -80,9 +107,9 @@ Template.attendanceUpdate.helpers({
 	headers: function() {
 		var attendancePage = Template.instance().attendancePage.get();
 		var headers = [];
-		for (var i = 1; i <= attendanceColumnsPerPage; i++) {
-			headers.push(i + attendanceColumnsPerPage * attendancePage);
+		for (var i = AttendanceUtilities.startIndex(); i < AttendanceUtilities.endIndex(); i++) {
+			headers.push(i + 1);
 		}
 		return headers;
-	}
+	},
 });
