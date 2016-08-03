@@ -1,6 +1,7 @@
 <template name="studentSingle">
+  {{#if isInstructor}}
   <div class="marginContainer">
-    <h1 class="titleAssignment">{{studentName}} Jason Huang</h1>
+    <h1 class="titleAssignment">{{studentName}}'s Grades</h1>
     <div class="orange-bar">&nbsp;</div>
 
     <table class="gradeTable studentSingle">
@@ -8,43 +9,23 @@
         <th class="gradeTable titleOverride">Assignment Name</th>
         <th>Points</th>
         <th>Grade</th>
-        <th>Completion</th>
+        <th>Status</th>
       </tr>
 
-      {{#each assignment}}
-      <tr>
-        <td class="gradeTable titleOverride">{{assignmentTitle}}</td>
-        <td><p><span contenteditable="true" onclick="document.execCommand('selectAll',false,null)">100</span> / 100</p></td>
-        <td>{{percentageGrade}}</td>
-        <td>{{completion}}</td>
-      </tr>
+      {{#each assignments}}
+          <tr>
+            <td class="gradeTable titleOverride">{{title}}</td>
+            <td><p><input class="pointsReceievedField" type="number" step="any" id="{{id}}" value="{{pointsReceived}}" onclick="document.execCommand('selectAll',false,null)"> / {{pointsPossible}}</p></td>
+            <td>{{grade}}</td>
+            <td>{{status}}</td>
+          </tr>
       {{/each}}
-
-      <tr>
-        <td class="gradeTable titleOverride">Merge Sort</td>
-        <td><p><span contenteditable="true" onclick="document.execCommand('selectAll',false,null)">100</span> / 100</p></td>
-        <td>100%</td>
-        <td>Complete</td>
-      </tr>
-
-      <tr>
-        <td class="gradeTable titleOverride">Assignment</td>
-        <td><p><span contenteditable="true" onclick="document.execCommand('selectAll',false,null)">91</span> / 100</p></td>
-        <td>91%</td>
-        <td>Complete</td>
-      </tr>
-
-      <tr>
-        <td class="gradeTable titleOverride">Fight Someone</td>
-        <td><p><span contenteditable="true" onclick="document.execCommand('selectAll',false,null)"></span> / 100</p></td>
-        <td>n/a</td>
-        <td>Incomplete</td>
-      </tr>
-
     </table>
 
     {{>assignmentBackButton}}
-    <button class="buttonStyle submit" id="routeThisThomas">Update Grades</button>
-
-</div>
+    <button class="buttonStyle submit" id="updateGrades">Update Grades</button>
+  </div>
+  {{else}}
+      {{>accessDenied}}
+  {{/if}}
 </template>

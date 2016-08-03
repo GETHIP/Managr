@@ -97,7 +97,7 @@ var getOverallGrade = function(student) {
     }
 
     var overallGrade = pointsReceived / pointsPossible * 100;
-    return overallGrade.toFixed(2);
+    return overallGrade.toFixed(2) + "%";
 }
 
 Template.viewAllGrades.helpers({
@@ -110,7 +110,8 @@ Template.viewAllGrades.helpers({
             allAssignments: student.assignments.length,
             pointsReceived: getPointsReceived(student),
             pointsPossible: getPointsPossible(student),
-            overallGrade: getOverallGrade(student)
+            overallGrade: getOverallGrade(student),
+            studentId: student._id
           });
         });
 
@@ -129,7 +130,7 @@ Template.viewAllGrades.helpers({
                 }  else if(student2.overallGrade == "N/A") {
                     return -1;
                 }
-                return (student2.overallGrade - student1.overallGrade) * sortDirection;
+                return (student1.overallGrade.localeCompare(student2.overallGrade)) * sortDirection;
             }
         });
         return studentData;
@@ -146,5 +147,9 @@ Template.viewAllGrades.events({
           Template.instance().sortDescriptor.set(event.target.id);
           Template.instance().sortAscending.set(true);
         }
+    },
+    'click .tableDataFormat': function(event) {
+        event.preventDefault();
+        FlowRouter.go("/assignments/grades/student/" + event.target.id);
     }
 });

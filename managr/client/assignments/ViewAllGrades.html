@@ -11,12 +11,12 @@
                 <th class="tableHeadFormat grades">Total Grade &nbsp;<i class="fa fa-sort sortIcon" aria-hidden="true" id="overallGradeSort"></i></th>
             </tr>
             {{#each students}}
-            <tr class="tableRowFormat">
-                <td class="tableDataFormat grades">{{this.studentName}}</td>
-                <td class="tableDataFormat grades">{{this.assignmentsCompleted}}/{{this.allAssignments}}</td>
-                <td class="tableDataFormat grades">{{this.pointsReceived}}/{{this.pointsPossible}}</td>
-                <td class="tableDataFormat grades">{{this.overallGrade}}%</td>
-            </tr>
+                <tr class="tableRowFormat" >
+                    <td class="tableDataFormat grades" id="{{this.studentId}}">{{this.studentName}}</td>
+                    <td class="tableDataFormat grades" id="{{this.studentId}}">{{this.assignmentsCompleted}}/{{this.allAssignments}}</td>
+                    <td class="tableDataFormat grades" id="{{this.studentId}}">{{this.pointsReceived}}/{{this.pointsPossible}}</td>
+                    <td class="tableDataFormat grades" id="{{this.studentId}}">{{this.overallGrade}}</td>
+                </tr>
             {{/each}}
         </table>
         <a href="/assignments"><button value="Back" class="buttonStyle submitbtn" id="backGradesBtn">Back to Assignments</button></a>
