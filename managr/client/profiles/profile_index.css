@@ -48,7 +48,8 @@
   border-color: white;
   box-shadow: none !important;
   border: 2px solid lightgray;
-  padding: 1em;
+  /* padding: 1em; */
+  height: 100%;
 }
 
 .upload {
