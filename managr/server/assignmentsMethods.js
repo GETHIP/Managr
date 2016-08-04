@@ -52,14 +52,17 @@ export function assignmentsMethods() {
 			if (!isInstructor()) {
 				return;
 			}
-			var assignmentId = Assignments.insert({
+			console.log("New Date: ", new Date());
+			var obj = {
 				title: title,
 				description: description,
 				dueDate: dueDate,
 				assigner: Instructor.findOne({userId: Meteor.user()._id}).name,
 				dateAssigned: new Date(),
 				pointsPossible: pointsPossible
-			});
+			};
+			console.log(obj);
+			var assignmentId = Assignments.insert(obj);
 			Meteor.call("addEmptyAssignmentToStudents", assignmentId, studentIds);
 		},
 		'addEmptyAssignmentToStudents':function(assignmentId, studentIds) {

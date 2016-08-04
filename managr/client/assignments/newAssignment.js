@@ -65,9 +65,7 @@ Template.newAssignment.events({
 
         var title = form.name.value;
         var description = document.getElementById("editor").innerHTML;
-        var dueDate = new Date(form.dateDue.value);
-        dueDate.setMonth(dueDate.getMonth() + 1);
-        dueDate.setDate(dueDate.getDate() + 1);
+        var dueDate = moment(form.dueDate.value, "YYYY-MM-DD").toDate();
         var pointsPossible = form.points.value;
 
         var inputs = document.getElementsByTagName("INPUT");
