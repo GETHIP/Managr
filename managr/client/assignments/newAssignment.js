@@ -22,9 +22,9 @@ Template.newAssignment.helpers({
             formattedAssignment = {
                 title: assignment.title,
                 description: assignment.description,
-                dueDate: assignment.dueDate.getMonth() + "/" + assignment.dueDate.getDate() + "/" + assignment.dueDate.getFullYear(),
+                dueDate: moment(assignment.dueDate).format("MM/DD/YYYY"),
                 assigner: assignment.assigner,
-                dateAssigned: assignment.dateAssigned.getMonth() + "/" + assignment.dateAssigned.getDate() + "/" + assignment.dateAssigned.getFullYear(),
+                dateAssigned: moment(assignment.dateAssigned).format("MM/DD/YYYY"),
                 pointsPossible: assignment.pointsPossible
             }
             formattedAssignments.push(formattedAssignment);
@@ -65,9 +65,7 @@ Template.newAssignment.events({
 
         var title = form.name.value;
         var description = document.getElementById("editor").innerHTML;
-        var dueDate = new Date(form.dateDue.value);
-        dueDate.setMonth(dueDate.getMonth() + 1);
-        dueDate.setDate(dueDate.getDate() + 1);
+        var dueDate = moment(form.dueDate.value, "YYYY-MM-DD").toDate();
         var pointsPossible = form.points.value;
 
         var inputs = document.getElementsByTagName("INPUT");

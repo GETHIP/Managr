@@ -80,7 +80,7 @@ Template.gradeTable.helpers({
 				}
 
 				var today = new Date();
-				today.setMonth(today.getMonth() + 1);
+				today.setHours(0, 0, 0, 0);
 				var status = "Incomplete";
 				if(studentAssignments[index].completed) {
 						status = "Completed";

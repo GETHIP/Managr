@@ -71,7 +71,6 @@ AssignmentSchema = new SimpleSchema({
         autoValue: function() {
             // Automatically set to today
             var today = new Date();
-            today.setMonth(today.getMonth() + 1);
             return today;
         },
         optional: true
