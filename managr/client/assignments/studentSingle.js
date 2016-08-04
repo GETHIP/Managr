@@ -120,7 +120,7 @@ Template.studentSingle.events({
             setInputText(inputs[i], newGrade);
         }
     },
-		'keyup .pointsReceievedField'(event) {
+		'input .pointsReceievedField'(event) {
 				const input = event.target;
 				const assignmentId = input.id;
 				const studentId = FlowRouter.getParam("id");

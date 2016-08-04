@@ -26,7 +26,7 @@ Template.gradeTable.events({
 						setInputText(inputs[i], newGrade);
 				}
 		},
-		'keyup .pointsReceievedField'(event) {
+		'input .pointsReceievedField'(event) {
 				const input = event.target;
 				const assignmentId = FlowRouter.getParam("id");
 				const studentId = input.id;
