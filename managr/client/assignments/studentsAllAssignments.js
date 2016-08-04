@@ -16,7 +16,8 @@ var formatPointsReceived = function(pointsReceived) {
 var getStatus = function(studentAssignment, assignment) {
     var status = "Incomplete";
     var today = new Date();
-    today.setMonth(today.getMonth() + 1);
+	today.setHours(0, 0, 0, 0);
+	
     if(studentAssignment.completed) {
         status = "Complete";
     } else if(new Date(assignment.dueDate) < today) {

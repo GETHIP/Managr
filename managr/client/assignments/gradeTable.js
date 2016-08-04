@@ -81,9 +81,6 @@ Template.gradeTable.helpers({
 
 				var today = new Date();
 				today.setHours(0, 0, 0, 0);
-				//today.setMonth(today.getMonth() + 1);
-				console.log("Due Date: ", assignment.dueDate);
-				console.log("Today: ", today);
 				var status = "Incomplete";
 				if(studentAssignments[index].completed) {
 						status = "Completed";

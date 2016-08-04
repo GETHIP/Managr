@@ -7,8 +7,6 @@ Template.singleAssignmentTemplate.helpers({
         var assignment = Assignments.findOne({_id: FlowRouter.getParam("id")});
 
         var formattedAssignment;
-		console.log("Date Due: ", assignment.dueDate);
-		console.log("Date Assigned: ", assignment.dateAssigned);
         formattedAssignment = {
             title: assignment.title,
             description: assignment.description,

@@ -26,7 +26,7 @@ var getPointsReceived = function(studentAssignment) {
 
 var getGrade = function(studentAssignment, assignment) {
     var today = new Date();
-    today.setMonth(today.getMonth() + 1);
+	today.setHours(0, 0, 0, 0);
     //Handle the case where the assignment is not completed, nor graded, and late
     if(!studentAssignment.completed && studentAssignment.pointsReceived < 0 && new Date(assignment.dueDate) < today) {
         return "0.00%";
@@ -56,7 +56,7 @@ var getGrade = function(studentAssignment, assignment) {
 
 var getStatus = function(studentAssignment, assignment) {
     var today = new Date();
-    today.setMonth(today.getMonth() + 1);
+	today.setHours(0, 0, 0, 0);
 
     if(studentAssignment.completed) {
         return "Complete";

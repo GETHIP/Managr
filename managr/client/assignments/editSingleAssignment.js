@@ -31,9 +31,9 @@ Template.editSingleAssignment.helpers({
     var formattedAssignment = {
       title: assignment.title,
       description: assignment.description,
-      dueDate: (assignment.dueDate.getFullYear()) + "-" + numPad(assignment.dueDate.getMonth()) + "-" +  numPad(assignment.dueDate.getDate()),
+	  dueDate: moment(assignment.dueDate).format("MM/DD/YYYY"),
       assigner: assignment.assigner,
-      dateAssigned: assignment.dueDate.getFullYear() + "-" + numPad(assignment.dueDate.getMonth()) + "-" +  numPad(assignment.dueDate.getDate()),
+      dateAssigned: moment(assignment.dateAssigned).format("MM/DD/YYYY"),
       pointsPossible: assignment.pointsPossible
     }
     return formattedAssignment;
@@ -114,9 +114,7 @@ Template.editSingleAssignment.events({
     var assignmentId = FlowRouter.getParam("id");
     var title = form.name.value;
     var description = document.getElementById("editor").innerHTML;
-    var dueDate = new Date(form.dateDue.value);
-    dueDate.setMonth(dueDate.getMonth() + 1);
-    dueDate.setDate(dueDate.getDate() + 1);
+        var dueDate = moment(form.dateDue.value, "YYYY-MM-DD").toDate();
     var pointsPossible = form.points.value;
 
     var inputs = document.getElementsByTagName("INPUT");
