@@ -2,9 +2,7 @@
     <title>Managr</title>
 </head>
 <template name="main">
-    {{#if renderNavbar}}
         {{> topNav}}
-    {{/if}}
     <div class="{{navbarDivMargins}}">
         {{>Template.dynamic template=content}}
     </div>

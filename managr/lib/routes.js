@@ -2,6 +2,9 @@ if(Meteor.isClient) {
 	Accounts.onLogout(function() {
 		FlowRouter.go('login');
 	});
+	Accounts.onLogin(function() {
+		FlowRouter.go('home');
+	});
 }
 
 var main = "main"
