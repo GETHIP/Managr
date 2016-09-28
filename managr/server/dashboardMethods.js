@@ -9,7 +9,7 @@ import { Globals } from '../collections/globals.js';
 import { isStudent, isInstructor, userIsValid, currentUserOrInstructor, nameOfUser } from '../lib/permissions.js';
 import { generateUsername, generatePassword, makeObjectKeysLowercase,
 		pushIfValid, padEmptyStrings, populateStudentObject } from './dashboardUtilities.js';
-		
+
 export function dashboardMethods() {
 
 	Meteor.methods({
@@ -88,17 +88,26 @@ export function dashboardMethods() {
 				return false;
 			}
 			data = makeObjectKeysLowercase(data);
+            console.log("Testing...");
 			var errorMessage = populateStudentObject(data);
+            console.log("Tested!");
+            console.log("Error Message: (" + errorMessage + ")");
 			if (errorMessage != "") {
 				console.log(errorMessage);
+                console.log("error");
 				return errorMessage;
 			}
+            console.log("id");
 
+            console.log("username: ", generateUsername(data.name));
+            console.log("Password: ", generatePassword(data.name));
 			data.id = Accounts.createUser({
 				username: generateUsername(data.name),
 				password: generatePassword(data.name)
 			});
+            console.log("data");
 			Roles.addUsersToRoles(data.id, 'student');
+            console.log("Age:", data.age);
 			Student.insert({
 				"name": data.name,
 				"userId": data.id,
@@ -121,6 +130,7 @@ export function dashboardMethods() {
 				"assignments": [],
 				"isArchived": false
 			}, { removeEmptyStrings: false });
+            console.log(Student.findOne({"name": data.name}));
 			return errorMessage;
 		},
 		'archiveStudent':function(id, isArchived) {
