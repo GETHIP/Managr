@@ -29,7 +29,14 @@
                 </div>
                 <div class="col-md-4">
                     <p><strong>Github: </strong><a href={{github}}>{{github}}</a></p>
-                    <p><strong>Blog: </strong><a class="blogButton">Blog</a></p>
+                    <p>
+                        <strong>Blog: </strong>
+                        {{#if hasBlog}}
+                            <a class="blogButton" href="{{blog}}">{{blog}}</a>
+                        {{else}}
+                            None
+                        {{/if}}
+                    </p>
                     <p><strong>Parent Names: </strong>{{parentNames}}</p>
                     <p><strong>Get Hip Year: </strong>{{getHipYear}}</p>
                     <p><strong>Top 5:</strong></p>

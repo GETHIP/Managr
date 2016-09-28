@@ -16,6 +16,7 @@ Template.aboutme.helpers({
     student.github = "https://github.com/" + student.github;
     student.address = student.address.street + " " + student.address.city + " " + student.address.state + " " + student.address.zipCode;
     student.parentNames = student.parentNames[0] + " and " + student.parentNames[1];
+    student.hasBlog = student.blog != "";
     return student;
   },
   strengths: function() {
@@ -36,10 +37,10 @@ Template.aboutme.events({
 	},
 	"click .editAboutMe" (event) {
 		FlowRouter.go("/profile/edit/" + FlowRouter.getParam("id"));
-	}, 
+	},
 	"click .editAttendance" (event) {
 		FlowRouter.go("/attendance/edit/" + FlowRouter.getParam("id"));
-	},  
+	},
 	"click .profileBack" (event) {
 		FlowRouter.go("/profiles/");
 	}
@@ -101,4 +102,3 @@ Template.studentName.helpers({
     return studentName;
   }
 });
-
