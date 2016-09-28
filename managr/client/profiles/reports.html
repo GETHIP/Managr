@@ -2,36 +2,71 @@
 	{{#if isInstructor}}
 	<div class="row reportsRow">
 		<div class="buttonBottom">
-
-			<select id="reportsSelect" class="reportsSelect">
-				<option value="" disabled selected hidden>Select a report...</option>
-				<option id="tShirtSizeReport">T-Shirt Size Report</option>
-				<option id="emailReport">Email Report</option>
-				<option id="nameReport">Name Report</option>
-				<option id="ageReport">Age Report</option>
-				<option id="schoolReport">School Report</option>
-				<option id="addressReport">Address Report</option>
-				<option id="allReport">All</option>
-			</select>
-			<button type="button" id="csvExport" value="Export Selected Data" class="btn btn-primary reportsButton">Export Selected Data</button>
-		</div>
+            <div>
+                <ul class="checkbox-grid">
+                    <li>
+                        <input type="checkbox" id="tShirtCheckBox" name="tShirtCheckBox">
+                        <label for="tShirtCheckBox">T-Shirt Size</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="descriptionCheckBox" name="descriptionCheckBox">
+                        <label for="descriptionCheckBox">Description</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ageCheckBox">
+                        <label for="ageCheckBox">Age</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="gradeCheckBox">
+                        <label for="gradeCheckBox">Grade</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="schoolCheckBox">
+                        <label for="schoolCheckBox">School</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="emailCheckBox">
+                        <label for="emailCheckBox">Email</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="getHipYearCheckBox">
+                        <label for="getHipYearCheckBox">Get Hip Year</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="phoneNumberCheckBox">
+                        <label for="phoneNumberCheckBox">Phone Number</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="parentsCheckBox">
+                        <label for="parentsCheckBox">Parents</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="strengthsCheckBox">
+                        <label for="strengthsCheckBox">Strengths</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ep10CheckBox">
+                        <label for="ep10CheckBox">EP 10</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="githubCheckBox">
+                        <label for="githubCheckBox">Github</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="blogCheckBox">
+                        <label for="blogCheckBox">Blog</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="allCheckBox">
+                        <label for="allCheckBox">All</label>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <button type="button" id="csvExport" value="Export Selected Data" class="btn btn-primary reportsButton">Export Selected Data</button>
+            </div>
+        </div>
 	</div>
-	<table class="table-bordered table-hovered table reportsTable">
-		<thead class="reportsTable">
-			<tr>
-				<th>Reports:</th>
-				<th></th>
-			</tr>
-		</thead>
-		<tbody>
-			{{#each reports}}
-			<tr>
-				<td class="reportsTable">{{name}}</td>
-				<td class="reportsTable">{{report}}</td>
-			</tr>
-			{{/each}}
-		</tbody>
-	</table>
 
 	{{else}}
 		{{> accessDenied}}
