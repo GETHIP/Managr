@@ -15,7 +15,7 @@ var Address = new SimpleSchema({
         label: 'State'
     },
     zipCode: {
-        type: Number,
+        type: String,
         label: 'Zip Code',
         regEx: SimpleSchema.RegEx.ZipCode
     }

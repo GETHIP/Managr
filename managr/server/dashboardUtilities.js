@@ -69,15 +69,14 @@ export function populateStudentObject(student) {
 	if (student.age == undefined || student.age == "") {
 		student.age = 1;
 	}
-    console.log("Age:", student.age);
 
 	if (student.email == undefined) {
 		student.email = "none@none";
 	}
 
 	var parentNames = [];
-	pushIfValid(student["Parent 1"]);
-	pushIfValid(student["Parent 2"]);
+	pushIfValid(parentNames, student["parent 1"]);
+	pushIfValid(parentNames, student["parent 2"]);
 	padEmptyStrings(parentNames, 2);
 	student["parentnames"] = parentNames;
 
@@ -89,8 +88,8 @@ export function populateStudentObject(student) {
 		student["grade"] = 0;
 	}
 
-	if (student["gethipyear"] == undefined) {
-		student["gethipyear"] = 0;
+	if (student["gethipyear"] == undefined || student["gethipyear"] == "") {
+		student["gethipyear"] = 1;
 	}
 
 	if (student["phonenumber"] == undefined) {
@@ -107,7 +106,6 @@ export function populateStudentObject(student) {
 	}
 	padEmptyStrings(strengths, 5);
 	student["strengths"] = strengths;
-	console.log("strengths: ", strengths);
 
 	//It doesn't make sense to supply a value for attendance, so
 	//we just overwrite whatever is there.
@@ -127,7 +125,7 @@ export function populateStudentObject(student) {
 	}
 	padEmptyStrings(ep10, 4);
 	student["ep10"] = ep10;
-    
+
 	if (student["picture"] == undefined) {
 		student["picture"] = "none";
 	}
