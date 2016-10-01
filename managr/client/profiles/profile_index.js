@@ -16,7 +16,7 @@ Template.aboutme.helpers({
     student.github = "https://github.com/" + student.github;
     student.address = student.address.street + " " + student.address.city + " " + student.address.state + " " + student.address.zipCode;
     student.parentNames = student.parentNames[0] + " and " + student.parentNames[1];
-    student.hasBlog = student.blog != "";
+    student.hasBlog = ((student.blog != "") && (student.blog != undefined));
     return student;
   },
   strengths: function() {
