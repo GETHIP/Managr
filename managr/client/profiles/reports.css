@@ -38,3 +38,9 @@ td.reportsTable {
 .form-group{
   margin-left: 50px;
 }
+
+.checkbox-grid li {
+    display: block;
+    float: left;
+    width: 20%;
+}
