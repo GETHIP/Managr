@@ -9,7 +9,7 @@ import { Globals } from '../collections/globals.js';
 import { isStudent, isInstructor, userIsValid, currentUserOrInstructor, nameOfUser } from '../lib/permissions.js';
 import { generateUsername, generatePassword, makeObjectKeysLowercase,
 		pushIfValid, padEmptyStrings, populateStudentObject } from './dashboardUtilities.js';
-		
+
 export function dashboardMethods() {
 
 	Meteor.methods({
@@ -90,7 +90,6 @@ export function dashboardMethods() {
 			data = makeObjectKeysLowercase(data);
 			var errorMessage = populateStudentObject(data);
 			if (errorMessage != "") {
-				console.log(errorMessage);
 				return errorMessage;
 			}
 

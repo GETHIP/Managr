@@ -3,6 +3,28 @@ import { Instructor } from '../../collections/instructor.js';
 import { nameOfUser } from '../../lib/permissions.js';
 import { Globals } from '../../collections/globals.js';
 
+function validateStudentData(dataArray) {
+    if (dataArray == undefined || dataArray.length == 0) {
+        return "Error: The csv file contains no students.";
+    }
+    var zipCodeRegex = /^[\d]{5}([-][\d]{4})?$/;
+    var numberRegex = /[0-9]+/;
+    for (i in dataArray) {
+        if (dataArray[i].FirstName == "") {
+            return "Error: FirstName field is required.";
+        } else if (dataArray[i].LastName == "") {
+            return "Error: LastName field is required.";
+        } else if (!numberRegex.test(dataArray[i].Age) && dataArray[i].Age != "") {
+            return "Error: Age field must be a number.";
+        } else if (!zipCodeRegex.test(dataArray[i].ZipCode) && dataArray[i].ZipCode != "") {
+            return "Error: Zip code must be of format ##### or #####-####.";
+        } else if (!numberRegex.test(dataArray[i].GetHipYear) && dataArray[i].GetHipYear != "") {
+            return "Error: GetHipYear field must be a number.";
+        }
+    }
+    return false;
+}
+
 Template.dashboard.onCreated(function() {
   var self = this;
   self.autorun(function() {
@@ -74,10 +96,22 @@ Template.dashboard.events({
 		fileReader.onload = function(result) {
 			var csvArray = csvToArray(result.target.result, ',');
 			var alreadyFailed = false;
+            var validationError = validateStudentData(csvArray);
+            if (validationError) {
+                document.getElementById('usersFile').value = [];
+                Modal.show('warningModal', {
+                    title: 'Error',
+                    text: validationError,
+                    confirmText: 'Dismiss',
+                    confirmCallback: () => {}
+                });
+                return;
+            }
 			for (i in csvArray) {
 				Meteor.call('addStudent', csvArray[i], function(error, result) {
 					if (result != "" && !alreadyFailed) {
 						alreadyFailed = true;
+                        document.getElementById('usersFile').value = [];
 						Modal.show('warningModal', {
 							title: 'Error',
 							text: 'Loading users failed. Some users might not have loaded correctly.',
@@ -92,7 +126,6 @@ Template.dashboard.events({
 	},
     'click .realDeleteUserButton':function(e) {
         var user = Meteor.users.findOne({username: e.target.id});
-		console.log(user);
 		Modal.show('deleteUserModal', user);
     },
 	'click #dummyCSVButton':function(e) {
@@ -126,9 +159,8 @@ Template.dashboard.events({
 			"EP 10 4"
 		];
 		var columns = fields.join(",");
-		console.log(columns);
 		let csv = Papa.unparse({ fields: fields });
-		csv = new Blob([csv], { type: 'text/csv' } );
+		csv = new Blob([csv], { type: 'text/csv;charset=utf-8;' } );
 		saveAs(csv, "Students.csv");
 	},
 	'click #archiveButton':function(event) {
