@@ -66,8 +66,8 @@ export function populateStudentObject(student) {
 		student.school = "none";
 	}
 
-	if (student.age == undefined) {
-		student.age = 0;
+	if (student.age == undefined || student.age == "") {
+		student.age = 1;
 	}
 
 	if (student.email == undefined) {
@@ -75,11 +75,11 @@ export function populateStudentObject(student) {
 	}
 
 	var parentNames = [];
-	pushIfValid(student["Parent 1"]);
-	pushIfValid(student["Parent 2"]);
+	pushIfValid(parentNames, student["parent 1"]);
+	pushIfValid(parentNames, student["parent 2"]);
 	padEmptyStrings(parentNames, 2);
 	student["parentnames"] = parentNames;
-	
+
 	if (student["description"] == undefined) {
 		student["description"] = "none";
 	}
@@ -88,8 +88,8 @@ export function populateStudentObject(student) {
 		student["grade"] = 0;
 	}
 
-	if (student["gethipyear"] == undefined) {
-		student["gethipyear"] = 0;
+	if (student["gethipyear"] == undefined || student["gethipyear"] == "") {
+		student["gethipyear"] = 1;
 	}
 
 	if (student["phonenumber"] == undefined) {
@@ -106,8 +106,7 @@ export function populateStudentObject(student) {
 	}
 	padEmptyStrings(strengths, 5);
 	student["strengths"] = strengths;
-	console.log("strengths: ", strengths);
-	
+
 	//It doesn't make sense to supply a value for attendance, so
 	//we just overwrite whatever is there.
 	student["attendance"] = [false, false, false, false, false, false, false, false, false, false, false, false]
@@ -119,14 +118,14 @@ export function populateStudentObject(student) {
 	if (student["tshirtsize"] == undefined) {
 		student["tshirtsize"] = "none";
 	}
-	
+
 	var ep10 = [];
 	for (var i = 1; i <= 4; i++) {
 		pushIfValid(ep10, student["ep 10 " + i]);
 	}
 	padEmptyStrings(ep10, 4);
 	student["ep10"] = ep10;
-	console.log("ep 10: ", ep10);
+
 	if (student["picture"] == undefined) {
 		student["picture"] = "none";
 	}
@@ -152,7 +151,7 @@ export function populateStudentObject(student) {
 		}
 	}
 	student.address = address;
-	
+
 	//No message means no error.
 	return "";
 }
