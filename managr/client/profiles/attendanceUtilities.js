@@ -27,8 +27,6 @@ export var AttendanceUtilities = {
 		for (var i = this.startIndex(); i < this.endIndex(); i++) {
 			if (i < numberOfWeeks) {
 				headers.push(i + 1);
-			} else {
-				headers.push("");
 			}
 		}
 		return headers;
@@ -68,11 +66,5 @@ export var AttendanceUtilities = {
 		//On the last page, if we don't have enough headers, the total column
 		//gets pushed to the left of the total header. Thus, we push empty strings
 		//so that <td> tags are rendered, correctly aligning the columns.
-		var emptyHeaders = [];
-		while (emptyHeaders.length < extraHeadersLength) {
-			emptyHeaders.push("");
-		}
-		return emptyHeaders;
 	}
 }
-
