@@ -50,7 +50,9 @@ var getPointsPossible = function(student) {
         if(assignment == undefined) {
             continue;
         }
-        pointsPossible += assignment.pointsPossible;
+        if(assignments[i].completed) {
+              pointsPossible += assignment.pointsPossible;
+        }
     }
     return pointsPossible;
 }
