@@ -2,8 +2,8 @@ import { Student } from '../../collections/student.js';
 
 function csvDownload(array, name) {
 	let csv = Papa.unparse(array);
-	csv = new Blob([csv], { type: 'text/csv' } );
-	saveAs(csv, name + ".csv");
+	csv = new Blob([csv], { type: 'text/csv;charset=utf-8;' } );
+	saveAs(csv, "Report.csv");
 }
 
 function isChecked(key) {
@@ -147,9 +147,8 @@ Template.reports.events({
         }
         array.data.push(line);
     });
-
 	let csv = Papa.unparse(array);
-	csv = new Blob([csv], { type: 'text/csv' } );
-	saveAs(csv, name + ".csv");
+	csv = new Blob([csv], { type: 'text/csv;charset=utf-8;' } );
+	saveAs(csv, "Report.csv");
   },
 });
