@@ -65,7 +65,7 @@ Template.createBlogPost.events({
 			var text = document.getElementById('scriptEditor').value;
 			displayModals(title, text);
 		}
-		
+
 		Modal.show('publishPost', data);
 	},
 	'click .postButton.saveDraftButton':function(e) {
@@ -109,11 +109,10 @@ Template.createBlogPost.events({
 		} else if (FlowRouter.getRouteName() == "editDraft"){
 			Meteor.call('editDraft', draftData, FlowRouter.getParam("draft_id"));
 		}
-		FlowRouter.go("/managePosts")
+		FlowRouter.go("/home/managePosts")
 	},
 	'getIsPublic' : function(e){
 		e.preventDefault();
 		return Template.instance().publicPost;
 	}
 })
-

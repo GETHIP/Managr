@@ -46,7 +46,6 @@ Template.newUser.events({
 			});
 			return;
 		}
-
 		if (e.target.email.value == "") {
 			Modal.show('warningModal', {
 				title: 'Error',
@@ -78,7 +77,7 @@ Template.newUser.events({
 		}
 
 		Meteor.call('createUserAccount', data);
-		FlowRouter.go('/dashboard/');
+		FlowRouter.go('/dashboard');
     },
 	'click #cancelButton':function(event) {
 		event.preventDefault();

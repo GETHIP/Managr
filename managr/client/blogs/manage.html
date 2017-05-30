@@ -17,14 +17,14 @@
 							</div>
 						</div>
 						<div id="postManagingButtons">
-							<a href="/blogs/{{_id}}"><button class="manageButton">View</button></a>
-							<a href="/editPost/{{_id}}"><button class="manageButton">Edit</button></a>
+							<a href="/home/blogs/{{_id}}"><button class="manageButton">View</button></a>
+							<a href="/home/editPost/{{_id}}"><button class="manageButton">Edit</button></a>
 							<button id="{{_id}}" class="manageDeleteButton">Delete</button>
 						</div>
 						</div>
 					<p id="manageLine"></p>
 				{{else}}
-					<h1 class="emptyHeader">You don't have any posts. <a href="/createPost">Create a post.</a></h1>
+					<h1 class="emptyHeader">You don't have any posts. <a href="/home/createPost">Create a post.</a></h1>
 				{{/each}}
 			</div>
 		</div>

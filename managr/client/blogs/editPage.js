@@ -47,7 +47,7 @@ Template.editPost.events({
 	'click .saveDraftButton':function(event) {
 		event.preventDefault();
 		var blogId = FlowRouter.getParam("blog_id");
-		FlowRouter.go("/managePosts");
+		FlowRouter.go("/home/managePosts");
 		Meteor.call('convertPostToDraft', blogId);
 	}
 });

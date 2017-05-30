@@ -26,10 +26,16 @@ var attendanceSection = FlowRouter.group({
 	name: "attendance",
 	profiles: "/attendance"
 });
-blogsSection.route('/', {
+blogsSection.route('/home', {
 	name: 'home',
 	action() {
 		BlazeLayout.render(blogLayout, {content: 'blogMain'});
+	}
+});
+blogsSection.route('/', {
+	name: 'homeRedirect',
+	action() {
+		FlowRouter.go('/home')
 	}
 });
 blogsSection.route('/login', {
@@ -39,19 +45,19 @@ blogsSection.route('/login', {
 	}
 });
 
-blogsSection.route('/blogs/:blog_id', {
+blogsSection.route('/home/blogs/:blog_id', {
 	name: 'blogs',
 	action : function(params) {
 		BlazeLayout.render(blogLayout, {content: 'postPage'})
 	}
 });
-blogsSection.route('/managePosts', {
+blogsSection.route('/home/managePosts', {
 	name: 'managePosts',
 	action : function(params) {
 		BlazeLayout.render(blogLayout, {content: 'manage'})
 	}
 });
-blogsSection.route('/editPost/:blog_id', {
+blogsSection.route('/home/editPost/:blog_id', {
 	name: 'editPost',
 	action : function(params) {
 		BlazeLayout.render(blogLayout, {content: 'editPost'})
@@ -66,14 +72,14 @@ blogsSection.route('/editDraft/:draft_id', {
 assignmentSection.route("/", {
     name: "allAssignments",
     action() {
-        BlazeLayout.render(main, {content: "assignmentsHome"});
+        BlazeLayout.render("assignmentLayout", {content: "assignmentsHome"});
     }
 });
 // Information on a single assignment
 assignmentSection.route("/single/:id", {
     name: "singleAssignment",
     action(params) {
-        BlazeLayout.render(main,{
+        BlazeLayout.render("assignmentLayout",{
             content: "singleAssignment"
         });
     }
@@ -82,7 +88,7 @@ assignmentSection.route("/single/:id", {
 assignmentSection.route("/single/admin/:id", {
     name: "adminSingleAssignment",
     action(params) {
-        BlazeLayout.render(main,{
+        BlazeLayout.render("assignmentLayout",{
             content: "adminSingleAssignment"
         });
     }
@@ -91,7 +97,7 @@ assignmentSection.route("/single/admin/:id", {
 assignmentSection.route("/edit/single/admin/:id", {
     name: "editSingleAssignment",
     action(params) {
-        BlazeLayout.render(main,{
+        BlazeLayout.render("assignmentLayout",{
             content: "editSingleAssignment"
         });
     }
@@ -99,7 +105,7 @@ assignmentSection.route("/edit/single/admin/:id", {
 assignmentSection.route('/edit/new', {
     name: "newAssignment",
     action(params) {
-        BlazeLayout.render(main, {
+        BlazeLayout.render("assignmentLayout", {
             content: "newAssignment"
         });
     }
@@ -108,7 +114,7 @@ assignmentSection.route('/edit/new', {
 assignmentSection.route('/grades', {
     name: "viewAllGrades",
     action() {
-        BlazeLayout.render(main, {
+        BlazeLayout.render("assignmentLayout", {
             content: "viewAllGrades"
         });
     }
@@ -117,7 +123,7 @@ assignmentSection.route('/grades', {
 assignmentSection.route("/grades/student/:id", {
 		name: "studentSingle",
 		action() {
-				BlazeLayout.render(main, {
+				BlazeLayout.render("assignmentLayout", {
 						content: "studentSingle"
 				});
 		}
@@ -125,13 +131,13 @@ assignmentSection.route("/grades/student/:id", {
 
 profileSection.route('/dashboard', {
 	action: function(params, queryParams) {
-		BlazeLayout.render(main, { content: 'dashboard' });
+		BlazeLayout.render("dashboardLayout", { content: 'dashboard' });
 	}
 });
 
 profileSection.route('/dashboard/new', {
 	action: function(params, queryParams) {
-		BlazeLayout.render(main, { content: 'newUser' });
+		BlazeLayout.render("dashboardLayout", { content: 'newUser' });
 	}
 })
 
@@ -142,20 +148,20 @@ profileSection.route("/profile/:id", {
 			// attendanceBody: "attendanceBody",
 			// editAboutMe:"editAboutMe"
 		// });
-	BlazeLayout.render(main, { content: "aboutme" });
+	BlazeLayout.render("profileLayout", { content: "aboutme" });
   }
 });
 
 profileSection.route("/profile/edit/:id", {
   action: function(parmas, queryParams){
-    BlazeLayout.render(main, {content: "profileEdit", attendance: "attendance", assignments: "assignments"});
+    BlazeLayout.render("profileLayout", {content: "profileEdit", attendance: "attendance", assignments: "assignments"});
   }
 });
 
 attendanceSection.route("/attendance/edit/:id", {
     action: function(params, queryParams){
         // BlazeLayout.render("attendanceUpdate", {updateAttendance: "updateAttendance"});
-		BlazeLayout.render(main, {content: "attendanceUpdate"});
+		BlazeLayout.render("attendanceLayout", {content: "attendanceUpdate"});
     }
 });
 
@@ -165,27 +171,27 @@ FlowRouter.route("/assignments/:id", {
     }
 });
 
-profileSection.route('/profiles/attendance', {
+profileSection.route('/attendance', {
 	action: function(params, queryParams) {
-		BlazeLayout.render(main, {content: 'profileAttendance'});
+		BlazeLayout.render("attendanceLayout", {content: 'profileAttendance'});
 	}
 })
 
-profileSection.route("/profiles", {
+profileSection.route("/profile", {
     action: function(params, queryParams) {
-        BlazeLayout.render(main, {content:'ProfilesTable'});
+        BlazeLayout.render("profileLayout", {content:'ProfilesTable'});
 		//BlazeLayout.render(main, { content: 'assignmentsBody' });
 	}
 });
 
-FlowRouter.route('/blogs/:year/:month', {
+FlowRouter.route('/home/blogs/:year/:month', {
 	name: 'archives',
 	action : function(params) {
 		BlazeLayout.render(blogLayout, {content: 'archives'});
 	}
 });
 
-FlowRouter.route('/createPost', {
+FlowRouter.route('/home/createPost', {
 	name: 'createPost',
 	action() {
 		BlazeLayout.reset();
@@ -194,24 +200,24 @@ FlowRouter.route('/createPost', {
 });
 FlowRouter.route('/reports', {
     action: function(params, queryParams){
-        BlazeLayout.render(main, {content: 'reports'});
+        BlazeLayout.render("reportsLayout", {content: 'reports'});
     }
 });
 FlowRouter.route('/groups', {
 	name: 'groups',
 	action: function() {
-		BlazeLayout.render(main, { content: 'groups' });
+		BlazeLayout.render("dashboardLayout", { content: 'groups' });
 	}
 });
 FlowRouter.route('/groups/create', {
 	name: 'createGroup',
 	action: function() {
-		BlazeLayout.render(main, {content: 'createGroup'});
+		BlazeLayout.render("dashboardLayout", {content: 'createGroup'});
 	}
 });
 FlowRouter.route('/groups/edit/:id', {
 	name: 'editGroup',
 	action: function() {
-		BlazeLayout.render(main, {content: 'editGroup'});
+		BlazeLayout.render("dashboardLayout", {content: 'editGroup'});
 	}
 });

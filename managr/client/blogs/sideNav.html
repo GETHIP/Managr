@@ -10,14 +10,14 @@
       <p class="navTitle"><b>Recent Posts</b></p>
       <div id="recentPost">
       {{#each recentPosts}}
-          <a href="/blogs/{{_id}}" class="navContent">{{title}}</a>
+          <a href="/home/blogs/{{_id}}" class="navContent">{{title}}</a>
         {{/each}}
       </div>
       <p class="navTitle"><b>Archives</b></p>
       <div id="archives">
 
       {{#each months}}
-      <a class="navContent" href="/blogs/{{url}}">
+      <a class="navContent" href="/home/blogs/{{url}}">
         {{date}}
       </a>
       {{/each}}
