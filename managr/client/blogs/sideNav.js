@@ -55,13 +55,13 @@ Template.sideNav.events({
     //For click events on side navbar
     'click #createPostButton': function(event, template) {
         event.preventDefault();
-        FlowRouter.go('/createPost');
+        FlowRouter.go('/home/createPost');
     }
 });
 
 Template.sideNav.events({
   'click #editPostButton': function(event, template) {
     event.preventDefault();
-    FlowRouter.go('/managePosts');
+    FlowRouter.go('/home/managePosts');
   }
 });

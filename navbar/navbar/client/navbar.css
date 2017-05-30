@@ -5,22 +5,11 @@
 	padding: 15px 15px 12px 15px;
 }
 
-.blogsActive:focus, .blogsActive:hover, .blogsActive {
+.blogsActive:focus, .blogsActive:hover, .blogsActivated {
   border-bottom-color: #61c250;
 }
 
-.activated {
-	background-color: #444444;
- 	border-bottom-width: 3px;
-	height: 50px;
- 	border-bottom-style: solid;
-}
-
-.highlightBackground {
-	background-color: #444444;
-}
-
-.attendanceActive:focus, .attendanceActive:hover, .attendanceActive {
+.attendanceActive:focus, .attendanceActive:hover, .attendanceActivated {
   border-bottom-color: #f58028;
 }
 
@@ -49,15 +38,19 @@
   color: #0088cc;
 }
 
-.assignmentsActive:focus, .assignmentsActive:hover, .assignmentsActive {
+.blogsActive {
+	border-bottom-color: #61c250;
+}
+
+.assignmentsActive:focus, .assignmentsActive:hover, .assignmentsActivated {
 	border-bottom-color: #fcb040;
 }
 
-.profilesActive:focus, .profilesActive:hover, .profilesActive {
+.profilesActive:focus, .profilesActive:hover, .profilesActivated {
 	border-bottom-color: #0397d7;
 }
 
-.reportsActive:focus, .reportsActive:hover, .reportsActive {
+.reportsActive:focus, .reportsActive:hover, .reportsActivated {
   border-bottom-color: #0397D7;
 }
 

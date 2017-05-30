@@ -1,34 +1,5 @@
 <template name="topNav">
 	<div>
-	<!-- <nav class="navbar navbar-inverse navbar-fixed-top" style="border-radius: 0px;">
-	  <div class="container-fluid">
-	    <div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-			 		<span class="sr-only">Toggle navigation</span>
-			 		<span class="icon-bar"></span>
-			 		<span class="icon-bar"></span>
-			 		<span class="icon-bar"></span>
-		 		</button>
-	      <a class="navbar-brand" href="#">GET HIP Managr</a>
-	    </div>
-			<div class="collapse navbar-collapse" id="navbar">
-	    <ul class="nav navbar-nav">
-	      <li class="active"><a href="#">Home</a></li>
-	      <li><a href="#">Assignments</a></li>
-	      <li><a href="#">My Profile</a></li>
-	    </ul>
-	    <ul class="nav navbar-nav navbar-right">
-	           <li class="dropdown">
-	        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Sign Out</a>
-	        <span class="caret"></span>
-	        <ul class="dropdown-menu">
-	          <li><a href="#">Sign Out</a></li>
-	        </ul>
-	        </li>
-	    </ul>
-		</div>
-	  </div>
-	</nav> -->
 		<nav class="navbar navbar-inverse navbar-fixed-top">
 			<div class="container-fluid">
 				<div class="navbar-header">
@@ -41,35 +12,35 @@
 				</div>
 				<div class="collapse navbar-collapse" id="myNavbar">
 					<ul class="nav navbar-nav">
-							<a class="navbar-brand" href="/">GET HIP Managr</a>
+							<a class="navbar-brand" href="/home">GET HIP Managr</a>
 						{{#if currentUser}}
-						<li class="active" >
-							<a class="blogsActive" href="/">Home</a>
+						<li class="active highlightBackground">
+							<a class="blogsActive {{ activeIfTemplateIs '/home'}}" href="/home">Home</a>
 						</li>
 						<li class="active" >
-							<a class="assignmentsActive" href="/assignments">Assignments</a>
+							<a class="assignmentsActive {{ activeIfTemplateIs '/assignments'}}" href="/assignments">Assignments</a>
 						</li>
 						{{#if isStudent}}
 						<li class="active">
-							<a class="profilesActive" href="/profiles">All Profiles</a>
+							<a class="profilesActive {{ activeIfTemplateIs '/profile'}}" href="/profile">Profiles</a>
+						</li>
+						{{/if}}s
+						{{#if isInstructor}}
+						<li class="active">
+							<a class="profilesActive {{ activeIfTemplateIs '/profile'}}" href="/profile">All Profiles</a>
 						</li>
 						{{/if}}
 						{{#if isInstructor}}
 						<li class="active">
-							<a class="profilesActive" href="/profiles">All Profiles</a>
+							<a class="attendanceActive {{ activeIfTemplateIs '/attendance'}}" href="/attendance">Attendance</a>
 						</li>
 						{{/if}}
 						{{#if isInstructor}}
 						<li class="active">
-							<a class="attendanceActive" href="/profiles/attendance">Attendance</a>
-						</li>
-						{{/if}}
-						{{#if isInstructor}}
-						<li class="active">
-							<a class="reportsActive" href="/reports">Reports</a>
+							<a class="reportsActive {{ activeIfTemplateIs '/reports'}}" href="/reports">Reports</a>
 						</li>
 						<li class="active">
-							<a class="dashboardActive" href="/dashboard/">Dashboard</a>
+							<a class="dashboardActive {{ activeIfTemplateIs '/dashboard'}}" href="/dashboard">Dashboard</a>
 						</li>
 						{{/if}}
 						{{/if}}
