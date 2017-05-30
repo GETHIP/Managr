@@ -36,6 +36,7 @@ export function dashboardMethods() {
 			}
 			let account = Accounts.createUser({
 				username: user.username,
+				email: user.email,
 				password: user.password
 			});
 
@@ -59,7 +60,7 @@ export function dashboardMethods() {
 					"userId": account,
 					"school": "School",
 					"age": 0,
-					"email": "none",
+					"email": user.email,
 					"parentNames": ["none", "none"],
 					"description": "none",
 					"grade": 0,
@@ -95,7 +96,8 @@ export function dashboardMethods() {
 
 			data.id = Accounts.createUser({
 				username: generateUsername(data.name),
-				password: generatePassword(data.name)
+				password: generatePassword(data.name),
+				email: data.email
 			});
 			Roles.addUsersToRoles(data.id, 'student');
 			Student.insert({
