@@ -16,6 +16,7 @@ import { profilesMethods } from './profilesMethods.js';
 import { groupsMethods } from './groupsMethods.js';
 import { dashboardMethods } from './dashboardMethods.js';
 import { Globals } from '../collections/globals.js';
+import { Email } from 'meteor/email'
 
 var fs = Npm.require('fs');
 
@@ -27,7 +28,8 @@ function createDefaultUser() {
 
 	var adminId = Accounts.createUser({
 		username: "admin",
-		password: "Gallup2016"
+		password: "Gallup2016",
+		email: "admin@gmail.com"
 	});
 	Roles.addUsersToRoles(adminId, ['instructor']);
 	Instructor.insert({
@@ -42,6 +44,8 @@ function createDefaultUser() {
 }
 
 Meteor.startup(() => {
+	process.env.MAIL_URL = "smtp://gallupgethip@gmail.com:gallupstuff1234@smtp.gmail.com:587";
+
 	// code to run on server at startup
 	createDefaultUser();
 
@@ -66,10 +70,17 @@ Meteor.startup(() => {
 			numberOfWeeks: 12
 		});
 	}
-	
+
 	blogsMethods();
 	assignmentsMethods();
 	profilesMethods();
 	groupsMethods();
 	dashboardMethods();
+
+	Email.send({
+    to: 'emily_zhang@gallup.com',
+    from: 'gallupgethip@gmail.com',
+    subject: 'the application has started',
+    text: 'thanks'
+	});
 });
