@@ -5,7 +5,7 @@
       <th>Student Name</th>
       <th>Points Received</th>
       <th>Grade</th>
-      <th class="gradeTableWidthOverride">GitHub Link</th>
+      <th class="gradeTableWidthOverride">Assignment Details</th>
     </tr>
     {{#each students}}
       <tr>
@@ -15,7 +15,7 @@
         <td class="clickable" id="{{studentId}}">{{studentPercent}}</td>
         <td class="gradeTableWidthOverride" id="{{studentId}}">
           <a href="{{assignmentUrl}}" target="_blank">
-            <i class="fa fa-external-link" aria-hidden="true"></i>
+            {{assignmentUrl}}
           </a>
         </td>
       </tr>

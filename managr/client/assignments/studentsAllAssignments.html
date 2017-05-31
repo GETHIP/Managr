@@ -15,7 +15,7 @@
               <th class="tableHeadFormatStudent">Due Date</th>
               <th class="tableHeadFormatStudent">Points</th>
               <th class="tableHeadFormatStudent">Instructor</th>
-              <th class="tableHeadFormatStudent">GitHub Link</th>
+              <th class="tableHeadFormatStudent">Assignment Details</th>
           </tr>
           {{#each assignments}}
             <tr class="tableRowFormat">
@@ -24,7 +24,7 @@
               <td class="tableDataFormatStudent" onclick="FlowRouter.go('{{url}}')">{{dueDate}}</td>
               <td class="tableDataFormatStudent" onclick="FlowRouter.go('{{url}}')">{{pointsReceived}} / {{pointsPossible}}</td>
               <td class="tableDataFormatStudent" onclick="FlowRouter.go('{{url}}')">{{assigner}}</td>
-              <td class="tableDataFormatStudent"><a href="{{completedAssignmentLink}}" target="_blank"><i class="fa fa-external-link" aria-hidden="true"></i></a></td>
+              <td class="tableDataFormatStudent"><a href="{{completedAssignmentLink}}" target="_blank">{{completedAssignmentLink}}</a></td>
 
             </tr>
             {{/each}}
