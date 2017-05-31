@@ -5,15 +5,20 @@ import { Globals } from '../../collections/globals.js';
 
 function validateStudentData(dataArray) {
     if (dataArray == undefined || dataArray.length == 0) {
-        return "Error: The csv file contains no students.";
+        return "Error: The file contains no students.";
     }
     var zipCodeRegex = /^[\d]{5}([-][\d]{4})?$/;
     var numberRegex = /[0-9]+/;
     for (i in dataArray) {
+        if (dataArray[i].FirstName == undefined && dataArray[i].LastName == undefined) {
+            return ("Error: File must be a properly formatted Comma Separated Values file. Refer to the Example CSV at the bottom of the Dashboard.")
+        }
         if (dataArray[i].FirstName == "") {
             return "Error: FirstName field is required.";
         } else if (dataArray[i].LastName == "") {
             return "Error: LastName field is required.";
+        } else if (dataArray[i].Email == "") {
+            return "Error: Email field is required.";
         } else if (!numberRegex.test(dataArray[i].Age) && dataArray[i].Age != "") {
             return "Error: Age field must be a number.";
         } else if (!zipCodeRegex.test(dataArray[i].ZipCode) && dataArray[i].ZipCode != "") {
