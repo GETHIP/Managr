@@ -2,8 +2,43 @@
     <title>Managr</title>
 </head>
 <template name="main">
-        {{> topNav}}
+    {{> topNav}}
     <div class="{{navbarDivMargins}}">
+        {{>Template.dynamic template=content}}
+    </div>
+</template>
+
+<template name="assignmentLayout">
+    {{> topNav}}
+    <div class="paddingNav">
+        {{>Template.dynamic template=content}}
+    </div>
+</template>
+
+<template name="profileLayout">
+    {{> topNav}}
+    <div class="paddingNav">
+        {{>Template.dynamic template=content}}
+    </div>
+</template>
+
+<template name="attendanceLayout">
+    {{> topNav}}
+    <div class="paddingNav">
+        {{>Template.dynamic template=content}}
+    </div>
+</template>
+
+<template name="reportsLayout">
+    {{> topNav}}
+    <div class="paddingNav">
+        {{>Template.dynamic template=content}}
+    </div>
+</template>
+
+<template name="dashboardLayout">
+    {{> topNav}}
+    <div class="paddingNav">
         {{>Template.dynamic template=content}}
     </div>
 </template>
