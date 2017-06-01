@@ -168,7 +168,9 @@ export function assignmentsMethods() {
 			if(student != undefined) {
 				var studentAssignments = student.assignments;
 				for(var j = 0; j < studentAssignments.length; j++) {
-					if(studentAssignments[j].assignmentId == assignmentId) {
+					if(!studentAssignments[j].completed){
+						return;
+					} else if(studentAssignments[j].assignmentId == assignmentId) {
 						studentAssignments[j].pointsReceived = newGrade;
 						Student.update({_id: student._id}, {
 							$set: {
