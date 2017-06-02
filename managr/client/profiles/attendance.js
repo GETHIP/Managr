@@ -15,8 +15,8 @@ Template.attendanceUpdate.onCreated(function() {
 		self.subscribe('Globals');
 	});
 	Template.instance().attendancePage = new ReactiveVar(0);
-	AttendanceUtilities.attendancePage = 0;
-});
+	AttendanceUtilities.attendancePage = 0
+	});
 
 Template.attendanceUpdate.events({
 	"submit .attendanceUpdate" (event) {
@@ -26,7 +26,7 @@ Template.attendanceUpdate.events({
 		if (student != undefined) {
 			Meteor.call('updateAttendance', student.userId, Template.instance().attendance.get());
 		}
-		
+
 		FlowRouter.go("/profile/" + FlowRouter.getParam("id"));
 	},
 	"change #weekSelector" (event) {
@@ -45,6 +45,7 @@ Template.attendanceUpdate.events({
 });
 
 Template.attendanceUpdate.helpers({
+
 	userParam: function() {
 		var student = Student.findOne({_id: FlowRouter.getParam("id")});
 		if (student == undefined) {
@@ -74,4 +75,6 @@ Template.attendanceUpdate.helpers({
 		var attendancePage = Template.instance().attendancePage.get();
 		return AttendanceUtilities.emptyAttendance();
 	}
+
+
 });

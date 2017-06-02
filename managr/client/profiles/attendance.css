@@ -1,4 +1,3 @@
-
 .attendTable.attend th {
   background-color: #f58028;
   padding-top: 1.5%;
@@ -12,6 +11,10 @@
 
 .blueBar.orange {
   background-color: #f58028;
+}
+
+.buttonHide {
+  display: none;
 }
 
 .buttonStyle.updateAttendance {

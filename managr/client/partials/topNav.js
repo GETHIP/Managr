@@ -11,8 +11,7 @@ Template.topNav.helpers({
 	// }
 	activeIfTemplateIs: function (urlPath) {
      var currentRoute = FlowRouter.current().path;
-		 console.log(currentRoute);
-     return currentRoute && currentRoute.includes(urlPath) ? 'activated' : ''; 
+     return currentRoute && currentRoute.includes(urlPath) ? 'activated' : '';
    }
 
 });

@@ -14,11 +14,23 @@ export var AttendanceUtilities = {
 	incrementPage: function() {
 		if (this.attendancePage < Globals.numberOfWeeks() / this.attendanceColumnsPerPage - 1) {
 			this.attendancePage++;
+			if(this.attendancePage == (Globals.numberOfWeeks() / this.attendanceColumnsPerPage)-1){
+				document.getElementById("rightCaretButton").classList.add('buttonHide');
+				document.getElementById("leftCaretButton").classList.remove('buttonHide');
+		} else{
+				document.getElementById("leftCaretButton").classList.remove('buttonHide');
 		}
+	}
 	},
 	decrementPage: function() {
 		if (this.attendancePage > 0) {
 			this.attendancePage--;
+			if (this.attendancePage == 0){
+				document.getElementById("leftCaretButton").classList.add('buttonHide');
+				document.getElementById("rightCaretButton").classList.remove('buttonHide');
+			} else{
+				document.getElementById("rightCaretButton").classList.remove('buttonHide');
+			}
 		}
 	},
 	headers: function() {
