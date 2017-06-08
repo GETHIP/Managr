@@ -184,6 +184,12 @@ profileSection.route("/profile", {
 	}
 });
 
+FlowRouter.route("/events", {
+    action: function(params, queryParams) {
+        BlazeLayout.render("eventsLayout", {content:'eventsPage'});
+	}
+});
+
 FlowRouter.route('/home/blogs/:year/:month', {
 	name: 'archives',
 	action : function(params) {

@@ -20,6 +20,9 @@
 						<li class="active" >
 							<a class="assignmentsActive {{ activeIfTemplateIs '/assignments'}}" href="/assignments">Assignments</a>
 						</li>
+						<li class="active">
+							<a class="eventsActive {{ activeIfTemplateIs '/events'}}" href="/events">Events</a>
+						</li>
 						{{#if isStudent}}
 						<li class="active">
 							<a class="profilesActive {{ activeIfTemplateIs '/profile'}}" href="/profile">Profiles</a>
@@ -29,13 +32,9 @@
 						<li class="active">
 							<a class="profilesActive {{ activeIfTemplateIs '/profile'}}" href="/profile">All Profiles</a>
 						</li>
-						{{/if}}
-						{{#if isInstructor}}
 						<li class="active">
 							<a class="attendanceActive {{ activeIfTemplateIs '/attendance'}}" href="/attendance">Attendance</a>
 						</li>
-						{{/if}}
-						{{#if isInstructor}}
 						<li class="active">
 							<a class="reportsActive {{ activeIfTemplateIs '/reports'}}" href="/reports">Reports</a>
 						</li>
