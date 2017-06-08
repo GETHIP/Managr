@@ -3,22 +3,37 @@
 
 	<div class="containerDiv form">
 			<form id="eventForm">
-				<div class="containerDiv formbg cep">
-					<h1 class="formTitle">create your event</h1>
+<div class="containerDiv formbg cep">
+          <div class="createHeading">
+            <p id="welcome">Create Your Event</p>
+            <p id="line"></p>
+          </div>
+          <div class ="MainCreateEvent">
 					<p>Event Name:</p>
-					<input type="text" name="name" placeholder="name of your event" autofocus required>
+					<input id="createEventBox" type="text" name="name" placeholder="Name Of Your Event" autofocus required>
 					<p>Description:</p>
-					<textarea name="description" rows="6" placeholder="describe your event" required></textarea>
+					<textarea id="createEventBox" name="description" rows="6" placeholder="Describe Your Event" required></textarea>
 					<p>When:</p>
-					<input type="datetime-local" name="date" class="assignmentForm" required>
+					<input id="createEventBox" type="datetime-local" name="date" required>
 					<p>Location:</p>
-					<input type="text" name="location" placeholder="where's your event?" autofocus required>
+					<input id="createEventBox" type="text" name="location" placeholder="Where's Your Event?" autofocus required>
+        </div>
+       </div>
 
-				</div>
-				<input type="button" class="createNew button" value="back" id="createAccount" onclick="FlowRouter.go('/home');">
-				<input type="sumbit" class="notAButton badcss" value="" readonly>
-				<input type="submit" class="createNew button" value="create my event" id="createEvent">
+				<input type="submit" class="createNew button" value="Create My Event" id="createEvent">
 			</form>
 		</div>
 
 </template>
+<!--<table class=buttonWidth>
+  <tbody>
+    <tr>
+      <td class=buttonRight>
+        <button class="postButton saveDraftButton">Save Draft</button>
+      </td>
+      <td class=buttonLeft>
+        <button class="postButton createPostButton">Create My Event</button>
+      </td>
+    </tr>
+  </tbody>
+</table>-->
