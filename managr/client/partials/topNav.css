@@ -9,6 +9,10 @@
   border-bottom-color: #61c250;
 }
 
+.surveysActive:focus, .surveysActive:hover, .surveysActive {
+  border-bottom-color: #e61610;
+}
+
 .activated {
 	background-color: #444444;
  	border-bottom-width: 3px;

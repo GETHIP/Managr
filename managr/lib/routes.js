@@ -26,6 +26,12 @@ var attendanceSection = FlowRouter.group({
 	name: "attendance",
 	profiles: "/attendance"
 });
+
+var surveysSection = FlowRouter.group({
+	name: "surveys",
+	prefix: "/surveys"
+});
+
 blogsSection.route('/home', {
 	name: 'home',
 	action() {
@@ -180,6 +186,13 @@ profileSection.route('/attendance', {
 profileSection.route("/profile", {
     action: function(params, queryParams) {
         BlazeLayout.render("profileLayout", {content:'ProfilesTable'});
+		//BlazeLayout.render(main, { content: 'assignmentsBody' });
+	}
+});
+
+FlowRouter.route("/surveys", {
+    action: function(params, queryParams) {
+        BlazeLayout.render("surveysLayout", {content:'surveysPage'});
 		//BlazeLayout.render(main, { content: 'assignmentsBody' });
 	}
 });
