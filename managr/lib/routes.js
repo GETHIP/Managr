@@ -204,6 +204,13 @@ FlowRouter.route('/home/createPost', {
 		BlazeLayout.render(blogLayout, {content: 'createBlogPost'});
 	}
 });
+FlowRouter.route('/home/createEvent', {
+	name: 'createEvent',
+	action() {
+		BlazeLayout.reset();
+		BlazeLayout.render(blogLayout, {content: 'createEvent'});
+	}
+});
 FlowRouter.route('/reports', {
     action: function(params, queryParams){
         BlazeLayout.render("reportsLayout", {content: 'reports'});

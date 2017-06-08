@@ -65,3 +65,9 @@ Template.sideNav.events({
     FlowRouter.go('/home/managePosts');
   }
 });
+Template.sideNav.events({
+  'click #createEventButton': function(event, template) {
+    event.preventDefault();
+    FlowRouter.go('/home/createEvent');
+  }
+});
