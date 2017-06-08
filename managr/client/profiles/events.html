@@ -1,3 +1,10 @@
 <template name="eventsPage">
-
+  {{#if userIsValid}}
+  <div class="marginContainer">
+  <h1 class="titleAssignment">Events</h1>
+  <div class="orange-bar purpleBar"> &nbsp;</div>
+    </div>
+	{{else}}
+		{{> accessDenied}}
+	{{/if}}
 </template>

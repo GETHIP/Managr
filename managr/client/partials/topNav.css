@@ -53,6 +53,10 @@
 	border-bottom-color: #fcb040;
 }
 
+.eventsActive:focus, .eventsActive:hover, .eventsActive {
+  border-bottom-color: #BD53FF;
+}
+
 .profilesActive:focus, .profilesActive:hover, .profilesActive {
 	border-bottom-color: #0397d7;
 }
