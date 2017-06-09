@@ -1,3 +1,18 @@
 .red-bar{
   background: #e61610;
 }
+
+.surveyTableHeadFormat {
+  background-color: #e61610;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  border-bottom: 1px solid #444444;
+  color: white;
+  width: 50%;
+  font-size: 18px;
+  text-align: center;
+}
+
+.surveyTableHeadFormat.surveys, .surveyTableDataFormat.surveys {
+  width: 33%;
+}

@@ -3,11 +3,25 @@
   <div class="marginContainer">
   <h1 class="titleAssignment">Surveys</h1>
   <div class="orange-bar red-bar"> &nbsp;</div>
+  <table class="viewAllTable">
+    <tr>
+      <th class="surveyTableHeadFormat surveys">Survey Name</th>
+      <th class="surveyTableHeadFormat surveys">Due Date</th>
+      <th class="surveyTableHeadFormat surveys"># of Responses</th>
+    </tr>
 
+    {{#each surveys}} 
+      <tr class="tableRowFormat" onclick="FlowRouter.go('{{this.url}}')">
+        <td class="tableDataFormat assignments"><div class="overflowText">{{this.title}}</div></td>
+        <td class="tableDataFormat assignments">{{this.dueDate}}</td>
+        <td class="tableDataFormat assignments">{{this.studentsCompleted}}/{{this.numberOfStudents}}</td>
 
+      </tr>
+    {{/each}}
 
-
-
+  </table>
+  <a href="/assignments/edit/new"><button class="buttonStyle back submitbtn" id="newAssignmentBtn">Create New Assignment</button></a>
+  <a href="/assignments/grades"><button class="buttonStyle create submitbtn" id="viewGradesBtn">View Grades</button></a>
     </div>
 	{{else}}
 		{{> accessDenied}}
