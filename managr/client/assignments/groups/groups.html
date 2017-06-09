@@ -2,12 +2,16 @@
     {{#if isInstructor}}
     <div class="marginContainer">
         <h1 class="titleAssignment">Groups Overview</h1>
+        <button id="createGroupButton" class="buttonStyle groups submitbtn">Create a Group</button>
+        <a href="/groups"><button id="suggestedgroupsbutton" class="buttonStyle groups" style="">Suggested Groups</button></a>
         <div class="orange-bar">&nbsp;</div>
 
         <table class="groupsTable table">
             <thead>
                 <tr>
                     <th class="groupsTableHead">Name</th>
+                    <th class="groupsTableHead">Leader</th>
+                    <th class="groupsTableHead">Size</th>
                     <th class="groupsTableHead">Students</th>
                     <th class="groupsTableHead"></th>
                 </tr>
@@ -15,15 +19,17 @@
             {{#each group in groups}}
               <tr class="tableRowFormat">
                   <td>{{group.name}}</td>
+                  <td>{{group.leader}}</td>
+                  <td>{{group.size}}</td>
                   <td>
-                      <div class="namesInGroup">
-                          <ol>
+                      <div class="namesInGroup" id="namesInGroup">
+                          <ul style="margin-left: 18px">
                               {{#each student in group.students}}
-                                  <li>
+                                  <li style="list-style-type: circle">
                                      {{student.name}}
                                   </li>
                               {{/each}}
-                          </ol>
+                          </ul>
                       </div>
                   </td>
                   <td>
@@ -35,8 +41,6 @@
               </tr>
             {{/each}}
         </table>
-        <button class="buttonStyle back submitbtn" id="backButton">Back</button>
-        <button class="buttonStyle create submitbtn" id="createGroupButton">Create Group</button>
 
     </div>
     {{else}} {{> accessDenied}} {{/if}}
