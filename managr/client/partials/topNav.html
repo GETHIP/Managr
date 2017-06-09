@@ -24,7 +24,7 @@
 						<li class="active">
 							<a class="profilesActive {{ activeIfTemplateIs '/profile'}}" href="/profile">Profiles</a>
 						</li>
-						{{/if}}s
+						{{/if}}
 						{{#if isInstructor}}
 						<li class="active">
 							<a class="profilesActive {{ activeIfTemplateIs '/profile'}}" href="/profile">All Profiles</a>
@@ -41,6 +41,11 @@
 						</li>
 						<li class="active">
 							<a class="dashboardActive {{ activeIfTemplateIs '/dashboard'}}" href="/dashboard">Dashboard</a>
+						</li>
+						{{/if}}
+						{{#if isInstructor}}
+						<li class="active">
+							<a class="groupsActive {{ activeIfTemplateIs '/groups'}}" href="/groups">Groups</a>
 						</li>
 						{{/if}}
 						{{/if}}
