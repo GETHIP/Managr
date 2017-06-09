@@ -28,6 +28,7 @@ header {
   margin-top: 2%;
   margin-bottom: 2%;
   box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+
 }
 
 .leaderTable th {
@@ -47,6 +48,7 @@ header {
   width: 16.666%;
   font-size: 14px;
   text-align: center;
+
 }
 
 .purple-bar {
@@ -68,4 +70,34 @@ header {
   font-size: 14px;
   float: right;
   padding: 1%;
+}
+
+.buttonStyle {
+  width: 100%;
+  background-color: #7700DD;
+  border: none;
+  color: white;
+  padding: 1.25%;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: center;
+  font-size: 18px;
+  border-radius: 6px;
+  margin-bottom: 2%;
+}
+
+.buttonStyle:hover {
+  background-color: #9f53e0;
+}
+.tableHeadFormat {
+  background-color: #7700DD;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  border-bottom: 1px solid #444444;
+  color: white;
+  width: 50%;
+  font-size: 18px;
+  text-align: center;
+  padding-right: 10px;
+  padding-left: 10px;
 }
