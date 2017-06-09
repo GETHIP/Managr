@@ -1,3 +1,25 @@
 .purpleBar {
   background: #BD53FF;
 }
+.events {
+  margin-right: 5%;
+  margin-left: 5%;
+}
+
+.containerDiv.formbg.homeEvents  {
+    width: 80%;
+    text-align: left;
+    font-size: 18px;
+    margin-left: 5%;
+}
+
+.formTitle.eventTitle {
+    text-align: center;
+    font-size: 36px;
+    color: #BD53FF;
+}
+
+.formTitle.eventTitle:hover {
+    cursor: pointer;
+    color: #BD79FF;
+}

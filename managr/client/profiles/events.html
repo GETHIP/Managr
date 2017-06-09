@@ -7,4 +7,15 @@
 	{{else}}
 		{{> accessDenied}}
 	{{/if}}
+  <div class="events">
+<div class ="MainCreateEvent">
+  <div class="containerDiv formbg homeEvents">
+  				<h1 class="formTitle eventTitle" onClick="FlowRouter.go('/eventView/{{event._id}}')">{{event.name}}Party</h1>
+  				<p>Host: Mary Clare {{event.host}}</p>
+  				<p>Description: Fun {{event.description}}</p>
+  				<p>Date: {{event.date}}</p>
+  				<p>Location: Gallup {{event.location}}</p>
+  			</div>
+</div>
+</div>
 </template>
