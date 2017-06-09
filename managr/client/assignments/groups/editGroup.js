@@ -132,6 +132,8 @@ Template.editGroup.helpers({
             var formattedGroup = {
                 name: allGroups[i].name,
                 groupId: allGroups[i]._id,
+								size: allGroups[i].studentIds.length,
+                leader: allGroups[i].leader,
                 checked: containsAllStudentsInEditingGroup(getGroupBeingEdited(), allGroups[i])
             }
             formattedGroups.push(formattedGroup);

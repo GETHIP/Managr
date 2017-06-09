@@ -32,7 +32,9 @@ Template.groups.helpers({
             var formattedGroup = {
                 name: group.name,
                 students: formatStudentsForGroup(group),
-                groupId: group._id
+                groupId: group._id,
+                size: group.studentIds.length,
+                leader: group.leader
             }
             formattedGroups.push(formattedGroup);
         }
@@ -40,13 +42,15 @@ Template.groups.helpers({
             return group1.name.localeCompare(group2.name);
         });
         return formattedGroups;
+    },
+    namesInGroup: function() {
+        if(document.getElementById("namesInGroup").style.height > 200) {
+            document.getElementById("namesInGroup").style.overflowY = "scroll";
+        }
     }
 });
 
 Template.groups.events({
-    'click #backButton': function() {
-        FlowRouter.go("/assignments");
-    },
     'click #createGroupButton': function() {
         FlowRouter.go("/groups/create");
     },

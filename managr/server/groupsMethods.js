@@ -22,7 +22,6 @@ export function groupsMethods() {
         return;
       }
 
-
       Groups.insert({
         name: groupName,
         studentIds: studentIds

@@ -93,7 +93,9 @@ Template.createGroup.helpers({
             var group = allGroups[i];
             var formattedGroup = {
                 name: group.name,
-                groupId: group._id
+                groupId: group._id,
+								size: group.studentIds.length,
+								leader: group.leader
             }
             formattedGroups.push(formattedGroup);
         }
