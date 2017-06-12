@@ -1,39 +1,69 @@
 <template name="selections">
+      <!-- YN SECTION -->
   <div class="marginContainer">
     <div class="YNtemplate">
-    <h1 class="surveyType">Yes or No Question</h1>
-    <form action="/action_page.php">
-    <input type="checkbox" name="MCQ" value="Yes" class="selectionForm"> Yes<br>
-    <input type="checkbox" name="MCQ" value="No" class="selectionForm"> No<br>
-  </form>
+    <table class="selectionTable">
+      <tr class="selectionRowFormat">
+        <p class="noIndent surveyFormFormat"><b>Question:</b></p>
+        <input type="text" name="YNQ" class="selectionForm">
+      </tr>
+      <tr>
+        <form action="/action_page.php">
+          <td><input type="checkbox" value="YNQ" name="Yes" class="selectionForm"> Yes<br></td>
+          <td><input type="checkbox" value="YNQ" name="No" class="selectionForm"> No<br></td>
+        </form>
+      </tr>
+    </table>
   </div>
 </div>
+    <!-- MC SECTION -->
 <div class="marginContainer">
   <div class="MCtemplate">
-  <h1 class="surveyType">Multiple Choice Question</h1>
-    <form action="/action_page.php">
-    <input type="checkbox" name="MCQ" value="c1" class="selectionForm"> Choice 1<br>
-    <input type="checkbox" name="MCQ" value="c2" class="selectionForm"> Choice 2<br>
-    <input type="checkbox" name="MCQ" value="c3" class="selectionForm"> Choice 3<br>
-    <input type="checkbox" name="MCQ" value="c4" class="selectionForm"> Choice 4<br>
-    </form>
+    <table class="selectionTable">
+      <tr class="selectionRowFormat">
+        <p class="noIndent surveyFormFormat"><b>Question:</b></p>
+        <input type="text" name="MCQ" class="selectionForm">
+      </tr>
+      <tr class="selectionRowFormat">
+        <p class="Indent surveyFormFomat"><b>Choices:</b></p>
+      </tr>
+        <tr class="selectionRowFormat">
+          <ul>
+            <li><input type="text" value="{{MC}}" name=mc1 class=selectionForm placeholder="Option 1"></li>
+            <li><input type="text" value="{{MC}}" name=mc2 class=selectionForm placeholder="Option 2"></li>
+            <li><input type="text" value="{{MC}}" name=mc3 class=selectionForm placeholder="Option 3"></li>
+            <li><input type="text" value="{{MC}}" name=mc4 class=selectionForm placeholder="Option 4"></li>
+          </ul>
+        </tr>
+    </table>
   </div>
 </div>
-<div class="marginContainer">
-  <div class="CBtemplate">
-  <h1 class="surveyType">Multiple Select Question</h1>
-    <form action="/action_page.php">
-    <input type="checkbox" name="CBQ" value="cb1" class="selectionForm"> Choice 1<br>
-    <input type="checkbox" name="CBQ" value="cb2" class="selectionForm"> Choice 2<br>
-    <input type="checkbox" name="CBQ" value="cb3" class="selectionForm"> Choice 3<br>
-    <input type="checkbox" name="CBQ" value="cb4" class="selectionForm"> Choice 4<br>
-    </form>
+    <!-- CB SECTION -->
+  <div class="marginContainer">
+    <div class="CBtemplate">
+      <table class="selectionTable">
+        <tr class="selectionRowFormat">
+          <p class="noIndent surveyFormFormat"><b>Question:</b></p>
+          <input type="text" name="CBQ" class="selectionForm">
+        </tr>
+        <tr class="selectionRowFormat">
+          <ul>
+            <li><input type="text" value="{{CB}}" name=cb1 class=selectionForm placeholder="Option 1"></li>
+            <li><input type="text" value="{{CB}}" name=cb2 class=selectionForm placeholder="Option 2"></li>
+          </ul>
+        </tr>
+      </table>
+    </div>
   </div>
-</div>
+    <!-- FR SECTION -->
   <div class="marginContainer">
     <div class="FRtemplate">
-    <h1 class="surveyType">Free Response Question</h1>
-    <input type="text" name="FRQ" class="selectionForm" required>
+      <table class="selectionTable">
+        <tr class="selectionRowFormat">
+          <p class="noIndent surveyFormFormat"><b>Question:</b></p>
+          <input type="text" name="FRQ" class="selectionForm">
+        </tr>
+      </table>
   </div>
 </div>
 </template>

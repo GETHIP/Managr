@@ -198,7 +198,12 @@ FlowRouter.route("/surveys", {
 	}
 });
 
-
+//with specific survey id :id
+FlowRouter.route("/view/:id", {
+    action: function(params, queryParams) {
+        BlazeLayout.render("surveysLayout", {content:'viewSurveyPage'});
+	}
+});
 
 FlowRouter.route('/home/blogs/:year/:month', {
 	name: 'archives',
