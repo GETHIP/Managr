@@ -1,0 +1,55 @@
+<template name="surveysPage">
+  {{#if isInstructor}}
+  <div class="marginContainer">
+  <h1 class="titleAssignment">Surveys</h1>
+  <div class="orange-bar red-bar"> &nbsp;</div>
+  <table class="viewAllTable">
+    <tr>
+      <th class="surveyTableHeadFormat surveys">Survey Name</th>
+      <th class="surveyTableHeadFormat surveys">Due Date</th>
+      <th class="surveyTableHeadFormat surveys"># of Responses</th>
+    </tr>
+
+    {{#each surveys}}
+      <tr class="tableRowFormat" onclick="FlowRouter.go('{{this.url}}')">
+        <td class="tableDataFormat assignments"><div class="overflowText">{{this.title}}</div></td>
+        <td class="tableDataFormat assignments">{{this.dueDate}}</td>
+        <td class="tableDataFormat assignments">{{this.studentsCompleted}}/{{this.numberOfStudents}}</td>
+
+      </tr>
+    {{/each}}
+
+  </table>
+
+    </div>
+
+    <!-- Create Survey section | NEEDS CSS FOR FORMATTING! -->
+    <div class="marginContainer">
+      <table class="createTable">
+        <thead>
+          <th>Create</th>
+        </thead>
+        <tbody class="createTable">
+          <tr>
+            <td class="createTableButton">
+              <button type="button">Add</button>
+            </td>
+            <td class="createTableSpacer"></td>
+            <td class=createTableInput>
+              <select>
+                <option value="" disabled selected>Select Survey Type</option>
+                <option value="YN">Yes/No</option>
+                <option value="MC">Multiple Choice</option>
+                <option value="FR">Free Response</option>
+              </select>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <a href="/assignments/edit/new"><button class="buttonStyle back submitbtn" id="newSurveyBtn">Save</button></a>
+      <a href="/assignments/grades"><button class="buttonStyle create submitbtn" id="viewGradesBtn">Send</button></a>
+    </div>
+	{{else}}
+		{{> accessDenied}}
+	{{/if}}
+</template>
