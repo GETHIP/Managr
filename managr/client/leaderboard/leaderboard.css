@@ -2,6 +2,15 @@ header {
   padding: 20px 15px 15px 15px;
   position: relative;
 }
+.titleEvaluations {
+  font-family: arial, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 40px;
+  display: inline-block;
+  margin-top: 1%;
+  /* width: 100%; */
+}
 .titleLeader {
   font-family: arial, sans-serif;
   font-weight: normal;
