@@ -1,28 +1,23 @@
 <template name="viewSurveyPage">
     <!--{{#if isStudent}}-->
     <div class="marginContainer">
-    <h1 class="titleAssignment">{{this.title}}</h1>
+    <h1 class="titleAssignment">Title: {{this.title}}</h1>
     <div class="orange-bar red-bar"> &nbsp;</div>
-    <table class="marginContainer">
+
+    <div class="surveyContainer">
 
       <p class="noIndent assignmentFormFormat"><b>Due Date:  {{this.dueDate}}</b></p>
       <p class="noIndent assignmentFormFormat"><b>Survey:</b></p>
 
-      {{#each <!--question-->}}
+      {{#each surveys}}<!--question-->
 
       {{/each}}
 
-    </table>
+    </div>
 
     <!-- Save and Send Buttons -->
     <a href="#"><button class="buttonStyle sendSurvey submitbtn" id="viewGradesBtn">Send</button></a>
 
     </div>
 
-      {{else}}
-      {{> accessDenied}}
-
-      {{/if}}
-	{{/if}}
-
-</template>
+	<!-- {{/if}} -->
