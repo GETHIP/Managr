@@ -28,7 +28,6 @@ header {
   margin-top: 2%;
   margin-bottom: 2%;
   box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26);
-
 }
 
 .leaderTable th {
@@ -84,7 +83,8 @@ header {
   font-size: 18px;
   border-radius: 6px;
   margin-bottom: 2%;
-}
+  margin-top: 2%;
+  }
 
 .buttonStyle:hover {
   background-color: #9f53e0;
