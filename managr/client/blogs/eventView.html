@@ -1,0 +1,14 @@
+<template name="eventView">
+  {{> navSide }}
+  {{> navBar }}
+  <div class="containerInvites">
+
+    <div class="containerDiv formbg homeEvents iep">
+        <h1 class="formTitle eventTitle2" >{{event.name}}</h1>
+  			<p>Description: {{event.description}}</p>
+  			<p>Date: {{event.date}}</p>
+  			<p>Location: {{event.location}}</p>
+    </div>
+    <input type="submit" class="createNew button invitr" value="invite" onclick="FlowRouter.go('/invitation/{{event._id}}');">
+  </div>
+</template>

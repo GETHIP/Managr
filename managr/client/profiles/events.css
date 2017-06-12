@@ -78,9 +78,6 @@ input:checked+.slider:before {
     -ms-transform: translateX(26px);
     transform: translateX(26px);
 }
-
-
-
 .slider.round {
     border-radius: 34px;
 }
@@ -103,6 +100,14 @@ input:checked+.slider:before {
     background-color: #BD79FF;
 }
 
+#editEvent {
+  background-color:  #BD53FF;
+  color: white;
+  height: 40px;
+  width: 100px;
+  border-radius: 15px;
+}
+
 .createEvent {
   background-color: #BD53FF
 }
@@ -117,4 +122,8 @@ input:checked+.slider:before {
 
 .eventCalendar:hover {
   background-color: #BD79FF
+<<<<<<< HEAD
+=======
+
+>>>>>>> e92389c4ea5709c7a690b58a950b0d3e6d7f0a4f
 }
