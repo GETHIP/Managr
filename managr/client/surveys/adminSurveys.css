@@ -47,8 +47,8 @@ viewAllTable tr:hover {
 .surveyContainer{
  	  background: white;
   	box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26);
-  	margin-bottom: 2%;
-  	margin-top: 8%;
+    margin-top: 2%;
+    margin-bottom: 2%;
 	  padding-top: 2%;
     padding-bottom: 4%;
   	padding-left: 4%;
