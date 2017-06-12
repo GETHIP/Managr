@@ -32,6 +32,11 @@
 						{{/if}}
 						{{#if isInstructor}}
 						<li class="active">
+							<a class="groupsActive {{ activeIfTemplateIs '/groups'}}" href="/groups">Groups</a>
+						</li>
+						{{/if}}
+						{{#if isInstructor}}
+						<li class="active">
 							<a class="attendanceActive {{ activeIfTemplateIs '/attendance'}}" href="/attendance">Attendance</a>
 						</li>
 						{{/if}}
@@ -43,11 +48,6 @@
 						{{#if isInstructor}}
 						<li class="active">
 							<a class="dashboardActive {{ activeIfTemplateIs '/dashboard'}}" href="/dashboard">Dashboard</a>
-						</li>
-						{{/if}}
-						{{#if isInstructor}}
-						<li class="active">
-							<a class="groupsActive {{ activeIfTemplateIs '/groups'}}" href="/groups">Groups</a>
 						</li>
 						{{/if}}
 						{{/if}}
