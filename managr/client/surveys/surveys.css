@@ -2,6 +2,20 @@
   background: #e61610;
 }
 
+.surveyBtn{
+  background: #e61610;
+  width: 66%;
+}
+
+viewAllTable tr:hover {
+  background-color: #f7b9b7;
+  cursor: pointer;
+}
+
+.buttonStyle.surveyBtn:hover{
+  background-color: #cf130e;
+}
+
 .surveyTableHeadFormat {
   background-color: #e61610;
   padding-top: 2%;
