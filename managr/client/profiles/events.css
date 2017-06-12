@@ -122,8 +122,43 @@ input:checked+.slider:before {
 
 .eventCalendar:hover {
   background-color: #BD79FF
-<<<<<<< HEAD
-=======
+}
 
->>>>>>> e92389c4ea5709c7a690b58a950b0d3e6d7f0a4f
+
+.eventsTable {
+	width: 100%;
+}
+
+.eventsTableInput {
+	width: 45%;
+	margin-right: 5%;
+  outline: none;
+}
+
+.searchEvents {
+  outline: none;
+}
+
+#searchBox:focus {
+    outline: none;
+    border-radius: 6px;
+    border: 2px solid #BD53FF;
+}
+
+.eventsTableButton {
+	width: 20%;
+}
+
+.eventsTableSpacer {
+	width: 5%;
+}
+
+button.eventsTable {
+	padding-top: 0.4em;
+	padding-bottom: 0.4em;
+}
+
+input.eventsTable {
+	margin-bottom: 0px;
+	height: 100%;
 }
