@@ -92,6 +92,11 @@ input:checked+.slider:before {
 .rsvp {
   float:right;
 }
-.eventDetailes {
-  float: left;
+
+#editEvent {
+  background-color:  #BD53FF;
+  color: white;
+  height: 40px;
+  width: 100px;
+  border-radius: 15px;
 }
