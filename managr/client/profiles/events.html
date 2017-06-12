@@ -4,26 +4,11 @@
       <h1 class="titleAssignment">Events</h1>
       <div class="orange-bar purpleBar"> &nbsp;</div>
     </div>
-<<<<<<< HEAD
-  {{else}}
-    {{> accessDenied}}
-  {{/if}}
-  <div class="events">
-    <div class ="MainCreateEvent">
-      <div class="containerDiv formbg homeEvents">
-        <h1 class="formTitle eventTitle" onClick="FlowRouter.go('/eventView/{{event._id}}')">{{event.name}}Party</h1>
-        <p>Host: Mary Clare {{event.host}}</p>
-        <p>Description: Fun {{event.description}}</p>
-        <p>Date: {{event.date}}</p>
-        <p>Location: Gallup {{event.location}}</p>
-      </div>
-    </div>
-  </div>
-=======
+
 	{{else}}
 		{{> accessDenied}}
 	{{/if}}
-  
+
   <div class="events">
 <div class ="MainCreateEvent">
   <div class="containerDiv formbg homeEvents">
@@ -46,5 +31,5 @@
   			</div>
 </div>
 </div>
->>>>>>> 6a9ebc023152cbc23b0832318c0e626f0b64775b
+=
 </template>
