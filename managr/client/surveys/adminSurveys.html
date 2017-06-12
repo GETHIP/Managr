@@ -52,6 +52,37 @@
       <a href="#"><button class="buttonStyle sendSurvey submitbtn" id="viewGradesBtn">Send</button></a>
     </div>
 	{{else}}
-		{{> accessDenied}}
+    {{#if isStudent}}
+    <div class="marginContainer">
+    <h1 class="titleAssignment">Surveys</h1>
+    <div class="orange-bar red-bar"> &nbsp;</div>
+    <table class="viewAllTable">
+      <!-- Table Headings -->
+      <tr>
+        <th class="surveyTableHeadFormat surveys">Survey Name</th>
+        <th class="surveyTableHeadFormat surveys">Date Due</th>
+        <th class="surveyTableHeadFormat surveys">Status</th>
+      </tr>
+      <!-- Each survey in table -->
+      {{#each surveys}}
+        <tr class="tableRowFormat" onclick="FlowRouter.go('{{this.url}}')">
+          <td class="tableDataFormat assignments"><div class="overflowText">{{this.title}}</div></td>
+          <td class="tableDataFormat assignments">{{this.dueDate}}</td>
+          <td class="tableDataFormat assignments">{{this.status}}</td>
+        </tr>
+      {{/each}}
+      <!-- Create Card -->
+
+      <!-- Send Card -->
+
+    <!-- Save and Send Buttons -->
+    </table>
+    </div>
+
+      {{else}}
+      {{> accessDenied}}
+
+      {{/if}}
 	{{/if}}
+
 </template>

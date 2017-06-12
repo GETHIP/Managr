@@ -197,6 +197,8 @@ FlowRouter.route("/surveys", {
 	}
 });
 
+
+
 FlowRouter.route('/home/blogs/:year/:month', {
 	name: 'archives',
 	action : function(params) {
