@@ -93,14 +93,16 @@ input:checked+.slider:before {
   float:right;
 }
 
-<<<<<<< HEAD
-#editEvent {
+.editEvent {
   background-color:  #BD53FF;
-  color: white;
-  height: 40px;
-  width: 100px;
-  border-radius: 15px;
-=======
+  font-size: 13px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.editEvent:hover {
+    background-color: #BD79FF;
+}
+
 .createEvent {
   background-color: #BD53FF
 }
@@ -115,5 +117,4 @@ input:checked+.slider:before {
 
 .eventCalendar:hover {
   background-color: #BD79FF
->>>>>>> 000e47166e6a4a1c8eba7890d13b71ed16daa3a6
 }
