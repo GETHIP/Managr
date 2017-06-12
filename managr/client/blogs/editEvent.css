@@ -1,0 +1,14 @@
+.MainEditEvent {
+  box-shadow: 3px 3px 5px #888888;
+  background-color: white;
+  padding: 15px;
+  margin-top: 40px;
+  margin-bottom: 10px;
+}
+
+#editEventBox:focus{
+    outline: none;
+    border-radius: 6px;
+    border: 2px solid #61c250;
+    color:black;
+}
