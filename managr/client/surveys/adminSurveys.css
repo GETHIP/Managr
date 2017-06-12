@@ -33,9 +33,22 @@ viewAllTable tr:hover {
 
 .saveSurvey, .sendSurvey{
   width: 66%;
+}
+
+.addBtn, .saveSurvey, .sendSurvey{
   background-color: #e61610;
 }
 
-.saveSurvey:hover, .sendSurvey:hover{
+.saveSurvey:hover, .sendSurvey:hover, .addBtn:hover{
   background-color: #cf130e;
+}
+.createContainer{
+    width: 66%;
+ 	  background: white;
+  	box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  	margin-bottom: 2%;
+  	margin-top: 8%;
+	  padding-top: 2%;
+  	padding-left: 4%;
+  	padding-right: 4%;
 }
