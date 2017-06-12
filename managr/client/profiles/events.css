@@ -132,7 +132,6 @@ input:checked+.slider:before {
 .eventsTableInput {
 	width: 45%;
 	margin-right: 5%;
-  outline: none;
 }
 
 .searchEvents {
@@ -140,9 +139,9 @@ input:checked+.slider:before {
 }
 
 #searchBox:focus {
-    outline: none;
-    border-radius: 6px;
-    border: 2px solid #BD53FF;
+  outline: none;
+  border-radius: 6px;
+  border: 2px solid #BD53FF;
 }
 
 .eventsTableButton {
