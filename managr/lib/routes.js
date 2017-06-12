@@ -90,23 +90,7 @@ assignmentSection.route("/single/:id", {
         });
     }
 });
-//=================================================================================================
-surveysSection.route("/survey/:id", {
-    name: "viewSurveyPage",
-    action(params) {
-        BlazeLayout.render("surveysLayout",{
-            content: "viewSurveyPage"
-        });
-    }
-});
-surveysSection.route("/survey/results/:id", {
-    name: "surveyResults",
-    action(params) {
-        BlazeLayout.render("surveysLayout",{
-            content: "surveyResults"
-        });
-    }
-});
+
 //this is a temp route
 assignmentSection.route("/single/admin/:id", {
     name: "adminSingleAssignment",
