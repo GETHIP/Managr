@@ -1,0 +1,63 @@
+<template name="surveysPage">
+  <!--====================INSTRUCTOR PAGE=====================================-->
+  {{#if isInstructor}}
+  <div class="marginContainer">
+  <h1 class="titleAssignment">Surveys</h1>
+  <div class="orange-bar red-bar"> &nbsp;</div>
+  <table class="viewAllTable">
+    <!-- Table Headings -->
+    <tr>
+      <th class="surveyTableHeadFormat surveys">Survey Name</th>
+      <th class="surveyTableHeadFormat surveys">Due Date</th>
+      <th class="surveyTableHeadFormat surveys"># of Responses</th>
+    </tr>
+    <!-- Each survey in table -->
+    {{#each surveys}}
+      <tr class="tableRowFormat" onclick="FlowRouter.go('{{this.url}}')">
+        <td class="tableDataFormat assignments"><div class="overflowText">{{this.title}}</div></td>
+        <td class="tableDataFormat assignments">{{this.dueDate}}</td>
+        <td class="tableDataFormat assignments">{{this.studentsCompleted}}/{{this.numberOfStudents}}</td>
+      </tr>
+    {{/each}}
+    <!-- Create Card -->
+
+    <!-- Send Card -->
+
+  <!-- Save and Send Buttons -->
+  </table>
+  <a href="#"><button class="buttonStyle surveyBtn submitbtn" id="saveSurveysBtn">Save</button></a>
+  <a href="#"><button class="buttonStyle surveyBtn submitbtn" id="sendSurveysBtn">Send</button></a>
+    </div>
+	{{else}}
+  <!--====================STUDENT PAGE========================================-->
+    {{#if userIsValid}}
+    <div class="marginContainer">
+    <h1 class="titleAssignment">Surveys</h1>
+    <div class="orange-bar red-bar"> &nbsp;</div>
+    <table class="viewAllTable">
+      <!-- Table Headings -->
+      <tr>
+        <th class="surveyTableHeadFormat surveys">Survey Name</th>
+        <th class="surveyTableHeadFormat surveys">Date Due</th>
+        <th class="surveyTableHeadFormat surveys">Status</th>
+      </tr>
+      <!-- Each survey in table -->
+      {{#each surveys}}
+        <tr class="tableRowFormat" onclick="FlowRouter.go('{{this.url}}')">
+          <td class="tableDataFormat assignments"><div class="overflowText">{{this.title}}</div></td>
+          <td class="tableDataFormat assignments">{{this.dueDate}}</td>
+          <td class="tableDataFormat assignments">{{this.status}}</td>
+        </tr>
+      {{/each}}
+      <!-- Create Card -->
+
+      <!-- Send Card -->
+
+    <!-- Save and Send Buttons -->
+    </table>
+    </div>
+    {{else}}
+		{{> accessDenied}}
+    {{/if}}
+	{{/if}}
+</template>
