@@ -42,13 +42,29 @@
         <input type="checkbox">
         <div class="slider round"></div>
       </label>
+        {{#if isInstructor}}
+           <br>
+           <div class="editEventButton">
+            <input type="submit" value="Edit Event" id="editEvent"  onclick="FlowRouter.go('/editEvent');">
+         </div>
+        {{else}}
+     		{{> accessDenied}}
+     	  {{/if}}
     </div>
+<<<<<<< HEAD
+
+=======
+>>>>>>> 000e47166e6a4a1c8eba7890d13b71ed16daa3a6
   				<p>Host: Mary Clare {{event.host}}</p>
   				<p>Description: Fun {{event.description}}</p>
   				<p>Date: {{event.date}}</p>
   				<p>Location: Gallup {{event.location}}</p>
   			</div>
-</div>
-</div>
 
+</div>
+</div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 000e47166e6a4a1c8eba7890d13b71ed16daa3a6
 </template>
