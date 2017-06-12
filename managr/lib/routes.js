@@ -222,7 +222,7 @@ FlowRouter.route('/events/createEvent', {
 	name: 'createEvent',
 	action() {
 		BlazeLayout.reset();
-		BlazeLayout.render(blogLayout, {content: 'createEvent'});
+		BlazeLayout.render("eventsLayout", {content: 'createEvent'});
 	}
 });
 
