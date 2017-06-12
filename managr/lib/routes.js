@@ -22,6 +22,10 @@ var profileSection = FlowRouter.group({
 	name: "profiles",
 	profiles: "/profiles"
 });
+var leaderboardSection = FlowRouter.group({ // my edit
+	name: "leaderboard",
+	prefix: "/leadertable"
+});
 var attendanceSection = FlowRouter.group({
 	name: "attendance",
 	profiles: "/attendance"
@@ -139,7 +143,7 @@ profileSection.route('/dashboard/new', {
 	action: function(params, queryParams) {
 		BlazeLayout.render("dashboardLayout", { content: 'newUser' });
 	}
-})
+});
 
 profileSection.route("/profile/:id", {
   action: function(params, queryParams){
@@ -156,6 +160,12 @@ profileSection.route("/profile/edit/:id", {
   action: function(parmas, queryParams){
     BlazeLayout.render("profileLayout", {content: "profileEdit", attendance: "attendance", assignments: "assignments"});
   }
+});
+
+FlowRouter.route("/leaderboard", {  //--------------------------my edit
+	action: function(params, queryParams){
+		BlazeLayout.render("leaderboardLayout", {content: "leaderTable"})
+	}
 });
 
 attendanceSection.route("/attendance/edit/:id", {

@@ -14,6 +14,11 @@ export function publishAll() {
         return Assignments.find();
     });
 
+	Meteor.publish("Ev0als", function() {
+				return Evals.find();
+				//Implement Security
+		});
+
 	Meteor.publish("Comments", function(){
 		return Comments.find();
 	});

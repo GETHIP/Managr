@@ -1,0 +1,25 @@
+<template name="leaderTable">
+	{{#if userIsValid}}
+		<div class="marginContainer">
+			<h1 class="titleProfile">Evaluations</h1>
+			<div class="purple-bar">&nbsp;</div>
+			<br><br><br><br><h1 class="Leaderboard">Leaderboard:</h1>
+			<table class="StudentTable">
+				<!-- <thead> -->
+					<!--table content should correspond -->
+					<tr>
+						<th>Name</th>
+						<th>Assignment points</th>
+						<th>Stars</th>
+						<th>Attendance</th>
+						<th>Total</th>
+					</tr>
+				<!-- </thead> -->
+				<!-- <tbody> -->
+
+	</table>
+	</div>
+	{{else}}
+		{{> accessDenied}}
+		{{/if}}
+</template>

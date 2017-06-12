@@ -43,8 +43,13 @@
 							<a class="dashboardActive {{ activeIfTemplateIs '/dashboard'}}" href="/dashboard">Dashboard</a>
 						</li>
 						{{/if}}
+						{{#if isInstructor}}
+						<li class="active">
+							<a class="leaderboardActive {{ activeIfTemplateIs '/leaderboard'}}" href="/leaderboard">Leaderboard</a>
+						</li>
 						{{/if}}
-						<li></li>
+						{{/if}}
+					<li></li>
 					</ul>
 					{{#if renderNavbar}}
 					<ul class="nav navbar-nav navbar-right">
