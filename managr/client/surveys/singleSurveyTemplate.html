@@ -1,0 +1,14 @@
+<template name="singleSurveyTemplate">
+  {{#with surveys}}
+  <h1 class="titleSurvey">{{title}}</h1>
+  <div class="orange-bar red-bar">&nbsp;</div>
+  <div class="surveyContainer">
+      <p class=surveyTextFormat><b>Due Date:</b> {{dueDate}}</p>
+      <p class=surveyTextFormat><b>Survey:</b> {{assigner}}</p>
+      {{#each surveyItem}}
+        <p>{{questionText}}</p>
+        <!-- Insert options/form? -->
+      {{/each}}
+  </div>
+  {{/with}}
+</template>
