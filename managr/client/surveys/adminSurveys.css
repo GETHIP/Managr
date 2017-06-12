@@ -54,3 +54,26 @@ viewAllTable tr:hover {
   	padding-left: 4%;
   	padding-right: 4%;
 }
+
+.createSurveyForm {
+    border-radius: 6px !important;
+    border: 2px solid lightgrey !important;
+    width: 100% !important;
+	/* All the important tags are bad practice, but
+	it appears to be the only way to get them to override
+	the default (bootstrap perhaps?) settings of 20px height for inputs. */
+	height: 2em !important;
+    margin: 0px !important;
+    box-sizing: border-box !important;
+    box-shadow: none !important;
+}
+.createSurveyForm:focus {
+  outline: none !important;
+  border-radius: 6px !important;
+  border-color: white !important;
+  box-shadow: none !important;
+  border: 2px solid #e61610 !important;
+}
+.createSurveyForm::-webkit-inner-spin-button {
+    display: none;
+}
