@@ -1,0 +1,39 @@
+<template name="selections">
+  <div class="marginContainer">
+    <div class="YNtemplate">
+    <h1 class="surveyType">Yes or No Question</h1>
+    <form action="/action_page.php">
+    <input type="checkbox" name="MCQ" value="Yes" class="selectionForm"> Yes<br>
+    <input type="checkbox" name="MCQ" value="No" class="selectionForm"> No<br>
+  </form>
+  </div>
+</div>
+<div class="marginContainer">
+  <div class="MCtemplate">
+  <h1 class="surveyType">Multiple Choice Question</h1>
+    <form action="/action_page.php">
+    <input type="checkbox" name="MCQ" value="c1" class="selectionForm"> Choice 1<br>
+    <input type="checkbox" name="MCQ" value="c2" class="selectionForm"> Choice 2<br>
+    <input type="checkbox" name="MCQ" value="c3" class="selectionForm"> Choice 3<br>
+    <input type="checkbox" name="MCQ" value="c4" class="selectionForm"> Choice 4<br>
+    </form>
+  </div>
+</div>
+<div class="marginContainer">
+  <div class="CBtemplate">
+  <h1 class="surveyType">Multiple Select Question</h1>
+    <form action="/action_page.php">
+    <input type="checkbox" name="CBQ" value="cb1" class="selectionForm"> Choice 1<br>
+    <input type="checkbox" name="CBQ" value="cb2" class="selectionForm"> Choice 2<br>
+    <input type="checkbox" name="CBQ" value="cb3" class="selectionForm"> Choice 3<br>
+    <input type="checkbox" name="CBQ" value="cb4" class="selectionForm"> Choice 4<br>
+    </form>
+  </div>
+</div>
+  <div class="marginContainer">
+    <div class="FRtemplate">
+    <h1 class="surveyType">Free Response Question</h1>
+    <input type="text" name="FRQ" class="selectionForm" required>
+  </div>
+</div>
+</template>

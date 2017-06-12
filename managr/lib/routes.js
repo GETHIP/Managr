@@ -90,6 +90,23 @@ assignmentSection.route("/single/:id", {
         });
     }
 });
+//=================================================================================================
+surveysSection.route("/survey/:id", {
+    name: "viewSurveyPage",
+    action(params) {
+        BlazeLayout.render("surveysLayout",{
+            content: "viewSurveyPage"
+        });
+    }
+});
+surveysSection.route("/survey/results/:id", {
+    name: "surveyResults",
+    action(params) {
+        BlazeLayout.render("surveysLayout",{
+            content: "surveyResults"
+        });
+    }
+});
 //this is a temp route
 assignmentSection.route("/single/admin/:id", {
     name: "adminSingleAssignment",
@@ -197,7 +214,12 @@ FlowRouter.route("/surveys", {
 	}
 });
 
-
+//with specific survey id :id
+FlowRouter.route("/view/:id", {
+    action: function(params, queryParams) {
+        BlazeLayout.render("surveysLayout", {content:'viewSurveyPage'});
+	}
+});
 
 FlowRouter.route('/home/blogs/:year/:month', {
 	name: 'archives',
