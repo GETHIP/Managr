@@ -25,27 +25,29 @@
 
     <!-- Create Survey section | NEEDS CSS FOR FORMATTING! -->
     <div class="marginContainer">
-      <table class="createTable">
-        <thead>
-          <th>Create</th>
-        </thead>
-        <tbody class="createTable">
-          <tr>
-            <td class="createTableButton">
-              <button type="button">Add</button>
-            </td>
-            <td class="createTableSpacer"></td>
-            <td class=createTableInput>
-              <select>
-                <option value="" disabled selected>Select Survey Type</option>
-                <option value="YN">Yes/No</option>
-                <option value="MC">Multiple Choice</option>
-                <option value="FR">Free Response</option>
-              </select>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="createContainer">
+        <table class="createTable">
+          <h1>Create</h1>
+          <div class="orange-bar red-bar"> &nbsp;</div>
+          <tbody class="createTable">
+            <tr>
+              <td class="createTableButton">
+                <button type="button" class="buttonStyle addBtn">Add</button>
+              </td>
+              <td class="createTableSpacer"></td>
+              <td class=createTableInput>
+                <select>
+                  <option value="" disabled selected>Select Survey Type</option>
+                  <option value="YN">Yes/No</option>
+                  <option value="MC">Multiple Choice</option>
+                  <option value="FR">Free Response</option>
+                  <option value="CB">Check Boxes</option>
+                </select>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
       <a href="#"><button class="buttonStyle saveSurvey submitbtn" id="newSurveyBtn">Save</button></a>
       <a href="#"><button class="buttonStyle sendSurvey submitbtn" id="viewGradesBtn">Send</button></a>
     </div>
