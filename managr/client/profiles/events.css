@@ -39,9 +39,6 @@
     display: none;
 }
 
-
-
-
 .slider {
     position: absolute;
     cursor: pointer;
@@ -122,6 +119,7 @@ input:checked+.slider:before {
 
 .eventCalendar:hover {
   background-color: #BD79FF
+<<<<<<< HEAD
 }
 
 
