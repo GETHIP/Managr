@@ -89,3 +89,20 @@ input:checked+.slider:before {
 .rsvp {
   float:right;
 }
+
+
+.createEvent {
+  background-color: #BD53FF
+}
+
+.createEvent:hover {
+  background-color: #BD79FF
+}
+
+.eventCalendar {
+  background-color: #BD53FF
+}
+
+.eventCalendar:hover {
+  background-color: #BD79FF
+}
