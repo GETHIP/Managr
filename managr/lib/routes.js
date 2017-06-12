@@ -190,6 +190,12 @@ FlowRouter.route("/events", {
 	}
 });
 
+/*FlowRouter.route("/events/calendar", {
+	action: function(params, queryParams) {
+			BlazeLayout.render("eventsLayout", {content:'calendar'});
+	}
+})
+*/
 FlowRouter.route('/home/blogs/:year/:month', {
 	name: 'archives',
 	action : function(params) {
