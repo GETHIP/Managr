@@ -30,3 +30,12 @@ viewAllTable tr:hover {
 .surveyTableHeadFormat.surveys, .surveyTableDataFormat.surveys {
   width: 33%;
 }
+
+.saveSurvey, .sendSurvey{
+  width: 66%;
+  background-color: #e61610;
+}
+
+.saveSurvey:hover, .sendSurvey:hover{
+  background-color: #cf130e;
+}
