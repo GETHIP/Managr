@@ -28,12 +28,13 @@ Template.leaderboard.helpers({
 });
 
 Template.leaderboard.events({
-  'onclick #submitBtn' function(event){
+  'click .submitbtn': function(event){
+    console.log("its clicking");
     var rating = $('#rating').data('userrating');
-    var this_student = Student.findOne({"_id"}).fetch();
-    this_student.rating = rating;
+    //var this_student = Student.findOne({"_id"});
+    //this_student.rating = rating;
 
-    comment = event.target.coSection;
+    comment = event.target.coSection.value;
     eAid = Meteor.user()._id;
     Meteor.call("sendEval", comment, week, eAid, eId, sList);
 
