@@ -57,10 +57,10 @@ var StudentSchema = new SimpleSchema({
     //     type: Number,
     //     label:'Stars'
     // },
-    total: {
-        type: Number,
-        label: 'total'
-    },
+    // total: {
+    //     type: Number,
+    //     label: 'total'
+    // },
     strengths: {
         type: [String],
         label: 'Strengths'
