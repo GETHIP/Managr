@@ -77,3 +77,9 @@ viewAllTable tr:hover {
 .createSurveyForm::-webkit-inner-spin-button {
     display: none;
 }
+
+.surveyFormFormat {
+  margin-left: 5px;
+  margin-top: 15px;
+  margin-bottom: 5px;
+}

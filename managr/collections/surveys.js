@@ -22,30 +22,22 @@ surveySchema = new SimpleSchema({
         label: "Title",
         optional: false
     },
-    description: {
-        type: String,
-        label: "Description",
-        optional: false
-    },
+
     dueDate: {
         type: Date,
         label: "Due Date",
         optional: false
     },
-    assigner: {
-        type: String,
-        label: "Assigner",
-        autoform: {
-            type: "hidden"
-        },
-        optional:false
+    studentsCompleted: {
+        type: Number,
+        label: "Students Completed",
+        optional: false
     },
-    dateAssigned: {
-        type: Date,
-        label: "Date Assigned",
-        autoform: {
-            type: "hidden"
-        },
+    studentsAssigned: {
+        type: Number,
+        label: "Students Assigned",
+        optional: false
+    },
         autoValue: function() {
             // Automatically set to today
             var today = new Date();
