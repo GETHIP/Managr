@@ -198,6 +198,13 @@ FlowRouter.route("/surveys", {
 	}
 });
 
+FlowRouter.route("/surveysResults", {
+    action: function(params, queryParams) {
+        BlazeLayout.render("surveysLayout", {content:'surveysResults'});
+		//BlazeLayout.render(main, { content: 'assignmentsBody' });
+	}
+});
+
 // //with specific survey id :id
 // FlowRouter.route("/view/:id", {
 //     action: function(params, queryParams) {
