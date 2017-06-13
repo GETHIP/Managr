@@ -29,8 +29,8 @@
 }
 
 .switch {
-    position: relative;
-    display: inline-block;
+  position: relative;
+  display: inline-block;
     width: 60px;
     height: 34px;
 }
@@ -90,35 +90,27 @@ input:checked+.slider:before {
 .editEvent {
   background-color:  #BD53FF;
   font-size: 13px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .editEvent:hover {
     background-color: #BD79FF;
 }
 
-#editEvent {
-  background-color:  #BD53FF;
-  color: white;
-  height: 40px;
-  width: 100px;
-  border-radius: 15px;
-}
-
 .createEvent {
-  background-color: #BD53FF
+  background-color: #BD53FF;
 }
 
 .createEvent:hover {
-  background-color: #BD79FF
+  background-color: #BD79FF;
 }
 
 .eventCalendar {
-  background-color: #BD53FF
+  background-color: #BD53FF;
 }
 
 .eventCalendar:hover {
-  background-color: #BD79FF
+  background-color: #BD79FF;
+
 }
 
 .eventsTable {
@@ -157,4 +149,5 @@ button.eventsTable {
 input.eventsTable {
 	margin-bottom: 0px;
 	height: 100%;
+
 }
