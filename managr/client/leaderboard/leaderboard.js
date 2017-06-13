@@ -32,6 +32,7 @@ Template.leaderboard.events({
   'click .submitbtn': function(event){
     event.preventDefault();
     console.log("its clicking");
+    console.log(event.target.coSection.value);
     var rating = $('#rating').data('userrating');
     //var this_student = Student.findOne({"_id"});
     //this_student.rating = rating;
