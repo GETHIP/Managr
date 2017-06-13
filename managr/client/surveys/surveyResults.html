@@ -1,5 +1,5 @@
 <template name="surveysResults">
-    {{#if isStudent}}
+    {{#if isInstructor}}
     <div class="marginContainer">
     <h1 class="titleAssignment">Surveys</h1>
     <div class="orange-bar red-bar"> &nbsp;</div>
@@ -8,14 +8,14 @@
       <tr>
         <th class="surveyTableHeadFormat surveys">Status</th>
         <th class="surveyTableHeadFormat surveys">Student</th>
-        <th class="surveyTableHeadFormat surveys">Role</th>
+        <th class="surveyTableHeadFormat surveys">Date Completed</th>
       </tr>
       <!-- Each survey in table -->
       {{#each surveys}}
         <tr class="tableRowFormat">
           <td class="tableDataFormat assignments">{{this.status}}</td>
           <td class="tableDataFormat assignments">{{this.studentName}}</td>
-          <td class="tableDataFormat assignments">{{this.role}}</td>
+          <td class="tableDataFormat assignments">{{this.dateCompleted}}</td>
         </tr>
       {{/each}}
 
