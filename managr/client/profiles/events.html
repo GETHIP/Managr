@@ -38,26 +38,17 @@
   <div class="events">
     <div class ="formdashboardContainer">
       <div class="containerDiv formbg homeEvents">
-
   				<h1 class="formTitle eventTitle" onClick="FlowRouter.go('/eventView/{{event._id}}')">{{event.name}}Party</h1>
           <div class="rsvp">
-       <input type="checkbox"  id="boxid"><label id="labelid" for="boxid">Not Attending</label>
-
-            <script>
-            $('#boxid').click(function() {
-            if ($(this).is(':checked')) {
-              $(this).siblings('#labelid').html('Attending');
-            } else {
-              $(this).siblings('#labelid').html(' Not Attending');
-            }
-            });
-            </script>
-
-          <label class="switch">
-            <input type="checkbox">
-            <div class="slider"></div>
-          </label>
-
+            <html>
+            <body>
+       <p id="indicator">Not Attending</p>
+                 <label class="switch">
+                   <input type="checkbox">
+                   <div class="slider"></div>
+                 </label>
+       </body>
+       </html>
         {{#if isInstructor}}
            <br>
            <br>
