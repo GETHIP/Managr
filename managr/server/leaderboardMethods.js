@@ -9,8 +9,9 @@ import { isStudent, isInstructor, userIsValid, currentUserOrInstructor, nameOfUs
 
 export function leaderboardMethods() {
 	Meteor.methods({
-		'sendEval' : function(recip) {
-        //Create Eval
+		'sendEval' : function(eAid, eId, comment, current, sList) {
+			//Impmenent Security
+			Eval.insert({evaluator: eAid, evaluatee: eId, message: comment, week: current, stars: sList});
 		},
     'removeEval' : function(id){
         //Remove Eval
