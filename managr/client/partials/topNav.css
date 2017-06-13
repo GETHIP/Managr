@@ -10,7 +10,7 @@
 }
 
 .groupsActive:focus, .groupsActive:hover, .groupsActive, .myGroupsActive:focus, .myGroupsActive:hover, .myGroupsActive  {
-  border-bottom-color: #870000;
+  border-bottom-color: #a50000;
 }
 
 .activated {
