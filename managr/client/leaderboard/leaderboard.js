@@ -8,20 +8,20 @@ Template.leaderboard.helpers({
 	stuarry: function(){
     var studentlist = Student.find({}).fetch();
     var stuarry = new Array();
+    var attendanceNumber = 0;
+    var stars = 5;
+    var total;
     console.log(studentlist);
     studentlist.forEach(function (element) {
           console.log(element.name);
-          element.stars = 5; // temporary placeholder
-          console.log(element.stars);
-          element.attendanceNumber = 0;
-          console.log(element.attendanceNumber);
+          console.log(stars);
           element.attendance.forEach(function (ment){ //attendance number calculation
               if(ment == true){
-                    element.attendanceNumber++;
+                    attendanceNumber++;
                   }
           });
-          element.total = (element.stars/5)*100 + (element.attendanceNumber/12)*100;
-          console.log(element.total);
+          total = (stars/5)*100 + (attendanceNumber/12)*100;
+          console.log(total);
           stuarry.push(element);
     });
 		return stuarry;
