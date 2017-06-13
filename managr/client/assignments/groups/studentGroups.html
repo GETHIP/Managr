@@ -2,7 +2,7 @@
     {{#if isStudent}}
     <div class="marginContainer">
         <h1 class="titleAssignment">My Groups</h1>
-        <div class="orange-bar">&nbsp;</div>
+        <div class="pink-bar">&nbsp;</div>
 
         <table class="groupsTable table">
             <thead>
@@ -11,7 +11,6 @@
                     <th class="groupsTableHead">Leader</th>
                     <th class="groupsTableHead">Size</th>
                     <th class="groupsTableHead">Students</th>
-                    <th class="groupsTableHead"></th>
                 </tr>
             </thead>
 
@@ -30,12 +29,6 @@
                                   </li>
                               {{/each}}
                           </ul>
-                      </div>
-                  </td>
-                  <td>
-                      <div class="buttonCollection">
-                          <button class="groupButton editGroup" id="{{group.groupId}}">Edit</button>
-                          <button class="groupButton deleteGroup" id="{{group.groupId}}">Delete</button>
                       </div>
                   </td>
               </tr>
