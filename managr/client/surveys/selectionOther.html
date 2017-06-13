@@ -4,8 +4,10 @@
     <div class="YNtemplate">
     <table class="selectionTable">
       <tr class="selectionRowFormat">
+        <form class="questionForm" id="questionForm">
         <p class="noIndent surveyFormFormat"><b>Question:</b></p>
-        <input type="text" name="YNQ" class="selectionForm">
+        <input type="text" name="prompt" class="selectionForm">
+        </form>
       </tr>
       <tr>
         <form action="/action_page.php">
@@ -21,19 +23,23 @@
   <div class="MCtemplate">
     <table class="selectionTable">
       <tr class="selectionRowFormat">
+        <form class="questionForm" id="questionForm">
         <p class="noIndent surveyFormFormat"><b>Question:</b></p>
-        <input type="text" name="MCQ" class="selectionForm">
+        <input type="text" name="prompt" class="selectionForm">
+      </form>
       </tr>
       <tr class="selectionRowFormat">
         <p class="Indent surveyFormFomat"><b>Choices:</b></p>
       </tr>
         <tr class="selectionRowFormat">
+          <form class="questionForm" id="questionForm">
           <ul>
-            <li><input type="text" value="{{MC}}" name=mc1 class=selectionForm placeholder="Option 1"></li>
-            <li><input type="text" value="{{MC}}" name=mc2 class=selectionForm placeholder="Option 2"></li>
-            <li><input type="text" value="{{MC}}" name=mc3 class=selectionForm placeholder="Option 3"></li>
-            <li><input type="text" value="{{MC}}" name=mc4 class=selectionForm placeholder="Option 4"></li>
+            <li><input type="text" value="{{MC}}" name=answers class=selectionForm placeholder="Option 1"></li>
+            <li><input type="text" value="{{MC}}" name=answers class=selectionForm placeholder="Option 2"></li>
+            <li><input type="text" value="{{MC}}" name=answers class=selectionForm placeholder="Option 3"></li>
+            <li><input type="text" value="{{MC}}" name=answers class=selectionForm placeholder="Option 4"></li>
           </ul>
+        </form>
         </tr>
     </table>
   </div>
@@ -43,8 +49,10 @@
     <div class="FRtemplate">
       <table class="selectionTable">
         <tr class="selectionRowFormat">
+          <form class="questionForm" id="questionForm">
           <p class="noIndent surveyFormFormat"><b>Question:</b></p>
-          <input type="text" name="FRQ" class="selectionForm">
+          <input type="text" name="prompt" class="selectionForm">
+        </form>
         </tr>
       </table>
   </div>
