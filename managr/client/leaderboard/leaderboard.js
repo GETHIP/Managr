@@ -1,5 +1,4 @@
 import { Student } from "../../collections/student.js";
-import { Eval } from '../../collections/evals.js';
 
 Template.leaderboard.onCreated(function() {
   Meteor.subscribe('Students');
@@ -25,18 +24,15 @@ Template.leaderboard.helpers({
           stuarry.push(element);
     });
 		return stuarry;
-	},
-
-  
-
+	}
 });
+/*0
+Template.leaderboard.events({
+  'onclick #submitBtn' function(event){
+    var rating = $('#rating').data('userrating');
+    var this_student = Student.findOne({"_id"}).fetch();
+    this_student.rating = rating;
 
-
-// Template.EvalsPage.events({
-// 	'click .submit':function(event) {
-//     var eAid = Meteor.user()._id;
-//     var eId;
-//     var comment;
-//     Meteor.call("sendEval", eAid, eId, comment);
-//
-// }});
+  }
+})
+*/
