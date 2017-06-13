@@ -4,9 +4,6 @@ import { Eval } from '../../collections/evals.js';
 
 
 
-
-
-
 // Template.EvalsPage.events({
 // 	'click .submit':function(event) {
 //     var eAid = Meteor.user()._id;
