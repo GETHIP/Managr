@@ -88,3 +88,6 @@ viewAllTable tr:hover {
 .createSurveyForm::-webkit-inner-spin-button {
     display: none;
 }
+.createTableInput{
+  padding-left: 2%;
+}
