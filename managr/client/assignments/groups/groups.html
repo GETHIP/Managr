@@ -4,8 +4,23 @@
         <h1 class="titleAssignment">Groups Overview</h1>
         <button id="createGroupButton" class="buttonStyle groups submitbtn">Create a Group</button>
         <a href="/groups"><button id="suggestedgroupsbutton" class="buttonStyle groups" style="">Suggested Groups</button></a>
-        <div class="orange-bar">&nbsp;</div>
-
+        <div class="orange-bar" style="background-color: #870000">&nbsp;</div>
+        <div class="searchBar">
+  				<h1 class="searchText">Search:</h1>
+  			{{> EasySearch.Input index=groupIndex attributes=searchBarGroup}}
+        <select class="filters">
+          <option value="GETHIP">GETHIP</option>
+        </select>
+        <h1 class="sortText">Filter By Type:</h1>
+        <select class="sorting">
+          <option value="default">Date Created (Oldest)</option>
+          <option value="datecreated">Date Created (Newest)</option>
+          <option value="name">Name (Alphabetical)</option>
+          <option value="sizeinc">Size (Increasing)</option>
+          <option value="sizedec">Size (Decreasing)</option>
+        </select>
+        <h1 class="sortText">Sort By:</h1>
+  		</div>
         <table class="groupsTable table">
             <thead>
                 <tr>
@@ -16,6 +31,30 @@
                     <th class="groupsTableHead"></th>
                 </tr>
             </thead>
+            {{#EasySearch.Each index=groupIndex attributes=searchBarGroup}}
+              <tr class="tableRowFormat">
+                  <td>{{name}}</td>
+                  <td>{{leader}}</td>
+                  <td>{{size}}</td>
+                  <td>
+                      <div class="namesInGroup" id="namesInGroup">
+                          <ul style="margin-left: 18px">
+                              {{#each student in students}}
+                                  <li style="list-style-type: circle">
+                                     {{student.name}}
+                                  </li>
+                              {{/each}}
+                          </ul>
+                      </div>
+                  </td>
+                  <td>
+                      <div class="buttonCollection">
+                          <button class="groupButton editGroup" id="{{groupId}}">Edit</button>
+                          <button class="groupButton deleteGroup" id="{{groupId}}">Delete</button>
+                      </div>
+                  </td>
+              </tr>
+            <!--
             {{#each group in groups}}
               <tr class="tableRowFormat">
                   <td>{{group.name}}</td>
@@ -40,6 +79,8 @@
                   </td>
               </tr>
             {{/each}}
+          -->
+            {{/EasySearch.Each}}
         </table>
 
     </div>

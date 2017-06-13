@@ -25,8 +25,12 @@ Template.createGroup.events({
                 studentIds.push(inputs[i].id);
             }
         }
+				var size = studentIds.length;
+				var studentNames = newformatStudentsForGroup(studentIds);
+				// Stores date as a number (number of milliseconds since 1970)
+				var dateCreated = new Date().getTime()
 
-        Meteor.call("createGroup", groupName, studentIds);
+        Meteor.call("createGroup", groupName, studentIds, size, studentNames, dateCreated);
 
         FlowRouter.go("/groups");
     },
@@ -94,7 +98,7 @@ Template.createGroup.helpers({
             var formattedGroup = {
                 name: group.name,
                 groupId: group._id,
-								size: group.studentIds.length,
+								size: group.size,
 								leader: group.leader
             }
             formattedGroups.push(formattedGroup);
@@ -115,3 +119,17 @@ Template.createGroup.helpers({
         return formattedStudents;
     }
 });
+
+var newformatStudentsForGroup = function(studentIds) {
+    var formattedStudents = [];
+
+    for(var i = 0; i < studentIds.length; i++) {
+        var student = Student.findOne({_id: studentIds[i]});
+        if(student == undefined) {
+            continue;
+        }
+        name = student.name;
+        formattedStudents.push(name);
+    }
+    return formattedStudents;
+}

@@ -221,3 +221,11 @@ FlowRouter.route('/groups/edit/:id', {
 		BlazeLayout.render("groupsLayout", {content: 'editGroup'});
 	}
 });
+
+
+FlowRouter.route('/myGroups', {
+	name: 'myGroups',
+	action: function() {
+		BlazeLayout.render("groupsLayout", {content: 'myGroups'});
+	}
+});
