@@ -31,7 +31,7 @@
     opacity: 1;
 }
 .groupsTableHead {
-    background-color: #84532B;
+    background-color: #870000;
     padding-top: 2%;
     padding-bottom: 2%;
     border-bottom: 1px solid #444444;
@@ -57,17 +57,17 @@
     width: auto;
     float: right;
     margin-top: 1%;
-    background-color: #84532B;
+    background-color: #870000;
     margin-bottom: -2.5%;
     display: inline-block;
     /* margin-bottom: 100px; */
  }
  .buttonStyle.groups:hover {
    outline: none;
-   background-color: #664021;
+   background-color: #660000;
  }
  .groups:hover {
-    background-color: #664021;
+    background-color: #660000;
  }
  #suggestedgroupsbutton {
     margin-right: 2%;
