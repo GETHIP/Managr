@@ -1,5 +1,6 @@
 import { Groups } from '../../../collections/groups.js';
 import { Student } from '../../../collections/student.js';
+import { EasySearch } from 'meteor/easy:search';
 
 Template.groups.onCreated(function() {
     Meteor.subscribe("Groups");
@@ -33,7 +34,7 @@ Template.groups.helpers({
                 name: group.name,
                 students: formatStudentsForGroup(group),
                 groupId: group._id,
-                size: group.studentIds.length,
+                size: group.size,
                 leader: group.leader
             }
             formattedGroups.push(formattedGroup);
@@ -47,6 +48,9 @@ Template.groups.helpers({
         if(document.getElementById("namesInGroup").style.height > 200) {
             document.getElementById("namesInGroup").style.overflowY = "scroll";
         }
+    },
+    groupIndex: function() {
+        return groupIndex;
     }
 });
 
@@ -65,5 +69,14 @@ Template.groups.events({
         const target = event.target;
 
         Meteor.call("removeGroup", target.id);
+    },
+    'change .filters': function (e) {
+        groupIndex.getComponentMethods(/* optional name */)
+            .addProps('grouptype', $(e.target).val())
+        ;
+    },
+    'change .sorting': (e) => {
+        groupIndex.getComponentMethods()
+            .addProps('sortBy', $(e.target).val())
     }
 });

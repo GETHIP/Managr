@@ -20,18 +20,18 @@
   text-align: right;
 }
 .groupButton.deleteGroup {
-    background: #fc6959;
-    border: 1px solid #fc6959;
+    background: #B2332F;
+    border: 1px solid #B2332F;
 }
 .groupButton.editGroup {
-    background: #FF9C0A;
-    border: 1px solid #FF9C0A;
+    background: #84807b;
+    border: 1px solid #84807b;
 }
 .groupButton:hover {
     opacity: 1;
 }
 .groupsTableHead {
-    background-color: #fcb040;
+    background-color: #84532B;
     padding-top: 2%;
     padding-bottom: 2%;
     border-bottom: 1px solid #444444;
@@ -57,13 +57,17 @@
     width: auto;
     float: right;
     margin-top: 1%;
-    background-color: #fcb040;
-    margin-bottom: -5%;
-    display: inline;
+    background-color: #84532B;
+    margin-bottom: -2.5%;
+    display: inline-block;
     /* margin-bottom: 100px; */
  }
+ .buttonStyle.groups:hover {
+   outline: none;
+   background-color: #664021;
+ }
  .groups:hover {
-    background-color: #FF9C0A;
+    background-color: #664021;
  }
  #suggestedgroupsbutton {
     margin-right: 2%;
@@ -90,4 +94,22 @@
 
  .searchBar input[type=text]:hover, .searchBar input[type=text]:focus  {
     border: 2px solid #0397d7;
+ }
+
+ .sortText {
+   margin: 0;
+   padding: 0;
+   font-size: 18px;
+   display: inline-block;
+   vertical-align: center;
+   float: right;
+   padding-right: .4%;
+   padding-left: 1.4%;
+ }
+
+ .sorting, .filters{
+   float: right;
+   width: auto;
+   margin-top: 5px;
+   margin-bottom: 5px;
  }
