@@ -1,10 +1,10 @@
 import { Student } from "../../collections/student.js";
 
-Template.leaderboard.onCreated(function() {
+Template.leaderTable.onCreated(function() {
   Meteor.subscribe('Students');
 });
 
-Template.leaderboard.helpers({
+Template.leaderTable.helpers({
 	stuarry: function(){
     var studentlist = Student.find({}).fetch();
     var stuarry = new Array();
@@ -35,4 +35,4 @@ Template.leaderboard.events({
 
   }
 })
-*/
+*
