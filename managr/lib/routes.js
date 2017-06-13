@@ -24,7 +24,7 @@ var profileSection = FlowRouter.group({
 });
 var leaderboardSection = FlowRouter.group({ // my edit
 	name: "leaderboard",
-	prefix: "/leadertable"
+	prefix: "/leaderTable"
 });
 var attendanceSection = FlowRouter.group({
 	name: "attendance",
