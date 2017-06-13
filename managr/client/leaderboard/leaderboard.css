@@ -73,20 +73,20 @@ header {
   margin-right: 5%;
 }
 
-.buttonStyle.leaderboardBtn {
+.buttonStyleleader.leaderboardBtn {
   width: 15%;
   font-size: 14px;
   float: right;
   padding: 1%;
 }
-.buttonStyle.submitBtn {
+.buttonStyleleader.submitBtn {
   width: 15%;
   font-size: 14px;
   float: right;
   padding: 1%;
 }
 
-.buttonStyle {
+.buttonStyleleader {
   width: 50%;
   background-color: #7700DD;
   border: none;
@@ -101,10 +101,10 @@ header {
   margin-top: 2%;
   }
 
-.buttonStyle:hover {
+.buttonStyleleader:hover {
   background-color: #9f53e0;
 }
-.tableHeadFormat {
+.tableHeadleaderFormat {
   background-color: #7700DD;
   padding-top: 2%;
   padding-bottom: 2%;

@@ -6,7 +6,7 @@
   <form>
     <textarea rows="4" cols="50" width="50%" >
 </textarea>
-<button class="buttonStyle submitbtn" id="submitBtn">Submit Evaluation</button>
+<button class="buttonStyleleader submitbtn" id="submitBtn">Submit Evaluation</button>
 </form>
 
 
@@ -14,11 +14,11 @@
   <div class="purple-bar">&nbsp;</div>
   <table class="viewAllStudentTable">
     <tr>
-      <th class="tableHeadFormat leaders">Student Name</th>
-      <th class="tableHeadFormat leaders">Assignment Points</th>
-      <th class="tableHeadFormat leaders">Stars</th>
-      <th class="tableHeadFormat leaders">Attendance</th>
-      <th class="tableHeadFormat leaders">Total</th>
+      <th class="tableHeadleaderFormat leaders">Student Name</th>
+      <th class="tableHeadleaderFormat leaders">Assignment Points</th>
+      <th class="tableHeadleaderFormat leaders">Stars</th>
+      <th class="tableHeadleaderFormat leaders">Attendance</th>
+      <th class="tableHeadleaderFormat leaders">Total</th>
     </tr>
 
     {{#each assignments}}
@@ -32,7 +32,7 @@
     {{/each}}
 
   </table>
-  <button class="buttonStyle back submitbtn" id="leaderboardBtn">Add Stars</button>
+  <button class="buttonStyleleader back submitbtn" id="leaderboardBtn">Add Stars</button>
 </div>
 	{{else}}
 		<!-- {{> accessDenied}} -->
