@@ -21,7 +21,6 @@ Template.leaderTable.helpers({
           });
           element.total = (element.stars/5)*100 + (element.attendanceNumber/12)*100;
           console.log(element.total.fetch());
-          console.log('hello');
           stuarry.push(element);
     });
 		return stuarry;

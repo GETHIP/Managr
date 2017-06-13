@@ -1,23 +1,23 @@
 export const Eval = new Mongo.Collection('Eval');
 
 var EvalSchema = new SimpleSchema({
-    Evaluator: {
+    evaluator: {
         type: String,
         label: 'Evaluator'
     },
-    Evaluatee: {
+    evaluatee: {
         type: String,
         label: "Evaluatee"
     },
-    Message: {
+    message: {
         type: String,
         label: 'Message'
     },
-    Stars : {
-        type: Number,
+    stars : {
+        type: [String],
         label: 'Stars'
     },
-  Week: {
+  week: {
     type: Number,
     label: "Week"
   }
