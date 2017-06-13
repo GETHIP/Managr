@@ -1,0 +1,27 @@
+<template name="selectionCB">
+<!-- CB SECTION -->
+<div class="marginContainer">
+<div class="CBtemplate">
+  <table class="selectionTable">
+    <tr class="selectionRowFormat">
+      <p class="noIndent surveyFormFormat"><b>Question:</b></p>
+      <input type="text" name="CBQ" class="selectionForm">
+    </tr>
+    <tr class="selectionRowFormat">
+      <td>
+      <ul>
+        <li><input type="text" value="{{CB}}" name=cb1 class=selectionForm placeholder="Option 1"></li>
+        <li><input type="text" value="{{CB}}" name=cb2 class=selectionForm placeholder="Option 2"></li>
+      </ul>
+      </td>
+      <td>
+        <input type="text" value="optionNumber" name=oN class=selectionForm placeholder="Enter number of additional options">
+      </td>
+      <td>
+        <button type="button" class="addBtn">Add</button>
+      </td>
+    </tr>
+  </table>
+</div>
+</div>
+</template>
