@@ -29,8 +29,8 @@
 }
 
 .switch {
-    position: relative;
-    display: inline-block;
+  position: relative;
+  display: inline-block;
     width: 60px;
     height: 34px;
 }
@@ -97,6 +97,7 @@ input:checked+.slider:before {
     background-color: #BD79FF;
 }
 
+
 #editEvent {
   background-color:  #BD53FF;
   color: white;
@@ -106,19 +107,20 @@ input:checked+.slider:before {
 }
 
 .createEvent {
-  background-color: #BD53FF
+  background-color: #BD53FF;
 }
 
 .createEvent:hover {
-  background-color: #BD79FF
+  background-color: #BD79FF;
 }
 
 .eventCalendar {
-  background-color: #BD53FF
+  background-color: #BD53FF;
 }
 
 .eventCalendar:hover {
-  background-color: #BD79FF
+  background-color: #BD79FF;
+
 }
 
 .eventsTable {
@@ -157,4 +159,5 @@ button.eventsTable {
 input.eventsTable {
 	margin-bottom: 0px;
 	height: 100%;
+
 }

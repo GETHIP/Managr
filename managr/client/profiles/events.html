@@ -12,11 +12,14 @@
     						<td class="eventsTableInput">
     							<input name="searchEvents" class="searchEvents eventsTable" id="searchBox" type="text" value="" autofocus required>
     						</td>
+
                 {{#if isInstructor}}
+
     						<td class="eventsTableSpacer"></td>
     						<td class="eventsTableButton">
     							<button type="button" class="buttonStyle createEvent eventsTable" id="createEventButton"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>     Create Event</button>
     						</td>
+
                 {{/if}}
     						<td class="eventsTableSpacer"></td>
     						<td class="eventsTableButton">
@@ -38,12 +41,23 @@
 
   				<h1 class="formTitle eventTitle" onClick="FlowRouter.go('/eventView/{{event._id}}')">{{event.name}}Party</h1>
           <div class="rsvp">
+       <input type="checkbox"  id="boxid"><label id="labelid" for="boxid">Not Attending</label>
 
-            <p>Not Attending</p>
+            <script>
+            $('#boxid').click(function() {
+            if ($(this).is(':checked')) {
+              $(this).siblings('#labelid').html('Attending');
+            } else {
+              $(this).siblings('#labelid').html(' Not Attending');
+            }
+            });
+            </script>
+
           <label class="switch">
-        <input type="checkbox">
-        <div class="slider round"></div>
-      </label>
+            <input type="checkbox">
+            <div class="slider"></div>
+          </label>
+
         {{#if isInstructor}}
            <br>
            <br>
@@ -62,4 +76,5 @@
 
 </div>
 </div>
+
 </template>
