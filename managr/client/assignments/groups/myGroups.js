@@ -51,21 +51,3 @@ Template.myGroups.helpers({
         }
     }
 });
-
-Template.myGroups.events({
-    'click #createGroupButton': function() {
-        FlowRouter.go("/groups/create");
-    },
-    'click .editGroup': function(event) {
-        event.preventDefault();
-        const target = event.target;
-
-        FlowRouter.go("/groups/edit/" + target.id);
-    },
-    'click .deleteGroup': function(event) {
-        event.preventDefault();
-        const target = event.target;
-
-        Meteor.call("removeGroup", target.id);
-    }
-});

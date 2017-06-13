@@ -31,7 +31,7 @@
     opacity: 1;
 }
 .groupsTableHead {
-    background-color: #fcb040;
+    background-color: #ff4d94;
     padding-top: 2%;
     padding-bottom: 2%;
     border-bottom: 1px solid #444444;
@@ -90,4 +90,12 @@
 
  .searchBar input[type=text]:hover, .searchBar input[type=text]:focus  {
     border: 2px solid #0397d7;
+ }
+
+ .pink-bar {
+   max-width: 100%;
+   max-height: 4px;
+   background: #ff4d94 ;
+   margin-top: .5%;
+   margin-bottom: 2%;
  }
