@@ -87,6 +87,12 @@ input:checked+.slider:before {
   float:right;
 }
 
+
+button.createdEvent {
+	padding-top: 0.4em;
+	padding-bottom: 0.4em;
+}
+
 .editEvent {
   background-color:  #BD53FF;
   font-size: 13px;
