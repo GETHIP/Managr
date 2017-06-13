@@ -12,7 +12,7 @@ var getSurveysCompleted = function(student) {
 }
 */
 
-Template.surveysPage.events({
+Template.surveyFormTemplate.events({
 	 'click #surveySbmt'(event){
      //keeps page from refreshing
       event.preventDefault();
@@ -22,13 +22,29 @@ Template.surveysPage.events({
       //assigned will be pulled from an array created by checkboxes
       Surveys.insert({
         title:name,
-        dueDate:dateDue
+        dueDate:dateDue,
+				question:Questions
       });
    }
 });
-
+Template.questionFormTemplate.events({
+	 'click #questionSbmt'(event){
+     //keeps page from refreshing
+      event.preventDefault();
+      const type = event.target.selectType.value;
+			const prompt = event.target.prompt.value;
+			const answers = [];
+      //const assigned = event.target.assigned.value; //assigned not defined
+      //assigned will be pulled from an array created by checkboxes
+      question.insert({
+				type:type,
+				prompt:prompt,
+				answers:answers
+      });
+   }
+});
 /************ DO NOT UNCOMMENT ************/
-/*question = new SimpleSchema({
+/*Questions = new SimpleSchema({
 	type: {
 		type: String
 	},
