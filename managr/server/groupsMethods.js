@@ -17,26 +17,33 @@ export function groupsMethods() {
       Groups.remove(groupId);
     },
 
-    'createGroup': function(groupName, studentIds) {
+    'createGroup': function(groupName, studentIds, size, studentNames, dateCreated) {
       if(!isInstructor()) {
         return;
       }
-
+			var stringSize = size.toString();
       Groups.insert({
         name: groupName,
-        studentIds: studentIds
+        studentIds: studentIds,
+				size: size,
+				stringSize: stringSize,
+				studentNames: studentNames,
+				dateCreated: dateCreated
       });
     },
 
-		'updateGroup': function(groupId, groupName, studentIds) {
+		'updateGroup': function(groupId, groupName, studentIds, size, studentNames) {
 			if(!isInstructor()) {
 				return;
 			}
-
+			var stringSize = size.toString();
 			Groups.update({_id: groupId}, {
 				$set: {
 					name: groupName,
-					studentIds: studentIds
+					studentIds: studentIds,
+					size: size,
+					stringSize: stringSize,
+					studentNames: studentNames
 				}
       });
 		}
