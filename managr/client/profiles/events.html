@@ -4,21 +4,27 @@
       <h1 class="titleAssignment">Events</h1>
       <div class="orange-bar purpleBar"> &nbsp;</div>
       <div class="formdashboardContainer">
-    			<h4 class="numberOfWeeksLabel">Search:</h4>
-          <table class="weeksTable">
+    			<h4 class="searchEventsLabel">Search:</h4>
+          <table class="eventsTable">
     				<thead></thead>
-    				<tbody class="weeksTable">
+    				<tbody class="eventsTable">
     					<tr>
-    						<td class="weeksTableInput">
-    							<input name="numberOfWeeks" class="numberOfweeks weeksTable" type="text" value="">
+    						<td class="eventsTableInput">
+    							<input name="searchEvents" class="searchEvents eventsTable" id="searchBox" type="text" value="" autofocus required>
     						</td>
     						<td class="weeksTableSpacer"></td>
     						<td class="weeksTableButton">
-    							<button type="button" class="buttonStyle createEvent weeksTable"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>     Create Event</button>
+    							<button type="button" class="buttonStyle createEvent weeksTable" id="createEventButton"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>     Create Event</button>
     						</td>
+<<<<<<< HEAD
     						<td class="weeksTableSpacer"></td>
     						<td class="weeksTableButton">
     							<button type="button" class="buttonStyle eventCalendar weeksTable" id="calendar"><i class="fa fa-calendar" aria-hidden="true"></i>     Calendar</button>
+=======
+    						<td class="eventsTableSpacer"></td>
+    						<td class="eventsTableButton">
+    							<button type="button" class="buttonStyle eventCalendar eventsTable"><i class="fa fa-calendar" aria-hidden="true"></i>     Calendar</button>
+>>>>>>> b534821231e537b43c086b987cc6e2fc2862078b
     						</td>
     					</tr>
     				</tbody>
@@ -44,11 +50,10 @@
       </label>
         {{#if isInstructor}}
            <br>
+           <br>
            <div class="editEventButton">
-            <input type="submit" value="Edit Event" id="editEvent"  onclick="FlowRouter.go('/editEvent');">
+            <button type="button" class="buttonStyle editEvent" id="editEventButton"><i class="fa fa-eraser" aria-hidden="true"></i>     Edit Event</button>
          </div>
-        {{else}}
-     		{{> accessDenied}}
      	  {{/if}}
     </div>
 
@@ -56,9 +61,9 @@
   				<p>Description: Fun {{event.description}}</p>
   				<p>Date: {{event.date}}</p>
   				<p>Location: Gallup {{event.location}}</p>
+
   			</div>
 
 </div>
 </div>
-
 </template>

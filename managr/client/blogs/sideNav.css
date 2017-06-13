@@ -76,20 +76,7 @@ li {
     background-color: #61d250;
     text-decoration: none;
 }
-#createEventButton {
-    background-color: #61c250;
-    width:90%;
-    margin-bottom: 20px;
-    margin-left: 5%;
-}
-#createEventButton:hover {
-    color: white;
-    background-color: #61d250;
-    text-decoration: none;
-}
-#createEventButton:focus {
-    outline: none;
-}
+
 /*#buttonArea {
     background-color: #333333;
     display: flex;

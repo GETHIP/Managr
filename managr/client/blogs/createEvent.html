@@ -1,12 +1,16 @@
 <template name="createEvent">
 
 
+	<div class="containerDiv form marginContainer">
+
+
 	<div class="containerDiv form">
+
 			<form id="eventForm">
-<div class="containerDiv formbg cep">
+				<div class="containerDiv formbg cep">
           <div class="createHeading">
             <p id="welcome">Create Your Event</p>
-            <p id="line"></p>
+            <p id="lineP"></p>
           </div>
           <div class ="MainCreateEvent">
 					<p>Event Name:</p>
@@ -19,9 +23,9 @@
 					<input id="createEventBox" type="text" name="location" placeholder="Where's Your Event?" autofocus required>
         </div>
        </div>
-
-				<input type="submit" class="createNew button" value="Create My Event" id="createEvent"  onclick="FlowRouter.go('/events');">
+			 <button type="button" id="eventCancel" class="buttonStyle cancelUserCreate leftFloatingButton" onclick="FlowRouter.go('/events');">Cancel</button>
+			 <button type="submit" id="createEventButton" value="Create" class="buttonStyle cancelUserCreate rightFloatingButton" onclick="FlowRouter.go('/events');">Create My Event</button>
 			</form>
 		</div>
-
+</div>
 </template>

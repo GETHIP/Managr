@@ -39,9 +39,6 @@
     display: none;
 }
 
-
-
-
 .slider {
     position: absolute;
     cursor: pointer;
@@ -78,9 +75,6 @@ input:checked+.slider:before {
     -ms-transform: translateX(26px);
     transform: translateX(26px);
 }
-
-
-
 .slider.round {
     border-radius: 34px;
 }
@@ -93,6 +87,18 @@ input:checked+.slider:before {
   float:right;
 }
 
+<<<<<<< HEAD
+=======
+.editEvent {
+  background-color:  #BD53FF;
+  font-size: 13px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.editEvent:hover {
+    background-color: #BD79FF;
+}
+>>>>>>> b534821231e537b43c086b987cc6e2fc2862078b
 
 #editEvent {
   background-color:  #BD53FF;
@@ -116,4 +122,46 @@ input:checked+.slider:before {
 
 .eventCalendar:hover {
   background-color: #BD79FF
+<<<<<<< HEAD
+=======
+}
+
+
+.eventsTable {
+	width: 100%;
+}
+
+.eventsTableInput {
+	width: 45%;
+	margin-right: 5%;
+}
+
+.searchEvents {
+  outline: none;
+}
+
+#searchBox:focus {
+  outline: none;
+  border-radius: 6px;
+  border: 2px solid #BD53FF;
+  color:black;
+}
+
+.eventsTableButton {
+	width: 20%;
+}
+
+.eventsTableSpacer {
+	width: 5%;
+}
+
+button.eventsTable {
+	padding-top: 0.4em;
+	padding-bottom: 0.4em;
+}
+
+input.eventsTable {
+	margin-bottom: 0px;
+	height: 100%;
+>>>>>>> b534821231e537b43c086b987cc6e2fc2862078b
 }
