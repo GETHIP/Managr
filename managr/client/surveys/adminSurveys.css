@@ -1,10 +1,5 @@
 .red-bar{
-  background: #e61610;
-}
-
-.surveyBtn{
-  background: #e61610;
-  width: 66%;
+  background-color: #e61610;
 }
 
 viewAllTable tr:hover {
@@ -31,19 +26,27 @@ viewAllTable tr:hover {
   width: 33%;
 }
 
-.addBtn, .saveSurvey, .sendSurvey{
+.questionSbmt{
+  width:60%;
+}
+.createTableBtn{
+  width:50%;
+}
+.createTable{
+  width:100%;
+}
+.addBtn, .sendSurvey{
   background-color: #e61610;
 }
 
-.createTable td{
-  width: 10%;
-}
 .addBtn{
-  width: 50%;
+  width: 70%;
 }
-.saveSurvey:hover, .sendSurvey:hover, .addBtn:hover{
+.sendSurvey:hover, .addBtn:hover{
   background-color: #cf130e;
 }
+
+/*cards*/
 .surveyContainer{
  	  background: white;
   	box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26);
@@ -76,10 +79,4 @@ viewAllTable tr:hover {
 }
 .createSurveyForm::-webkit-inner-spin-button {
     display: none;
-}
-
-.surveyFormFormat {
-  margin-left: 5px;
-  margin-top: 15px;
-  margin-bottom: 5px;
 }

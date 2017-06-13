@@ -1,70 +1,57 @@
 <template name="surveysPage">
   {{#if isInstructor}}
   <div class="marginContainer">
-  <h1 class="titleAssignment">Surveys</h1>
-  <div class="orange-bar red-bar"> &nbsp;</div>
-  <table class="viewAllTable">
-    <tr>
-      <th class="surveyTableHeadFormat surveys">Survey Name</th>
-      <th class="surveyTableHeadFormat surveys">Due Date</th>
-      <th class="surveyTableHeadFormat surveys"># of Responses</th>
-    </tr>
-
-    {{#each surveys}}
-      <tr class="tableRowFormat" onclick="FlowRouter.go('{{this.url}}')">
-        <td class="tableDataFormat assignments"><div class="overflowText">{{this.title}}</div></td>
-        <td class="tableDataFormat assignments">{{this.dueDate}}</td>
-        <td class="tableDataFormat assignments">{{this.studentsCompleted}}/{{this.numberOfStudents}}</td>
-
-      </tr>
-    {{/each}}
-
-  </table>
-
+    <h1 class="titleAssignment">Surveys</h1>
+    <div class="orange-bar red-bar"> &nbsp;</div>
+      <table class="viewAllTable">
+        <tr>
+          <th class="surveyTableHeadFormat surveys">Survey Name</th>
+          <th class="surveyTableHeadFormat surveys">Due Date</th>
+          <th class="surveyTableHeadFormat surveys"># of Responses</th>
+        </tr>
+        {{#each surveys}}
+          <tr class="tableRowFormat" onclick="FlowRouter.go('{{this.url}}')">
+            <td class="tableDataFormat assignments"><div class="overflowText">{{this.title}}</div></td>
+            <td class="tableDataFormat assignments">{{this.dueDate}}</td>
+            <td class="tableDataFormat assignments">{{this.studentsCompleted}}/{{this.numberOfStudents}}</td>
+          </tr>
+        {{/each}}
+      </table>
     </div>
-
     <!-- Create Survey section | NEEDS CSS FOR FORMATTING! -->
     <div class="marginContainer">
       <div class="surveyContainer createContainer">
         <h1>Create New Survey</h1>
         <div class="orange-bar red-bar"> &nbsp;</div>
-        <!-- Start form for survey creation -->
-        {{>surveyFormTemplate}}
-      </div> <!-- end div of survey container/create container -->
-      <button type="submit" class="buttonStyle sendSurvey submitbtn" id="createSurveyBtn">Create</button>
+          <!-- Start form for survey creation -->
+          {{>surveyFormTemplate}}
+        </div> <!-- end div of survey container/create container -->
+        <button type="submit" class="buttonStyle sendSurvey submitbtn" id="createSurveyBtn">Create</button>
     </div>
 	{{else}}
     {{#if isStudent}}
     <div class="marginContainer">
-    <h1 class="titleAssignment">Surveys</h1>
-    <div class="orange-bar red-bar"> &nbsp;</div>
-    <table class="viewAllTable">
-      <!-- Table Headings -->
-      <tr>
-        <th class="surveyTableHeadFormat surveys">Survey Name</th>
-        <th class="surveyTableHeadFormat surveys">Date Due</th>
-        <th class="surveyTableHeadFormat surveys">Status</th>
-      </tr>
-      <!-- Each survey in table -->
-      {{#each surveys}}
-        <tr class="tableRowFormat" onclick="FlowRouter.go('{{this.url}}')">
-          <td class="tableDataFormat assignments"><div class="overflowText">{{this.title}}</div></td>
-          <td class="tableDataFormat assignments">{{this.dueDate}}</td>
-          <td class="tableDataFormat assignments">{{this.status}}</td>
+      <h1 class="titleAssignment">Surveys</h1>
+      <div class="orange-bar red-bar"> &nbsp;</div>
+      <table class="viewAllTable">
+        <!-- Table Headings -->
+        <tr>
+          <th class="surveyTableHeadFormat surveys">Survey Name</th>
+          <th class="surveyTableHeadFormat surveys">Date Due</th>
+          <th class="surveyTableHeadFormat surveys">Status</th>
         </tr>
-      {{/each}}
-      <!-- Create Card -->
-
-      <!-- Send Card -->
-
-    <!-- Save and Send Buttons -->
-    </table>
+        <!-- Each survey in table -->
+        {{#each surveys}}
+          <tr class="tableRowFormat" onclick="FlowRouter.go('{{this.url}}')">
+            <td class="tableDataFormat assignments"><div class="overflowText">{{this.title}}</div></td>
+            <td class="tableDataFormat assignments">{{this.dueDate}}</td>
+            <td class="tableDataFormat assignments">{{this.status}}</td>
+          </tr>
+        {{/each}}
+      </table>
     </div>
-
       {{else}}
-      {{> accessDenied}}
-
+        {{> accessDenied}}
       {{/if}}
 	{{/if}}
-
 </template>
