@@ -190,19 +190,12 @@ FlowRouter.route("/events", {
 	}
 });
 
-/*FlowRouter.route("/events/calendar", {
-	action: function(params, queryParams) {
-			BlazeLayout.render("eventsLayout", {content:'calendar'});
-	}
-})
-*/
 FlowRouter.route('/home/blogs/:year/:month', {
 	name: 'archives',
 	action : function(params) {
 		BlazeLayout.render(blogLayout, {content: 'archives'});
 	}
 });
-
 FlowRouter.route('/home/createPost', {
 	name: 'createPost',
 	action() {
@@ -247,5 +240,11 @@ FlowRouter.route('/groups/edit/:id', {
 	name: 'editGroup',
 	action: function() {
 		BlazeLayout.render("dashboardLayout", {content: 'editGroup'});
+	}
+});
+FlowRouter.route('/events/calendar', {
+	name: 'calendar',
+	action: function() {
+		BlazeLayout.render("dashboardLayout", {content: 'calendar'});
 	}
 });
