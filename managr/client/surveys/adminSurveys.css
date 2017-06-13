@@ -32,13 +32,21 @@ viewAllTable tr:hover {
 .createTableBtn{
   width:50%;
 }
+.surveyFormFormat, .createTable{
+  margin-top:2%;
+}
 .createTable{
   width:100%;
+}
+.createTable td{
+  width:33%;
 }
 .addBtn, .sendSurvey{
   background-color: #e61610;
 }
-
+.createTableSlct{
+  width:80%;
+}
 .addBtn{
   width: 70%;
 }
