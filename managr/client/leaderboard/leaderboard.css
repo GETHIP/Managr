@@ -79,9 +79,15 @@ header {
   float: right;
   padding: 1%;
 }
+.buttonStyle.submitBtn {
+  width: 15%;
+  font-size: 14px;
+  float: right;
+  padding: 1%;
+}
 
 .buttonStyle {
-  width: 100%;
+  width: 50%;
   background-color: #7700DD;
   border: none;
   color: white;
@@ -109,4 +115,9 @@ header {
   text-align: center;
   padding-right: 10px;
   padding-left: 10px;
+}
+.mytext {
+    width: 50%;
+    height: 420px;
+    font-size: 18px;
 }
