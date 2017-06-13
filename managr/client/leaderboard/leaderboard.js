@@ -27,13 +27,16 @@ Template.leaderboard.helpers({
 		return stuarry;
 	}
 });
-/*0
+
 Template.leaderboard.events({
   'onclick #submitBtn' function(event){
     var rating = $('#rating').data('userrating');
     var this_student = Student.findOne({"_id"}).fetch();
     this_student.rating = rating;
 
+    comment = event.target.coSection;
+    eAid = Meteor.user()._id;
+    Meteor.call("sendEval", comment, week, eAid, eId, sList);
+
   }
 })
-*/
