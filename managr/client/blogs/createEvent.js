@@ -1,6 +1,5 @@
-import {
-    Events
-} from '../../collections/event.js';
+import {Events} from '../../collections/event.js';
+
 Template.createEvent.events({
     'submit #eventForm': function (event) {
         event.preventDefault();
@@ -18,14 +17,14 @@ Template.createEvent.events({
             location: location
         })
         if (eventId) {
-            FlowRouter.go('/eventView/' + eventId);
+            FlowRouter.go('/events/' + eventId);
         }
         console.log(eventId);
     }
 })
 function displayModals(title, text) {
 	if (title == "" && text == "") {
-		Modal.show("missingFields", "Please enter a title and body text before posting.");
+		Modal.show("missingFields", "Please enter a name before creating an event.");
 		return true;
 	} else if (title == "") {
 		Modal.show("missingFields", "Please enter a title before posting.");
