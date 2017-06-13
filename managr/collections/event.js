@@ -4,10 +4,8 @@ import {
 import {
     ReactiveVar
 } from 'meteor/reactive-var';
-
 export const Events = new Mongo.Collection('events');
 export const Invites = new Mongo.Collection('invites');
-
 event = new SimpleSchema({
     host: {
         type: String,
@@ -39,6 +37,7 @@ event = new SimpleSchema({
         label: "Description",
     }
 });
+
 
 UserProfile = new SimpleSchema({
     fullname: {

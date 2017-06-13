@@ -13,11 +13,14 @@
     							<input name="searchEvents" class="searchEvents eventsTable" id="searchBox" type="text" value="" autofocus required>
     						</td>
 
+                {{#if isInstructor}}
+
     						<td class="eventsTableSpacer"></td>
     						<td class="eventsTableButton">
     							<button type="button" class="buttonStyle createEvent eventsTable" id="createEventButton"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>     Create Event</button>
     						</td>
 
+                {{/if}}
     						<td class="eventsTableSpacer"></td>
     						<td class="eventsTableButton">
     							<button type="button" class="buttonStyle eventCalendar eventsTable" id="calendar"><i class="fa fa-calendar" aria-hidden="true"></i>     Calendar</button>
@@ -33,8 +36,8 @@
 	{{/if}}
 
   <div class="events">
-<div class ="MainCreateEvent">
-  <div class="containerDiv formbg homeEvents">
+    <div class ="MainCreateEvent">
+      <div class="containerDiv formbg homeEvents">
 
   				<h1 class="formTitle eventTitle" onClick="FlowRouter.go('/eventView/{{event._id}}')">{{event.name}}Party</h1>
           <div class="rsvp">

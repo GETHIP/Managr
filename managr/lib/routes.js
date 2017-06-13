@@ -250,9 +250,10 @@ FlowRouter.route('/groups/edit/:id', {
 		BlazeLayout.render("dashboardLayout", {content: 'editGroup'});
 	}
 });
+
 FlowRouter.route('/events/calendar', {
 	name: 'calendar',
 	action: function() {
-		BlazeLayout.render("dashboardLayout", {content: 'calendar'});
+		BlazeLayout.render("eventsLayout", {content: 'calendar'});
 	}
 });
