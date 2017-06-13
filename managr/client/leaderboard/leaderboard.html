@@ -3,18 +3,19 @@
   <div class="marginContainer">
   <h1 class="titleEvaluations">Evaluations</h1>
   <div class="purple-bar">&nbsp;</div>
-	<div class="stars">
-		{{> starsRating size='lg' id='rating' mutable='true' class='mystar'}}
-	</div>
   <form>
     <textarea rows="4" cols="50" width="50%" name="coSection" id="coSection" >
 </textarea>
-<button class="buttonStyleleader submitbtn" id="submitBtn">Submit Evaluation</button>
-</form>
+<!--Should Have replicated Stars -->
 <div class="formstarsContainer">
 	<form id="starsform">
+				<p><strong>Effort:</strong></p>{{> starsRating size='lg' id='rating' mutable='true' class='mystar'}}
+				<p><strong>Attitude:</strong></p>{{> starsRating size='lg' id='attitude' mutable='true' class='mystar'}}
+				<p><strong>Teamwork:</strong></p>{{> starsRating size='lg' id='teamwork' mutable='true' class='mystar'}}
 	</form>
 </div>
+<button class="buttonStyleleader submitbtn" id="submitBtn">Submit Evaluation</button>
+</form>
   <h2 class="titleLeader">Leaders Overview</h2>
   <div class="purple-bar">&nbsp;</div>
 	<table class="viewAllStudentTable">
