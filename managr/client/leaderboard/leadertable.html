@@ -1,0 +1,42 @@
+<template name="leaderTable">
+	{{#if isInstructor}}
+  <div class="marginContainer">
+  <h1 class="titleEvaluations">Evaluations</h1>
+  <div class="purple-bar">&nbsp;</div>
+  <form>
+    <textarea rows="4" cols="50" width="50%" >
+</textarea>
+<button class="buttonStyleleader submitbtn" id="submitBtn">Submit Evaluation</button>
+</form>
+
+
+  <h2 class="titleLeader">Leaders Overview</h2>
+  <div class="purple-bar">&nbsp;</div>
+  <table class="viewAllStudentTable">
+    <tr>
+      <th class="tableHeadleaderFormat leaders">Student Name</th>
+      <th class="tableHeadleaderFormat leaders">Assignment Points</th>
+      <th class="tableHeadleaderFormat leaders">Stars</th>
+      <th class="tableHeadleaderFormat leaders">Attendance</th>
+      <th class="tableHeadleaderFormat leaders">Total</th>
+    </tr>
+
+    {{#each assignments}}
+      <tr class="tableRowFormat" onclick="FlowRouter.go('{{this.url}}')">
+        <td class="tableDataFormat leaders"><div class="overflowText">{{this.title}}</div></td>
+        <td class="tableDataFormat leaders">{{this.pointsEarned}}/{{this.pointsTotal}}</td>
+        <td class="tableDataFormat leaders">{{this.stars}}</td>
+        <td class="tableDataFormat leaders">{{this.attendance}}</td>
+        <td class="tableDataFormat leaders">{{this.total}}</td>
+      </tr>
+    {{/each}}
+
+  </table>
+  <button class="buttonStyleleader back submitbtn" id="leaderboardBtn">Add Stars</button>
+</div>
+	{{else}}
+		<!-- {{> accessDenied}} -->
+		{{> loading}}
+	{{/if}}
+
+</template>
