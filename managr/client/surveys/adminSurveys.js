@@ -34,14 +34,24 @@ Template.questionFormTemplate.events({
       const type = event.target.selectType.value;
 			const prompt = event.target.prompt.value;
 			const answers = [];
-      //const assigned = event.target.assigned.value; //assigned not defined
-      //assigned will be pulled from an array created by checkboxes
       question.insert({
 				type:type,
 				prompt:prompt,
 				answers:answers
       });
    }
+});
+Meteor.startup(() => {
+	Surveys.remove({});
+	var temp = [{
+		type: "yesNo",
+		prompt: "Do you think we should make the United Sates like North Korea?"
+	},{
+		type: "check",
+		prompt: "Check the boxes with your favorite number",
+		answers: ["1", "2", "3"]
+	}]
+	Surveys.insert({"title": "Random Test", "dueDate":"December 2", "studentsAssigned": ["Will Guo", "Abby Brooks", "Katie GErot", "Nick Nguyen"], "surveyId":"154209", temp});
 });
 /************ DO NOT UNCOMMENT ************/
 /*Questions = new SimpleSchema({
