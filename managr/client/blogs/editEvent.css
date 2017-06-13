@@ -6,6 +6,10 @@
   margin-bottom: 10px;
 }
 
+.editEventPad {
+  padding-top: 30px;
+}
+
 #editEventBox:focus{
 
     border-radius: 6px;
@@ -19,6 +23,22 @@
     background-color: #BD53FF;
 }
 
+#editEvent {
+  background-color: #BD53FF;
+}
+
+#eventCancel {
+  background-color: #BD53FF;
+}
+
+#eventCancel:hover {
+  background-color: #BD79FF;
+}
+
 #editEventButton {
   background-color: #BD53FF;
+}
+
+#editEventButton:hover {
+  background-color: #BD79FF;
 }

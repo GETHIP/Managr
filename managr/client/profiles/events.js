@@ -14,4 +14,4 @@ Template.eventsPage.events({
     FlowRouter.go('/editEvent');
 
   }
-});
+}); 

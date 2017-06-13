@@ -1,6 +1,7 @@
 .purpleBar {
   background: #BD53FF;
 }
+
 .events {
   margin-right: 5%;
   margin-left: 5%;
@@ -33,7 +34,6 @@
     width: 60px;
     height: 34px;
 }
-
 
 .switch input {
     display: none;
@@ -120,7 +120,6 @@ input:checked+.slider:before {
 .eventCalendar:hover {
   background-color: #BD79FF
 }
-
 
 .eventsTable {
 	width: 100%;
