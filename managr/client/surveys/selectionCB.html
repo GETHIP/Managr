@@ -4,15 +4,19 @@
 <div class="CBtemplate">
   <table class="selectionTable">
     <tr class="selectionRowFormat">
+      <form class="questionForm" id="questionForm">
       <p class="noIndent surveyFormFormat"><b>Question:</b></p>
-      <input type="text" name="CBQ" class="selectionForm">
+      <input type="text" name="prompt" class="selectionForm">
+    </form>
     </tr>
     <tr class="selectionRowFormat">
       <td>
+        <form class="questionForm" id="questionForm">
       <ul>
-        <li><input type="text" value="{{CB}}" name=cb1 class=selectionForm placeholder="Option 1"></li>
-        <li><input type="text" value="{{CB}}" name=cb2 class=selectionForm placeholder="Option 2"></li>
+        <li><input type="text" value="{{CB}}" name=answers class=selectionForm placeholder="Option 1"></li>
+        <li><input type="text" value="{{CB}}" name=answers class=selectionForm placeholder="Option 2"></li>
       </ul>
+    </form>
       </td>
       <td>
         <input type="text" value="optionNumber" name=oN class=selectionForm placeholder="Enter number of additional options">
