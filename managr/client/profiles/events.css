@@ -96,10 +96,6 @@ input:checked+.slider:before {
 .editEvent:hover {
     background-color: #BD79FF;
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> bc6fadffa45870d684c9452fd959e50257369bb6
 
 #editEvent {
   background-color:  #BD53FF;
@@ -123,12 +119,7 @@ input:checked+.slider:before {
 
 .eventCalendar:hover {
   background-color: #BD79FF
-<<<<<<< HEAD
-=======
-
->>>>>>> bc6fadffa45870d684c9452fd959e50257369bb6
 }
-
 
 .eventsTable {
 	width: 100%;
@@ -166,8 +157,4 @@ button.eventsTable {
 input.eventsTable {
 	margin-bottom: 0px;
 	height: 100%;
-<<<<<<< HEAD
-=======
-
->>>>>>> bc6fadffa45870d684c9452fd959e50257369bb6
 }
