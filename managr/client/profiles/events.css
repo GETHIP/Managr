@@ -28,8 +28,8 @@
 }
 
 .switch {
-    position: relative;
-    display: inline-block;
+  position: relative;
+  display: inline-block;
     width: 60px;
     height: 34px;
 }
@@ -87,8 +87,7 @@ input:checked+.slider:before {
   float:right;
 }
 
-<<<<<<< HEAD
-=======
+
 .editEvent {
   background-color:  #BD53FF;
   font-size: 13px;
@@ -98,7 +97,7 @@ input:checked+.slider:before {
 .editEvent:hover {
     background-color: #BD79FF;
 }
->>>>>>> b534821231e537b43c086b987cc6e2fc2862078b
+
 
 #editEvent {
   background-color:  #BD53FF;
@@ -109,21 +108,19 @@ input:checked+.slider:before {
 }
 
 .createEvent {
-  background-color: #BD53FF
+  background-color: #BD53FF;
 }
 
 .createEvent:hover {
-  background-color: #BD79FF
+  background-color: #BD79FF;
 }
 
 .eventCalendar {
-  background-color: #BD53FF
+  background-color: #BD53FF;
 }
 
 .eventCalendar:hover {
-  background-color: #BD79FF
-<<<<<<< HEAD
-=======
+  background-color: #BD79FF;
 }
 
 
@@ -163,5 +160,5 @@ button.eventsTable {
 input.eventsTable {
 	margin-bottom: 0px;
 	height: 100%;
->>>>>>> b534821231e537b43c086b987cc6e2fc2862078b
+
 }
