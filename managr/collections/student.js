@@ -53,10 +53,10 @@ var StudentSchema = new SimpleSchema({
         type: Number,
         label: 'Age'
     },
-    stars: {
-        type: Number,
-        label:'Stars'
-    },
+    // stars: {
+    //     type: Number,
+    //     label:'Stars'
+    // },
     total: {
         type: Number,
         label: 'total'
@@ -78,10 +78,10 @@ var StudentSchema = new SimpleSchema({
         label: 'Attendance'
     },
 
-    attendanceNumber: {
-        type: Number,
-        label:'AttendanceNumber'
-    },
+    // attendanceNumber: {
+    //     type: Number,
+    //     label:'AttendanceNumber'
+    // },
     school: {
         type: String,
         label: 'School'
