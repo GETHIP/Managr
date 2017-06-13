@@ -1,25 +1,27 @@
 <template name="editEvent">
-  
-<div class="containerDiv form">
-    <form id="eventForm">
-<div class="containerDiv formbg cep">
-      <div class="editHeading">
-        <p id="welcome">Edit Event</p>
-        <p id="line"></p>
-      </div>
-        <div class ="MainEditEvent">
-        <p>Event Name:</p>
-        <input id="editEventBox" type="text" name="name" placeholder="Name Of Your Event" autofocus required>
-        <p>Description:</p>
-        <textarea id="editEventBox" name="description" rows="6" placeholder="Describe Your Event" required></textarea>
-        <p>When:</p>
-        <input id="editEventBox" type="datetime-local" name="date" required>
-        <p>Location:</p>
-        <input id="editEventBox" type="text" name="location" placeholder="Where's Your Event?" autofocus required>
-      </div>
-     </div>
 
-      <input type="submit" class="createNew button" value="Edit Event" id="editEventButton"  onclick="FlowRouter.go('/events');">
-    </form>
-  </div>
+  <div class="containerDiv form">
+      <form id="eventForm">
+  <div class="containerDiv formbg cep">
+        <div class="editHeading">
+          <p id="welcome">Edit Event</p>
+          <p id="lineP"></p>
+        </div>
+          <div class ="MainEditEvent">
+          <p>Event Name:</p>
+          <input id="editEventBox" type="text" name="name" placeholder="Name Of Your Event" autofocus required>
+          <p>Description:</p>
+          <textarea id="editEventBox" name="description" rows="6" placeholder="Describe Your Event" required></textarea>
+          <p>When:</p>
+          <input id="editEventBox" type="datetime-local" name="date" required>
+          <p>Location:</p>
+          <input id="editEventBox" type="text" name="location" placeholder="Where's Your Event?" autofocus required>
+        </div>
+       </div>
+
+        <input type="submit" class="createNew button" value="Edit Event" id="editEventButton"  onclick="FlowRouter.go('/events');">
+      </form>
+    </div>
+    
+
 </template>
