@@ -7,7 +7,7 @@
 }
 
 #createEventBox:focus{
-    outline: none;
+    
     border-radius: 6px;
     border: 2px solid #BD53FF;
     color:black;
@@ -21,4 +21,20 @@
 
 #createEvent {
   background-color: #BD53FF;
+}
+
+#eventCancel {
+  background-color: #BD53FF;
+}
+
+#eventCancel:hover {
+  background-color: #BD79FF;
+}
+
+#createEventButton {
+  background-color: #BD53FF;
+}
+
+#createEventButton:hover {
+  background-color: #BD79FF;
 }
