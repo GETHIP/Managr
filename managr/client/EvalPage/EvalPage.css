@@ -1,6 +1,17 @@
 h1.Leaderboard {
   text-align: left;
 }
+.leaderTable th {
+  color: white;
+  font-size: 18px;
+  text-align: center;
+  background-color: #0397d7;
+  padding-top: 2.5%;
+  padding-left: 1%;
+  padding-right: 1%;
+  padding-bottom: 2.5%;
+  border-bottom: 1px solid #444444;
+}
 
 .buttonStyle {
   width: 100%;
