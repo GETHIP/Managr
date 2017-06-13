@@ -1,11 +1,11 @@
 import { Student } from "../../collections/student.js";
 import { Eval } from '../../collections/evals.js';
 
-Template.leaderTable.onCreated(function() {
+Template.leaderboard.onCreated(function() {
   Meteor.subscribe('Students');
 });
 
-Template.leaderTable.helpers({
+Template.leaderboard.helpers({
 	stuarry: function(){
     var studentlist = Student.find({}).fetch();
     var stuarry = new Array();
