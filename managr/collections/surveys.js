@@ -16,13 +16,23 @@ export const Surveys = new Mongo.Collection('Surveys');
     return true;
   }
 });*/
-surveySchema = new SimpleSchema({
+question = new SimpleSchema({
+	type: {
+		type: String
+	},
+	prompt: {
+		type: String
+	},
+	answers: {
+		type: [String]
+	}
+});
+Surveys.schema = new SimpleSchema({
     title: {
         type: String,
         label: "Title",
         optional: false
     },
-
     dueDate: {
         type: Date,
         label: "Due Date",
@@ -31,20 +41,17 @@ surveySchema = new SimpleSchema({
     studentsCompleted: {
         type: Number,
         label: "Students Completed",
-        optional: false
+        optional: true
     },
     studentsAssigned: {
-        type: Number,
+        type: [String],
         label: "Students Assigned",
         optional: false
     },
-        autoValue: function() {
-            // Automatically set to today
-            var today = new Date();
-            return today;
-        },
-        optional: true
-    },
+    question: {
+      type: [question]
+    }
+
 });
 
-Surveys.attachSchema(surveySchema);
+Surveys.attachSchema(Surveys.schema);
