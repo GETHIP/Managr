@@ -9,7 +9,7 @@
   border-bottom-color: #61c250;
 }
 
-.groupsActive:focus, .groupsActive:hover, .groupsActive {
+.groupsActive:focus, .groupsActive:hover, .groupsActive, .myGroupsActive:focus, .myGroupsActive:hover, .myGroupsActive  {
   border-bottom-color: #A86F37;
 }
 
