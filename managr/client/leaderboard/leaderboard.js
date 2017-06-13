@@ -30,6 +30,7 @@ Template.leaderboard.helpers({
 
 Template.leaderboard.events({
   'click .submitbtn': function(event){
+    event.preventDefault();
     console.log("its clicking");
     var rating = $('#rating').data('userrating');
     //var this_student = Student.findOne({"_id"});
