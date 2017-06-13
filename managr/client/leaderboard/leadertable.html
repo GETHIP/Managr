@@ -21,13 +21,13 @@
       <th class="tableHeadleaderFormat leaders">Total</th>
     </tr>
 
-    {{#each assignments}}
+    {{#each stuarry}}
       <tr class="tableRowFormat" onclick="FlowRouter.go('{{this.url}}')">
-        <td class="tableDataFormat leaders"><div class="overflowText">{{this.title}}</div></td>
-        <td class="tableDataFormat leaders">{{this.pointsEarned}}/{{this.pointsTotal}}</td>
-        <td class="tableDataFormat leaders">{{this.stars}}</td>
-        <td class="tableDataFormat leaders">{{this.attendance}}</td>
-        <td class="tableDataFormat leaders">{{this.total}}</td>
+        <td class="tableDataFormat leaders"><div class="overflowText">{{rank}}</div></td>
+        <td class="tableDataFormat leaders">{{name}}</td>
+        <td class="tableDataFormat leaders">{{stars}}</td>
+        <td class="tableDataFormat leaders">{{attendanceNumber}}</td>
+        <td class="tableDataFormat leaders">{{total}}</td>
       </tr>
     {{/each}}
 
