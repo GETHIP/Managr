@@ -2,6 +2,22 @@ header {
   padding: 20px 15px 15px 15px;
   position: relative;
 }
+.viewAllStudentTable th {
+  color: white;
+  font-size: 18px;
+  text-align: center;
+  background-color: #7700DD;
+  padding-top: 2.5%;
+  padding-left: 1%;
+  padding-right: 1%;
+  padding-bottom: 2.5%;
+  border-bottom: 1px solid #444444;
+}
+
+.viewAllStudentTable td {
+  text-align: center;
+
+}
 .titleEvaluations {
   font-family: arial, sans-serif;
   font-weight: normal;

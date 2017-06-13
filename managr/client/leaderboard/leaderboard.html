@@ -12,26 +12,30 @@
 
   <h2 class="titleLeader">Leaders Overview</h2>
   <div class="purple-bar">&nbsp;</div>
-  <table class="viewAllStudentTable">
-    <tr>
-      <th class="tableHeadleaderFormat leaders">Student Name</th>
-      <th class="tableHeadleaderFormat leaders">Assignment Points</th>
-      <th class="tableHeadleaderFormat leaders">Stars</th>
-      <th class="tableHeadleaderFormat leaders">Attendance</th>
-      <th class="tableHeadleaderFormat leaders">Total</th>
-    </tr>
-
-    {{#each stuarry}}
-      <tr class="tableRowFormat" onclick="FlowRouter.go('{{this.url}}')">
-        <td class="tableDataFormat leaders"><div class="overflowText">{{rank}}</div></td>
-        <td class="tableDataFormat leaders">{{name}}</td>
-        <td class="tableDataFormat leaders">{{stars}}</td>
-        <td class="tableDataFormat leaders">{{attendanceNumber}}</td>
-        <td class="tableDataFormat leaders">{{total}}</td>
-      </tr>
-    {{/each}}
-
-  </table>
+	<table class="viewAllStudentTable">
+		<!-- <thead> -->
+			<!--table content should correspond -->
+			<tr>
+				<th>Rank</th>
+				<th>Name</th>
+				<th>Attendance</th>
+				<th>Stars</th>
+				<th>Total</th>
+			</tr>
+		<!-- </thead> -->
+		<!-- <tbody> -->
+			{{#each stuarry}}
+				<tr>
+						 <!--  <tr onclick="parent.location='{{url}}'"   "FlowRouter.go("/profile/edit/" + FlowRouter.getParam("id"));> -->
+					<td>{{rank}}</td>
+					<td>{{name}}</td>
+					<td>{{attendanceNumber}}/12</td>
+					<td>{{stars}}</td>
+					<td>{{total}}</td>
+							</tr>
+			{{/each}}
+		<!-- </tbody> -->
+	</table>
   <button class="buttonStyleleader back submitbtn" id="leaderboardBtn">Add Stars</button>
 </div>
 	{{else}}
