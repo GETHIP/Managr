@@ -27,6 +27,8 @@ Template.leaderboard.helpers({
 		return stuarry;
 	},
 
+  
+
 });
 
 
