@@ -140,3 +140,11 @@ header {
     height: 420px;
     font-size: 18px;
 }
+
+.mystar .current-rating {
+  color: #7700dd;
+}
+
+.mystar .active {
+  color: #8419e0;
+}
