@@ -1,4 +1,5 @@
 import { Student } from "../../collections/student.js";
+import { Eval } from '../../collections/evals.js';
 
 Template.leaderboard.onCreated(function() {
   Meteor.subscribe('Students');
@@ -27,3 +28,13 @@ Template.leaderboard.helpers({
 	},
 
 });
+
+
+// Template.EvalsPage.events({
+// 	'click .submit':function(event) {
+//     var eAid = Meteor.user()._id;
+//     var eId;
+//     var comment;
+//     Meteor.call("sendEval", eAid, eId, comment);
+//
+// }});
