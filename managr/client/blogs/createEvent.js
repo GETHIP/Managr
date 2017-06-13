@@ -23,3 +23,16 @@ Template.createEvent.events({
         console.log(eventId);
     }
 })
+function displayModals(title, text) {
+	if (title == "" && text == "") {
+		Modal.show("missingFields", "Please enter a title and body text before posting.");
+		return true;
+	} else if (title == "") {
+		Modal.show("missingFields", "Please enter a title before posting.");
+		return true;
+	} else if (text == "") {
+		Modal.show("missingFields", "Please enter body text before posting.");
+		return true;
+	}
+	return false;
+}
