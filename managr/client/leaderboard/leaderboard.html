@@ -9,7 +9,9 @@
 <!--Should Have replicated Stars -->
 <div class="formstarsContainer">
 	<form id="starsform">
-				{{> starsRating size='lg' id='rating' mutable='true' class='mystar'}}
+				<p><strong>Effort:</strong></p>{{> starsRating size='lg' id='rating' mutable='true' class='mystar'}}
+				<p><strong>Attitude:</strong></p>{{> starsRating size='lg' id='attitude' mutable='true' class='mystar'}}
+				<p><strong>Teamwork:</strong></p>{{> starsRating size='lg' id='teamwork' mutable='true' class='mystar'}}
 	</form>
 </div>
 <button class="buttonStyleleader submitbtn" id="submitBtn">Submit Evaluation</button>
