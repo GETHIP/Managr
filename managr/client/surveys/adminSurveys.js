@@ -45,8 +45,36 @@ Template.questionFormTemplate.events({
 function questiontype() {
 	var select = document.getElementById("questionFormm");
 	var option = select.value;
-		document.getElementById('questionSbmt').innerHTML = option;
+		// document.getElementById('questionSbmt').innerHTML = option;
+
+	document.getElementById('visibleDiv').style.display = 'none';
+	document.getElementById('MCdiv').style.display = 'none';
+	document.getElementById('CBdiv').style.display = 'none';
+	document.getElementById('FRdiv').style.display = 'none';
+
+	if (option == "yesNo") {
+		document.getElementById('visibleDiv').style.display = 'block';//'none'
+	}
+
+	if (option == "choice") {
+		document.getElementById('MCdiv').style.display = 'block';
+	}
+
+	if (option == "check") {
+		document.getElementById('CBdiv').style.display = 'block';
+	}
+
+	if (option == "shResp") {
+		document.getElementById('FRdiv').style.display = 'block';
+	}
+
+
+		// document.getElementById('visibleDiv').style.visibility='visible';//hidden
 }
+
+// document.getElementById('visibleDiv').style.display = 'none';
+// document.visibleDiv.style.visibility='visible';//hidden
+
 
 /*
 async function questiontype() {

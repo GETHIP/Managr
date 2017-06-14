@@ -91,3 +91,20 @@ viewAllTable tr:hover {
 .createTableInput{
   padding-left: 2%;
 }
+
+#visibleDiv {
+	/*visibility:hidden;*/
+  display:none;
+}
+
+#MCdiv {
+  display:none;
+}
+
+#CBdiv {
+  display:none;
+}
+
+#FRdiv {
+  display:none;
+}
