@@ -23,6 +23,16 @@
           <td class="tableDataFormat assignments">{{this.dateCompleted}}</td>
         </tr>
       {{/each}}
+      <tr class="tableRowFormat" onclick="FlowRouter.go('{{this.url}}')">
+        <td class="tableDataFormat assignments">Completed</td>
+        <td class="tableDataFormat assignments">Will Guo</td>
+        <td class="tableDataFormat assignments">09/15/17</td>
+      </tr>
+      <tr class="tableRowFormat" onclick="FlowRouter.go('{{this.url}}')">
+        <td class="tableDataFormat assignments">Incompleted</td>
+        <td class="tableDataFormat assignments">Nick Nguyen</td>
+        <td class="tableDataFormat assignments">N/A</td>
+      </tr>
 
 
     <!-- Save and Send Buttons -->
