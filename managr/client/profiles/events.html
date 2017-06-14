@@ -36,28 +36,32 @@
 	{{/if}}
 
   <div class="events">
-    <div class ="MainCreateEvent">
+    <div class ="formdashboardContainer">
       <div class="containerDiv formbg homeEvents">
   				<h1 class="formTitle eventTitle" onClick="FlowRouter.go('/eventView/{{event._id}}')">{{event.name}}Party</h1>
           <div class="rsvp">
             <html>
             <body>
        <p id="indicator">Not Attending</p>
+       <br>
                  <label class="switch">
                    <input type="checkbox">
                    <div class="slider"></div>
                  </label>
        </body>
        </html>
+
         {{#if isInstructor}}
            <br>
            <br>
-           <div class="editEventButton">
-            <button type="button" class="buttonStyle editEvent" id="editEventButton"><i class="fa fa-eraser" aria-hidden="true"></i>     Edit Event</button>
-         </div>
-     	  {{/if}}
-    </div>
 
+           <div class="editEventButton">
+            <button type="button" class="buttonStyle editEvent createdEvent" id="editEventButton"><i class="fa fa-eraser" aria-hidden="true"></i>     Edit Event</button>
+         </div>
+
+     	  {{/if}}
+
+</div>
   				<p>Host: Mary Clare {{event.host}}</p>
   				<p>Description: Fun {{event.description}}</p>
   				<p>Date: {{event.date}}</p>
