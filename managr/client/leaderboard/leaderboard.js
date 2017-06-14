@@ -1,4 +1,5 @@
 import { Student } from "../../collections/student.js";
+import { Eval } from "../../collections/evals.js";
 
 Template.leaderboard.onCreated(function() {
   Meteor.subscribe('Student');
