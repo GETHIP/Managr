@@ -46,7 +46,6 @@ Template.leaderboard.events({
     week = document.getElementById('week').value.split(" ")[1];
     sList = [rating, teamwork, attitude];
     console.log(eId);
-    //eAid, eId, comment, current, sList
     Meteor.call("sendEval", eaId, eId, comment, week, sList);
 
   }
