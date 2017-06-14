@@ -85,6 +85,7 @@ input:checked+.slider:before {
 
 .rsvp {
   float:right;
+
 }
 
 button.createdEvent {
@@ -155,4 +156,11 @@ input.eventsTable {
 	margin-bottom: 0px;
 	height: 100%;
 
+}
+.editEventButton {
+
+  width:200%;
+}
+#indicator {
+  position: fixed;
 }
