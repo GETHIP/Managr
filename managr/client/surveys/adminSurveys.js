@@ -33,7 +33,6 @@ Template.questionFormTemplate.events({
 	 'change #questionFormm'(event){
      //keeps page from refreshing
       event.preventDefault();
-<<<<<<< HEAD
 
       var select = document.getElementById("questionFormm");
       var option = select.value;
@@ -65,11 +64,7 @@ async function questiontype() {
 Template.surveyFormTemplate.helpers({
 	allsurveys: function() {
 		return Surveys.find();
-	}
-});
 
-
-=======
       const type = event.target.selectType.value;
 			const prompt = event.target.prompt.value;
 			const answers = [];
@@ -78,7 +73,7 @@ Template.surveyFormTemplate.helpers({
 				prompt:prompt,
 				answers:answers
       });
-   }
+		}
 });
 Meteor.startup(() => {
 	Surveys.remove({});
@@ -92,7 +87,6 @@ Meteor.startup(() => {
 	}]
 	Surveys.insert({"title": "Random Test", "dueDate":"December 2", "studentsAssigned": ["Will Guo", "Abby Brooks", "Katie GErot", "Nick Nguyen"], "surveyId":"154209", temp});
 });
->>>>>>> eeb7cefec733718e49effeaa0fece78dfc4ab806
 /************ DO NOT UNCOMMENT ************/
 /*Questions = new SimpleSchema({
 	type: {

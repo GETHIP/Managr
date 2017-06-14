@@ -44,19 +44,13 @@ Surveys.schema = new SimpleSchema({
         type: [String],
         optional: false
     },
-<<<<<<< HEAD
     questions: {
       type: [question]
-=======
+		},
 		surveyId: {
 				type: String,
 				optional: true
 		},
-    question: {
-      	type: [question]
->>>>>>> eeb7cefec733718e49effeaa0fece78dfc4ab806
-    }
-
 });
 
 Surveys.attachSchema(Surveys.schema);
