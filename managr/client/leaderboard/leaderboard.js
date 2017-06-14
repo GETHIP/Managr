@@ -1,5 +1,12 @@
+import { Student } from '../../collections/student.js';
+import { Eval } from '../../collections/evals.js'
+
 Template.leaderboard.onCreated(function() {
   Meteor.subscribe('Student');
+});
+
+Template.leaderboard.onCreated(function(){
+  Meteor.subscribe('Eval');
 });
 
 Template.leaderboard.helpers({
@@ -23,7 +30,11 @@ Template.leaderboard.helpers({
           stuarry.push(element);
     });
 		return stuarry;
-	}
+	},
+  students: function(){
+    console.log(Student.find().fetch());
+    return Student.find({});
+  }
 });
 
 Template.leaderboard.events({
@@ -31,15 +42,17 @@ Template.leaderboard.events({
     event.preventDefault();
     console.log("its clicking");
     var rating = $('#rating').data('userrating');
-    //var this_student = Student.findOne({"_id"});
-    //this_student.rating = rating;
+    var attitude = $('#attitude').data('userrating')
+    var teamwork = $('#teamwork').data('userrating')
+
+
 
     comment = document.getElementById('coSection').value;
     eaId = Meteor.user()._id;
-    eId = "testId";
-    week = 5;
-    sList = [];
-    //eAid, eId, comment, current, sList
+    eId = document.getElementById('group').value;
+    week = document.getElementById('week').value.split(" ")[1];
+    sList = [rating, teamwork, attitude];
+    console.log(eId);
     Meteor.call("sendEval", eaId, eId, comment, week, sList);
 
   }

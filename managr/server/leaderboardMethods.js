@@ -11,8 +11,9 @@ import { isStudent, isInstructor, userIsValid, currentUserOrInstructor, nameOfUs
 export function leaderboardMethods() {
 	Meteor.methods({
 		'sendEval' : function(eAid, eId, comment, current, sList) {
-			//Impmenent Security with roles
+			if(isInstructor){
 			Eval.insert({evaluator: eAid, evaluatee: eId, message: comment, week: current, stars: sList});
+		}
 		},
     'removeEval' : function(id){
         //Remove Eval

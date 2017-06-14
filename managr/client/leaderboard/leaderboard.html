@@ -9,18 +9,19 @@
 <!--Should Have replicated Stars -->
 <div class="formstarsContainer">
 	<form id="starsform">
-				<p><strong>Effort:</strong></p>{{> starsRating size='lg' id='rating' mutable='true' class='mystar'}}
-				<p><strong>Attitude:</strong></p>{{> starsRating size='lg' id='attitude' mutable='true' class='mystar'}}
-				<p><strong>Teamwork:</strong></p>{{> starsRating size='lg' id='teamwork' mutable='true' class='mystar'}}
+				<p class="starLabel"><strong>Effort:</strong></p>{{> starsRating size='lg' id='rating' rating=1 mutable='true' class='mystar'}}
+				<p class="starLabel"><strong>Attitude:</strong></p>{{> starsRating size='lg' id='attitude' rating=1 mutable='true' class='mystar'}}
+				<p class="starLabel"><strong>Teamwork:</strong></p>{{> starsRating size='lg' id='teamwork' rating=1 mutable='true' class='mystar'}}
 	</form>
 </div>
 <div class ="dropdownformContainer">
   <form id="dropdownformContainer">
+
 		<label for="group">Groups</label>
-    <select id="week" name="week">
-      <option value="week 1">week 1</option>
-      <option value="week 2">week 2</option>
-      <option value="week 3">Week 3</option>
+    <select id="group" name="group">
+		{{#each students}}
+		<option value="{{_id}}">{{name}}</option>
+		{{/each}}
     </select>
 
     <label for="week">Week</label>
