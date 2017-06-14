@@ -33,6 +33,7 @@ Template.questionFormTemplate.events({
 	 'change #questionFormm'(event){
      //keeps page from refreshing
       event.preventDefault();
+<<<<<<< HEAD
 
       var select = document.getElementById("questionFormm");
       var option = select.value;
@@ -68,6 +69,30 @@ Template.surveyFormTemplate.helpers({
 });
 
 
+=======
+      const type = event.target.selectType.value;
+			const prompt = event.target.prompt.value;
+			const answers = [];
+      question.insert({
+				type:type,
+				prompt:prompt,
+				answers:answers
+      });
+   }
+});
+Meteor.startup(() => {
+	Surveys.remove({});
+	var temp = [{
+		type: "yesNo",
+		prompt: "Do you think we should make the United Sates like North Korea?"
+	},{
+		type: "check",
+		prompt: "Check the boxes with your favorite number",
+		answers: ["1", "2", "3"]
+	}]
+	Surveys.insert({"title": "Random Test", "dueDate":"December 2", "studentsAssigned": ["Will Guo", "Abby Brooks", "Katie GErot", "Nick Nguyen"], "surveyId":"154209", temp});
+});
+>>>>>>> eeb7cefec733718e49effeaa0fece78dfc4ab806
 /************ DO NOT UNCOMMENT ************/
 /*Questions = new SimpleSchema({
 	type: {

@@ -205,6 +205,19 @@ FlowRouter.route("/surveysResults", {
 	}
 });
 
+FlowRouter.route("/individualResults", {
+    action: function(params, queryParams) {
+        BlazeLayout.render("surveysLayout", {content:'individualResults'});
+		//BlazeLayout.render(main, { content: 'assignmentsBody' });
+	}
+});
+
+FlowRouter.route("/createNewSurvey", {
+    action: function(params, queryParams) {
+        BlazeLayout.render("surveysLayout", {content:'newSurvey'});
+		//BlazeLayout.render(main, { content: 'assignmentsBody' });
+	}
+});
 // //with specific survey id :id
 // FlowRouter.route("/view/:id", {
 //     action: function(params, queryParams) {

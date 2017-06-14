@@ -16,18 +16,20 @@
             <td class="tableDataFormat assignments">{{this.studentsCompleted}}/{{this.numberOfStudents}}</td>
           </tr>
         {{/each}}
+        <tr class="tableRowFormat" onclick="FlowRouter.go('{{this.url}}')">
+          <td class="tableDataFormat assignments"><div class="overflowText">Instructor Feedback</div></td>
+          <td class="tableDataFormat assignments">09/28/17</td>
+          <td class="tableDataFormat assignments">2/16</td>
+        </tr>
+        <tr class="tableRowFormat" onclick="FlowRouter.go('{{this.url}}')">
+          <td class="tableDataFormat assignments"><div class="overflowText">GET HIP Improvements</div></td>
+          <td class="tableDataFormat assignments">09/29/17</td>
+          <td class="tableDataFormat assignments">5/16</td>
+        </tr>
       </table>
+        <button type="submit" class="buttonStyle sendSurvey submitbtn" onclick="FlowRouter.go('/createNewSurvey')" id="createSurveyBtn">Create New Survey</button>
     </div>
-    <!-- Create Survey section | NEEDS CSS FOR FORMATTING! -->
-    <div class="marginContainer">
-      <div class="surveyContainer createContainer">
-        <h1>Create New Survey</h1>
-        <div class="orange-bar red-bar"> &nbsp;</div>
-          <!-- Start form for survey creation -->
-          {{>surveyFormTemplate}}
-        </div> <!-- end div of survey container/create container -->
-        <button type="submit" class="buttonStyle sendSurvey submitbtn" id="createSurveyBtn">Create</button>
-    </div>
+
 	{{else}}
     {{#if isStudent}}
     <div class="marginContainer">

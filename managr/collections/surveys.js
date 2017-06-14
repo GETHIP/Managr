@@ -30,26 +30,31 @@ question = new SimpleSchema({
 Surveys.schema = new SimpleSchema({
     title: {
         type: String,
-        label: "Title",
         optional: false
     },
     dueDate: {
         type: Date,
-        label: "Due Date",
         optional: false
     },
     studentsCompleted: {
         type: Number,
-        label: "Students Completed",
         optional: true
     },
     studentsAssigned: {
         type: [String],
-        label: "Students Assigned",
         optional: false
     },
+<<<<<<< HEAD
     questions: {
       type: [question]
+=======
+		surveyId: {
+				type: String,
+				optional: true
+		},
+    question: {
+      	type: [question]
+>>>>>>> eeb7cefec733718e49effeaa0fece78dfc4ab806
     }
 
 });
