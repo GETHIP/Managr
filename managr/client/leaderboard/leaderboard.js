@@ -33,8 +33,8 @@ Template.leaderboard.events({
     event.preventDefault();
     console.log("its clicking");
     var rating = $('#rating').data('userrating');
-    var teamwork = $('#teamwork').data('userrating')
     var attitude = $('#attitude').data('userrating')
+    var teamwork = $('#teamwork').data('userrating')
     //var this_student = Student.findOne({"_id"});
     //this_student.rating = rating;
 
