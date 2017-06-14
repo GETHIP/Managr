@@ -11,7 +11,7 @@ var getSurveysCompleted = function(student) {
     return completed;
 }
 */
-
+/*
 Template.surveyFormTemplate.events({
 	 'click #surveySbmt'(event){
      //keeps page from refreshing
@@ -27,22 +27,47 @@ Template.surveyFormTemplate.events({
       });
    }
 });
+*/
+
 Template.questionFormTemplate.events({
-	 'click #questionSbmt'(event){
+	 'change #questionFormm'(event){
      //keeps page from refreshing
       event.preventDefault();
-      const type = event.target.selectType.value;
-			const prompt = event.target.prompt.value;
-			const answers = [];
-      //const assigned = event.target.assigned.value; //assigned not defined
-      //assigned will be pulled from an array created by checkboxes
-      question.insert({
-				type:type,
-				prompt:prompt,
-				answers:answers
-      });
-   }
+
+      var select = document.getElementById("questionFormm");
+      var option = select.value;
+      console.log(option);
+
+			questiontype();
+   },
 });
+
+function questiontype() {
+	var select = document.getElementById("questionFormm");
+	var option = select.value;
+	if (option == "yesNo") {
+		document.getElementById('eachquestionentry').innerHTML = 'testing';
+	}
+}
+
+/*
+async function questiontype() {
+	var select = document.getElementById("questionFormm");
+	var option = select.value;
+	var testing = "testing"
+	if (option == "yesNo") {
+		document.getElementById('eachquestionentry').innerHTML = '{{>' + testing + '}}';
+	}
+}
+*/
+
+Template.surveyFormTemplate.helpers({
+	allsurveys: function() {
+		return Surveys.find();
+	}
+});
+
+
 /************ DO NOT UNCOMMENT ************/
 /*Questions = new SimpleSchema({
 	type: {

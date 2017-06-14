@@ -48,7 +48,7 @@ Surveys.schema = new SimpleSchema({
         label: "Students Assigned",
         optional: false
     },
-    question: {
+    questions: {
       type: [question]
     }
 
