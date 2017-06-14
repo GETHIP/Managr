@@ -27,23 +27,34 @@
 						<li class="active">
 							<a class="profilesActive {{ activeIfTemplateIs '/profile'}}" href="/profile">Profiles</a>
 						</li>
-						{{/if}}s
+						{{/if}}
 						{{#if isInstructor}}
 						<li class="active">
 							<a class="profilesActive {{ activeIfTemplateIs '/profile'}}" href="/profile">All Profiles</a>
 						</li>
+						<li class="active">
+							<a class="groupsActive {{ activeIfTemplateIs '/groups'}}" href="/groups">Groups</a>
+						</li>
+						{{/if}}
+						{{#if isStudent}}
+						<li class="active">
+							<a class="groupsActive {{ activeIfTemplateIs '/myGroups'}}" href="/myGroups">My Groups</a>
+						</li>
+						{{/if}}
+						{{#if isInstructor}}
 						<li class="active">
 							<a class="attendanceActive {{ activeIfTemplateIs '/attendance'}}" href="/attendance">Attendance</a>
 						</li>
 						<li class="active">
 							<a class="reportsActive {{ activeIfTemplateIs '/reports'}}" href="/reports">Reports</a>
 						</li>
+						{{/if}}
+						{{#if isInstructor}}
 						<li class="active">
 							<a class="dashboardActive {{ activeIfTemplateIs '/dashboard'}}" href="/dashboard">Dashboard</a>
 						</li>
 						{{/if}}
 						{{/if}}
-						<li></li>
 					</ul>
 					{{#if renderNavbar}}
 					<ul class="nav navbar-nav navbar-right">
