@@ -64,9 +64,8 @@ Template.leaderboard.events({
     eaId = Meteor.user()._id;
     eId = document.getElementById('group').value;
     week = document.getElementById('week').value.split(" ")[1];
-    sList = [rating, teamwork, attitude];
+    sList = [rating, attitude, teamwork ];
     console.log(eId);
-    //eAid, eId, comment, current, sList
     Meteor.call("sendEval", eaId, eId, comment, week, sList);
 
   }
