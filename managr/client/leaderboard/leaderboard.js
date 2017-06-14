@@ -35,6 +35,7 @@ Template.leaderboard.events({
     //this_student.rating = rating;
 
     comment = document.getElementById('coSection').value;
+    console.log(comment);
     eaId = Meteor.user()._id;
     eId = "testId";
     week = 5;
