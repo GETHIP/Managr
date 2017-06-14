@@ -4,8 +4,12 @@
   <h1 class="titleEvaluations">Evaluations</h1>
   <div class="purple-bar">&nbsp;</div>
   <form>
-    <textarea rows="4" cols="50" width="50%" name="coSection" id="coSection" >
-</textarea>
+		<div class ="textformContainer">
+		  <form id="textformContainer">
+    <textarea rows="4" cols="50" width="50%" name="coSection" id="coSection" >Write evaluation here...
+		</textarea>
+</form>
+</div>
 <!--Should Have replicated Stars -->
 <div class="formstarsContainer">
 	<form id="starsform">
@@ -30,6 +34,10 @@
       <option value="week 2">week 2</option>
       <option value="week 3">Week 3</option>
     </select>
+		<label class="switch">Private
+  <input type="checkbox">
+  <div class="check"></div>
+</label>
   </form>
 </div>
 <button class="buttonStyleleader submitbtn" id="submitBtn">Submit Evaluation</button>
