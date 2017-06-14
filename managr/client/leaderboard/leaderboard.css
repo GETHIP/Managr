@@ -183,10 +183,12 @@ header {
 .evalText {
   display: inline-block;
 }
+
 .starLabel {
-  float: left;
+  float:inherit;
   margin-bottom: 5px;
   margin-top: 5px;
+
 }
 textarea {
   resize:none;
