@@ -12,12 +12,15 @@ Template.leaderboard.onCreated(function(){
 Template.leaderboard.helpers({
 	stuarry: function(){
     var studentlist = Student.find({}).fetch();
+    var evalList = Eval.find({}).fetch();
     var stuarry = new Array();
-    var attendanceNumber = 0;
+
     var stars = 5;
     var total;
     console.log(studentlist);
+
     studentlist.forEach(function (element) {
+          var attendanceNumber = 0;
           console.log(element.name);
           console.log(stars);
           element.attendance.forEach(function (ment){ //attendance number calculation
@@ -25,8 +28,18 @@ Template.leaderboard.helpers({
                     attendanceNumber++;
                   }
           });
-          total = (stars/5)*100 + (attendanceNumber/12)*100;
-          console.log(total);
+          //var sTotal = 0;
+          //console.log(element.stars);
+          //console.log(element.stars.length);
+        //  for(var i = 0; i < element.stars.length; i++){
+          //  sTotal = sTotal + element.stars[i];
+          ///}
+        // sTotal = sTotal / element.stars.length;
+         //element.sTotal = sTotal;
+          //console.log(element.sTotal);
+          element.attendanceNumber = attendanceNumber;
+          element.total = (stars/5)*100 + (attendanceNumber/12)*100;
+          console.log(element.total);
           stuarry.push(element);
     });
 		return stuarry;
