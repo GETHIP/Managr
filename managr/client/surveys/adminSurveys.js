@@ -45,9 +45,7 @@ Template.questionFormTemplate.events({
 function questiontype() {
 	var select = document.getElementById("questionFormm");
 	var option = select.value;
-	if (option == "yesNo") {
-		document.getElementById('eachquestionentry').innerHTML = 'testing';
-	}
+		document.getElementById('questionSbmt').innerHTML = option;
 }
 
 /*
