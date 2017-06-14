@@ -5,13 +5,15 @@ import { Assignments } from '../collections/assignments.js';
 import { Instructor } from '../collections/instructor.js';
 import { Student } from '../collections/student.js';
 import { Drafts } from '../collections/drafts.js';
+import { Eval } from '../collections/evals.js';
 import { isStudent, isInstructor, userIsValid, currentUserOrInstructor, nameOfUser } from '../lib/permissions.js';
 
 export function leaderboardMethods() {
 	Meteor.methods({
 		'sendEval' : function(eAid, eId, comment, current, sList) {
-			//Impmenent Security
+			if(isInstructor){
 			Eval.insert({evaluator: eAid, evaluatee: eId, message: comment, week: current, stars: sList});
+		}
 		},
     'removeEval' : function(id){
         //Remove Eval
