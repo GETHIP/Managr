@@ -25,7 +25,11 @@ Template.leaderboard.helpers({
           stuarry.push(element);
     });
 		return stuarry;
-	}
+	},
+  students: function(){
+    console.log(Student.find().fetch());
+    return Student.find({});
+  }
 });
 
 Template.leaderboard.events({
@@ -35,14 +39,13 @@ Template.leaderboard.events({
     var rating = $('#rating').data('userrating');
     var teamwork = $('#teamwork').data('userrating')
     var attitude = $('#attitude').data('userrating')
-    //var this_student = Student.findOne({"_id"});
-    //this_student.rating = rating;
 
     comment = document.getElementById('coSection').value;
     eaId = Meteor.user()._id;
-    eId = "testId";
-    week = 5;
-    sList = [];
+    eId = document.getElementById('group').value;
+    week = document.getElementById('week').value.split(" ")[1];
+    sList = [rating, teamwork, attitude];
+    console.log(eId);
     //eAid, eId, comment, current, sList
     Meteor.call("sendEval", eaId, eId, comment, week, sList);
 

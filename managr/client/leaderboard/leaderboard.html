@@ -16,11 +16,12 @@
 </div>
 <div class ="dropdownformContainer">
   <form id="dropdownformContainer">
+
 		<label for="group">Groups</label>
-    <select id="week" name="week">
-      <option value="week 1">week 1</option>
-      <option value="week 2">week 2</option>
-      <option value="week 3">Week 3</option>
+    <select id="group" name="group">
+		{{#each students}}
+		<option value="{{_id}}">{{name}}</option>
+		{{/each}}
     </select>
 
     <label for="week">Week</label>
