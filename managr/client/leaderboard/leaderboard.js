@@ -1,5 +1,3 @@
-import { Student } from "../../collections/student.js";
-
 Template.leaderboard.onCreated(function() {
   Meteor.subscribe('Student');
 });
@@ -37,8 +35,12 @@ Template.leaderboard.events({
     //this_student.rating = rating;
 
     comment = document.getElementById('coSection').value;
-    eAid = Meteor.user()._id;
-    Meteor.call("sendEval", comment, week, eAid, eId, sList);
+    eaId = Meteor.user()._id;
+    eId = "testId";
+    week = 5;
+    sList = [];
+    //eAid, eId, comment, current, sList
+    Meteor.call("sendEval", eaId, eId, comment, week, sList);
 
   }
 })
