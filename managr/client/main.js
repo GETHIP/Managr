@@ -65,9 +65,7 @@ studentIndex = new EasySearch.Index({
           doc.attendance[i] = "Absent";
         }
       }
-			console.log(doc.parentNames);
       doc.parentNames = doc.parentNames.join(" and ");
-			console.log(doc.parentNames);
       return doc;
     }
   }),
