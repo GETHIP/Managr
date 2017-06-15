@@ -7,7 +7,8 @@ Template.viewEval.helpers({
     return Eval.find({evaluator: Instructor.find({userId: Meteor.user()._id})._id});
   },
 	fullEval: function(){
-		return Eval.find({_id: FlowRouter.getParam("_id")});
+		console.log(FlowRouter.getParam("id"));
+		return Eval.find({_id: FlowRouter.getParam("id")});
 	}
 });
 
