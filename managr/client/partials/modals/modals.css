@@ -17,3 +17,19 @@
 .deleteButton{
   background-image: none;
 }
+
+
+#cancelButton {
+  background-color: #84807b;
+  margin-right: 2%;
+  margin-left: 5%;
+  padding: 1%;
+  width: 15%;
+  font-size: 14px;
+  float: right;
+  opacity: 0.8
+}
+
+#cancelButton:hover {
+  opacity: 1;
+}

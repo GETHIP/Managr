@@ -64,12 +64,12 @@ Template.groups.events({
 
         FlowRouter.go("/groups/edit/" + target.id);
     },
-    'click .deleteGroup': function(event) {
+    /*'click .deleteGroup': function(event) {
         event.preventDefault();
         const target = event.target;
 
         Meteor.call("removeGroup", target.id);
-    },
+    },*/
     'change .filters': function (e) {
         groupIndex.getComponentMethods(/* optional name */)
             .addProps('grouptype', $(e.target).val())
@@ -78,5 +78,11 @@ Template.groups.events({
     'change .sorting': (e) => {
         groupIndex.getComponentMethods()
             .addProps('sortBy', $(e.target).val())
+    },
+    'click .realDeleteGroupButton':function(e) {
+        /*var user = Meteor.users.findOne({username: e.target.id});*/
+        /*var asdf = group.name;*/
+        var group = Groups.findOne({_id: e.target.id});
+		    Modal.show('deleteGroupModal', group);
     }
 });
