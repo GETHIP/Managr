@@ -1,0 +1,63 @@
+.titleviewEvaluations {
+  font-family: arial, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 40px;
+  display: inline-block;
+  margin-top: 1%;
+  /* width: 100%; */
+}
+.purple-bar {
+  max-width: 100%;
+  max-height: 4px;
+  background: #7700DD;
+  margin-top: .5%;
+  margin-bottom: 2%;
+
+}
+.marginContainer {
+  margin-left: 5%;
+  margin-right: 5%;
+}
+.viewevalContainer {
+	width: 50%;
+	background: white;
+	box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+	margin-bottom: 3%;
+	margin-top: 1.5%;
+	padding: 24px;
+	height: 14em;
+  display: inline-block;
+}
+.vieweval2Container {
+	width: 50%;
+	background: white;
+	box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+	margin-bottom: 3%;
+	margin-top: 1.5%;
+	padding: 24px;
+	height: 14em;
+  float:right;
+}
+.vertical-menu {
+    width: 200px;
+    height: 150px;
+    overflow-y: auto;
+}
+
+.vertical-menu a {
+    background-color: #eee;
+    color: black;
+    display: block;
+    padding: 12px;
+    text-decoration: none;
+}
+
+.vertical-menu a:hover {
+    background-color: #ccc;
+}
+
+.vertical-menu a.active {
+    background-color: #7700dd;
+    color: white;
+}
