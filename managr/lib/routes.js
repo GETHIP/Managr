@@ -27,6 +27,10 @@ var leaderboardSection = FlowRouter.group({ // my edit
 	prefix: "/leaderboard"
 
 });
+var evalSection = FlowRouter.group({ // my edit
+	name: "eval",
+	prefix: "/eval"
+});
 var attendanceSection = FlowRouter.group({
 	name: "attendance",
 	profiles: "/attendance"
@@ -166,6 +170,12 @@ profileSection.route("/profile/edit/:id", {
 FlowRouter.route("/leaderboard", {  //--------------------------my edit
 	action: function(params, queryParams){
 		BlazeLayout.render("leaderboardLayout", {content: "leaderboard"})
+	}
+});
+
+FlowRouter.route("/eval", {  //--------------------------my edit
+	action: function(params, queryParams){
+		BlazeLayout.render("evalLayout", {content: "viewEval"})
 	}
 });
 
