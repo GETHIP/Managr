@@ -30,7 +30,6 @@ var leaderboardSection = FlowRouter.group({ // my edit
 var evalSection = FlowRouter.group({ // my edit
 	name: "eval",
 	prefix: "/eval"
-
 });
 var attendanceSection = FlowRouter.group({
 	name: "attendance",
