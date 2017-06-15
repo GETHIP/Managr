@@ -6,7 +6,6 @@ Template.deleteUserModal.helpers({
 
 Template.deleteUserModal.events({
 	'click #confirmDeleteUser':function(event) {
-		console.log("Deleting: ", Template.instance().data._id);
 		Meteor.call('deleteUser', Template.instance().data._id);
 	}
 });
