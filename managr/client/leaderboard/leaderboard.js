@@ -1,5 +1,7 @@
 import { Student } from '../../collections/student.js';
 import { Eval } from '../../collections/eval.js'
+import { Instructor } from '../../collections/instructor.js'
+
 
 Template.leaderboard.onCreated(function() {
   Meteor.subscribe('Student');
@@ -7,6 +9,8 @@ Template.leaderboard.onCreated(function() {
 
 Template.leaderboard.onCreated(function(){
   Meteor.subscribe('Eval');
+    Meteor.subscribe('Student');
+      Meteor.subscribe('Instructor');
 });
 
 Template.leaderboard.helpers({
@@ -81,10 +85,10 @@ Template.leaderboard.events({
     var attitude = $('#attitude').data('userrating')
     var teamwork = $('#teamwork').data('userrating')
 
+    console.log(Instructor.findOne({userId: Meteor.user()._id}));
 
-
-    comment = document.getElementById('coSection').value;
-    eaId = Meteor.user()._id;
+    comment = document.getElementById('textarea1').value;
+    eaId = Instructor.find({userId: Meteor.user()._id})._id;
     eId = document.getElementById('group').value;
     week = document.getElementById('week').value.split(" ")[1];
     sList = [rating, attitude, teamwork ];
