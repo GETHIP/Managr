@@ -1,22 +1,19 @@
 import { Student } from '../../collections/student.js';
 import { Eval } from '../../collections/evals.js'
 
-var eId;
 
 Template.viewEval.helpers({
 	allEvals: function(){
-    var data = Eval.find({evaluator: Meteor.user()._id});
-  	return data;
+    return Eval.find({evaluator: Instructor.find({userId: Meteor.user()._id})._id});
   },
 	fullEval: function(){
-		return Eval.find({_id: eId});
+		return Eval.find({_id: FlowRouter.getParam("_id")});
 	}
 });
 
 // Template.viewEval.events({
-//   'click .submitbtn': function(event){
+//   'click .viewEval': function(event){
 //     event.preventDefault();
-// 		event.target.
-//
+// 		eId = document.getElementById('eList').value;
 // 	}
 // });
