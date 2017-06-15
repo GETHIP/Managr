@@ -7,6 +7,7 @@ import { Student } from '../collections/student.js';
 import { Groups } from '../collections/groups.js';
 import { Drafts } from '../collections/drafts.js';
 import { Globals } from '../collections/globals.js';
+import { Eval } from '../collections/eval.js'
 
 export function publishAll() {
 
@@ -14,8 +15,8 @@ export function publishAll() {
         return Assignments.find();
     });
 
-	Meteor.publish("Ev0als", function() {
-				return Evals.find();
+	Meteor.publish("Eval", function() {
+				return Eval.find();
 				//Implement Security
 		});
 
