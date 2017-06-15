@@ -2,8 +2,8 @@
   {{#if isInstructor}}
   <div class="marginContainer">
     <form id="createGroupForm">
-      <h1 class="titleAssignment">Create Group</h1>
-      <div class="orange-bar">&nbsp;</div>
+      <h1 class="titleAssignment">Create A Group</h1>
+      <div class="orange-bar" style="background-color: #870000">&nbsp;</div>
 
       <p class="noIndent assignmentFormFormat"><b>Group Name:</b></p>
       <input type="text" name="groupName" class="groupForum" autofocus="required">
@@ -46,8 +46,8 @@
       <button class="removeStudents"><b>Remove</b></button>
       <button class="addStudents"><b>Add</b></button>
 
-
-      <button class="buttonStyle create submitbtn createGroupButton" type="submit" value="Create Group" id="createGroupButton">Create Group</button>
+      <button class="buttonStyle backBtn submitbtn createGroupButton" type="submit" value="Create Group" id="createGroupButton">Back</button>
+      <button class="buttonStyle createBtn submitbtn createGroupButton" type="submit" value="Create Group" id="createGroupButton">Create Group</button>
     </form>
   </div>
   {{else}} {{> accessDenied}} {{/if}}

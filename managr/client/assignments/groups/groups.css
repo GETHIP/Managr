@@ -48,9 +48,8 @@
     list-style-type: decimal;
 }
 #createGroupForm .createGroupButton, #editGroupForm .editGroupButton {
-    width: 100%;
+    width: 48%;
     display: block;
-    margin: 15px auto;
 }
 .buttonStyle.groups {
     width: auto;
@@ -134,6 +133,17 @@
 }
 .createGroupButton {
   background-color: #870000 !important;
+}
+.buttonStyle.backBtn, .buttonStyle.createBtn {
+  margin-top: 4%;
+  margin-bottom: 4%;
+}
+.buttonStyle.backBtn {
+  float: left;
+}
+.buttonStyle.createBtn {
+  margin-left: 4%;
+  float: right;
 }
 .groupForum {
   border-radius: 6px;
