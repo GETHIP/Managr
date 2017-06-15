@@ -19,6 +19,9 @@ Template.leaderboard.helpers({
     var total;
     console.log(studentlist);
 
+    evalList.forEach(function(comp){
+      stuarry.push(comp.stars);
+    })
     studentlist.forEach(function (element) {
           var attendanceNumber = 0;
           console.log(element.name);
@@ -41,6 +44,9 @@ Template.leaderboard.helpers({
           element.total = (stars/5)*100 + (attendanceNumber/12)*100;
           console.log(element.total);
           stuarry.push(element);
+    });
+    stuarry.sort(function(a, b){ //sort function
+      return b.total - a.total;
     });
 		return stuarry;
 	},
