@@ -7,6 +7,12 @@
         <p class="noIndent surveyFormFormat"><b>Question:</b></p>
         <input type="text" name="YNQ" class="selectionForm">
       </tr> -->
+      <tr class="selectionRowFormat">
+        <form class="questionForm" id="questionForm">
+        <p class="noIndent surveyFormFormat"><b>Question:</b></p>
+        <input type="text" name="prompt" class="selectionForm">
+      </form>
+      </tr>
       <form name="questionSbmt" id="questionSbmt" action="/action_page.php">
         <tr> <input type="radio" name="YNQ" value="Yes" class="selectionForm" /> <label> Yes</label> </tr>
           <tr> <input type="radio" name="YNQ" value="No" class="selectionForm" /> <label> No</label> </tr>
@@ -25,6 +31,12 @@
         <p class="noIndent surveyFormFormat"><b>Question:</b></p>
         <input type="text" name="MCQ" class="selectionForm">
       </tr> -->
+      <tr class="selectionRowFormat">
+        <form class="questionForm" id="questionForm">
+        <p class="noIndent surveyFormFormat"><b>Question:</b></p>
+        <input type="text" name="prompt" class="selectionForm">
+      </form>
+      </tr>
       <tr class="selectionRowFormat">
         <p class="Indent surveyFormFomat"><b>Choices:</b></p>
       </tr>
@@ -53,10 +65,12 @@
 <div class="marginContainer">
 <div class="CBtemp">
   <table class="selectionTable">
-    <!-- <tr class="selectionRowFormat">
+    <tr class="selectionRowFormat">
+      <form class="questionForm" id="questionForm">
       <p class="noIndent surveyFormFormat"><b>Question:</b></p>
-      <input type="text" name="CBQ" class="selectionForm">
-    </tr> -->
+      <input type="text" name="prompt" class="selectionForm">
+    </form>
+    </tr>
     <form name="questionSbmt" id="questionSbmt">
     <tr class="selectionRowFormat">
       <td>
@@ -67,12 +81,12 @@
           <label> <input type="text" value="{{CB}}" name=cb2 class="selectionForm createSurveyForm" placeholder="Option 2"> </label> </li>
       </ul>
       </td>
-      <!-- <td>
-        <input type="text" value="optionNumber" name=oN class=selectionForm placeholder="Enter number of additional options">
+      <td>
+        <input type="text" value="{{optionNumber}}" name=oN class=selectionForm placeholder="Enter number of additional options">
       </td>
       <td>
         <button type="button" class="addBtn">Add</button>
-      </td> -->
+      </td>
     </tr>
   </form>
   </table>
@@ -85,6 +99,12 @@
   <div class="marginContainer">
     <div class="FRtemp">
       <table class="selectionTable">
+        <tr class="selectionRowFormat">
+          <form class="questionForm" id="questionForm">
+          <p class="noIndent surveyFormFormat"><b>Question:</b></p>
+          <input type="text" name="prompt" class="selectionForm">
+        </form>
+        </tr>
         <form name="questionSbmt" id="questionSbmt">
         <tr class="selectionRowFormat">
           <p class="noIndent surveyFormFormat"><b>Response:</b></p>
