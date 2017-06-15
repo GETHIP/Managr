@@ -92,7 +92,22 @@ viewAllTable tr:hover {
   padding-left: 2%;
 }
 
-#visibleDiv {
+label {
+  /*vertical-align: middle;*/
+  float: right;
+}
+
+.MClabel {
+  margin-top: 7px !important;
+  margin-bottom: 35px !important;
+  margin-right: 10px !important;
+}
+
+.marginContainer {
+  width: 100%;
+}
+
+#YNdiv {
 	/*visibility:hidden;*/
   display:none;
 }

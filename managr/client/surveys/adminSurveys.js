@@ -47,13 +47,13 @@ function questiontype() {
 	var option = select.value;
 		// document.getElementById('questionSbmt').innerHTML = option;
 
-	document.getElementById('visibleDiv').style.display = 'none';
+	document.getElementById('YNdiv').style.display = 'none';
 	document.getElementById('MCdiv').style.display = 'none';
 	document.getElementById('CBdiv').style.display = 'none';
 	document.getElementById('FRdiv').style.display = 'none';
 
 	if (option == "yesNo") {
-		document.getElementById('visibleDiv').style.display = 'block';//'none'
+		document.getElementById('YNdiv').style.display = 'block';//'none'
 	}
 
 	if (option == "choice") {

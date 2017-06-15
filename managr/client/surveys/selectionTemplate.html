@@ -8,12 +8,8 @@
         <input type="text" name="YNQ" class="selectionForm">
       </tr> -->
       <form name="questionSbmt" id="questionSbmt" action="/action_page.php">
-        <tr>
-          <!-- <td><input type="radio" name="YNQ" value="Yes" class="selectionForm" /> Yes <br></td>
-          <td><input type="radio" name="YNQ" value="No" class="selectionForm" /> No <br></td> -->
-          <input type="radio" name="YNQ" value="Yes" class="selectionForm" /> Yes <br>
-          <input type="radio" name="YNQ" value="No" class="selectionForm" /> No <br>
-        </tr>
+        <tr> <input type="radio" name="YNQ" value="Yes" class="selectionForm" /> <label> Yes</label> </tr>
+          <tr> <input type="radio" name="YNQ" value="No" class="selectionForm" /> <label> No</label> </tr>
       </form>
     </table>
   </div>
@@ -35,16 +31,17 @@
       <form name="questionSbmt" id="questionSbmt">
         <tr class="selectionRowFormat">
           <ul>
-            <li><input type="radio" name="MCQ" value="1" class="selectionForm" />
-              <input type="text" value="{{MC}}" name=mc1 class=" selectionForm createSurveyForm" placeholder="Option 1"> </li>
-            <li><input type="radio" name="MCQ" value="2" class="selectionForm" />
-              <input type="text" value="{{MC}}" name=mc2 class="selectionForm createSurveyForm" placeholder="Option 2"></li>
-            <li><input type="radio" name="MCQ" value="3" class="selectionForm" />
-              <input type="text" value="{{MC}}" name=mc3 class="selectionForm  createSurveyForm" placeholder="Option 3"></li>
-            <li><input type="radio" name="MCQ" value="4" class="selectionForm" />
-              <input type="text" value="{{MC}}" name=mc4 class="selectionForm createSurveyForm" placeholder="Option 4"></li>
+            <li><input type="radio" name="MCQ" value="1" class="selectionForm MClabel" />
+              <label> <input type="text" value="{{MC}}" name=mc1 class=" selectionForm createSurveyForm" placeholder="Option 1"> </label></li>
+            <li><input type="radio" name="MCQ" value="2" class="selectionForm MClabel" />
+              <label> <input type="text" value="{{MC}}" name=mc2 class="selectionForm createSurveyForm" placeholder="Option 2"> </label> </li>
+            <li><input type="radio" name="MCQ" value="3" class="selectionForm MClabel" />
+              <label> <input type="text" value="{{MC}}" name=mc3 class="selectionForm  createSurveyForm" placeholder="Option 3"> </label> </li>
+            <li><input type="radio" name="MCQ" value="4" class="selectionForm MClabel" />
+              <label><input type="text" value="{{MC}}" name=mc4 class="selectionForm createSurveyForm" placeholder="Option 4"> </label> </li>
           </ul>
         </tr>
+
       </form>
     </table>
   </div>
@@ -64,10 +61,10 @@
     <tr class="selectionRowFormat">
       <td>
       <ul>
-        <li><input type="checkbox" name="CBQ" value="1" class="selectionForm" />
-          <input type="text" value="{{CB}}" name=cb1 class="selectionForm createSurveyForm" placeholder="Option 1"></li>
-        <li><input type="checkbox" name="CBQ" value="2" class="selectionForm" />
-          <input type="text" value="{{CB}}" name=cb2 class="selectionForm createSurveyForm" placeholder="Option 2"></li>
+        <li><input type="checkbox" name="CBQ" value="1" class="selectionForm MClabel" />
+          <label> <input type="text" value="{{CB}}" name=cb1 class="selectionForm createSurveyForm" placeholder="Option 1"> </label> </li>
+        <li><input type="checkbox" name="CBQ" value="2" class="selectionForm MClabel" />
+          <label> <input type="text" value="{{CB}}" name=cb2 class="selectionForm createSurveyForm" placeholder="Option 2"> </label> </li>
       </ul>
       </td>
       <!-- <td>
@@ -91,7 +88,7 @@
         <form name="questionSbmt" id="questionSbmt">
         <tr class="selectionRowFormat">
           <p class="noIndent surveyFormFormat"><b>Response:</b></p>
-          <input type="text" name="FRQ" class="selectionForm"><!--createSurveyForm-->
+          <input type="text" name="FRQ" class="selectionForm createSurveyForm"><!--createSurveyForm-->
         </tr>
       </form>
       </table>
