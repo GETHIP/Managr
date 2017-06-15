@@ -31,7 +31,7 @@
     opacity: 1;
 }
 .groupsTableHead {
-    background-color: #fcb040;
+    background-color: #870000;
     padding-top: 2%;
     padding-bottom: 2%;
     border-bottom: 1px solid #444444;
@@ -68,6 +68,87 @@
  #suggestedgroupsbutton {
     margin-right: 2%;
  }
+ .studentGroup {
+   border: 2px solid #CCCCCC;
+   border-radius: 5px 5px 0px 0px;
+   overflow-x: hidden;
+   max-height: 35vh;
+   width: 48%;
+   float: left;
+ }
+ .existingGroups {
+    border: 2px solid #CCCCCC;
+    border-radius: 5px 5px 0px 0px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    max-height: 20vh;
+    width: 100%;
+    margin: 0 auto;
+ }
+ .studentNotAdded {
+   margin-left: 4%;
+ }
+.groupTitle {
+  width: 50%;
+  overflow-x: hidden;
+  float: left;
+  margin-top: 2%;
+}
+.notAddedStudent {
+  margin-left: 2%;
+  width: 48%;
+}
+.removeStudents, .addStudents {
+   border: 2px solid #CCCCCC;
+   padding: 5px;
+   width: 48%;
+   color: white;
+   border-top: none;
+}
+.removeStudents {
+  background-color: #ff4d4d;
+  float: left;
+}
+.removeStudents:hover {
+  background-color: #ff3333;
+}
+.addStudents {
+  background-color: #70db70;
+  float: right;
+}
+.addStudents:hover {
+  background-color: #5cd65c;
+}
+.student input {
+  margin: 5px;
+}
+.studentLabel:hover {
+  background-color: #d9d9d9;
+}
+.addOrRemove {
+  float: left;
+  box-sizing: border-box;
+}
+.createGroupButton {
+  background-color: #870000 !important;
+}
+.groupForum {
+  border-radius: 6px;
+  border: 2px solid #CCCCCC;
+  width: 100%;
+  /*Important tags required here to override bootstrap*/
+	height: 2em !important;
+  margin: 0px;
+  box-sizing: border-box;
+  box-shadow: none;
+}
+.groupForum:focus {
+  outline: none;
+  box-shadow: none !important;
+  border-radius: 6px;
+  border-color: white;
+  border: 2px solid #660000 !important;
+}
  @media screen and (max-width: 980px) {
     #createGroupButton, #suggestedgroupsbutton{
         margin-top: 6.5%;
