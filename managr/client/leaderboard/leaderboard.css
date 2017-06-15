@@ -146,7 +146,7 @@ header {
 	background: white;
 	box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 	margin-bottom: 3%;
-	margin-top: 3%;
+	margin-top: 1.5%;
 	padding: 24px;
 	height: 14em;
 	display: inline-block;
@@ -166,7 +166,7 @@ header {
 	background: white;
 	box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 	margin-bottom: 3%;
-	margin-top: 3%;
+	margin-top: 1.5%;
 	padding: 24px;
 	height: 14em;
   float:right;
@@ -192,6 +192,10 @@ header {
 }
 textarea {
   resize:none;
+}
+.textarea1 {
+  margin-left: 5px;
+  margin-right: 5px;
 }
 .switch {
   width: 60px;
