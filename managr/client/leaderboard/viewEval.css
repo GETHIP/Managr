@@ -19,59 +19,6 @@
   margin-left: 5%;
   margin-right: 5%;
 }
-.viewEvalContainer {
-	width: 45%;
-	background: white;
-	box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26);
-	margin-bottom: 3%;
-	margin-top: 1.5%;
-	padding: 24px;
-	height: 14em;
-  display: inline-block;
-}
-.viewEval2Container {
-	width: 45%;
-	background: white;
-	box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26);
-	margin-bottom: 3%;
-	margin-top: 1.5%;
-	padding: 24px;
-	height: 14em;
-  float:right;
-}
-.vertical-menu {
-    width: 300px;
-    height: 150px;
-    overflow-y: auto;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 10px;
-
-}
-
-.vertical-menu a {
-    background-color: #eee;
-    color: black;
-    display: block;
-    padding: 12px;
-    text-decoration: none;
-}
-
-.vertical-menu a:hover {
-    background-color: #ccc;
-}
-
-.vertical-menu a:active {
-    background-color: #7700dd;
-    color: white;
-}
-p  {
-    background-color: #7700dd;
-    color: white;
-    display: block;
-    padding: 12px;
-    text-decoration: none;
-}
 @media screen and (max-width: 980px) {
   .titleLeader {
     margin-top: 6.5%;
