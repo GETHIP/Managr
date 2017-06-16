@@ -5,6 +5,7 @@ import { Assignments } from '../collections/assignments.js';
 import { Instructor } from '../collections/instructor.js';
 import { Student } from '../collections/student.js';
 import { Groups } from '../collections/groups.js';
+import { Events } from '../collections/event.js';
 import { Drafts } from '../collections/drafts.js';
 import { Globals } from '../collections/globals.js';
 
@@ -48,6 +49,10 @@ export function publishAll() {
 
 	Meteor.publish("Groups", function() {
 		return Groups.find();
+	});
+
+	Meteor.publish("Events", function() {
+		return Events.find();
 	});
 
 	Meteor.publish("userData", function() {

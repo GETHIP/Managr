@@ -31,45 +31,51 @@
         </div>
     </div>
 
-	{{else}}
-		{{> accessDenied}}
-	{{/if}}
+	   {{else}}
+		   {{> accessDenied}}
+
+  {{/if}}
+
+{{ #each events }}
 
   <div class="events">
     <div class ="formdashboardContainer">
       <div class="containerDiv formbg homeEvents">
-  				<h1 class="formTitle eventTitle" onClick="FlowRouter.go('/eventView/{{event._id}}')">{{event.name}}Party</h1>
+  			<h1 class="formTitle eventTitle">{{this.name}}</h1>
+        <!--      Make this work and then put it back inside above     -->
+         <!--     onClick="FlowRouter.go('/eventView/{{event._id}}')"         -->
           <div class="rsvp">
             <html>
-            <body>
-       <p id="indicator">Not Attending</p>
-       <br>
-                 <label class="switch">
-                   <input type="checkbox">
-                   <div class="slider"></div>
-                 </label>
-       </body>
-       </html>
+              <body>
+                <p id="indicator">Not Attending</p>
+                <br>
+                <label class="switch">
+                  <input type="checkbox">
+                  <div class="slider"></div>
+                </label>
+              </body>
+            </html>
 
-        {{#if isInstructor}}
-           <br>
-           <br>
+          {{#if isInstructor}}
+            <br>
+            <br>
 
-           <div class="editEventButton">
-            <button type="button" class="buttonStyle editEvent createdEvent" id="editEventButton"><i class="fa fa-eraser" aria-hidden="true"></i>     Edit Event</button>
-         </div>
+            <div class="editEventButton">
+              <button type="button" class="buttonStyle editEvent createdEvent" id="editEventButton"><i class="fa fa-eraser" aria-hidden="true"></i>     Edit Event</button>
+            </div>
 
-     	  {{/if}}
+     	    {{/if}}
 
-</div>
-  				<p>Host: Mary Clare {{event.host}}</p>
-  				<p>Description: Fun {{event.description}}</p>
-  				<p>Date: {{event.date}}</p>
-  				<p>Location: Gallup {{event.location}}</p>
+          </div>
+  				<p>Host: {{this.host}}</p>
+  				<p>Description: {{this.description}}</p>
+  				<p>Date: {{this.date}}</p>
+  				<p>Location: {{this.location}}</p>
 
-  			</div>
+  		</div>
+    </div>
+  </div>
 
-</div>
-</div>
+{{ /each }}
 
 </template>

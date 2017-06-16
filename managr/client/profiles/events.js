@@ -1,3 +1,5 @@
+import { Events } from '../../collections/event.js';
+
 Template.eventsPage.events({
 
   'click #calendar': function(event, template) {
@@ -20,5 +22,11 @@ Template.eventsPage.events({
     }else{
         document.getElementById("indicator").innerHTML = "Attending"
     }
+  }
+});
+
+Template.eventsPage.helpers({
+  events: function() {
+    return Events.find();
   }
 });

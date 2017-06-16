@@ -47,5 +47,16 @@ export function groupsMethods() {
 				}
       });
 		}
+//
+// // TAKE THIS OUT LATER ---- FOR EVENTS
+// 		'createNewEvent': function(eventName, description) {
+// 			if(!isInstructor()) {
+// 				return;
+// 			}
+// 			Events.insert({
+// 				name: eventName,
+// 				description: description
+// 			});
+// 		}
 	});
 }
