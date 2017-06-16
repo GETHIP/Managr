@@ -27,16 +27,12 @@ Template.leaderboard.helpers({
             star_rating = star_rating.fetch();
             star_rating = star_rating[0].stars;
             console.log(star_rating);
-            for(var i = 0; i < 3; i++)
-            {
-              stars = stars + eval(star_rating[i]); //converts string to number
-              console.log(star_rating[i]);
-              console.log(stars);
-            }
-            stars = stars / 3; // averaging the star ratings
-            //var stars = (star_rating[0] + star_rating[1] + star_rating[2])/3
+            var stars = (star_rating[0] + star_rating[1] + star_rating[2])/3
             console.log(stars);
           }
+          var effort = star_rating[0];
+          var attitude = star_rating[1];
+          var teamwork = star_rating[2];
           var attendanceNumber = 0;
           console.log(element.name);
           element.attendance.forEach(function (ment){ //attendance number calculation
@@ -44,25 +40,19 @@ Template.leaderboard.helpers({
                     attendanceNumber++;
                   }
           });
-          //var sTotal = 0;
-          //console.log(element.stars);
-          //console.log(element.stars.length);
-        //  for(var i = 0; i < element.stars.length; i++){
-          //  sTotal = sTotal + element.stars[i];
-          ///}
-        // sTotal = sTotal / element.stars.length;
-         //element.sTotal = sTotal;
-          //console.log(element.sTotal);
           element.attendanceNumber = attendanceNumber;
           if(star_rating){
-            element.total = ((stars/5)*100 + (attendanceNumber/12)*100) / 2;
-            element.stars = stars;
-            console.log(element.total);
+            element.average = stars;
+            element.attitude = attitude;
+            element.teamwork = teamwork;
+            console.log(element.average);
+            console.log(element.attitude)
+            console.log(element.teamwork)
           }
           stuarry.push(element);
     });
     stuarry.sort(function(a, b){ //sort function
-      return b.total - a.total;
+      return b.attendanceNumber - a.attendanceNumber;
     });
 		return stuarry;
 	},
