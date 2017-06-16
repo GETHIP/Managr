@@ -1,5 +1,4 @@
 import { Student } from '../../collections/student.js';
-<<<<<<< HEAD
 import { Events } from '../../collections/event.js';
 
 Template.createEvent.onCreated(function() {
@@ -14,16 +13,20 @@ Template.createEvent.events({
 
     var eventName = target.name.value;
     var description = target.description.value;
+    var location = target.location.value;
+    var date = target.date.value;
 
     console.log(eventName);
     console.log(description);
+    console.log(location);
+    console.log(date);
 
-    Meteor.call("createNewEvent", eventName, description);
+    Meteor.call("createNewEvent", eventName, description, date, location);
 
     FlowRouter.go('/events');
   }
 });
-=======
+
 import { Groups } from '../../collections/groups.js';
 
 Template.createEvent.onCreated(function() {
@@ -75,4 +78,3 @@ var newformatStudentsForGroup = function(studentIds) {
     }
     return formattedStudents;
 }
->>>>>>> 32856ccd9982c2244eb9727087ff474633044428

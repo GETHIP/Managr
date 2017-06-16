@@ -57,13 +57,13 @@
               </body>
             </html>
 
-<<<<<<< HEAD
           {{#if isInstructor}}
             <br>
             <br>
 
             <div class="editEventButton">
               <button type="button" class="buttonStyle editEvent createdEvent" id="editEventButton"><i class="fa fa-eraser" aria-hidden="true"></i>     Edit Event</button>
+              <button type="button" class="buttonStyle editEvent createdEvent" id="attendingButton"><i class="fa fa-user-circle" aria-hidden="true"></i>     Attendees</button>
             </div>
 
      	    {{/if}}
@@ -80,28 +80,4 @@
 
 {{ /each }}
 
-=======
-        {{#if isInstructor}}
-
-           <br>
-           <br>
-
-           <div class="editEventButton">
-
-   <button type="button" class="buttonStyle editEvent createdEvent" id="editEventButton"><i class="fa fa-eraser" aria-hidden="true"></i>     Edit Event</button>
-<button type="button" class="buttonStyle editEvent createdEvent" id="attendingButton"><i class="fa fa-user-circle" aria-hidden="true"></i>     Attendees</button>
-
-</div>
-     {{/if}}
-
-</div>
-
-  				<p>Host: Mary Clare {{event.host}}</p>
-  				<p>Description: Fun {{event.description}}</p>
-  				<p>Date: {{event.date}}</p>
-  				<p>Location: Gallup {{event.location}}</p>
-</div>
-</div>
-</div>
->>>>>>> 32856ccd9982c2244eb9727087ff474633044428
 </template>
