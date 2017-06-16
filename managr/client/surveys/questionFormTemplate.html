@@ -1,13 +1,13 @@
 <template name="questionFormTemplate">
 <form class="questionFormSbmt" id="questionFormSbmt">
-  <table class="createTable">
-    <tbody class="createTable">
+  <!-- <table class="createTable"> -->
+    <!-- <tbody class="createTable"> -->
       <tr>
-          <td class="createTableBtn">
+          <!-- <class="createTableBtn"> -->
             <button type="button" class="buttonStyle submitbtn addBtn" id="buttonn">Add</button>
-          </td>
+          <!-- </td> -->
           <td class="createTableSlct">
-            <select name="selectType" id="questionFormm">
+            <select name="selectType" class="dropdown" id="questionFormm">
               <option value="" disabled selected>Select Survey Type</option>
               <option value="yesNo">Yes or No</option>
               <option value="choice">Multiple Choice</option>
@@ -17,8 +17,8 @@
           </td>
       </tr>
 
-    </tbody>
-  </table>
+    <!-- </tbody> -->
+  <!-- </table> -->
 
       <div id="YNdiv">
         {{> YNtemplate}}

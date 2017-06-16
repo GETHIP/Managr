@@ -17,16 +17,27 @@ export const Surveys = new Mongo.Collection('Surveys');
   }
 });*/
 question = new SimpleSchema({
-	type: {
+	questionType: {
 		type: String
 	},
 	prompt: {
 		type: String
 	},
-	answers: {
+	options: {
 		type: [String]
 	}
 });
+
+options = new SimpleSchema({
+	text: {
+		type: String
+	},
+	controlType: {
+		type: String
+	}
+
+})
+
 Surveys.schema = new SimpleSchema({
     title: {
         type: String,
