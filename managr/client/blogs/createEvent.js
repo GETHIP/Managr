@@ -1,37 +1,52 @@
-import {Events} from '../../collections/event.js';
+import { Student } from '../../collections/student.js';
+import { Groups } from '../../collections/groups.js';
 
-Template.createEvent.events({
-    'submit #eventForm': function (event) {
-        event.preventDefault();
-        var host = Meteor.userId();
-        var name = event.target.name.value
-        var description = event.target.description.value
-        var date = new Date(Date.parse(event.target.date.value))
-        console.log(date);
-        var location = event.target.location.value
-        var eventId = Events.insert({
-            name: name,
-            host: host,
-            description: description,
-            date: date,
-            location: location
-        })
-        if (eventId) {
-            FlowRouter.go('/events/' + eventId);
+Template.createEvent.onCreated(function() {
+		Meteor.subscribe("Student");
+    Meteor.subscribe("Groups");
+});
+
+Template.createEvent.helpers({
+    groups: function() {
+        var allGroups = Groups.find({}).fetch();
+        var formattedGroups = [];
+        for(var i = 0; i < allGroups.length; i++) {
+            var group = allGroups[i];
+            var formattedGroup = {
+                name: group.name,
+                groupId: group._id,
+								size: group.size,
+								leader: group.leader
+            }
+            formattedGroups.push(formattedGroup);
         }
-        console.log(eventId);
+        return formattedGroups;
+    },
+    students: function() {
+        var allStudents = Student.find({}).fetch();
+        var formattedStudents = [];
+        for(var i = 0; i < allStudents.length; i++) {
+            var student = allStudents[i];
+            var formattedStudent = {
+                name: student.name,
+                studentId: student._id
+            }
+            formattedStudents.push(formattedStudent);
+        }
+        return formattedStudents;
     }
-})
-function displayModals(title, text) {
-	if (title == "" && text == "") {
-		Modal.show("missingFields", "Please enter a name before creating an event.");
-		return true;
-	} else if (title == "") {
-		Modal.show("missingFields", "Please enter a title before posting.");
-		return true;
-	} else if (text == "") {
-		Modal.show("missingFields", "Please enter body text before posting.");
-		return true;
-	}
-	return false;
+});
+
+var newformatStudentsForGroup = function(studentIds) {
+    var formattedStudents = [];
+
+    for(var i = 0; i < studentIds.length; i++) {
+        var student = Student.findOne({_id: studentIds[i]});
+        if(student == undefined) {
+            continue;
+        }
+        name = student.name;
+        formattedStudents.push(name);
+    }
+    return formattedStudents;
 }
