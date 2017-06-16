@@ -54,6 +54,14 @@ viewAllTable tr:hover {
   background-color: #cf130e;
 }
 
+.addBtnn{
+  background-color: #e61610;
+  width: 100%;
+}
+.addBtnn:hover{
+  background-color: #cf130e;
+}
+
 /*cards*/
 .surveyContainer{
  	  background: white;

@@ -1,6 +1,6 @@
 <template name="YNtemplate">
       <!-- YN SECTION -->
-  <div class="marginContainer">
+  <div>
     <div class="YNtemp">
     <table class="selectionTable">
       <!-- <tr class="selectionRowFormat">
@@ -10,7 +10,7 @@
       <tr class="selectionRowFormat">
         <form class="questionForm" id="questionForm">
         <p class="noIndent surveyFormFormat"><b>Question:</b></p>
-        <input type="text" name="prompt" class="selectionForm">
+        <input type="text" name="prompt" class="createSurveyForm">
       </form>
       </tr>
       <form name="questionSbmt" id="questionSbmt" action="/action_page.php">
@@ -24,7 +24,7 @@
 
 <template name="MCtemplate">
     <!-- MC SECTION -->
-<div class="marginContainer">
+<div>
   <div class="MCtemp">
     <table class="selectionTable">
       <!-- <tr class="selectionRowFormat">
@@ -34,7 +34,7 @@
       <tr class="selectionRowFormat">
         <form class="questionForm" id="questionForm">
         <p class="noIndent surveyFormFormat"><b>Question:</b></p>
-        <input type="text" name="prompt" class="selectionForm">
+        <input type="text" name="prompt" class="createSurveyForm">
       </form>
       </tr>
       <tr class="selectionRowFormat">
@@ -62,14 +62,27 @@
 
 <template name="CBtemplate">
 <!-- CB SECTION -->
-<div class="marginContainer">
+<div>
 <div class="CBtemp">
+  <form class"surveySbmt" id="questionForm">
+    <p class="noIndent surveyFormFormat"><b>Question:</b></p>
+    <input type="text" name="prompt" placeholder="Enter Question" class="createSurveyForm" autofocus required>
+
+
   <table class="selectionTable">
     <tr class="selectionRowFormat">
       <form class="questionForm" id="questionForm">
       <p class="noIndent surveyFormFormat"><b>Question:</b></p>
-      <input type="text" name="prompt" class="selectionForm">
+      <input type="text" name="prompt" class="createSurveyForm">
     </form>
+    </tr>
+    <tr>
+      <td>
+        <input type="text" value="{{optionNumber}}" name=oN class="createSurveyForm" placeholder="Enter number of additional options">
+      </td>
+      <td>
+        <button type="button" class="buttonStyle submitbtn addBtnn">Add</button>
+      </td>
     </tr>
     <form name="questionSbmt" id="questionSbmt">
     <tr class="selectionRowFormat">
@@ -81,12 +94,6 @@
           <label> <input type="text" value="{{CB}}" name=cb2 class="selectionForm createSurveyForm" placeholder="Option 2"> </label> </li>
       </ul>
       </td>
-      <td>
-        <input type="text" value="{{optionNumber}}" name=oN class=selectionForm placeholder="Enter number of additional options">
-      </td>
-      <td>
-        <button type="button" class="addBtn">Add</button>
-      </td>
     </tr>
   </form>
   </table>
@@ -96,13 +103,13 @@
 
 <template name="FRtemplate">
     <!-- FR SECTION -->
-  <div class="marginContainer">
+  <div>
     <div class="FRtemp">
       <table class="selectionTable">
         <tr class="selectionRowFormat">
           <form class="questionForm" id="questionForm">
           <p class="noIndent surveyFormFormat"><b>Question:</b></p>
-          <input type="text" name="prompt" class="selectionForm">
+          <input type="text" name="prompt" class="createSurveyForm">
         </form>
         </tr>
         <form name="questionSbmt" id="questionSbmt">
