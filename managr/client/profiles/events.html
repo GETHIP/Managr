@@ -40,6 +40,7 @@
       <div class="containerDiv formbg homeEvents">
   				<h1 class="formTitle eventTitle" onClick="FlowRouter.go('/eventView/{{event._id}}')">{{event.name}}Party</h1>
           <div class="rsvp">
+
             <html>
             <body>
        <p id="indicator">Not Attending</p>
@@ -52,24 +53,25 @@
        </html>
 
         {{#if isInstructor}}
+
            <br>
            <br>
 
            <div class="editEventButton">
-            <button type="button" class="buttonStyle editEvent createdEvent" id="editEventButton"><i class="fa fa-eraser" aria-hidden="true"></i>     Edit Event</button>
-         </div>
 
-     	  {{/if}}
+   <button type="button" class="buttonStyle editEvent createdEvent" id="editEventButton"><i class="fa fa-eraser" aria-hidden="true"></i>     Edit Event</button>
+<button type="button" class="buttonStyle editEvent createdEvent" id="attendingButton"><i class="fa fa-user-circle" aria-hidden="true"></i>     Attendees</button>
 
 </div>
+     {{/if}}
+
+</div>
+
   				<p>Host: Mary Clare {{event.host}}</p>
   				<p>Description: Fun {{event.description}}</p>
   				<p>Date: {{event.date}}</p>
   				<p>Location: Gallup {{event.location}}</p>
-
-  			</div>
-
 </div>
 </div>
-
+</div>
 </template>
