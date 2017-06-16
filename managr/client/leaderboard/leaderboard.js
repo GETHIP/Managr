@@ -65,12 +65,9 @@ Template.leaderboard.helpers({
 Template.leaderboard.events({
   'click .submitbtn': function(event){
     event.preventDefault();
-    console.log("its clicking");
     var rating = $('#rating').data('userrating');
-    var attitude = $('#attitude').data('userrating')
-    var teamwork = $('#teamwork').data('userrating')
-
-    console.log(Instructor.findOne({userId: Meteor.user()._id}));
+    var attitude = $('#attitude').data('userrating');
+    var teamwork = $('#teamwork').data('userrating');
 
     comment = document.getElementById('textarea1').value;
     eaId = Instructor.findOne({userId: Meteor.user()._id})._id;
