@@ -48,7 +48,7 @@ viewAllTable tr:hover {
   width:80%;
 }
 .addBtn{
-  width: 70%;
+  width: 20%;
 }
 .sendSurvey:hover, .addBtn:hover{
   background-color: #cf130e;
@@ -104,7 +104,7 @@ label {
 }
 
 .marginContainer {
-  width: 100%;
+  width: 90%;
 }
 
 #YNdiv {
