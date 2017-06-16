@@ -18,6 +18,10 @@
           <input id="editEventBox" type="datetime-local" name="date" required>
           <p>Location:</p>
           <input id="editEventBox" type="text" name="location" placeholder="Where's Your Event?" autofocus required>
+          <p>Invite:</p>
+          {{#each students}}
+              <label for="{{studentId}}"><input type="checkbox" id="{{studentId}}"/> {{name}}</label>
+          {{/each}}
         </div>
        </div>
        <button type="button" id="eventCancel" class="buttonStyle cancelUserCreate leftFloatingButton" onclick="FlowRouter.go('/events');">Cancel</button>

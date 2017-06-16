@@ -16,6 +16,10 @@ Template.eventsPage.events({
     FlowRouter.go('/editEvent');
 
   },
+  'click #attendingButton': function(event, template) {
+    event.preventDefault();
+    FlowRouter.go('/events/Attending');
+  },
   'click .slider': function(event){
     if(document.getElementById("indicator").innerHTML == "Attending"){
         document.getElementById("indicator").innerHTML = "Not Attending"

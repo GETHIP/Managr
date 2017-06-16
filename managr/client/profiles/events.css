@@ -12,6 +12,7 @@
     text-align: left;
     font-size: 18px;
     margin-left: 5%;
+    padding-bottom: 4%;
 }
 
 .formTitle.eventTitle {
@@ -24,9 +25,7 @@
     cursor: pointer;
     color: #BD79FF;
 }
-.eventToolBar {
 
-}
 
 .switch {
   position: relative;
@@ -85,7 +84,6 @@ input:checked+.slider:before {
 
 .rsvp {
   float:right;
-
 }
 
 button.createdEvent {
