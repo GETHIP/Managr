@@ -7,7 +7,6 @@ Template.eval.helpers({
 Template.leaderboard.events({
   'click .delBtn': function(event){
     event.preventDefault();
-    console.log("its clicking");
   },
   'click .updateBtn': function(event){
 

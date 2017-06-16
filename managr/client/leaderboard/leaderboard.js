@@ -2,11 +2,6 @@ import { Student } from '../../collections/student.js';
 import { Eval } from '../../collections/eval.js'
 import { Instructor } from '../../collections/instructor.js'
 
-
-Template.leaderboard.onCreated(function() {
-  Meteor.subscribe('Student');
-});
-
 Template.leaderboard.onCreated(function(){
   Meteor.subscribe('Eval');
     Meteor.subscribe('Student');
@@ -70,20 +65,25 @@ Template.leaderboard.helpers({
 Template.leaderboard.events({
   'click .submitbtn': function(event){
     event.preventDefault();
-    console.log("its clicking");
     var rating = $('#rating').data('userrating');
-    var attitude = $('#attitude').data('userrating')
-    var teamwork = $('#teamwork').data('userrating')
-
-    console.log(Instructor.findOne({userId: Meteor.user()._id}));
+    var attitude = $('#attitude').data('userrating');
+    var teamwork = $('#teamwork').data('userrating');
 
     comment = document.getElementById('textarea1').value;
-    eaId = Instructor.find({userId: Meteor.user()._id})._id;
+    eaId = Instructor.findOne({userId: Meteor.user()._id})._id;
+    console.log(eaId);
     eId = document.getElementById('group').value;
     week = document.getElementById('week').value.split(" ")[1];
     sList = [rating, attitude, teamwork ];
-    console.log(eId);
+
+    for(var i = 0; i < sList.length; i++){
+      if(sList[i] == null){
+        sList[i] = 1;
+      }
+    }
+
+    console.log(sList);
     Meteor.call("sendEval", eaId, eId, comment, week, sList);
 
   }
-})
+});
