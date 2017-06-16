@@ -18,22 +18,25 @@ Template.leaderboard.helpers({
     studentlist.forEach(function (element) {
           var stars;
           console.log(element._id)
-          var star_rating = Eval.find({evaluatee: element._id});
-          if(!star_rating){
+          var star_rating = Eval.find({evaluatee: element._id}).fetch();
+          console.log(star_rating.stars)
+          if(star_rating == undefined){
+            console.log('there are no star ratings')
             stars = 0
           }
-          if(star_rating){
+          if(star_rating != undefined){
             stars = 0
-            star_rating = star_rating.fetch();
+            //star_rating = star_rating.fetch();
             star_rating = star_rating[0].stars;
             console.log(star_rating);
-            var stars = (star_rating[0] + star_rating[1] + star_rating[2])/3
+            var stars = (eval(star_rating[0]) + eval(star_rating[1]) + eval(star_rating[2]))/3
             console.log(stars);
-          }
           var effort = star_rating[0];
           var attitude = star_rating[1];
           var teamwork = star_rating[2];
           var attendanceNumber = 0;
+        }
+
           console.log(element.name);
           element.attendance.forEach(function (ment){ //attendance number calculation
               if(ment == true){
@@ -41,17 +44,19 @@ Template.leaderboard.helpers({
                   }
           });
           element.attendanceNumber = attendanceNumber;
-          if(star_rating){
+          if(star_rating !== undefined){
             element.average = stars;
+            element.effort = effort;
             element.attitude = attitude;
             element.teamwork = teamwork;
+            console.log(element.effort);
             console.log(element.average);
             console.log(element.attitude)
             console.log(element.teamwork)
           }
           stuarry.push(element);
     });
-    stuarry.sort(function(a, b){ //sort function
+    stuarry.sort(function(a, b){ //sort function by attendanceNumber
       return b.attendanceNumber - a.attendanceNumber;
     });
 		return stuarry;
