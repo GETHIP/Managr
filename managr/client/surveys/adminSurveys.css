@@ -30,7 +30,8 @@ viewAllTable tr:hover {
   width:60%;
 }
 .createTableBtn{
-  width:50%;
+  width:20%;
+
 }
 .surveyFormFormat, .createTable{
   margin-top:2%;
@@ -46,12 +47,20 @@ viewAllTable tr:hover {
 }
 .createTableSlct{
   width:80%;
+  margin-left: 40%;
 }
 .addBtn{
   width: 20%;
+  margin-top: 2%;
+  height: 8%;
 }
 .sendSurvey:hover, .addBtn:hover{
   background-color: #cf130e;
+}
+
+.dropdown{
+  margin-left: 2%;
+
 }
 
 /*cards*/
