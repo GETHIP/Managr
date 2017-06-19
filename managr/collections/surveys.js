@@ -66,11 +66,7 @@ Surveys.schema = new SimpleSchema({
 
 Surveys.attachSchema(Surveys.schema);
 
-<<<<<<< HEAD
-// //events Methods
-=======
 //events Methods
->>>>>>> 56114a8a03198379b1a2cec02d904d7fdde20142
 // import { Meteor } from 'meteor/meteor';
 // import { Posts } from '../collections/blogPosts.js';
 // import { Comments } from '../collections/comments.js';
@@ -96,9 +92,7 @@ Surveys.attachSchema(Surveys.schema);
 //     }
 // 	});
 // }
-<<<<<<< HEAD
-//
-//
+
 // //create event.html
 // <template name="createEvent">
 //
@@ -134,7 +128,7 @@ Surveys.attachSchema(Surveys.schema);
 // 		</div>
 // </div>
 // </template>
-=======
+
 
 //create event.js
 import { Student } from '../../collections/student.js';
@@ -214,38 +208,37 @@ var newformatStudentsForGroup = function(studentIds) {
 }
 
 //create event.html
-<template name="createEvent">
-
-	<div class="containerDiv form marginContainer">
-		<div class="containerDiv form">
-
-			<form id="eventForm">
-				<div class="containerDiv formbg cep">
-          <div class="createHeading">
-            <p id="welcome">Create Your Event</p>
-            <p id="lineP"></p>
-          </div>
-          <div class ="formdashboardContainer">
-					<p>Event Name:</p>
-					<input id="createEventBox" type="text" name="name" placeholder="Name Of Your Event" required>
-					<p>Description:</p>
-					<textarea id="createEventBox" name="description" rows="6" placeholder="Describe Your Event" required></textarea>
-					<p>When:</p>
-					<input id="createEventBox" type="datetime-local" name="date" required>
-					<p>Location:</p>
-					<input id="createEventBox" type="text" name="location" placeholder="Where's Your Event?" autofocus required>
-					<p>Invite:</p>
-
-					{{#each students}}
-							<label for="{{studentId}}"><input type="checkbox" id="{{studentId}}"/> {{name}}</label>
-					{{/each}}
-
-        </div>
-       </div>
-			 <button type="button" id="eventCancel" class="buttonStyle cancelUserCreate leftFloatingButton" onclick="FlowRouter.go('/events');">Cancel</button>
-			 <button type="submit" id="createEventButton" value="Create" class="buttonStyle cancelUserCreate rightFloatingButton">Create My Event</button>
-			</form>
-		</div>
-</div>
-</template>
->>>>>>> 56114a8a03198379b1a2cec02d904d7fdde20142
+// <template name="createEvent">
+//
+// 	<div class="containerDiv form marginContainer">
+// 		<div class="containerDiv form">
+//
+// 			<form id="eventForm">
+// 				<div class="containerDiv formbg cep">
+//           <div class="createHeading">
+//             <p id="welcome">Create Your Event</p>
+//             <p id="lineP"></p>
+//           </div>
+//           <div class ="formdashboardContainer">
+// 					<p>Event Name:</p>
+// 					<input id="createEventBox" type="text" name="name" placeholder="Name Of Your Event" required>
+// 					<p>Description:</p>
+// 					<textarea id="createEventBox" name="description" rows="6" placeholder="Describe Your Event" required></textarea>
+// 					<p>When:</p>
+// 					<input id="createEventBox" type="datetime-local" name="date" required>
+// 					<p>Location:</p>
+// 					<input id="createEventBox" type="text" name="location" placeholder="Where's Your Event?" autofocus required>
+// 					<p>Invite:</p>
+//
+// 					{{#each students}}
+// 							<label for="{{studentId}}"><input type="checkbox" id="{{studentId}}"/> {{name}}</label>
+// 					{{/each}}
+//
+//         </div>
+//        </div>
+// 			 <button type="button" id="eventCancel" class="buttonStyle cancelUserCreate leftFloatingButton" onclick="FlowRouter.go('/events');">Cancel</button>
+// 			 <button type="submit" id="createEventButton" value="Create" class="buttonStyle cancelUserCreate rightFloatingButton">Create My Event</button>
+// 			</form>
+// 		</div>
+// </div>
+// </template>
