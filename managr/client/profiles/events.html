@@ -41,19 +41,21 @@
   <div class="events">
     <div class ="formdashboardContainer">
       <div class="containerDiv formbg homeEvents">
-  			<h1 class="formTitle eventTitle">{{this.name}}</h1>
+  			<h1 class="formTitle eventTitle" id= "eventTitle">{{this.name}}</h1>
         <!--      Make this work and then put it back inside above     -->
          <!--     onClick="FlowRouter.go('/eventView/{{event._id}}')"         -->
           <div class="rsvp">
 
             <html>
               <body>
+                <div class="switching">
                 <p id="indicator">Not Attending</p>
                 <br>
                 <label class="switch">
                   <input type="checkbox">
                   <div class="slider"></div>
                 </label>
+              </div>
               </body>
             </html>
 

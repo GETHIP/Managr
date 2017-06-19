@@ -271,3 +271,9 @@ FlowRouter.route('/events/Attending', {
 		BlazeLayout.render("eventsLayout", {content: 'Attending'});
 	}
 });
+FlowRouter.route('/events/view', {
+	name: 'view',
+	action: function() {
+		BlazeLayout.render("eventsLayout", {content: 'view'});
+	}
+});

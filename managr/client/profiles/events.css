@@ -1,6 +1,6 @@
-body {
+/*body {
   background: white;
-}
+}*/
 
 .purpleBar {
   background: #BD53FF;
@@ -88,6 +88,10 @@ input:checked+.slider:before {
 
 .rsvp {
   float:right;
+}
+
+.switching {
+    background-color: white;
 }
 
 button.createdEvent {
