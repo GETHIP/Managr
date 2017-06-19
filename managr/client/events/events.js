@@ -1,6 +1,10 @@
 import { Events } from '../../collections/event.js';
 import { EasySearch } from 'meteor/easy:search';
 
+Template.eventsPage.onRendered(() => {
+  Meteor.subscribe("Events");
+})
+
 Template.eventsPage.events({
 
   'click #calendar': function(event, template) {
