@@ -1,3 +1,5 @@
+import { Surveys } from '../../collections/surveys.js';
+
 /*surveysPage.events({
 
 var getSurveysCompleted = function(student) {
@@ -9,8 +11,8 @@ var getSurveysCompleted = function(student) {
         }
     }
     return completed;
-}*/
-
+}
+*/
 /*
 Template.surveyFormTemplate.events({
 	 'click #surveySbmt'(event){
@@ -31,7 +33,7 @@ Template.surveyFormTemplate.events({
 
 Template.questionFormTemplate.events({
 	 'change #questionFormm'(event){
-     //keeps page from refreshing:
+     //keeps page from refreshing
       event.preventDefault();
 
       var select = document.getElementById("questionFormm");
@@ -40,6 +42,34 @@ Template.questionFormTemplate.events({
 
 			questiontype();
    },
+	 'click #buttonn'(event) {
+
+		 event.preventDefault();
+
+		 var option = document.getElementById("questionFormm").value;
+		 if(option == 'choice') {
+			 var question = Session.get('choiceQuestion');
+			 var choice1 = Session.get('choiceOption1');
+			 var choice2 = Session.get('choiceOption2');
+			 var choice3 = Session.get('choiceOption3');
+			 var choice4 = Session.get('choiceOption4');
+			 //add card code here
+		 } else if(option == 'check') {
+			 var question = Session.get('checkQuestion');
+			 var option1 = Session.get('checkOption1');
+			 var option2 = Session.get('checkOption2');
+			 var option3 = Session.get('checkOption3');
+			 var option4 = Session.get('checkOption4');
+			 var option5 = Session.get('checkOption5');
+			 //add card code here
+		 } else if(option == 'shResp') {
+			 var shResp = Session.get('shRespQuestion');
+			 //add card code here
+		 } else {
+			 alert("Select Something stupid");
+		 }
+		 return option;
+	 }
 });
 
 function questiontype() {
@@ -62,7 +92,14 @@ function questiontype() {
 	if (option == "shResp") {
 		document.getElementById('FRdiv').style.display = 'block';
 	}
+
+
+		// document.getElementById('visibleDiv').style.visibility='visible';//hidden
 }
+
+// document.getElementById('visibleDiv').style.display = 'none';
+// document.visibleDiv.style.visibility='visible';//hidden
+
 
 /*
 async function questiontype() {
@@ -89,7 +126,7 @@ Template.surveyFormTemplate.helpers({
       });
 		}
 });
-
+//
 // Meteor.startup(() => {
 // 	Surveys.remove({});
 // 	var temp = [{
@@ -102,8 +139,7 @@ Template.surveyFormTemplate.helpers({
 // 	}]
 // 	Surveys.insert({"title": "Random Test", "dueDate":"December 2", "studentsAssigned": ["Will Guo", "Abby Brooks", "Katie GErot", "Nick Nguyen"], "surveyId":"154209", temp});
 // });
-
-/************ DO NOT UNCOMMENT BELOW (solely for reference) ************/
+/************ DO NOT UNCOMMENT ************/
 /*Questions = new SimpleSchema({
 	type: {
 		type: String
@@ -143,3 +179,54 @@ Surveys.schema = new SimpleSchema({
 });
 
 Surveys.attachSchema(Surveys.schema);*/
+
+Template.MCtemplate.events({
+	'keyup #MCQuestion'(event) {
+		Session.set('choiceQuestion', event.target.value);
+	},
+	'keyup #MC1question'(event) {
+		Session.set('choiceOption1', event.target.value);
+	},
+	'keyup #MC2question'(event) {
+		Session.set('choiceOption2', event.target.value);
+	},
+	'keyup #MC3question'(event) {
+		Session.set('choiceOption3', event.target.value);
+	},
+	'keyup #MC4question'(event) {
+		Session.set('choiceOption4', event.target.value);
+	}
+})
+
+Template.CBtemplate.events({
+	'keyup #checkQuestion'(event) {
+		Session.set('checkQuestion', event.target.value);
+	},
+	'keyup #checkOption1'(event) {
+		Session.set('checkOption1', event.target.value);
+	},
+	'keyup #checkOption2'(event) {
+		Session.set('checkOption2', event.target.value);
+	},
+	'keyup #checkOption3'(event) {
+		Session.set('checkOption3', event.target.value);
+	},
+	'keyup #checkOption4'(event) {
+		Session.set('checkOption4', event.target.value);
+	},
+	'keyup #checkOption5'(event) {
+		Session.set('checkOption5', event.target.value);
+	},
+})
+
+Template.FRtemplate.events({
+	'keyup #shRespQuestion'(event) {
+		Session.set('shRespQuestion', event.target.value)
+	}
+})
+
+Template.completedQuestion.helpers({
+	option: function(){
+		return option;
+	}
+})
