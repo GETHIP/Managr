@@ -1,8 +1,8 @@
-.red-bar{
+.red-bar {
   background: #e61610;
 }
 
-.surveyBtn{
+.surveyBtn {
   background: #e61610;
   width: 66%;
 }
@@ -12,7 +12,7 @@ viewAllTable tr:hover {
   cursor: pointer;
 }
 
-.buttonStyle.surveyBtn:hover{
+.buttonStyle.surveyBtn:hover {
   background-color: #cf130e;
 }
 
@@ -29,4 +29,17 @@ viewAllTable tr:hover {
 
 .surveyTableHeadFormat.surveys, .surveyTableDataFormat.surveys {
   width: 33%;
+}
+
+.marginContainer {
+  width: 90%;
+}
+
+label {
+  /*vertical-align: middle;*/
+  float: right;
+}
+
+.dropdown {
+  margin-left: 2%;
 }

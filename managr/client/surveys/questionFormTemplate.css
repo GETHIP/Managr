@@ -1,0 +1,46 @@
+#YNdiv {
+  display:none;
+}
+
+#MCdiv {
+  display:none;
+}
+
+#CBdiv {
+  display:none;
+}
+
+#FRdiv {
+  display:none;
+}
+
+.addBtn {
+  width: 20%;
+  margin-top: 2%;
+  height: 8%;
+}
+
+.createTableBtn {
+  width:20%;
+}
+
+.surveyFormFormat, .createTable {
+  margin-top:2%;
+}
+
+.createTable {
+  width:100%;
+}
+
+.createTable td {
+  width:33%;
+}
+
+.createTableSlct {
+  width:80%;
+  margin-left: 40%;
+}
+
+.addBtn, .sendSurvey {
+  background-color: #e61610;
+}

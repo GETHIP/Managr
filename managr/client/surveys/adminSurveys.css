@@ -1,13 +1,9 @@
-.red-bar{
-  background-color: #e61610;
-}
-
 viewAllTable tr:hover {
   background-color: #f7b9b7;
   cursor: pointer;
 }
 
-.buttonStyle.surveyBtn:hover{
+.buttonStyle.surveyBtn:hover {
   background-color: #cf130e;
 }
 
@@ -26,54 +22,12 @@ viewAllTable tr:hover {
   width: 33%;
 }
 
-.questionSbmt{
-  width:60%;
-}
-.createTableBtn{
-  width:20%;
-
-}
-.surveyFormFormat, .createTable{
-  margin-top:2%;
-}
-.createTable{
-  width:100%;
-}
-.createTable td{
-  width:33%;
-}
-.addBtn, .sendSurvey{
-  background-color: #e61610;
-}
-.createTableSlct{
-  width:80%;
-  margin-left: 40%;
-}
-.addBtn{
-  width: 20%;
-  margin-top: 2%;
-  height: 8%;
-}
-.sendSurvey:hover, .addBtn:hover{
+.sendSurvey:hover, .addBtn:hover {
   background-color: #cf130e;
-}
-
-
-.addBtnn{
-  background-color: #e61610;
-  width: 100%;
-  padding: 10px;
-  margin-left: 10px;
-}
-.addBtnn:hover{
-  background-color: #cf130e;
-}
-.dropdown{
-  margin-left: 2%;
 }
 
 /*cards*/
-.surveyContainer{
+.surveyContainer {
  	  background: white;
   	box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26);
     margin-top: 2%;
@@ -84,60 +38,6 @@ viewAllTable tr:hover {
   	padding-right: 4%;
 }
 
-.createSurveyForm {
-    border-radius: 6px !important;
-    border: 2px solid lightgrey !important;
-    width: 100% !important;
-	/* All the important tags are bad practice, but
-	it appears to be the only way to get them to override
-	the default (bootstrap perhaps?) settings of 20px height for inputs. */
-	height: 2em !important;
-    margin: 0px !important;
-    box-sizing: border-box !important;
-    box-shadow: none !important;
-}
-.createSurveyForm:focus {
-  outline: none !important;
-  border-radius: 6px !important;
-  border-color: white !important;
-  box-shadow: none !important;
-  border: 2px solid #e61610 !important;
-}
-.createSurveyForm::-webkit-inner-spin-button {
-    display: none;
-}
-.createTableInput{
+.createTableInput {
   padding-left: 2%;
-}
-
-label {
-  /*vertical-align: middle;*/
-  float: right;
-}
-
-.MClabel {
-  margin-top: 7px !important;
-  margin-bottom: 35px !important;
-  margin-right: 10px !important;
-}
-
-.marginContainer {
-  width: 90%;
-}
-
-#YNdiv {
-	/*visibility:hidden;*/
-  display:none;
-}
-
-#MCdiv {
-  display:none;
-}
-
-#CBdiv {
-  display:none;
-}
-
-#FRdiv {
-  display:none;
 }
