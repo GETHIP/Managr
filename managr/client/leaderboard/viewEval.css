@@ -52,5 +52,23 @@
   width: 16.666%;
   font-size: 14px;
   text-align: center;
+}
+.viewAllevalTable th {
+  color: white;
+  font-size: 18px;
+  text-align: center;
+  background-color: #7700DD;
+  padding-top: 2.5%;
+  padding-left: 1%;
+  padding-right: 1%;
+  padding-bottom: 2.5%;
+  border-bottom: 1px solid #444444;
+}
+
+.viewAllevalTable{
+  width: 100%;
+}
+.viewAllevalTable td {
+  text-align: center;
 
 }
