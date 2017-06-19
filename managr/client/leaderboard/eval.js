@@ -8,8 +8,12 @@ Template.eval.onCreated(function(){
       Meteor.subscribe('Instructor');
 });
 
+Template.registerHelper('equals', function (a, b) {
+    return a === b;
+  });
+
 Template.eval.helpers({
-	eval: function(){
+	evalA: function(){
 		data = Eval.findOne({_id: FlowRouter.getParam("id")});
 		console.log(data);
 		data.fSt = eval(data.stars[0]);

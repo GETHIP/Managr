@@ -4,12 +4,38 @@
   <div class="purple-bar">&nbsp;</div>
 
 <div class="evaluationContainer">
-{{#with eval}}
+  {{#with evalA}}
   <p>Tuesday 4:56pm</p>
-  <p class="starEval"><strong>Effort:</strong></p>
-  <p class="starEval"><strong>Attitude:</strong></p>
-  <p class="starEval"><strong>Teamwork:</strong></p>
+  <p class="starEval"><strong>Effort:
+    {{#if equals fSt 2}} {{> star1}}
+    {{else if equals fSt 1}} {{> star1}}
+    {{else if equals fSt 2}} {{> star2}}
+    {{else if equals fSt 3}} {{> star3}}
+    {{else if equals fSt 4}} {{> star4}}
+    {{else if equals fSt 5}} {{> star5}}
+    {{/if}}
+ </strong></p>
+  <p class="starEval"><strong>Attitude:
+    {{#if equals fSt 2}} {{> star1}}
+    {{else if equals sSt 1}} {{> star1}}
+    {{else if equals sSt 2}} {{> star2}}
+    {{else if equals sSt 3}} {{> star3}}
+    {{else if equals sSt 4}} {{> star4}}
+    {{else if equals sSt 5}} {{> star5}}
+    {{/if}}
+  </strong></p>
+  <p class="starEval"><strong>Teamwork:
+    {{#if equals fSt 2}} {{> star1}}
+    {{else if equals tSt 1}} {{> star1}}
+    {{else if equals tSt 2}} {{> star2}}
+    {{else if equals tSt 3}} {{> star3}}
+    {{else if equals tSt 4}} {{> star4}}
+    {{else if equals tSt 5}} {{> star5}}
+    {{/if}}
+  </strong></p>
   <p>asdf</p>
+  {{/with}}
+
 </div>
 </div>
 </template>
