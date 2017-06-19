@@ -1,41 +1,28 @@
-<template name="YNtemplate">
-      <!-- YN SECTION -->
-  <div>
-    <div class="YNtemp">
-    <table class="selectionTable">
-      <!-- <tr class="selectionRowFormat">
-        <p class="noIndent surveyFormFormat"><b>Question:</b></p>
-        <input type="text" name="YNQ" class="selectionForm">
-      </tr> -->
-      <tr class="selectionRowFormat">
-        <form class="questionForm" id="questionForm">
-        <p class="noIndent surveyFormFormat"><b>Question:</b></p>
-        <input type="text" name="prompt" class="createSurveyForm">
-      </form>
-      </tr>
-      <form name="questionSbmt" id="questionSbmt" action="/action_page.php">
-        <tr> <input type="radio" name="YNQ" value="Yes" class="selectionForm" /> <label> Yes</label> </tr>
-          <tr> <input type="radio" name="YNQ" value="No" class="selectionForm" /> <label> No</label> </tr>
-      </form>
-    </table>
-  </div>
-</div>
-</template>
-
 <template name="MCtemplate">
     <!-- MC SECTION -->
 <div>
   <div class="MCtemp">
+    <p class="noIndent surveyFormFormat"><b>Question:</b></p>
+    <input type="text" name="prompt" class="createSurveyForm">
+    <p></p>
+    <ul>
+      <li><input type="radio" name="MCQ" value="1" class="selectionForm MClabel" />
+        <label> <input type="text" value="{{MC}}" name=mc1 class=" selectionForm createSurveyForm" placeholder="Option 1"> </label></li>
+      <li><input type="radio" name="MCQ" value="2" class="selectionForm MClabel" />
+        <label> <input type="text" value="{{MC}}" name=mc2 class="selectionForm createSurveyForm" placeholder="Option 2"> </label> </li>
+      <li><input type="radio" name="MCQ" value="3" class="selectionForm MClabel" />
+        <label> <input type="text" value="{{MC}}" name=mc3 class="selectionForm  createSurveyForm" placeholder="Option 3"> </label> </li>
+      <li><input type="radio" name="MCQ" value="4" class="selectionForm MClabel" />
+        <label><input type="text" value="{{MC}}" name=mc4 class="selectionForm createSurveyForm" placeholder="Option 4"> </label> </li>
+    </ul>
+
+
     <table class="selectionTable">
       <!-- <tr class="selectionRowFormat">
         <p class="noIndent surveyFormFormat"><b>Question:</b></p>
         <input type="text" name="MCQ" class="selectionForm">
       </tr> -->
       <tr class="selectionRowFormat">
-        <form class="questionForm" id="questionForm">
-        <p class="noIndent surveyFormFormat"><b>Question:</b></p>
-        <input type="text" name="prompt" class="createSurveyForm">
-      </form>
       </tr>
       <tr class="selectionRowFormat">
         <p class="Indent surveyFormFomat"><b>Choices:</b></p>
@@ -64,12 +51,11 @@
 <!-- CB SECTION -->
 <div>
 <div class="CBtemp">
+  <p class="noIndent surveyFormFormat"><b>Question:</b></p>
+  <input type="text" name="prompt" class="createSurveyForm">
+  <p></p>
   <table class="selectionTable">
     <tr class="selectionRowFormat">
-      <form class="questionForm" id="questionForm">
-      <p class="noIndent surveyFormFormat"><b>Question:</b></p>
-      <input type="text" name="prompt" class="createSurveyForm">
-    </form>
     </tr>
     <tr>
       <td>
@@ -79,6 +65,7 @@
         <button type="button" class="buttonStyle submitbtn addBtnn">Add</button>
       </td>
     </tr>
+    <p></p>
     <form name="questionSbmt" id="questionSbmt">
     <tr class="selectionRowFormat">
       <td>
@@ -100,20 +87,11 @@
     <!-- FR SECTION -->
   <div>
     <div class="FRtemp">
-      <table class="selectionTable">
-        <tr class="selectionRowFormat">
-          <form class="questionForm" id="questionForm">
-          <p class="noIndent surveyFormFormat"><b>Question:</b></p>
-          <input type="text" name="prompt" class="createSurveyForm">
-        </form>
-        </tr>
-        <form name="questionSbmt" id="questionSbmt">
-        <tr class="selectionRowFormat">
-          <p class="noIndent surveyFormFormat"><b>Response:</b></p>
-          <input type="text" name="FRQ" class="selectionForm createSurveyForm"><!--createSurveyForm-->
-        </tr>
-      </form>
-      </table>
+      <p class="noIndent surveyFormFormat"><b>Question:</b></p>
+      <input type="text" name="prompt" class="createSurveyForm">
+
+      <p class="noIndent surveyFormFormat"><b>Response:</b></p>
+      <input type="text" name="FRQ" class="selectionForm createSurveyForm">
   </div>
 </div>
 </template>

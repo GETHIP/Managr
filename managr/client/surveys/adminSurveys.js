@@ -47,14 +47,9 @@ function questiontype() {
 	var option = select.value;
 		// document.getElementById('questionSbmt').innerHTML = option;
 
-	document.getElementById('YNdiv').style.display = 'none';
 	document.getElementById('MCdiv').style.display = 'none';
 	document.getElementById('CBdiv').style.display = 'none';
 	document.getElementById('FRdiv').style.display = 'none';
-
-	if (option == "yesNo") {
-		document.getElementById('YNdiv').style.display = 'block';//'none'
-	}
 
 	if (option == "choice") {
 		document.getElementById('MCdiv').style.display = 'block';
@@ -101,18 +96,19 @@ Template.surveyFormTemplate.helpers({
       });
 		}
 });
-Meteor.startup(() => {
-	Surveys.remove({});
-	var temp = [{
-		type: "yesNo",
-		prompt: "Do you think we should make the United Sates like North Korea?"
-	},{
-		type: "check",
-		prompt: "Check the boxes with your favorite number",
-		answers: ["1", "2", "3"]
-	}]
-	Surveys.insert({"title": "Random Test", "dueDate":"December 2", "studentsAssigned": ["Will Guo", "Abby Brooks", "Katie GErot", "Nick Nguyen"], "surveyId":"154209", temp});
-});
+//
+// Meteor.startup(() => {
+// 	Surveys.remove({});
+// 	var temp = [{
+// 		type: "yesNo",
+// 		prompt: "Do you think we should make the United Sates like North Korea?"
+// 	},{
+// 		type: "check",
+// 		prompt: "Check the boxes with your favorite number",
+// 		answers: ["1", "2", "3"]
+// 	}]
+// 	Surveys.insert({"title": "Random Test", "dueDate":"December 2", "studentsAssigned": ["Will Guo", "Abby Brooks", "Katie GErot", "Nick Nguyen"], "surveyId":"154209", temp});
+// });
 /************ DO NOT UNCOMMENT ************/
 /*Questions = new SimpleSchema({
 	type: {
