@@ -6,20 +6,19 @@
   <form>
 		<div class ="textformContainer">
 		  <form id="textformContainer">
-    <textarea  placeholder="Write evaluation here..." rows="4" cols="50" width="70%" name="textarea1" id="textarea1"  >
+    <textarea  placeholder="Write evaluation here..." rows="4" cols="50" width="100%" name="textarea1" id="textarea1"  >
 		</textarea>
-</form>
-</div>
+
 <!--Should Have replicated Stars -->
 <div class="formstarsContainer">
-	<form id="starsform">
+
 				<p class="starLabel"><strong>Effort:</strong></p>{{> starsRating size='lg' id='rating' rating=1 mutable='true' class='mystar'}}
 				<p class="starLabel"><strong>Attitude:</strong></p>{{> starsRating size='lg' id='attitude' rating=1 mutable='true' class='mystar'}}
 				<p class="starLabel"><strong>Teamwork:</strong></p>{{> starsRating size='lg' id='teamwork' rating=1 mutable='true' class='mystar'}}
-	</form>
+
 </div>
 <div class ="dropdownformContainer">
-  <form id="dropdownformContainer">
+
 
 		<label for="group">Groups</label>
     <select id="group" name="group">
@@ -38,7 +37,9 @@
   <input type="checkbox">
   <div class="check"></div>
 </label>
-  </form>
+
+</div>
+</form>
 </div>
 <button class="buttonStyleleader submitbtn" id="submitBtn">Submit Evaluation</button>
 </form>

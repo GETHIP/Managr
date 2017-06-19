@@ -1,33 +1,23 @@
+import { Student } from '../../collections/student.js';
 import { Eval } from '../../collections/eval.js'
+import { Instructor } from '../../collections/instructor.js'
 
-Template.leaderboard.onCreated(function(){
+Template.eval.onCreated(function(){
   Meteor.subscribe('Eval');
+    Meteor.subscribe('Student');
+      Meteor.subscribe('Instructor');
 });
 
 Template.eval.helpers({
 	eval: function(){
-    return Eval.find({_id: FlowRouter.getParam("id")});
-  },
-	effort: function(element){
-		var starRating = Eval.find({evaluatee: element._id}).fetch();
-		console.log(starRating);
-		var starRating = starRating[0].stars;
-		var effort = eval(starRating[0]);
-		console.log(effort)
-		return effort;
-	},
-	attitude: function(element){
-		var starRating = Eval.find({evaluatee: element._id}).fetch();
-		var starRating = starRating[0].stars;
-		var attitude= eval(starRating[1]);
-		return attitude;
-	},
-	teamwork: function(element){
-		var starRating = Eval.find({evaluatee: element._id}).fetch();
-		var starRating = starRating[0].stars;
-		var teamwork = eval(starRating[2]);
-		return teamwork;
-	}
+		data = Eval.findOne({_id: FlowRouter.getParam("id")});
+		console.log(data);
+		data.fSt = eval(data.stars[0]);
+		data.sSt = eval(data.stars[1]);
+		data.tSt = eval(data.stars[2]);
+		console.log(data.tSt);
+		return data;
+  }
 });
 
 Template.leaderboard.events({

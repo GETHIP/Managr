@@ -141,16 +141,7 @@ header {
     font-size: 18px;
 }
 
-.formstarsContainer {
-	width: 50%;
-	background: white;
-	box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26);
-	margin-bottom: 3%;
-	margin-top: 1.5%;
-	padding: 24px;
-	height: 14em;
-	display: inline-block;
-}
+
 .textformContainer {
 	width: 100%;
 	background: white;
@@ -158,20 +149,23 @@ header {
 	margin-bottom: 3%;
 	margin-top: 3%;
 	padding: 24px;
-	height: 10em;
+	height: 25em;
 	display: inline-block;
   }
-.dropdownformContainer {
-	width: 50%;
-	background: white;
-	box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26);
-	margin-bottom: 3%;
-	margin-top: 1.5%;
-	padding: 24px;
-	height: 14em;
-  float:right;
+  .dropdownformContainer {
+    margin-bottom: 3%;
+	  margin-top: 1.5%;
+	  padding: 24px;
+    float:right;
 
-}
+  }
+  .formstarsContainer {
+      margin-bottom: 3%;
+    	margin-top: 1.5%;
+    	padding: 24px;
+  	  display: inline-block;
+  }
+
 .mystar .current-rating {
   color: #7700dd;
 }
@@ -192,10 +186,12 @@ header {
 }
 textarea {
   resize:none;
+  width: 100%;
 }
 .textarea1 {
   margin-left: 5px;
   margin-right: 5px;
+  width:100%;
 }
 .switch {
   width: 60px;

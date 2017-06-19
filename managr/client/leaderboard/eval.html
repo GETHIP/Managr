@@ -4,12 +4,17 @@
   <div class="purple-bar">&nbsp;</div>
 
 <div class="evaluationContainer">
-  <p>Tuesday 4:56pm</p>
-  <p class="starEval"><strong>Effort:</strong></p>
-  <p class="starEval"><strong>Attitude:</strong></p>
-  <p class="starEval"><strong>Teamwork:</strong></p>
-  <p>asdf</p>
+{{#with eval}}
+  <p class="timeStamp">Tuesday 4:56pm</p>
+
+  <p class="starEval"><strong>Effort:</strong></p>{{> starsRating size='lg' id='rating' class='mystar'}}
+  <p class="starEval"><strong>Attitude:</strong></p>{{> starsRating size='lg' id='attitude' class='mystar'}}
+  <p class="starEval"><strong>Teamwork:</strong></p>{{> starsRating size='lg' id='teamwork' class='mystar'}}
+  <p>{{message}}</p>
+  {{/with}}
 </div>
+<button class="buttonStyleleader editEval">Edit</button>
+<button class="buttonStyleleader deleteEval">Delete</button>
 </div>
 </template>
 <template name="star1">
