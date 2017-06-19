@@ -4,6 +4,10 @@
 
 .purpleBar {
   background: #BD53FF;
+  max-width: 100%;
+  max-height: 4px;
+  margin-top: .5%;
+  margin-bottom: 2%;
 }
 
 .events {
@@ -116,15 +120,20 @@ button.createdEvent {
   background-color: #BD79FF;
 }
 
-.eventCalendar {
+#calendar {
   background-color: #BD53FF;
 }
 
-.eventCalendar:hover {
+#calendar:hover {
   background-color: #BD79FF;
 
 }
-
+#attendingButton {
+  background-color:#BD53FF;
+}
+#attendingButton:hover {
+  background-color: #BD79FF;
+}
 .eventsTable {
 	width: 100%;
 }
@@ -164,12 +173,17 @@ input.eventsTable {
 
 }
 .editEventButton {
-
   width:200%;
 }
 
-/*//KIERAN TOOK THIS OUT
+.eventSearchBar input[type=text] {
+  width: 100%;
+  height: 10%;
+  margin-right: 5%;
+  margin-top: 1%;
+}
 
-#indicator {
-  position: fixed;
-}*/
+.eventSearchBar input[type=text]:hover, .eventSearchBar input[type=text]:focus  {
+   border: 2px solid #BD53FF;
+
+}

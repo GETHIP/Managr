@@ -2,41 +2,36 @@
   {{#if userIsValid}}
     <div class="marginContainer">
       <h1 class="titleAssignment">Events</h1>
-      <div class="orange-bar purpleBar"> &nbsp;</div>
+      <div id="lineP"> &nbsp;</div>
       <div class="formdashboardContainer">
     			<h4 class="searchEventsLabel">Search:</h4>
+        <div class = "eventSearchBar">
           <table class="eventsTable">
     				<thead></thead>
-    				<tbody class="eventsTable">
-    					<tr>
-    						<td class="eventsTableInput">
-    							<input name="searchEvents" class="searchEvents eventsTable" id="searchBox" type="text" value="" autofocus required>
-    						</td>
+    				  <tbody class="eventsTable">
+      					<tr>
+                  {{> EasySearch.Input index=eventsIndex attributes=searchBarEvent}}
 
-                {{#if isInstructor}}
+                  <!-- {{#if isInstructor}} -->
 
-    						<td class="eventsTableSpacer"></td>
-    						<td class="eventsTableButton">
-    							<button type="button" class="buttonStyle createEvent eventsTable" id="createEventButton"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>     Create Event</button>
-    						</td>
+      						<td class="eventsTableSpacer"></td>
+      						<td class="eventsTableButton">
+      							<button type="button" class="buttonStyle createEvent eventsTable" id="createEventButton"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>     Create Event</button>
+      						</td>
 
-                {{/if}}
-    						<td class="eventsTableSpacer"></td>
-    						<td class="eventsTableButton">
-    							<button type="button" class="buttonStyle eventCalendar eventsTable" id="calendar"><i class="fa fa-calendar" aria-hidden="true"></i>     Calendar</button>
-    					</td>
-    					</tr>
+                  <!-- {{/if}} -->
+      						<td class="eventsTableSpacer"></td>
+      						<td class="eventsTableButton">
+      							<button type="button" class="buttonStyle eventCalendar eventsTable" id="calendar"><i class="fa fa-calendar" aria-hidden="true"></i>     Calendar</button>
+      					  </td>
+      					</tr>
     				</tbody>
     			</table>
         </div>
+      </div>
     </div>
 
-	   {{else}}
-		   {{> accessDenied}}
-
-  {{/if}}
-
-{{ #each events }}
+{{#EasySearch.Each index=eventsIndex attributes=searchBarEvent}}
 
   <div class="events">
     <div class ="formdashboardContainer">
@@ -59,7 +54,7 @@
               </body>
             </html>
 
-          {{#if isInstructor}}
+          <!-- {{#if isInstructor}} -->
             <br>
             <br>
 
@@ -68,13 +63,13 @@
               <button type="button" class="buttonStyle editEvent createdEvent" id="attendingButton"><i class="fa fa-user-circle" aria-hidden="true"></i>     Attendees</button>
             </div>
 
-     	    {{/if}}
+     	    <!-- {{/if}} -->
 
           </div>
-  				<p>Host: {{this.host}}</p>
-  				<p>Description: {{this.description}}</p>
-  				<p>Date: {{this.date}}</p>
-  				<p>Location: {{this.location}}</p>
+  				<p>Host: {{host}}</p>
+  				<p>Description: {{description}}</p>
+  				<p>Date: {{date}}</p>
+  				<p>Location: {{location}}</p>
 <br>
 <br>
 
@@ -82,6 +77,12 @@
     </div>
   </div>
 
-{{ /each }}
+{{/EasySearch.Each}}
+
+
+{{else}}
+  {{> accessDenied}}
+
+{{/if}}
 
 </template>
