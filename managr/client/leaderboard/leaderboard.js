@@ -57,7 +57,7 @@ Template.leaderboard.helpers({
           stuarry.push(element);
     });
     stuarry.sort(function(a, b){ //sort function by attendanceNumber
-      return b.attendanceNumber - a.attendanceNumber;
+      return b.average - a.average;
     });
 		return stuarry;
 	},
