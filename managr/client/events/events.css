@@ -120,11 +120,11 @@ button.createdEvent {
   background-color: #BD79FF;
 }
 
-#calendar {
+#calendarButton {
   background-color: #BD53FF;
 }
 
-#calendar:hover {
+#calendarButton:hover {
   background-color: #BD79FF;
 
 }
