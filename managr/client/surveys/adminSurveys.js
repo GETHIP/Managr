@@ -9,8 +9,8 @@ var getSurveysCompleted = function(student) {
         }
     }
     return completed;
-}
-*/
+}*/
+
 /*
 Template.surveyFormTemplate.events({
 	 'click #surveySbmt'(event){
@@ -31,7 +31,7 @@ Template.surveyFormTemplate.events({
 
 Template.questionFormTemplate.events({
 	 'change #questionFormm'(event){
-     //keeps page from refreshing
+     //keeps page from refreshing:
       event.preventDefault();
 
       var select = document.getElementById("questionFormm");
@@ -62,14 +62,7 @@ function questiontype() {
 	if (option == "shResp") {
 		document.getElementById('FRdiv').style.display = 'block';
 	}
-
-
-		// document.getElementById('visibleDiv').style.visibility='visible';//hidden
 }
-
-// document.getElementById('visibleDiv').style.display = 'none';
-// document.visibleDiv.style.visibility='visible';//hidden
-
 
 /*
 async function questiontype() {
@@ -96,7 +89,7 @@ Template.surveyFormTemplate.helpers({
       });
 		}
 });
-//
+
 // Meteor.startup(() => {
 // 	Surveys.remove({});
 // 	var temp = [{
@@ -109,7 +102,8 @@ Template.surveyFormTemplate.helpers({
 // 	}]
 // 	Surveys.insert({"title": "Random Test", "dueDate":"December 2", "studentsAssigned": ["Will Guo", "Abby Brooks", "Katie GErot", "Nick Nguyen"], "surveyId":"154209", temp});
 // });
-/************ DO NOT UNCOMMENT ************/
+
+/************ DO NOT UNCOMMENT BELOW (solely for reference) ************/
 /*Questions = new SimpleSchema({
 	type: {
 		type: String
