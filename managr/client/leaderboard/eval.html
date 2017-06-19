@@ -1,14 +1,29 @@
-<Template name="eval">
+<template name="eval">
   <div class="marginContainer">
   <h1 class="titleEvaluations">Evaluations</h1>
   <div class="purple-bar">&nbsp;</div>
 
 <div class="evaluationContainer">
   <p>Tuesday 4:56pm</p>
-  <p class="starEval"><strong>Effort:</strong></p>{{> starsRating size='lg' id='rating' class='mystar'}}
-  <p class="starEval"><strong>Attitude:</strong></p>{{> starsRating size='lg' id='attitude' class='mystar'}}
-  <p class="starEval"><strong>Teamwork:</strong></p>{{> starsRating size='lg' id='teamwork' class='mystar'}}
+  <p class="starEval"><strong>Effort:</strong></p>
+  <p class="starEval"><strong>Attitude:</strong></p>
+  <p class="starEval"><strong>Teamwork:</strong></p>
   <p>asdf</p>
 </div>
 </div>
+</template>
+<template name="star1">
+  {{> starsRating rating=1 size='lg' class='mystar'}
+</template>
+<template name="star2">
+  {{> starsRating rating=2 size='lg' class='mystar'}
+</template>
+<template name="star3">
+  {{> starsRating rating=3 size='lg' class='mystar'}
+</template>
+<template name="star4">
+  {{> starsRating rating=4 size='lg' class='mystar'}
+</template>
+<template name="star5">
+  {{> starsRating rating=5 size='lg' class='mystar'}
 </template>
