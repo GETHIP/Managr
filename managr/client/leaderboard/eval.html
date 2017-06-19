@@ -3,9 +3,18 @@
   <h1 class="titleEvaluations">Evaluations</h1>
   <div class="purple-bar">&nbsp;</div>
 
+
+  <p class="starEval"><strong>Effort:</strong></p>{{> starsRating size='lg' id='rating' class='mystar'}}
+  <p class="starEval"><strong>Attitude:</strong></p>{{> starsRating size='lg' id='attitude' class='mystar'}}
+  <p class="starEval"><strong>Teamwork:</strong></p>{{> starsRating size='lg' id='teamwork' class='mystar'}}
+
+
 <div class="evaluationContainer">
+  <div>
   {{#with evalA}}
-  <p>Tuesday 4:56pm</p>
+<p class="evaluatorEval"><strong>From: Jacon Gideob</strong></p>
+  <p class="evaluateeEval"><strong>To: Cato Longe</strong></p>
+  <p class="timeStamp">Tuesday 4:56pm</p>
   <p class="starEval"><strong>Effort:
     {{#if equals fSt 2}} {{> star1}}
     {{else if equals fSt 1}} {{> star1}}
@@ -37,6 +46,11 @@
   {{/with}}
 
 </div>
+  <p class="evalContent">I do think that some of this presents good ideas. You could work on some of your CSS, but this is fine. </p>
+
+</div>
+<button class="buttonStyleEval editEval">Edit</button>
+<button class="buttonStyleEval deleteEval">Delete</button>
 </div>
 </template>
 <template name="star1">

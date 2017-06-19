@@ -6,20 +6,19 @@
   <form>
 		<div class ="textformContainer">
 		  <form id="textformContainer">
-    <textarea  placeholder="Write evaluation here..." rows="4" cols="50" width="70%" name="textarea1" id="textarea1"  >
+    <textarea  placeholder="Write evaluation here..." rows="4" cols="50" width="100%" name="textarea1" id="textarea1"  >
 		</textarea>
-</form>
-</div>
+
 <!--Should Have replicated Stars -->
 <div class="formstarsContainer">
-	<form id="starsform">
+
 				<p class="starLabel"><strong>Effort:</strong></p>{{> starsRating size='lg' id='rating' rating=1 mutable='true' class='mystar'}}
 				<p class="starLabel"><strong>Attitude:</strong></p>{{> starsRating size='lg' id='attitude' rating=1 mutable='true' class='mystar'}}
 				<p class="starLabel"><strong>Teamwork:</strong></p>{{> starsRating size='lg' id='teamwork' rating=1 mutable='true' class='mystar'}}
-	</form>
+
 </div>
 <div class ="dropdownformContainer">
-  <form id="dropdownformContainer">
+
 
 		<label for="group">Groups</label>
     <select id="group" name="group">
@@ -38,20 +37,22 @@
   <input type="checkbox">
   <div class="check"></div>
 </label>
-  </form>
+
+</div>
+</form>
 </div>
 <button class="buttonStyleleader submitbtn" id="submitBtn">Submit Evaluation</button>
 </form>
   <h2 class="titleLeader">Leaders Overview</h2>
   <div class="purple-bar">&nbsp;</div>
 	<td class="createTableSlct">
-		<select name="selectType" id="sortBy">
+		<select name="selectType" id="sortingChoice">
 			<option value="" disabled selected>Sort By:</option>
 			<option value="sortAttendance">attendance</option>
 			<option value="sortEffort">effort</option>
 			<option value="sortAttitude">attitude</option>
 			<option value="sortTeamwork">teamwork</option>
-			<option value="sorAverage">average stars</option>
+			<option value="sortAverage">average stars</option>
 		</select>
 	</td>
 	<table class="viewAllStudentTable">
@@ -68,13 +69,13 @@
 		<!-- </thead> -->
 		<!-- <tbody> -->
 			{{#each stuarry}}
-				<tr> <!--  <tr onclick="parent.location='{{url}}'"   "FlowRouter.go("/profile/edit/" + FlowRouter.getParam("id"));> -->
-					<td>{{name}}</td>
-					<td>{{attendanceNumber}}/12</td>
-					<td>{{effort}}</td>
-					<td>{{attitude}}</td>
-					<td>{{teamwork}}</td>
-					<td>{{average}}</td>
+				<tr class= "tableRowFormat"> <!--  <tr onclick="parent.location='{{url}}'"   "FlowRouter.go("/profile/edit/" + FlowRouter.getParam("id"));> -->
+					<td class="tableDataFormat leaderboard"> {{name}}</td>
+					<td class="tableDataFormat leaderboard">{{attendanceNumber}}/12</td>
+					<td class="tableDataFormat leaderboard">{{effort}}</td>
+					<td class="tableDataFormat leaderboard">{{attitude}}</td>
+					<td class="tableDataFormat leaderboard">{{teamwork}}</td>
+					<td class="tableDataFormat leaderboard">{{average}}</td>
 							</tr>
 			{{/each}}
 		<!-- </tbody> -->

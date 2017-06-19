@@ -4,11 +4,46 @@ background: white;
 box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 margin-bottom: 3%;
 margin-top: 1.5%;
-padding: 5%;
 height: 14em;
 align-self: center;
+column-count: 2;
+padding: 2%;
 }
 
 .starEval {
-  float:left;
+}
+.editEval {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.editEval:hover {
+  background-color: #9f53e0;
+}
+
+.deleteEval {
+  background-color: #D11149 !important;
+}
+
+.deleteEval:hover {
+  background-color: #FF5050 !important;
+}
+
+.buttonStyleEval {
+  width: 25%;
+  background-color: #7700DD;
+  border: none;
+  color: white;
+  padding: 1.25%;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: center;
+  font-size: 18px;
+  border-radius: 6px;
+  margin-bottom: 2%;
+  margin-top: 2%;
+  float: left;
+  }
+.evalContent {
+  float: left;
 }
