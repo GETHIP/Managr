@@ -3,7 +3,7 @@ Template.calendar.onRendered( () => {
     header: { right: 'month,agendaWeek,agendaDay',
               center: 'title',
               left: 'today prev,next'},
-  
+
           eventLimit: true, // for all non-agenda views
   views: {
       agenda: {
