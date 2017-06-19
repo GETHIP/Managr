@@ -160,12 +160,17 @@ input.eventsTable {
 
 }
 .editEventButton {
-
   width:200%;
 }
 
-/*//KIERAN TOOK THIS OUT
+.eventSearchBar input[type=text] {
+  width: 100%;
+  height: 10%;
+  margin-right: 5%;
+  margin-top: 2%;
+}
 
-#indicator {
-  position: fixed;
-}*/
+.eventSearchBar input[type=text]:hover, .eventSearchBar input[type=text]:focus  {
+   border: 2px solid #BD53FF;
+
+}

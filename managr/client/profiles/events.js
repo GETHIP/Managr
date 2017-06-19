@@ -1,4 +1,5 @@
 import { Events } from '../../collections/event.js';
+import { EasySearch } from 'meteor/easy:search';
 
 Template.eventsPage.events({
 
@@ -32,5 +33,8 @@ Template.eventsPage.events({
 Template.eventsPage.helpers({
   events: function() {
     return Events.find();
+  },
+  eventsIndex: function() {
+      return eventsIndex;
   }
 });

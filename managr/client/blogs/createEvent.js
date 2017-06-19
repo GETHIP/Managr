@@ -20,7 +20,7 @@ Template.createEvent.events({
     console.log(description);
     console.log(location);
     console.log(date);
-
+    
     Meteor.call("createNewEvent", eventName, description, date, location);
 
     FlowRouter.go('/events');
@@ -28,11 +28,6 @@ Template.createEvent.events({
 });
 
 import { Groups } from '../../collections/groups.js';
-
-Template.createEvent.onCreated(function() {
-		Meteor.subscribe("Student");
-    Meteor.subscribe("Groups");
-});
 
 Template.createEvent.helpers({
     groups: function() {
