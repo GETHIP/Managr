@@ -66,6 +66,7 @@ Template.leaderboard.helpers({
       console.log("ushing to stuarray")
       console.log(stuarry)
     });
+    stuarry.sort();
     var select = document.getElementById("sortingChoice");
     var option = select.value;
     if (option == "sortAttendance"){
