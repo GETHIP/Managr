@@ -167,7 +167,7 @@ input.eventsTable {
   width: 100%;
   height: 10%;
   margin-right: 5%;
-  margin-top: 2%;
+  margin-top: 1%;
 }
 
 .eventSearchBar input[type=text]:hover, .eventSearchBar input[type=text]:focus  {
