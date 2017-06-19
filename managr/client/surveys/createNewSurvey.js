@@ -1,6 +1,6 @@
 //create event.js
-import { Student } from '../../collections/student.js';
 import { Surveys } from '../../collections/surveys.js';
+import { Student } from '../../collections/student.js';
 
 Template.questionFormTemplate.onCreated(function() {
     Meteor.subscribe("Student");
