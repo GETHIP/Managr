@@ -1,14 +1,16 @@
-<Template name="eval">
+<template name="eval">
   <div class="marginContainer">
   <h1 class="titleEvaluations">Evaluations</h1>
   <div class="purple-bar">&nbsp;</div>
 
 <div class="evaluationContainer">
+{{#with eval}}
   <p>Tuesday 4:56pm</p>
   <p class="starEval"><strong>Effort:</strong></p>{{> starsRating size='lg' id='rating' class='mystar'}}
   <p class="starEval"><strong>Attitude:</strong></p>{{> starsRating size='lg' id='attitude' class='mystar'}}
   <p class="starEval"><strong>Teamwork:</strong></p>{{> starsRating size='lg' id='teamwork' class='mystar'}}
-  <p>asdf</p>
+  <p>{{message}}</p>
+  {{/with}}
 </div>
 </div>
 </template>
