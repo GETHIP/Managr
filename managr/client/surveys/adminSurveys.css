@@ -62,6 +62,8 @@ viewAllTable tr:hover {
 .addBtnn{
   background-color: #e61610;
   width: 100%;
+  padding: 10px;
+  margin-left: 10px;
 }
 .addBtnn:hover{
   background-color: #cf130e;
