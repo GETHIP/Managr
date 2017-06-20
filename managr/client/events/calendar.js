@@ -1,5 +1,5 @@
 Template.calendar.onRendered( () => {
-  $( '#calendarButton' ).fullCalendar({
+  $( '#calendar' ).fullCalendar({
     header: { right: 'month,agendaWeek,agendaDay',
               center: 'title',
               left: 'today prev,next'},
