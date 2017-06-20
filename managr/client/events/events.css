@@ -3,11 +3,8 @@
 }*/
 
 .purpleBar {
-  background: #BD53FF;
-  max-width: 100%;
-  max-height: 4px;
-  margin-top: .5%;
-  margin-bottom: 2%;
+  background: #BD53FF !important;
+
 }
 
 .events {
