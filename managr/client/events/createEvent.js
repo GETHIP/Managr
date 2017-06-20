@@ -14,13 +14,13 @@ Template.createEvent.events({
     var eventName = target.name.value;
     var description = target.description.value;
     var location = target.location.value;
-    var date = target.date.value;
+    var date = moment(target.date.value).format("MM/DD/YYYY HH:mm:ss");
 
     console.log(eventName);
     console.log(description);
     console.log(location);
     console.log(date);
-    
+
     Meteor.call("createNewEvent", eventName, description, date, location);
 
     FlowRouter.go('/events');
