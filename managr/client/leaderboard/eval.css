@@ -6,11 +6,14 @@ margin-bottom: 3%;
 margin-top: 1.5%;
 height: 14em;
 align-self: center;
-column-count: 2;
+column-count: 3;
 padding: 2%;
 }
-
 .starEval {
+  display: inline-block;
+}
+.starScore {
+  margin-bottom: 3px
 }
 .editEval {
   margin-left: 20px;
