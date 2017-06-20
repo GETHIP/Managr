@@ -27,6 +27,7 @@ Template.editEvent.helpers({
 
 Template.editEvent.helpers({
 	eventDate: function() {
+		console.log(getThisEvent.date);
 		return getThisEvent().date;
 	}
 });
