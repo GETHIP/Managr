@@ -59,7 +59,6 @@ header {
 }
 
 .leaderboard {
-  background-color: #7700DD;
   padding-top: 1.75%;
   padding-bottom: 1.75%;
   border-bottom: 1px solid #444444;
@@ -204,17 +203,21 @@ textarea {
   text-align: center;
   width: 50%;
   cursor: pointer;
+  border: none;
+  box-shadow: none;
 }
 
 .tableRowFormat.leaderboard {
   text-align: center;
   font-size: 16px;
+  border: none;
+  box-shadow: none;
 }
-.tableDataFormat.leaderboard:nth-child(odd) {
-  background-color: #EEEEEE;
+.tableRowFormat.leaderboard:nth-child(odd) {
+  background-color: #EEEEEE !important;
 }
-.tableDataFormat.leaderboard:nth-child(even) {
-  background-color: white;
+.tableRowFormat.leaderboard:nth-child(even) {
+  background-color: white !important;
 }
 .viewAllStudentTable {
   border-collapse: collapse;
