@@ -8,7 +8,7 @@ Template.questionFormTemplate.onCreated(function() {
 });
 
 Template.questionFormTemplate.events({
-  "submit #questionFormSbmt"(event) {
+  "submit #createSurveyBtn"(event) {//createSurveyBtn//questionFormSbmt
     event.preventDefault();
     var target = event.target;
 
