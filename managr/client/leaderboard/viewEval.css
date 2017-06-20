@@ -72,3 +72,29 @@
   text-align: center;
 
 }
+.tableDataFormat.eval {
+  padding-top: 2%;
+  padding-bottom: 2%;
+  color: black;
+  text-align: center;
+  width: 50%;
+  cursor: pointer;
+}
+
+.tableRowFormat.eval {
+  text-align: center;
+  font-size: 16px;
+}
+.tableDataFormat.eval:nth-child(odd) {
+  background-color: #EEEEEE;
+}
+.tableDataFormat.eval:nth-child(even) {
+  background-color: white;
+}
+.viewAllevalTable {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
