@@ -20,7 +20,7 @@ Template.createEvent.events({
     console.log(description);
     console.log(location);
     console.log(date);
-    
+
     Meteor.call("createNewEvent", eventName, description, date, location);
 
     FlowRouter.go('/events');
