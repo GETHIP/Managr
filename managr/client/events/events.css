@@ -105,13 +105,12 @@ button.createdEvent {
 	padding-bottom: 0.4em;
 }
 
-.editEvent {
-  background-color:  #BD53FF;
-  font-size: 13px;
+.buttonStyle.editEvent {
+  background-color: #BD53FF;
 }
 
-.editEvent:hover {
-    background-color: #BD79FF;
+.buttonStyle.editEvent:hover {
+  background-color: #BD79FF;
 }
 
 .createEvent {
