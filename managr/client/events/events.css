@@ -45,6 +45,7 @@
 
 .switchFormat {
   background-color: white;
+  position: absolute;
 }
 
 .slider {
@@ -92,8 +93,9 @@ input:checked+.slider:before {
 }
 
 .rsvp {
-  float:right;
+  /*float:right;*/
   background-color: white;
+  width:40%;
 }
 
 .switching {
@@ -124,6 +126,7 @@ button.createdEvent {
 
 #calendarButton {
   background-color: #BD53FF;
+
 }
 
 #calendarButton:hover {
@@ -132,6 +135,8 @@ button.createdEvent {
 }
 #attendingButton {
   background-color:#BD53FF;
+
+
 }
 #attendingButton:hover {
   background-color: #BD79FF;
@@ -159,7 +164,14 @@ button.createdEvent {
 .eventsTableButton {
 	width: 20%;
 }
+.eventsTableButtons {
+ margin-right: 0;
+ width: 100%;
 
+}
+.eventsTableText {
+	width: 80%;
+}
 .eventsTableSpacer {
 	width: 5%;
 }
@@ -187,5 +199,5 @@ input.eventsTable {
 
 .eventSearchBar input[type=text]:hover, .eventSearchBar input[type=text]:focus  {
    border: 2px solid #BD53FF;
-
+   -webkit-box-shadow: none;
 }
