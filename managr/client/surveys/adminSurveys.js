@@ -42,10 +42,11 @@ Template.questionFormTemplate.events({
 
 			questiontype();
    },
-	 'click #buttonn'(event) {
+	 'click #buttonn': function(event, template) {
 
 		 event.preventDefault();
 
+		 var temparray;
 		 var option = document.getElementById("questionFormm").value;
 		 if(option == 'choice') {
 			 var question = Session.get('choiceQuestion');
@@ -53,28 +54,50 @@ Template.questionFormTemplate.events({
 			 var choice2 = Session.get('choiceOption2');
 			 var choice3 = Session.get('choiceOption3');
 			 var choice4 = Session.get('choiceOption4');
+			 Session.set('choiceQuestion', null);
+			 Session.set('choiceOption1', null);
+			 Session.set('choiceOption2', null);
+			 Session.set('choiceOption3', null);
+			 Session.set('choiceOption4', null);
+			 Session.set('choiceOption5', null);
+			 temparray = [question, choice1, choice2, choice3, choice4];
 			 //add card code here
 		 } else if(option == 'check') {
+			// You can finish this for optimization later...
+			// or just completely get rid of Session stuff and replace the messyness
+			//  var checkArray = [];
+			//  for (i = 0; i < 6; i++) {
+			//
+			//  }
 			 var question = Session.get('checkQuestion');
 			 var option1 = Session.get('checkOption1');
 			 var option2 = Session.get('checkOption2');
 			 var option3 = Session.get('checkOption3');
 			 var option4 = Session.get('checkOption4');
 			 var option5 = Session.get('checkOption5');
+			 Session.set('checkQuestion', null);
+			 Session.set('checkOption1', null);
+			 Session.set('checkOption2', null);
+			 Session.set('checkOption3', null);
+			 Session.set('checkOption4', null);
+			 Session.set('checkOption5', null);
 			 console.log(question);
 			 console.log(option1);
 			 console.log(option2);
 			 console.log(option3);
 			 console.log(option4);
 			 console.log(option5);
+			 temparray = [question, option1, option2, option3, option4, option5];
 			 //add card code here
 		 } else if(option == 'shResp') {
 			 var shResp = Session.get('shRespQuestion');
+			 Session.set('shRespQuestion', null);
+			 temparray = [shResp];
 			 //add card code here
 		 } else {
 			 alert("Please select an option");
 		 }
-		 return option;
+		 return option, temparray;
 	 }
 });
 

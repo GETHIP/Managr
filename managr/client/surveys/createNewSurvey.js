@@ -1,6 +1,7 @@
 //create event.js
 import { Surveys } from '../../collections/surveys.js';
 import { Student } from '../../collections/student.js';
+import { Groups } from '../../collections/groups.js';
 
 Template.questionFormTemplate.onCreated(function() {
     Meteor.subscribe("Student");
@@ -14,20 +15,19 @@ Template.questionFormTemplate.events({
 
     var surveyName = target.name.value;
     var date = target.dueDate.value;
-    var anonToggle = document.getElementById('anonymousToggle').checked;
+//    var question = target.prompt.value;
+
 
     console.log(surveyName);
     console.log(date);
-    console.log(anonToggle);
 
 
-    Meteor.call("createNewEvent", eventName, date);//this is not correct... what is it supposed to be?
+    Meteor.call("createNewSurvey", surveyName, date);
 
-    FlowRouter.go('/events');
   }
 });
 
-import { Groups } from '../../collections/groups.js';
+
 
 /*Template.createEvent.helpers({
     groups: function() {

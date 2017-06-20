@@ -39,7 +39,7 @@ question = new SimpleSchema({
 });
 
 Surveys.schema = new SimpleSchema({
-    title: {
+    name: {
         type: String,
         optional: false
     },
