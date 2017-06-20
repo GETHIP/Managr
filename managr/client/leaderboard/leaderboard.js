@@ -28,11 +28,12 @@ Template.leaderboard.helpers({
       console.log(element._id)
       var star_rating = Eval.find({evaluatee: element._id}).fetch();
       console.log(star_rating.stars)
-      if(star_rating == undefined){
+      if(star_rating.length == 0){
         console.log('there are no star ratings')
         stars = 0
       }
-      if(star_rating != undefined){
+      console.log(star_rating.length);
+      if(star_rating.length != 0){
         stars = 0
         //star_rating = star_rating.fetch();
         star_rating = star_rating[0].stars;
@@ -43,6 +44,11 @@ Template.leaderboard.helpers({
         var attitude = star_rating[1];
         var teamwork = star_rating[2];
         var attendanceNumber = 0;
+      }else{
+        var stars = 0;
+        var attitude = 0;
+        var teamwork = 0;
+        var attendanceNumber = 0;
       }
 
       console.log(element.name);
@@ -52,8 +58,8 @@ Template.leaderboard.helpers({
           }
       });
       element.attendanceNumber = attendanceNumber;
-      if(star_rating !== undefined){
-        element.average = stars;
+
+        element.average = Math.round(stars*10)/10; // rounds to the nearest tenths
         element.effort = effort;
         element.attitude = attitude;
         element.teamwork = teamwork;
@@ -61,13 +67,20 @@ Template.leaderboard.helpers({
         console.log(element.average);
         console.log(element.attitude)
         console.log(element.teamwork)
-      }
+
       stuarry.push(element);
       console.log("ushing to stuarray")
       console.log(stuarry)
     });
+    stuarry.sort();
     var select = document.getElementById("sortingChoice");
     var option = select.value;
+    if (option == "sortAlpha"){
+      stuarry.sort(function(a, b){
+        if (a.name < b.name) {return -1;}
+        if (a.name > b.name) {return 1;}
+        return 0;
+      })}
     if (option == "sortAttendance"){
       stuarry.sort(function(a, b){ //sort function by attendanceNumber
         return b.attendanceNumber - a.attendanceNumber;
