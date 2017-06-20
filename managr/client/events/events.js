@@ -7,7 +7,7 @@ Template.eventsPage.onRendered(() => {
 
 Template.eventsPage.events({
 
-  'click #calendar': function(event, template) {
+  'click #calendarButton': function(event, template) {
     event.preventDefault();
     FlowRouter.go('/events/calendar');
 },
