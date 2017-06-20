@@ -17,13 +17,13 @@
     <!-- </thead> -->
     <!-- <tbody> -->
       {{#each stuarry}}
-        <tr> <!--  <tr onclick="parent.location='{{url}}'"   "FlowRouter.go("/profile/edit/" + FlowRouter.getParam("id"));> -->
-          <td>{{name}}</td>
-          <td>{{Milestone}}</td>
-          <td>{{effort}}</td>
-          <td>{{attitude}}</td>
-          <td>{{teamwork}}</td>
-          <td>{{average}}</td>
+        <tr class= "tableRowFormat"> <!--  <tr onclick="parent.location='{{url}}'"   "FlowRouter.go("/profile/edit/" + FlowRouter.getParam("id"));> -->
+          <td class="tableDataFormat eval">{{name}}</td>
+          <td class="tableDataFormat eval">{{Milestone}}</td>
+          <td class="tableDataFormat eval">{{effort}}</td>
+          <td class="tableDataFormat eval">{{attitude}}</td>
+          <td class="tableDataFormat eval">{{teamwork}}</td>
+          <td class="tableDataFormat eval">{{average}}</td>
               </tr>
       {{/each}}
     <!-- </tbody> -->

@@ -4,10 +4,10 @@ background: white;
 box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 margin-bottom: 3%;
 margin-top: 1.5%;
-height: 14em;
+height: auto;
 align-self: center;
-column-count: 3;
 padding: 2%;
+overflow: auto;
 }
 .starEval {
   display: inline-block;

@@ -59,7 +59,7 @@ Template.leaderboard.helpers({
       });
       element.attendanceNumber = attendanceNumber;
 
-        element.average = stars;
+        element.average = Math.round(stars*10)/10; // rounds to the nearest tenths
         element.effort = effort;
         element.attitude = attitude;
         element.teamwork = teamwork;
@@ -72,8 +72,15 @@ Template.leaderboard.helpers({
       console.log("ushing to stuarray")
       console.log(stuarry)
     });
+    stuarry.sort();
     var select = document.getElementById("sortingChoice");
     var option = select.value;
+    if (option == "sortAlpha"){
+      stuarry.sort(function(a, b){
+        if (a.name < b.name) {return -1;}
+        if (a.name > b.name) {return 1;}
+        return 0;
+      })}
     if (option == "sortAttendance"){
       stuarry.sort(function(a, b){ //sort function by attendanceNumber
         return b.attendanceNumber - a.attendanceNumber;
