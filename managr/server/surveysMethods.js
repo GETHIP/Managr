@@ -8,13 +8,13 @@ import { Drafts } from '../collections/drafts.js';
 import { Surveys } from '../collections/surveys.js';
 import { isStudent, isInstructor, userIsValid, currentUserOrInstructor, nameOfUser } from '../lib/permissions.js';
 
-export function eventsMethods() {
+export function surveysMethods() {
 	Meteor.methods({
     'createNewSurvey': function(eventName, description, date, location) {
       if(!isInstructor()) {
         return;
       }
-			Events.insert({
+			Surveys.insert({
 	      name: eventName,
 	      description: description,
 				date: date,

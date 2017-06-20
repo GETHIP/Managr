@@ -12,17 +12,15 @@ Template.questionFormTemplate.events({
     event.preventDefault();
     var target = event.target;
 
-    var eventName = target.name.value;
-    var description = target.description.value;
-    var location = target.location.value;
-    var date = target.date.value;
+    var surveyName = target.name.value;
+    var date = target.dueDate.value;
 
-    console.log(eventName);
-    console.log(description);
-    console.log(location);
+
+    console.log(surveyName);
     console.log(date);
 
-    Meteor.call("createNewEvent", eventName, description, date, location);
+
+    Meteor.call("createNewEvent", eventName, date);
 
     FlowRouter.go('/events');
   }

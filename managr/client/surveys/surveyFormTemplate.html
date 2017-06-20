@@ -15,8 +15,8 @@
     <!-- date input - events in adminSurveys.js uses name attr. if something breaks, try switching the "name" identifier to "id" -->
     <p class="noIndent surveyFormFormat"><b>Completion Date:</b></p>
     <input type="date" name="dueDate" class="createSurveyForm" required>
-{{> completedQuestion}}
 
+    {{> completedQuestion}}
 
     {{#each allsurveys}}
       <p>{{this.title}}</p>

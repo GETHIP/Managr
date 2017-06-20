@@ -61,12 +61,18 @@ Template.questionFormTemplate.events({
 			 var option3 = Session.get('checkOption3');
 			 var option4 = Session.get('checkOption4');
 			 var option5 = Session.get('checkOption5');
+			 console.log(question);
+			 console.log(option1);
+			 console.log(option2);
+			 console.log(option3);
+			 console.log(option4);
+			 console.log(option5);
 			 //add card code here
 		 } else if(option == 'shResp') {
 			 var shResp = Session.get('shRespQuestion');
 			 //add card code here
 		 } else {
-			 alert("Select Something stupid");
+			 alert("Please select an option");
 		 }
 		 return option;
 	 }
@@ -225,8 +231,6 @@ Template.FRtemplate.events({
 	}
 })
 
-Template.completedQuestion.helpers({
-	option: function(){
-		return option;
-	}
+Template.completedQuestion.events({
+
 })
