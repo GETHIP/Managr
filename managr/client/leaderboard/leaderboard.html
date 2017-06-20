@@ -46,8 +46,9 @@
   <h2 class="titleLeader">Leaders Overview</h2>
   <div class="purple-bar">&nbsp;</div>
 	<td class="createTableSlct">
+		<p>sort by:
 		<select name="selectType" id="sortingChoice">
-			<option value="" disabled selected>Sort By:</option>
+			<!-- <option value="" disabled selected>Sort By:</option> -->
 			<option value="sortAlpha">alphabet</option>
 			<option value="sortAttendance">attendance</option>
 			<option value="sortEffort">effort</option>
@@ -55,6 +56,7 @@
 			<option value="sortTeamwork">teamwork</option>
 			<option value="sortAverage">average stars</option>
 		</select>
+		</p>
 	</td>
 	<table class="viewAllStudentTable">
 		<!-- <thead> -->
@@ -67,6 +69,7 @@
 				<th class="tableHeadFormateval">Teamwork</th>
 				<th class="tableHeadFormateval">Average</th>
 			</tr>
+
 		<!-- </thead> -->
 		<!-- <tbody> -->
 			{{#each stuarry}}

@@ -13,7 +13,7 @@ Template.leaderboard.onCreated(function(){
 
 Template.leaderboard.helpers({
   students: function(){
-    console.log(Student.find().fetch());
+    //console.log(Student.find().fetch());
     return Student.find({});
   },
   stuarry: function(){
@@ -21,25 +21,25 @@ Template.leaderboard.helpers({
     var evalList = Eval.find({}).fetch();
     var stuarry = [];
     var total;
-    console.log(studentlist)
+  //  console.log(studentlist)
     _dep.depend()
     studentlist.forEach(function (element) {
       var stars;
-      console.log(element._id)
+      //console.log(element._id)
       var star_rating = Eval.find({evaluatee: element._id}).fetch();
-      console.log(star_rating.stars)
+    //  console.log(star_rating.stars)
       if(star_rating.length == 0){
         console.log('there are no star ratings')
         stars = 0
       }
-      console.log(star_rating.length);
+    //  console.log(star_rating.length);
       if(star_rating.length != 0){
         stars = 0
         //star_rating = star_rating.fetch();
         star_rating = star_rating[0].stars;
-        console.log(star_rating);
+      //  console.log(star_rating);
         var stars = (eval(star_rating[0]) + eval(star_rating[1]) + eval(star_rating[2]))/3
-        console.log(stars);
+        //console.log(stars);
         var effort = star_rating[0];
         var attitude = star_rating[1];
         var teamwork = star_rating[2];
@@ -51,7 +51,7 @@ Template.leaderboard.helpers({
         var attendanceNumber = 0;
       }
 
-      console.log(element.name);
+      //console.log(element.name);
       element.attendance.forEach(function (ment){ //attendance number calculation
           if(ment == true){
             attendanceNumber++;
@@ -63,18 +63,23 @@ Template.leaderboard.helpers({
         element.effort = effort;
         element.attitude = attitude;
         element.teamwork = teamwork;
-        console.log(element.effort);
-        console.log(element.average);
-        console.log(element.attitude)
-        console.log(element.teamwork)
+      //  console.log(element.effort);
+      //  console.log(element.average);
+        //console.log(element.attitude)
+        //console.log(element.teamwork)
 
       stuarry.push(element);
-      console.log("ushing to stuarray")
+      //console.log("ushing to stuarray")
       console.log(stuarry)
     });
-    stuarry.sort();
+  //  stuarry.sort();
     var select = document.getElementById("sortingChoice");
+    console.log(select)
+    if (select.value == null){
+      select.value = "sortAlpha"
+    }
     var option = select.value;
+    console.log(option);
     if (option == "sortAlpha"){
       stuarry.sort(function(a, b){
         if (a.name < b.name) {return -1;}
@@ -131,6 +136,7 @@ Template.leaderboard.events({
   },
   'change #sortingChoice': function(event) {
     _dep.changed();
+    event.preventDefault();
   }
 });
 
