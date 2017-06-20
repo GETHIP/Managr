@@ -48,7 +48,6 @@
 	<td class="createTableSlct">
 		<select name="selectType" id="sortingChoice">
 			<option value="" disabled selected>Sort By:</option>
-			<option value="sortAlpha">alphabet</option>
 			<option value="sortAttendance">attendance</option>
 			<option value="sortEffort">effort</option>
 			<option value="sortAttitude">attitude</option>
@@ -70,7 +69,7 @@
 		<!-- </thead> -->
 		<!-- <tbody> -->
 			{{#each stuarry}}
-				<tr class= "tableRowFormat"> <!--  <tr onclick="parent.location='{{url}}'"   "FlowRouter.go("/profile/edit/" + FlowRouter.getParam("id"));> -->
+				<tr class= "tableRowFormat leaderboard"> <!--  <tr onclick="parent.location='{{url}}'"   "FlowRouter.go("/profile/edit/" + FlowRouter.getParam("id"));> -->
 					<td class="tableDataFormat leaderboard"> {{name}}</td>
 					<td class="tableDataFormat leaderboard">{{attendanceNumber}}/12</td>
 					<td class="tableDataFormat leaderboard">{{effort}}</td>
