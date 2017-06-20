@@ -8,19 +8,20 @@ Template.questionFormTemplate.onCreated(function() {
 });
 
 Template.questionFormTemplate.events({
-  "submit #questionFormSbmt"(event) {
+  "submit #createSurveyBtn"(event) {//createSurveyBtn//questionFormSbmt
     event.preventDefault();
     var target = event.target;
 
     var surveyName = target.name.value;
     var date = target.dueDate.value;
-
+    var anonToggle = document.getElementById('anonymousToggle').checked;
 
     console.log(surveyName);
     console.log(date);
+    console.log(anonToggle);
 
 
-    Meteor.call("createNewEvent", eventName, date);
+    Meteor.call("createNewEvent", eventName, date);//this is not correct... what is it supposed to be?
 
     FlowRouter.go('/events');
   }
