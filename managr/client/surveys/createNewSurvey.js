@@ -15,12 +15,13 @@ Template.questionFormTemplate.events({
 
     var surveyName = target.name.value;
     var date = target.dueDate.value;
-//    var question = target.prompt.value;
+    var anonToggle = document.getElementById('anonymousToggle').checked;
 
+//    var question = target.prompt.value;
 
     console.log(surveyName);
     console.log(date);
-
+    console.log(anonToggle);
 
     Meteor.call("createNewSurvey", surveyName, date);
 
