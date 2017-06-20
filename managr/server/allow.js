@@ -2,6 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import { Posts } from '../collections/blogPosts.js';
 // import { Comments } from '../collections/comments.js';
 import { Assignments } from '../collections/assignments.js';
+import { Surveys } from '../collections/surveys.js';
 import { Instructor } from '../collections/instructor.js';
 import { Student } from '../collections/student.js';
 import { Groups } from '../collections/groups.js';
@@ -53,17 +54,17 @@ export function allowAll() {
 		}
 	});
 
-	// Surveys.allow({
-	// 	'insert': function(userId, doc) {
-	// 		return false;
-	// 	},
-	// 	'update': function(userId, doc) {
-	// 		return false;
-	// 	},
-	// 	'remove': function(userId, doc) {
-	// 		return false;
-	// 	}
-	// });
+	Surveys.allow({
+		'insert': function(userId, doc) {
+			return false;
+		},
+		'update': function(userId, doc) {
+			return false;
+		},
+		'remove': function(userId, doc) {
+			return false;
+		}
+	});
 
 
 	Groups.allow({
