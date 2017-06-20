@@ -1,6 +1,7 @@
 //create event.js
 import { Surveys } from '../../collections/surveys.js';
 import { Student } from '../../collections/student.js';
+import { Groups } from '../../collections/groups.js';
 
 Template.questionFormTemplate.onCreated(function() {
     Meteor.subscribe("Student");
@@ -14,20 +15,19 @@ Template.questionFormTemplate.events({
 
     var surveyName = target.name.value;
     var date = target.dueDate.value;
-    var question = target.prompt.value;
+//    var question = target.prompt.value;
 
 
     console.log(surveyName);
     console.log(date);
-    console.log(question);
 
 
-    Meteor.call("createNewEvent", surveyName, date, question);
+    Meteor.call("createNewSurvey", surveyName, date);
 
   }
 });
 
-import { Groups } from '../../collections/groups.js';
+
 
 /*Template.createEvent.helpers({
     groups: function() {

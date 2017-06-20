@@ -17,6 +17,8 @@ import { groupsMethods } from './groupsMethods.js';
 import { dashboardMethods } from './dashboardMethods.js';
 import { Globals } from '../collections/globals.js';
 import { Email } from 'meteor/email'
+import { Surveys } from '../collections/surveys.js';
+import { surveysMethods } from './surveysMethods.js';
 
 var fs = Npm.require('fs');
 
@@ -76,6 +78,7 @@ Meteor.startup(() => {
 	profilesMethods();
 	groupsMethods();
 	dashboardMethods();
+	surveysMethods();
 
 	Email.send({
     to: 'emily_zhang@gallup.com',

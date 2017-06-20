@@ -11,16 +11,15 @@ import { isStudent, isInstructor, userIsValid, currentUserOrInstructor, nameOfUs
 
 export function surveysMethods() {
 	Meteor.methods({
-    'createNewSurvey': function(surveyName, date, question) {
+    'createNewSurvey': function(surveyName, date) {
       if(!isInstructor()) {
         return;
       }
 			Surveys.insert({
 	      name: surveyName,
-				dueDate: date,
-				questions: question
-
+				dueDate: date
 	    });
-    }
+    },
+		''
 	});
 }
