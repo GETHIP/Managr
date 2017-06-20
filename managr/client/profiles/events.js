@@ -13,7 +13,7 @@ Template.eventsPage.events({
 
   'click #editEventButton': function(event, template) {
     event.preventDefault();
-    FlowRouter.go('/editEvent');
+    FlowRouter.go('/events/editEvent');
 
   },
   'click #attendingButton': function(event, template) {

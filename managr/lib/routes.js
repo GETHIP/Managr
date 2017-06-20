@@ -219,7 +219,7 @@ FlowRouter.route('/events/createEvent', {
 	}
 });
 
-FlowRouter.route('/editEvent', {
+FlowRouter.route('/events/editEvent', {
 	name: 'editEvent',
 	action() {
 		BlazeLayout.reset();
