@@ -20,6 +20,5 @@ export function surveysMethods() {
 				dueDate: date
 	    });
     },
-		''
 	});
 }
