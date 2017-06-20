@@ -59,7 +59,7 @@ Template.leaderboard.helpers({
       });
       element.attendanceNumber = attendanceNumber;
 
-        element.average = stars;
+        element.average = Math.round(stars*10)/10; // rounds to the nearest tenths
         element.effort = effort;
         element.attitude = attitude;
         element.teamwork = teamwork;
