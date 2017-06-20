@@ -75,6 +75,12 @@ Template.leaderboard.helpers({
     stuarry.sort();
     var select = document.getElementById("sortingChoice");
     var option = select.value;
+    if (option == "sortAlpha"){
+      stuarry.sort(function(a, b){
+        if (a.name < b.name) {return -1;}
+        if (a.name > b.name) {return 1;}
+        return 0;
+      })}
     if (option == "sortAttendance"){
       stuarry.sort(function(a, b){ //sort function by attendanceNumber
         return b.attendanceNumber - a.attendanceNumber;
