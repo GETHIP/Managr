@@ -43,6 +43,10 @@
     display: none;
 }
 
+.switchFormat {
+  background-color: white;
+}
+
 .slider {
     position: absolute;
     cursor: pointer;
@@ -89,10 +93,11 @@ input:checked+.slider:before {
 
 .rsvp {
   float:right;
+  background-color: white;
 }
 
 .switching {
-    background-color: white;
+  background-color: white;
 }
 
 button.createdEvent {
@@ -175,7 +180,7 @@ input.eventsTable {
 
 .eventSearchBar input[type=text] {
   width: 100%;
-  height: 10%;
+  height: 30px;
   margin-right: 5%;
   margin-top: 1%;
 }
