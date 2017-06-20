@@ -35,47 +35,38 @@
 {{#EasySearch.Each index=eventsIndex attributes=searchBarEvent}}
 
   <div class="events">
-    <div class ="formdashboardContainer">
-      <div class="containerDiv formbg homeEvents">
+    <div class ="formdashboardContainer containerDiv formbg homeEvents">
+      <!-- <div class="containerDiv formbg homeEvents"> -->
   			<h1 class="formTitle eventTitle">{{name}}</h1>
         <!--      Make this work and then put it back inside above     -->
          <!--     onClick="FlowRouter.go('/eventView/{{event._id}}')"         -->
+         {{#if isStudent}}
+         <div class="rsvp">
+           <html>
+             <body class="switchFormat">
+               <p id="indicator">Not Attending</p>
+               <br>
+               <label class="switch">
+                 <input type="checkbox">
+                 <div class="slider"></div>
+               </label>
+             </body>
+           </html>
+         </div>
+         {{/if}}
+
+         {{#if isInstructor}}
+           <div class="editEventButton">
+             <button type="button" class="buttonStyle editEvent createdEvent" id="editEventButton"><i class="fa fa-eraser" aria-hidden="true"></i>     Edit Event</button>
+             <button type="button" class="buttonStyle editEvent createdEvent" id="attendingButton"><i class="fa fa-user-circle" aria-hidden="true"></i>     Attendees</button>
+           </div>
+         {{/if}}
 
   				<p>Host: {{host}}</p>
   				<p>Description: {{description}}</p>
   				<p>Date: {{date}}</p>
   				<p>Location: {{location}}</p>
-        
 
-
-          <div class="rsvp">
-            {{#if isStudent}}
-            <html>
-              <body class="switchFormat">
-                <p id="indicator">Not Attending</p>
-                <br>
-                <label class="switch">
-                  <input type="checkbox">
-                  <div class="slider"></div>
-                </label>
-              </body>
-            </html>
-            {{/if}}
-
-          {{#if isInstructor}}
-            <br>
-            <br>
-
-            <div class="editEventButton">
-              <button type="button" class="buttonStyle editEvent createdEvent" id="editEventButton"><i class="fa fa-eraser" aria-hidden="true"></i>     Edit Event</button>
-              <button type="button" class="buttonStyle editEvent createdEvent" id="attendingButton"><i class="fa fa-user-circle" aria-hidden="true"></i>     Attendees</button>
-            </div>
-
-          {{/if}}
-
-</div>
-
-  		</div>
     </div>
   </div>
 
@@ -88,7 +79,3 @@
 {{/if}}
 
 </template>
-
-
-<!-- var newDate = moment([date]);
-		var formattedDate = moment(newDate).format("MMMM D [,] YYYY");  -->
