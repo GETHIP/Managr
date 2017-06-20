@@ -14,15 +14,16 @@ Template.questionFormTemplate.events({
 
     var surveyName = target.name.value;
     var date = target.dueDate.value;
+    var question = target.prompt.value;
 
 
     console.log(surveyName);
     console.log(date);
+    console.log(question);
 
 
-    Meteor.call("createNewEvent", eventName, date);
+    Meteor.call("createNewEvent", surveyName, date, question);
 
-    FlowRouter.go('/events');
   }
 });
 
