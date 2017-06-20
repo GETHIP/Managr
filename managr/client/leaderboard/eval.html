@@ -4,8 +4,8 @@
   <div class="purple-bar">&nbsp;</div>
 
 <div class="evaluationContainer">
-  <div>
   {{#with evalA}}
+  <div>
 <p class="evaluatorEval"><strong>From: Jacon Gideob</strong></p>
   <p class="evaluateeEval"><strong>To: Cato Longe</strong></p>
   <p class="timeStamp">Tuesday 4:56pm</p>
@@ -45,11 +45,9 @@
     {{else if equals tSt 5}} {{> star5}}
     {{/if}}
   </strong></p>
-  {{/with}}
-
 </div>
-  <p class="evalContent">lmao this is still not working so lol iguess.}</p>
-
+  <p class="evalContent">{{message}}</p>
+{{/with}}
 </div>
 <button class="buttonStyleEval editEval">Edit</button>
 <button class="buttonStyleEval deleteEval">Delete</button>

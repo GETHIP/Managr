@@ -119,7 +119,9 @@ Template.leaderboard.events({
     }
 
     console.log(sList);
-    Meteor.call("sendEval", eaId, eId, comment, week, sList);
+    date = new Date();
+    console.log(date);
+    Meteor.call("sendEval", eaId, eId, comment, week, sList, date);
 
   },
   'change #sortingChoice': function(event) {

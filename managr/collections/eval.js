@@ -20,6 +20,10 @@ var EvalSchema = new SimpleSchema({
   week: {
     type: Number,
     label: "Week"
+  },
+  timeStamp: {
+    label: "date",
+    type: Date,
   }
 });
 Eval.attachSchema(EvalSchema);
