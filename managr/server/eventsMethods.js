@@ -23,3 +23,18 @@ export function eventsMethods() {
     }
 	});
 }
+
+'updateEvent': function(eventId, eventName, description, date, location) {
+	if(!isInstructor()) {
+		return;
+	}
+	var stringSize = size.toString();
+	Events.update({_id: eventId}, {
+		$set: {
+			name: eventName,
+			description: description,
+			date: date,
+			location: location
+		}
+	});
+}

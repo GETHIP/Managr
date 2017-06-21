@@ -9,37 +9,11 @@ Template.editEvent.onCreated(function() {
 Template.editEvent.events({
   'click #submitEditEventButton': function(event, template) {
 		event.preventDefault();
-		// var authorName = Instructor.findOne({userId: Meteor.user()._id}).name;
-		// if (document.getElementById('editor') != undefined) {
-		// 	if(document.getElementById('createPostTitle').value == "" && document.getElementById('editor').innerHTML == ""){
-		// 		Modal.show("missingFields", "Please enter a title and body text before posting.");
-		// 	} else if(document.getElementById('createPostTitle').value == ""){
-		// 		Modal.show("missingFields", "Please enter a title before posting.");
-		// 	} else if(document.getElementById('editor').innerHTML == ""){
-		// 		Modal.show("missingFields", "Please enter body text before posting.");
-		// 	} else {
-		// 		Meteor.call("updatePost", FlowRouter.getParam("blog_id"), document.getElementById('editor').innerHTML, document.getElementById('createPostTitle').value, isPublic);
-		// 		FlowRouter.go("/blogs/"+FlowRouter.getParam("blog_id"));
-		// 	}
-		// } else {
-		// 	if(document.getElementById('createPostTitle').value == "" && document.getElementById('scriptEditor').value == ""){
-		// 		Modal.show("missingFields", "Please enter a title and body text before posting.");
-		// 	} else if(document.getElementById('createPostTitle').value == ""){
-		// 		Modal.show("missingFields", "Please enter a title before posting.");
-		// 	} else if(document.getElementById('scriptEditor').value == ""){
-		// 		Modal.show("missingFields", "Please enter body text before posting.");
-		// 	} else {
-		// 		Meteor.call("updatePost", FlowRouter.getParam("blog_id"), document.getElementById('scriptEditor').value, document.getElementById('createPostTitle').value, isPublic);
-		// 		FlowRouter.go("/blogs/"+FlowRouter.getParam("blog_id"));
-		// 	}
-		}
-	});
 
-Template.eventsPage.events({
-  'click #editEventButton': function(event, template) {
-    event.preventDefault();
-    FlowRouter.go('/events');
-  }
+
+
+		FlowRouter.go('/events');
+	}
 });
 
 Template.editEvent.helpers({
@@ -56,7 +30,7 @@ Template.editEvent.helpers({
 
 Template.editEvent.helpers({
 	eventDate: function() {
-		console.log(getThisEvent.date);
+		console.log(getThisEvent().date);
 		return getThisEvent().date;
 	}
 });

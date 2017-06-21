@@ -18,8 +18,6 @@ Template.eventsPage.events({
   'click .goToEdit': function(event) {
     event.preventDefault();
     const target = event.target;
-    console.log(target);
-    console.log(target.id);
     FlowRouter.go('/events/edit/' + target.id);
   },
   'click #attendingButton': function(event, template) {
