@@ -23,7 +23,7 @@ Template.questionFormTemplate.events({
     console.log(date);
     console.log(anonToggle);
 
-    Meteor.call("createNewSurvey", surveyName, date);
+    Meteor.call("createNewSurvey", surveyName, date, anonToggle);
 
   }
 });
