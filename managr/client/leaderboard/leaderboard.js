@@ -118,7 +118,7 @@ Template.leaderboard.events({
     var rating = $('#rating').data('userrating');
     var attitude = $('#attitude').data('userrating');
     var teamwork = $('#teamwork').data('userrating');
-    var tech = $('#teamwork').data('userrating');
+    var tech = $('#tech').data('userrating');
 
     comment = document.getElementById('textarea1').value;
     eaId = Instructor.findOne({userId: Meteor.user()._id})._id;
