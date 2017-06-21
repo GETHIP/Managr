@@ -13,15 +13,13 @@ Template.newSurvey.onCreated(function() {
 });
 
 Template.newSurvey.events({
-  'click #createSurveyBtn' (event) {//createSurveyBtn//questionFormSbmt
+  'click #createSurveyBtn' (event) {
     event.preventDefault();
     const form = event.target;
 
     var surveyName = document.getElementById('surveyName').value
     var date = moment(document.getElementById('dueDate').value, "YYYY-MM-DD").toDate();
     var anonToggle = document.getElementById('anonymousToggle').checked;
-//    var question = target.prompt.value;
-
 //    var question = target.prompt.value;
 
     console.log(surveyName);
@@ -32,18 +30,14 @@ Template.newSurvey.events({
     sDate = date;
 
     Meteor.call("createNewSurvey", surveyName, date, anonToggle);
-
   }
 });
-
 
 Template.newSurvey.helpers({
   'data': function(){
       return {sName: name, date: sDate};
   }
 });
-
-
 
 /*Template.createEvent.helpers({
     groups: function() {

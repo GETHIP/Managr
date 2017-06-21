@@ -12,10 +12,9 @@ var getSurveysCompleted = function(student) {
         }
     }
     return completed;
-}
-*/
-/*
-Template.surveyFormTemplate.events({
+}*/
+
+/*Template.surveyFormTemplate.events({
 	 'click #surveySbmt'(event){
      //keeps page from refreshing
       event.preventDefault();
@@ -29,8 +28,7 @@ Template.surveyFormTemplate.events({
 				question:Questions
       });
    }
-});
-*/
+});*/
 
 Template.questionFormTemplate.events({
 	 'change #questionFormm'(event){
@@ -130,25 +128,16 @@ function questiontype() {
 	if (option == "shResp") {
 		document.getElementById('FRdiv').style.display = 'block';
 	}
-
-
-		// document.getElementById('visibleDiv').style.visibility='visible';//hidden
 }
 
-// document.getElementById('visibleDiv').style.display = 'none';
-// document.visibleDiv.style.visibility='visible';//hidden
-
-
-/*
-async function questiontype() {
+/*async function questiontype() {
 	var select = document.getElementById("questionFormm");
 	var option = select.value;
 	var testing = "testing"
 	if (option == "yesNo") {
 		document.getElementById('eachquestionentry').innerHTML = '{{>' + testing + '}}';
 	}
-}
-*/
+}*/
 
 Template.surveyFormTemplate.helpers({
 	allsurveys: function() {
@@ -164,7 +153,7 @@ Template.surveyFormTemplate.helpers({
       });
 		}
 });
-//
+
 // Meteor.startup(() => {
 // 	Surveys.remove({});
 // 	var temp = [{
@@ -177,46 +166,6 @@ Template.surveyFormTemplate.helpers({
 // 	}]
 // 	Surveys.insert({"title": "Random Test", "dueDate":"December 2", "studentsAssigned": ["Will Guo", "Abby Brooks", "Katie GErot", "Nick Nguyen"], "surveyId":"154209", temp});
 // });
-/************ DO NOT UNCOMMENT ************/
-/*Questions = new SimpleSchema({
-	type: {
-		type: String
-	},
-	prompt: {
-		type: String
-	},
-	answers: {
-		type: [String]
-	}
-});
-Surveys.schema = new SimpleSchema({
-    title: {
-        type: String,
-        label: "Title",
-        optional: false
-    },
-    dueDate: {
-        type: Date,
-        label: "Due Date",
-        optional: false
-    },
-    studentsCompleted: {
-        type: Number,
-        label: "Students Completed",
-        optional: true
-    },
-    studentsAssigned: {
-        type: [String],
-        label: "Students Assigned",
-        optional: false
-    },
-    question: {
-      type: [question]
-    }
-
-});
-
-Surveys.attachSchema(Surveys.schema);*/
 
 Template.MCtemplate.events({
 	'keyup #MCQuestion'(event) {
@@ -266,3 +215,44 @@ Template.FRtemplate.events({
 Template.completedQuestion.events({
 
 })
+
+/************ DO NOT UNCOMMENT ************/
+/*Questions = new SimpleSchema({
+	type: {
+		type: String
+	},
+	prompt: {
+		type: String
+	},
+	answers: {
+		type: [String]
+	}
+});
+Surveys.schema = new SimpleSchema({
+    title: {
+        type: String,
+        label: "Title",
+        optional: false
+    },
+    dueDate: {
+        type: Date,
+        label: "Due Date",
+        optional: false
+    },
+    studentsCompleted: {
+        type: Number,
+        label: "Students Completed",
+        optional: true
+    },
+    studentsAssigned: {
+        type: [String],
+        label: "Students Assigned",
+        optional: false
+    },
+    question: {
+      type: [question]
+    }
+
+});
+
+Surveys.attachSchema(Surveys.schema);*/
