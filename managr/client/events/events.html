@@ -5,29 +5,29 @@
       <h1 class="titleAssignment">Events</h1>
       <div class="orange-bar purpleBar lineP"> &nbsp;</div>
       <div class="formdashboardContainer">
-    			<h4 class="searchEventsLabel">Search:</h4>
-        <div class = "eventSearchBar">
-          <table class="eventsTable">
-    				<thead></thead>
-    				  <tbody class="eventsTable">
-      					<tr>
+        <h4 class="searchEventsLabel">Search:</h4>
+          <div class = "eventSearchBar">
+            <table class="eventsTable">
+                  <thead></thead>
+                  <tbody class="eventsTable">
+                  <tr>
                   {{> EasySearch.Input index=eventsIndex attributes=searchBarEvent}}
 
                   {{#if isInstructor}}
 
-      						<td class="eventsTableSpacer"></td>
-      						<td class="eventsTableButton">
-      							<button type="button" class="buttonStyle createEvent eventsTable" id="createEventButton"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>     Create Event</button>
-      						</td>
+                  <td class="eventsTableSpacer"></td>
+                  <td class="eventsTableButton">
+                  <button type="button" class="buttonStyle createEvent eventsTable" id="createEventButton"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>     Create Event</button>
+                </td>
 
                   {{/if}}
-      						<td class="eventsTableSpacer"></td>
-      						<td class="eventsTableButton">
-      							<button type="button" class="buttonStyle eventCalendar eventsTable" id="calendarButton"><i class="fa fa-calendar" aria-hidden="true"></i>     Calendar</button>
-      					  </td>
-      					</tr>
-    				</tbody>
-    			</table>
+                <td class="eventsTableSpacer"></td>
+                <td class="eventsTableButton">
+                <button type="button" class="buttonStyle eventCalendar eventsTable" id="calendarButton"><i class="fa fa-calendar" aria-hidden="true"></i>     Calendar</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
@@ -37,9 +37,9 @@
   <div class="events">
     <div class ="formdashboardContainer containerDiv formbg homeEvents">
       <!-- <div class="containerDiv formbg homeEvents"> -->
-  			<h1 class="formTitle eventTitle">{{name}}</h1>
-        <!--      Make this work and then put it back inside above     -->
-         <!--     onClick="FlowRouter.go('/eventView/{{event._id}}')"         -->
+        <h1 class="formTitle eventTitle">{{name}}</h1>
+          <!--      Make this work and then put it back inside above     -->
+            <!--     onClick="FlowRouter.go('/eventView/{{event._id}}')"         -->
          {{#if isStudent}}
          <div class="rsvp">
            <html>
@@ -57,21 +57,27 @@
 
          {{#if isInstructor}}
            <div class="editEventButton">
-             <button type="button" class="buttonStyle editEvent createdEvent" id="editEventButton"><i class="fa fa-eraser" aria-hidden="true"></i>     Edit Event</button>
+             <button type="button" class="buttonStyle editEvent createdEvent goToEdit" id="{{eventId}}"><i class="fa fa-eraser" aria-hidden="true"></i>     Edit Event</button>
              <button type="button" class="buttonStyle editEvent createdEvent" id="attendingButton"><i class="fa fa-user-circle" aria-hidden="true"></i>     Attendees</button>
            </div>
          {{/if}}
 
+<<<<<<< HEAD
   				<p>Host: {{host}}</p>
   				<p>Description: {{description}}</p>
   				<p>Date: {{formattedDate}}</p>
   				<p>Location: {{location}}</p>
+=======
+            <p>Host: {{host}}</p>
+            <p>Description: {{description}}</p>
+            <p>Date: {{date}}</p>
+            <p>Location: {{location}}</p>
+>>>>>>> 5b0301b35fb6bb24a81fc89f7dca3c6f4d35de09
 
     </div>
   </div>
 
 {{/EasySearch.Each}}
-
 
 {{else}}
   {{> accessDenied}}

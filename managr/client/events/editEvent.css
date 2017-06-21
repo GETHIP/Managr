@@ -35,10 +35,10 @@
   background-color: #BD79FF;
 }
 
-#editEventButton {
-  background-color: #BD53FF;
-}
+ #submitEditEventButton {
+   background-color: #BD53FF;
+ }
 
-#editEventButton:hover {
-  background-color: #BD79FF;
-}
+  #submitEditEventButton:hover {
+    background-color: #BD79FF;
+  }
