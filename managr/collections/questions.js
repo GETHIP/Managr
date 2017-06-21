@@ -10,7 +10,8 @@ QuestionSchema = new SimpleSchema({
     type: String
   },
   options: {
-    type: [String]
+    type: [String],
+    optional: true
   }
 });
 
