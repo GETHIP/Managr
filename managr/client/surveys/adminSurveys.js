@@ -1,4 +1,5 @@
 import { Surveys } from '../../collections/surveys.js';
+import { Questions } from '../../collections/questions.js';
 
 /*surveysPage.events({
 
@@ -97,7 +98,7 @@ Template.questionFormTemplate.events({
 		 } else {
 			 alert("Please select an option");
 		 }
-		 return option, temparray;
+		 Meteor.call('addQuestion', option, temparray);
 	 }
 });
 
