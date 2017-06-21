@@ -31,8 +31,8 @@
                 </tr>
             </thead>
             {{#EasySearch.Each index=groupIndex attributes=searchBarGroup}}
-              <tr class="tableRowFormat">
-                  <td>{{name}}</td>
+              <tr id="{{groupId}}" class="tableRowFormat">
+                  <td><div onclick="FlowRouter.go('/groups/{{groupId}}')">{{name}}</div></td>
                   <td>
                       <div>
                           <ul style="margin-left: 0px">
