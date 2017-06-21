@@ -41,6 +41,7 @@
           <!--      Make this work and then put it back inside above     -->
             <!--     onClick="FlowRouter.go('/eventView/{{event._id}}')"         -->
 
+<<<<<<< HEAD
          <!-- {{#if isInstructor}}
            <div class="editEventButton">
              <button type="button" class="buttonStyle editEvent createdEvent goToEdit" id="{{eventId}}"><i class="fa fa-eraser" aria-hidden="true"></i>     Edit Event</button>
@@ -53,6 +54,12 @@
              <button type="button" class="buttonStyle editEvent createdEvent" id="editEventButton"><i class="fa fa-eraser" aria-hidden="true"></i>     Edit Event</button>
              <button type="button" class="buttonStyle editEvent createdEvent" id="attendingButton"><i class="fa fa-user-circle" aria-hidden="true"></i>     Attendees</button>
              <button type="button" class="manageDeleteButton" id="deleteEventButton"><i class="fa fa-trash-o" aria-hidden="true"></i>     Delete</button>
+=======
+         {{#if isInstructor}}
+           <div class="editEventButton">
+             <button type="button" class="buttonStyle editEvent createdEvent goToEdit" id="{{eventId}}"><i class="fa fa-eraser" aria-hidden="true"></i>     Edit Event</button>
+             <button type="button" class="buttonStyle editEvent createdEvent" id="attendingButton"><i class="fa fa-user-circle" aria-hidden="true"></i>     Attendees</button>
+>>>>>>> 8512e7104a2e07b564ff6f15990a9214b3bc9e95
            </div>
          {{/if}}
 
@@ -69,9 +76,15 @@
              </body>
            </html>
          </div>
+<<<<<<< HEAD
         {{/if}}
 
           <p>Host: {{host}}</p>
+=======
+         {{/if}}
+
+  				<p>Host: {{host}}</p>
+>>>>>>> 8512e7104a2e07b564ff6f15990a9214b3bc9e95
   				<p>Description: {{description}}</p>
   				<p>Date: {{formattedDate}}</p>
   				<p>Location: {{location}}</p>
