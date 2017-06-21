@@ -18,9 +18,24 @@ export function eventsMethods() {
 	      name: eventName,
 	      description: description,
 				date: date,
-				location: location,
-				formattedDate: formattedDate
-	    });
-    }
-	});
-}
+				formattedDate: formattedDate,
+				location: location
+			});
+    },
+
+			'updateEvent': function(eventId, eventName, description, date, formattedDate, location) {
+				if(!isInstructor()) {
+					return;
+				}
+				Events.update({_id: eventId}, {
+					$set: {
+						name: eventName,
+			      description: description,
+						date: date,
+						formattedDate: formattedDate,
+						location: location
+					}
+				});
+			}
+		});
+	}

@@ -7,10 +7,19 @@ Template.editEvent.onCreated(function() {
 });
 
 Template.editEvent.events({
-  'click #submitEditEventButton': function(event, template) {
+  "submit #eventForm"(event) {
 		event.preventDefault();
+		var target = event.target;
 
+		var eventId = FlowRouter.getParam("id");
+		var eventName = target.name.value;
+		var description = target.description.value;
+		var location = target.location.value;
+		var newDate = moment(target.date.value);
+		var formattedDate = moment(newDate).format("MMMM D,  YYYY [at] h:mm A");
+		var date = target.date.value;
 
+    Meteor.call('updateEvent', eventId, eventName, description, date, formattedDate, location);
 
 		FlowRouter.go('/events');
 	}
@@ -30,7 +39,6 @@ Template.editEvent.helpers({
 
 Template.editEvent.helpers({
 	eventDate: function() {
-		console.log(getThisEvent().date);
 		return getThisEvent().date;
 	}
 });
@@ -44,4 +52,51 @@ Template.editEvent.helpers({
 var getThisEvent = function() {
 	var id = FlowRouter.getParam("id");
 	return Events.findOne({ _id: id });
+}
+
+import { Groups } from '../../collections/groups.js';
+
+Template.editEvent.helpers({
+    groups: function() {
+        var allGroups = Groups.find({}).fetch();
+        var formattedGroups = [];
+        for(var i = 0; i < allGroups.length; i++) {
+            var group = allGroups[i];
+            var formattedGroup = {
+                name: group.name,
+                groupId: group._id,
+								size: group.size,
+								leader: group.leader
+            }
+            formattedGroups.push(formattedGroup);
+        }
+        return formattedGroups;
+    },
+    students: function() {
+        var allStudents = Student.find({}).fetch();
+        var formattedStudents = [];
+        for(var i = 0; i < allStudents.length; i++) {
+            var student = allStudents[i];
+            var formattedStudent = {
+                name: student.name,
+                studentId: student._id
+            }
+            formattedStudents.push(formattedStudent);
+        }
+        return formattedStudents;
+    }
+});
+
+var newformatStudentsForGroup = function(studentIds) {
+    var formattedStudents = [];
+
+    for(var i = 0; i < studentIds.length; i++) {
+        var student = Student.findOne({_id: studentIds[i]});
+        if(student == undefined) {
+            continue;
+        }
+        name = student.name;
+        formattedStudents.push(name);
+    }
+    return formattedStudents;
 }
