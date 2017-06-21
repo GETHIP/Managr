@@ -46,7 +46,7 @@
 
 .switchFormat {
   background-color: white;
-  position: absolute;
+  /*position: absolute;*/
 }
 
 .slider {
@@ -94,9 +94,9 @@ input:checked+.slider:before {
 }
 
 .rsvp {
-  /*float:right;*/
   background-color: white;
   width:40%;
+  float: right;
 }
 
 .switching {

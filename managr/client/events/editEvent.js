@@ -6,11 +6,11 @@ Template.editEvent.onCreated(function() {
     Meteor.subscribe("Events");
 });
 
-Template.eventsPage.events({
+Template.editEvent.events({
   'click #submitEditEventButton': function(event, template) {
-    event.preventDefault();
-    FlowRouter.go('/events');
-  }
+		event.preventDefault();
+		FlowRouter.go('/events');
+	}
 });
 
 Template.editEvent.helpers({
@@ -27,7 +27,7 @@ Template.editEvent.helpers({
 
 Template.editEvent.helpers({
 	eventDate: function() {
-		console.log(getThisEvent.date);
+		console.log(getThisEvent().date);
 		return getThisEvent().date;
 	}
 });
