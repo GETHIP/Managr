@@ -30,6 +30,7 @@ Template.eval.helpers({
 
 Template.leaderboard.events({
   'click .delBtn': function(event){
+    Meteor.call("delEval", FlowRouter.getParam("id"));
     event.preventDefault();
   },
   'click .updateBtn': function(event){

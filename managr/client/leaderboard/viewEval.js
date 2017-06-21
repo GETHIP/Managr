@@ -1,4 +1,15 @@
 import { Student } from '../../collections/student.js';
+<<<<<<< HEAD
+import { Eval } from '../../collections/eval.js';
+import { Instructor } from '../../collections/instructor.js';
+
+Template.viewEval.onCreated(function(){
+  Meteor.subscribe('Eval');
+  Meteor.subscribe('Student');
+  Meteor.subscribe('Instructor');
+});
+
+=======
 import { Eval } from '../../collections/eval.js'
 import { Instructor } from '../../collections/instructor.js';
 
@@ -8,9 +19,27 @@ Template.viewEval.onCreated(function(){
 	Meteor.subscribe('Instructor');
 
 })
+>>>>>>> 2bfb94cf83a8d0bf851788a65e7cd3f8d33d5495
 
 Template.viewEval.helpers({
+	data: function(){
+		console.log(Eval.find({}).fetch());
+		data = Eval.find().fetch();
+    for(var i = 0; i < data.length; i++){
+		data[i].name = Student.findOne({_id: data[i].evaluatee}).name;
+    data[i].instructor = Instructor.findOne({_id: data[i].evaluator}).name;
+    console.log(data[i].stars);
+		data[i].effort = data[i].stars[0];
+		data[i].att = data[i].stars[1];
+		data[i].team = data[i].stars[2];
+		data[i].tech = data[i].stars[3];
 
+<<<<<<< HEAD
+  }
+  console.log(data);
+  return data;
+  }
+=======
 	allEvals: function(){
     return Eval.find({evaluator: Instructor.find({userId: Meteor.user()._id})._id});
   },
@@ -47,4 +76,5 @@ Template.viewEval.events({
 		Meteor.call("sendEval", eaId, eId, comment, week, sList, date);
 
 	}
+>>>>>>> 2bfb94cf83a8d0bf851788a65e7cd3f8d33d5495
 });
