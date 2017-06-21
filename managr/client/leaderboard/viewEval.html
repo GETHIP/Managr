@@ -1,6 +1,52 @@
 <template name="viewEval">
   {{#if isInstructor}}
   <div class="marginContainer">
+  <h1 class="titleEvaluations">Evaluations</h1>
+  <div class="purple-bar">&nbsp;</div>
+  <form>
+		<div class ="textformContainer">
+		  <form id="textformContainer">
+    <textarea placeholder="Write evaluation here..." rows="4" cols="50" width="100%" name="textarea1" id="textarea1"  >
+		</textarea>
+
+<!--Should Have replicated Stars -->
+<div class="formstarsContainer">
+
+				<p class="starLabel"><strong>Effort:</strong></p>{{> starsRating size='lg' id='rating' rating=1 mutable='true' class='mystar'}}
+				<p class="starLabel"><strong>Attitude:</strong></p>{{> starsRating size='lg' id='attitude' rating=1 mutable='true' class='mystar'}}
+				<p class="starLabel"><strong>Teamwork:</strong></p>{{> starsRating size='lg' id='teamwork' rating=1 mutable='true' class='mystar'}}
+				<p class="starLabel"><strong>Technical Ability:</strong></p>{{> starsRating size='lg' id='tech' rating=1 mutable='true' class='mystar'}}
+
+
+</div>
+<div class ="dropdownformContainer">
+
+
+		<label for="group">Groups</label>
+    <select id="group" name="group">
+		{{#each students}}
+		<option value="{{_id}}">{{name}}</option>
+		{{/each}}
+    </select>
+
+    <label for="week">Week</label>
+    <select id="week" name="week">
+      <option value="week 1">week 1</option>
+      <option value="week 2">week 2</option>
+      <option value="week 3">Week 3</option>
+    </select>
+		<label class="switch">Private
+  <input type="checkbox">
+  <div class="check"></div>
+</label>
+
+</div>
+</form>
+</div>
+<button class="buttonStyleleader submitbtn" id="submitBtn">Submit Evaluation</button>
+</form>
+</div>
+  <div class="marginContainer">
   <h1 class="titleviewEvaluations">Previous Evaluations</h1>
   <div class="purple-bar">&nbsp;</div>
   <table class="viewAllevalTable">
