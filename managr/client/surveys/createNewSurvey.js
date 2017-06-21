@@ -32,7 +32,7 @@ Template.newSurvey.events({
     name = surveyName;
     sDate = date;
 
-    Meteor.call("createNewSurvey", surveyName, date);
+    Meteor.call("createNewSurvey", surveyName, date, anonToggle);
 
   }
 });

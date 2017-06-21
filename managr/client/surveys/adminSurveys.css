@@ -50,10 +50,13 @@ viewAllTable tr:hover {
   width: 60px;
   height: 34px;
   margin-bottom: 10px;
+  border-radius: 20%;
 }
 
 /* Hide default HTML checkbox */
-.switch input {display:none;}
+.switch input {
+  display:none;
+}
 
 /* The slider */
 .slider {
@@ -63,6 +66,7 @@ viewAllTable tr:hover {
   left: 0;
   right: 0;
   bottom: 0;
+  border-radius: 20%;
   background-color: #ccc;
   -webkit-transition: .4s;
   transition: .4s;
@@ -75,6 +79,7 @@ viewAllTable tr:hover {
   width: 26px;
   left: 4px;
   bottom: 4px;
+  border-radius: 20%;
   background-color: white;
   -webkit-transition: .4s;
   transition: .4s;
@@ -95,10 +100,10 @@ input:checked + .slider:before {
 }
 
 /* Rounded sliders */
-.slider.round {
+/*.slider.round {
   border-radius: 34px;
 }
 
 .slider.round:before {
   border-radius: 50%;
-}
+}*/
