@@ -220,3 +220,8 @@
    margin-top: 5px;
    margin-bottom: 5px;
  }
+
+.cancelButton {
+  background-color: #84807b;
+  margin-right: 2%;
+  }
