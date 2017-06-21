@@ -18,13 +18,13 @@
     <!-- </thead> -->
     <!-- <tbody> -->
       {{#each data}}
-        <tr class= "tableRowFormat"> <!--  <tr onclick="parent.location='{{url}}'"   "FlowRouter.go("/profile/edit/" + FlowRouter.getParam("id"));> -->
-          <td class="tableDataFormat eval">a</td>
-          <td class="tableDataFormat eval">a</td>
-          <td class="tableDataFormat eval">a</td>
-          <td class="tableDataFormat eval">q</td>
-          <td class="tableDataFormat eval">q</td>
-          <td class="tableDataFormat eval">q</td>
+      <tr class= "tableRowFormat">
+                <td class="tableDataFormat eval">{{name}}</td>
+                <td class="tableDataFormat eval">{{week}}</td>
+                <td class="tableDataFormat eval">{{effort}}</td>
+                <td class="tableDataFormat eval">{{att}}</td>
+                <td class="tableDataFormat eval">{{team}}</td>
+                <td class="tableDataFormat eval">{{tech}}</td>
               </tr>
       {{/each}}
     <!-- </tbody> -->
