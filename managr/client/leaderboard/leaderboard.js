@@ -3,15 +3,17 @@ import { Eval } from '../../collections/eval.js';
 import { Instructor } from '../../collections/instructor.js';
 
 var _dep = new Deps.Dependency();
-var stuarry = []
+
 
 Template.leaderboard.onCreated(function(){
   Meteor.subscribe('Eval');
   Meteor.subscribe('Student');
   Meteor.subscribe('Instructor');
+  _dep.changed();
 });
 
 Template.leaderboard.helpers({
+
   students: function(){
     //console.log(Student.find().fetch());
     return Student.find({});
@@ -74,38 +76,38 @@ Template.leaderboard.helpers({
     });
   //  stuarry.sort();
     var select = document.getElementById("sortingChoice");
-    console.log(select)
-    if (select.value == null){
-      select.value = "sortAlpha"
-    }
-    var option = select.value;
-    console.log(option);
-    if (option == "sortAlpha"){
-      stuarry.sort(function(a, b){
-        if (a.name < b.name) {return -1;}
-        if (a.name > b.name) {return 1;}
-        return 0;
+    try {
+      var option = select.value;
+      console.log(option);
+      if (option == "sortAlpha"){
+        stuarry.sort(function(a, b){
+          if (a.name < b.name) {return -1;}
+          if (a.name > b.name) {return 1;}
+          return 0;
+        })}
+      if (option == "sortAttendance"){
+        stuarry.sort(function(a, b){ //sort function by attendanceNumber
+          return b.attendanceNumber - a.attendanceNumber;
       })}
-    if (option == "sortAttendance"){
-      stuarry.sort(function(a, b){ //sort function by attendanceNumber
-        return b.attendanceNumber - a.attendanceNumber;
-    })}
-    if (option == "sortEffort"){
-      stuarry.sort(function(a, b){ //sort function by attendanceNumber
-        return b.effort - a.effort;
-    })}
-    if (option == "sortAttitude"){
-      stuarry.sort(function(a, b){ //sort function by attendanceNumber
-        return b.attitude - a.attitude;
-    })}
-    if (option == "sortTeamwork"){
-      stuarry.sort(function(a, b){ //sort function by attendanceNumber
-        return b.teamwork - a.teamwork;
-    })}
-    if (option == "sortAverage"){
-      stuarry.sort(function(a, b){ //sort function by attendanceNumber
-        return b.average - a.average;
-    })}
+      if (option == "sortEffort"){
+        stuarry.sort(function(a, b){ //sort function by attendanceNumber
+          return b.effort - a.effort;
+      })}
+      if (option == "sortAttitude"){
+        stuarry.sort(function(a, b){ //sort function by attendanceNumber
+          return b.attitude - a.attitude;
+      })}
+      if (option == "sortTeamwork"){
+        stuarry.sort(function(a, b){ //sort function by attendanceNumber
+          return b.teamwork - a.teamwork;
+      })}
+      if (option == "sortAverage"){
+        stuarry.sort(function(a, b){ //sort function by attendanceNumber
+          return b.average - a.average;
+      })}
+    } catch (e) {
+
+    }
     return stuarry;
   }
 });
@@ -138,11 +140,8 @@ Template.leaderboard.events({
 
   },
   'change #sortingChoice': function(event) {
-    _dep.changed();
     event.preventDefault();
+    _dep.changed();
+
   }
 });
-
-function sortType(){
-
-}
