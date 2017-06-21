@@ -101,3 +101,22 @@
 .tableRowFormat.eval:hover {
   background-color:#E6E6FA;
 }
+.buttonStyleeval {
+  width: 15%;
+  background-color: #7700DD;
+  border: none;
+  color: white;
+  padding: 1%;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: center;
+  font-size: 18px;
+  border-radius: 6px;
+  margin-bottom: 1%;
+  margin-top: 1%;
+  float:right;
+  }
+
+.buttonStyleeval:hover {
+  background-color: #9f53e0;
+}
