@@ -32,7 +32,19 @@
             </thead>
             {{#EasySearch.Each index=groupIndex attributes=searchBarGroup}}
               <tr id="{{groupId}}" class="tableRowFormat">
-                  <td><div onclick="FlowRouter.go('/groups/{{groupId}}')">{{name}}</div></td>
+                  <td style="position:relative; vertical-align:middle;"><div onclick="FlowRouter.go('/groups/{{groupId}}')">{{name}}</div><p class="previewStudentsBtn">i</p>
+                    <div class="info">
+                      <ul style="margin: 0px 0px 0px 18px">
+                          {{#each student in students}}
+                              <li style="list-style-type: circle">
+                                 {{student.name}}
+                              </li>
+                          {{/each}}
+                      </ul>
+                    </div>
+                  </td>
+                  <td>{{leader}}</td>
+                  <td>{{size}}</td>
                   <td>
                       <div>
                           <ul style="margin-left: 0px">
@@ -80,7 +92,6 @@
           -->
             {{/EasySearch.Each}}
         </table>
-
     </div>
     {{else}} {{> accessDenied}} {{/if}}
 </template>

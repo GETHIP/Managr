@@ -179,6 +179,61 @@
   border-color: white;
   border: 2px solid #660000 !important;
 }
+.previewStudentsBtn {
+  position: relative;
+  display: inline-block;
+  margin-left: 5%;
+  margin-bottom: 0px;
+  margin-right: 6px;
+  font-style: italic;
+  border: 1px solid #870000;
+  width: 21px;
+  border-radius: 50px;
+  text-align: center;
+  cursor: pointer;
+}
+.previewStudentsBtn:hover {
+  border: 1px solid #660000;
+  background-color: #ccc;
+}
+.info {
+  z-index: 2;
+  display: none;
+  transform: translateY(-50%);
+  position: absolute;
+  top: 50%;
+  margin-left: 1%;
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  background-color: #ffffff;
+  border: 1px solid #929292;
+  width: 75%;
+  padding: 5%;
+  font-size: 11px;
+  color: #666666;
+  border-radius: 5px;
+}
+.previewStudentsBtn:hover + .info, .info:hover {
+  display: inline-block;
+}
+.info::before {
+  content: '';
+  width: 0;
+  height: 0;
+  font-size: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border-right: 10px solid #870000;
+  left: -10px;
+}
+.groupName {
+  display: inline-block;
+  vertical-align: middle;
+  margin-bottom: 0px;
+}
+
  @media screen and (max-width: 980px) {
     #createGroupButton, #suggestedgroupsbutton{
         margin-top: 6.5%;
