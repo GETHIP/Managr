@@ -30,10 +30,23 @@
                     <th class="groupsTableHead">Students</th>
                     <th class="groupsTableHead"></th>
                 </tr>
+
+<!-- <span class="info2">1330 Avenue of the Americas, 17th Floor, , , New York, NY, 10019, US                                                    </span> -->
+
             </thead>
             {{#EasySearch.Each index=groupIndex attributes=searchBarGroup}}
               <tr class="tableRowFormat">
-                  <td>{{name}}</td>
+                  <td style="position:relative; vertical-align:middle;"><p class="groupName">{{name}}</p><p class="previewStudentsBtn">i</p>
+                    <div class="info">
+                      <ul style="margin: 0px 0px 0px 18px">
+                          {{#each student in students}}
+                              <li style="list-style-type: circle">
+                                 {{student.name}}
+                              </li>
+                          {{/each}}
+                      </ul>
+                    </div>
+                  </td>
                   <td>{{leader}}</td>
                   <td>{{size}}</td>
                   <td>
