@@ -15,17 +15,18 @@ Template.newSurvey.onCreated(function() {
 Template.newSurvey.events({
   'click #createSurveyBtn' (event) {//createSurveyBtn//questionFormSbmt
     event.preventDefault();
-    console.log(79879);
     const form = event.target;
 
     var surveyName = document.getElementById('surveyName').value
     var date = moment(document.getElementById('dueDate').value, "YYYY-MM-DD").toDate();
+    var anonToggle = document.getElementById('anonymousToggle').checked;
 //    var question = target.prompt.value;
 
 //    var question = target.prompt.value;
 
     console.log(surveyName);
     console.log(date);
+    console.log(anonToggle);
 
     name = surveyName;
     sDate = date;

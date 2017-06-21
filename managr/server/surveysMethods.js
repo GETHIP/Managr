@@ -12,14 +12,14 @@ import { isStudent, isInstructor, userIsValid, currentUserOrInstructor, nameOfUs
 
 export function surveysMethods() {
 	Meteor.methods({
-    'createNewSurvey': function(surveyName, date) {//, anonToggle) {
+    'createNewSurvey': function(surveyName, date, anonToggle) {
       if(!isInstructor()) {
         return;
       }
 			Surveys.insert({
 	      name: surveyName,
 				dueDate: date,
-				//anon: anonToggle
+				anon: anonToggle
 	    });
     },
 		'addQuestion': function(option, temparray) {
