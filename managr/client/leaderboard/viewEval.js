@@ -1,9 +1,14 @@
-import { Student } from '../../collections/student.js';
 import { Eval } from '../../collections/eval.js'
 
-Template.viewEval.helpers({
+Template.viewEval.onCreated(function(){
+	console.log("it subbing");
+  Meteor.subscribe('Eval');
+});
 
-	allEvals: function(){
-    return Eval.find({evaluator: Instructor.find({userId: Meteor.user()._id})._id});
+
+Template.viewEval.helpers({
+	data: function(){
+		console.log(Eval.find({}).fetch());
+    return Eval.find();
   }
 });
