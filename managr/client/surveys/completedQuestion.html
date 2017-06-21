@@ -26,6 +26,9 @@
             {{/each}}
           </ul>
       {{/if}}
+      {{#if shResptype question.questionType}}
+          <input type="text" name="FRQ" class="selectionForm createSurveyForm" placeholder="Response Here">
+      {{/if}}
       <!-- {{else if this.questionType in checkType}} -->
     {{/each}}
   </div>
