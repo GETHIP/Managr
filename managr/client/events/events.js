@@ -38,6 +38,7 @@ Template.eventsPage.events({
 });
 Template.eventsPage.helpers({
   events: function() {
+    console.log(Events.find().fetch())
     return Events.find();
   },
   eventsIndex: function() {

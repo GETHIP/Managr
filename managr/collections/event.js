@@ -26,6 +26,11 @@ EventSchema = new SimpleSchema({
         label: "Date",
         optional: true
     },
+    formattedDate: {
+        type: String,
+        label: "FDate",
+        optional: true
+    },
     time: {
         type: String,
         label: "Time",
