@@ -1,4 +1,5 @@
 import { Student } from '../../collections/student.js';
+<<<<<<< HEAD
 import { Eval } from '../../collections/eval.js';
 import { Instructor } from '../../collections/instructor.js';
 
@@ -8,6 +9,17 @@ Template.viewEval.onCreated(function(){
   Meteor.subscribe('Instructor');
 });
 
+=======
+import { Eval } from '../../collections/eval.js'
+import { Instructor } from '../../collections/instructor.js';
+
+Template.viewEval.onCreated(function(){
+	Meteor.subscribe('Student');
+	Meteor.subscribe('Eval');
+	Meteor.subscribe('Instructor');
+
+})
+>>>>>>> 2bfb94cf83a8d0bf851788a65e7cd3f8d33d5495
 
 Template.viewEval.helpers({
 	data: function(){
@@ -22,8 +34,47 @@ Template.viewEval.helpers({
 		data[i].team = data[i].stars[2];
 		data[i].tech = data[i].stars[3];
 
+<<<<<<< HEAD
   }
   console.log(data);
   return data;
   }
+=======
+	allEvals: function(){
+    return Eval.find({evaluator: Instructor.find({userId: Meteor.user()._id})._id});
+  },
+	students: function(){
+    //console.log(Student.find().fetch());
+    return Student.find({});
+	}
+});
+
+Template.viewEval.events({
+	'click .submitbtn': function(event){
+		event.preventDefault();
+		var rating = $('#rating').data('userrating');
+		var attitude = $('#attitude').data('userrating');
+		var teamwork = $('#teamwork').data('userrating');
+		var tech = $('#tech').data('userrating');
+
+		comment = document.getElementById('textarea1').value;
+		eaId = Instructor.findOne({userId: Meteor.user()._id})._id;
+		console.log(eaId);
+		eId = document.getElementById('group').value;
+		week = document.getElementById('week').value.split(" ")[1];
+		sList = [rating, attitude, teamwork, tech ];
+
+		for(var i = 0; i < sList.length; i++){
+			if(sList[i] == null){
+				sList[i] = 1;
+			}
+		}
+
+		console.log(sList);
+		date = new Date();
+		console.log(date);
+		Meteor.call("sendEval", eaId, eId, comment, week, sList, date);
+
+	}
+>>>>>>> 2bfb94cf83a8d0bf851788a65e7cd3f8d33d5495
 });
