@@ -10,7 +10,7 @@ import { isStudent, isInstructor, userIsValid, currentUserOrInstructor, nameOfUs
 
 export function eventsMethods() {
 	Meteor.methods({
-    'createNewEvent': function(eventName, description, date, location) {
+    'createNewEvent': function(eventName, description, date, location, formattedDate) {
       if(!isInstructor()) {
         return;
       }
@@ -18,7 +18,8 @@ export function eventsMethods() {
 	      name: eventName,
 	      description: description,
 				date: date,
-				location: location
+				location: location,
+				formattedDate: formattedDate
 	    });
     }
 	});

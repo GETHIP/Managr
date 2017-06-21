@@ -14,14 +14,17 @@ Template.createEvent.events({
     var eventName = target.name.value;
     var description = target.description.value;
     var location = target.location.value;
+    var newDate = moment(target.date.value);
+    var formattedDate = moment(newDate).format("MMMM D,  YYYY [at] h:mm A");
     var date = target.date.value;
 
     console.log(eventName);
     console.log(description);
     console.log(location);
     console.log(date);
+    console.log(formattedDate);
 
-    Meteor.call("createNewEvent", eventName, description, date, location);
+    Meteor.call("createNewEvent", eventName, description, date, location, formattedDate);
 
     FlowRouter.go('/events');
   }
