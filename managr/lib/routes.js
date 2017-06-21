@@ -215,6 +215,7 @@ FlowRouter.route('/groups/create', {
 		BlazeLayout.render("groupsLayout", {content: 'createGroup'});
 	}
 });
+
 FlowRouter.route('/groups/edit/:id', {
 	name: 'editGroup',
 	action: function() {
@@ -227,5 +228,12 @@ FlowRouter.route('/myGroups', {
 	name: 'myGroups',
 	action: function() {
 		BlazeLayout.render("groupsLayout", {content: 'myGroups'});
+	}
+});
+
+FlowRouter.route('/groups/:id', {
+	name: 'groupProfile',
+	action: function() {
+		BlazeLayout.render("groupProfile", {content: 'groupProfile'});
 	}
 });

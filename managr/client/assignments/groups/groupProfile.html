@@ -1,0 +1,27 @@
+<template name="groupProfile">
+    {{> topNav}}
+        <div class="paddingNav">
+        <div class="marginContainer">
+            {{> groupName}}
+        <div class="groupsCard">
+            {{> studentNames}}
+        </div> </div> </div>
+</template>
+
+
+<template name="groupName">
+    {{#with groupName}}
+        <h1 class="titleAssignment"> {{groupName.name}}</h1>
+        <div class="orange-bar" style="background-color: #870000">&nbsp;</div>
+    {{/with}}
+</template>
+
+
+<template name="studentNames">
+    <p><strong>Group Members:</strong></p>
+    <ul>
+    {{#each name in studentNames}}
+        <li class="studentArray">{{name}}</li>
+    {{/each}}
+  </ul>
+</template>
