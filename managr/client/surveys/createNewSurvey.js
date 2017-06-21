@@ -24,6 +24,7 @@ Template.newSurvey.events({
     var date = moment(document.getElementById('dueDate').value, "YYYY-MM-DD").toDate();
 //    var question = target.prompt.value;
 
+//    var question = target.prompt.value;
 
     console.log(surveyName);
     console.log(date);
