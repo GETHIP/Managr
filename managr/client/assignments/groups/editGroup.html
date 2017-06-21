@@ -2,28 +2,72 @@
   {{#if isInstructor}}
   <div class="marginContainer">
     <form id="editGroupForm">
-      <h1 class="titleAssignment">Edit Group</h1>
-      <div class="orange-bar">&nbsp;</div>
+      <h1 class="titleAssignment">Edit Group Details</h1>
+      <div class="orange-bar" style="background-color: #870000">&nbsp;</div>
 
       <p class="noIndent assignmentFormFormat"><b>Group Name:</b></p>
-      <input type="text" name="groupName" value="{{groupName}}" class="assignmentForm" autofocus required>
+      <input type="text" name="groupName" value="{{groupName}}" class="groupForum" autofocus="required">
 
-      <p class="noIndent assignmentFormFormat"><b>Assign Students:</b></p>
-      <div class="selectStudents">
-        <p class="noIndent">Groups:</p>
-        {{#each groups}}
-            <label for="{{groupId}}"><input type="checkbox" class="groupCheckBox" id="{{groupId}}" checked="{{checked}}"/> {{name}}</label>
-        {{/each}}
+      <p class="groupTitle"><b>Select Coaches (Optional):</b></p>
 
-        <hr />
-
-        <p class="noIndent">Students:</p>
-        {{#each students}}
-            <label for="{{studentId}}"><input type="checkbox" id="{{studentId}}" checked="{{checked}}"/> {{name}}</label>
-        {{/each}}
-
+      <div class="instructors">
+        <div class="student">
+          {{#each instructors}}
+              <label for="{{instructorId}}" class="instructorLabel"><input type="checkbox" class="coach" id="{{instructorId}}" checked="{{checked}}"/>{{name}}</label>
+              <!-- <label for="{{groupId}}"><input type="checkbox" class="groupCheckBox" id="{{groupId}}" checked="{{checked}}"/> {{name}}</label> -->
+          {{/each}}
+          <!-- {{#each students}} -->
+            <!-- <input type="checkbox" class="addOrRemove"> -->
+              <!-- <label for="{{studentId}}" class="studentLabel"><input type="checkbox" class="addOrRemove" id="{{studentId}}"/>{{name}}</label>
+          {{/each}} -->
+        </div>
       </div>
-      <button class="buttonStyle create submitbtn editGroupButton" type="submit" value="Edit Group" id="editGroupButton">Edit Group</button>
+
+      <!-- <button class="removeStudents"><b>Remove</b></button>
+      <button class="addStudents"><b>Add</b></button> -->
+
+      <p class="groupTitle"><b>Students Not In Group:</b></p>
+      <p class="groupTitle addedStudent"><b>Students In Group:</b></p>
+
+      <div class="studentGroup" id="otherstudents">
+        <div class="student">
+          <label for="selectAllNotAdded" class="studentLabel selectAll"><input type="checkbox" id="selectAllNotAdded"/>Select All</label>
+          <div class="selectAllBar"></div>
+
+          {{#each otherstudents}}
+              <label for="{{studentId}}" class="studentLabel"><input type="checkbox" class="add" id="{{studentId}}"/>{{name}}</label>
+          {{/each}}
+
+        </div>
+        <!-- {{>otherstudentstemplate}} -->
+      </div>
+
+      <!-- <div class="student">
+
+        {{#each otherstudents}}
+            <label for="{{studentId}}" class="studentLabel"><input type="checkbox" class="add" id="{{studentId}}"/>{{name}}</label>
+        {{/each}}
+
+      </div> -->
+
+      <div class="studentGroup studentsAdded" id="addedstudents">
+        <div class="student">
+          <label for="selectAllAdded" class="studentLabel selectAll"><input type="checkbox" id="selectAllAdded"/>Select All</label>
+          <div class="selectAllBar"></div>
+
+          {{#each addedstudents}}
+              <label for="{{studentId}}" class="studentLabel"><input type="checkbox" class="remove" id="{{studentId}}"/>{{name}}</label>
+          {{/each}}
+
+        </div>
+        <!-- {{>addedstudentstemplate}} -->
+      </div>
+
+      <button type="submit" class="addStudents" id="addStudents"><b>Add</b></button>
+      <button type="submit" class="removeStudents" id="removeStudents"><b>Remove</b></button>
+
+      <button class="buttonStyle backBtn submitbtn editGroupButton" id="cancel">Cancel</button>
+      <button class="buttonStyle editBtn submitbtn editGroupButton" type="submit" value="Edit Group" id="editGroupButton">Save Changes</button>
     </form>
   </div>
   {{else}} {{> accessDenied}} {{/if}}

@@ -1,9 +1,22 @@
 import { Student } from '../../../collections/student.js';
 import { Groups } from '../../../collections/groups.js';
 
+var allAdded;
+var allNotAdded;
+
 Template.createGroup.onCreated(function() {
 		Meteor.subscribe("Student");
     Meteor.subscribe("Groups");
+		Meteor.subscribe("CurrentAdded");
+		Meteor.subscribe("CurrentNotAdded");
+
+		allAdded = [];
+		allNotAdded = Student.find().fetch();
+});
+
+Template.createGroup.onRendered(function() {
+		allAdded = [];
+		allNotAdded = Student.find().fetch();
 });
 
 Template.createGroup.events({
@@ -86,8 +99,110 @@ Template.createGroup.events({
                 }
             }
         }
-    }
+    },
+		"click #addStudents"(event) {
+				event.preventDefault();
+				const form = event.target;
+
+				var inputs = document.getElementsByTagName("INPUT");
+
+				var swapping = [];
+				var studentIds = [];
+				for(var i = 0; i < inputs.length; i++) {
+						if(inputs[i].type == "checkbox" && inputs[i].className == "add" && inputs[i].checked) {
+								//Because if it is a valid group, then that implies it is not a student, so we don't want this in our studentIds array
+								var group = Groups.findOne({_id: inputs[i].id});
+								if(group != undefined) {
+										continue;
+								}
+								console.log(allAdded);
+								console.log(swapping);
+								allAdded.push(inputs[i].id);
+								swapping.push(inputs[i].id);
+								console.log(allAdded);
+								console.log(swapping);
+						}
+				}
+				for(var i = swapping.length - 1; i >= 0; i--) {
+						for(var ii = allNotAdded.length - 1; ii >= 0; ii--) {
+								if(allNotAdded[ii] === swapping[i]) {
+										allNotAdded.splice(ii, 1);
+										ii = -1;
+								}
+						}
+				}
+				// addedss = document.getElementById('addedstudents');
+				// addedss.innerHTML = "{{#each otherstudents}}" + "<label for='{{{studentId}}}' class='studentLabel'>" + "<input type='checkbox' class='add' id='{{{studentId}}}'/>" + "{{{name}}}" + "</label>" + "{{/each}}";
+				// console.log(addedss.innerHTML);
+		},
+		"click #removeStudents"(event) {
+				event.preventDefault();
+				const form = event.target;
+
+				var inputs = document.getElementsByTagName("INPUT");
+
+				var studentIds = [];
+				for(var i = 0; i < inputs.length; i++) {
+						if(inputs[i].type == "checkbox" && inputs[i].className == "remove" && inputs[i].checked) {
+								//Because if it is a valid group, then that implies it is not a student, so we don't want this in our studentIds array
+								var group = Groups.findOne({_id: inputs[i].id});
+								if(group != undefined) {
+										continue;
+								}
+								console.log(allNotAdded);
+								console.log(swapping);
+								allNotAdded.push(inputs[i].id);
+								swapping.push(inputs[i].id);
+								console.log(allNotAdded);
+								console.log(swapping);
+						}
+				}
+				for(var i = swapping.length - 1; i >= 0; i--) {
+						for(var ii = allAdded.length - 1; ii >= 0; ii--) {
+								if(allAdded[ii] === swapping[i]) {
+										allAdded.splice(ii, 1);
+										ii = -1;
+								}
+						}
+				}
+				// otherss = document.getElementById("otherstudents").innerHTML;
+				// otherss.innerHTML = "{{{#each addedstudents}}}" + "<label for='{{{studentId}}}' class='studentLabel'>" + "<input type='checkbox' class='remove' id='{{{studentId}}}'/>" + "{{{name}}}" + "</label>" + "{{{/each}}}";
+				// console.log(otherss.innerHTML);
+		}
+		// "click #removeStudents"(event) {
+		// 		event.preventDefault();
+		// 		const form = event.target;
+		//
+		// 		var inputs = document.getElementsByTagName("INPUT");
+		//
+		// 		for(var i = 0; i < inputs.length; i++) {
+		// 				if(inputs[i].type == "checkbox" && inputs[i].class == "remove" && inputs[i].checked) {
+		// 						//Because if it is a valid group, then that implies it is not a student, so we don't want this in our studentIds array
+		// 						var group = Groups.findOne({_id: inputs[i].id});
+		// 						if(group != undefined) {
+		// 								continue;
+		// 						}
+		// 						console.log(allAdded);
+		// 						allnotAdded.push(inputs[i].id);
+		// 						console.log(allAdded);
+		// 				}
+		// 		}
+		// }
 });
+
+// Handlebars.registerHelper("addeds", function(fn) {
+//   $('input').html(fn(this));
+// 	console.log("Running");
+//
+//   return "";
+// });
+//
+// Handlebars.registerHelper("others", function(fn) {
+//   $('input').html(fn(this));
+// 	console.log("Running");
+//
+//   return "";
+// });
 
 Template.createGroup.helpers({
     groups: function() {
@@ -105,17 +220,35 @@ Template.createGroup.helpers({
         }
         return formattedGroups;
     },
-    students: function() {
-        var allStudents = Student.find({}).fetch();
+    otherstudents: function() {
+				//var allStudentsNotAdded = Student.find({}).fetch();
+        var allStudentsNotAdded = allNotAdded;
+				console.log(allNotAdded);
         var formattedStudents = [];
-        for(var i = 0; i < allStudents.length; i++) {
-            var student = allStudents[i];
+        for(var i = 0; i < allStudentsNotAdded.length; i++) {
+            var student = allStudentsNotAdded[i];
             var formattedStudent = {
                 name: student.name,
                 studentId: student._id
             }
             formattedStudents.push(formattedStudent);
         }
+				console.log(formattedStudents);
+        return formattedStudents;
+    },
+		addedstudents: function() {
+				//var allStudentsAdded = Student.find({}).fetch();
+        var allStudentsAdded = allAdded;
+        var formattedStudents = [];
+        for(var i = 0; i < allStudentsAdded.length; i++) {
+            var student = allStudentsAdded[i];
+            var formattedStudent = {
+                name: student.name,
+                studentId: student._id
+            }
+            formattedStudents.push(formattedStudent);
+        }
+				console.log(formattedStudents);
         return formattedStudents;
     }
 });
