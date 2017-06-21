@@ -20,6 +20,10 @@ Template.eval.helpers({
 		data.sSt = eval(data.stars[1]);
 		data.tSt = eval(data.stars[2]);
 		console.log(data.tSt);
+    var newDate = moment(data.timestamp);
+		var formattedDate = moment(newDate).format("MMMM D [,] YYYY");
+    data.formDate = formattedDate;
+    console.log(data.formDate);
 		return data;
   }
 });
