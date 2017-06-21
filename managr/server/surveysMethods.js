@@ -56,8 +56,7 @@ export function surveysMethods() {
 				console.log(option);
 				Questions.insert({
 					questionType: "shResp",
-					prompt: shResp,
-					options: []
+					prompt: question
 				});
 			}
 		}
