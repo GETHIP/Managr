@@ -36,7 +36,7 @@
     padding-bottom: 2%;
     border-bottom: 1px solid #444444;
     color: white;
-    width: 20%;
+    width: 25%;
     font-size: 18px;
 }
 .namesInGroup {
@@ -47,7 +47,7 @@
 .namesInGroup ol li {
     list-style-type: decimal;
 }
-#createGroupForm .createGroupButton, #editGroupForm .editGroupButton {
+#editGroupForm .editGroupButton, #editGroupForm .editGroupButton {
     width: 48%;
     display: block;
 }
@@ -73,31 +73,42 @@
  .studentGroup {
    border: 2px solid #CCCCCC;
    border-radius: 5px 5px 0px 0px;
+   background-color: #ffffff;
    overflow-x: hidden;
    max-height: 35vh;
+   min-height: 35vh;
    width: 48%;
    float: left;
  }
- .existingGroups {
-    border: 2px solid #CCCCCC;
-    border-radius: 5px 5px 0px 0px;
-    overflow-x: hidden;
-    overflow-y: scroll;
-    max-height: 20vh;
-    width: 100%;
-    margin: 0 auto;
+ .instructors {
+   border: 2px solid #CCCCCC;
+   border-radius: 5px;
+   background-color: #ffffff;
+   overflow-x: hidden;
+   overflow-y: auto;
+   max-height: 17.5vh;
+   width: 100%;
+   margin: auto;
  }
- .studentNotAdded {
+ .selectAllBar {
+   border: 1px solid #CCC;
+   width: 100%;
+   margin-bottom: 0px;
+ }
+ .studentLabel.selectAll {
+   margin-bottom: 0px;
+ }
+ .studentsAdded {
    margin-left: 4%;
  }
 .groupTitle {
-  width: 50%;
+  width: 48%;
   overflow-x: hidden;
   float: left;
   margin-top: 2%;
 }
-.notAddedStudent {
-  margin-left: 2%;
+.addedStudent {
+  margin-left: 4%;
   width: 48%;
 }
 .removeStudents, .addStudents {
@@ -109,14 +120,14 @@
 }
 .removeStudents {
   background-color: #ff4d4d;
-  float: left;
+  float: right;
 }
 .removeStudents:hover {
   background-color: #ff3333;
 }
 .addStudents {
   background-color: #70db70;
-  float: right;
+  float: left;
 }
 .addStudents:hover {
   background-color: #5cd65c;
@@ -127,21 +138,27 @@
 .studentLabel:hover {
   background-color: #d9d9d9;
 }
-.addOrRemove {
+.instructorLabel {
+  height: 20px;
+}
+.instructorLabel:hover {
+  background-color: #d9d9d9;
+}
+.add , .remove {
   float: left;
   box-sizing: border-box;
 }
-.createGroupButton {
+.editGroupButton {
   background-color: #870000 !important;
 }
-.buttonStyle.backBtn, .buttonStyle.createBtn {
+.buttonStyle.backBtn, .buttonStyle.editBtn {
   margin-top: 4%;
   margin-bottom: 4%;
 }
 .buttonStyle.backBtn {
   float: left;
 }
-.buttonStyle.createBtn {
+.buttonStyle.editBtn {
   margin-left: 4%;
   float: right;
 }
@@ -263,3 +280,18 @@
   background-color: #84807b;
   margin-right: 2%;
   }
+
+.studentArray {
+
+}
+
+.groupsCard {
+	background-color: white;
+	box-shadow: 3px 3px 5px #888888;
+	padding-left: 24px;
+	padding-right: 24px;
+  padding-top: 24px;
+  padding-bottom: 24px;
+  width: 50%;
+  margin: auto;
+}

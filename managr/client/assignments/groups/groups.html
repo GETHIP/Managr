@@ -25,18 +25,14 @@
             <thead>
                 <tr>
                     <th class="groupsTableHead">Name</th>
-                    <th class="groupsTableHead">Leader</th>
+                    <th class="groupsTableHead">Coach</th>
                     <th class="groupsTableHead">Size</th>
-                    <th class="groupsTableHead">Students</th>
                     <th class="groupsTableHead"></th>
                 </tr>
-
-<!-- <span class="info2">1330 Avenue of the Americas, 17th Floor, , , New York, NY, 10019, US                                                    </span> -->
-
             </thead>
             {{#EasySearch.Each index=groupIndex attributes=searchBarGroup}}
-              <tr class="tableRowFormat">
-                  <td style="position:relative; vertical-align:middle;"><p class="groupName">{{name}}</p><p class="previewStudentsBtn">i</p>
+              <tr id="{{groupId}}" class="tableRowFormat">
+                  <td style="position:relative; vertical-align:middle;"><div onclick="FlowRouter.go('/groups/{{groupId}}')">{{name}}</div><p class="previewStudentsBtn">i</p>
                     <div class="info">
                       <ul style="margin: 0px 0px 0px 18px">
                           {{#each student in students}}
@@ -50,16 +46,17 @@
                   <td>{{leader}}</td>
                   <td>{{size}}</td>
                   <td>
-                      <div class="namesInGroup">
-                          <ul style="margin-left: 18px">
-                              {{#each student in students}}
-                                  <li style="list-style-type: circle">
-                                     {{student.name}}
+                      <div>
+                          <ul style="margin-left: 0px">
+                              {{#each singlecoach in coaches}}
+                                  <li>
+                                      {{singlecoach.name}}
                                   </li>
                               {{/each}}
                           </ul>
                       </div>
                   </td>
+                  <td>{{size}}</td>
                   <td>
                       <div class="buttonCollection">
                           <button class="groupButton editGroup" id="{{groupId}}">Edit</button>
@@ -95,7 +92,6 @@
           -->
             {{/EasySearch.Each}}
         </table>
-
     </div>
     {{else}} {{> accessDenied}} {{/if}}
 </template>

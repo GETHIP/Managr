@@ -1,10 +1,12 @@
 import { Groups } from '../../../collections/groups.js';
 import { Student } from '../../../collections/student.js';
 import { EasySearch } from 'meteor/easy:search';
+import { Instructor } from '../../../collections/instructor.js';
 
 Template.groups.onCreated(function() {
     Meteor.subscribe("Groups");
     Meteor.subscribe("Student");
+    Meteor.subscribe("Coaches");
 });
 
 var formatStudentsForGroup = function(group) {
@@ -28,6 +30,7 @@ Template.groups.helpers({
     groups: function() {
         var allGroups = Groups.find({}).fetch();
         var formattedGroups = [];
+        /**currentValue.url2 = "/groups/" + group._id;
         for(var i = 0; i < allGroups.length; i++) {
             var group = allGroups[i];
             var formattedGroup = {
@@ -38,12 +41,18 @@ Template.groups.helpers({
                 leader: group.leader
             }
             formattedGroups.push(formattedGroup);
-        }
+        }**/
+        Groups.forEach(function(currentValue, index, group){
+          currentValue.url2 = "/groups/" + currentValue._id;
+
+          GroupsTable.push(currentValue);
+        });
         formattedGroups.sort(function(group1, group2) {
             return group1.name.localeCompare(group2.name);
         });
         return formattedGroups;
     },
+    // IS THIS NEEDED? 18470296509716239486f120983hfc9weycnoasydnfco9ayeb09rcaw3bn4cq0n9374cb0n9a8sdfncauenr9c823094c71 98047cn9asufcjnlsfc
     namesInGroup: function() {
         if(document.getElementById("namesInGroup").style.height > 200) {
             document.getElementById("namesInGroup").style.overflowY = "scroll";
@@ -54,22 +63,20 @@ Template.groups.helpers({
     }
 });
 
+
+
 Template.groups.events({
-    'click #createGroupButton': function() {
-        FlowRouter.go("/groups/create");
+
+    'click #createGroupButton': function(event) {
+        Modal.show("createGroupModal", event.target.id);
     },
+
     'click .editGroup': function(event) {
         event.preventDefault();
         const target = event.target;
 
         FlowRouter.go("/groups/edit/" + target.id);
     },
-    /*'click .deleteGroup': function(event) {
-        event.preventDefault();
-        const target = event.target;
-
-        Meteor.call("removeGroup", target.id);
-    },*/
     'change .filters': function (e) {
         groupIndex.getComponentMethods(/* optional name */)
             .addProps('grouptype', $(e.target).val())
