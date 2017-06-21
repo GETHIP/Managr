@@ -18,7 +18,6 @@
   background-image: none;
 }
 
-
 #cancelButton {
   background-color: #84807b;
   margin-right: 2%;
@@ -32,4 +31,17 @@
 
 #cancelButton:hover {
   opacity: 1;
+}
+
+#confirmCreateGroup {
+  background-color: #870000;
+  opacity: 0.8;
+}
+
+#confirmCreateGroup:hover {
+  opacity: 1;
+}
+
+#groupName{
+  padding: 4px 6px;
 }

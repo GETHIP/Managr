@@ -25,28 +25,26 @@
             <thead>
                 <tr>
                     <th class="groupsTableHead">Name</th>
-                    <th class="groupsTableHead">Leader</th>
+                    <th class="groupsTableHead">Coach</th>
                     <th class="groupsTableHead">Size</th>
-                    <th class="groupsTableHead">Students</th>
                     <th class="groupsTableHead"></th>
                 </tr>
             </thead>
             {{#EasySearch.Each index=groupIndex attributes=searchBarGroup}}
               <tr class="tableRowFormat">
                   <td>{{name}}</td>
-                  <td>{{leader}}</td>
-                  <td>{{size}}</td>
                   <td>
-                      <div class="namesInGroup">
-                          <ul style="margin-left: 18px">
-                              {{#each student in students}}
-                                  <li style="list-style-type: circle">
-                                     {{student.name}}
+                      <div>
+                          <ul style="margin-left: 0px">
+                              {{#each singlecoach in coaches}}
+                                  <li>
+                                      {{singlecoach.name}}
                                   </li>
                               {{/each}}
                           </ul>
                       </div>
                   </td>
+                  <td>{{size}}</td>
                   <td>
                       <div class="buttonCollection">
                           <button class="groupButton editGroup" id="{{groupId}}">Edit</button>

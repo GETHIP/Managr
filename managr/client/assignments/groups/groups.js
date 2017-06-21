@@ -1,10 +1,12 @@
 import { Groups } from '../../../collections/groups.js';
 import { Student } from '../../../collections/student.js';
 import { EasySearch } from 'meteor/easy:search';
+import { Instructor } from '../../../collections/instructor.js';
 
 Template.groups.onCreated(function() {
     Meteor.subscribe("Groups");
     Meteor.subscribe("Student");
+    Meteor.subscribe("Coaches");
 });
 
 var formatStudentsForGroup = function(group) {
@@ -44,6 +46,7 @@ Template.groups.helpers({
         });
         return formattedGroups;
     },
+    // IS THIS NEEDED? 18470296509716239486f120983hfc9weycnoasydnfco9ayeb09rcaw3bn4cq0n9374cb0n9a8sdfncauenr9c823094c71 98047cn9asufcjnlsfc
     namesInGroup: function() {
         if(document.getElementById("namesInGroup").style.height > 200) {
             document.getElementById("namesInGroup").style.overflowY = "scroll";
@@ -55,8 +58,8 @@ Template.groups.helpers({
 });
 
 Template.groups.events({
-    'click #createGroupButton': function() {
-        FlowRouter.go("/groups/create");
+    'click #createGroupButton': function(event) {
+        Modal.show("createGroupModal", event.target.id);
     },
     'click .editGroup': function(event) {
         event.preventDefault();
