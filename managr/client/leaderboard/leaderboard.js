@@ -40,16 +40,19 @@ Template.leaderboard.helpers({
         //star_rating = star_rating.fetch();
         star_rating = star_rating[0].stars;
       //  console.log(star_rating);
-        var stars = (eval(star_rating[0]) + eval(star_rating[1]) + eval(star_rating[2]))/3
+        var stars = (eval(star_rating[0]) + eval(star_rating[1]) + eval(star_rating[2]) + eval(star_rating[3]))/4
         //console.log(stars);
         var effort = star_rating[0];
         var attitude = star_rating[1];
         var teamwork = star_rating[2];
+        var tech = star_rating[3];
         var attendanceNumber = 0;
       }else{
         var stars = 0;
+        var effort = 0;
         var attitude = 0;
         var teamwork = 0;
+        var tech =0;
         var attendanceNumber = 0;
       }
 
@@ -65,6 +68,7 @@ Template.leaderboard.helpers({
         element.effort = effort;
         element.attitude = attitude;
         element.teamwork = teamwork;
+        element.technical = tech;
       //  console.log(element.effort);
       //  console.log(element.average);
         //console.log(element.attitude)
@@ -101,6 +105,10 @@ Template.leaderboard.helpers({
         stuarry.sort(function(a, b){ //sort function by attendanceNumber
           return b.teamwork - a.teamwork;
       })}
+      if (option == "sortTech"){
+        stuarry.sort(function(a, b){ //sort function by attendanceNumber
+          return b.technical - a.technical;
+      })}
       if (option == "sortAverage"){
         stuarry.sort(function(a, b){ //sort function by attendanceNumber
           return b.average - a.average;
@@ -118,7 +126,7 @@ Template.leaderboard.events({
     var rating = $('#rating').data('userrating');
     var attitude = $('#attitude').data('userrating');
     var teamwork = $('#teamwork').data('userrating');
-    var tech = $('#teamwork').data('userrating');
+    var tech = $('#tech').data('userrating');
 
     comment = document.getElementById('textarea1').value;
     eaId = Instructor.findOne({userId: Meteor.user()._id})._id;
