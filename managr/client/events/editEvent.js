@@ -12,6 +12,7 @@ Template.editEvent.events({
 		var target = event.target;
 
 		var eventId = FlowRouter.getParam("id");
+		var hostId = "";
 		var eventName = target.name.value;
 		var description = target.description.value;
 		var location = target.location.value;

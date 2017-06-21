@@ -1,9 +1,11 @@
 import { Student } from '../../collections/student.js';
+import { Instructor } from '../../collections/instructor.js';
 import { Events } from '../../collections/event.js';
 
 Template.createEvent.onCreated(function() {
     Meteor.subscribe("Student");
     Meteor.subscribe("Events");
+    Meteor.subscribe("Instructor");
 });
 
 Template.createEvent.events({
@@ -11,6 +13,8 @@ Template.createEvent.events({
     event.preventDefault();
     var target = event.target;
 
+    var hostId = Instructor.findOne({userId: Meteor.userId()}).userId;
+    var host = Instructor.findOne({userId: Meteor.userId()}).name;
     var eventName = target.name.value;
     var description = target.description.value;
     var location = target.location.value;
@@ -24,7 +28,7 @@ Template.createEvent.events({
     console.log(date);
     console.log(formattedDate);
 
-    Meteor.call("createNewEvent", eventName, description, date, location, formattedDate);
+    Meteor.call("createNewEvent", hostId, host, eventName, description, date, location, formattedDate);
 
     FlowRouter.go('/events');
   }

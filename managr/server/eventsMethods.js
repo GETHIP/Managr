@@ -10,11 +10,13 @@ import { isStudent, isInstructor, userIsValid, currentUserOrInstructor, nameOfUs
 
 export function eventsMethods() {
 	Meteor.methods({
-    'createNewEvent': function(eventName, description, date, location, formattedDate) {
+    'createNewEvent': function(hostId, host, eventName, description, date, location, formattedDate) {
       if(!isInstructor()) {
         return;
       }
 			Events.insert({
+				hostId: hostId,
+				host: host,
 	      name: eventName,
 	      description: description,
 				date: date,
