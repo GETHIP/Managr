@@ -61,7 +61,8 @@ Template.groups.events({
     'click .editGroup': function(event) {
         event.preventDefault();
         const target = event.target;
-
+        console.log(target);
+        console.log(target.id);
         FlowRouter.go("/groups/edit/" + target.id);
     },
     'click .deleteGroup': function(event) {

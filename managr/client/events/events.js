@@ -15,11 +15,10 @@ Template.eventsPage.events({
     event.preventDefault();
     FlowRouter.go('/events/createEvent');
   },
-
-  'click #editEventButton': function(event, template) {
+  'click .goToEdit': function(event) {
     event.preventDefault();
-    FlowRouter.go('/editEvent');
-
+    const target = event.target;
+    FlowRouter.go('/events/edit/' + target.id);
   },
   'click #attendingButton': function(event, template) {
     event.preventDefault();

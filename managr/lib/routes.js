@@ -213,16 +213,16 @@ FlowRouter.route('/home/createPost', {
 
 FlowRouter.route('/events/createEvent', {
 	name: 'createEvent',
-	action() {
+	action: function() {
 		BlazeLayout.reset();
 		BlazeLayout.render("eventsLayout", {content: 'createEvent'});
 	}
 });
 
-FlowRouter.route('/events/editEvent', {
+FlowRouter.route('/events/edit/:id', {
 	name: 'editEvent',
-	action() {
-		BlazeLayout.reset();
+	action: function() {
+		//BlazeLayout.reset();
 		BlazeLayout.render("eventsLayout", {content: 'editEvent'});
 	}
 });

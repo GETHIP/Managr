@@ -11,13 +11,13 @@
           </div>
           <div class ="formdashboardContainer">
           <p>Event Name:</p>
-          <input id="editEventBox" type="text" name="name" placeholder="Name Of Your Event" autofocus required>
+          <input id="editEventBox" type="text" name="name" placeholder="Name Of Your Event" value="{{eventName}}" autofocus required>
           <p>Description:</p>
-          <textarea id="editEventBox" name="description" rows="6" placeholder="Describe Your Event" required></textarea>
+          <textarea id="editEventBox" name="description" rows="6" placeholder="Describe Your Event" value="{{eventDescription}}" required></textarea>
           <p>When:</p>
-          <input id="editEventBox" type="datetime-local" name="date" required>
+          <input id="editEventBox" type="datetime-local" name="date" value="{{eventDate}}" required>
           <p>Location:</p>
-          <input id="editEventBox" type="text" name="location" placeholder="Where's Your Event?" autofocus required>
+          <input id="editEventBox" type="text" name="location" placeholder="Where's Your Event?" value="{{eventLocation}}" autofocus required>
           <p>Invite:</p>
           {{#each students}}
               <label for="{{studentId}}"><input type="checkbox" id="{{studentId}}"/> {{name}}</label>
@@ -25,8 +25,8 @@
         </div>
        </div>
        <button type="button" id="eventCancel" class="buttonStyle cancelUserCreate leftFloatingButton" onclick="FlowRouter.go('/events');">Cancel</button>
-			 <button type="submit" id="editEventButton" value="Create" class="buttonStyle cancelUserCreate rightFloatingButton">Edit My Event</button>
+			 <button type="submit" id="submitEditEventButton" value="Create" class="buttonStyle cancelUserCreate rightFloatingButton">Edit My Event</button>
       </form>
     </div>
 </div>
-</template>
+</template> 
