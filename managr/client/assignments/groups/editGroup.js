@@ -19,13 +19,28 @@ Template.editGroup.onCreated(function() {
 		});
 
 		allAdded = [];
+		var thisGroup = Groups.findOne({ _id: id });
+		var groupStudentIds = thisGroup.studentIds;
+		for(var i = 0; i < groupStudentIds.length; i++) {
+				var thisStudent = Student.findOne({ _id: groupStudentIds[i] });
+				allAdded.push(thisStudent);
+		}
+
 		allNotAdded = Student.find().fetch();
+		for(var i = 0; i < allAdded.length; i++) {
+				for(var ii = 0; ii < allNotAdded.length; ii++) {
+						if(allNotAdded[ii]._id === allAdded[i]._id) {
+								allNotAdded.splice(ii,1);
+								ii = allNotAdded.length;
+						}
+				}
+		}
 });
 
-Template.editGroup.onRendered(function() {
-		allAdded = [];
-		allNotAdded = Student.find().fetch();
-});
+// Template.editGroup.onRendered(function() {
+// 		allAdded = [];
+// 		allNotAdded = Student.find().fetch();
+// });
 
 Template.editGroup.events({
 		"submit #editGroupForm"(event) {
@@ -92,7 +107,7 @@ Template.editGroup.events({
 								if(allNotAdded[ii]._id === swapping[i]) {
 									console.log("DELETEING");
 										allNotAdded.splice(ii, 1);
-										ii = -1;
+										ii = allNotAdded.length;
 								}
 						}
 				}
@@ -137,7 +152,7 @@ Template.editGroup.events({
 								if(allAdded[ii]._id === swapping[i]) {
 									console.log("DELETEING");
 										allAdded.splice(ii, 1);
-										ii = -1;
+										ii = allAdded.length;
 								}
 						}
 				}

@@ -283,8 +283,8 @@
   margin-right: 2%;
   }
 
-.studentArray {
-
+td.alignmid {
+  vertical-align: middle;
 }
 
 .groupsCard {
