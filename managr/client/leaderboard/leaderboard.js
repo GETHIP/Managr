@@ -116,13 +116,14 @@ Template.leaderboard.events({
     var rating = $('#rating').data('userrating');
     var attitude = $('#attitude').data('userrating');
     var teamwork = $('#teamwork').data('userrating');
+    var tech = $('#teamwork').data('userrating');
 
     comment = document.getElementById('textarea1').value;
     eaId = Instructor.findOne({userId: Meteor.user()._id})._id;
     console.log(eaId);
     eId = document.getElementById('group').value;
     week = document.getElementById('week').value.split(" ")[1];
-    sList = [rating, attitude, teamwork ];
+    sList = [rating, attitude, teamwork, tech ];
 
     for(var i = 0; i < sList.length; i++){
       if(sList[i] == null){
