@@ -10,25 +10,25 @@
       <!--table content should correspond -->
       <tr>
         <th>Name</th>
-        <!-- -->
         <th>Milestone</th>
         <th>Effort</th>
         <th>Attitude</th>
         <th>Teamwork</th>
         <th>Technical Ability</th>
         <th>Instructor</th>
-
       </tr>
     <!-- </thead> -->
     <!-- <tbody> -->
       {{#each data}}
       <tr class= "tableRowFormat">
                 <td class="tableDataFormat eval">{{name}}</td>
+
                 <td class="tableDataFormat eval">{{week}}</td>
                 <td class="tableDataFormat eval">{{effort}}</td>
                 <td class="tableDataFormat eval">{{att}}</td>
                 <td class="tableDataFormat eval">{{team}}</td>
                 <td class="tableDataFormat eval">{{tech}}</td>
+                <td class="tableDataFormat eval">{{instructor}}</td>
               </tr>
       {{/each}}
     <!-- </tbody> -->
@@ -40,4 +40,4 @@
   {{/if}}
 
 </template>
-<!-- tets -->
+<!--  -->
