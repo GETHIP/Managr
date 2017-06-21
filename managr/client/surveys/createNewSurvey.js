@@ -3,8 +3,6 @@ import { Surveys } from '../../collections/surveys.js';
 import { Student } from '../../collections/student.js';
 import { Groups } from '../../collections/groups.js';
 
-  console.log(234342);
-
   var name = "";
   var sDate = "";
 

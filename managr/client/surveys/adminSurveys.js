@@ -61,9 +61,16 @@ Template.questionFormTemplate.events({
 			 Session.set('choiceOption3', null);
 			 Session.set('choiceOption4', null);
 			 Session.set('choiceOption5', null);
+
+			//  if ( != null){
+			// 	 for(i = 0; i < 5; i++)
+			//  		= temparray[i]; //temparray.push(''); ?
+			//  }
+
 			 temparray = [question, choice1, choice2, choice3, choice4];
 			 //add card code here
-		 } else if(option == 'check') {
+		 }
+		 else if(option == 'check') {
 			// You can finish this for optimization later...
 			// or just completely get rid of Session stuff and replace the messyness
 			//  var checkArray = [];
@@ -90,7 +97,8 @@ Template.questionFormTemplate.events({
 			 console.log(option5);
 			 temparray = [question, option1, option2, option3, option4, option5];
 			 //add card code here
-		 } else if(option == 'shResp') {
+		 }
+		 else if(option == 'shResp') {
 			 var shResp = Session.get('shRespQuestion');
 			 Session.set('shRespQuestion', null);
 			 temparray = [shResp];
