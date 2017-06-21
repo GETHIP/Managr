@@ -3,27 +3,43 @@ import { Surveys } from '../../collections/surveys.js';
 import { Student } from '../../collections/student.js';
 import { Groups } from '../../collections/groups.js';
 
-Template.questionFormTemplate.onCreated(function() {
+  console.log(234342);
+
+  var name = "";
+  var sDate = "";
+
+Template.newSurvey.onCreated(function() {
     Meteor.subscribe("Student");
     Meteor.subscribe("Surveys");
+    Meteor.subscribe("Questions");
 });
 
-Template.questionFormTemplate.events({
-  "submit #createSurveyBtn"(event) {//createSurveyBtn//questionFormSbmt
+Template.newSurvey.events({
+  'click #createSurveyBtn' (event) {//createSurveyBtn//questionFormSbmt
     event.preventDefault();
-    var target = event.target;
+    console.log(79879);
+    const form = event.target;
 
-    var surveyName = target.name.value;
-    var date = target.dueDate.value;
+    var surveyName = document.getElementById('surveyName').value
+    var date = moment(document.getElementById('dueDate').value, "YYYY-MM-DD").toDate();
 //    var question = target.prompt.value;
 
 
     console.log(surveyName);
     console.log(date);
 
+    name = surveyName;
+    sDate = date;
 
     Meteor.call("createNewSurvey", surveyName, date);
 
+  }
+});
+
+
+Template.newSurvey.helpers({
+  'data': function(){
+      return {sName: name, date: sDate};
   }
 });
 

@@ -38,7 +38,7 @@ question = new SimpleSchema({
 	}
 });
 
-Surveys.schema = new SimpleSchema({
+SurveySchema = new SimpleSchema({
     name: {
         type: String,
         optional: false
@@ -51,17 +51,17 @@ Surveys.schema = new SimpleSchema({
         type: Number,
         optional: true
     },
-    studentsAssigned: {
-        type: [String],
-        optional: false
-    },
-    questions: {
-      type: [question]
-		},
+  // //  studentsAssigned: {
+  //     //  type: [String],
+  //     //  optional: false
+  // //  },
+  //   questions: {
+  //     type: [question]
+	// 	},
 		surveyId: {
 				type: String,
 				optional: true
 		},
 });
 
-Surveys.attachSchema(Surveys.schema);
+Surveys.attachSchema(SurveySchema);
