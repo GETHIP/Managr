@@ -46,7 +46,6 @@
 </div>
   <div class="marginContainer">
   <h1 class="titleviewEvaluations">Previous Evaluations</h1>
-  <button class="buttonStyleeval createbtn" id="createBtn">Create Evaluation</button>
   <div class="purple-bar">&nbsp;</div>
 
   <table class="viewAllevalTable">
@@ -65,14 +64,13 @@
     <!-- <tbody> -->
       {{#each data}}
       <tr class= "tableRowFormat">
-                <td class="tableDataFormat eval">{{name}}</td>
-
-                <td class="tableDataFormat eval">{{week}}</td>
-                <td class="tableDataFormat eval">{{effort}}</td>
-                <td class="tableDataFormat eval">{{att}}</td>
-                <td class="tableDataFormat eval">{{team}}</td>
-                <td class="tableDataFormat eval">{{tech}}</td>
-                <td class="tableDataFormat eval">{{instructor}}</td>
+                <td class="tableDataFormat evals">{{name}}</td>
+                <td class="tableDataFormat evals">{{week}}</td>
+                <td class="tableDataFormat evals">{{effort}}</td>
+                <td class="tableDataFormat evals">{{att}}</td>
+                <td class="tableDataFormat evals">{{team}}</td>
+                <td class="tableDataFormat evals">{{tech}}</td>
+                <td class="tableDataFormat evals">{{instructor}}</td>
               </tr>
       {{/each}}
     <!-- </tbody> -->

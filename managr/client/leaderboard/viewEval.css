@@ -72,7 +72,7 @@
   text-align: center;
 
 }
-.tableDataFormat.eval {
+.tableDataFormat.evals {
   padding-top: 2%;
   padding-bottom: 2%;
   color: black;
@@ -81,14 +81,14 @@
   cursor: pointer;
 }
 
-.tableRowFormat.eval {
+.tableRowFormat.evals {
   text-align: center;
   font-size: 16px;
 }
-.tableRowFormat.eval:nth-child(odd) {
+.tableRowFormat.evals:nth-child(odd) {
   background-color: #EEEEEE;
 }
-.tableRowFormat.eval:nth-child(even) {
+.tableRowFormat.evals:nth-child(even) {
   background-color: white;
 }
 .viewAllevalTable {
@@ -98,25 +98,9 @@
   margin-bottom: 2%;
   box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 }
-.tableRowFormat.eval:hover {
-  background-color:#E6E6FA;
+.tableRowFormat.evals:hover {
+  background-color:#BDA0CB	;
 }
-.buttonStyleeval {
-  width: 15%;
-  background-color: #7700DD;
-  border: none;
-  color: white;
-  padding: 1%;
-  text-decoration: none;
-  cursor: pointer;
-  text-align: center;
-  font-size: 18px;
-  border-radius: 6px;
-  margin-bottom: 1%;
-  margin-top: 1%;
-  float:right;
-  }
-
-.buttonStyleeval:hover {
-  background-color: #9f53e0;
+.tableHeadFormatevals, .tableDataFormat.evals {
+  width: 14.3%;
 }
