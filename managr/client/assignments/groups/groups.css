@@ -182,9 +182,11 @@
 .previewStudentsBtn {
   position: relative;
   display: inline-block;
-  margin-left: 5%;
+  margin-left: 5px;
   margin-bottom: 0px;
   margin-right: 6px;
+  font-family: georgia;
+  color: #870000;
   font-style: italic;
   border: 1px solid #870000;
   width: 21px;
