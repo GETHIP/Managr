@@ -226,17 +226,6 @@ textarea {
   margin-bottom: 2%;
   box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 }
-.tableHeadFormateval {
-  background-color: #fcb040;
-  padding-top: 2%;
-  padding-bottom: 2%;
-  border-bottom: 1px solid #444444;
-  color: white;
-  width: 50%;
-  font-size: 18px;
-  text-align: center;
-}
-
 .tableHeadFormateval, .tableDataFormat.leaderboard {
   width: 16.7%;
 }
