@@ -92,11 +92,8 @@ eventsIndex = new EasySearch.Index({
 					description: doc.description,
 					date: doc.date,
 					location: doc.location,
-<<<<<<< HEAD
-					formattedDate: doc.formattedDate
-=======
+					formattedDate: doc.formattedDate,
 					eventId: doc._id
->>>>>>> 5b0301b35fb6bb24a81fc89f7dca3c6f4d35de09
 			};
 			return eachEvent;
 	  }
