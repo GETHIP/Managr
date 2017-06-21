@@ -67,3 +67,8 @@ Template.eventsPage.helpers({
           console.log(eventId);
       }
   })
+  Template.eventsPage.events({
+    'click .manageDeleteButton': function(event){
+      Modal.show("deletePost", event.target.id);
+    },
+    });
