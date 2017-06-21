@@ -3,15 +3,17 @@ import { Eval } from '../../collections/eval.js';
 import { Instructor } from '../../collections/instructor.js';
 
 var _dep = new Deps.Dependency();
-var stuarry = []
+
 
 Template.leaderboard.onCreated(function(){
   Meteor.subscribe('Eval');
   Meteor.subscribe('Student');
   Meteor.subscribe('Instructor');
+  _dep.changed();
 });
 
 Template.leaderboard.helpers({
+
   students: function(){
     //console.log(Student.find().fetch());
     return Student.find({});
@@ -38,16 +40,19 @@ Template.leaderboard.helpers({
         //star_rating = star_rating.fetch();
         star_rating = star_rating[0].stars;
       //  console.log(star_rating);
-        var stars = (eval(star_rating[0]) + eval(star_rating[1]) + eval(star_rating[2]))/3
+        var stars = (eval(star_rating[0]) + eval(star_rating[1]) + eval(star_rating[2]) + eval(star_rating[3]))/4
         //console.log(stars);
         var effort = star_rating[0];
         var attitude = star_rating[1];
         var teamwork = star_rating[2];
+        var tech = star_rating[3];
         var attendanceNumber = 0;
       }else{
         var stars = 0;
+        var effort = 0;
         var attitude = 0;
         var teamwork = 0;
+        var tech =0;
         var attendanceNumber = 0;
       }
 
@@ -63,6 +68,7 @@ Template.leaderboard.helpers({
         element.effort = effort;
         element.attitude = attitude;
         element.teamwork = teamwork;
+        element.technical = tech;
       //  console.log(element.effort);
       //  console.log(element.average);
         //console.log(element.attitude)
@@ -74,38 +80,42 @@ Template.leaderboard.helpers({
     });
   //  stuarry.sort();
     var select = document.getElementById("sortingChoice");
-    console.log(select)
-    if (select.value == null){
-      select.value = "sortAlpha"
-    }
-    var option = select.value;
-    console.log(option);
-    if (option == "sortAlpha"){
-      stuarry.sort(function(a, b){
-        if (a.name < b.name) {return -1;}
-        if (a.name > b.name) {return 1;}
-        return 0;
+    try {
+      var option = select.value;
+      console.log(option);
+      if (option == "sortAlpha"){
+        stuarry.sort(function(a, b){
+          if (a.name < b.name) {return -1;}
+          if (a.name > b.name) {return 1;}
+          return 0;
+        })}
+      if (option == "sortAttendance"){
+        stuarry.sort(function(a, b){ //sort function by attendanceNumber
+          return b.attendanceNumber - a.attendanceNumber;
       })}
-    if (option == "sortAttendance"){
-      stuarry.sort(function(a, b){ //sort function by attendanceNumber
-        return b.attendanceNumber - a.attendanceNumber;
-    })}
-    if (option == "sortEffort"){
-      stuarry.sort(function(a, b){ //sort function by attendanceNumber
-        return b.effort - a.effort;
-    })}
-    if (option == "sortAttitude"){
-      stuarry.sort(function(a, b){ //sort function by attendanceNumber
-        return b.attitude - a.attitude;
-    })}
-    if (option == "sortTeamwork"){
-      stuarry.sort(function(a, b){ //sort function by attendanceNumber
-        return b.teamwork - a.teamwork;
-    })}
-    if (option == "sortAverage"){
-      stuarry.sort(function(a, b){ //sort function by attendanceNumber
-        return b.average - a.average;
-    })}
+      if (option == "sortEffort"){
+        stuarry.sort(function(a, b){ //sort function by attendanceNumber
+          return b.effort - a.effort;
+      })}
+      if (option == "sortAttitude"){
+        stuarry.sort(function(a, b){ //sort function by attendanceNumber
+          return b.attitude - a.attitude;
+      })}
+      if (option == "sortTeamwork"){
+        stuarry.sort(function(a, b){ //sort function by attendanceNumber
+          return b.teamwork - a.teamwork;
+      })}
+      if (option == "sortTech"){
+        stuarry.sort(function(a, b){ //sort function by attendanceNumber
+          return b.technical - a.technical;
+      })}
+      if (option == "sortAverage"){
+        stuarry.sort(function(a, b){ //sort function by attendanceNumber
+          return b.average - a.average;
+      })}
+    } catch (e) {
+
+    }
     return stuarry;
   }
 });
@@ -116,13 +126,14 @@ Template.leaderboard.events({
     var rating = $('#rating').data('userrating');
     var attitude = $('#attitude').data('userrating');
     var teamwork = $('#teamwork').data('userrating');
+    var tech = $('#tech').data('userrating');
 
     comment = document.getElementById('textarea1').value;
     eaId = Instructor.findOne({userId: Meteor.user()._id})._id;
     console.log(eaId);
     eId = document.getElementById('group').value;
     week = document.getElementById('week').value.split(" ")[1];
-    sList = [rating, attitude, teamwork ];
+    sList = [rating, attitude, teamwork, tech ];
 
     for(var i = 0; i < sList.length; i++){
       if(sList[i] == null){
@@ -137,11 +148,8 @@ Template.leaderboard.events({
 
   },
   'change #sortingChoice': function(event) {
-    _dep.changed();
     event.preventDefault();
+    _dep.changed();
+
   }
 });
-
-function sortType(){
-
-}
