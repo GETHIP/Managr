@@ -22,7 +22,7 @@ EventSchema = new SimpleSchema({
         max: 50
     },
     date: {
-        type: Date,
+        type: String,
         label: "Date",
         optional: true
     },

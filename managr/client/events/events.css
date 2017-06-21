@@ -135,11 +135,12 @@ button.createdEvent {
 }
 #attendingButton {
   background-color:#BD53FF;
-
-
 }
 #attendingButton:hover {
   background-color: #BD79FF;
+}
+#deleteEventButton {
+  width: 100%;
 }
 .eventsTable {
 	width: 100%;
@@ -189,7 +190,6 @@ input.eventsTable {
 .editEventButton {
   width: 30%;
   float: right;
-  padding-top: 2%;
 }
 
 .eventSearchBar input[type=text] {

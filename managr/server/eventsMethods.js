@@ -18,9 +18,48 @@ export function eventsMethods() {
 	      name: eventName,
 	      description: description,
 				date: date,
-				location: location,
-				formattedDate: formattedDate
-	    });
-    }
-	});
-}
+				formattedDate: formattedDate,
+				location: location
+			});
+    },
+
+			'updateEvent': function(eventId, eventName, description, date, formattedDate, location) {
+				if(!isInstructor()) {
+					return;
+				}
+				Events.update({_id: eventId}, {
+					$set: {
+						name: eventName,
+			      description: description,
+						date: date,
+						formattedDate: formattedDate,
+						location: location
+					}
+				});
+			}
+		});
+	}
+
+
+// export function eventsMethods() {
+// 	Meteor.methods({
+// 'createNewEvent': function(eventName, description, date, location) {
+// 		  if(!isInstructor()) {
+//         return;
+//       }
+// 			Events.insert({
+// 	      name: eventName,
+// 	      description: description,
+// 				date: date,
+// 				location: location,
+// 				formattedDate: formattedDate
+// 	    });
+//     }
+// 	});
+// }
+// 'delEvent': function(id) {
+//   correctId = Events.findOne({"_id": id}).authorId;
+//   if(correctId == Meteor.userId()){
+// 	Events.remove({"_id": id});
+//   }
+// },
