@@ -80,7 +80,7 @@ studentIndex = new EasySearch.Index({
 
 groupIndex = new EasySearch.Index({
 	collection: Groups,
-	fields: ['name', 'leader', 'stringSize', 'studentNames'],
+	fields: ['name', 'leader', 'stringSize', 'studentNames', 'coachNames'],
 	defaultSearchOptions: {
 		sortBy: 'datecreated',
 		limit: 1000
@@ -172,8 +172,8 @@ var formatCoachesForGroup = function(group) {
 						continue;
 				}
 				var formattedCoach = {
-						name: coach.name
-				}
+            name: coach.name
+        }
 				formattedCoaches.push(formattedCoach);
 		}
 		return formattedCoaches;

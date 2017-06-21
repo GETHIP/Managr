@@ -21,6 +21,12 @@ GroupSchema = new SimpleSchema({
         defaultValue: [],
         optional: true
     },
+    coachNames: {
+        type: [String],
+        label: "Coach Names",
+        defaultValue: [],
+        optional: true
+    },
     size: {
         type: Number,
         label: "Size",
@@ -44,13 +50,13 @@ GroupSchema = new SimpleSchema({
         type: Number,
         label: "Date Created",
         optional: true
-    },
-    groupStudents: {
-        type: [StudentSchema],
-        label: "Students",
-        defaultValue: [],
-        optional: true
     }
+    // groupStudents: {
+    //     type: [StudentSchema],
+    //     label: "Students",
+    //     defaultValue: [],
+    //     optional: true
+    // }
 });
 
 Groups.attachSchema(GroupSchema);

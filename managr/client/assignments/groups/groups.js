@@ -1,10 +1,12 @@
 import { Groups } from '../../../collections/groups.js';
 import { Student } from '../../../collections/student.js';
 import { EasySearch } from 'meteor/easy:search';
+import { Instructor } from '../../../collections/instructor.js';
 
 Template.groups.onCreated(function() {
     Meteor.subscribe("Groups");
     Meteor.subscribe("Student");
+    Meteor.subscribe("Coaches");
 });
 
 var formatStudentsForGroup = function(group) {

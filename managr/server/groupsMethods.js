@@ -16,23 +16,6 @@ export function groupsMethods() {
       }
       Groups.remove(groupId);
     },
-
-/*
-    'createGroup': function(groupName, studentIds, size, studentNames, dateCreated) {
-      if(!isInstructor()) {
-        return;
-      }
-			var stringSize = size.toString();
-      Groups.insert({
-        name: groupName,
-        studentIds: studentIds,
-				size: size,
-				stringSize: stringSize,
-				studentNames: studentNames,
-				dateCreated: dateCreated
-      });
-    },
-*/
 		'createGroup': function(groupName, dateCreated) {
 			if(!isInstructor()) {
 				return;
@@ -42,7 +25,7 @@ export function groupsMethods() {
 				dateCreated: dateCreated
 			});
 		},
-		'updateGroup': function(groupId, groupName, studentIds, size, studentNames, coaches, groupStudents) {
+		'updateGroup': function(groupId, groupName, studentIds, size, studentNames, coaches, coachNames, groupStudents) {
 			if(!isInstructor()) {
 				return;
 			}
@@ -52,10 +35,11 @@ export function groupsMethods() {
 					name: groupName,
 					studentIds: studentIds,
 					coaches: coaches,
+					coachNames: coachNames,
 					size: size,
 					stringSize: stringSize,
-					studentNames: studentNames,
-					groupStudents: groupStudents
+					studentNames: studentNames
+					//groupStudents: groupStudents
 				}
       });
 		}
