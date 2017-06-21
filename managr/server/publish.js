@@ -46,8 +46,41 @@ export function publishAll() {
 		return Student.find({ isArchived: false });
 	});
 
+	Meteor.publish("Coaches", function() {
+		return Instructor.find({ name: { $ne: "Admin" } });
+	});
+
 	Meteor.publish("Groups", function() {
 		return Groups.find();
+	});
+
+	Meteor.publish("singleGroup", function(id) {
+		check(id, String);
+		return Groups.find({_id: id});
+	});
+
+	Meteor.publish("CurrentAdded", function(id) {
+		check(id, String);
+		var thisGroup = Groups.find({_id: id});
+		return thisGroup.groupStudents;
+	});
+
+	Meteor.publish("CurrentNotAdded", function(id) {
+		// check(id, String);
+		// console.log(id);
+		// var thisGroup = Groups.find({_id: id});
+		// var studentsIn = thisGroup.studentIds;
+		// var studentsOut = Student.find({ isArchived: false });
+		// var index;
+		// for(var i = 0; i < studentsIn.length; i++) {
+		// 		for(var ii = 0; ii < studentsOut.length; ii++) {
+		// 				if(studentsOut[ii]._id === studentsIn[i]) {
+		// 						studentsOut.splice(ii, 1);
+		// 						ii = -1;
+		// 				}
+		// 		}
+		// }
+		// return studentsOut;
 	});
 
 	Meteor.publish("userData", function() {

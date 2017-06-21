@@ -4,6 +4,7 @@ import { Comments } from '../collections/comments.js'
 import { Posts } from '../collections/blogPosts.js'
 import { Assignments } from "../collections/assignments.js";
 import { Student } from "../collections/student.js";
+import { Instructor } from "../collections/instructor.js";
 import { nameOfUser } from '../lib/permissions.js';
 import { Groups } from "../collections/groups.js";
 
@@ -91,7 +92,7 @@ groupIndex = new EasySearch.Index({
 						name: doc.name,
 						size: doc.size,
 						students: formatStudentsForGroup(doc),
-						leader: doc.leader,
+						coaches: formatCoachesForGroup(doc),
 						groupId: doc._id
 				};
 				return group;
@@ -159,6 +160,23 @@ var formatStudentsForGroup = function(group) {
         formattedStudents.push(formattedStudent);
     }
     return formattedStudents;
+}
+
+var formatCoachesForGroup = function(group) {
+		var coachIds = group.coaches;
+		var formattedCoaches = [];
+
+		for(var i = 0; i < coachIds.length; i++) {
+				var coach = Instructor.findOne({_id: coachIds[i]});
+				if(coach == undefined) {
+						continue;
+				}
+				var formattedCoach = {
+						name: coach.name
+				}
+				formattedCoaches.push(formattedCoach);
+		}
+		return formattedCoaches;
 }
 
 Template.main.helpers({

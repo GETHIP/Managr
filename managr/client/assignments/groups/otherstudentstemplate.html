@@ -1,0 +1,9 @@
+<template name="otherstudentstemplate">
+  <div class="student">
+
+    {{#each otherstudents}}
+        <label for="{{studentId}}" class="studentLabel"><input type="checkbox" class="add" id="{{studentId}}"/>{{name}}</label>
+    {{/each}}
+
+  </div>
+</template>

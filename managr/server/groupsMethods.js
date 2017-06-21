@@ -17,6 +17,7 @@ export function groupsMethods() {
       Groups.remove(groupId);
     },
 
+/*
     'createGroup': function(groupName, studentIds, size, studentNames, dateCreated) {
       if(!isInstructor()) {
         return;
@@ -31,8 +32,17 @@ export function groupsMethods() {
 				dateCreated: dateCreated
       });
     },
-
-		'updateGroup': function(groupId, groupName, studentIds, size, studentNames) {
+*/
+		'createGroup': function(groupName, dateCreated) {
+			if(!isInstructor()) {
+				return;
+			}
+			return Groups.insert({
+				name: groupName,
+				dateCreated: dateCreated
+			});
+		},
+		'updateGroup': function(groupId, groupName, studentIds, size, studentNames, coaches, groupStudents) {
 			if(!isInstructor()) {
 				return;
 			}
@@ -41,9 +51,11 @@ export function groupsMethods() {
 				$set: {
 					name: groupName,
 					studentIds: studentIds,
+					coaches: coaches,
 					size: size,
 					stringSize: stringSize,
-					studentNames: studentNames
+					studentNames: studentNames,
+					groupStudents: groupStudents
 				}
       });
 		}

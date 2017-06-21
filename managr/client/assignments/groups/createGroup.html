@@ -12,39 +12,54 @@
 
       <div class="existingGroups">
         <div class="student">
-          {{#each students}}
-            <!-- <input type="checkbox" class="addOrRemove"> -->
-              <label for="{{studentId}}" class="studentLabel"><input type="checkbox" class="addOrRemove" id="{{studentId}}"/>{{name}}</label>
+          {{#each groups}}
+              <label for="{{groupId}}"><input type="checkbox" class="groupCheckBox" id="{{groupId}}" checked="{{checked}}"/> {{name}}</label>
           {{/each}}
+          <!-- {{#each students}}
+            <input type="checkbox" class="addOrRemove">
+              <label for="{{studentId}}" class="studentLabel"><input type="checkbox" class="addOrRemove" id="{{studentId}}"/>{{name}}</label>
+          {{/each}} -->
         </div>
       </div>
-      <button class="removeStudents"><b>Remove</b></button>
-      <button class="addStudents"><b>Add</b></button>
 
+      <!-- <button class="removeStudents"><b>Remove</b></button>
+      <button class="addStudents"><b>Add</b></button> -->
 
       <p class="groupTitle"><b>Students To Be Added:</b></p>
       <p class="groupTitle notAddedStudent"><b>Students Not Added:</b></p>
 
-
-      <div class="studentGroup">
-        <div class="student">
-          {{#each students}}
-              <label for="{{studentId}}" class="studentLabel"><input type="checkbox" class="addOrRemove" id="{{studentId}}"/>{{name}}</label>
-          {{/each}}
-        </div>
-      </div>
-
-
-      <div class="studentGroup studentNotAdded">
+      <div class="studentGroup" id="addedstudents">
         <div class="student">
 
-          {{#each students}}
-              <label for="{{studentId}}" class="studentLabel"><input type="checkbox" class="addOrRemove" id="{{studentId}}"/> {{name}}</label>
+          {{#each addedstudents}}
+              <label for="{{studentId}}" class="studentLabel"><input type="checkbox" class="remove" id="{{studentId}}"/>{{name}}</label>
           {{/each}}
+
         </div>
+        <!-- {{>addedstudentstemplate}} -->
       </div>
-      <button class="removeStudents"><b>Remove</b></button>
-      <button class="addStudents"><b>Add</b></button>
+
+      <div class="studentGroup studentsNotAdded" id="otherstudents">
+        <div class="student">
+
+          {{#each otherstudents}}
+              <label for="{{studentId}}" class="studentLabel"><input type="checkbox" class="add" id="{{studentId}}"/>{{name}}</label>
+          {{/each}}
+
+        </div>
+        <!-- {{>otherstudentstemplate}} -->
+      </div>
+
+      <!-- <div class="student">
+
+        {{#each otherstudents}}
+            <label for="{{studentId}}" class="studentLabel"><input type="checkbox" class="add" id="{{studentId}}"/>{{name}}</label>
+        {{/each}}
+
+      </div> -->
+
+      <button type="submit" class="removeStudents" id="removeStudents"><b>Remove</b></button>
+      <button type="submit" class="addStudents" id="addStudents"><b>Add</b></button>
 
       <button class="buttonStyle backBtn submitbtn createGroupButton" type="submit" value="Create Group" id="createGroupButton">Back</button>
       <button class="buttonStyle createBtn submitbtn createGroupButton" type="submit" value="Create Group" id="createGroupButton">Create Group</button>
