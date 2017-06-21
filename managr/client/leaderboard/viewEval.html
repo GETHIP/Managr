@@ -2,18 +2,21 @@
   {{#if isInstructor}}
   <div class="marginContainer">
   <h1 class="titleviewEvaluations">Previous Evaluations</h1>
-  <div class="purple-bar"></div>
+  <button class="buttonStyleeval createbtn" id="createBtn">Create Evaluation</button>
+  <div class="purple-bar">&nbsp;</div>
+
   <table class="viewAllevalTable">
     <!-- <thead> -->
       <!--table content should correspond -->
       <tr>
-        <th>Name</th>
         <th>Name</th>
+        <!-- -->
         <th>Milestone</th>
         <th>Effort</th>
         <th>Attitude</th>
         <th>Teamwork</th>
         <th>Technical Ability</th>
+        <th>Instructor</th>
 
       </tr>
     <!-- </thead> -->
@@ -26,6 +29,7 @@
           <td class="tableDataFormat eval">{{attitude}}</td>
           <td class="tableDataFormat eval">{{teamwork}}</td>
           <td class="tableDataFormat eval">{{technical}}</td>
+          <td class="tableDataFormat eval">{{instructor}}</td>
               </tr>
       {{/each}}
     <!-- </tbody> -->
