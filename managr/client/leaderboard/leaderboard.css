@@ -151,18 +151,26 @@ header {
 	height: auto;
 	display: inline-block;
   }
+
   .dropdownformContainer {
     margin-bottom: 3%;
 	  margin-top: 1.5%;
-	  padding: 34px;
-    float:right;
-
+	  padding: 15px;
+    display: inline-block;
   }
   .formstarsContainer {
       margin-bottom:0;
     	margin-top: 1.5%;
-    	padding: 27px;
+    	padding: 15px;
   	  display: inline-block;
+      margin-left: 16em;
+
+  }
+  .formstarsb {
+    display: inline-block;
+    margin-top: 1.5%
+    padding 15px;
+
   }
 
 .mystar .current-rating {
