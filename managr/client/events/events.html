@@ -37,7 +37,7 @@
   <div class="events">
     <div class ="formdashboardContainer containerDiv formbg homeEvents">
       <!-- <div class="containerDiv formbg homeEvents"> -->
-        <h1 class="formTitle eventTitle goToView" id="">{{name}}</h1>
+        <h1 class="formTitle eventTitle goToView" id="{{eventId}}">{{name}}</h1>
           <!--      Make this work and then put it back inside above     -->
             <!--     onClick="FlowRouter.go('/eventView/{{event._id}}')"         -->
 
@@ -58,7 +58,7 @@
            </div>
          {{/if}}
 
-         {{#if isStudent}}
+         <!-- {{#if isStudent}}
          <div class="rsvp">
            <html>
              <body class="switchFormat">
@@ -71,7 +71,7 @@
              </body>
            </html>
          </div>
-         {{/if}}
+         {{/if}} -->
 
   				<p>Host: {{host}}</p>
   				<p>Description: {{description}}</p>

@@ -227,13 +227,13 @@ FlowRouter.route('/events/edit/:id', {
 	}
 });
 
-// FlowRouter.route('/events/view/:id', {
-// 	name: 'viewEvent',
-// 	action: function() {
-// 		//BlazeLayout.reset();
-// 		BlazeLayout.render("eventsLayout", {content: 'viewEvent'});
-// 	}
-// });
+FlowRouter.route('/events/view/:id', {
+	name: 'eventView',
+	action: function() {
+		//BlazeLayout.reset();
+		BlazeLayout.render("eventsLayout", {content: 'eventView'});
+	}
+});
 
 FlowRouter.route('/reports', {
     action: function(params, queryParams){

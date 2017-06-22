@@ -1,14 +1,25 @@
 <template name="eventView">
-  {{> navSide }}
-  {{> navBar }}
-  <div class="containerInvites">
-
-    <div class="containerDiv formbg homeEvents iep">
-        <h1 class="formTitle eventTitle2" >{{event.name}}</h1>
-  			<p>Description: {{event.description}}</p>
-  			<p>Date: {{event.date}}</p>
-  			<p>Location: {{event.location}}</p>
-    </div>
-    <input type="submit" class="createNew button invitr" value="invite" onclick="FlowRouter.go('/invitation/{{event._id}}');">
-  </div>
+  <div class = "events viewingEvents">
+  <div class ="formdashboardContainer containerDiv formbg homeEvents">
+<h1 class="formTitle eventTitle goToView" id="{{eventId}}" >{{eventName}}</h1>
+{{#if isStudent}}
+<div class="rsvp">
+  <html>
+    <body class="switchFormat">
+      <p id="indicator">Not Attending</p>
+      <br>
+      <label class="switch">
+        <input type="checkbox">
+        <div class="slider"></div>
+      </label>
+    </body>
+  </html>
+</div>
+{{/if}}
+  <p>Host: {{host}}</p>
+  <p>Description: {{eventDescription}}</p>
+  <p>Date: {{formattedDate}}</p>
+  <p>Location: {{eventLocation}}</p>
+</div>
+</div>
 </template>
