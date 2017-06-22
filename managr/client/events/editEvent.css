@@ -15,6 +15,7 @@
     border-radius: 6px;
     border: 2px solid #BD53FF;
     color:black;
+    -webkit-box-shadow: none;
 }
 
 #lineP {

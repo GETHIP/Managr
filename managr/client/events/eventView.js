@@ -26,7 +26,7 @@ Template.eventView.events({
 	}
 });
 
-Template.eventsPage.events({
+Template.eventView.events({
 'click .slider': function(event){
   if(document.getElementById("indicator").innerHTML == "Attending"){
       document.getElementById("indicator").innerHTML = "Not Attending"

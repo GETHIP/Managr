@@ -141,6 +141,9 @@ button.createdEvent {
 }
 #deleteEventButton {
   width: 100%;
+  font-size: 18px;
+  padding: 7px;
+  margin-top: 0;
 }
 .eventsTable {
 	width: 100%;
