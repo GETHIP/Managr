@@ -37,7 +37,7 @@
   <div class="events">
     <div class ="formdashboardContainer containerDiv formbg homeEvents">
       <!-- <div class="containerDiv formbg homeEvents"> -->
-        <h1 class="formTitle eventTitle">{{name}}</h1>
+        <h1 class="formTitle eventTitle goToView" id="">{{name}}</h1>
           <!--      Make this work and then put it back inside above     -->
             <!--     onClick="FlowRouter.go('/eventView/{{event._id}}')"         -->
 
@@ -50,7 +50,7 @@
 
          {{#if isInstructor}}
            <div class="editEventButton">
-             
+
              <button type="button" class="buttonStyle editEvent createdEvent goToEdit" id="{{eventId}}"><i class="fa fa-eraser" aria-hidden="true"></i>     Edit Event</button>
              <button type="button" class="buttonStyle editEvent createdEvent" id="attendingButton"><i class="fa fa-user-circle" aria-hidden="true"></i>     Attendees</button>
              <button type="button" class="manageDeleteButton" id="deleteEventButton"><i class="fa fa-trash-o" aria-hidden="true"></i>     Delete</button>

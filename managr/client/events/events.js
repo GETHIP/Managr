@@ -20,6 +20,11 @@ Template.eventsPage.events({
     const target = event.target;
     FlowRouter.go('/events/edit/' + target.id);
   },
+  'click .goToView': function(event) {
+    event.preventDefault();
+    const target = event.target;
+    FlowRouter.go('/events/view/' + target.id);
+  },
   'click #attendingButton': function(event, template) {
     event.preventDefault();
     FlowRouter.go('/events/Attending');
