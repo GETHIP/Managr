@@ -221,3 +221,9 @@ FlowRouter.route('/myGroups', {
 		BlazeLayout.render("groupsLayout", {content: 'myGroups'});
 	}
 });
+FlowRouter.route('/groups/:id', {
+  	name: 'groupProfile',
+  	action: function() {
+  		BlazeLayout.render("groupProfile", {content: 'groupProfile'});
+  	}
+});
