@@ -60,9 +60,9 @@ export function publishAll() {
 	});
 
 	Meteor.publish("CurrentAdded", function(id) {
-		check(id, String);
-		var thisGroup = Groups.find({_id: id});
-		return thisGroup.groupStudents;
+		// check(id, String);
+		// var thisGroup = Groups.find({_id: id});
+		// return thisGroup.;
 	});
 
 	Meteor.publish("CurrentNotAdded", function(id) {

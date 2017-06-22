@@ -2,14 +2,24 @@ import { Student } from '../../../collections/student.js';
 import { Instructor } from '../../../collections/instructor.js';
 import { Groups } from '../../../collections/groups.js';
 
-var allAdded;
-var allNotAdded;
+var allAdded = [];
+var allNotAdded = [];
 _dep = new Deps.Dependency;
 
 Template.editGroup.onCreated(function() {
 		var id = FlowRouter.getParam('id');
 
-		Meteor.subscribe("singleGroup", id);
+		Meteor.subscribe('singleGroup', id, function() {
+				var group = Groups.findOne({_id: id});
+				if(group == undefined) {
+						FlowRouter.go("/groups");
+				}
+				else {
+						allAdded = findStudentsIn();
+						allNotAdded = findStudentsNot(allAdded);
+						BlazeLayout.render("groupsLayout", {content: 'editGroup'});
+				}
+		});
 		Meteor.subscribe("Coaches");
 
 		this.autorun(function () {
@@ -18,14 +28,34 @@ Template.editGroup.onCreated(function() {
 				Meteor.subscribe("CurrentNotAdded", id);
 		});
 
-		allAdded = [];
-		allNotAdded = Student.find().fetch();
+		allAdded = findStudentsIn();
+		allNotAdded = findStudentsNot(allAdded);
+
 });
 
-Template.editGroup.onRendered(function() {
-		allAdded = [];
+function findStudentsIn() {
+		var allAdded = [];
+		var thisGroup = Groups.findOne({ _id: FlowRouter.getParam('id')});
+		var groupStudentIds = thisGroup.studentIds;
+		for(var i = 0; i < groupStudentIds.length; i++) {
+				var thisStudent = Student.findOne({ _id: groupStudentIds[i] });
+				allAdded.push(thisStudent);
+		}
+		return allAdded;
+}
+
+function findStudentsNot(allAdded) {
 		allNotAdded = Student.find().fetch();
-});
+		for(var i = 0; i < allAdded.length; i++) {
+				for(var ii = 0; ii < allNotAdded.length; ii++) {
+						if(allNotAdded[ii]._id === allAdded[i]._id) {
+								allNotAdded.splice(ii,1);
+								ii = allNotAdded.length;
+						}
+				}
+		}
+		return allNotAdded;
+}
 
 Template.editGroup.events({
 		"submit #editGroupForm"(event) {
@@ -92,7 +122,7 @@ Template.editGroup.events({
 								if(allNotAdded[ii]._id === swapping[i]) {
 									console.log("DELETEING");
 										allNotAdded.splice(ii, 1);
-										ii = -1;
+										ii = allNotAdded.length;
 								}
 						}
 				}
@@ -137,7 +167,7 @@ Template.editGroup.events({
 								if(allAdded[ii]._id === swapping[i]) {
 									console.log("DELETEING");
 										allAdded.splice(ii, 1);
-										ii = -1;
+										ii = allAdded.length;
 								}
 						}
 				}
@@ -192,12 +222,11 @@ Template.editGroup.helpers({
     },
 		groupName: function() {
 				var id = FlowRouter.getParam('id');
-				var thisGroup = Groups.findOne({_id: id})
+				var thisGroup = Groups.findOne({_id: id});
 				return thisGroup.name;
 		},
     otherstudents: function() {
-				//var allStudentsNotAdded = Student.find({}).fetch();
-				_dep.depend()
+				_dep.depend();
         var allStudentsNotAdded = allNotAdded;
 				console.log(allNotAdded);
         var formattedStudents = [];
@@ -213,8 +242,7 @@ Template.editGroup.helpers({
         return formattedStudents;
     },
 		addedstudents: function() {
-				//var allStudentsAdded = Student.find({}).fetch();
-				_dep.depend()
+				_dep.depend();
         var allStudentsAdded = allAdded;
 				console.log(allAdded);
         var formattedStudents = [];
@@ -261,7 +289,7 @@ var newformatStudentsForGroup = function(studentIds) {
 
 var isCoach = function(instructor) {
 		var id = FlowRouter.getParam('id');
-		var thisGroup = Groups.findOne({_id: id})
+		var thisGroup = Groups.findOne({_id: id});
 		var coachesInGroup = thisGroup.coaches;
 		for(var i = 0; i < coachesInGroup.length; i++) {
 				if(instructor._id == coachesInGroup[i]) {

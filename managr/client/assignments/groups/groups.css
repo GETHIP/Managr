@@ -117,20 +117,24 @@
    width: 48%;
    color: white;
    border-top: none;
+   font-size: 16px;
 }
 .removeStudents {
-  background-color: #ff4d4d;
+  background-color: #ff3333;
   float: right;
 }
 .removeStudents:hover {
-  background-color: #ff3333;
+  background-color: #ff211a;
 }
 .addStudents {
-  background-color: #70db70;
+  background-color: #47d147;
   float: left;
 }
 .addStudents:hover {
-  background-color: #5cd65c;
+  background-color: #33cc33;
+}
+.spacing {
+  letter-spacing: .2px;
 }
 .student input {
   margin: 5px;
@@ -182,9 +186,11 @@
 .previewStudentsBtn {
   position: relative;
   display: inline-block;
-  margin-left: 5%;
+  margin-left: 5px;
   margin-bottom: 0px;
   margin-right: 6px;
+  font-family: georgia;
+  color: #870000;
   font-style: italic;
   border: 1px solid #870000;
   width: 21px;
@@ -281,7 +287,9 @@
   margin-right: 2%;
   }
 
-
+td.alignmid {
+  vertical-align: middle;
+}
 
 .groupsCard {
 	background-color: white;
@@ -315,4 +323,9 @@ width: 100%;
 
 .buttonStyle.groupBack:hover {
   background-color: #660000;
+}
+
+.tableRowFormat.groups:hover {
+  cursor: pointer;
+  background-color: #ffe6e6 !important;
 }

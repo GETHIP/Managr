@@ -52,21 +52,21 @@ Template.groups.helpers({
         });
         return formattedGroups;
     },
-    // IS THIS NEEDED? 18470296509716239486f120983hfc9weycnoasydnfco9ayeb09rcaw3bn4cq0n9374cb0n9a8sdfncauenr9c823094c71 98047cn9asufcjnlsfc
-    namesInGroup: function() {
-        if(document.getElementById("namesInGroup").style.height > 200) {
-            document.getElementById("namesInGroup").style.overflowY = "scroll";
-        }
-    },
     groupIndex: function() {
         return groupIndex;
+    },
+    allcoaches: function(coaches) {
+        var allCoaches = [];
+        for(var i = 0; i < coaches.length; i++) {
+            allCoaches.push(coaches[i].name);
+        }
+        return allCoaches.join(", ");
     }
 });
 
 
 
 Template.groups.events({
-
     'click #createGroupButton': function(event) {
         Modal.show("createGroupModal", event.target.id);
     },
