@@ -6,6 +6,12 @@ Template.eventsPage.onRendered(() => {
 })
 
 Template.eventsPage.events({
+  'click .deleteEventButton': function(event) {
+      event.preventDefault();
+      const target = event.target;
+
+      Meteor.call("removeEvent", target.id);
+  },
 
   'click #calendarButton': function(event, template) {
     event.preventDefault();
@@ -50,31 +56,34 @@ Template.eventsPage.helpers({
       return eventsIndex;
   }
   });
-  // Template.createEvent.events({
-  //     'submit #eventForm': function (event) {
-  //         event.preventDefault();
-  //         var hostId = Meteor.userId();
-  //         var name = event.target.name.value
-  //         var description = event.target.description.value
-  //         var date = new Date(Date.parse(event.target.date.value))
-  //         console.log(date);
-  //         var location = event.target.location.value
-  //         var eventId = Events.insert({
-  //             name: name,
-  //             hostId: hostId,
-  //             description: description,
-  //             date: date,
-  //             location: location
-  //         })
-  //         if (eventId) {
-  //             FlowRouter.go('/eventView/' + eventId);
-  //         }
-  //         console.log(eventId);
-  //     }
-  // })
+
   Template.eventsPage.events({
     'click .manageDeleteButton': function(event){
       Modal.show("deleteEvent", event.target.id);
       Meteor.call(delEvent)
     },
     });
+
+    // Template.eventsPage.onCreated(function(){
+    //   Meteor.subscribe("Drafts");
+    // });
+    //
+    // Template.eventsPage.helpers({
+    //   'titles': function(){
+    //     return Posts.find({authorId: Meteor.userId()}, { sort: { lastUpdated: -1 } });
+    //   },
+    //   'drafts': function(){
+    //     console.log( Drafts.find());
+    //     console.log(Meteor.userId());
+    //     return Drafts.find({authorId: Meteor.userId()}, { sort: { lastUpdated: -1 } });
+    //   }
+    // });
+    //
+    // Template.eventsPage.events({
+    //   'click .manageDeleteButton': function(event){
+    //     Modal.show("deletePost", event.target.id);
+    //   },
+    //   'click .manageDraftDeleteButton': function(event){
+    //     Modal.show('deleteDraft', event.target.id);
+    //    }
+    // });
