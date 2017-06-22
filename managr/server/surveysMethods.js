@@ -33,6 +33,11 @@ export function surveysMethods() {
 				var choice2 = temparray[2];
 				var choice3 = temparray[3];
 				var choice4 = temparray[4];
+
+				// 	for(i = 1; i < 5; i++) {//or 0?
+				//  	var choice + i	= temparray[i];
+				//  }
+
 				console.log(option);
 				Questions.insert({
 					questionType: "choice",

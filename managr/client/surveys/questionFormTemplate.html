@@ -2,20 +2,20 @@
 <form class="questionFormSbmt" id="questionFormSbmt">
   <!-- <table class="createTable"> -->
     <!-- <tbody class="createTable"> -->
-      <tr>
-          <!-- <class="createTableBtn"> -->
-            <button type="submit" class="buttonStyle submitbtn addBtn" id="buttonn">Add</button>
+    <div class="compQuestionDiv">
+      <!-- <tr> -->
+        <!-- <class="createTableBtn"> -->
+          <button type="submit" class="buttonStyle submitbtn addBtn" id="buttonn">Add</button>
           <!-- </td> -->
-          <td class="createTableSlct">
+          <!-- <td class="createTableSlct"> -->
             <select name="selectType" class="dropdown" id="questionFormm">
               <option value="" disabled selected>Select Survey Type</option>
               <option value="choice">Multiple Choice</option>
               <option value="check">Check Boxes</option>
               <option value="shResp">Short Response</option>
             </select>
-          </td>
-      </tr>
-
+          <!-- </td> -->
+      <!-- </tr> -->
     <!-- </tbody> -->
   <!-- </table> -->
 
@@ -32,5 +32,6 @@
         {{> FRtemplate}}
       </div>
 
+</div>
 </form>
 </template>

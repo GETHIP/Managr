@@ -62,9 +62,8 @@ Template.questionFormTemplate.events({
 
 			//  if ( != null){
 			// 	 for(i = 0; i < 5; i++)
-			//  		= temparray[i]; //temparray.push(''); ?
+			//     temparray[i] = choice + i; //temparray.push('choice + i'); ?
 			//  }
-
 			 temparray = [question, choice1, choice2, choice3, choice4];
 			 //add card code here
 		 }
