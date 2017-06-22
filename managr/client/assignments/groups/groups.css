@@ -120,18 +120,21 @@
    font-size: 16px;
 }
 .removeStudents {
-  background-color: #ff4d4d;
+  background-color: #ff3333;
   float: right;
 }
 .removeStudents:hover {
-  background-color: #ff3333;
+  background-color: #ff211a;
 }
 .addStudents {
-  background-color: #70db70;
+  background-color: #47d147;
   float: left;
 }
 .addStudents:hover {
-  background-color: #5cd65c;
+  background-color: #33cc33;
+}
+.spacing {
+  letter-spacing: .2px;
 }
 .student input {
   margin: 5px;

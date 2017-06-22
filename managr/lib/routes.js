@@ -209,13 +209,6 @@ FlowRouter.route('/groups', {
 		BlazeLayout.render("groupsLayout", { content: 'groups' });
 	}
 });
-FlowRouter.route('/groups/create', {
-	name: 'createGroup',
-	action: function() {
-		BlazeLayout.render("groupsLayout", {content: 'createGroup'});
-	}
-});
-
 FlowRouter.route('/groups/edit/:id', {
 	name: 'editGroup',
 	action: function() {
@@ -228,10 +221,9 @@ FlowRouter.route('/myGroups', {
 		BlazeLayout.render("groupsLayout", {content: 'myGroups'});
 	}
 });
-
 FlowRouter.route('/groups/:id', {
-	name: 'groupProfile',
-	action: function() {
-		BlazeLayout.render("groupProfile", {content: 'groupProfile'});
-	}
+  	name: 'groupProfile',
+  	action: function() {
+  		BlazeLayout.render("groupProfile", {content: 'groupProfile'});
+  	}
 });
