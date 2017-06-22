@@ -1,5 +1,5 @@
 <template name="completedQuestion">
-  <div name="marginContainer compQuestionDiv">
+  <div name="marginContainer" class="compQuestionDiv">
     {{#each question in questions}}
       <p class="questionPrompt"><b>{{question.prompt}}</b></p>
       {{#if choicetype question.questionType}}

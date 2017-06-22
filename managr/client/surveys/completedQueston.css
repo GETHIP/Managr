@@ -10,7 +10,7 @@
 }
 
 .compQuestionDiv {
-  margin: 25px;
-  width: 40% !important;
-  align-content: center;
+  margin-left: 60px;
+  width: 85% !important;
+  align-self: enter;
 }
