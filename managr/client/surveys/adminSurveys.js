@@ -29,12 +29,11 @@ var getSurveysCompleted = function(student) {
       });
    }
 });*/
-
 Template.questionFormTemplate.events({
 	 'change #questionFormm'(event){
      //keeps page from refreshing
       event.preventDefault();
-
+			Session.setDefault('counter', 1);
       var select = document.getElementById("questionFormm");
       var option = select.value;
       console.log(option);
@@ -42,12 +41,13 @@ Template.questionFormTemplate.events({
 			questiontype();
    },
 	 'click #buttonn': function(event, template) {
-
 		 event.preventDefault();
-
+		 Session.set('counter', Session.get('counter') + 1);
+		 var count;
 		 var temparray;
 		 var option = document.getElementById("questionFormm").value;
 		 if(option == 'choice') {
+			 count = Session.get('counter');
 			 var question = Session.get('choiceQuestion');
 			 var choice1 = Session.get('choiceOption1');
 			 var choice2 = Session.get('choiceOption2');
@@ -65,7 +65,7 @@ Template.questionFormTemplate.events({
 			//  		= temparray[i]; //temparray.push(''); ?
 			//  }
 
-			 temparray = [question, choice1, choice2, choice3, choice4];
+			 temparray = [question, choice1, choice2, choice3, choice4, count];
 			 //add card code here
 		 }
 		 else if(option == 'check') {
@@ -75,6 +75,7 @@ Template.questionFormTemplate.events({
 			//  for (i = 0; i < 6; i++) {
 			//
 			//  }
+			 count = Session.get('counter');
 			 var question = Session.get('checkQuestion');
 			 var option1 = Session.get('checkOption1');
 			 var option2 = Session.get('checkOption2');
@@ -93,13 +94,14 @@ Template.questionFormTemplate.events({
 			 console.log(option3);
 			 console.log(option4);
 			 console.log(option5);
-			 temparray = [question, option1, option2, option3, option4, option5];
+			 temparray = [question, option1, option2, option3, option4, option5, count];
 			 //add card code here
 		 }
 		 else if(option == 'shResp') {
+			 count = Session.get('counter');
 			 var shResp = Session.get('shRespQuestion');
 			 Session.set('shRespQuestion', null);
-			 temparray = [shResp];
+			 temparray = [shResp, count];
 			 //add card code here
 		 } else {
 			 alert("Please select an option");
@@ -107,6 +109,12 @@ Template.questionFormTemplate.events({
 		 Meteor.call('addQuestion', option, temparray);
 		 clearForm();
 	 }
+});
+
+Template.questionFormTemplate.helpers({
+	counter: function() {
+		return Session.get('counter');
+	}
 });
 
 function questiontype() {

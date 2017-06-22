@@ -1,7 +1,9 @@
 <template name="completedQuestion">
   <div name="marginContainer">
     {{#each question in questions}}
-      <p class="questionPrompt"><b>{{question.prompt}}</b></p>
+      <p class="questionPrompt"><b>{{question.countNumber}}. {{question.prompt}}</b>
+          <i class="fa fa-window-close fa-2x" id="xicon" aria-hidden="true"></i>
+        </p>
       {{#if choicetype question.questionType}}
           <ul>
             {{#each option in question.options}}

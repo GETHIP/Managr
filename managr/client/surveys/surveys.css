@@ -44,8 +44,8 @@ label {
   margin-left: 2%;
 }
 
-.questionCard {
-  background: red;
-  margin-top: 10px;
-  
+#xicon {
+  color: #e61610;
+  float: right;
+  margin-bottom: 2%;
 }
