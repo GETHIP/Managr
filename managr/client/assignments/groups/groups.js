@@ -67,7 +67,6 @@ Template.groups.helpers({
 
 
 Template.groups.events({
-
     'click #createGroupButton': function(event) {
         Modal.show("createGroupModal", event.target.id);
     },
