@@ -227,6 +227,14 @@ FlowRouter.route('/events/edit/:id', {
 	}
 });
 
+// FlowRouter.route('/events/view/:id', {
+// 	name: 'viewEvent',
+// 	action: function() {
+// 		//BlazeLayout.reset();
+// 		BlazeLayout.render("eventsLayout", {content: 'viewEvent'});
+// 	}
+// });
+
 FlowRouter.route('/reports', {
     action: function(params, queryParams){
         BlazeLayout.render("reportsLayout", {content: 'reports'});
