@@ -6,6 +6,12 @@ Template.eventsPage.onRendered(() => {
 })
 
 Template.eventsPage.events({
+  'click .deleteEventButton': function(event) {
+      event.preventDefault();
+      const target = event.target;
+
+      Meteor.call("removeEvent", target.id);
+  },
 
   'click #calendarButton': function(event, template) {
     event.preventDefault();
