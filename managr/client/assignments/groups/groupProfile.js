@@ -33,7 +33,7 @@ Template.groupCoach.helpers({
   groupCoach: function() {
     let groupId = FlowRouter.getParam("id");
     var theGroup = Groups.findOne({"_id": groupId});
-    if (theGroup.coachNames.length == 0){
+    if (!theGroup.coachNames){
       return "None";
    } else {
       return theGroup.coachNames;
