@@ -39,7 +39,8 @@ export function surveysMethods() {
 					prompt: question,
 					options: [choice1, choice2, choice3, choice4]
 				});
-			} else if(option == 'check') {
+			}
+			else if(option == 'check') {
 				var question = temparray[0];
 				var option1 = temparray[1];
 				var option2 = temparray[2];
@@ -52,7 +53,8 @@ export function surveysMethods() {
 					prompt: question,
 					options: [option1, option2, option3, option4, option5]
 				});
-			} else if(option == 'shResp') {
+			}
+			else if(option == 'shResp') {
 				var question = temparray[0];
 				console.log(option);
 				Questions.insert({

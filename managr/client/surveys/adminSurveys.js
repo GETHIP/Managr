@@ -12,10 +12,9 @@ var getSurveysCompleted = function(student) {
         }
     }
     return completed;
-}
-*/
-/*
-Template.surveyFormTemplate.events({
+}*/
+
+/*Template.surveyFormTemplate.events({
 	 'click #surveySbmt'(event){
      //keeps page from refreshing
       event.preventDefault();
@@ -29,8 +28,7 @@ Template.surveyFormTemplate.events({
 				question:Questions
       });
    }
-});
-*/
+});*/
 
 Template.questionFormTemplate.events({
 	 'change #questionFormm'(event){
@@ -61,9 +59,16 @@ Template.questionFormTemplate.events({
 			 Session.set('choiceOption3', null);
 			 Session.set('choiceOption4', null);
 			 Session.set('choiceOption5', null);
+
+			//  if ( != null){
+			// 	 for(i = 0; i < 5; i++)
+			//  		= temparray[i]; //temparray.push(''); ?
+			//  }
+
 			 temparray = [question, choice1, choice2, choice3, choice4];
 			 //add card code here
-		 } else if(option == 'check') {
+		 }
+		 else if(option == 'check') {
 			// You can finish this for optimization later...
 			// or just completely get rid of Session stuff and replace the messyness
 			//  var checkArray = [];
@@ -90,7 +95,8 @@ Template.questionFormTemplate.events({
 			 console.log(option5);
 			 temparray = [question, option1, option2, option3, option4, option5];
 			 //add card code here
-		 } else if(option == 'shResp') {
+		 }
+		 else if(option == 'shResp') {
 			 var shResp = Session.get('shRespQuestion');
 			 Session.set('shRespQuestion', null);
 			 temparray = [shResp];
@@ -123,9 +129,6 @@ function questiontype() {
 	if (option == "shResp") {
 		document.getElementById('FRdiv').style.display = 'block';
 	}
-
-
-		// document.getElementById('visibleDiv').style.visibility='visible';//hidden
 }
 
 function clearForm() {
@@ -148,8 +151,7 @@ async function questiontype() {
 	if (option == "yesNo") {
 		document.getElementById('eachquestionentry').innerHTML = '{{>' + testing + '}}';
 	}
-}
-*/
+}*/
 
 Template.surveyFormTemplate.helpers({
 	allsurveys: function() {
@@ -165,7 +167,7 @@ Template.surveyFormTemplate.helpers({
       });
 		}
 });
-//
+
 // Meteor.startup(() => {
 // 	Surveys.remove({});
 // 	var temp = [{
@@ -178,46 +180,6 @@ Template.surveyFormTemplate.helpers({
 // 	}]
 // 	Surveys.insert({"title": "Random Test", "dueDate":"December 2", "studentsAssigned": ["Will Guo", "Abby Brooks", "Katie GErot", "Nick Nguyen"], "surveyId":"154209", temp});
 // });
-/************ DO NOT UNCOMMENT ************/
-/*Questions = new SimpleSchema({
-	type: {
-		type: String
-	},
-	prompt: {
-		type: String
-	},
-	answers: {
-		type: [String]
-	}
-});
-Surveys.schema = new SimpleSchema({
-    title: {
-        type: String,
-        label: "Title",
-        optional: false
-    },
-    dueDate: {
-        type: Date,
-        label: "Due Date",
-        optional: false
-    },
-    studentsCompleted: {
-        type: Number,
-        label: "Students Completed",
-        optional: true
-    },
-    studentsAssigned: {
-        type: [String],
-        label: "Students Assigned",
-        optional: false
-    },
-    question: {
-      type: [question]
-    }
-
-});
-
-Surveys.attachSchema(Surveys.schema);*/
 
 Template.MCtemplate.events({
 	'keyup #MCQuestion'(event) {
@@ -267,3 +229,44 @@ Template.FRtemplate.events({
 Template.completedQuestion.events({
 
 })
+
+/************ DO NOT UNCOMMENT ************/
+/*Questions = new SimpleSchema({
+	type: {
+		type: String
+	},
+	prompt: {
+		type: String
+	},
+	answers: {
+		type: [String]
+	}
+});
+Surveys.schema = new SimpleSchema({
+    title: {
+        type: String,
+        label: "Title",
+        optional: false
+    },
+    dueDate: {
+        type: Date,
+        label: "Due Date",
+        optional: false
+    },
+    studentsCompleted: {
+        type: Number,
+        label: "Students Completed",
+        optional: true
+    },
+    studentsAssigned: {
+        type: [String],
+        label: "Students Assigned",
+        optional: false
+    },
+    question: {
+      type: [question]
+    }
+
+});
+
+Surveys.attachSchema(Surveys.schema);*/
