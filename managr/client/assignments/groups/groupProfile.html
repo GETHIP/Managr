@@ -1,27 +1,67 @@
 <template name="groupProfile">
     {{> topNav}}
-        <div class="paddingNav">
+      <div class="paddingNav">
         <div class="marginContainer">
-            {{> groupName}}
-        <div class="groupsCard">
+        {{> groupName}}
+          <div class = "row">
+            <div class = "col-sm-6 col-xs-12" style="padding-left:0; padding-right:10;">
+          <div class="groupsCard">
+            {{> groupCoach}}
+          </div> </div>
+          <div class = "col-sm-6 col-xs-12" style="padding-left:10; padding-right:0;">
+          <div class="groupsCard">
+            {{> groupSize}}
+          </div> </div> </div>
+          <div class="row">
+          <div class="groupsCard">
             {{> studentNames}}
-        </div> </div> </div>
+          </div> </div>
+          <div class="row">
+          {{> groupButtons}}
+        </div>
+        </div>
+      </div>
 </template>
 
 
 <template name="groupName">
     {{#with groupName}}
+    <div class="row">
         <h1 class="titleAssignment"> {{groupName.name}}</h1>
-        <div class="orange-bar" style="background-color: #870000">&nbsp;</div>
+        <div class="orange-bar" style="background-color: #870000">&nbsp;</div> </div>
     {{/with}}
 </template>
 
 
 <template name="studentNames">
-    <p><strong>Group Members:</strong></p>
-    <ul>
-    {{#each name in studentNames}}
-        <li class="studentArray">{{name}}</li>
-    {{/each}}
-  </ul>
+      <p><strong>Group Members:</strong></p>
+      <ul>
+        {{#each name in studentNames}}
+            <li class="studentArray">{{name}}</li>
+        {{/each}}
+      </ul>
+</template>
+
+<template name="groupCoach">
+  <p><strong>Coach:</strong></p>
+   {{#with groupCoach}}
+        <p> {{groupCoach}}</p>
+    {{/with}}
+</template>
+
+<template name="groupSize">
+    <!--{{#with groupSize}}-->
+        <p><strong>Size:</strong></p>
+        <p> {{groupSize.size}}</p>
+    <!--{{/with}}-->
+</template>
+
+
+<template name="groupButtons">
+  <div class = "col-sm-6 col-xs-12" style="padding-left:0; padding-right:10;">
+	   <button type="button" class="buttonStyle groupBack">Back</button>
+  </div>
+  <div class = "col-sm-6 col-xs-12" style="padding-left:10; padding-right:0;">
+	   <button type="button" class="buttonStyle editGroupBtn">Edit Group</button>
+  </div>
 </template>

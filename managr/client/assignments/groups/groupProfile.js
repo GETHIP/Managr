@@ -28,3 +28,33 @@ Template.studentNames.helpers({
     }
   }
 });
+
+Template.groupCoach.helpers({
+  groupCoach: function() {
+    let groupId = FlowRouter.getParam("id");
+    var theGroup = Groups.findOne({"_id": groupId});
+    if (theGroup.coachNames.length == 0){
+      return "None";
+   } else {
+      return theGroup.coachNames;
+   }
+  }
+});
+
+Template.groupSize.helpers({
+  groupSize: function() {
+    let groupId = FlowRouter.getParam("id");
+    var groupSize = Groups.findOne({"_id": groupId});
+    return groupSize;
+  }
+});
+
+
+Template.groupButtons.events({
+	"click .editGroupBtn" (event) {
+		FlowRouter.go("/groups/edit/" + FlowRouter.getParam("id"));
+	},
+	"click .groupBack" (event) {
+		FlowRouter.go("/groups/");
+	}
+});
