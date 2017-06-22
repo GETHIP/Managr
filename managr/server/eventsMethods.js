@@ -24,7 +24,6 @@ export function eventsMethods() {
 				location: location
 			});
     },
-
 			'updateEvent': function(eventId, eventName, description, date, formattedDate, location) {
 				if(!isInstructor()) {
 					return;

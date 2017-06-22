@@ -139,7 +139,7 @@ button.createdEvent {
 #attendingButton:hover {
   background-color: #BD79FF;
 }
-#deleteEventButton {
+.deleteEventButton {
   width: 100%;
   font-size: 18px;
   padding: 7px;
