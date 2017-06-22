@@ -36,17 +36,33 @@ Template.leaderboard.helpers({
       }
     //  console.log(star_rating.length);
       if(star_rating.length != 0){
-        stars = 0
-        //star_rating = star_rating.fetch();
-        star_rating = star_rating[0].stars;
-      //  console.log(star_rating);
-        var stars = (eval(star_rating[0]) + eval(star_rating[1]) + eval(star_rating[2]) + eval(star_rating[3]))/4
-        //console.log(stars);
-        var effort = star_rating[0];
-        var attitude = star_rating[1];
-        var teamwork = star_rating[2];
-        var tech = star_rating[3];
-        var attendanceNumber = 0;
+        var effortTot = 0;
+        var attTot = 0;
+        var teamTot = 0;
+        var techTot = 0;
+        for (var i = 0; i < star_rating.length; i++){
+          effortTot += eval(star_rating[i].stars[0]);
+          //console.log(effortTot)
+          attTot += eval(star_rating[i].stars[1]);
+          teamTot += eval(star_rating[i].stars[2]);
+          techTot += eval(star_rating[i].stars[3]);
+        }
+        var effort = effortTot/star_rating.length;
+        var attitude = attTot/star_rating.length;
+        var teamwork = teamTot/star_rating.length;
+        var tech = techTot/star_rating.length;
+        var stars = (effort + attitude + teamwork + tech)/4
+      //   stars = 0
+      //   //star_rating = star_rating.fetch();
+      //   star_rating = star_rating[0].stars;
+      // //  console.log(star_rating);
+      //   var stars = (eval(star_rating[0]) + eval(star_rating[1]) + eval(star_rating[2]) + eval(star_rating[3]))/4
+      //   //console.log(stars);
+      //   var effort = star_rating[0];
+      //   var attitude = star_rating[1];
+      //   var teamwork = star_rating[2];
+      //   var tech = star_rating[3];
+         var attendanceNumber = 0;
       }else{
         var stars = 0;
         var effort = 0;
@@ -63,12 +79,13 @@ Template.leaderboard.helpers({
           }
       });
       element.attendanceNumber = attendanceNumber;
-
+      //console.log(element.attendance)
+      //console.log(attendanceNumber);
         element.average = Math.round(stars*10)/10; // rounds to the nearest tenths
-        element.effort = effort;
-        element.attitude = attitude;
-        element.teamwork = teamwork;
-        element.technical = tech;
+        element.effort = Math.round(effort*10)/10;
+        element.attitude = Math.round(attitude*10)/10;
+        element.teamwork = Math.round(teamwork*10)/10;
+        element.technical = Math.round(tech*10)/10;
       //  console.log(element.effort);
       //  console.log(element.average);
         //console.log(element.attitude)
@@ -76,13 +93,13 @@ Template.leaderboard.helpers({
 
       stuarry.push(element);
       //console.log("ushing to stuarray")
-      console.log(stuarry)
+      //console.log(stuarry)
     });
   //  stuarry.sort();
     var select = document.getElementById("sortingChoice");
     try {
       var option = select.value;
-      console.log(option);
+      //console.log(option);
       if (option == "sortAlpha"){
         stuarry.sort(function(a, b){
           if (a.name < b.name) {return -1;}
