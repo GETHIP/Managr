@@ -298,8 +298,12 @@ td.alignmid {
 	padding-right: 24px;
   padding-top: 24px;
   padding-bottom: 24px;
-width: 100%;
+  width: 100%;
   margin-bottom: 3%;
+}
+
+.nomargin {
+  margin: 0px;
 }
 
 .buttonStyle.editGroupBtn {

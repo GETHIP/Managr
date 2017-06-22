@@ -15,8 +15,6 @@ Template.editGroup.onCreated(function() {
 						FlowRouter.go("/groups");
 				}
 				else {
-						allAdded = findStudentsIn();
-						allNotAdded = findStudentsNot(allAdded);
 						BlazeLayout.render("groupsLayout", {content: 'editGroup'});
 				}
 		});
@@ -30,7 +28,6 @@ Template.editGroup.onCreated(function() {
 
 		allAdded = findStudentsIn();
 		allNotAdded = findStudentsNot(allAdded);
-
 });
 
 function findStudentsIn() {
