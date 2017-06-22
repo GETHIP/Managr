@@ -117,6 +117,7 @@
    width: 48%;
    color: white;
    border-top: none;
+   font-size: 16px;
 }
 .removeStudents {
   background-color: #ff4d4d;
