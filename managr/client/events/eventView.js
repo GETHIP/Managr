@@ -26,6 +26,16 @@ Template.eventView.events({
 	}
 });
 
+Template.eventsPage.events({
+'click .slider': function(event){
+  if(document.getElementById("indicator").innerHTML == "Attending"){
+      document.getElementById("indicator").innerHTML = "Not Attending"
+  }else{
+      document.getElementById("indicator").innerHTML = "Attending"
+  }
+}
+});
+
 Template.eventView.helpers({
 	host: function() {
 		return getThisEvent().host;
