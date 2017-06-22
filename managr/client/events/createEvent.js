@@ -22,13 +22,15 @@ Template.createEvent.events({
     var formattedDate = moment(newDate).format("MMMM D,  YYYY [at] h:mm A");
     var date = target.date.value;
 
+    console.log(hostId);
+    console.log(host);
     console.log(eventName);
     console.log(description);
     console.log(location);
     console.log(date);
     console.log(formattedDate);
 
-    Meteor.call("createNewEvent", hostId, host, eventName, description, date, location, formattedDate);
+    Meteor.call("createNewEvent", hostId, host, eventName, description, date, formattedDate, location);
 
     FlowRouter.go('/events');
   }
