@@ -74,7 +74,7 @@ Template.eventsPage.helpers({
   // })
   Template.eventsPage.events({
     'click .manageDeleteButton': function(event){
-      Modal.show("deletePost", event.target.id);
+      Modal.show("deleteEvent", event.target.id);
       Meteor.call(delEvent)
     },
     });
