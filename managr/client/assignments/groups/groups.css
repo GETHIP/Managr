@@ -281,9 +281,7 @@
   margin-right: 2%;
   }
 
-.studentArray {
 
-}
 
 .groupsCard {
 	background-color: white;
@@ -292,6 +290,29 @@
 	padding-right: 24px;
   padding-top: 24px;
   padding-bottom: 24px;
-  width: 50%;
-  margin: auto;
+width: 100%;
+  margin-bottom: 3%;
+}
+
+.buttonStyle.editGroupBtn {
+  float: right;
+  background-color: #870000;
+  padding-top: 2.5%;
+  padding-bottom:2.5%;
+}
+
+.buttonStyle.groupBack {
+  float: left;
+  padding-top: 2.5%;
+  padding-bottom:2.5%;
+  background-color: #870000;
+
+}
+
+.buttonStyle.editGroupBtn:hover {
+  background-color: #660000;
+}
+
+.buttonStyle.groupBack:hover {
+  background-color: #660000;
 }
