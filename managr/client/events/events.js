@@ -6,13 +6,6 @@ Template.eventsPage.onRendered(() => {
 })
 
 Template.eventsPage.events({
-  'click .deleteEventButton': function(event) {
-      event.preventDefault();
-      const target = event.target;
-
-      Meteor.call("removeEvent", target.id);
-  },
-
   'click #calendarButton': function(event, template) {
     event.preventDefault();
     FlowRouter.go('/events/calendar');
@@ -58,8 +51,7 @@ Template.eventsPage.helpers({
   });
 
   Template.eventsPage.events({
-    'click .manageDeleteButton': function(event){
-      Modal.show("deletePost", event.target.id);
-      Meteor.call(delEvent);
+    'click .deleteEventButton': function(event){
+      Modal.show("deleteEvent", event.target.id);
     },
-  });
+  })
