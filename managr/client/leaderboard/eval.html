@@ -1,14 +1,15 @@
 <template name="eval">
   <div class="marginContainer">
+    {{#with evalA}}
   <h1 class="titleEvaluations">Evaluations</h1>
   <div class="purple-bar">&nbsp;</div>
 
 <div class="evaluationContainer">
-{{#with evalA}}
+
   <div>
 
-<p class="evaluatorEval"><strong>To: Jacon Gideob</strong></p>
-  <p class="evaluateeEval"><strong>From: Cato Longe</strong></p>
+<p class="evaluatorEval"><strong>To: {{to}}</strong></p>
+  <p class="evaluateeEval"><strong>From: {{from}}</strong></p>
   <strong><p class="timeStamp">Date: {{formDate}}</p></strong>
 
   <p class="starEval"><strong>Effort:
@@ -49,11 +50,10 @@
   </strong></p>
 </div>
   <p class="evalContent">{{message}} </p>
-{{/with}}
 </div>
-
 <button class="buttonStyleEval editEval">Edit</button>
 <button class="buttonStyleEval deleteEval">Delete</button>
+{{/with}}
 </div>
 </template>
 <template name="star1">

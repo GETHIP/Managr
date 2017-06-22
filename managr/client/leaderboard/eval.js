@@ -23,6 +23,9 @@ Template.eval.helpers({
     var newDate = moment(data.timestamp);
 		var formattedDate = moment(newDate).format("MMMM D [,] YYYY");
     data.formDate = formattedDate;
+    data.to = Student.findOne({_id: data.evaluatee}).name;
+    data.from = Instructor.findOne({_id: data.evaluator}).name;
+    console.log(data.from);
     console.log(data.formDate);
 		return data;
   }
