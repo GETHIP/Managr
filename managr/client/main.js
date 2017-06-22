@@ -80,7 +80,7 @@ studentIndex = new EasySearch.Index({
 
 eventsIndex = new EasySearch.Index({
 	collection: Events,
-	fields: ['name', 'description', 'location'],
+	fields: ['name', 'description', 'location', 'host'],
 	defaultSearchOptions: {
 		limit: 1000
 	},
@@ -93,7 +93,8 @@ eventsIndex = new EasySearch.Index({
 					date: doc.date,
 					location: doc.location,
 					formattedDate: doc.formattedDate,
-					eventId: doc._id
+					eventId: doc._id,
+					host: doc.host
 			};
 			return eachEvent;
 	  }

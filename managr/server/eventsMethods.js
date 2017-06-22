@@ -10,11 +10,13 @@ import { isStudent, isInstructor, userIsValid, currentUserOrInstructor, nameOfUs
 
 export function eventsMethods() {
 	Meteor.methods({
-    'createNewEvent': function(eventName, description, date, location, formattedDate) {
+    'createNewEvent': function(hostId, host, eventName, description, date, location, formattedDate) {
       if(!isInstructor()) {
         return;
       }
 			Events.insert({
+				hostId: hostId,
+				host: host,
 	      name: eventName,
 	      description: description,
 				date: date,
@@ -39,7 +41,12 @@ export function eventsMethods() {
 			}
 		});
 	}
-
+	// 'delEvent': function(id) {
+	// 	correctId = Events.findOne({_id: id}).hostId;
+	// 	if(correctId == Meteor.userId()){
+	// 		Events.remove({_id: id});
+	// 	}
+	// },
 
 // export function eventsMethods() {
 // 	Meteor.methods({

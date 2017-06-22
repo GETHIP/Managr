@@ -15,6 +15,12 @@ EventSchema = new SimpleSchema({
         optional: true,
         max: 50
     },
+    hostId: {
+        type: String,
+        label: "HostId",
+        optional: true,
+        max: 50
+    },
     name: {
         type: String,
         label: "Title",
