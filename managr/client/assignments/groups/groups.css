@@ -297,3 +297,8 @@ td.alignmid {
   width: 50%;
   margin: auto;
 }
+
+.tableRowFormat.groups:hover {
+  cursor: pointer;
+  background-color: #ffe6e6 !important;
+}
