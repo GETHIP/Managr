@@ -1,15 +1,16 @@
 <template name="completedQuestion">
   <div name="marginContainer">
     {{#each question in questions}}
-      <p>Question: {{question.prompt}}</p>
-      {{#if choicetype question.questionType}}
+      <div class="questionCard">
+        <p>Question: {{question.prompt}}</p>
+        {{#if choicetype question.questionType}}
         <p>Choices:</p>
-          <ul>
-            {{#each option in question.options}}
-              <li>{{option}}</li>
-            {{/each}}
-          </ul>
-      {{/if}}
+        <ul>
+          {{#each option in question.options}}
+          <li>{{option}}</li>
+          {{/each}}
+        </ul>
+        {{/if}}
       {{#if checktype question.questionType}}
         <p>Options:</p>
           <ul>
@@ -18,6 +19,7 @@
             {{/each}}
           </ul>
       {{/if}}
+      </div>
       <!-- {{else if this.questionType in checkType}} -->
     {{/each}}
   </div>

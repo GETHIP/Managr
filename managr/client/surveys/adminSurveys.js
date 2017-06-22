@@ -99,6 +99,7 @@ Template.questionFormTemplate.events({
 			 alert("Please select an option");
 		 }
 		 Meteor.call('addQuestion', option, temparray);
+		 clearForm();
 	 }
 });
 
@@ -125,6 +126,14 @@ function questiontype() {
 
 
 		// document.getElementById('visibleDiv').style.visibility='visible';//hidden
+}
+
+function clearForm() {
+	document.getElementById("MCform").reset();
+	document.getElementById("CBform").reset();
+	document.getElementById("FRform").reset();
+	document.getElementById("questionSbmt").reset();
+	document.getElementById("questionSbmt2").reset();
 }
 
 // document.getElementById('visibleDiv').style.display = 'none';

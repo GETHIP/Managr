@@ -1,40 +1,45 @@
-<template name="MCtemplate">
+<template name="MCtemplate" id="MCtemplate">
     <!-- MC SECTION -->
 <div>
   <div class="MCtemp">
+    <form name="MCform" id="MCform">
     <p class="noIndent surveyFormFormat"><b>Question:</b></p>
     <input id="MCQuestion" type="text" name="prompt" class="createSurveyForm">
     <p></p>
 
     <table class="selectionTable">
+      <tr class="selectionRowFormat">
+      </tr>
+      <p></p>
       <form name="questionSbmt" id="questionSbmt">
         <tr class="selectionRowFormat">
           <ul>
-            <li>
-              <input id="MC1radio" type="radio" name="MCQ" value="1" class="selectionForm MClabel" />
-              <label>
-                <input id="MC1question" type="text" value="{{MC}}" name=mc1 class=" selectionForm createSurveyForm" placeholder="Option 1">
-              </label>
+            <li><input id="MC1radio" type="radio" name="MCQ" value="1" class="selectionForm MClabel" />
+              <label><input id="MC1question" type="text" value="{{MC}}" name=mc1 class=" selectionForm createSurveyForm" placeholder="Option 1"></label>
             </li>
             <li><input id="MC2radio" type="radio" name="MCQ" value="2" class="selectionForm MClabel" />
-              <label> <input id="MC2question" type="text" value="{{MC}}" name=mc2 class="selectionForm createSurveyForm" placeholder="Option 2"> </label> </li>
+              <label> <input id="MC2question" type="text" value="{{MC}}" name=mc2 class="selectionForm createSurveyForm" placeholder="Option 2"> </label>
+            </li>
             <li><input id="MC3radio" type="radio" name="MCQ" value="3" class="selectionForm MClabel" />
-              <label> <input id="MC3question" type="text" value="{{MC}}" name=mc3 class="selectionForm  createSurveyForm" placeholder="Option 3"> </label> </li>
+              <label> <input id="MC3question" type="text" value="{{MC}}" name=mc3 class="selectionForm  createSurveyForm" placeholder="Option 3"> </label>
+            </li>
             <li><input id="MC4radio" type="radio" name="MCQ" value="4" class="selectionForm MClabel" />
-              <label><input id="MC4question" type="text" value="{{MC}}" name=mc4 class="selectionForm createSurveyForm" placeholder="Option 4"> </label> </li>
+              <label><input id="MC4question" type="text" value="{{MC}}" name=mc4 class="selectionForm createSurveyForm" placeholder="Option 4"> </label>
+            </li>
           </ul>
         </tr>
-
       </form>
     </table>
+  </form>
   </div>
 </div>
 </template>
 
-<template name="CBtemplate">
+<template name="CBtemplate" id="CBtemplate">
 <!-- CB SECTION -->
 <div>
 <div class="CBtemp">
+  <form name="CBform" id="CBform">
   <p class="noIndent surveyFormFormat"><b>Question:</b></p>
   <input id="checkQuestion" type="text" name="prompt" class="createSurveyForm">
   <p></p>
@@ -42,47 +47,44 @@
     <tr class="selectionRowFormat">
     </tr>
     <p></p>
-    <form name="questionSbmt" id="questionSbmt">
+    <form name="questionSbmt2" id="questionSbmt2">
     <tr class="selectionRowFormat">
-      <td>
       <ul>
         <li><input type="checkbox" name="CBQ" value="1" class="selectionForm MClabel" />
-          <label> <input id="checkOption1" type="text" value="{{CB}}" name=cb1 class="selectionForm createSurveyForm" placeholder="Option 1"> </label> </li>
+          <label> <input id="checkOption1" type="text" value="{{CB}}" name=cb1 class="selectionForm createSurveyForm" placeholder="Option 1"> </label>
+        </li>
         <li><input type="checkbox" name="CBQ" value="2" class="selectionForm MClabel" />
-          <label> <input id="checkOption2" type="text" value="{{CB}}" name=cb2 class="selectionForm createSurveyForm" placeholder="Option 2"> </label> </li>
+          <label> <input id="checkOption2" type="text" value="{{CB}}" name=cb2 class="selectionForm createSurveyForm" placeholder="Option 2"> </label>
+        </li>
         <li><input type="checkbox" name="CBQ" value="3" class="selectionForm MClabel" />
-          <label> <input id="checkOption3" type="text" value="{{CB}}" name=cb2 class="selectionForm createSurveyForm" placeholder="Option 3"> </label> </li>
+          <label> <input id="checkOption3" type="text" value="{{CB}}" name=cb2 class="selectionForm createSurveyForm" placeholder="Option 3"> </label>
+        </li>
         <li><input type="checkbox" name="CBQ" value="4" class="selectionForm MClabel" />
-          <label> <input id="checkOption4" type="text" value="{{CB}}" name=cb2 class="selectionForm createSurveyForm" placeholder="Option 4"> </label> </li>
+          <label> <input id="checkOption4" type="text" value="{{CB}}" name=cb2 class="selectionForm createSurveyForm" placeholder="Option 4"> </label>
+        </li>
         <li><input type="checkbox" name="CBQ" value="5" class="selectionForm MClabel" />
-          <label> <input id="checkOption5" type="text" value="{{CB}}" name=cb2 class="selectionForm createSurveyForm" placeholder="Option 5"> </label> </li>
-
+          <label> <input id="checkOption5" type="text" value="{{CB}}" name=cb2 class="selectionForm createSurveyForm" placeholder="Option 5"> </label>
+        </li>
       </ul>
-      </td>
     </tr>
-    <!--<tr>
-      <td>
-        <input type="text" value="{{optionNumber}}" name=oN class="createSurveyForm" placeholder="Enter number of additional options">
-      </td>
-      <td>
-        <button type="button" class="buttonStyle submitbtn addBtnn">Add</button>
-      </td>
-    </tr>-->
   </form>
   </table>
+</form>
 </div>
 </div>
 </template>
 
-<template name="FRtemplate">
+<template name="FRtemplate" id="FRtemplate">
     <!-- FR SECTION -->
   <div>
     <div class="FRtemp">
+      <form name="FRform" id="FRform">
       <p class="noIndent surveyFormFormat"><b>Question:</b></p>
       <input id="shRespQuestion" type="text" name="prompt" class="createSurveyForm">
 
       <!-- <p class="noIndent surveyFormFormat"><b>Response:</b></p>
       <input type="text" name="FRQ" class="selectionForm createSurveyForm"> -->
+    </form>
   </div>
 </div>
 </template>
