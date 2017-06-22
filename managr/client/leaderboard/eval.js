@@ -31,9 +31,11 @@ Template.eval.helpers({
   }
 });
 
-Template.leaderboard.events({
-  'click .delBtn': function(event){
-    Meteor.call("delEval", FlowRouter.getParam("id"));
+Template.eval.events({
+  'click .deleteEval': function(event){
+    console.log(3423423)
+  Meteor.call("removeEval",FlowRouter.getParam("id"));
+  FlowRouter.go("/viewEval")
     event.preventDefault();
   },
   'click .updateBtn': function(event){
