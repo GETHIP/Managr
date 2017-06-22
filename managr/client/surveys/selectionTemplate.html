@@ -1,19 +1,28 @@
-<template name="MCtemplate">
+<template name="MCtemplate" id="MCtemplate">
     <!-- MC SECTION -->
 <div>
   <div class="MCtemp">
+<<<<<<< HEAD
     <p class="noIndent selectionQuestion"><b>Question:</b></p>
     <input id="MCQuestion" type="text" name="prompt" class="createSurveyForm selctionQuestInput">
 
     <table class="selectionTable">
       <form name="questionSbmt"  class="questionOptions" id="questionSbmt">
+=======
+    <form name="MCform" id="MCform">
+    <p class="noIndent surveyFormFormat"><b>Question:</b></p>
+    <input id="MCQuestion" type="text" name="prompt" class="createSurveyForm">
+
+    <table class="selectionTable">
+      <tr class="selectionRowFormat">
+      </tr>
+      <p></p>
+      <form name="questionSbmt" id="questionSbmt">
+>>>>>>> 81260dfbf1255e25d6c59f8f2b55338df094612d
         <tr class="selectionRowFormat">
           <ul>
-            <li>
-              <input id="MC1radio" type="radio" name="MCQ" value="1" class="selectionForm MClabel" />
-              <label>
-                <input id="MC1question" type="text" value="{{MC}}" name=mc1 class=" selectionForm createSurveyForm" placeholder="Option 1">
-              </label>
+            <li><input id="MC1radio" type="radio" name="MCQ" value="1" class="selectionForm MClabel" />
+              <label><input id="MC1question" type="text" value="{{MC}}" name=mc1 class=" selectionForm createSurveyForm" placeholder="Option 1"></label>
             </li>
             <li>
               <input id="MC2radio" type="radio" name="MCQ" value="2" class="selectionForm MClabel" />
@@ -37,22 +46,28 @@
         </tr>
       </form>
     </table>
+  </form>
   </div>
 </div>
 </template>
 
-<template name="CBtemplate">
+<template name="CBtemplate" id="CBtemplate">
 <!-- CB SECTION -->
 <div>
 <div class="CBtemp">
+  <form name="CBform" id="CBform">
   <p class="noIndent surveyFormFormat"><b>Question:</b></p>
   <input id="checkQuestion" type="text" name="prompt" class="createSurveyForm">
   <table class="selectionTable">
     <tr class="selectionRowFormat">
     </tr>
+<<<<<<< HEAD
     <form name="questionSbmt" class="questionOptions" id="questionSbmt">
+=======
+    <p></p>
+    <form name="questionSbmt2" id="questionSbmt2">
+>>>>>>> 81260dfbf1255e25d6c59f8f2b55338df094612d
     <tr class="selectionRowFormat">
-      <td>
       <ul>
         <li>
           <input type="checkbox" name="CBQ" value="1" class="selectionForm MClabel" />
@@ -85,20 +100,25 @@
           </label>
         </li>
       </ul>
-      </td>
     </tr>
   </form>
   </table>
+</form>
 </div>
 </div>
 </template>
 
-<template name="FRtemplate">
+<template name="FRtemplate" id="FRtemplate">
     <!-- FR SECTION -->
   <div>
     <div class="FRtemp">
+      <form name="FRform" id="FRform">
       <p class="noIndent surveyFormFormat"><b>Question:</b></p>
       <input id="shRespQuestion" type="text" name="prompt" class="createSurveyForm">
-   </div>
- </div>
+
+      <!-- <p class="noIndent surveyFormFormat"><b>Response:</b></p>
+      <input type="text" name="FRQ" class="selectionForm createSurveyForm"> -->
+    </form>
+  </div>
+</div>
 </template>

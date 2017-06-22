@@ -105,6 +105,7 @@ Template.questionFormTemplate.events({
 			 alert("Please select an option");
 		 }
 		 Meteor.call('addQuestion', option, temparray);
+		 clearForm();
 	 }
 });
 
@@ -128,6 +129,14 @@ function questiontype() {
 	if (option == "shResp") {
 		document.getElementById('FRdiv').style.display = 'block';
 	}
+}
+
+function clearForm() {
+	document.getElementById("MCform").reset();
+	document.getElementById("CBform").reset();
+	document.getElementById("FRform").reset();
+	document.getElementById("questionSbmt").reset();
+	document.getElementById("questionSbmt2").reset();
 }
 
 /*async function questiontype() {
