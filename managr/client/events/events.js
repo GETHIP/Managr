@@ -60,30 +60,6 @@ Template.eventsPage.helpers({
   Template.eventsPage.events({
     'click .manageDeleteButton': function(event){
       Modal.show("deletePost", event.target.id);
-      Meteor.call(delEvent)
+      Meteor.call(delEvent);
     },
-    });
-
-    // Template.eventsPage.onCreated(function(){
-    //   Meteor.subscribe("Drafts");
-    // });
-    //
-    // Template.eventsPage.helpers({
-    //   'titles': function(){
-    //     return Posts.find({authorId: Meteor.userId()}, { sort: { lastUpdated: -1 } });
-    //   },
-    //   'drafts': function(){
-    //     console.log( Drafts.find());
-    //     console.log(Meteor.userId());
-    //     return Drafts.find({authorId: Meteor.userId()}, { sort: { lastUpdated: -1 } });
-    //   }
-    // });
-    //
-    // Template.eventsPage.events({
-    //   'click .manageDeleteButton': function(event){
-    //     Modal.show("deletePost", event.target.id);
-    //   },
-    //   'click .manageDraftDeleteButton': function(event){
-    //     Modal.show('deleteDraft', event.target.id);
-    //    }
-    // });
+  });
