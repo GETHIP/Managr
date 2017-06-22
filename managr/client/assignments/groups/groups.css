@@ -18,6 +18,8 @@
 }
 .buttonCollection {
   text-align: right;
+  width: 150px;
+  float: right;
 }
 .groupButton.deleteGroup {
     background: #B2332F;
@@ -36,7 +38,7 @@
     padding-bottom: 2%;
     border-bottom: 1px solid #444444;
     color: white;
-    width: 25%;
+    width: 30%;
     font-size: 18px;
 }
 .namesInGroup {

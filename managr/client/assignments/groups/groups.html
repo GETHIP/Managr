@@ -27,13 +27,13 @@
                     <th class="groupsTableHead">Name</th>
                     <th class="groupsTableHead">Coach</th>
                     <th class="groupsTableHead">Size</th>
-                    <th class="groupsTableHead"></th>
+                    <th class="groupsTableHead" style="width:10%"></th>
                 </tr>
             </thead>
             {{#EasySearch.Each index=groupIndex attributes=searchBarGroup}}
               <tr id="{{groupId}}" class="tableRowFormat groups">
-                  <td style="position:relative; vertical-align:middle;"><div class="groupName" onclick="FlowRouter.go('/groups/{{groupId}}')">{{name}}</div>
-                    <p class="previewStudentsBtn">i</p>
+                  <td id="{{groupId}}" style="position:relative; vertical-align:middle;" class="groupRow"><div id="{{groupId}}" class="groupName groupRow">{{name}}</div>
+                    <p id="{{groupId}}" class="previewStudentsBtn groupRow">i</p>
                     <div class="info">
                       <ul style="margin: 0px 0px 0px 18px">
                           {{#each student in students}}
@@ -44,15 +44,15 @@
                       </ul>
                     </div>
                   </td>
-                  <td class="alignmid">
+                  <td id="{{groupId}}" class="alignmid groupRow">
                       <div>
                           <ul style="margin: 0px">
                               {{allcoaches coaches}}
                           </ul>
                       </div>
                   </td>
-                  <td class="alignmid">{{size}}</td>
-                  <td class="alignmid">
+                  <td id="{{groupId}}" class="alignmid groupRow">{{size}}</td>
+                  <td class="alignmid ">
                       <div class="buttonCollection">
                           <button class="groupButton editGroup" id="{{groupId}}">Edit</button>
                           <button class="groupButton deleteGroup realDeleteGroupButton" id="{{groupId}}">Delete</button>

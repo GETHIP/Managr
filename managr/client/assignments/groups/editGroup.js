@@ -36,6 +36,9 @@ Template.editGroup.onCreated(function() {
 function findStudentsIn() {
 		var allAdded = [];
 		var thisGroup = Groups.findOne({ _id: FlowRouter.getParam('id')});
+		if(!thisGroup) {
+			return;
+		}
 		var groupStudentIds = thisGroup.studentIds;
 		for(var i = 0; i < groupStudentIds.length; i++) {
 				var thisStudent = Student.findOne({ _id: groupStudentIds[i] });

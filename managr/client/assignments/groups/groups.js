@@ -56,6 +56,9 @@ Template.groups.helpers({
         return groupIndex;
     },
     allcoaches: function(coaches) {
+        if(!coaches) {
+          return;
+        }
         var allCoaches = [];
         for(var i = 0; i < coaches.length; i++) {
             allCoaches.push(coaches[i].name);
@@ -91,5 +94,10 @@ Template.groups.events({
         /*var asdf = group.name;*/
         var group = Groups.findOne({_id: e.target.id});
 		    Modal.show('deleteGroupModal', group);
+    },
+    'click .groupRow': function(event) {
+        event.preventDefault();
+        const target = event.target;
+        FlowRouter.go("/groups/" + event.target.id);
     }
 });
