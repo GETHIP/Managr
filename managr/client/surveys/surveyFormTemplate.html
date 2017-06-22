@@ -16,6 +16,8 @@
     <p class="noIndent surveyFormFormat"><b>Completion Date:</b></p>
     <input type="date" name="dueDate" id="dueDate" class="createSurveyForm" required>
 
+    <hr class="nSurveyHr">
+
     {{> completedQuestion}}
 
       {{#each allsurveys}}
@@ -25,7 +27,11 @@
       {{/each}}
     {{/each}}
 
+    <hr class="nSurveyHr">
+
     {{>questionFormTemplate}}
+
+    <hr class="nSurveyHr">
 
     <p class="noIndent surveyFormFormat"><b>Assign Students:</b></p>
     <div class="selectStudents">

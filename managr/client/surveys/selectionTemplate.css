@@ -43,3 +43,16 @@
 .questionSbmt{
   width:60%;
 }
+
+.selectionQuestion {
+  font-size: 18px;
+  padding: 10px;
+}
+
+.selctionQuestInput {
+  margin-bottom: 20px !important;
+}
+
+.questionOptions {
+  margin: 0px;
+}
