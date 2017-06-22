@@ -5,5 +5,11 @@
 }
 
 .questionPrompt {
-  margin-top: 13px !important;
+  margin-top: 30px !important;
+  font-size: 18px;
+}
+
+.compQuestionDiv {
+  margin-left: 60px;
+  width: 85% !important;
 }

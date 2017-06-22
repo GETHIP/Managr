@@ -62,7 +62,7 @@ Template.questionFormTemplate.events({
 
 			//  if ( != null){
 			// 	 for(i = 0; i < 5; i++)
-			//  		= temparray[i]; //temparray.push(''); ?
+			//     temparray[i] = choice + i; //temparray.push('choice + i'); ?
 			//  }
 
 			 temparray = [question, choice1, choice2, choice3, choice4, count];
@@ -147,12 +147,7 @@ function clearForm() {
 	document.getElementById("questionSbmt2").reset();
 }
 
-// document.getElementById('visibleDiv').style.display = 'none';
-// document.visibleDiv.style.visibility='visible';//hidden
-
-
-/*
-async function questiontype() {
+/*async function questiontype() {
 	var select = document.getElementById("questionFormm");
 	var option = select.value;
 	var testing = "testing"

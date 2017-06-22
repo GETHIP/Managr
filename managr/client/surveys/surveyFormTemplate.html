@@ -15,7 +15,8 @@
     <!-- date input - events in adminSurveys.js uses name attr. if something breaks, try switching the "name" identifier to "id" -->
     <p class="noIndent surveyFormFormat"><b>Completion Date:</b></p>
     <input type="date" name="dueDate" id="dueDate" class="createSurveyForm" required>
-    <p class="noIndent surveyFormFormat"><b>Survey Questions:</b></p>
+
+    <hr class="nSurveyHr">
 
     {{> completedQuestion}}
 
@@ -26,7 +27,11 @@
       {{/each}}
     {{/each}}
 
+    <hr class="nSurveyHr">
+
     {{>questionFormTemplate}}
+
+    <hr class="nSurveyHr">
 
     <p class="noIndent surveyFormFormat"><b>Assign Students:</b></p>
     <div class="selectStudents">
