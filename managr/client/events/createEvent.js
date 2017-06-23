@@ -38,7 +38,7 @@ Template.createEvent.events({
 
 import { Groups } from '../../collections/groups.js';
 
-Template.editEvent.helpers({
+Template.createEvent.helpers({
     groups: function() {
         var allGroups = Groups.find({}).fetch();
         var formattedGroups = [];
