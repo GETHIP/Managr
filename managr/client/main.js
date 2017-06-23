@@ -82,6 +82,7 @@ eventsIndex = new EasySearch.Index({
 	collection: Events,
 	fields: ['name', 'description', 'location', 'host'],
 	defaultSearchOptions: {
+		sortBy: 'date',
 		limit: 1000
 	},
 	engine: new EasySearch.Minimongo({
@@ -97,7 +98,19 @@ eventsIndex = new EasySearch.Index({
 					host: doc.host
 			};
 			return eachEvent;
-	  }
+	  },
+		sort: function (searchObject, options) {
+				const sortBy = options.search.props.sortBy
+
+				if ('default' === sortBy) {
+					return;
+				}
+				else if ('date' === sortBy) {
+					return {
+						date: -1,
+					};
+				}
+		}
 	})
 });
 
