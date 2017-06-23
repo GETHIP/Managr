@@ -49,3 +49,10 @@ label {
   float: right;
   margin-bottom: 2%;
 }
+
+.deleteBtn {
+  padding: 0%;
+  border: none;
+  background: none;
+  float: right;
+}

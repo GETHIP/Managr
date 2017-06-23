@@ -1,8 +1,8 @@
 <template name="completedQuestion">
   <div name="marginContainer" class="compQuestionDiv">
     {{#each question in questions}}
-      <p class="questionPrompt"><b>{{question.countNumber}}. {{question.prompt}}</b>
-          <i class="fa fa-window-close fa-2x" id="xicon" aria-hidden="true"></i>
+      <p class="questionPrompt" id="{{surveyId}}"><b>{{question.prompt}}</b>
+          <button type="button" class="deleteBtn btn" id="{{surveyId}}"><i class="fa fa-window-close fa-2x" id="xicon" aria-hidden="true"></i></button>
         </p>
       {{#if choicetype question.questionType}}
           <ul>

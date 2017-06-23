@@ -2,19 +2,15 @@
     <!-- MC SECTION -->
 <div>
   <div class="MCtemp">
-
-    <p class="noIndent selectionQuestion"><b>Question:</b></p>
-    <input id="MCQuestion" type="text" name="prompt" class="createSurveyForm selctionQuestInput">
-
-      <form name="questionSbmt"  class="questionOptions" id="questionSbmt">
-
-
+    <form name="MCform" id="MCform">
+      <p class="noIndent selectionQuestion"><b>Question:</b></p>
+      <input id="MCQuestion" type="text" name="prompt" class="createSurveyForm selctionQuestInput">
+    </form>
     <table class="selectionTable">
       <tr class="selectionRowFormat">
       </tr>
-      <form name="questionSbmt" id="questionSbmt">
-
         <tr class="selectionRowFormat">
+        <form name="optionSbmt2" id="optionSbmt2">
           <ul>
             <li>
               <input id="MC1radio" type="radio" name="MCQ" value="1" class="selectionForm MClabel" />
@@ -41,10 +37,9 @@
               </label>
             </li>
           </ul>
+        </form>
         </tr>
-      </form>
     </table>
-  </form>
   </div>
 </div>
 </template>
@@ -54,15 +49,14 @@
 <div>
 <div class="CBtemp">
   <form name="CBform" id="CBform">
-  <p class="noIndent selectionQuestion"><b>Question:</b></p>
-  <input id="checkQuestion" type="text" name="prompt" class="createSurveyForm selctionQuestInput">
+    <p class="noIndent selectionQuestion"><b>Question:</b></p>
+    <input id="checkQuestion" type="text" name="prompt" class="createSurveyForm selctionQuestInput">
+  </form>
   <table class="selectionTable">
     <tr class="selectionRowFormat">
     </tr>
-
-    <form name="questionSbmt" class="questionOptions" id="questionSbmt">
-
     <tr class="selectionRowFormat">
+      <form name="optionSbmt" id="optionSbmt">
       <ul>
         <li>
           <input type="checkbox" name="CBQ" value="1" class="selectionForm MClabel" />
@@ -95,10 +89,9 @@
           </label>
         </li>
       </ul>
+        </form>
     </tr>
-  </form>
   </table>
-</form>
 </div>
 </div>
 </template>

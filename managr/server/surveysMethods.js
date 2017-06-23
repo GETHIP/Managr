@@ -12,6 +12,12 @@ import { isStudent, isInstructor, userIsValid, currentUserOrInstructor, nameOfUs
 
 export function surveysMethods() {
 	Meteor.methods({
+		'removeQuestion': function(surveyId) {
+			if(!isInstructor()) {
+				return;
+			}
+			Questions.remove(surveyId);
+		},
     'createNewSurvey': function(surveyName, date, question) {
       if(!isInstructor()) {
         return;
@@ -33,11 +39,9 @@ export function surveysMethods() {
 				var choice2 = temparray[2];
 				var choice3 = temparray[3];
 				var choice4 = temparray[4];
-				var count = temparray[5];
 				console.log(option);
 				Questions.insert({
 					questionType: "choice",
-					countNumber: count,
 					prompt: question,
 					options: [choice1, choice2, choice3, choice4]
 				});
@@ -49,11 +53,9 @@ export function surveysMethods() {
 				var option3 = temparray[3];
 				var option4 = temparray[4];
 				var option5 = temparray[5];
-				var count = temparray[6];
 				console.log(option);
 				Questions.insert({
 					questionType: "check",
-					countNumber: count,
 					prompt: question,
 					options: [option1, option2, option3, option4, option5]
 				});
@@ -64,7 +66,6 @@ export function surveysMethods() {
 				console.log(option);
 				Questions.insert({
 					questionType: "shResp",
-					countNumber: count,
 					prompt: question
 				});
 			}
