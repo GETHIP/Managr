@@ -1,3 +1,80 @@
 <template name="editEval">
+    <div class="marginContainer">
+    <select class="editDropDown" name="milestoneDropDown">
+      <option value="milestone1">Week 1</option>
+      <option value="milestone2">Week 2</option>
+    </select>
+    <div class="purple-bar">&nbsp;</div>
 
-</template>
+  <div class="evaluationContainer">
+
+    <div>
+
+  <p class="evaluatorEval"><strong>To: Tom</strong></p>
+    <p class="evaluateeEval"><strong>From: Jerry</strong></p>
+    <strong><p class="timeStamp">Date: September 3rd, 2022</p></strong>
+
+    <p class="starEval"><strong>Effort:
+        {{> starsRating rating=1 size='lg' mutable='true' class='mystar starScore'}}
+      <!--
+      {{#if equals fSt 2}} {{> star1}}
+      {{else if equals fSt 1}} {{> starEdit1}}
+      {{else if equals fSt 2}} {{> starEdit2}}
+      {{else if equals fSt 3}} {{> starEdit3}}
+      {{else if equals fSt 4}} {{> starEdit4}}
+      {{else if equals fSt 5}} {{> starEdit5}}
+      {{/if}} -->
+   </strong></p>
+    <p class="starEval"><strong>Attitude:
+        {{> starsRating rating=1 size='lg' mutable='true' class='mystar starScore'}}
+    <!--  {{#if equals fSt 2}} {{> star1}}
+      {{else if equals sSt 1}} {{> starEdit1}}
+      {{else if equals sSt 2}} {{> starEdit2}}
+      {{else if equals sSt 3}} {{> starEdit3}}
+      {{else if equals sSt 4}} {{> starEdit4}}
+      {{else if equals sSt 5}} {{> starEdit5}}
+      {{/if}} -->
+    </strong></p>
+    <p class="starEval"><strong>Teamwork:
+        {{> starsRating rating=1 size='lg' mutable='true' class='mystar starScore'}}
+      <!--{{#if equals fSt 2}} {{> star1}}
+      {{else if equals tSt 1}} {{> starEdit1}}
+      {{else if equals tSt 2}} {{> starEdit2}}
+      {{else if equals tSt 3}} {{> starEdit3}}
+      {{else if equals tSt 4}} {{> starEdit4}}
+      {{else if equals tSt 5}} {{> starEdit5}}
+      {{/if}} -->
+    </strong></p>
+    <p class="starEval"><strong>Technical Ability:
+  {{> starsRating rating=1 size='lg' mutable='true' class='mystar starScore'}}
+    <!--  {{#if equals fSt 2}} {{> star1}}
+      {{else if equals tSt 1}} {{> starEdit1}}
+      {{else if equals tSt 2}} {{> starEdit2}}
+      {{else if equals tSt 3}} {{> starEdit3}}
+      {{else if equals tSt 4}} {{> starEdit4}}
+      {{else if equals tSt 5}} {{> starEdit5}}
+      {{/if}} -->
+    </strong></p>
+  </div>
+  <textarea>Lorem ipsum dolor sit amet, et viverra ullamcorper tortor curabitur eros. Accusamus amet, amet amet dignissim vehicula libero, fringilla fusce minim vulputate pulvinar sapien, in nam mauris vestibulum nec, nec magna nec. Pulvinar orci dictum, placerat parturient pulvinar aliquam ac mollis ultricies, sit in ipsum arcu et pellentesque, leo vestibulum eget vestibulum, faucibus nisl magna. Lectus vehicula ac urna, nulla semper metus, vestibulum nonummy mattis pariatur euismod sed ullamcorper, gravida parturient eu fusce eget, magna cras hymenaeos. Libero wisi gravida nulla urna, mattis diam sed interdum nibh, erat at leo ullamcorper ac ante, tellus velit nunc integer phasellus, libero nec non ipsum. Wisi praesent ipsa aliquam orci. Vestibulum cras ornare bibendum cras.</textarea>
+  </div>
+  <button class="buttonStyleEval saveEval">Save</button>
+  <button class="buttonStyleEval deleteEval">Delete</button>
+
+  </div>
+  </template>
+  <template name="starEdit1">
+    {{> starsRating rating=1 size='lg' mutable='true' class='mystar starScore'}}
+  </template>
+  <template name="starEdit2">
+    {{> starsRating rating=2 size='lg' class='mystar starScore' mutable='true'}}
+  </template>
+  <template name="starEdit3">
+    {{> starsRating rating=3 size='lg' class='mystar starScore' mutable='true'}}
+  </template>
+  <template name="starEdit4">
+    {{> starsRating rating=4 size='lg' class='mystar starScore' mutable='true'}}
+  </template>
+  <template name="starEdit5">
+    {{> starsRating rating=5 size='lg' class='mystar starScore' mutable='true'}}
+  </template>
