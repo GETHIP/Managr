@@ -24,6 +24,7 @@ Template.editEval.helpers({
     var newDate = moment(data.timestamp);
     var formattedDate = moment(newDate).format("MMMM D [,] YYYY");
     data.formDate = formattedDate;
+    console.log(data.fOSt);
     return data;
   }
 });
@@ -31,13 +32,16 @@ Template.editEval.helpers({
 //id, message, star1, star2, star3, star4, milestone,
 Template.editEval.events({
   'click .saveEval': function(){
+    console.log("sdlf");
+    event.preventDefault();
       var message  = document.getElementById('message').value;
       var starBox1 = document.getElementById('starBox1').value;
       var starBox2 = document.getElementById('starBox2').value;
       var starBox3 = document.getElementById('starBox3').value;
       var starBox4 = document.getElementById('starBox4').value;
-      var week;
-      Meteor.call("editEval", message, starBox1, starBox2, starBox3, starBox4, week);
+      var week = "Week 3";
+      console.log(starBox2);
+      Meteor.call("editEval",FlowRouter.getParam("id"), message, starBox1, starBox2, starBox3, starBox4, week);
 
   }
 });

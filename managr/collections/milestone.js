@@ -13,4 +13,4 @@ var MileStoneSchema = new SimpleSchema({
     }
 });
 
-Instructor.attachSchema(MileStoneSchema);
+Milestone.attachSchema(MileStoneSchema);

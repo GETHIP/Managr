@@ -8,7 +8,6 @@ import { Groups } from '../collections/groups.js';
 import { Drafts } from '../collections/drafts.js';
 import { Globals } from '../collections/globals.js';
 import { Eval } from '../collections/eval.js'
-import { Eval } from '../collections/eval.js';
 import { Milestone } from '../collections/milestone.js';
 
 export function publishAll() {

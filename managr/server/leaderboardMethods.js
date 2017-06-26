@@ -18,8 +18,9 @@ export function leaderboardMethods() {
     'removeEval' : function(id){
         Eval.remove({"_id": id});
     },
-    'editEval' : function(id){
-			Eval.update({_id: id})
+    'editEval' : function(id, message, star1, star2, star3, star4, milestone, ){
+			var stars = [star1, star2, star3, star4];
+			Eval.update({"_id": id}, {$set: {message: message, stars: stars, week: milestone}});
     }
 	});
 }
