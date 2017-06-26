@@ -22,7 +22,7 @@
     {{/if}}
  </strong></p>
   <p class="starEval"><strong>Attitude:
-    {{#if equals fSt 2}} {{> star1}}
+    {{#if equals sSt 2}} {{> star1}}
     {{else if equals sSt 1}} {{> star1}}
     {{else if equals sSt 2}} {{> star2}}
     {{else if equals sSt 3}} {{> star3}}
@@ -31,7 +31,7 @@
     {{/if}}
   </strong></p>
   <p class="starEval"><strong>Teamwork:
-    {{#if equals fSt 2}} {{> star1}}
+    {{#if equals tSt 2}} {{> star1}}
     {{else if equals tSt 1}} {{> star1}}
     {{else if equals tSt 2}} {{> star2}}
     {{else if equals tSt 3}} {{> star3}}
@@ -40,12 +40,12 @@
     {{/if}}
   </strong></p>
   <p class="starEval"><strong>Technical Ability:
-    {{#if equals fSt 2}} {{> star1}}
-    {{else if equals tSt 1}} {{> star1}}
-    {{else if equals tSt 2}} {{> star2}}
-    {{else if equals tSt 3}} {{> star3}}
-    {{else if equals tSt 4}} {{> star4}}
-    {{else if equals tSt 5}} {{> star5}}
+    {{#if equals fOSt 2}} {{> star1}}
+    {{else if equals fOSt 1}} {{> star1}}
+    {{else if equals fOSt 2}} {{> star2}}
+    {{else if equals fOSt 3}} {{> star3}}
+    {{else if equals fOSt 4}} {{> star4}}
+    {{else if equals fOSt 5}} {{> star5}}
     {{/if}}
   </strong></p>
 </div>
