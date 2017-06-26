@@ -29,15 +29,7 @@ Template.createSuggested.events({
         console.log(number);
         console.log(option);
 
-				var studentIds = [];
-				//var studentNames = [];
-				allAdded.forEach(function(student) {
-						studentIds.push(student._id);
-						//studentNames.push(student.name);
-				});
 
-        console.log(studentIds);
-        //console.log(studentNames);
 
 				//Meteor.call('createSuggested', numType, studentIds, allAdded);
 

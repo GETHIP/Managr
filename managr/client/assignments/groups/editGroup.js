@@ -21,13 +21,15 @@ Template.editGroup.onCreated(function() {
 		Meteor.subscribe("Coaches");
 
 		this.autorun(function () {
-				Meteor.subscribe("Student");
-				Meteor.subscribe("CurrentAdded", id);
-				Meteor.subscribe("CurrentNotAdded", id);
+				var subscription = Meteor.subscribe("Student");
+				//Meteor.subscribe("CurrentAdded", id);
+				//Meteor.subscribe("CurrentNotAdded", id);
+				if (subscription.ready()) {
+						allAdded = findStudentsIn();
+						allNotAdded = findStudentsNot(allAdded);
+						edit_dep.changed()
+				}
 		});
-
-		allAdded = findStudentsIn();
-		allNotAdded = findStudentsNot(allAdded);
 });
 
 function findStudentsIn() {
