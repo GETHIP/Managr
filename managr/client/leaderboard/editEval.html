@@ -1,16 +1,16 @@
 <template name="editEval">
   {{#with eval}}
     <div class="marginContainer">
-    <select class="editDropDown" name="milestoneDropDown">
-      <option value="milestone1">Week 1</option>
-      <option value="milestone2">Week 2</option>
-    </select>
+        <h1 class="titleEvaluations">Edit</h1>
     <div class="purple-bar">&nbsp;</div>
 
   <div class="evaluationContainer">
 
     <div>
-
+      <select class="editDropDown" name="milestoneDropDown">
+        <option value="milestone1">Week 1</option>
+        <option value="milestone2">Week 2</option>
+      </select>
   <p class="evaluatorEval"><strong>To: {{to}}</strong></p>
     <p class="evaluateeEval"><strong>From: {{from}}</strong></p>
     <strong><p class="timeStamp">Date: {{formDate}}</p></strong>
