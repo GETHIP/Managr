@@ -301,3 +301,74 @@ input.weeksTable {
   display: inline-block;
   width: 45%;
 }
+.formdashboardContainer2 {
+  width: 100%;
+ 	background: white;
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  margin-bottom: 2%;
+  margin-top: 2%;
+  padding: 2%;
+
+}
+.createFormButton {
+  background-color: #333333;
+  width: 20%;
+  margin: 1%;
+  margin-top: 1%;
+}
+.deleteMilestoneButton {
+  background-color: #333333;
+  width: 20%;
+  margin: 1%;
+  margin-top: 1%;
+}
+.createFormButton:hover{
+  background-color: black;
+}
+.deleteMilestoneButton:hover{
+  background-color: black;
+}
+.questionDiv.newMilestone input:focus {
+  border-color: black;
+}
+
+.questionDiv.newMilestone {
+	width: 300%;
+}
+.newMilestoneLabel {
+	padding: 0px;
+	margin-bottom: 4px;
+}
+
+.milestoneTable {
+	width: 100%;
+}
+
+.milestoneTableInput {
+	width: 45%;
+	margin-right: 5%;
+}
+
+.milestoneTableButton {
+	width: 20%;
+}
+
+.milestoneTableSpacer {
+	width: 5%;
+}
+
+button.milestoneTable {
+	padding-top: 0.4em;
+	padding-bottom: 0.4em;
+}
+
+input.milestoneTable {
+	margin-bottom: 0px;
+	height: 100%;
+}
+.dropdownformContainermilestone {
+  margin-bottom: 1%;
+  margin-top: 1%;
+  padding: 15px;
+  display: inline-block;
+}
