@@ -41,7 +41,7 @@ Template.questionFormTemplate.events({
    },
 	 'click #buttonn': function(event, template) {
 		 event.preventDefault();
-		 var surveyId = FlowRouter.getParam("id");
+		 var questionId = FlowRouter.getParam("id");
 		 var temparray;
 		 var option = document.getElementById("questionFormm").value;
 		 if(option == 'choice') {
@@ -261,3 +261,10 @@ Surveys.schema = new SimpleSchema({
 });
 
 Surveys.attachSchema(Surveys.schema);*/
+// Template.deleteSurvey.events({
+//   'click .deleteSurveyButton' : function(event){
+//     console.log(234234)
+//     Meteor.call("removeQuestion");
+//     event.preventDefault();
+//   }
+// });

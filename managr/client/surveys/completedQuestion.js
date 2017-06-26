@@ -65,6 +65,9 @@ Template.completedQuestion.helpers({
 
 Template.completedQuestion.events({
   'click .deleteBtn': function(event){
-    Modal.show("deleteSurvey", event.target.id);
+    console.log(event);
+    var question = Questions.findOne({_id: event.currentTarget.id});
+    console.log(question);
+    Modal.show("deleteQuestion", question);
   }
 });
