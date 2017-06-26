@@ -19,6 +19,11 @@ Template.eventsPage.events({
     const target = event.target;
     FlowRouter.go('/events/edit/' + target.id);
   },
+  'click .goToInvite': function(event) {
+    event.preventDefault();
+    const target = event.target;
+    FlowRouter.go('/events/invite/' + target.id);
+  },
   'click .goToView': function(event) {
     event.preventDefault();
     const target = event.target;

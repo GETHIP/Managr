@@ -266,6 +266,12 @@ FlowRouter.route('/events/calendar', {
 		BlazeLayout.render("eventsLayout", {content: 'calendar'});
 	}
 });
+FlowRouter.route('/events/invite/:id', {
+	name: 'invitePage',
+	action: function() {
+		BlazeLayout.render("eventsLayout", {content: 'invitePage'});
+	}
+});
 FlowRouter.route('/events/attending/:id', {
 	name: 'attending',
 	action: function() {
