@@ -8,6 +8,10 @@ Template.editEval.onCreated(function(){
       Meteor.subscribe('Instructor');
 });
 
+Template.registerHelper('equals', function (a, b) {
+    return a === b;
+  });
+
 Template.editEval.helpers({
   eval: function(){
     data = Eval.findOne({_id: FlowRouter.getParam("id")});
@@ -26,12 +30,13 @@ Template.editEval.helpers({
 
 //id, message, star1, star2, star3, star4, milestone,
 Template.editEval.events({
-  'click .editBtn': function(){
-    var star1 = $('#rating').data('userrating');
-		var star2 = $('#attitude').data('userrating');
-		var star3 = $('#teamwork').data('userrating');
-		var star4 = $('#tech').data('userrating');
-    Meteor.call("editEval", FlowRouter.getParam("id"), message, star1, star2, star3, star4, week);
+  'click .saveEval': function(){
+    var star1 = $('#effort').data('userrating');
+    console.log(star1);
+		// var star2 = $('#attitude').data('userrating');
+		// var star3 = $('#teamwork').data('userrating');
+		// var star4 = $('#tech').data('userrating');
+    // Meteor.call("editEval", FlowRouter.getParam("id"), message, star1, star2, star3, star4, week);
 
 
   }
