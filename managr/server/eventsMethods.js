@@ -16,14 +16,15 @@ export function eventsMethods() {
       }
       Events.remove(eventId);
     },
-		// 'sendRSVP': function(rsvp) {
-		// 	if(!isStudent()) {
-		// 		return;
-		// 	}
-		// 	Events.insert({
-		// 		rsvp: rsvp
-		// 	})
-		// },
+		'sendRSVP': function(eventId, studentName, rsvp) {
+			if(!isStudent()) {
+				return;
+			}
+			Events.insert({
+				name: studentName,
+				rsvp: rsvp
+			});
+		},
     'createNewEvent': function(hostId, host, eventName, description, date, formattedDate, location) {
       if(!isInstructor()) {
         return;

@@ -5,26 +5,26 @@ Template.eventView.onCreated(function() {
 		Meteor.subscribe("Student");
     Meteor.subscribe("Events");
 });
-
-Template.eventView.events({
-  "submit #eventForm"(event) {
-		event.preventDefault();
-		var target = event.target;
-
-		var eventId = FlowRouter.getParam("id");
-		var hostId = "";
-		var eventName = target.name.value;
-		var description = target.description.value;
-		var location = target.location.value;
-		var newDate = moment(target.date.value);
-		var formattedDate = moment(newDate).format("MMMM D,  YYYY [at] h:mm A");
-		var date = target.date.value;
-
-    Meteor.call('updateEvent', eventId, eventName, description, date, formattedDate, location);
-
-		FlowRouter.go('/events');
-	}
-});
+//
+// Template.eventView.events({
+//   "submit #eventForm"(event) {
+// 		event.preventDefault();
+// 		var target = event.target;
+//
+// 		var eventId = FlowRouter.getParam("id");
+// 		var hostId = "";
+// 		var eventName = target.name.value;
+// 		var description = target.description.value;
+// 		var location = target.location.value;
+// 		var newDate = moment(target.date.value);
+// 		var formattedDate = moment(newDate).format("MMMM D,  YYYY [at] h:mm A");
+// 		var date = target.date.value;
+//
+//     Meteor.call('updateEvent', eventId, eventName, description, date, formattedDate, location);
+//
+// 		FlowRouter.go('/events');
+// 	}
+// });
 
 Template.eventView.events({
 'click .slider': function(event){
@@ -42,9 +42,17 @@ Template.eventView.events({
 	 event.preventDefault();
 	 var target = event.target;
 
+	 var eventId = FlowRouter.getParam("id");
+	 var studentId = Student.findOne({userId: Meteor.user()._id});
+	 var studentName = studentId.name;
 	 var rsvp = document.getElementById("indicator").innerHTML;
 
-	 console.log(rsvp)
+	 console.log(eventId);
+	 console.log(studentId);
+	 console.log(studentName);
+	 console.log(rsvp);
+
+	 Meteor.call('sendRSVP', eventId, studentName, rsvp);
 
 	 FlowRouter.go('/events');
 	}
@@ -59,6 +67,12 @@ Template.eventView.helpers({
 Template.eventView.helpers({
 	eventName: function() {
 		return getThisEvent().name;
+	}
+});
+
+Template.eventView.helpers({
+	indicator: function() {
+		return getThisEvent().rsvp;
 	}
 });
 

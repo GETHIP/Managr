@@ -1,0 +1,26 @@
+.attendingTable {
+  width: 100%;
+  font-family: arial, sans-serif;
+  font-size: 20px;
+  border: 1px solid black;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+table#t02 th {
+      background: #ffffff;
+      font-family: arial, sans-serif;
+}
+
+table#t02 th, td {
+    padding: 20px;
+    font-family: arial, sans-serif;
+}
+
+table#t02 tr {
+    font-family: arial, sans-serif;
+}
+
+table#t02 tr:nth-child(odd) {
+    background: #dddddd;
+}

@@ -1,33 +1,33 @@
 <template name="eventView">
-        <div class = "events viewingEvents">
-        <div class ="formdashboardContainer containerDiv formbg homeEvents">
+    <div class = "events viewingEvents">
+    <div class ="formdashboardContainer containerDiv formbg homeEvents">
       <h1 class="formTitle eventTitle goToView" id="{{eventId}}" >{{eventName}}</h1>
-      {{#if isStudent}}
-      <div class="rsvp">
-        <html>
-          <body class="switchFormat">
-            <p id="indicator">{{indicator}}</p>
-            <br>
-            <label class="switch">
-              <input type="checkbox" name="rsvp">
-              <div class="slider"></div>
-            </label>
-          </body>
-        </html>
-      </div>
-      {{/if}}
-        <p>Host: {{host}}</p>
-        <p>Description: {{eventDescription}}</p>
-        <p>Date: {{formattedDate}}</p>
-        <p>Location: {{eventLocation}}</p>
-      </div>
-      {{#if isInstructor}}
-      <button type="button" id="eventCancel" class="buttonStyle" onclick="FlowRouter.go('/events');">Back</button>
-      {{/if}}
-       {{#if isStudent}}
-       <button type="button" id="eventCancel" class="buttonStyle cancelUserCreate leftFloatingButton" onclick="FlowRouter.go('/events');">Back</button>
-      <button type="submit" id="rsvpEventButton" value="Create" class="buttonStyle cancelUserCreate rightFloatingButton" >Send RSVP</button>
-      {{/if}}
+        {{#if isStudent}}
+        <div class="rsvp">
+          <html>
+            <body class="switchFormat">
+              <p id="indicator">{{indicator}}</p>
+              <br>
+              <label class="switch">
+                <input type="checkbox" name="rsvp">
+                <div class="slider"></div>
+              </label>
+            </body>
+          </html>
+        </div>
+        {{/if}}
+          <p>Host: {{host}}</p>
+          <p>Description: {{eventDescription}}</p>
+          <p>Date: {{formattedDate}}</p>
+          <p>Location: {{eventLocation}}</p>
+        </div>
+        {{#if isInstructor}}
+        <button type="button" id="eventCancel" class="buttonStyle" onclick="FlowRouter.go('/events');">Back</button>
+        {{/if}}
+         {{#if isStudent}}
+         <button type="button" id="eventCancel" class="buttonStyle cancelUserCreate leftFloatingButton" onclick="FlowRouter.go('/events');">Back</button>
+        <button type="submit" id="rsvpEventButton" value="Create" class="buttonStyle cancelUserCreate rightFloatingButton" >Send RSVP</button>
+        {{/if}}
 
-      </div>
-      </template>
+    </div>
+</template>

@@ -126,7 +126,6 @@ button.createdEvent {
 
 #calendarButton {
   background-color: #BD53FF;
-
 }
 
 #calendarButton:hover {
@@ -157,6 +156,11 @@ button.createdEvent {
 }
 .eventsTable {
 	width: 100%;
+  background: white;
+}
+
+table#t01 tr {
+  background: white;
 }
 
 .eventsTableInput {

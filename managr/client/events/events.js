@@ -33,14 +33,6 @@ Template.eventsPage.events({
     event.preventDefault();
     FlowRouter.go('/events/view');
   },
-
-  'click .slider': function(event){
-    if(document.getElementById("indicator").innerHTML == "Attending"){
-        document.getElementById("indicator").innerHTML = "Not Attending"
-    }else{
-        document.getElementById("indicator").innerHTML = "Attending"
-    }
-  }
 });
 Template.eventsPage.helpers({
   events: function() {
@@ -73,20 +65,20 @@ Template.eventsPage.helpers({
       Modal.show("deleteEvent", event.target.id);
     },
   })
-
-  var formatStudentsForevent = function(event) {
-      var studentIds = event.studentIds;
-      var formattedStudents = [];
-
-      for(var i = 0; i < studentIds.length; i++) {
-          var student = Student.findOne({_id: studentIds[i]});
-          if(student == undefined) {
-              continue;
-          }
-          var formattedStudent = {
-              name: student.name
-          }
-          formattedStudents.push(formattedStudent);
-      }
-      return formattedStudents;
-  }
+  //
+  // var formatStudentsForevent = function(event) {
+  //     var studentIds = event.studentIds;
+  //     var formattedStudents = [];
+  //
+  //     for(var i = 0; i < studentIds.length; i++) {
+  //         var student = Student.findOne({_id: studentIds[i]});
+  //         if(student == undefined) {
+  //             continue;
+  //         }
+  //         var formattedStudent = {
+  //             name: student.name
+  //         }
+  //         formattedStudents.push(formattedStudent);
+  //     }
+  //     return formattedStudents;
+  // }

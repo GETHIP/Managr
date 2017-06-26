@@ -95,7 +95,8 @@ eventsIndex = new EasySearch.Index({
 					location: doc.location,
 					formattedDate: doc.formattedDate,
 					eventId: doc._id,
-					host: doc.host
+					host: doc.host,
+					rsvp: doc.rsvp
 			};
 			return eachEvent;
 	  },
@@ -107,7 +108,7 @@ eventsIndex = new EasySearch.Index({
 				}
 				else if ('date' === sortBy) {
 					return {
-						date: -1,
+						date: 1,
 					};
 				}
 		}
