@@ -31,6 +31,10 @@ var viewEvalSection = FlowRouter.group({ // my edit
 	name: "viewEval",
 	prefix: "/viewEval"
 });
+var editEvalSection = FlowRouter.group({ // my edit
+	name: "editEval",
+	prefix: "/editEval"
+});
 var evalSection = FlowRouter.group({ // my edit
 	name: "eval",
 	prefix: "/eval"
@@ -180,6 +184,12 @@ FlowRouter.route("/leaderboard", {  //--------------------------my edit
 FlowRouter.route("/viewEval", {  //--------------------------my edit
 	action: function(params, queryParams){
 		BlazeLayout.render("viewEvalLayout", {content: "viewEval"})
+	}
+});
+
+FlowRouter.route("/editEval/:id", {  //--------------------------my edit
+	action: function(params, queryParams){
+		BlazeLayout.render("editEvalLayout", {content: "editEval"})
 	}
 });
 
