@@ -41,5 +41,9 @@ Template.eval.events({
   'click .backEval': function(event){
     FlowRouter.go("/viewEval");
     event.preventDefault();
+  },
+  'click .editEval': function(event){
+    console.log("YEESS");
+    FlowRouter.go("/editEval/" + FlowRouter.getParam("id"));
   }
 });

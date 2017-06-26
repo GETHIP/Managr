@@ -8,26 +8,18 @@ Template.viewEval.onCreated(function(){
   Meteor.subscribe('Instructor');
 });
 
-
-
 Template.viewEval.helpers({
 	data: function(){
-		console.log(Eval.find({}).fetch());
 		data = Eval.find().fetch();
     for(var i = 0; i < data.length; i++){
-      console.log(Student.findOne({_id: data[i].evaluatee}));
 		data[i].name = Student.findOne({_id: data[i].evaluatee}).name;
     data[i].instructor = Instructor.findOne({_id: data[i].evaluator}).name;
-    console.log(data[i].name);
-    console.log(data[i].instructor);
-    console.log(data[i].stars);
 		data[i].effort = data[i].stars[0];
 		data[i].att = data[i].stars[1];
 		data[i].team = data[i].stars[2];
 		data[i].tech = data[i].stars[3];
 
   }
-  console.log(data);
   return data;
 },
 	allEvals: function(){
@@ -47,10 +39,7 @@ Template.viewEval.events({
 
 		comment = document.getElementById('textarea1').value;
 		eaId = Instructor.findOne({userId: Meteor.user()._id})._id;
-    console.log(eaId)
-		console.log(eaId);
 		eId = document.getElementById('group').value;
-    console.log(eId);
 		week = document.getElementById('week').value.split(" ")[1];
 		sList = [rating, attitude, teamwork, tech ];
 
@@ -60,9 +49,7 @@ Template.viewEval.events({
 			}
 		}
 
-		console.log(sList);
 		date = new Date();
-		console.log(date);
 		Meteor.call("sendEval", eaId, eId, comment, week, sList, date);
 
 	},
