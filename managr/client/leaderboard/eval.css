@@ -33,7 +33,7 @@ overflow: auto;
 }
 
 .buttonStyleEval {
-  width: 25%;
+  width: 32%;
   background-color: #7700DD;
   border: none;
   color: white;
@@ -44,7 +44,7 @@ overflow: auto;
   font-size: 18px;
   border-radius: 6px;
   margin-bottom: 2%;
-  margin-top: 1%;
+  margin-top: .5%;
   float: left;
   }
 .evalContent {

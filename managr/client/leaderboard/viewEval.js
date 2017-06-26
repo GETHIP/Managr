@@ -62,5 +62,9 @@ Template.viewEval.events({
 		console.log(date);
 		Meteor.call("sendEval", eaId, eId, comment, week, sList, date);
 
-	}
+	},
+  'click .rowClick': function(event){
+    FlowRouter.go("/eval/" + event.target.id);
+
+  }
 });

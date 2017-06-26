@@ -16,6 +16,7 @@ export function leaderboardMethods() {
 		}
 		},
     'removeEval' : function(id){
+			console.log('server console')
         Eval.remove({"_id": id});
     },
     'editEval' : function(id){

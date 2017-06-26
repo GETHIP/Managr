@@ -23,14 +23,19 @@ Template.eval.helpers({
     var newDate = moment(data.timestamp);
 		var formattedDate = moment(newDate).format("MMMM D [,] YYYY");
     data.formDate = formattedDate;
+    data.to = Student.findOne({_id: data.evaluatee}).name;
+    data.from = Instructor.findOne({_id: data.evaluator}).name;
+    console.log(data.from);
     console.log(data.formDate);
 		return data;
   }
 });
 
-Template.leaderboard.events({
-  'click .delBtn': function(event){
-    Meteor.call("delEval", FlowRouter.getParam("id"));
+Template.eval.events({
+  'click .deleteEval': function(event){
+    console.log(3423423)
+  Meteor.call("removeEval",FlowRouter.getParam("id"));
+  FlowRouter.go("/viewEval")
     event.preventDefault();
   },
   'click .updateBtn': function(event){

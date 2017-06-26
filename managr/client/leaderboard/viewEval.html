@@ -6,8 +6,7 @@
   <form>
 		<div class ="textformContainer">
 		  <form id="textformContainer">
-    <textarea placeholder="Write evaluation here..." rows="4" cols="50" width="100%" name="textarea1" id="textarea1"  >
-		</textarea>
+    <textarea placeholder="Write evaluation here..." rows="4" cols="50" width="100%" name="textarea1" id="textarea1"></textarea>
 
 <!--Should Have replicated Stars -->
 <div class="formstarsContainer">
@@ -63,14 +62,14 @@
     <!-- </thead> -->
     <!-- <tbody> -->
       {{#each data}}
-      <tr class= "tableRowFormat">
-                <td class="tableDataFormat evals">{{name}}</td>
-                <td class="tableDataFormat evals">{{week}}</td>
-                <td class="tableDataFormat evals">{{effort}}</td>
-                <td class="tableDataFormat evals">{{att}}</td>
-                <td class="tableDataFormat evals">{{team}}</td>
-                <td class="tableDataFormat evals">{{tech}}</td>
-                <td class="tableDataFormat evals">{{instructor}}</td>
+      <tr class= "tableRowFormat rowClick" id="{{_id}}">
+                <td class="tableDataFormat evals" id="{{_id}}">{{name}}</td>
+                <td class="tableDataFormat evals" id="{{_id}}">{{week}}</td>
+                <td class="tableDataFormat evals" id="{{_id}}">{{effort}}</td>
+                <td class="tableDataFormat evals" id="{{_id}}">{{att}}</td>
+                <td class="tableDataFormat evals" id="{{_id}}">{{team}}</td>
+                <td class="tableDataFormat evals" id="{{_id}}">{{tech}}</td>
+                <td class="tableDataFormat evals" id="{{_id}}">{{instructor}}</td>
               </tr>
       {{/each}}
     <!-- </tbody> -->
