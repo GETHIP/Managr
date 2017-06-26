@@ -149,6 +149,10 @@ var formatStudentsForGroup = function(group) {
     var studentIds = group.studentIds;
     var formattedStudents = [];
 
+		if(!studentIds) {
+			return;
+		}
+
     for(var i = 0; i < studentIds.length; i++) {
         var student = Student.findOne({_id: studentIds[i]});
         if(student == undefined) {
@@ -165,6 +169,10 @@ var formatStudentsForGroup = function(group) {
 var formatCoachesForGroup = function(group) {
 		var coachIds = group.coaches;
 		var formattedCoaches = [];
+
+		if(!coachIds) {
+			return;
+		}
 
 		for(var i = 0; i < coachIds.length; i++) {
 				var coach = Instructor.findOne({_id: coachIds[i]});
