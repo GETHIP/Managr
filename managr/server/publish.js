@@ -71,7 +71,7 @@ export function publishAll() {
 		return Surveys.find({});
 	});
 
-	Meteor.publish("Questions", function() {
-		return Questions.find({});
-	});
+	// Meteor.publish("Questions", function() {
+	// 	return Questions.find({});
+	// });
 }

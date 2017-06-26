@@ -41,7 +41,7 @@ Template.questionFormTemplate.events({
    },
 	 'click #buttonn': function(event, template) {
 		 event.preventDefault();
-		 var questionId = FlowRouter.getParam("id");
+		 var surveyId = FlowRouter.getParam("id");
 		 var temparray;
 		 var option = document.getElementById("questionFormm").value;
 		 if(option == 'choice') {
@@ -84,6 +84,7 @@ Template.questionFormTemplate.events({
 			 var option4 = Session.get('checkOption4');
 			 var option5 = Session.get('checkOption5')
 			 var checkArray = [option1, option2, option3, option4, option5]
+			 console.log(option1);
 
 			 //if options are blank, they are not added to the array
 			 var newArray = [];
@@ -109,14 +110,14 @@ Template.questionFormTemplate.events({
 			 //temparray = [option1, option2, option3, option4, option5];
 		 }
 		 else if(option == 'shResp') {
-			 var shResp = Session.get('shRespQuestion');
+			 var question = Session.get('shRespQuestion');
 			 Session.set('shRespQuestion', null);
-			 temparray = [shResp];
+			//  temparray = [shResp];
 			 //add card code here
 		 } else {
 			 alert("Please select an option");
 		 }
-		 Meteor.call('addQuestion', option, question, temparray);
+		 Meteor.call('addQuestion', surveyId, option, question, temparray);
 		 clearForm();
 	 }
 });

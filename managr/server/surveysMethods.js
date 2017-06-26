@@ -12,23 +12,33 @@ import { isStudent, isInstructor, userIsValid, currentUserOrInstructor, nameOfUs
 
 export function surveysMethods() {
 	Meteor.methods({
-		'removeQuestion': function(id) {
+		'removeQuestion': function(id, index) {
 			if(!isInstructor()) {
 				return;
 			}
-			Questions.remove(id);
+
+			var thisSurvey = Surveys.findOne({"_id": id});
+			var questions = thisSurvey.questions;
+			// var co
 		},
-    'createNewSurvey': function(surveyName, date, question) {
-      if(!isInstructor()) {
-        return;
-      }
+		// 'deleteComment': function(id, index) {
+		// 	var comments = Posts.findOne({"_id": id}).comments;
+		// 	var correctId = comments[index].authorId;
+		// 	if(currentUserOrInstructor(correctId)) {
+		// 		comments.splice(index, 1);
+		// 		Posts.update({"_id": id}, {$set : {comments : comments}});
+		// 	}
+		// },
+		'createNewSurvey': function(surveyName, date, anonToggle) {
+			if(!isInstructor()) {
+				return;
+			}
 			Surveys.insert({
-	      name: surveyName,
-				dueDate: date,
-				questions: [questionArray]
-	    });
-    },
-		'addQuestion': function(option, question, temparray) {
+				name: surveyName,
+				dueDate: date
+			});
+		},
+		'addQuestion': function(surveyId, option, question, temparray) {
 			console.log(temparray);
 			if(!isInstructor()) {
 				return;
@@ -40,10 +50,14 @@ export function surveysMethods() {
 				// var choice3 = temparray[3];
 				// var choice4 = temparray[4];
 
-				Questions.insert({
-					questionType: "choice",
-					prompt: question,
-					options: temparray
+				Surveys.update({_id: surveyId}, {
+					$push: {
+						questions: {
+							questionType: "choice",
+							prompt: question,
+							options: temparray
+						}
+					}
 				});
 			}
 			else if(option == 'check') {
@@ -54,21 +68,30 @@ export function surveysMethods() {
 				// var option4 = temparray[4];
 				// var option5 = temparray[5];
 				console.log(option);
-				Questions.insert({
-					questionType: "check",
-					prompt: question,
-					options: temparray
-				});
-			}
-			else if(option == 'shResp') {
-				// var question = temparray[0];
-				// var count = temparray[1];
-				console.log(option);
-				Questions.insert({
-					questionType: "shResp",
-					prompt: question
-				});
-			}
+				Surveys.update({_id: surveyId}, {
+					$push: {
+						questions: {
+							questionType: "check",
+							prompt: question,
+							options: temparray
+						}
+					}
+				}
+			);
 		}
+		else if(option == 'shResp') {
+			// var question = temparray[0];
+			// var count = temparray[1];
+			console.log(option);
+			Surveys.update({_id: surveyId}, {
+				$push: {
+					questions: {
+						questionType: "shResp",
+						prompt: question
+					}
+				}
+			});
+		}
+	}
 	});
 }
