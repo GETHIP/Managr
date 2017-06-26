@@ -39,14 +39,11 @@ export function surveysMethods() {
 				var choice2 = temparray[2];
 				var choice3 = temparray[3];
 				var choice4 = temparray[4];
-<<<<<<< HEAD
 
 				// 	for(i = 1; i < 5; i++) {
 				//  	var choice + i	= temparray[i];
 				//  }
 
-=======
->>>>>>> 63767d25518e933afb604b35993484ed745635df
 				console.log(option);
 				Questions.insert({
 					questionType: "choice",
