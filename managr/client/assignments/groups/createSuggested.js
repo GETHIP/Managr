@@ -1,96 +1,47 @@
 import { Student } from '../../../collections/student.js';
-import { Instructor } from '../../../collections/instructor.js';
 import { Groups } from '../../../collections/groups.js';
 
 var allAdded = [];
 var allNotAdded = [];
-edit_dep = new Deps.Dependency;
+suggested_dep = new Deps.Dependency;
 
-Template.editGroup.onCreated(function() {
-		var id = FlowRouter.getParam('id');
-
-		Meteor.subscribe('singleGroup', id, function() {
-				var group = Groups.findOne({_id: id});
-				if(group == undefined) {
-						FlowRouter.go("/groups");
-				}
-				else {
-						BlazeLayout.render("groupsLayout", {content: 'editGroup'});
-				}
-		});
-		Meteor.subscribe("Coaches");
+Template.createSuggested.onCreated(function() {
+    Meteor.subscribe("Student");
+    Meteor.subscribe("Groups");
 
 		this.autorun(function () {
 				Meteor.subscribe("Student");
-				Meteor.subscribe("CurrentAdded", id);
-				Meteor.subscribe("CurrentNotAdded", id);
+				//Meteor.subscribe("CurrentAdded", id);
+				//Meteor.subscribe("CurrentNotAdded", id);
 		});
 
-		allAdded = findStudentsIn();
-		allNotAdded = findStudentsNot(allAdded);
+    allAdded = [];
+    allNotAdded = Student.find().fetch();
 });
 
-function findStudentsIn() {
-		var allAdded = [];
-		var thisGroup = Groups.findOne({ _id: FlowRouter.getParam('id')});
-		if(!thisGroup) {
-			return;
-		}
-		var groupStudentIds = thisGroup.studentIds;
-		for(var i = 0; i < groupStudentIds.length; i++) {
-				var thisStudent = Student.findOne({ _id: groupStudentIds[i] });
-				allAdded.push(thisStudent);
-		}
-		return allAdded;
-}
-
-function findStudentsNot(allAdded) {
-		allNotAdded = Student.find().fetch();
-		for(var i = 0; i < allAdded.length; i++) {
-				for(var ii = 0; ii < allNotAdded.length; ii++) {
-						if(allNotAdded[ii]._id === allAdded[i]._id) {
-								allNotAdded.splice(ii,1);
-								ii = allNotAdded.length;
-						}
-				}
-		}
-		return allNotAdded;
-}
-
-Template.editGroup.events({
-		"submit #editGroupForm"(event) {
+Template.createSuggested.events({
+		"submit #createSuggestedForm"(event) {
         event.preventDefault();
         const form = event.target;
 
-				var groupId = FlowRouter.getParam('id');
-        var groupName = form.groupName.value;
-				var size = allAdded.length;
-				console.log(groupName);
+        var number = form.numTypeInput.value;
+        var option = form.numType.value;
+        console.log(number);
+        console.log(option);
+
 				var studentIds = [];
-				var studentNames = [];
+				//var studentNames = [];
 				allAdded.forEach(function(student) {
 						studentIds.push(student._id);
-						studentNames.push(student.name);
+						//studentNames.push(student.name);
 				});
 
-				var inputs = document.getElementsByTagName("INPUT");
-				var coaches = [];
-				var coachNames = [];
-				for(var i = 0; i < inputs.length; i++) {
-						if(inputs[i].type == "checkbox" && inputs[i].checked && inputs[i].className == "coach") {
-								//Because if it is a valid group, then that implies it is not a student, so we don't want this in our studentIds array
-								var group = Groups.findOne({_id: inputs[i].id});
-								if(group != undefined) {
-										continue;
-								}
-								coaches.push(inputs[i].id);
-								var coach = Instructor.findOne({_id: inputs[i].id});
-								coachNames.push(coach.name);
-						}
-				}
-				Meteor.call('updateGroup', groupId, groupName, studentIds, size, studentNames, coaches, coachNames, allAdded);
+        console.log(studentIds);
+        //console.log(studentNames);
 
-        FlowRouter.go("/groups");
+				//Meteor.call('createSuggested', numType, studentIds, allAdded);
+
+        //FlowRouter.go("/editSuggested");
     },
 		"click #addStudents"(event) {
 				event.preventDefault();
@@ -135,7 +86,7 @@ Template.editGroup.events({
 								}
 						}
 				}
-				edit_dep.changed()
+				suggested_dep.changed()
 		},
 		"click #removeStudents"(event) {
 				event.preventDefault();
@@ -179,7 +130,7 @@ Template.editGroup.events({
 								}
 						}
 				}
-				edit_dep.changed()
+				suggested_dep.changed()
 		},
 		"click #selectAllAdded"(event) {
 				var currentState = document.getElementById("selectAllAdded").checked;
@@ -204,29 +155,9 @@ Template.editGroup.events({
 		}
 });
 
-Template.editGroup.helpers({
-    groups: function() {
-        var allGroups = Groups.find({}).fetch();
-        var formattedGroups = [];
-        for(var i = 0; i < allGroups.length; i++) {
-            var group = allGroups[i];
-            var formattedGroup = {
-                name: group.name,
-                groupId: group._id,
-								size: group.size,
-								leader: group.leader
-            }
-            formattedGroups.push(formattedGroup);
-        }
-        return formattedGroups;
-    },
-		groupName: function() {
-				var id = FlowRouter.getParam('id');
-				var thisGroup = Groups.findOne({_id: id});
-				return thisGroup.name;
-		},
+Template.createSuggested.helpers({
     otherstudents: function() {
-				edit_dep.depend();
+				suggested_dep.depend();
         var allStudentsNotAdded = allNotAdded;
 				console.log(allNotAdded);
         var formattedStudents = [];
@@ -242,7 +173,7 @@ Template.editGroup.helpers({
         return formattedStudents;
     },
 		addedstudents: function() {
-				edit_dep.depend();
+				suggested_dep.depend();
         var allStudentsAdded = allAdded;
 				console.log(allAdded);
         var formattedStudents = [];
@@ -256,31 +187,5 @@ Template.editGroup.helpers({
         }
 				console.log(formattedStudents);
         return formattedStudents;
-    },
-		instructors: function() {
-			var allInstructors = Instructor.find({}).fetch();
-			var formattedInstructors = [];
-			for(var i = 0; i < allInstructors.length; i++) {
-					var instructor = allInstructors[i];
-					var formattedInstructor = {
-							name: instructor.name,
-							instructorId: instructor._id,
-							checked: isCoach(instructor)
-					}
-					formattedInstructors.push(formattedInstructor);
-			}
-			return formattedInstructors;
-		}
+    }
 });
-
-var isCoach = function(instructor) {
-		var id = FlowRouter.getParam('id');
-		var thisGroup = Groups.findOne({_id: id});
-		var coachesInGroup = thisGroup.coaches;
-		for(var i = 0; i < coachesInGroup.length; i++) {
-				if(instructor._id == coachesInGroup[i]) {
-						return true;
-				}
-		}
-		return false;
-}
