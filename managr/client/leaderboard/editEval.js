@@ -17,6 +17,9 @@ Template.editEval.helpers({
     data.fOSt = eval(data.stars[3]);
     data.to = Student.findOne({_id: data.evaluatee}).name;
     data.from = Instructor.findOne({_id: data.evaluator}).name;
+    var newDate = moment(data.timestamp);
+    var formattedDate = moment(newDate).format("MMMM D [,] YYYY");
+    data.formDate = formattedDate;
     return data;
   }
 });
