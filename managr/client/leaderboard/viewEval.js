@@ -15,8 +15,11 @@ Template.viewEval.helpers({
 		console.log(Eval.find({}).fetch());
 		data = Eval.find().fetch();
     for(var i = 0; i < data.length; i++){
+      console.log(Student.findOne({_id: data[i].evaluatee}));
 		data[i].name = Student.findOne({_id: data[i].evaluatee}).name;
     data[i].instructor = Instructor.findOne({_id: data[i].evaluator}).name;
+    console.log(data[i].name);
+    console.log(data[i].instructor);
     console.log(data[i].stars);
 		data[i].effort = data[i].stars[0];
 		data[i].att = data[i].stars[1];
@@ -31,14 +34,12 @@ Template.viewEval.helpers({
     return Eval.find({evaluator: Instructor.find({userId: Meteor.user()._id})._id});
   },
 	students: function(){
-    //console.log(Student.find().fetch());
-    return Student.find({});
+    return Student.find();
 	}
 });
 
 Template.viewEval.events({
 	'click .submitbtn': function(event){
-		event.preventDefault();
 		var rating = $('#rating').data('userrating');
 		var attitude = $('#attitude').data('userrating');
 		var teamwork = $('#teamwork').data('userrating');
@@ -46,8 +47,10 @@ Template.viewEval.events({
 
 		comment = document.getElementById('textarea1').value;
 		eaId = Instructor.findOne({userId: Meteor.user()._id})._id;
+    console.log(eaId)
 		console.log(eaId);
 		eId = document.getElementById('group').value;
+    console.log(eId);
 		week = document.getElementById('week').value.split(" ")[1];
 		sList = [rating, attitude, teamwork, tech ];
 
