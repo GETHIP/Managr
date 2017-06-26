@@ -6,10 +6,6 @@ QuestionSchema = new SimpleSchema({
   questionType: {
     type: String
   },
-  countNumber: {
-    type: Number,
-    optional: true
-  },
   prompt: {
     type: String
   },

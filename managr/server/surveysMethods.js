@@ -12,11 +12,11 @@ import { isStudent, isInstructor, userIsValid, currentUserOrInstructor, nameOfUs
 
 export function surveysMethods() {
 	Meteor.methods({
-		'removeQuestion': function(surveyId) {
+		'removeQuestion': function(id) {
 			if(!isInstructor()) {
 				return;
 			}
-			Questions.remove(surveyId);
+			Questions.remove(id);
 		},
     'createNewSurvey': function(surveyName, date, question) {
       if(!isInstructor()) {
@@ -25,7 +25,7 @@ export function surveysMethods() {
 			Surveys.insert({
 	      name: surveyName,
 				dueDate: date,
-				questions: questionArray
+				questions: [questionArray]
 	    });
     },
 		'addQuestion': function(option, question, temparray) {
