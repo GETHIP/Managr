@@ -2,31 +2,58 @@ import { Student } from '../../collections/student.js';
 import { Eval } from '../../collections/eval.js';
 import { Instructor } from '../../collections/instructor.js';
 
+var _dep = new Deps.Dependency();
+
 Template.viewEval.onCreated(function(){
   Meteor.subscribe('Eval');
   Meteor.subscribe('Student');
   Meteor.subscribe('Instructor');
+  _dep.changed();
 });
 
 
 
 Template.viewEval.helpers({
 	data: function(){
-		console.log(Eval.find({}).fetch());
-		data = Eval.find().fetch();
-    for(var i = 0; i < data.length; i++){
-      console.log(Student.findOne({_id: data[i].evaluatee}));
-		data[i].name = Student.findOne({_id: data[i].evaluatee}).name;
-    data[i].instructor = Instructor.findOne({_id: data[i].evaluator}).name;
-    console.log(data[i].name);
-    console.log(data[i].instructor);
-    console.log(data[i].stars);
-		data[i].effort = data[i].stars[0];
-		data[i].att = data[i].stars[1];
-		data[i].team = data[i].stars[2];
-		data[i].tech = data[i].stars[3];
+    _dep.depend()
+    console.log("hi")
+    var selectStudent = document.getElementById("12asdf");
+   try{
+    selectStudent = selectStudent.value
+    if(selectStudent == "sortAll"){
+    		console.log(Eval.find({}).fetch());
+    		var data = Eval.find().fetch();
+        for(var i = 0; i < data.length; i++){
+          console.log(Student.findOne({_id: data[i].evaluatee}));
+    		data[i].name = Student.findOne({_id: data[i].evaluatee}).name;
+        data[i].instructor = Instructor.findOne({_id: data[i].evaluator}).name;
+        console.log(data[i].name);
+        console.log(data[i].instructor);
+        console.log(data[i].stars);
+    		data[i].effort = data[i].stars[0];
+    		data[i].att = data[i].stars[1];
+    		data[i].team = data[i].stars[2];
+    		data[i].tech = data[i].stars[3];
+      }
+    }
+    } catch (e) {
+      console.log("error, the try statement not working")
+    }
+    if(selectStudent != "sortAll"){
+      var data = [];
+      var dataList = Eval.find({evaluatee: document.getElementById("12asdf").value}).fetch();
+      console.log(dataList)
+      dataList.forEach(function(element){
+        element.name = $("#12asdf option:selected").text();
+        element.instructor = Instructor.findOne({_id: element.evaluator}).name;
+        element.effort = element.stars[0];
+        element.att = element.stars[1];
+        element.team = element.stars[2];
+        element.tech = element.stars[3];
+        data.push(element);
+      });
+    }
 
-  }
   console.log(data);
   return data;
 },
@@ -35,7 +62,10 @@ Template.viewEval.helpers({
   },
 	students: function(){
     return Student.find();
-	}
+	},
+  instructors: function(){
+    return Instructor.find();
+  }
 });
 
 Template.viewEval.events({
@@ -69,5 +99,9 @@ Template.viewEval.events({
   'click .rowClick': function(event){
     FlowRouter.go("/eval/" + event.target.id);
 
+  },
+  'change #12asdf': function(event){
+    event.preventDefault();
+    _dep.changed();
   }
 });
