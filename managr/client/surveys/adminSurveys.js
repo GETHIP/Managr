@@ -50,6 +50,21 @@ Template.questionFormTemplate.events({
 			 var choice2 = Session.get('choiceOption2');
 			 var choice3 = Session.get('choiceOption3');
 			 var choice4 = Session.get('choiceOption4');
+			 var choiceArray = [choice1, choice2, choice3, choice4]
+
+			 //if options are blank, they are not added to the array
+			 var newArray = [];
+			 for (i = 0; i < 4; i++) {
+			 	if(choiceArray[i] != null) {//null or ""
+			 		newArray.push(choiceArray[i]);
+			 	}
+				else {
+					break;
+				}
+			 }
+			 console.log(newArray)
+
+			 //clears template for next use
 			 Session.set('choiceQuestion', null);
 			 Session.set('choiceOption1', null);
 			 Session.set('choiceOption2', null);
@@ -57,41 +72,41 @@ Template.questionFormTemplate.events({
 			 Session.set('choiceOption4', null);
 			 Session.set('choiceOption5', null);
 
-			//  if ( != null){
-			// 	 for(i = 0; i < 5; i++)
-			//     temparray[i] = choice + i; //temparray.push('choice + i'); ?
-			//  }
-
-			 temparray = [question, choice1, choice2, choice3, choice4];
-			 //add card code here
+			 //temparray = [question, choice1, choice2, choice3, choice4];
+			 temparray = newArray;
 		 }
 		 else if(option == 'check') {
-			// You can finish this for optimization later...
-			// or just completely get rid of Session stuff and replace the messyness
-			//  var checkArray = [];
-			//  for (i = 0; i < 6; i++) {
-			//
-			//  }
+
 			 var question = Session.get('checkQuestion');
 			 var option1 = Session.get('checkOption1');
 			 var option2 = Session.get('checkOption2');
 			 var option3 = Session.get('checkOption3');
 			 var option4 = Session.get('checkOption4');
-			 var option5 = Session.get('checkOption5');
+			 var option5 = Session.get('checkOption5')
+			 var checkArray = [option1, option2, option3, option4, option5]
+
+			 //if options are blank, they are not added to the array
+			 var newArray = [];
+			 for (i = 0; i < 5; i++) {
+			 	if(checkArray[i] != null) {
+			 		newArray.push(checkArray[i]);
+			 	}
+				else {
+					break;
+				}
+			 }
+			 console.log(newArray)
+
+			 //clears template for next use
 			 Session.set('checkQuestion', null);
 			 Session.set('checkOption1', null);
 			 Session.set('checkOption2', null);
 			 Session.set('checkOption3', null);
 			 Session.set('checkOption4', null);
 			 Session.set('checkOption5', null);
-			 console.log(question);
-			 console.log(option1);
-			 console.log(option2);
-			 console.log(option3);
-			 console.log(option4);
-			 console.log(option5);
-			 temparray = [question, option1, option2, option3, option4, option5];
-			 //add card code here
+
+			 temparray = newArray;
+			 //temparray = [option1, option2, option3, option4, option5];
 		 }
 		 else if(option == 'shResp') {
 			 var shResp = Session.get('shRespQuestion');
@@ -101,7 +116,7 @@ Template.questionFormTemplate.events({
 		 } else {
 			 alert("Please select an option");
 		 }
-		 Meteor.call('addQuestion', option, temparray);
+		 Meteor.call('addQuestion', option, question, temparray);
 		 clearForm();
 	 }
 });
