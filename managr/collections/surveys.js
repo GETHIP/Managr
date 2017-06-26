@@ -61,7 +61,7 @@ SurveySchema = new SimpleSchema({
 		surveyId: {
 				type: String,
 				optional: true
-		},
+		}
 });
 
 Surveys.attachSchema(SurveySchema);

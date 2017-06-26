@@ -218,6 +218,13 @@ FlowRouter.route("/createNewSurvey", {
 		//BlazeLayout.render(main, { content: 'assignmentsBody' });
 	}
 });
+
+FlowRouter.route("/addQuestion", {
+    action: function(params, queryParams) {
+        BlazeLayout.render("surveysLayout", {content:'addQuestion'});			
+		//BlazeLayout.render(main, { content: 'assignmentsBody' });
+	}
+});
 // //with specific survey id
 // FlowRouter.route("/view/:id", {
 //     action: function(params, queryParams) {

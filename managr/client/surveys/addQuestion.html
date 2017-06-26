@@ -1,7 +1,11 @@
 <template name="addQuestion">
-  <hr class="nSurveyHr">
-
-  {{>questionFormTemplate}}
-
-  <hr class="nSurveyHr">
+  <div class="marginContainer">
+    <div class="surveyContainer createContainer">
+      <hr class="nSurveyHr">
+        {{>questionFormTemplate}}
+      <hr class="nSurveyHr">
+    </div>
+    <a href="/createNewSurvey"><button class="buttonStyle back sendSurvey submitbtn" id="cancelQuestionBtn">Back</button></a>
+    <button class="buttonStyle create sendSurvey submitbtn" id="createSurveyBtn">Create Survey</button>
+  </div>
 </template>
