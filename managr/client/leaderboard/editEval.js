@@ -31,13 +31,13 @@ Template.editEval.helpers({
 //id, message, star1, star2, star3, star4, milestone,
 Template.editEval.events({
   'click .saveEval': function(){
-    var star1 = $('#effort').data('userrating');
-    console.log(star1);
-		// var star2 = $('#attitude').data('userrating');
-		// var star3 = $('#teamwork').data('userrating');
-		// var star4 = $('#tech').data('userrating');
-    // Meteor.call("editEval", FlowRouter.getParam("id"), message, star1, star2, star3, star4, week);
-
+      var message  = document.getElementById('message').value;
+      var starBox1 = document.getElementById('starBox1').value;
+      var starBox2 = document.getElementById('starBox2').value;
+      var starBox3 = document.getElementById('starBox3').value;
+      var starBox4 = document.getElementById('starBox4').value;
+      var week;
+      Meteor.call("editEval", message, starBox1, starBox2, starBox3, starBox4, week);
 
   }
 });

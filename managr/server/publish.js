@@ -8,12 +8,18 @@ import { Groups } from '../collections/groups.js';
 import { Drafts } from '../collections/drafts.js';
 import { Globals } from '../collections/globals.js';
 import { Eval } from '../collections/eval.js'
+import { Eval } from '../collections/eval.js';
+import { Milestone } from '../collections/milestone.js';
 
 export function publishAll() {
 
 	Meteor.publish("Assignments", function() {
         return Assignments.find();
     });
+
+		Meteor.publish("Milestone", function() {
+	        return Milestone.find();
+	    });
 
 	Meteor.publish("Eval", function() {
 				return Eval.find();
