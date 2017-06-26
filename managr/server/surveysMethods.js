@@ -34,7 +34,7 @@ export function surveysMethods() {
 				var choice3 = temparray[3];
 				var choice4 = temparray[4];
 
-				// 	for(i = 1; i < 5; i++) {//or 0?
+				// 	for(i = 1; i < 5; i++) {
 				//  	var choice + i	= temparray[i];
 				//  }
 
