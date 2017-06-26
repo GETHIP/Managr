@@ -5,3 +5,11 @@
 .switchFormat {
   padding-left: 50%;
 }
+
+#rsvpEventButton {
+    background-color: #BD53FF;
+  }
+
+  #rsvpEventButton:hover {
+    background-color: #BD79FF;
+  }

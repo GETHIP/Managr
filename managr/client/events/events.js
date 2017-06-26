@@ -24,9 +24,10 @@ Template.eventsPage.events({
     const target = event.target;
     FlowRouter.go('/events/view/' + target.id);
   },
-  'click #attendingButton': function(event, template) {
+  'click .attendingButton': function(event, template) {
     event.preventDefault();
-    FlowRouter.go('/events/Attending');
+    const target = event.target;
+    FlowRouter.go('/events/attending/' + target.id);
   },
   'click #eventTitle': function(event, template) {
     event.preventDefault();

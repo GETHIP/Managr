@@ -133,10 +133,10 @@ button.createdEvent {
   background-color: #BD79FF;
 
 }
-#attendingButton {
+.attendingButton {
   background-color:#BD53FF;
 }
-#attendingButton:hover {
+.attendingButton:hover {
   background-color: #BD79FF;
 }
 .deleteEventButton {

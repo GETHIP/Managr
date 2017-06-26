@@ -16,6 +16,14 @@ export function eventsMethods() {
       }
       Events.remove(eventId);
     },
+		// 'sendRSVP': function(rsvp) {
+		// 	if(!isStudent()) {
+		// 		return;
+		// 	}
+		// 	Events.insert({
+		// 		rsvp: rsvp
+		// 	})
+		// },
     'createNewEvent': function(hostId, host, eventName, description, date, formattedDate, location) {
       if(!isInstructor()) {
         return;
@@ -46,12 +54,7 @@ export function eventsMethods() {
 			}
 		});
 	}
-	// 'delEvent': function(id) {
-	// 	correctId = Events.findOne({_id: id}).hostId;
-	// 	if(correctId == Meteor.userId()){
-	// 		Events.remove({_id: id});
-	// 	}
-	// },
+
 
 // export function eventsMethods() {
 // 	Meteor.methods({

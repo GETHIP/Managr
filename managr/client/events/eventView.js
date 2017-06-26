@@ -33,7 +33,21 @@ Template.eventView.events({
   }else{
       document.getElementById("indicator").innerHTML = "Attending"
   }
-}
+	console.log(indicator)
+	}
+});
+
+Template.eventView.events({
+	'click #rsvpEventButton': function(event){
+	 event.preventDefault();
+	 var target = event.target;
+
+	 var rsvp = document.getElementById("indicator").innerHTML;
+
+	 console.log(rsvp)
+
+	 FlowRouter.go('/events');
+	}
 });
 
 Template.eventView.helpers({
