@@ -62,3 +62,9 @@ Template.completedQuestion.helpers({
     }
   }
 });
+
+Template.completedQuestion.events({
+  'click .deleteBtn': function(event){
+    Modal.show("deleteSurvey", event.target.id);
+  }
+});

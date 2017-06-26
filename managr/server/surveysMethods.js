@@ -12,14 +12,20 @@ import { isStudent, isInstructor, userIsValid, currentUserOrInstructor, nameOfUs
 
 export function surveysMethods() {
 	Meteor.methods({
-    'createNewSurvey': function(surveyName, date, anonToggle) {
+		'removeQuestion': function(surveyId) {
+			if(!isInstructor()) {
+				return;
+			}
+			Questions.remove(surveyId);
+		},
+    'createNewSurvey': function(surveyName, date, question) {
       if(!isInstructor()) {
         return;
       }
 			Surveys.insert({
 	      name: surveyName,
 				dueDate: date,
-				anon: anonToggle
+				questions: questionArray
 	    });
     },
 		'addQuestion': function(option, temparray) {
@@ -33,11 +39,14 @@ export function surveysMethods() {
 				var choice2 = temparray[2];
 				var choice3 = temparray[3];
 				var choice4 = temparray[4];
+<<<<<<< HEAD
 
 				// 	for(i = 1; i < 5; i++) {
 				//  	var choice + i	= temparray[i];
 				//  }
 
+=======
+>>>>>>> 63767d25518e933afb604b35993484ed745635df
 				console.log(option);
 				Questions.insert({
 					questionType: "choice",
@@ -61,6 +70,7 @@ export function surveysMethods() {
 			}
 			else if(option == 'shResp') {
 				var question = temparray[0];
+				var count = temparray[1];
 				console.log(option);
 				Questions.insert({
 					questionType: "shResp",

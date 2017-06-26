@@ -2,9 +2,7 @@
 import { Surveys } from '../../collections/surveys.js';
 import { Student } from '../../collections/student.js';
 import { Groups } from '../../collections/groups.js';
-
-  var name = "";
-  var sDate = "";
+import { Questions } from '../../collections/questions.js';
 
 Template.newSurvey.onCreated(function() {
     Meteor.subscribe("Student");
@@ -19,6 +17,7 @@ Template.newSurvey.events({
 
     var surveyName = document.getElementById('surveyName').value
     var date = moment(document.getElementById('dueDate').value, "YYYY-MM-DD").toDate();
+    var question = document.getElementById('questionFormm').value;
     var anonToggle = document.getElementById('anonymousToggle').checked;
 //    var question = target.prompt.value;
 
@@ -26,17 +25,15 @@ Template.newSurvey.events({
     console.log(date);
     console.log(anonToggle);
 
-    name = surveyName;
-    sDate = date;
-
-    Meteor.call("createNewSurvey", surveyName, date, anonToggle);
+    Meteor.call("createNewSurvey", surveyName, date, question);
   }
 });
 
 Template.newSurvey.helpers({
-  'data': function(){
-      return {sName: name, date: sDate};
+  questionData: function() {
+      var questionArray = Questions.find({}).fetch();
   }
+
 });
 
 /*Template.createEvent.helpers({

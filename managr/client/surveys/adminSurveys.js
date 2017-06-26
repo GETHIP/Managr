@@ -29,12 +29,10 @@ var getSurveysCompleted = function(student) {
       });
    }
 });*/
-
 Template.questionFormTemplate.events({
 	 'change #questionFormm'(event){
      //keeps page from refreshing
       event.preventDefault();
-
       var select = document.getElementById("questionFormm");
       var option = select.value;
       console.log(option);
@@ -42,9 +40,8 @@ Template.questionFormTemplate.events({
 			questiontype();
    },
 	 'click #buttonn': function(event, template) {
-
 		 event.preventDefault();
-
+		 var surveyId = FlowRouter.getParam("id");
 		 var temparray;
 		 var option = document.getElementById("questionFormm").value;
 		 if(option == 'choice') {
@@ -135,8 +132,8 @@ function clearForm() {
 	document.getElementById("MCform").reset();
 	document.getElementById("CBform").reset();
 	document.getElementById("FRform").reset();
-	document.getElementById("questionSbmt").reset();
-	document.getElementById("questionSbmt2").reset();
+	document.getElementById("optionSbmt").reset();
+	document.getElementById("optionSbmt2").reset();
 }
 
 /*async function questiontype() {
