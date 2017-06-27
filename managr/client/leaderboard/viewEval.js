@@ -11,8 +11,6 @@ Template.viewEval.onCreated(function(){
   _dep.changed();
 });
 
-
-
 Template.viewEval.helpers({
 	data: function(){
     _dep.depend()
@@ -77,10 +75,7 @@ Template.viewEval.events({
 
 		comment = document.getElementById('textarea1').value;
 		eaId = Instructor.findOne({userId: Meteor.user()._id})._id;
-    console.log(eaId)
-		console.log(eaId);
 		eId = document.getElementById('group').value;
-    console.log(eId);
 		week = document.getElementById('week').value.split(" ")[1];
 		sList = [rating, attitude, teamwork, tech ];
 
@@ -90,9 +85,7 @@ Template.viewEval.events({
 			}
 		}
 
-		console.log(sList);
 		date = new Date();
-		console.log(date);
 		Meteor.call("sendEval", eaId, eId, comment, week, sList, date);
 
 	},

@@ -1,3 +1,77 @@
 <template name="editEval">
+  {{#with eval}}
+    <div class="marginContainer">
+        <h1 class="titleEvaluations">Edit</h1>
+    <div class="purple-bar">&nbsp;</div>
 
-</template>
+  <div class="evaluationContainer">
+
+    <div>
+      <select class="editDropDown" name="milestoneDropDown">
+        <option value="milestone1">Week 1</option>
+        <option value="milestone2">Week 2</option>
+      </select>
+  <p class="evaluatorEval"><strong>To: {{to}}</strong></p>
+    <p class="evaluateeEval"><strong>From: {{from}}</strong></p>
+    <strong><p class="timeStamp">Date: {{formDate}}</p></strong>
+
+    <p class="starEval" id="effort"><strong>Effort:
+    <!--  {{#if equals fSt 1}} {{> starEdit1}}
+      {{else if equals fSt 2}} {{> starEdit2}}
+      {{else if equals fSt 3}} {{> starEdit3}}
+      {{else if equals fSt 4}} {{> starEdit4}}
+      {{else if equals fSt 5}} {{> starEdit5}}
+      {{/if}} -->
+   </strong></p>
+   <input type="number" min="1" max="5" class="starsBox" id="starBox1">
+    <p class="starEval"><strong>Attitude:
+    <!--  {{#if equals sSt 1}} {{> starEdit1}}
+      {{else if equals sSt 2}} {{> starEdit2}}
+      {{else if equals sSt 3}} {{> starEdit3}}
+      {{else if equals sSt 4}} {{> starEdit4}}
+      {{else if equals sSt 5}} {{> starEdit5}}
+      {{/if}} -->
+    </strong></p>
+       <input type="number" min="1" max="5" class="starsBox" id="starBox2">
+    <p class="starEval"><strong>Teamwork:
+    <!--  {{#if equals tSt 1}} {{> starEdit1}}
+      {{else if equals tSt 2}} {{> starEdit2}}
+      {{else if equals tSt 3}} {{> starEdit3}}
+      {{else if equals tSt 4}} {{> starEdit4}}
+      {{else if equals tSt 5}} {{> starEdit5}}
+      {{/if}} -->
+    </strong></p>
+       <input type="number" min="1" max="5" class="starsBox" id="starBox3">
+    <p class="starEval"><strong>Technical Ability:
+      <!--{{#if equals fOSt 1}} {{> starEdit1}}
+      {{else if equals fOSt 2}} {{> starEdit2}}
+      {{else if equals fOSt 3}} {{> starEdit3}}
+      {{else if equals fOSt 4}} {{> starEdit4}}
+      {{else if equals fOSt 5}} {{> starEdit5}}
+      {{/if}} -->
+    </strong></p>
+       <input type="number" min="1" max="5" class="starsBox" id="starBox4">
+  </div>
+  <textarea>{{message}}</textarea>
+  </div>
+  <button class="buttonStyleEval saveEval">Save</button>
+  <button class="buttonStyleEval deleteEval">Delete</button>
+
+  </div>
+  {{/with}}
+  </template>
+  <template name="starEdit1">
+    {{> starsRating rating=1 size='lg' mutable='true' class='mystar starScore'}}
+  </template>
+  <template name="starEdit2">
+    {{> starsRating rating=2 size='lg' class='mystar starScore' mutable='true'}}
+  </template>
+  <template name="starEdit3">
+    {{> starsRating rating=3 size='lg' class='mystar starScore' mutable='true'}}
+  </template>
+  <template name="starEdit4">
+    {{> starsRating rating=4 size='lg' class='mystar starScore' mutable='true'}}
+  </template>
+  <template name="starEdit5">
+    {{> starsRating rating=5 size='lg' class='mystar starScore' mutable='true'}}
+  </template>

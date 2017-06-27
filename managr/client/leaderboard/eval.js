@@ -15,18 +15,15 @@ Template.registerHelper('equals', function (a, b) {
 Template.eval.helpers({
 	evalA: function(){
 		data = Eval.findOne({_id: FlowRouter.getParam("id")});
-		console.log(data);
 		data.fSt = eval(data.stars[0]);
 		data.sSt = eval(data.stars[1]);
 		data.tSt = eval(data.stars[2]);
-		console.log(data.tSt);
+    data.fOSt = eval(data.stars[3]);
     var newDate = moment(data.timestamp);
 		var formattedDate = moment(newDate).format("MMMM D [,] YYYY");
     data.formDate = formattedDate;
     data.to = Student.findOne({_id: data.evaluatee}).name;
     data.from = Instructor.findOne({_id: data.evaluator}).name;
-    console.log(data.from);
-    console.log(data.formDate);
 		return data;
   }
 });
@@ -44,5 +41,9 @@ Template.eval.events({
   'click .backEval': function(event){
     FlowRouter.go("/viewEval");
     event.preventDefault();
+  },
+  'click .editEval': function(event){
+    console.log("YEESS");
+    FlowRouter.go("/editEval/" + FlowRouter.getParam("id"));
   }
 });
