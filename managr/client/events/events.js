@@ -73,44 +73,44 @@ Template.eventsPage.helpers({
     },
   })
 
-  var formatStudentsForevent = function(event) {
-      var studentIds = event.studentIds;
-      var formattedStudents = [];
-
-      for(var i = 0; i < studentIds.length; i++) {
-          var student = Student.findOne({_id: studentIds[i]});
-          if(student == undefined) {
-              continue;
-          }
-          var formattedStudent = {
-              name: student.name
-          }
-          formattedStudents.push(formattedStudent);
-      }
-      return formattedStudents;
-  }
-
-  Template.eventsPage.helpers({
-    eventsHelper() {
-
-
-        var events = Events.find({
-            date: {
-                $gte: new Date()
-            }
-        }, {
-            sort: {
-                date: 1
-            }
-        }).fetch();
-        for (event of events) {
-            var user = Meteor.users.findOne({
-                "_id": event.host
-            })
-            console.log(user);
-            event.host = user.profile.firstname + " " + user.profile.lastname + " (" + user.username + ") "
-        }
-        console.log('it worked');
-        return events;
-    },
-});
+//   var formatStudentsForevent = function(event) {
+//       var studentIds = event.studentIds;
+//       var formattedStudents = [];
+//
+//       for(var i = 0; i < studentIds.length; i++) {
+//           var student = Student.findOne({_id: studentIds[i]});
+//           if(student == undefined) {
+//               continue;
+//           }
+//           var formattedStudent = {
+//               name: student.name
+//           }
+//           formattedStudents.push(formattedStudent);
+//       }
+//       return formattedStudents;
+//   }
+//
+//   Template.eventsPage.helpers({
+//     eventsHelper() {
+//
+//
+//         var events = Events.find({
+//             date: {
+//                 $gte: new Date()
+//             }
+//         }, {
+//             sort: {
+//                 date: 1
+//             }
+//         }).fetch();
+//         for (event of events) {
+//             var user = Meteor.users.findOne({
+//                 "_id": event.host
+//             })
+//             console.log(user);
+//             event.host = user.profile.firstname + " " + user.profile.lastname + " (" + user.username + ") "
+//         }
+//         console.log('it worked');
+//         return events;
+//     },
+// });
