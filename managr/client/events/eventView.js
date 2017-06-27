@@ -34,7 +34,18 @@ Template.eventView.events({
 	 console.log(studentName);
 	 console.log(rsvp);
 
-	 Meteor.call('sendRSVP', eventId, realS, rsvp);
+	 eData = Events.findOne({_id: eventId});
+	 console.log(eData);
+	 for (var i = 0; i < eData.length; i++) {
+		 console.log(studentId + "  " + eData[i]._id);
+	 	if(eData[i]._id == studentId){
+			Meteor.call('sendRSVP', eventId, realS, rsvp, true);
+			console.log("IT GOING TRUE");
+			return;
+		}
+	 }
+	 console.log("IT GOOING FA:SE")
+	 Meteor.call('sendRSVP', eventId, realS, rsvp, false);
 
 	 FlowRouter.go('/events');
 	}
