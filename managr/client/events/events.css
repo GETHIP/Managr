@@ -126,17 +126,16 @@ button.createdEvent {
 
 #calendarButton {
   background-color: #BD53FF;
-
 }
 
 #calendarButton:hover {
   background-color: #BD79FF;
 
 }
-#attendingButton {
+.attendingButton {
   background-color:#BD53FF;
 }
-#attendingButton:hover {
+.attendingButton:hover {
   background-color: #BD79FF;
 }
 .deleteEventButton {
@@ -157,6 +156,11 @@ button.createdEvent {
 }
 .eventsTable {
 	width: 100%;
+  background: white;
+}
+
+table#t01 tr {
+  background: white;
 }
 
 .eventsTableInput {

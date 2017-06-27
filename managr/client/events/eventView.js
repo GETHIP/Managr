@@ -7,33 +7,37 @@ Template.eventView.onCreated(function() {
 });
 
 Template.eventView.events({
-  "submit #eventForm"(event) {
-		event.preventDefault();
-		var target = event.target;
-
-		var eventId = FlowRouter.getParam("id");
-		var hostId = "";
-		var eventName = target.name.value;
-		var description = target.description.value;
-		var location = target.location.value;
-		var newDate = moment(target.date.value);
-		var formattedDate = moment(newDate).format("MMMM D,  YYYY [at] h:mm A");
-		var date = target.date.value;
-
-    Meteor.call('updateEvent', eventId, eventName, description, date, formattedDate, location);
-
-		FlowRouter.go('/events');
-	}
-});
-
-Template.eventView.events({
 'click .slider': function(event){
   if(document.getElementById("indicator").innerHTML == "Attending"){
       document.getElementById("indicator").innerHTML = "Not Attending"
   }else{
       document.getElementById("indicator").innerHTML = "Attending"
   }
-}
+	console.log(indicator)
+	}
+});
+
+Template.eventView.events({
+	'click #rsvpEventButton': function(event){
+	 event.preventDefault();
+	 var target = event.target;
+
+	 var eventId = FlowRouter.getParam("id");
+	 var studentId = Student.findOne({userId: Meteor.user()._id});
+	 var realS = studentId._id;
+	 var studentName = studentId.name;
+	 var rsvp = document.getElementById("indicator").innerHTML;
+
+	 console.log(eventId);
+	 console.log(studentId);
+	 console.log(realS);
+	 console.log(studentName);
+	 console.log(rsvp);
+
+	 Meteor.call('sendRSVP', eventId, realS, rsvp);
+
+	 FlowRouter.go('/events');
+	}
 });
 
 Template.eventView.helpers({
@@ -45,6 +49,12 @@ Template.eventView.helpers({
 Template.eventView.helpers({
 	eventName: function() {
 		return getThisEvent().name;
+	}
+});
+
+Template.eventView.helpers({
+	indicator: function() {
+		return getThisEvent().rsvp;
 	}
 });
 

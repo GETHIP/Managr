@@ -54,6 +54,12 @@ EventSchema = new SimpleSchema({
         type: String,
         label: "Description",
         optional: true
+    },
+    rsvp: {
+      type: [Object],
+      blackbox: true,
+      label: "rsvp",
+      optional: true
     }
 });
 

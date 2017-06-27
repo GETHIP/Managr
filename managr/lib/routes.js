@@ -203,13 +203,6 @@ FlowRouter.route('/home/createPost', {
 		BlazeLayout.render(blogLayout, {content: 'createBlogPost'});
 	}
 });
- /*FlowRouter.route('/home/createEvent', {
-	name: 'createEvent',
-	action() {
-		BlazeLayout.reset();
-		BlazeLayout.render(blogLayout, {content: 'createEvent'});
-	}
-});*/
 
 FlowRouter.route('/events/createEvent', {
 	name: 'createEvent',
@@ -273,15 +266,21 @@ FlowRouter.route('/events/calendar', {
 		BlazeLayout.render("eventsLayout", {content: 'calendar'});
 	}
 });
-FlowRouter.route('/events/Attending', {
-	name: 'Attending',
+FlowRouter.route('/events/invite/:id', {
+	name: 'invitePage',
 	action: function() {
-		BlazeLayout.render("eventsLayout", {content: 'Attending'});
+		BlazeLayout.render("eventsLayout", {content: 'invitePage'});
 	}
 });
-FlowRouter.route('/events/view', {
-	name: 'view',
+FlowRouter.route('/events/attending/:id', {
+	name: 'attending',
 	action: function() {
-		BlazeLayout.render("eventsLayout", {content: 'view'});
+		BlazeLayout.render("eventsLayout", {content: 'attending'});
 	}
 });
+// FlowRouter.route('/events/view', {
+// 	name: 'view',
+// 	action: function() {
+// 		BlazeLayout.render("eventsLayout", {content: 'view'});
+// 	}
+// });
