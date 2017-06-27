@@ -67,7 +67,7 @@ export function allowAll() {
 		}
 	});
 
-	Questions.allow({
+	/*Questions.allow({
 		'insert': function(userId, doc) {
 			return false;
 		},
@@ -77,7 +77,7 @@ export function allowAll() {
 		'remove': function(userId, doc) {
 			return false;
 		}
-	});
+	});*/
 
 	Groups.allow({
 		'insert': function(userId, doc) {
