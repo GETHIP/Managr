@@ -6,6 +6,7 @@ import { Assignments } from "../collections/assignments.js";
 import { Student } from "../collections/student.js";
 import { nameOfUser } from '../lib/permissions.js';
 import { Surveys } from '../collections/surveys.js';
+import { Groups } from '../collections/groups.js';
 
 PostsIndex = new EasySearch.Index({
 	collection: Posts,
