@@ -10,11 +10,13 @@ Template.completedQuestion.onCreated(function() {
 });
 
 Template.completedQuestion.helpers({
-  // questions: function(){
-  //   var allQuestionsArray = Questions.find({}).fetch();
-  //   console.log(allQuestionsArray);
-  //   return allQuestionsArray;
-  // },
+  questions: function(){
+    var surveyId = FlowRouter.getParam('id');
+    var allQuestionsArray = Surveys.find({'_id': "ebDxevcGYsjBMAFCM"}).questions;
+    console.log("questions helper:");
+    console.log(Surveys.find({'_id': "ebDxevcGYsjBMAFCM"}));
+    return allQuestionsArray;
+  },
   choicetype: function(questionType) {
     console.log(questionType);
     if(questionType == "choice") {

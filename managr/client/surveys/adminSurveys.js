@@ -119,6 +119,8 @@ Template.questionFormTemplate.events({
 		 } else {
 			 alert("Please select an option");
 		 }
+		 var surveyId = FlowRouter.getParam('id');
+     console.log(surveyId);
 		 Meteor.call('addQuestion', surveyId, option, question, temparray);
 		 clearForm();
 	 }

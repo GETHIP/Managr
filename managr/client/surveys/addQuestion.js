@@ -14,8 +14,7 @@ Template.addQuestion.events({
     event.preventDefault();
 
     var questionArray = Surveys.find({}).fetch();
-    var surveyId = FlowRouter.getParams('id');
-    Meteor.call("addQuestion", surveyId, questionArray);
+    Meteor.call("updateSurvey", surveyId, questionArray);
     FlowRouter.go('/surveys');
 
     // const target = event.target;
