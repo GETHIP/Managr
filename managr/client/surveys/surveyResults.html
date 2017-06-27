@@ -1,0 +1,42 @@
+<template name="surveysResults">
+    {{#if isInstructor}}
+    <div class="marginContainer">
+    <h1 class="titleAssignment">Survey Results</h1>
+    <div class="orange-bar red-bar"> &nbsp;</div>
+      <div class="surveyContainer">
+        <p class="noIndent assignmentFormFormat"><b>Number of Responses:</b>  {{this.studentsCompleted}}/{{this.numberOfStudents}}</p>
+        <p class="noIndent assignmentFormFormat"><b>Due Date:</b>  {{this.dueDate}}</p>
+        <p class="noIndent assignmentFormFormat"><b>Survey Questions:</b>  {{question}}</p>
+      </div>
+    <table class="viewAllTable">
+      <!-- Table Headings -->
+      <tr>
+        <th class="surveyTableHeadFormat surveys">Status</th>
+        <th class="surveyTableHeadFormat surveys">Student</th>
+        <th class="surveyTableHeadFormat surveys">Date Completed</th>
+      </tr>
+      <!-- Each survey in table -->
+      {{#each surveys}}
+        <tr class="tableRowFormat" onclick="FlowRouter.go('{{this.url}}')">
+          <td class="tableDataFormat assignments">{{this.status}}</td>
+          <td class="tableDataFormat assignments">{{this.studentName}}</td>
+          <td class="tableDataFormat assignments">{{this.dateCompleted}}</td>
+        </tr>
+      {{/each}}
+      <tr class="tableRowFormat" onclick="FlowRouter.go('{{this.url}}')">
+        <td class="tableDataFormat assignments">Completed</td>
+        <td class="tableDataFormat assignments">Will Guo</td>
+        <td class="tableDataFormat assignments">09/15/17</td>
+      </tr>
+      <tr class="tableRowFormat" onclick="FlowRouter.go('{{this.url}}')">
+        <td class="tableDataFormat assignments">Incompleted</td>
+        <td class="tableDataFormat assignments">Nick Nguyen</td>
+        <td class="tableDataFormat assignments">N/A</td>
+      </tr>
+
+    </table>
+    </div>
+      {{else}}
+        {{> accessDenied}}
+      {{/if}}
+</template>

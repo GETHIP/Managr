@@ -7,6 +7,8 @@ import { Student } from '../collections/student.js';
 import { Groups } from '../collections/groups.js';
 import { Drafts } from '../collections/drafts.js';
 import { Globals } from '../collections/globals.js';
+import { Surveys } from '../collections/surveys.js';
+import { Questions } from '../collections/questions.js';
 
 export function publishAll() {
 
@@ -64,4 +66,12 @@ export function publishAll() {
 	Meteor.publish("Globals", function() {
 		return Globals.find({});
 	});
+
+	Meteor.publish("Surveys", function() {
+		return Surveys.find({});
+	});
+
+	// Meteor.publish("Questions", function() {
+	// 	return Questions.find({});
+	// });
 }

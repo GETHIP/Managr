@@ -1,0 +1,58 @@
+.red-bar {
+  background: #e61610;
+}
+
+.surveyBtn {
+  background: #e61610;
+  width: 66%;
+}
+
+viewAllTable tr:hover {
+  background-color: #f7b9b7;
+  cursor: pointer;
+}
+
+.buttonStyle.surveyBtn:hover {
+  background-color: #cf130e;
+}
+
+.surveyTableHeadFormat {
+  background-color: #e61610;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  border-bottom: 1px solid #444444;
+  color: white;
+  width: 50%;
+  font-size: 18px;
+  text-align: center;
+}
+
+.surveyTableHeadFormat.surveys, .surveyTableDataFormat.surveys {
+  width: 33%;
+}
+
+.marginContainer {
+  width: 90%;
+}
+
+label {
+  /*vertical-align: middle;*/
+  float: right;
+}
+
+.dropdown {
+  margin-left: 2%;
+}
+
+#xicon {
+  color: #e61610;
+  float: right;
+  margin-bottom: 2%;
+}
+
+.deleteBtn {
+  padding: 0%;
+  border: none;
+  background: none;
+  float: right;
+}

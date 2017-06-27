@@ -1,0 +1,17 @@
+<template name="individualResults">
+    {{#if isInstructor}}
+    <div class="marginContainer">
+    <h1 class="titleAssignment">Will Guo's Results</h1>
+    <div class="orange-bar red-bar"> &nbsp;</div>
+      <div class="surveyContainer">
+        <p class="noIndent assignmentFormFormat"><b>Survey Questions:</b>  {{question}}</p>
+      </div>
+    <table class="viewAllTable">
+      
+    </table>
+    </div>
+
+      {{else}}
+        {{> accessDenied}}
+      {{/if}}
+</template>

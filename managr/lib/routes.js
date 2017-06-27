@@ -26,6 +26,12 @@ var attendanceSection = FlowRouter.group({
 	name: "attendance",
 	profiles: "/attendance"
 });
+
+var surveysSection = FlowRouter.group({
+	name: "surveys",
+	prefix: "/surveys"
+});
+
 blogsSection.route('/home', {
 	name: 'home',
 	action() {
@@ -84,6 +90,7 @@ assignmentSection.route("/single/:id", {
         });
     }
 });
+
 //this is a temp route
 assignmentSection.route("/single/admin/:id", {
     name: "adminSingleAssignment",
@@ -183,6 +190,47 @@ profileSection.route("/profile", {
 		//BlazeLayout.render(main, { content: 'assignmentsBody' });
 	}
 });
+
+FlowRouter.route("/surveys", {
+    action: function(params, queryParams) {
+        BlazeLayout.render("surveysLayout", {content:'surveysPage'});
+		//BlazeLayout.render(main, { content: 'assignmentsBody' });
+	}
+});
+
+FlowRouter.route("/surveysResults", {
+    action: function(params, queryParams) {
+        BlazeLayout.render("surveysLayout", {content:'surveysResults'});
+		//BlazeLayout.render(main, { content: 'assignmentsBody' });
+	}
+});
+
+FlowRouter.route("/individualResults", {
+    action: function(params, queryParams) {
+        BlazeLayout.render("surveysLayout", {content:'individualResults'});
+		//BlazeLayout.render(main, { content: 'assignmentsBody' });
+	}
+});
+
+FlowRouter.route("/createNewSurvey", {// /:id
+    action: function(params, queryParams) {
+        BlazeLayout.render("surveysLayout", {content:'newSurvey'});
+		//BlazeLayout.render(main, { content: 'assignmentsBody' });
+	}
+});
+
+FlowRouter.route("/addQuestion/:id", {
+    action: function(params, queryParams) {
+        BlazeLayout.render("surveysLayout", {content:'addQuestion'});
+		//BlazeLayout.render(main, { content: 'assignmentsBody' });
+	}
+});
+// //with specific survey id
+// FlowRouter.route("/view/:id", {
+//     action: function(params, queryParams) {
+//         BlazeLayout.render("surveysLayout", {content:'viewSurveyPage'});
+// 	}
+// });
 
 FlowRouter.route('/home/blogs/:year/:month', {
 	name: 'archives',
