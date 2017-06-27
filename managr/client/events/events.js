@@ -47,6 +47,7 @@ Template.eventsPage.events({
     }
   }
 });
+
 Template.eventsPage.helpers({
   events: function() {
     var allEvents = Events.find({}).fetch();
@@ -71,6 +72,7 @@ Template.eventsPage.helpers({
   eventsIndex: function() {
       return eventsIndex;
   }
+
   });
 
   Template.eventsPage.events({
@@ -95,3 +97,28 @@ Template.eventsPage.helpers({
       }
       return formattedStudents;
   }
+
+  Template.eventsPage.helpers({
+    eventsHelper() {
+
+
+        var events = Events.find({
+            date: {
+                $gte: new Date()
+            }
+        }, {
+            sort: {
+                date: 1
+            }
+        }).fetch();
+        for (event of events) {
+            var user = Meteor.users.findOne({
+                "_id": event.host
+            })
+            console.log(user);
+            event.host = user.profile.firstname + " " + user.profile.lastname + " (" + user.username + ") "
+        }
+        console.log('it worked');
+        return events;
+    },
+});

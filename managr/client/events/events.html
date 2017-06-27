@@ -34,6 +34,11 @@
 
 {{#EasySearch.Each index=eventsIndex attributes=searchBarEvent}}
 
+{{#if isStudent}}
+{{>invites}}
+{{/if}}
+
+{{#if isInstructor}}
   <div class="events">
     <div class ="formdashboardContainer containerDiv formbg homeEvents">
       <!-- <div class="containerDiv formbg homeEvents"> -->
@@ -48,7 +53,7 @@
            </div>
          {{/if}} -->
 
-         {{#if isInstructor}}
+
            <div class="editEventButton">
 
              <button type="button" class="buttonStyle editEvent createdEvent goToEdit" id="{{eventId}}"><i class="fa fa-eraser" aria-hidden="true"></i>     Edit Event</button>
@@ -57,7 +62,7 @@
              <button type="button" class="deleteEventButton manageDeleteButton" id="{{eventId}}"><i class="fa fa-trash-o" aria-hidden="true"></i>     Delete</button>
 
            </div>
-         {{/if}}
+
 
 
 
@@ -68,7 +73,7 @@
 
     </div>
   </div>
-
+ {{/if}}
 {{/EasySearch.Each}}
 
 {{else}}
