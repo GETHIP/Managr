@@ -16,18 +16,21 @@ Template.viewEval.helpers({
     _dep.depend()
     console.log("hi")
     var selectStudent = document.getElementById("12asdf");
+    var selectInstruct = document.getElementById("instructorChoice");
    try{
-    selectStudent = selectStudent.value
-    if(selectStudent == "sortAll"){
-    		console.log(Eval.find({}).fetch());
+    selectStudent = selectStudent.value;
+    selectInstruct = selectInstruct.value;
+
+    if(selectStudent == "sortAll" && selectInstruct == "sortAll"){
+    		//console.log(Eval.find({}).fetch());
     		var data = Eval.find().fetch();
         for(var i = 0; i < data.length; i++){
-          console.log(Student.findOne({_id: data[i].evaluatee}));
+        //  console.log(Student.findOne({_id: data[i].evaluatee}));
     		data[i].name = Student.findOne({_id: data[i].evaluatee}).name;
         data[i].instructor = Instructor.findOne({_id: data[i].evaluator}).name;
-        console.log(data[i].name);
-        console.log(data[i].instructor);
-        console.log(data[i].stars);
+        //console.log(data[i].name);
+      //  console.log(data[i].instructor);
+      //  console.log(data[i].stars);
     		data[i].effort = data[i].stars[0];
     		data[i].att = data[i].stars[1];
     		data[i].team = data[i].stars[2];
@@ -37,7 +40,7 @@ Template.viewEval.helpers({
     } catch (e) {
       console.log("error, the try statement not working")
     }
-    if(selectStudent != "sortAll"){
+    if(selectStudent != "sortAll" && selectInstruct == "sortAll"){
       var data = [];
       var dataList = Eval.find({evaluatee: document.getElementById("12asdf").value}).fetch();
       console.log(dataList)
@@ -51,9 +54,42 @@ Template.viewEval.helpers({
         data.push(element);
       });
     }
+      if(selectStudent == "sortAll" && selectInstruct != "sortAll"){
+        var data = [];
+        var dataList = Eval.find({evaluator: document.getElementById("instructorChoice").value}).fetch();
+        console.log(dataList)
+        dataList.forEach(function(element){
+          element.name = Student.findOne({_id: element.evaluatee}).name;
+          console.log(element.name)
+          element.instructor = $("#instructorChoice option:selected").text();
+          element.effort = element.stars[0];
+          element.att = element.stars[1];
+          element.team = element.stars[2];
+          element.tech = element.stars[3];
+          data.push(element);
+        });
+      }
+        if(selectStudent != "sortAll" && selectInstruct != "sortAll"){
+          var data = [];
+          var dataList = Eval.find({
+            evaluator: document.getElementById("instructorChoice").value,
+            evaluatee: document.getElementById("12asdf").value
+          }).fetch();
+          console.log(dataList)
+          dataList.forEach(function(element){
+            element.name = Student.findOne({_id: element.evaluatee}).name;
+            element.instructor = Instructor.findOne({_id: element.evaluator}).name;;
+            element.effort = element.stars[0];
+            element.att = element.stars[1];
+            element.team = element.stars[2];
+            element.tech = element.stars[3];
+            data.push(element);
+          });
+        }
+          return data;
 
-  console.log(data);
-  return data;
+  //console.log(data);
+
 },
 	allEvals: function(){
     return Eval.find({evaluator: Instructor.find({userId: Meteor.user()._id})._id});
@@ -94,6 +130,10 @@ Template.viewEval.events({
 
   },
   'change #12asdf': function(event){
+    event.preventDefault();
+    _dep.changed();
+  },
+  'change #instructorChoice': function(event){
     event.preventDefault();
     _dep.changed();
   }
