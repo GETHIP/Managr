@@ -52,6 +52,8 @@ Template.eventView.events({
 	 console.log(studentName);
 	 console.log(rsvp);
 
+	//  INSERT INTO attendingTable VALUES ('{{studentName}}', '{{rsvp}}')
+
 	 Meteor.call('sendRSVP', eventId, studentName, rsvp);
 
 	 FlowRouter.go('/events');

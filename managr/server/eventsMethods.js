@@ -20,9 +20,11 @@ export function eventsMethods() {
 			if(!isStudent()) {
 				return;
 			}
-			Events.insert({
-				name: studentName,
-				rsvp: rsvp
+			Events.update({_id: eventId}, {
+				$set: {
+					studentName: studentName,
+					rsvp: rsvp
+				}
 			});
 		},
     'createNewEvent': function(hostId, host, eventName, description, date, formattedDate, location) {
