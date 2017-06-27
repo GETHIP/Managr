@@ -2,7 +2,7 @@
   width: 100%;
   font-family: arial, sans-serif;
   font-size: 20px;
-  border: 1px solid black;
+  border: 3px solid #BD53FF;
   border-collapse: collapse;
   text-align: left;
 }
@@ -22,5 +22,5 @@ table#t02 tr {
 }
 
 table#t02 tr:nth-child(odd) {
-    background: #dddddd;
+    background: #F0DFFB;
 }

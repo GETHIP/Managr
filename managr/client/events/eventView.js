@@ -5,26 +5,6 @@ Template.eventView.onCreated(function() {
 		Meteor.subscribe("Student");
     Meteor.subscribe("Events");
 });
-//
-// Template.eventView.events({
-//   "submit #eventForm"(event) {
-// 		event.preventDefault();
-// 		var target = event.target;
-//
-// 		var eventId = FlowRouter.getParam("id");
-// 		var hostId = "";
-// 		var eventName = target.name.value;
-// 		var description = target.description.value;
-// 		var location = target.location.value;
-// 		var newDate = moment(target.date.value);
-// 		var formattedDate = moment(newDate).format("MMMM D,  YYYY [at] h:mm A");
-// 		var date = target.date.value;
-//
-//     Meteor.call('updateEvent', eventId, eventName, description, date, formattedDate, location);
-//
-// 		FlowRouter.go('/events');
-// 	}
-// });
 
 Template.eventView.events({
 'click .slider': function(event){
