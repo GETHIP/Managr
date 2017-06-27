@@ -7,7 +7,7 @@
       <div class="formdashboardContainer">
         <h4 class="searchEventsLabel">Search:</h4>
           <div class = "eventSearchBar">
-            <table class="eventsTable">
+            <table class="eventsTable" id="t01">
                   <thead></thead>
                   <tbody class="eventsTable">
                   <tr>
@@ -34,11 +34,6 @@
 
 {{#EasySearch.Each index=eventsIndex attributes=searchBarEvent}}
 
-{{#if isStudent}}
-{{>invites}}
-{{/if}}
-
-{{#if isInstructor}}
   <div class="events">
     <div class ="formdashboardContainer containerDiv formbg homeEvents">
       <!-- <div class="containerDiv formbg homeEvents"> -->
@@ -53,7 +48,7 @@
            </div>
          {{/if}} -->
 
-
+         {{#if isInstructor}}
            <div class="editEventButton">
 
              <button type="button" class="buttonStyle editEvent createdEvent goToEdit" id="{{eventId}}"><i class="fa fa-eraser" aria-hidden="true"></i>     Edit Event</button>
@@ -62,18 +57,18 @@
              <button type="button" class="deleteEventButton manageDeleteButton" id="{{eventId}}"><i class="fa fa-trash-o" aria-hidden="true"></i>     Delete</button>
 
            </div>
+         {{/if}}
 
 
 
-
-  				<p>Host: {{host}}</p>
-  				<p>Description: {{description}}</p>
-  				<p>Date: {{formattedDate}}</p>
-  				<p>Location: {{location}}</p>
+                                                                <p>Host: {{host}}</p>
+                                                                <p>Description: {{description}}</p>
+                                                                <p>Date: {{formattedDate}}</p>
+                                                                <p>Location: {{location}}</p>
 
     </div>
   </div>
- {{/if}}
+
 {{/EasySearch.Each}}
 
 {{else}}
