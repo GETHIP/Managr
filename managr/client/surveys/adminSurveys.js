@@ -51,7 +51,7 @@ Template.questionFormTemplate.events({
 			 var choice3 = Session.get('choiceOption3');
 			 var choice4 = Session.get('choiceOption4');
 			 var choiceArray = [choice1, choice2, choice3, choice4]
-
+			 console.log(question);
 			 //if options are blank, they are not added to the array
 			 var newArray = [];
 			 for (i = 0; i < 4; i++) {
@@ -62,7 +62,7 @@ Template.questionFormTemplate.events({
 					break;
 				}
 			 }
-			 console.log(newArray)
+			 console.log(newArray);
 
 			 //clears template for next use
 			 Session.set('choiceQuestion', null);
@@ -84,6 +84,7 @@ Template.questionFormTemplate.events({
 			 var option4 = Session.get('checkOption4');
 			 var option5 = Session.get('checkOption5')
 			 var checkArray = [option1, option2, option3, option4, option5]
+			 console.log(question);
 			 console.log(option1);
 
 			 //if options are blank, they are not added to the array
@@ -111,6 +112,7 @@ Template.questionFormTemplate.events({
 		 }
 		 else if(option == 'shResp') {
 			 var question = Session.get('shRespQuestion');
+			 console.log(question);
 			 Session.set('shRespQuestion', null);
 			//  temparray = [shResp];
 			 //add card code here
@@ -232,11 +234,7 @@ Template.FRtemplate.events({
 	'keyup #shRespQuestion'(event) {
 		Session.set('shRespQuestion', event.target.value)
 	}
-})
-
-Template.completedQuestion.events({
-
-})
+});
 
 /************ DO NOT UNCOMMENT ************/
 /*Questions = new SimpleSchema({

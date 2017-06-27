@@ -212,14 +212,14 @@ FlowRouter.route("/individualResults", {
 	}
 });
 
-FlowRouter.route("/createNewSurvey/:id", {// /:id
+FlowRouter.route("/createNewSurvey", {// /:id
     action: function(params, queryParams) {
         BlazeLayout.render("surveysLayout", {content:'newSurvey'});
 		//BlazeLayout.render(main, { content: 'assignmentsBody' });
 	}
 });
 
-FlowRouter.route("/addQuestion", {
+FlowRouter.route("/addQuestion/:id", {
     action: function(params, queryParams) {
         BlazeLayout.render("surveysLayout", {content:'addQuestion'});
 		//BlazeLayout.render(main, { content: 'assignmentsBody' });

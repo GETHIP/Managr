@@ -24,8 +24,9 @@ Template.newSurvey.events({
     console.log(date);
     console.log(anonToggle);
 
-    Meteor.call("createNewSurvey", surveyName, date, anonToggle);
-    FlowRouter.go('/addQuestion');
+    Meteor.call("createNewSurvey", surveyName, date, anonToggle, function(error, result) {
+			  FlowRouter.go("/addQuestion/" + result);
+		});
   }
 });
 

@@ -33,7 +33,7 @@ export function surveysMethods() {
 			if(!isInstructor()) {
 				return;
 			}
-			Surveys.insert({
+			return Surveys.insert({
 				name: surveyName,
 				dueDate: date
 			});
