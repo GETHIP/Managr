@@ -14,8 +14,11 @@ Template.addQuestion.events({
     event.preventDefault();
 
     var questionArray = Surveys.find({}).fetch();
-    // var surveyId = 
+    // var surveyId =
     Meteor.call("updateSurvey", surveyId, questionArray);
     FlowRouter.go('/surveys');
+
+    // const target = event.target;
+    // FlowRouter.go("/createsurveys/" + target.id);
   }
 });

@@ -212,7 +212,7 @@ FlowRouter.route("/individualResults", {
 	}
 });
 
-FlowRouter.route("/createNewSurvey", {
+FlowRouter.route("/createNewSurvey/:id", {// /:id
     action: function(params, queryParams) {
         BlazeLayout.render("surveysLayout", {content:'newSurvey'});
 		//BlazeLayout.render(main, { content: 'assignmentsBody' });
@@ -221,7 +221,7 @@ FlowRouter.route("/createNewSurvey", {
 
 FlowRouter.route("/addQuestion", {
     action: function(params, queryParams) {
-        BlazeLayout.render("surveysLayout", {content:'addQuestion'});			
+        BlazeLayout.render("surveysLayout", {content:'addQuestion'});
 		//BlazeLayout.render(main, { content: 'assignmentsBody' });
 	}
 });
