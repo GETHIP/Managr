@@ -9,3 +9,20 @@ Template.attending.onCreated(function() {
     Meteor.subscribe("Instructor");
     Meteor.subscribe("Groups");
 });
+
+Template.attending.helpers({
+  'event': function(){
+  data = Events.findOne({_id: FlowRouter.getParam("id")});
+  rList = data.rsvp;
+  for(var i = 0; i < rList.length; i++){
+    name = Student.findOne({_id: rList[i]._id}).name;
+    rList[i].name = name;
+    if(rList[i].rsvp == true){
+      rList[i].status = "Attending";
+    }else{
+      rList[i].status = "Not Attending";
+    }
+  }
+  return rList;
+}
+});

@@ -44,17 +44,17 @@ Template.eventView.events({
 
 	 var eventId = FlowRouter.getParam("id");
 	 var studentId = Student.findOne({userId: Meteor.user()._id});
+	 var realS = studentId._id;
 	 var studentName = studentId.name;
 	 var rsvp = document.getElementById("indicator").innerHTML;
 
 	 console.log(eventId);
 	 console.log(studentId);
+	 console.log(realS);
 	 console.log(studentName);
 	 console.log(rsvp);
 
-	//  INSERT INTO attendingTable VALUES ('{{studentName}}', '{{rsvp}}')
-
-	 Meteor.call('sendRSVP', eventId, studentName, rsvp);
+	 Meteor.call('sendRSVP', eventId, realS, rsvp);
 
 	 FlowRouter.go('/events');
 	}

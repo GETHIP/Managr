@@ -16,15 +16,19 @@ export function eventsMethods() {
       }
       Events.remove(eventId);
     },
-		'sendRSVP': function(eventId, studentName, rsvp) {
+		'sendRSVP': function(eventId, studentId, rsvp) {
+			var result;
 			if(!isStudent()) {
 				return;
 			}
+			console.log("asdf");
+			if(rsvp == "Attending"){
+				result = true;
+			}else if(rsvp == "Not Attending"){
+				result = false;
+			}
 			Events.update({_id: eventId}, {
-				$set: {
-					studentName: studentName,
-					rsvp: rsvp
-				}
+				$push: {rsvp: {_id: studentId, rsvp: result}}
 			});
 		},
     'createNewEvent': function(hostId, host, eventName, description, date, formattedDate, location) {
