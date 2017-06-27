@@ -23,7 +23,7 @@
       {{else if equals fSt 5}} {{> starEdit5}}
       {{/if}} -->
    </strong></p>
-   <input type="number" min="1" max="5" class="starsBox" id="starBox1">
+   <input type="number" value="{{fSt}}" min="1" max="5" class="starsBox" id="starBox1">
     <p class="starEval"><strong>Attitude:
     <!--  {{#if equals sSt 1}} {{> starEdit1}}
       {{else if equals sSt 2}} {{> starEdit2}}
@@ -32,7 +32,7 @@
       {{else if equals sSt 5}} {{> starEdit5}}
       {{/if}} -->
     </strong></p>
-       <input type="number" min="1" max="5" class="starsBox" id="starBox2">
+       <input type="number" value="{{sSt}}" min="1" max="5" class="starsBox" id="starBox2">
     <p class="starEval"><strong>Teamwork:
     <!--  {{#if equals tSt 1}} {{> starEdit1}}
       {{else if equals tSt 2}} {{> starEdit2}}
@@ -41,7 +41,7 @@
       {{else if equals tSt 5}} {{> starEdit5}}
       {{/if}} -->
     </strong></p>
-       <input type="number" min="1" max="5" class="starsBox" id="starBox3">
+       <input type="number" value="{{tSt}}" min="1" max="5" class="starsBox" id="starBox3">
     <p class="starEval"><strong>Technical Ability:
       <!--{{#if equals fOSt 1}} {{> starEdit1}}
       {{else if equals fOSt 2}} {{> starEdit2}}
@@ -50,9 +50,9 @@
       {{else if equals fOSt 5}} {{> starEdit5}}
       {{/if}} -->
     </strong></p>
-       <input type="number" min="1" max="5" class="starsBox" id="starBox4">
+       <input type="number" value="{{fOSt}}" min="1" max="5" class="starsBox" id="starBox4">
   </div>
-  <textarea>{{message}}</textarea>
+  <textarea id="message">{{message}}</textarea>
   </div>
   <button class="buttonStyleEval saveEval">Save</button>
   <button class="buttonStyleEval deleteEval">Delete</button>

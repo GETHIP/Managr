@@ -18,6 +18,7 @@ import { dashboardMethods } from './dashboardMethods.js';
 import { leaderboardMethods } from './leaderboardMethods.js';
 import { Globals } from '../collections/globals.js';
 import { Email } from 'meteor/email'
+import { Milestone } from '../collections/milestone.js';
 
 var fs = Npm.require('fs');
 
