@@ -3,7 +3,25 @@
   <h1 class="titleAssignment">Attending</h1>
   <div id="lineP"> &nbsp;</div>
   <div class="formdashboardContainer">
-<p>   </p>
-</div>
-</div>
-</template>
+    <p>
+      <table class="attendingTable" id="t02" name="attendingTable">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>RSVP</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each event}}
+        <tr>
+          <td>{{name}}</td>
+          <td>{{status}}</td>
+        </tr>
+        {{/each}}
+
+      </tbody>
+      </table>
+    </p>
+    </div>
+    </div>
+    </template>

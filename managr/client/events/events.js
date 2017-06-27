@@ -38,14 +38,6 @@ Template.eventsPage.events({
     event.preventDefault();
     FlowRouter.go('/events/view');
   },
-
-  'click .slider': function(event){
-    if(document.getElementById("indicator").innerHTML == "Attending"){
-        document.getElementById("indicator").innerHTML = "Not Attending"
-    }else{
-        document.getElementById("indicator").innerHTML = "Attending"
-    }
-  }
 });
 
 Template.eventsPage.helpers({
