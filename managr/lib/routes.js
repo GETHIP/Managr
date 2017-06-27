@@ -254,18 +254,26 @@ FlowRouter.route('/reports', {
 FlowRouter.route('/groups', {
 	name: 'groups',
 	action: function() {
-		BlazeLayout.render("dashboardLayout", { content: 'groups' });
+		BlazeLayout.render("groupsLayout", { content: 'groups' });
 	}
 });
 FlowRouter.route('/groups/create', {
 	name: 'createGroup',
 	action: function() {
-		BlazeLayout.render("dashboardLayout", {content: 'createGroup'});
+		BlazeLayout.render("groupsLayout", {content: 'createGroup'});
 	}
 });
 FlowRouter.route('/groups/edit/:id', {
 	name: 'editGroup',
 	action: function() {
-		BlazeLayout.render("dashboardLayout", {content: 'editGroup'});
+		BlazeLayout.render("groupsLayout", {content: 'editGroup'});
+	}
+});
+
+
+FlowRouter.route('/myGroups', {
+	name: 'myGroups',
+	action: function() {
+		BlazeLayout.render("groupsLayout", {content: 'myGroups'});
 	}
 });
