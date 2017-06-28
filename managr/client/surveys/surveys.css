@@ -35,6 +35,10 @@ viewAllTable tr:hover {
   width: 90%;
 }
 
+.tableRowFormat.surveys:hover {
+  background-color:#F7b9b7;
+}
+
 label {
   /*vertical-align: middle;*/
   float: right;
