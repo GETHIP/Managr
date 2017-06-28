@@ -67,6 +67,7 @@ Template.editGroup.events({
 				var groupId = FlowRouter.getParam('id');
         var groupName = form.groupName.value;
 				var size = allAdded.length;
+				var stringSize = size.toString();
 				console.log(groupName);
 				var studentIds = [];
 				var studentNames = [];
@@ -90,7 +91,16 @@ Template.editGroup.events({
 								coachNames.push(coach.name);
 						}
 				}
-				Meteor.call('updateGroup', groupId, groupName, studentIds, size, studentNames, coaches, coachNames, allAdded);
+				var data = {
+						name: groupName,
+						studentIds: studentIds,
+						coaches: coaches,
+						coachNames: coachNames,
+						size: size,
+						stringSize: stringSize,
+						studentNames: studentNames
+				};
+				Meteor.call('updateGroup', groupId, data);
 
         FlowRouter.go("/groups");
     },

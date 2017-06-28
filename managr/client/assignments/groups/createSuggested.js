@@ -9,31 +9,90 @@ Template.createSuggested.onCreated(function() {
     Meteor.subscribe("Student");
     Meteor.subscribe("Groups");
 
-		this.autorun(function () {
-				Meteor.subscribe("Student");
-				//Meteor.subscribe("CurrentAdded", id);
-				//Meteor.subscribe("CurrentNotAdded", id);
-		});
-
-    allAdded = [];
-    allNotAdded = Student.find().fetch();
+    this.autorun(function () {
+        var subscription = Meteor.subscribe("Student");
+        //Meteor.subscribe("CurrentAdded", id);
+        //Meteor.subscribe("CurrentNotAdded", id);
+        if (subscription.ready()) {
+            allAdded = [];
+            allNotAdded = Student.find().fetch();
+            suggested_dep.changed()
+        }
+    });
+    // var self = this;
+    // self.autorun(function() {
+    //   self.subscribe('Student');
+    // })
 });
 
 Template.createSuggested.events({
 		"submit #createSuggestedForm"(event) {
         event.preventDefault();
         const form = event.target;
+        var valid = true;
 
-        var number = form.numTypeInput.value;
+        var numberOf = form.numTypeInput.value;
         var option = form.numType.value;
-        console.log(number);
+        console.log(numberOf);
         console.log(option);
 
+        var formattedStudents = [];
+        allAdded.forEach(function(student) {
+            var formattedStudent = {
+                name: student.name,
+                studentId: student._id
+            }
+            formattedStudents.push(formattedStudent);
+        });
 
+        if (option == "Number Of Groups") {
+            var num = Math.floor(formattedStudents.length / numberOf);
+            var offset = formattedStudents.length % numberOf;
+            var groups = [];
+            var i = 1;
+            while (formattedStudents.length > 0) {
+                var count = num;
+                if (offset > 0) {
+                    offset--;
+                    count++;
+                }
+                var currentStudents = formattedStudents.splice(0, count);
+                var formattedGroup = {
+                    name: "Group " + i,
+                    students: currentStudents
+                }
+                groups.push(formattedGroup);
+                i++;
+            }
+        }
+        else if (option == "Students Per Group") {
+            var groups = [];
+            var i = 1;
+            while (formattedStudents.length > 0) {
+                var currentStudents = formattedStudents.splice(0, numberOf);
+                var formattedGroup = {
+                    name: "Group " + i,
+                    students: currentStudents
+                }
+                groups.push(formattedGroup);
+                i++;
+            }
+        }
+        else {
+            valid = false;
+            Modal.show('warningModal', {
+                title: 'Error',
+                text: 'No generation option was selected.',
+                confirmText: 'Retry',
+                confirmCallback: () => {}
+            });
+        }
 
-				//Meteor.call('createSuggested', numType, studentIds, allAdded);
-
-        //FlowRouter.go("/editSuggested");
+        if (valid) {
+            var params = groups;
+            FlowRouter.go("/groups/editSuggested");
+            BlazeLayout.render("groupsLayout", {content:'editSuggested', groups: params});
+        }
     },
 		"click #addStudents"(event) {
 				event.preventDefault();
