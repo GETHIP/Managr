@@ -23,3 +23,8 @@ Template.addQuestion.events({
     // FlowRouter.go("/addQuestion/" + target.id);
   }
 });
+Template.surveysPage.helpers({
+  surveys(){
+    return Surveys.find({});
+  }
+});
