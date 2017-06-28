@@ -1,5 +1,6 @@
 import { Surveys } from '../../collections/surveys.js';
-import { Questions } from '../../collections/questions.js';
+import { Student } from '../../collections/student.js';
+
 
 /*surveysPage.events({
 
@@ -29,6 +30,13 @@ var getSurveysCompleted = function(student) {
       });
    }
 });*/
+Template.surveysPage.events({
+	'click .rowClick'(event){
+		console.log("gdhjk")
+		event.preventDefault();
+		FlowRouter.go('/surveysResults/' + event.target.id)
+	}
+})
 Template.questionFormTemplate.events({
 	 'change #questionFormm'(event){
      //keeps page from refreshing
