@@ -44,6 +44,23 @@ var Assignment = new SimpleSchema({
     }
 });
 
+var Survey = new SimpleSchema({
+  surveyId: {
+    type: String,
+    label: "Survey ID"
+  },
+  completed: {
+    type: Boolean,
+    defaultValue: false,
+    label: "Completed"
+  },
+  link: {
+    type: String,
+    optional: true,
+    label: "Link"
+  }
+});
+
 var StudentSchema = new SimpleSchema({
     name: {
         type: String,
@@ -121,6 +138,11 @@ var StudentSchema = new SimpleSchema({
         type: [Assignment],
         label: "Assignments",
         optional: true
+    },
+    surveys: {
+      type: [Survey],
+      label: "Surveys",
+      optional: true
     },
 	isArchived: {
 		type: Boolean

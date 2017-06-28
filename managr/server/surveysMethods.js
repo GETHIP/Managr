@@ -26,6 +26,28 @@ export function surveysMethods() {
 				}
 			});
 		},
+		//Reference assignmentMethods.js - 'removeAssignment' function
+		'removeSurvey':function(surveyId) {
+			if (!isInstructor()) {
+				return;
+			}
+			console.log("Remove Surveys works!");
+			var allStudents = Student.find({}).fetch();
+			for(var j = 0; j < allStudents.length; j++) {
+				var studentSurveys = allStudents[j].surveys;
+				for(var i = 0; i < studentSurveys.length; i++) {
+					if(studentSurveys[i].surveyId == surveyId) {
+						studentSurveys.splice(i, 1);
+						Student.update({_id: allStudents[j]._id}, {
+							$set: {surveys: studentSurveys}
+						});
+						break;
+					}
+				}
+			}
+
+			Surveys.remove(surveyId);
+		},
 		//Surveys.update({_id: surveyId}, { $pull: { [questions]: { "dateHash": dateHash } } });
 
 		// 'deleteComment': function(id, index) {
