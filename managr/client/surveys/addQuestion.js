@@ -15,7 +15,7 @@ Template.addQuestion.events({
 
     // var surveyId = FlowRouter.getParam('id');
     // var questionArray = Surveys.find({}).fetch();
-    // 
+    //
     // Meteor.call("updateSurvey", surveyId, questionArray);
     // var surveyComplete = questionArray;
     FlowRouter.go('/surveys');
@@ -29,3 +29,9 @@ Template.surveysPage.helpers({
     return Surveys.find({});
   }
 });
+
+// Template.viewSurveyPage.helpers({
+//   surveys(){
+//     return Surveys.find({});
+//   }
+// });
