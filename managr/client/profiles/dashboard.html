@@ -34,20 +34,20 @@
 				<tbody class="milestoneTable">
 					<tr>
 						<td class="milestoneTableInput">
-							<input name="newMilestone" class="newMilestone milestoneTable" type="text">
+							<input name="newMilestone" id="milestoneIn" class="newMilestone milestoneTable" type="text">
 						</td>
 						<td class="milestoneTableSpacer"></td>
 						<td class="milestoneTableButton">
-							<button type="submit" class="buttonStyle createFormButton milestoneTable">Add Milestone</button>
+							<button type=click class="buttonStyle createFormButton milestoneTable" id="createMilestone">Add Milestone</button>
 						</td>
 						<td class="milestoneTableSpacer"></td>
 						<div class ="dropdownformContainermilestone">
 								<label for="milestone">Milestone</label>
 						    <select id="milestone" name="milestone">
-									<option value="week 1">week 1</option>
-						      <option value="week 2">week 2</option>
-						      <option value="week 3">Week 3</option>
-						    </select>
+									{{#each milestones}}
+									<option value={{_id}}>{{name}}</option>
+									{{/each}}
+								</select>
 							</div>
 						<td class="milestoneTableSpacer"></td>
 						<td class="milestoneTableButton">

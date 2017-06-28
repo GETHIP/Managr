@@ -6,6 +6,7 @@ import { Instructor } from '../collections/instructor.js';
 import { Student } from '../collections/student.js';
 import { Drafts } from '../collections/drafts.js';
 import { Eval } from '../collections/eval.js';
+import { Milestone } from '../collections/milestone.js'
 import { isStudent, isInstructor, userIsValid, currentUserOrInstructor, nameOfUser } from '../lib/permissions.js';
 
 export function leaderboardMethods() {
@@ -21,7 +22,15 @@ export function leaderboardMethods() {
     'editEval' : function(id, message, star1, star2, star3, star4, milestone, ){
 			var stars = [star1, star2, star3, star4];
 			console.log(stars);
-			Eval.update({"_id": id}, {$set: {message: message, stars: stars, week: 1}});
-    }
+			Eval.update({"_id": id}, {$set: {message: message, stars: stars, week: milestone}});
+    },
+		'newMilestone' : function(name){
+			console.log(name);
+			Milestone.insert({name: name});
+		},
+		'removeMilestone' : function(id){
+			console.log("it going");
+			Milestone.remove({"_id": id});
+		}
 	});
 }

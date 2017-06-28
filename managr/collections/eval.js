@@ -18,7 +18,7 @@ var EvalSchema = new SimpleSchema({
         label: 'Stars'
     },
   week: {
-    type: Number,
+    type: String,
     label: "Week"
   },
   timeStamp: {

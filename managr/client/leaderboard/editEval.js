@@ -1,11 +1,13 @@
 import { Student } from '../../collections/student.js';
 import { Eval } from '../../collections/eval.js'
 import { Instructor } from '../../collections/instructor.js'
+import { Milestone } from '../../collections/milestone.js'
 
 Template.editEval.onCreated(function(){
   Meteor.subscribe('Eval');
     Meteor.subscribe('Student');
       Meteor.subscribe('Instructor');
+      Meteor.subscribe('Milestone');
 });
 
 Template.registerHelper('equals', function (a, b) {
@@ -24,7 +26,19 @@ Template.editEval.helpers({
     var newDate = moment(data.timestamp);
     var formattedDate = moment(newDate).format("MMMM D [,] YYYY");
     data.formDate = formattedDate;
+    data.milestone = Milestone.findOne({_id: data.week}).name;
     console.log(data.fOSt);
+    return data;
+  },
+  milestone: function(){
+    data = Milestone.find({}).fetch();
+    for (var i = 0; i < data.length; i++){
+        if(data[i]._id == Eval.findOne({_id: FlowRouter.getParam("id")}).week){
+            data[i].selected = "selected";
+        }else{
+          data[i].selected = "";
+        }
+    }
     return data;
   }
 });
@@ -39,9 +53,9 @@ Template.editEval.events({
       var starBox2 = document.getElementById('starBox2').value;
       var starBox3 = document.getElementById('starBox3').value;
       var starBox4 = document.getElementById('starBox4').value;
-      var week = "Week 3";
-      console.log(starBox2);
-      Meteor.call("editEval",FlowRouter.getParam("id"), message, starBox1, starBox2, starBox3, starBox4, week);
+      var week = document.getElementById('maSelector').value;
+      console.log(week);
+      Meteor.call("editEval", FlowRouter.getParam("id"), message, starBox1, starBox2, starBox3, starBox4, week);
 
   }
 });
