@@ -15,8 +15,9 @@ Template.viewEval.helpers({
 	data: function(){
     _dep.depend()
     console.log("hi")
-    var selectStudent = document.getElementById("12asdf");
+    var selectStudent = document.getElementById("studentChoice");
     var selectInstruct = document.getElementById("instructorChoice");
+
    try{
     selectStudent = selectStudent.value;
     selectInstruct = selectInstruct.value;
@@ -37,15 +38,13 @@ Template.viewEval.helpers({
     		data[i].tech = data[i].stars[3];
       }
     }
-    } catch (e) {
-      console.log("error, the try statement not working")
-    }
+
     if(selectStudent != "sortAll" && selectInstruct == "sortAll"){
       var data = [];
-      var dataList = Eval.find({evaluatee: document.getElementById("12asdf").value}).fetch();
+      var dataList = Eval.find({evaluatee: document.getElementById("studentChoice").value}).fetch();
       console.log(dataList)
       dataList.forEach(function(element){
-        element.name = $("#12asdf option:selected").text();
+        element.name = $("#studentChoice option:selected").text();
         element.instructor = Instructor.findOne({_id: element.evaluator}).name;
         element.effort = element.stars[0];
         element.att = element.stars[1];
@@ -73,7 +72,7 @@ Template.viewEval.helpers({
           var data = [];
           var dataList = Eval.find({
             evaluator: document.getElementById("instructorChoice").value,
-            evaluatee: document.getElementById("12asdf").value
+            evaluatee: document.getElementById("studentChoice").value
           }).fetch();
           console.log(dataList)
           dataList.forEach(function(element){
@@ -86,6 +85,9 @@ Template.viewEval.helpers({
             data.push(element);
           });
         }
+      } catch (e) {
+        console.log("error, the try statement not working")
+      }
           return data;
 
   //console.log(data);
@@ -129,7 +131,7 @@ Template.viewEval.events({
     FlowRouter.go("/eval/" + event.target.id);
 
   },
-  'change #12asdf': function(event){
+  'change #studentChoice': function(event){
     event.preventDefault();
     _dep.changed();
   },
