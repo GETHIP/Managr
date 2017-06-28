@@ -12,8 +12,7 @@ import { isStudent, isInstructor, userIsValid, currentUserOrInstructor, nameOfUs
 
 export function surveysMethods() {
 	Meteor.methods({
-		'removeQuestion1234': function(surveyId, dateHash) {
-			console.log("HERE");
+		'removeQuestion': function(surveyId, dateHash) {
 			if(!isInstructor()) {
 				return;
 			}

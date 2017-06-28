@@ -277,6 +277,7 @@ Surveys.schema = new SimpleSchema({
 
 });
 
+
 Surveys.attachSchema(Surveys.schema);*/
 // Template.deleteSurvey.events({
 //   'click .deleteSurveyButton' : function(event){

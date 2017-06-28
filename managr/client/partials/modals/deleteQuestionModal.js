@@ -10,10 +10,10 @@ Template.deleteQuestion.events({
     event.preventDefault();
     var surveyId = Template.instance().data.surveyId;
     var dateHash = Template.instance().data.dateHash;
+    dateHash = parseInt(dateHash);
     console.log(surveyId);
     console.log(dateHash);
-    console.log("HERE1234");
-    Meteor.call('removeQuestion1234', surveyId, dateHash);
-    console.log("Still here");
+    
+    Meteor.call('removeQuestion', surveyId, dateHash);
   }
 });

@@ -13,8 +13,9 @@ Template.addQuestion.events({
   'click #createSurveyBtn' (event) {
     event.preventDefault();
 
-    var questionArray = Surveys.find({}).fetch();
-    var surveyId = FlowRouter.getParam('id')
+    var surveyId = FlowRouter.getParam('id');
+    var questionArray = Surveys.findOne({surveyId}).fetch();
+
     Meteor.call("updateSurvey", surveyId, questionArray);
     var surveyComplete = questionArray;
     FlowRouter.go('/surveys');
