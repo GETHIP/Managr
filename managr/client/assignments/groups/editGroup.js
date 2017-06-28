@@ -21,13 +21,15 @@ Template.editGroup.onCreated(function() {
 		Meteor.subscribe("Coaches");
 
 		this.autorun(function () {
-				Meteor.subscribe("Student");
-				Meteor.subscribe("CurrentAdded", id);
-				Meteor.subscribe("CurrentNotAdded", id);
+				var subscription = Meteor.subscribe("Student");
+				//Meteor.subscribe("CurrentAdded", id);
+				//Meteor.subscribe("CurrentNotAdded", id);
+				if (subscription.ready()) {
+						allAdded = findStudentsIn();
+						allNotAdded = findStudentsNot(allAdded);
+						edit_dep.changed()
+				}
 		});
-
-		allAdded = findStudentsIn();
-		allNotAdded = findStudentsNot(allAdded);
 });
 
 function findStudentsIn() {
@@ -65,6 +67,7 @@ Template.editGroup.events({
 				var groupId = FlowRouter.getParam('id');
         var groupName = form.groupName.value;
 				var size = allAdded.length;
+				var stringSize = size.toString();
 				console.log(groupName);
 				var studentIds = [];
 				var studentNames = [];
@@ -88,7 +91,16 @@ Template.editGroup.events({
 								coachNames.push(coach.name);
 						}
 				}
-				Meteor.call('updateGroup', groupId, groupName, studentIds, size, studentNames, coaches, coachNames, allAdded);
+				var data = {
+						name: groupName,
+						studentIds: studentIds,
+						coaches: coaches,
+						coachNames: coachNames,
+						size: size,
+						stringSize: stringSize,
+						studentNames: studentNames
+				};
+				Meteor.call('updateGroup', groupId, data);
 
         FlowRouter.go("/groups");
     },
