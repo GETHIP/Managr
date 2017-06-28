@@ -11,7 +11,7 @@
         </tr>
         {{#each surveys}}
           <tr class="tableRowFormat" onclick="FlowRouter.go('{{this.url}}')">
-            <td class="tableDataFormat assignments"><div class="overflowText">{{this.title}}</div></td>
+            <td class="tableDataFormat assignments"><div class="overflowText">{{this.name}}</div></td>
             <td class="tableDataFormat assignments">{{this.dueDate}}</td>
             <td class="tableDataFormat assignments">{{this.studentsCompleted}}/{{this.numberOfStudents}}</td>
           </tr>
@@ -46,7 +46,7 @@
         <!-- Each survey in table -->
         {{#each surveys}}
           <tr class="tableRowFormat" onclick="FlowRouter.go('{{this.url}}')">
-            <td class="tableDataFormat assignments"><div class="overflowText">{{this.title}}</div></td>
+            <td class="tableDataFormat assignments"><div class="overflowText">{{this.name}}</div></td>
             <td class="tableDataFormat assignments">{{this.dueDate}}</td>
             <td class="tableDataFormat assignments">{{this.status}}</td>
           </tr>
