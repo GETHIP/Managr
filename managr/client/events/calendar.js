@@ -9,7 +9,7 @@ Template.calendar.onRendered( () => {
     eventColor: '#BD53FF', // changes the color of event placeholder
     editable: true, // allows an event to be edited
     eventDurationEditable: true, // allows the time/date be changed
-  
+
     header: { right: 'month,agendaWeek,agendaDay',
               center: 'title',
               left: 'today prev,next'},
@@ -37,7 +37,7 @@ var events = function() {
       calendarEvents.push({
           title: event.name,
           start: event.date,
-          url: "/eventView/" + event._id
+          url: "/events/view/" + event._id
       });
   }
   return calendarEvents;
