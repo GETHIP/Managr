@@ -12,18 +12,23 @@ import { isStudent, isInstructor, userIsValid, currentUserOrInstructor, nameOfUs
 
 export function surveysMethods() {
 	Meteor.methods({
-		'removeQuestion': function(surveyId, dateHash) {
+		'removeQuestion1234': function(surveyId, dateHash) {
 			console.log("HERE");
 			if(!isInstructor()) {
 				return;
 			}
 			console.log(surveyId);
-	    console.log(dateHash);
-			Surveys.update({}, { $pull: { questions: { "dateHash": dateHash } } });
-			//Surveys.update({_id: surveyId}, { $pull: { [questions]: { "dateHash": dateHash } } });
-
-			// var co
+			console.log(dateHash);
+			Surveys.update({_id: surveyId}, {
+				$pull: {
+					questions: {
+						"dateHash": dateHash
+					}
+				}
+			});
 		},
+		//Surveys.update({_id: surveyId}, { $pull: { [questions]: { "dateHash": dateHash } } });
+
 		// 'deleteComment': function(id, index) {
 		// 	var comments = Posts.findOne({"_id": id}).comments;
 		// 	var correctId = comments[index].authorId;
