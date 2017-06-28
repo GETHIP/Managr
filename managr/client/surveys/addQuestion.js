@@ -13,11 +13,11 @@ Template.addQuestion.events({
   'click #createSurveyBtn' (event) {
     event.preventDefault();
 
-    var surveyId = FlowRouter.getParam('id');
-    var questionArray = Surveys.findOne({surveyId}).fetch();
-
-    Meteor.call("updateSurvey", surveyId, questionArray);
-    var surveyComplete = questionArray;
+    // var surveyId = FlowRouter.getParam('id');
+    // var questionArray = Surveys.find({}).fetch();
+    // 
+    // Meteor.call("updateSurvey", surveyId, questionArray);
+    // var surveyComplete = questionArray;
     FlowRouter.go('/surveys');
 
     // const target = event.target;
