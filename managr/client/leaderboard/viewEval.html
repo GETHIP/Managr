@@ -24,17 +24,18 @@
 
 
 		<label for="group">Student</label>
-    <select id="group" name="group">
+    <input list="group" name="group" id=dataListInput>
+    <datalist id="group">
 		{{#each students}}
-		<option value="{{_id}}">{{name}}</option>
+		<option data-value="{{_id}}" value="{{name}}"></option>
 		{{/each}}
-    </select>
+  </dataList>
 
     <label for="week">Milestone</label>
     <select id="week" name="week">
-      <option value="week 1">Week 1</option>
-      <option value="week 2">Project mileston 1</option>
-      <option value="week 3">Project meeting 2</option>
+      {{#each milestone}}
+      <option value="{{_id}}">{{name}}</option>
+      {{/each}}
     </select>
 
 </div>

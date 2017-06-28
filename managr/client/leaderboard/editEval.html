@@ -7,9 +7,10 @@
   <div class="evaluationContainer">
 
     <div>
-      <select class="editDropDown" name="milestoneDropDown">
-        <option value="milestone1">Week 1</option>
-        <option value="milestone2">Week 2</option>
+      <select class="editDropDown" name="milestoneDropDown" id="maSelector">
+        {{#each milestone}}
+        <option value="{{_id}}" {{selected}}>{{name}}</option>
+        {{/each}}
       </select>
   <p class="evaluatorEval"><strong>To: {{to}}</strong></p>
     <p class="evaluateeEval"><strong>From: {{from}}</strong></p>

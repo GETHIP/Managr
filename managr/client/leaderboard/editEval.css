@@ -7,3 +7,12 @@
 .starsBox {
   width: 40px;
 }
+
+#dataListInput {
+  border-radius: 4px;
+  width: 220px;
+  height: 30px;
+  border: 1px solid #cccccc;
+  line-height: 30px;
+  padding: 5px;
+}

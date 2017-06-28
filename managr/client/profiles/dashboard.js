@@ -1,4 +1,5 @@
 import { Student } from '../../collections/student.js';
+import { Milestone } from '../../collections/milestone.js';
 import { Instructor } from '../../collections/instructor.js';
 import { nameOfUser } from '../../lib/permissions.js';
 import { Globals } from '../../collections/globals.js';
@@ -37,6 +38,7 @@ Template.dashboard.onCreated(function() {
     self.subscribe('Instructor');
     self.subscribe('userData');
 	self.subscribe('Globals');
+  self.subscribe('Milestone');
   });
   Template.instance().importingStudents = new ReactiveVar(false);
 });
@@ -88,7 +90,10 @@ Template.dashboard.helpers({
 	},
 	numberOfWeeks: function() {
 		return Globals.numberOfWeeks();
-	}
+	},
+  milestones: function(){
+    return Milestone.find();
+  }
 });
 
 Template.dashboard.events({
@@ -219,5 +224,13 @@ Template.dashboard.events({
 				Meteor.call('resetAttendance');
 			}
 		});
-	}
+	},
+  'click #createMilestone': function(){
+    console.log("IT GONG");
+    name = document.getElementById("milestoneIn").value;
+    Meteor.call("newMilestone", name);
+  },
+  'click #deleteMilestoneButton': function(){
+    Meteor.call("removeMilestone", document.getElementById("milestone").value);
+  }
 });

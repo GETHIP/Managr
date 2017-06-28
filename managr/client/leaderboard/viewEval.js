@@ -1,5 +1,6 @@
 import { Student } from '../../collections/student.js';
 import { Eval } from '../../collections/eval.js';
+import { Milestone } from '../../collections/milestone.js';
 import { Instructor } from '../../collections/instructor.js';
 
 var _dep = new Deps.Dependency();
@@ -8,12 +9,14 @@ Template.viewEval.onCreated(function(){
   Meteor.subscribe('Eval');
   Meteor.subscribe('Student');
   Meteor.subscribe('Instructor');
+  Meteor.subscribe('Milestone');
   _dep.changed();
 });
 
 Template.viewEval.helpers({
 	data: function(){
     _dep.depend()
+
     console.log("hi")
     var selectStudent = document.getElementById("studentChoice");
     var selectInstruct = document.getElementById("instructorChoice");
@@ -101,11 +104,15 @@ Template.viewEval.helpers({
 	},
   instructors: function(){
     return Instructor.find();
+  },
+  milestone: function(){
+    return Milestone.find();
   }
 });
 
 Template.viewEval.events({
 	'click .submitbtn': function(event){
+    event.preventDefault();
 		var rating = $('#rating').data('userrating');
 		var attitude = $('#attitude').data('userrating');
 		var teamwork = $('#teamwork').data('userrating');
@@ -113,8 +120,11 @@ Template.viewEval.events({
 
 		comment = document.getElementById('textarea1').value;
 		eaId = Instructor.findOne({userId: Meteor.user()._id})._id;
-		eId = document.getElementById('group').value;
-		week = document.getElementById('week').value.split(" ")[1];
+		listVal = document.getElementById('dataListInput').value;
+    eId = $('#group [value="' + listVal + '"]').data('value');
+    console.log($('#group [value="' + listVal + '"]'));
+    console.log(eId)
+		week = document.getElementById('week').value;
 		sList = [rating, attitude, teamwork, tech ];
 
 		for(var i = 0; i < sList.length; i++){

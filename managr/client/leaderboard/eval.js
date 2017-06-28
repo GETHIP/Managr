@@ -1,11 +1,13 @@
 import { Student } from '../../collections/student.js';
 import { Eval } from '../../collections/eval.js'
 import { Instructor } from '../../collections/instructor.js'
+import { Milestone } from '../../collections/milestone.js'
 
 Template.eval.onCreated(function(){
   Meteor.subscribe('Eval');
     Meteor.subscribe('Student');
       Meteor.subscribe('Instructor');
+      Meteor.subscribe('Milestone');
 });
 
 Template.registerHelper('equals', function (a, b) {
@@ -24,6 +26,7 @@ Template.eval.helpers({
     data.formDate = formattedDate;
     data.to = Student.findOne({_id: data.evaluatee}).name;
     data.from = Instructor.findOne({_id: data.evaluator}).name;
+    data.milestone = Milestone.findOne({_id: data.week}).name;
 		return data;
   }
 });
