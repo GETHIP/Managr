@@ -16,7 +16,7 @@ export function eventsMethods() {
       }
       Events.remove(eventId);
     },
-		'sendRSVP': function(eventId, studentId, rsvp) {
+		'sendRSVP': function(eventId, studentId, rsvp, type) {
 			var result;
 			if(!isStudent()) {
 				return;
@@ -27,9 +27,21 @@ export function eventsMethods() {
 			}else if(rsvp == "Not Attending"){
 				result = false;
 			}
+
+			if(type == true){
+				Events.update({_id: eventId}, {
+					$pull: {rsvp: {_id: studentId}}
+				});
+
+				Events.update({_id: eventId}, {
+					$push: {rsvp: {_id: studentId, rsvp: result}}
+				});
+
+			}else{
 			Events.update({_id: eventId}, {
 				$push: {rsvp: {_id: studentId, rsvp: result}}
 			});
+		}
 		},
     'createNewEvent': function(hostId, host, eventName, description, date, formattedDate, location) {
       if(!isInstructor()) {
