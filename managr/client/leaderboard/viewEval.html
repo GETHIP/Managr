@@ -49,7 +49,7 @@
   <p><h4>Filter By:</h4>
     <p>Student:
       <select name="studentChoice" id="studentChoice">
-        <option value="sortAll">All</option>
+        <option value="sortAll" selected="selected">All</option>
           {{#each students}}
       		  <option value="{{_id}}">{{name}}</option>
       		{{/each}}
@@ -57,7 +57,7 @@
     <!-- </p> -->
     <!-- <p>Instructor: --> Instructor:
       <select name="selectType" id="instructorChoice">
-        <option value="sortAll">All</option>
+        <option value="sortAll" selected="selected">All</option>
           {{#each instructors}}
       		  <option value="{{_id}}">{{name}}</option>
       		{{/each}}
