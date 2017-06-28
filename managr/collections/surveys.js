@@ -36,6 +36,10 @@ question = new SimpleSchema({
 	options: {
 		type: [String],
 		optional: true
+	},
+	dateHash: {
+		type: Number,
+		optional: true
 	}
 });
 

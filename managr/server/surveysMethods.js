@@ -12,13 +12,16 @@ import { isStudent, isInstructor, userIsValid, currentUserOrInstructor, nameOfUs
 
 export function surveysMethods() {
 	Meteor.methods({
-		'removeQuestion': function(id, index) {
+		'removeQuestion': function(surveyId, dateHash) {
+			console.log("HERE");
 			if(!isInstructor()) {
 				return;
 			}
+			console.log(surveyId);
+	    console.log(dateHash);
+			Surveys.update({}, { $pull: { questions: { "dateHash": dateHash } } });
+			//Surveys.update({_id: surveyId}, { $pull: { [questions]: { "dateHash": dateHash } } });
 
-			var thisSurvey = Surveys.findOne({"_id": id});
-			var questions = thisSurvey.questions;
 			// var co
 		},
 		// 'deleteComment': function(id, index) {
@@ -39,6 +42,8 @@ export function surveysMethods() {
 			});
 		},
 		'addQuestion': function(surveyId, option, question, temparray) {
+			var dateHash = new Date().getTime();
+			console.log(dateHash);
 			console.log(temparray);
 			if(!isInstructor()) {
 				return;
@@ -55,7 +60,8 @@ export function surveysMethods() {
 						questions: {
 							questionType: "choice",
 							prompt: question,
-							options: temparray
+							options: temparray,
+							dateHash: dateHash
 						}
 					}
 				});
@@ -73,7 +79,8 @@ export function surveysMethods() {
 						questions: {
 							questionType: "check",
 							prompt: question,
-							options: temparray
+							options: temparray,
+							dateHash: dateHash
 						}
 					}
 				}
@@ -87,7 +94,8 @@ export function surveysMethods() {
 				$push: {
 					questions: {
 						questionType: "shResp",
-						prompt: question
+						prompt: question,
+						dateHash: dateHash
 					}
 				}
 			});

@@ -12,10 +12,10 @@ Template.completedQuestion.onCreated(function() {
 Template.completedQuestion.helpers({
   questions: function(){
     var surveyId = FlowRouter.getParam('id');
-    var allQuestionsArray = Surveys.find({'_id': "ebDxevcGYsjBMAFCM"}).questions;
+    var allQuestionsArray = Surveys.findOne(surveyId);
     console.log("questions helper:");
-    console.log(Surveys.find({'_id': "ebDxevcGYsjBMAFCM"}));
-    return allQuestionsArray;
+    console.log(allQuestionsArray);
+    return allQuestionsArray.questions;
   },
   choicetype: function(questionType) {
     console.log(questionType);
@@ -37,8 +37,14 @@ Template.completedQuestion.helpers({
 
 Template.completedQuestion.events({
   'click .deleteBtn': function(event){
-    var question = Surveys.findOne({_id: event.currentTarget.id});
-    Modal.show("deleteQuestion", question);
+    //var thisSurvey = Surveys.findOne({ "questions.dateHash": event.target.id }).fetch();
+    // var surveyId = FlowRouter.getParam('id');
+    // var dateHash = event.target.id;
+    var data = {
+      surveyId: FlowRouter.getParam('id'),
+      dateHash: event.currentTarget.id
+    }
+    Modal.show("deleteQuestion", data);
   }
 });
 
