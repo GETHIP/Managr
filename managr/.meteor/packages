@@ -44,3 +44,4 @@ dynamic-import
 fullcalendar:fullcalendar
 easysearch:elasticsearch
 easysearch:autosuggest
+tsega:bootstrap3-datetimepicker

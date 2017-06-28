@@ -40,8 +40,43 @@ Template.eventsPage.events({
   },
 });
 
+// Template.eventsPage.helpers({
+//   eventsHelper() {
+// var events = Events.find({
+//     date: {
+//         $gte: new Date()
+//     }
+// }, {
+//     sort: {
+//         date: 1
+//     }
+// }).fetch();
+// for (event of events) {
+//             var user = Meteor.users.findOne({
+//                 "_id": event.host
+//             })
+//             console.log(user);
+//             event.host = user.profile.firstname + " " + user.profile.lastname + " (" + user.username + ") "
+//         }
+//         console.log('it worked');
+//         return events;
+// },
+// });
+
+
 Template.eventsPage.helpers({
+
   events: function() {
+    // var events = Events.find({
+    //     Date: {
+    //         $gte: new Date()
+    //     }
+    // }, {
+    //     sort: {
+    //         date: 1
+    //     }
+    // }).fetch();
+
     var allEvents = Events.find({}).fetch();
     var formattedEvents = [];
     for(var i = 0; i < allEvents.length; i++) {
@@ -67,6 +102,7 @@ Template.eventsPage.helpers({
 
   });
 
+
   Template.eventsPage.events({
     'click .deleteEventButton': function(event){
       Modal.show("deleteEvent", event.target.id);
@@ -89,28 +125,3 @@ Template.eventsPage.helpers({
       }
       return formattedStudents;
   }
-
-  Template.eventsPage.helpers({
-    eventsHelper() {
-
-
-        var events = Events.find({
-            date: {
-                $gte: new Date()
-            }
-        }, {
-            sort: {
-                date: 1
-            }
-        }).fetch();
-        for (event of events) {
-            var user = Meteor.users.findOne({
-                "_id": event.host
-            })
-            console.log(user);
-            event.host = user.profile.firstname + " " + user.profile.lastname + " (" + user.username + ") "
-        }
-        console.log('it worked');
-        return events;
-    },
-});
