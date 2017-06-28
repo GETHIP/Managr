@@ -198,7 +198,7 @@ FlowRouter.route("/surveys", {
 	}
 });
 
-FlowRouter.route("/surveysResults", {
+FlowRouter.route("/surveysResults/:id", {
     action: function(params, queryParams) {
         BlazeLayout.render("surveysLayout", {content:'surveysResults'});
 		//BlazeLayout.render(main, { content: 'assignmentsBody' });

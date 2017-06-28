@@ -299,7 +299,7 @@ header {
 }
 
 .tableRowFormat:hover {
-  background-color: #FEF1DE !important;
+  background-color: #FEF1DE;
 }
 
 .sortIcon {

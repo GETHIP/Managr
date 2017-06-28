@@ -5,10 +5,10 @@ import { Assignments } from '../collections/assignments.js';
 import { Instructor } from '../collections/instructor.js';
 import { Student } from '../collections/student.js';
 import { Drafts } from '../collections/drafts.js';
-import { Questions } from '../collections/questions.js';
 // import { Events } from '../collections/event.js';
 import { Surveys } from '../collections/surveys.js';
 import { isStudent, isInstructor, userIsValid, currentUserOrInstructor, nameOfUser } from '../lib/permissions.js';
+import { createStudentIdsArray }  from './groupsMethods.js';
 
 export function surveysMethods() {
 	Meteor.methods({
@@ -25,6 +25,35 @@ export function surveysMethods() {
 					}
 				}
 			});
+		},
+//Reference assignmentMethods.js - 'removeAssignment' function
+		'removeSurvey':function(surveyId) {
+			if (!isInstructor()) {
+				return;
+			}
+//Uncomment after assigning students
+
+			// console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~1");
+			// console.log("Remove Surveys works!");
+			// var allStudents = Student.find({}).fetch();
+			// console.log(allStudents);
+			// console.log(allStudents.length);
+			// console.log()
+			// console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~2");
+			// for(var j = 0; j < allStudents.length; j++) {
+			// 	var studentSurveys = allStudents[j].surveys;
+			// 	for(var i = 0; i < studentSurveys.length; i++) {
+			// 		if(studentSurveys[i].surveyId == surveyId) {
+			// 			studentSurveys.splice(i, 1);
+			// 			Student.update({_id: allStudents[j]._id}, {
+			// 				$set: {surveys: studentSurveys}
+			// 			});
+			// 			break;
+			// 		}
+			// 	}
+			// }
+			// console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~3");
+			Surveys.remove(surveyId);
 		},
 		//Surveys.update({_id: surveyId}, { $pull: { [questions]: { "dateHash": dateHash } } });
 
