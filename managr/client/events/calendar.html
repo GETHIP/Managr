@@ -1,17 +1,19 @@
  <template name="calendar">
-  <div class="marginContainer">
-
+  <!-- <div class="marginContainer"> -->
+<div class="events">
    <p id="welcome"> Calendar </p>
 
    <p id="lineP"></p>
    <br>
+   <div class="formdashboardContainer">
      <div class="calendarPad">
    <div id="calendar"></div>
  </div>
 </div>
+
 <br>
 <br>
-<div class="events">
+
   <button type="button" id="eventCancel" class="buttonStyle" onclick="FlowRouter.go('/events');">Back</button>
 </div>
 </template>

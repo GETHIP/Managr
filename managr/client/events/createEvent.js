@@ -22,6 +22,7 @@ Template.createEvent.events({
     var formattedDate = moment(newDate).format("MMMM D,  YYYY [at] h:mm A");
     var date = target.date.value;
 
+
     console.log(hostId);
     console.log(host);
     console.log(eventName);
@@ -29,6 +30,7 @@ Template.createEvent.events({
     console.log(location);
     console.log(date);
     console.log(formattedDate);
+
 
     Meteor.call("createNewEvent", hostId, host, eventName, description, date, formattedDate, location);
 
