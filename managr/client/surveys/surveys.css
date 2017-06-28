@@ -7,6 +7,10 @@
   width: 66%;
 }
 
+.Questions {
+  margin-left: 3%;
+}
+
 viewAllTable tr:hover {
   background-color: #f7b9b7;
   cursor: pointer;
