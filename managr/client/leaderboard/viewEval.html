@@ -47,28 +47,28 @@
   <div class="marginContainer">
   <h1 class="titleviewEvaluations">Previous Evaluations</h1>
   <div class="purple-bar">&nbsp;</div>
-  <p><h3>Filter By:</h3>
+  <p><h4>Filter By:</h4>
     <p>Student:
-      <select name="12asdf" id="12asdf" class="">
-        <option value="sortAll" id="studentChoice">All</option>
+      <select name="studentChoice" id="studentChoice">
+        <option value="sortAll">All</option>
           {{#each students}}
       		  <option value="{{_id}}">{{name}}</option>
       		{{/each}}
   		</select>
-    </p>
-    <p>Instructor:
+    <!-- </p> -->
+    <!-- <p>Instructor: --> Instructor:
       <select name="selectType" id="instructorChoice">
-        <option value="sortAlpha">All</option>
+        <option value="sortAll">All</option>
           {{#each instructors}}
       		  <option value="{{_id}}">{{name}}</option>
       		{{/each}}
   		</select>
-    </p>
-    <!-- <p>Milestone:
+    <!-- </p> -->
+    <!-- <p>Milestone: --> Milestone:
       <select name="selectType" id="milestoneChoice">
         <option value="sortAlpha">All</option>
   		</select>
-    </p> -->
+    </p>
   </p>
   <table class="viewAllevalTable">
     <!-- <thead> -->
