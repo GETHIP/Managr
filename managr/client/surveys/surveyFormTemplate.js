@@ -12,10 +12,13 @@ Template.newSurvey.onCreated(function() {
 Template.newSurvey.events({
   'click #addQuestionBtn' (event) {
     event.preventDefault();
+
     const form = event.target;
 
-    var surveyName = document.getElementById('surveyName').value
-    var date = moment(document.getElementById('dueDate').value, "YYYY-MM-DD").toDate();
+    var surveyName = document.getElementById('surveyName').value;
+    console.log(document.getElementById('dueDate').value);
+    var date = moment(document.getElementById('dueDate').value).format("MM/DD/YYYY");
+    date = date.toString().slice(0,14);
     // var question = document.getElementById('questionFormm').value;
     var anonToggle = document.getElementById('anonymousToggle').checked;
 //    var question = target.prompt.value;
