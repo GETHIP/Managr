@@ -14,7 +14,7 @@ Template.viewEval.onCreated(function(){
 Template.viewEval.helpers({
 	data: function(){
     _dep.depend()
-    console.log("hi")
+    //console.log("hi")
     var selectStudent = document.getElementById("12asdf");
    try{
     selectStudent = selectStudent.value
@@ -68,6 +68,7 @@ Template.viewEval.helpers({
 
 Template.viewEval.events({
 	'click .submitbtn': function(event){
+    event.preventDefault();
 		var rating = $('#rating').data('userrating');
 		var attitude = $('#attitude').data('userrating');
 		var teamwork = $('#teamwork').data('userrating');
@@ -75,7 +76,10 @@ Template.viewEval.events({
 
 		comment = document.getElementById('textarea1').value;
 		eaId = Instructor.findOne({userId: Meteor.user()._id})._id;
-		eId = document.getElementById('group').value;
+		listVal = document.getElementById('dataListInput').value;
+    eId = $('#group [value="' + listVal + '"]').data('value');
+    console.log($('#group [value="' + listVal + '"]'));
+    console.log(eId)
 		week = document.getElementById('week').value.split(" ")[1];
 		sList = [rating, attitude, teamwork, tech ];
 
