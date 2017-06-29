@@ -1,13 +1,13 @@
 <template name="surveysResults">
     {{#if isInstructor}}
     <div class="marginContainer">
-    <h1 class="titleAssignment">Survey Results</h1>
+    <h1 class="titleAssignment">{{this.name}}</h1>
     <button id="deleteSurvey" class="buttonStyle delete">Delete</button>
     <div class="orange-bar red-bar"> &nbsp;</div>
       <div class="surveyContainer">
-        <p class="noIndent assignmentFormFormat"><b>Number of Responses:</b>  {{this.studentsCompleted}}/{{this.numberOfStudents}}</p>
-        <p class="noIndent assignmentFormFormat"><b>Completion Date:</b>  {{this.dueDate}}</p>
-        <p class="noIndent assignmentFormFormat"><b>Survey Questions:</b>  {{question}}</p>
+        <p class="noIndent assignmentFormFormat"><b>Number of Responses:</b> {{this.studentsCompleted}}/{{this.numberOfStudents}}</p>
+        <p class="noIndent assignmentFormFormat"><b>Due Date:</b> {{this.dueDate}}</p>
+        <p class="noIndent assignmentFormFormat"><b>Survey Questions:</b></p>
       </div>
     <table class="viewAllTable">
       <!-- Table Headings -->

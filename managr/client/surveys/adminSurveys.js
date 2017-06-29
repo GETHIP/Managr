@@ -36,9 +36,10 @@ var getSurveysCompleted = function(student) {
 
 Template.surveysPage.events({
 	'click .rowClick'(event){
-		console.log("gdhjk")
+		var test = event.currentTarget.id;
+		console.log(test);
 		event.preventDefault();
-		FlowRouter.go('/surveysResults/' + event.target.id);
+		FlowRouter.go('/surveysResults/' + event.currentTarget.id);
 	},
 	'click #createSurveyBtn'(event){
 		event.preventDefault();

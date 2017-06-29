@@ -30,6 +30,15 @@ Template.surveysPage.helpers({
   }
 });
 
+// Template.surveysResults.helpers({
+//   questions(){
+//     return Surveys.questions.find({});
+//   },
+//   survey(){
+//     return Surveys.find({});//ids?
+//   }
+// });
+
 // Template.viewSurveyPage.helpers({
 //   surveys(){
 //     return Surveys.find({});
