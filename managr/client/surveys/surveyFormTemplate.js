@@ -9,8 +9,7 @@ Template.newSurvey.onCreated(function() {
     Meteor.subscribe("Questions");
     Meteor.subscribe("Groups");
 });
-Template.newSurvey.onRendered(function (){
-  Template.newSurvey.events({
+Template.newSurvey.events({
     'click #addQuestionBtn' (event) {
       event.preventDefault();
 
@@ -32,7 +31,6 @@ Template.newSurvey.onRendered(function (){
   		});
     }
   });
-});
 // Template.questionFormTemplate.helpers({
 //   questionData: function() {
 //       var questionArray = Questions.find({}).fetch();
