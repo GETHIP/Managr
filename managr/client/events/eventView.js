@@ -34,6 +34,8 @@ Template.eventView.events({
 	 console.log(studentName);
 	 console.log(rsvp);
 
+	 	 FlowRouter.go('/events');
+
 	 var eData = Events.findOne({_id: eventId}).rsvp;
 	 if(eData){
 	 for (var i = 0; i < eData.length; i++) {
@@ -46,7 +48,7 @@ Template.eventView.events({
  }
 	 Meteor.call('sendRSVP', eventId, realS, rsvp, false);
 
-	FlowRouter.go('/events');
+
 	}
 });
 
