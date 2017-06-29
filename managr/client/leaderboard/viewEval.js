@@ -112,7 +112,6 @@ Template.viewEval.helpers({
 
 Template.viewEval.events({
 	'click .submitbtn': function(event){
-    event.preventDefault();
 		var rating = $('#rating').data('userrating');
 		var attitude = $('#attitude').data('userrating');
 		var teamwork = $('#teamwork').data('userrating');
@@ -121,7 +120,7 @@ Template.viewEval.events({
 		comment = document.getElementById('textarea1').value;
 		eaId = Instructor.findOne({userId: Meteor.user()._id})._id;
 		listVal = document.getElementById('dataListInput').value;
-    eId = $('#group [value="' + listVal + '"]').data('value');
+    eId = $('#group [va0lue="' + listVal + '"]').data('value');
     console.log($('#group [value="' + listVal + '"]'));
     console.log(eId)
 		week = document.getElementById('week').value;

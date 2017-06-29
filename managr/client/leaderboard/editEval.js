@@ -55,7 +55,9 @@ Template.editEval.events({
       var starBox4 = document.getElementById('starBox4').value;
       var week = document.getElementById('maSelector').value;
       console.log(week);
+      var id = FlowRouter.getParam("id");
       Meteor.call("editEval", FlowRouter.getParam("id"), message, starBox1, starBox2, starBox3, starBox4, week);
+      FlowRouter.go("/eval/" + id);
 
   }
 });
