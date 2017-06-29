@@ -237,3 +237,18 @@ textarea {
 .tableHeadFormateval, .tableDataFormat.leaderboard {
   width: 14.3%;
 }
+.buttonStyleleader.resetbtn {
+  width: 23%;
+  background-color: #7700DD;
+  border: none;
+  color: white;
+  padding: 1.25%;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: center;
+  font-size: 18px;
+  border-radius: 6px;
+  margin-bottom: 2%;
+  margin-top: 1%;
+  margin-left: 2%;
+  }
