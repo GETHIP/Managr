@@ -49,7 +49,11 @@
 .namesInGroup ol li {
     list-style-type: decimal;
 }
-#editGroupForm .editGroupButton, #editGroupForm .editGroupButton {
+#editGroupForm .editGroupButton {
+    width: 48%;
+    display: block;
+}
+#createSuggestedForm .createSuggestedButton {
     width: 48%;
     display: block;
 }
@@ -91,6 +95,17 @@
    max-height: 17.5vh;
    width: 100%;
    margin: auto;
+ }
+ #numTypeDiv {
+   border: 2px solid #CCCCCC;
+   border-radius: 5px;
+   background-color: #ffffff;
+   height: auto;
+   width: auto;
+   margin: auto;
+ }
+ #numOf, #numPer {
+   margin: 5px;
  }
  .selectAllBar {
    border: 1px solid #CCC;
@@ -144,6 +159,12 @@
 .studentLabel:hover {
   background-color: #d9d9d9;
 }
+.numTypeLabel:hover {
+  background-color: #d9d9d9;
+}
+.numTypeLabel {
+  padding-right: 5px;
+}
 .instructorLabel {
   height: 20px;
 }
@@ -156,6 +177,18 @@
 }
 .editGroupButton {
   background-color: #870000 !important;
+}
+.createSuggestedButton {
+  background-color: #870000 !important;
+}
+#numPerSuggested {
+  height: 46px;
+  width: 60px;
+  padding-left: 14px;
+  margin: 5px 0px 0px 5px;
+}
+#numPerSuggested::-webkit-inner-spin-button, #numPerSuggested::-webkit-outer-spin-button {
+   opacity: 1;
 }
 .buttonStyle.backBtn, .buttonStyle.editBtn {
   margin-top: 4%;
@@ -300,8 +333,12 @@ td.alignmid {
 	padding-right: 24px;
   padding-top: 24px;
   padding-bottom: 24px;
-width: 100%;
+  width: 100%;
   margin-bottom: 3%;
+}
+
+.nomargin {
+  margin: 0px;
 }
 
 .buttonStyle.editGroupBtn {

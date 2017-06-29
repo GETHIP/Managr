@@ -25,23 +25,11 @@ export function groupsMethods() {
 				dateCreated: dateCreated
 			});
 		},
-		'updateGroup': function(groupId, groupName, studentIds, size, studentNames, coaches, coachNames, groupStudents) {
+		'updateGroup': function(groupId, data) {
 			if(!isInstructor()) {
 				return;
 			}
-			var stringSize = size.toString();
-			Groups.update({_id: groupId}, {
-				$set: {
-					name: groupName,
-					studentIds: studentIds,
-					coaches: coaches,
-					coachNames: coachNames,
-					size: size,
-					stringSize: stringSize,
-					studentNames: studentNames
-					//groupStudents: groupStudents
-				}
-      });
+			Groups.update({_id: groupId}, {$set: data});
 		}
 	});
 }
