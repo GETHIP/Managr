@@ -36,6 +36,13 @@ Template.surveysPage.events({
 		console.log(test);
 		event.preventDefault();
 		FlowRouter.go('/surveysResults/' + event.currentTarget.id)
+	},
+
+	'click .studentRowClick'(event){
+		var test = event.currentTarget.id;
+		console.log(test);
+		event.preventDefault();
+		FlowRouter.go('/completeSurvey/' + event.currentTarget.id)
 	}
 });
 Template.questionFormTemplate.events({
