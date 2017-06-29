@@ -49,4 +49,41 @@
   {{/if}}
     <!-- onclick="FlowRouter.go('/createNewSurvey')" -->
 
+<<<<<<< HEAD
   </template>
+=======
+        <!-- Each survey in table -->
+        <!--{{#each surveys}}
+          <tr class="tableRowFormat" onclick="FlowRouter.go('{{this.url}}')">
+            <td class="tableDataFormat assignments"><div class="overflowText">{{this.name}}</div></td>
+            <td class="tableDataFormat assignments">{{this.dueDate}}</td>
+            <td class="tableDataFormat assignments">{{this.status}}</td>
+          </tr>
+        {{/each}}-->
+        {{> surveyRowsStudent}}
+      </table>
+    </div>
+      {{else}}
+        {{> accessDenied}}
+      {{/if}}
+	{{/if}}
+</template>
+<template name="surveyRowsAdmin">
+  {{#each surveys}}
+    <tr class="tableRowFormat surveys" id="{{_id}}" onclick="FlowRouter.go('/surveysResults/{{_id}}');">
+      <td class="tableDataFormat assignments"><div class="overflowText">{{this.name}}</div></td>
+      <td class="tableDataFormat assignments">{{this.dueDate}}</td>
+      <td class="tableDataFormat assignments">{{this.studentsCompleted}}/{{this.numberOfStudents}}</td>
+    </tr>
+  {{/each}}
+</template>
+<template name="surveyRowsStudent">
+  {{#each surveys}}
+    <tr class="tableRowFormat" onclick="FlowRouter.go('{{this.url}}')">
+      <td class="tableDataFormat assignments"><div class="overflowText">{{this.name}}</div></td>
+      <td class="tableDataFormat assignments">{{this.dueDate}}</td>
+      <td class="tableDataFormat assignments">{{this.status}}</td>
+    </tr>
+  {{/each}}
+</template>
+>>>>>>> 9f8aa01f0abc177c83a1ec7c88ba109e14604ff6
