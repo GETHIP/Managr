@@ -9,9 +9,7 @@
         <th class="surveyTableHeadFormat surveys">Completion Date</th>
         <th class="surveyTableHeadFormat surveys"># of Responses</th>
       </tr>
-      {{#each surveys}}
         {{> surveyRowsAdmin}}
-      {{/each}}
     </table>
     <button type="submit" class="buttonStyle sendSurvey submitbtn" id="createSurveyBtn">Create New Survey</button>
   </div>
@@ -27,11 +25,8 @@
         <th class="surveyTableHeadFormat surveys">Date Due</th>
         <th class="surveyTableHeadFormat surveys">Status</th>
       </tr>
-
       <!-- Each survey in table -->
-      {{#each surveys}}
         {{> surveyRowsStudent}}
-      {{/each}}
     </table>
   </div>
   {{else}}
@@ -42,21 +37,21 @@
   </template>
 
 <template name="surveyRowsAdmin">
-  {{#each surveys}}
+    {{#each surveys}}
     <tr class="tableRowFormat surveys rowClick" id="{{_id}}">
       <td class="tableDataFormat assignments"><div class="overflowText">{{this.name}}</div></td>
       <td class="tableDataFormat assignments">{{this.dueDate}}</td>
       <td class="tableDataFormat assignments">{{this.studentsCompleted}}/{{this.numberOfStudents}}</td>
     </tr>
-  {{/each}}
+    {{/each}}
 </template>
 
 <template name="surveyRowsStudent">
-  {{#each surveys}}
+    {{#each surveys}}
     <tr class="tableRowFormat rowClick" id="{{_id}}">
       <td class="tableDataFormat assignments"><div class="overflowText">{{this.name}}</div></td>
       <td class="tableDataFormat assignments">{{this.dueDate}}</td>
       <td class="tableDataFormat assignments">{{this.status}}</td>
     </tr>
-  {{/each}}
+    {{/each}}
 </template>
