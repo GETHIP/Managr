@@ -30,9 +30,16 @@ var getSurveysCompleted = function(student) {
       });
    }
 });*/
-Template.surveysPage.events({
+Template.surveyRowsAdmin.events({
 	'click .rowClick'(event){
-		console.log("gdhjk")
+		console.log("gdhjkAdmin")
+		event.preventDefault();
+		FlowRouter.go('/surveysResults/' + event.target.id)
+	}
+})
+Template.surveyRowsStudent.events({
+	'click .rowClick'(event){
+		console.log("gdhjkStudent")
 		event.preventDefault();
 		FlowRouter.go('/surveysResults/' + event.target.id)
 	}

@@ -24,12 +24,16 @@ Template.addQuestion.events({
     // FlowRouter.go("/addQuestion/" + target.id);
   }
 });
-Template.surveysPage.helpers({
+Template.surveyRowsAdmin.helpers({
   surveys(){
     return Surveys.find({});
   }
 });
-
+Template.surveyRowsStudent.helpers({
+  surveys(){
+    return Surveys.find({});
+  }
+});
 // Template.viewSurveyPage.helpers({
 //   surveys(){
 //     return Surveys.find({});

@@ -9,13 +9,14 @@
           <th class="surveyTableHeadFormat surveys">Completion Date</th>
           <th class="surveyTableHeadFormat surveys"># of Responses</th>
         </tr>
-        {{#each surveys}}
+        <!--{{#each surveys}}
           <tr class="tableRowFormat surveys" id="{{_id}}" onclick="FlowRouter.go('/surveysResults/{{_id}}');">
             <td class="tableDataFormat assignments"><div class="overflowText">{{this.name}}</div></td>
             <td class="tableDataFormat assignments">{{this.dueDate}}</td>
             <td class="tableDataFormat assignments">{{this.studentsCompleted}}/{{this.numberOfStudents}}</td>
           </tr>
-        {{/each}}
+        {{/each}}-->
+        {{> surveyRowsAdmin}}
       </table>
         <button type="submit" class="buttonStyle sendSurvey submitbtn" onclick="FlowRouter.go('/createNewSurvey')" id="createSurveyBtn">Create New Survey</button>
     </div>
@@ -34,17 +35,36 @@
         </tr>
 
         <!-- Each survey in table -->
-        {{#each surveys}}
+        <!--{{#each surveys}}
           <tr class="tableRowFormat" onclick="FlowRouter.go('{{this.url}}')">
             <td class="tableDataFormat assignments"><div class="overflowText">{{this.name}}</div></td>
             <td class="tableDataFormat assignments">{{this.dueDate}}</td>
             <td class="tableDataFormat assignments">{{this.status}}</td>
           </tr>
-        {{/each}}
+        {{/each}}-->
+        {{> surveyRowsStudent}}
       </table>
     </div>
       {{else}}
         {{> accessDenied}}
       {{/if}}
 	{{/if}}
+</template>
+<template name="surveyRowsAdmin">
+  {{#each surveys}}
+    <tr class="tableRowFormat surveys" id="{{_id}}" onclick="FlowRouter.go('/surveysResults/{{_id}}');">
+      <td class="tableDataFormat assignments"><div class="overflowText">{{this.name}}</div></td>
+      <td class="tableDataFormat assignments">{{this.dueDate}}</td>
+      <td class="tableDataFormat assignments">{{this.studentsCompleted}}/{{this.numberOfStudents}}</td>
+    </tr>
+  {{/each}}
+</template>
+<template name="surveyRowsStudent">
+  {{#each surveys}}
+    <tr class="tableRowFormat" onclick="FlowRouter.go('{{this.url}}')">
+      <td class="tableDataFormat assignments"><div class="overflowText">{{this.name}}</div></td>
+      <td class="tableDataFormat assignments">{{this.dueDate}}</td>
+      <td class="tableDataFormat assignments">{{this.status}}</td>
+    </tr>
+  {{/each}}
 </template>
