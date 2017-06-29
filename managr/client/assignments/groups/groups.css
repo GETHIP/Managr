@@ -368,3 +368,7 @@ td.alignmid {
   cursor: pointer;
   background-color: #ffe6e6 !important;
 }
+.tableRowFormat.groups.mygroupstable:hover {
+  cursor: default;
+  background-color: #ffe6e6 !important;
+}

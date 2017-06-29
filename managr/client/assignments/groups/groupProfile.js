@@ -50,11 +50,17 @@ Template.groupSize.helpers({
 });
 
 
-Template.groupButtons.events({
+Template.groupAdminButtons.events({
 	"click .editGroupBtn" (event) {
 		FlowRouter.go("/groups/edit/" + FlowRouter.getParam("id"));
 	},
 	"click .groupBack" (event) {
 		FlowRouter.go("/groups/");
+	}
+});
+
+Template.groupAdminButtons.events({
+	"click .groupBack" (event) {
+		FlowRouter.go("/MyGroups/");
 	}
 });

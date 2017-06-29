@@ -27,7 +27,6 @@
     </div>
 </template>
 
-
 <template name="groupName">
   {{#with groupName}}
     <div class="row nomargin">
@@ -36,7 +35,6 @@
     </div>
   {{/with}}
 </template>
-
 
 <template name="studentNames">
   <p><strong>Group Members:</strong></p>
@@ -61,12 +59,17 @@
   <!--{{/with}}-->
 </template>
 
-
 <template name="groupButtons">
   <div class="col-sm-6 col-xs-12" style="padding-left:0; padding-right:10;">
 	   <button type="button" class="buttonStyle groupBack">Back</button>
   </div>
   <div class="col-sm-6 col-xs-12" style="padding-left:10; padding-right:0;">
 	   <button type="button" class="buttonStyle editGroupBtn">Edit Group</button>
+  </div>
+</template>
+
+<template name="groupStudentButtons">
+  <div class = "col-xs-12" style="padding-left:0; padding-right:10;">
+	   <button type="button" class="buttonStyle groupBack">Back</button>
   </div>
 </template>
