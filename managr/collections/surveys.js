@@ -49,8 +49,8 @@ SurveySchema = new SimpleSchema({
         optional: false
     },
     dueDate: {
-        type: Date,
-        optional: false
+        type: String,
+        optional: true
     },
     studentsCompleted: {
         type: Number,

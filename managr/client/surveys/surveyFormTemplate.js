@@ -22,7 +22,7 @@ Template.newSurvey.events({
     // var question = document.getElementById('questionFormm').value;
     var anonToggle = document.getElementById('anonymousToggle').checked;
 //    var question = target.prompt.value;
-
+    alert(date);
     console.log(surveyName);
     console.log(date);
     console.log(anonToggle);
