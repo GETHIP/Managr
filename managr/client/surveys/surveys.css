@@ -7,6 +7,10 @@
   width: 66%;
 }
 
+.Questions {
+  margin-left: 3%;
+}
+
 viewAllTable tr:hover {
   background-color: #f7b9b7;
   cursor: pointer;
@@ -36,7 +40,7 @@ viewAllTable tr:hover {
 }
 
 .tableRowFormat.surveys:hover {
-  background-color:#F7b9b7;
+  background-color:#FCE7E7;
 }
 
 label {
@@ -46,6 +50,7 @@ label {
 
 .dropdown {
   margin-left: 2%;
+  margin-bottom: 1.5%;
 }
 
 #xicon {
