@@ -34,8 +34,3 @@ Template.surveyRowsStudent.helpers({
     return Surveys.find({});
   }
 });
-// Template.viewSurveyPage.helpers({
-//   surveys(){
-//     return Surveys.find({});
-//   }
-// });
