@@ -10,14 +10,16 @@
           <th class="surveyTableHeadFormat surveys"># of Responses</th>
         </tr>
         {{#each surveys}}
-          <tr class="tableRowFormat surveys" id="{{_id}}" onclick="FlowRouter.go('/surveysResults/{{_id}}');">
+          <tr class="tableRowFormat surveys rowClick" id="{{_id}}">
+            <!-- onclick="FlowRouter.go('/surveysResults/{{_id}}');" -->
             <td class="tableDataFormat assignments"><div class="overflowText">{{this.name}}</div></td>
             <td class="tableDataFormat assignments">{{this.dueDate}}</td>
             <td class="tableDataFormat assignments">{{this.studentsCompleted}}/{{this.numberOfStudents}}</td>
           </tr>
         {{/each}}
       </table>
-        <button type="submit" class="buttonStyle sendSurvey submitbtn" onclick="FlowRouter.go('/createNewSurvey')" id="createSurveyBtn">Create New Survey</button>
+        <button type="submit" class="buttonStyle sendSurvey submitbtn" id="createSurveyBtn">Create New Survey</button>
+         <!-- onclick="FlowRouter.go('/createNewSurvey')" -->
     </div>
 
 	{{else}}
