@@ -10,7 +10,7 @@
         <th class="surveyTableHeadFormat surveys"># of Responses</th>
       </tr>
       {{#each surveys}}
-        {{> surveyRowsAdmin}}
+      {{> surveyRowsAdmin}}
       {{/each}}
     </table>
     <button type="submit" class="buttonStyle sendSurvey submitbtn" id="createSurveyBtn">Create New Survey</button>
@@ -30,7 +30,7 @@
 
       <!-- Each survey in table -->
       {{#each surveys}}
-        {{> surveyRowsStudent}}
+      {{> surveyRowsStudent}}
       {{/each}}
     </table>
   </div>
@@ -38,21 +38,21 @@
   {{> accessDenied}}
   {{/if}}
   {{/if}}
-    <!-- onclick="FlowRouter.go('/createNewSurvey')" -->
-  </template>
+  <!-- onclick="FlowRouter.go('/createNewSurvey')" -->
+</template>
 
 <template name="surveyRowsAdmin">
-    <tr class="tableRowFormat surveys rowClick" id="{{_id}}">
-      <td class="tableDataFormat assignments"><div class="overflowText">{{this.name}}</div></td>
-      <td class="tableDataFormat assignments">{{this.dueDate}}</td>
-      <td class="tableDataFormat assignments">{{this.studentsCompleted}}/{{this.numberOfStudents}}</td>
-    </tr>
+  <tr class="tableRowFormat surveys rowClick" id="{{_id}}">
+    <td class="tableDataFormat assignments"><div class="overflowText">{{this.name}}</div></td>
+    <td class="tableDataFormat assignments">{{this.dueDate}}</td>
+    <td class="tableDataFormat assignments">{{this.studentsCompleted}}/{{this.numberOfStudents}}</td>
+  </tr>
 </template>
-        <!-- Each survey in table -->
+<!-- Each survey in table -->
 <template name="surveyRowsStudent">
-    <tr class="tableRowFormat rowClick" id="{{_id}}">
-      <td class="tableDataFormat assignments"><div class="overflowText">{{this.name}}</div></td>
-      <td class="tableDataFormat assignments">{{this.dueDate}}</td>
-      <td class="tableDataFormat assignments">{{this.status}}</td>
-    </tr>
+  <tr class="tableRowFormat rowClick" id="{{_id}}">
+    <td class="tableDataFormat assignments"><div class="overflowText">{{this.name}}</div></td>
+    <td class="tableDataFormat assignments">{{this.dueDate}}</td>
+    <td class="tableDataFormat assignments">{{this.status}}</td>
+  </tr>
 </template>
