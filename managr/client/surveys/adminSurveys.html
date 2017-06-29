@@ -42,38 +42,17 @@
   </template>
 
 <template name="surveyRowsAdmin">
-  {{#each surveys}}
     <tr class="tableRowFormat surveys rowClick" id="{{_id}}">
       <td class="tableDataFormat assignments"><div class="overflowText">{{this.name}}</div></td>
       <td class="tableDataFormat assignments">{{this.dueDate}}</td>
       <td class="tableDataFormat assignments">{{this.studentsCompleted}}/{{this.numberOfStudents}}</td>
     </tr>
-  {{/each}}
 </template>
-
-<<<<<<< HEAD
         <!-- Each survey in table -->
-        {{#each surveys}}
-          <tr class="tableRowFormat studentRowClick" id="{{_id}}" >
-            <td class="tableDataFormat assignments"><div class="overflowText">{{this.name}}</div></td>
-            <td class="tableDataFormat assignments">{{this.dueDate}}</td>
-            <td class="tableDataFormat assignments">{{this.status}}</td>
-          </tr>
-        {{/each}}
-      </table><button type="submit" class="buttonStyle sendSurvey submitbtn" onclick="FlowRouter.go('/createNewSurvey')" id="createSurveyBtn">Create New Survey</button>
-    </div>
-      {{else}}
-        {{> accessDenied}}
-      {{/if}}
-	{{/if}}
-=======
 <template name="surveyRowsStudent">
-  {{#each surveys}}
     <tr class="tableRowFormat rowClick" id="{{_id}}">
       <td class="tableDataFormat assignments"><div class="overflowText">{{this.name}}</div></td>
       <td class="tableDataFormat assignments">{{this.dueDate}}</td>
       <td class="tableDataFormat assignments">{{this.status}}</td>
     </tr>
-  {{/each}}
->>>>>>> 0b01d8618d85c8a40958da99285e1e8faa9beaaf
 </template>
