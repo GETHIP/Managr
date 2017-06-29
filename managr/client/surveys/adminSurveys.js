@@ -1,6 +1,9 @@
 import { Surveys } from '../../collections/surveys.js';
 import { Student } from '../../collections/student.js';
 
+Template.surveysPage.onCreated(function() {
+		Meteor.subscribe("Surveys");
+});
 
 /*surveysPage.events({
 
@@ -30,11 +33,11 @@ var getSurveysCompleted = function(student) {
       });
    }
 });*/
-Template.surveysPage.events({
+
+Template.surveyRowsAdmin.events({
 	'click .rowClick'(event){
-		var test = event.currentTarget.id;
-		console.log(test);
 		event.preventDefault();
+<<<<<<< HEAD
 		FlowRouter.go('/surveysResults/' + event.currentTarget.id)
 	},
 
@@ -43,8 +46,26 @@ Template.surveysPage.events({
 		console.log(test);
 		event.preventDefault();
 		FlowRouter.go('/completeSurvey/' + event.currentTarget.id)
+=======
+		FlowRouter.go('/surveysResults/' + event.currentTarget.id);
+>>>>>>> 0b01d8618d85c8a40958da99285e1e8faa9beaaf
 	}
 });
+
+Template.surveyRowsStudent.events({
+	'click .rowClick'(event){
+		event.preventDefault();
+		FlowRouter.go('/completeSurvey/' + event.currentTarget.id);
+	}
+});
+
+Template.surveysPage.events({
+	'click #createSurveyBtn'(event){
+		event.preventDefault();
+		FlowRouter.go('/createNewSurvey');
+	}
+});
+
 Template.questionFormTemplate.events({
 	 'change #questionFormm'(event){
      //keeps page from refreshing
@@ -194,6 +215,12 @@ Template.surveyFormTemplate.helpers({
 				answers:answers
       });
 		}
+});
+
+Template.surveysPage.helpers({
+	surveys: function(){
+		return Surveys.find({}).fetch();
+	}
 });
 
 // Meteor.startup(() => {

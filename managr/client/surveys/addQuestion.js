@@ -24,23 +24,22 @@ Template.addQuestion.events({
     // FlowRouter.go("/addQuestion/" + target.id);
   }
 });
-Template.surveysPage.helpers({
+Template.surveyRowsAdmin.helpers({
   surveys(){
     return Surveys.find({});
   }
 });
+Template.surveyRowsStudent.helpers({
+  surveys(){
+    return Surveys.find({});
+  }
+});
+Template.surveysResults.helpers({
+  // surveys(){
+  'survey': function(){
+    var surveyId = FlowRouter.getParam("id");
+    return Surveys.findOne({"_id": surveyId});
+  }
 
-// Template.surveysResults.helpers({
-//   questions(){
-//     return Surveys.questions.find({});
-//   },
-//   survey(){
-//     return Surveys.find({});//ids?
-//   }
-// });
-
-// Template.viewSurveyPage.helpers({
-//   surveys(){
-//     return Surveys.find({});
-//   }
-// });
+  // }
+});
