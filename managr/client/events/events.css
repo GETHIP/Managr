@@ -126,7 +126,7 @@ button.createdEvent {
 
 #calendarButton {
   background-color: #BD53FF;
-  
+
 }
 
 #calendarButton:hover {
@@ -179,7 +179,9 @@ table#t01 tr {
   border: 2px solid #BD53FF;
   color:black;
 }
-
+.spacey{
+  padding-top: 2%;
+}
 .eventsTableButton {
 	width: 20%;
 }
@@ -220,4 +222,5 @@ input.eventsTable {
 .eventSearchBar input[type=text]:hover, .eventSearchBar input[type=text]:focus  {
    border: 2px solid #BD53FF;
    -webkit-box-shadow: none;
+
 }

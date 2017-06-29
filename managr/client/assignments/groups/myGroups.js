@@ -37,6 +37,12 @@ Template.myGroups.helpers({
                 groupId: group._id,
                 size: group.studentIds.length,
                 leader: group.leader
+                // 
+                // console.log(studentID);
+                // console.log(studentName);
+                // console.log(allGroups);
+                // console.log(formattedGroups);
+
             }
             formattedGroups.push(formattedGroup);
         }
@@ -51,6 +57,7 @@ Template.myGroups.helpers({
         }
     }
 });
+
 
 Template.myGroups.events({
     'click #createGroupButton': function() {

@@ -8,14 +8,16 @@
       <div class="formdashboardContainer">
 
         <h4 class="searchEventsLabel">Search:</h4>
+
           <div class = "eventSearchBar">
             <table class="eventsTable" id="t01">
                   <thead></thead>
                   <tbody class="eventsTable">
                   <tr>
+              <div class = "spacey">
                   {{> EasySearch.Input index=eventsIndex attributes=searchBarEvent  sortBy='date'}}
 
-
+</div>
                    {{#if isInstructor}}
                   <td class="eventsTableSpacer"></td>
                   <td class="eventsTableButton">

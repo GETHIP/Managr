@@ -1,8 +1,10 @@
 import { Events } from '../../collections/event.js';
+import { Student } from '../../collections/student.js';
 import { EasySearch } from 'meteor/easy:search';
 
 Template.eventsPage.onRendered(() => {
   Meteor.subscribe("Events");
+  Meteor.subscribe("Student");
 })
 
 Template.eventsPage.events({
@@ -39,6 +41,55 @@ Template.eventsPage.events({
     FlowRouter.go('/events/view');
   },
 });
+
+var formatStudentsForGroup = function(group) {
+    var userIds = group.userIds;
+    var formattedStudents = [];
+
+    for(var i = 0; i < userIds.length; i++) {
+        var student = Student.findOne({_id: userIds[i]});
+        if(student == undefined) {
+            continue;
+        }
+        var formattedStudent = {
+            name: student.name
+        }
+        formattedStudents.push(formattedStudent);
+    }
+    return formattedStudents;
+}
+
+Template.eventsPage.helpers({
+    events: function() {
+        var studentID = Student.findOne({userId: Meteor.user()._id});
+        var studentName = studentID._id;
+        var allGroups = Groups.find({ userIds: studentName }).fetch();
+        var formattedGroups = [];
+        for(var i = 0; i < allGroups.length; i++) {
+            var group = allGroups[i];
+            var formattedGroup = {
+                name: group.name,
+                students: formatStudentsForGroup(group),
+                groupId: group._id,
+                size: group.studentIds.length,
+                leader: group.leader
+            }
+            formattedGroups.push(formattedGroup);
+        }
+        formattedGroups.sort(function(group1, group2) {
+            return group1.name.localeCompare(group2.name);
+        });
+        return formattedGroups;
+    },
+    namesInGroup: function() {
+        if(document.getElementById("namesInGroup").style.height > 200) {
+            document.getElementById("namesInGroup").style.overflowY = "scroll";
+        }
+    }
+});
+// console.log(studentID);
+// console.log(studentName);
+// console.log(allGroups);
 
 // Template.eventsPage.helpers({
 //   eventsHelper() {

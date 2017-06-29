@@ -44,6 +44,14 @@ Template.createEvent.events({
     var dateCreated = new Date().getTime()
 
 
+
+    Meteor.call("createNewEvent", hostId, host, eventName, description, date, formattedDate, location, userIds);
+
+    FlowRouter.go('/events');
+  }
+});
+
+
     console.log(hostId);
     console.log(host);
     console.log(eventName);
@@ -53,12 +61,6 @@ Template.createEvent.events({
     console.log(formattedDate);
     console.log(userIds);
 
-
-    Meteor.call("createNewEvent", hostId, host, eventName, description, date, formattedDate, location, userIds);
-
-    FlowRouter.go('/events');
-  }
-});
 
 import { Groups } from '../../collections/groups.js';
 
