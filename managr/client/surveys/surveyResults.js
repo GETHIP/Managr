@@ -15,4 +15,11 @@ Template.surveysResults.events({
   'click #deleteSurvey': function(event){
     Modal.show('deleteSurveyModal');
   }
-})
+});
+
+Template.surveysResults.helpers({
+  'survey': function(){
+    var surveyId = FlowRouter.getParam("id");
+    return Surveys.findOne({"_id": surveyId});
+  }
+});
