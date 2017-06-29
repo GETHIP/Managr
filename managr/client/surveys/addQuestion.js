@@ -34,3 +34,12 @@ Template.surveyRowsStudent.helpers({
     return Surveys.find({});
   }
 });
+Template.surveysResults.helpers({
+  // surveys(){
+  'survey': function(){
+    var surveyId = FlowRouter.getParam("id");
+    return Surveys.findOne({"_id": surveyId});
+  }
+
+  // }
+});

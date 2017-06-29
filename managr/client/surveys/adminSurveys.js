@@ -34,11 +34,21 @@ var getSurveysCompleted = function(student) {
    }
 });*/
 
-Template.surveysPage.events({
+Template.surveyRowsAdmin.events({
 	'click .rowClick'(event){
 		event.preventDefault();
 		FlowRouter.go('/surveysResults/' + event.currentTarget.id);
-	},
+	}
+});
+
+Template.surveyRowsStudent.events({
+	'click .rowClick'(event){
+		event.preventDefault();
+		FlowRouter.go('/completeSurvey/' + event.currentTarget.id);
+	}
+});
+
+Template.surveysPage.events({
 	'click #createSurveyBtn'(event){
 		event.preventDefault();
 		FlowRouter.go('/createNewSurvey');
