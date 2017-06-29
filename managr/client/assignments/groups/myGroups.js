@@ -1,9 +1,11 @@
 import { Groups } from '../../../collections/groups.js';
 import { Student } from '../../../collections/student.js';
+import { Instructor } from '../../../collections/instructor.js';
 
 Template.myGroups.onCreated(function() {
     Meteor.subscribe("Groups");
     Meteor.subscribe("Student");
+    Meteor.subscribe("Instructor");
 });
 
 var formatStudentsForGroup = function(group) {
@@ -36,7 +38,7 @@ Template.myGroups.helpers({
                 students: formatStudentsForGroup(group),
                 groupId: group._id,
                 size: group.studentIds.length,
-                leader: group.leader
+                coachNames: group.coachNames
             }
             formattedGroups.push(formattedGroup);
         }
@@ -49,6 +51,18 @@ Template.myGroups.helpers({
         if(document.getElementById("namesInGroup").style.height > 200) {
             document.getElementById("namesInGroup").style.overflowY = "scroll";
         }
+    },
+    allCoaches: function(coaches) {
+        console.log(coaches);
+        if(!coaches || coaches.length == 0) {
+          return "None";
+        }
+        var allCoaches = [];
+        for(var i = 0; i < coaches.length; i++) {
+            var coach = coaches[i];
+            allCoaches.push(coach);
+        }
+        return allCoaches.join(", ");
     }
 });
 
@@ -59,13 +73,11 @@ Template.myGroups.events({
     'click .editGroup': function(event) {
         event.preventDefault();
         const target = event.target;
-
         FlowRouter.go("/groups/edit/" + target.id);
     },
     'click .deleteGroup': function(event) {
         event.preventDefault();
         const target = event.target;
-
         Meteor.call("removeGroup", target.id);
     }
 });

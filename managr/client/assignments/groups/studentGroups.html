@@ -8,35 +8,43 @@
             <thead>
                 <tr>
                     <th class="groupsTableHead">Name</th>
-                    <th class="groupsTableHead">Leader</th>
+                    <th class="groupsTableHead">Coach</th>
                     <th class="groupsTableHead">Size</th>
-                    <th class="groupsTableHead">Students</th>
                 </tr>
             </thead>
 
-
             {{#each group in groups}}
-              <tr class="tableRowFormat">
-                  <td>{{group.name}}</td>
-                  <td>{{group.leader}}</td>
-                  <td>{{group.size}}</td>
-                  <td>
-                      <div class="namesInGroup" id="namesInGroup">
-                          <ul style="margin-left: 18px">
-                              {{#each student in group.students}}
-                                  <li style="list-style-type: circle">
-                                     {{student.name}}
-                                  </li>
-                              {{/each}}
+              <tr class="tableRowFormat groups mygroupstable">
+                  <td style="position:relative; vertical-align:middle;" class="groupRow"><div class="groupName groupRow">{{group.name}}</div>
+                    <p class="previewStudentsBtn groupRow">i</p>
+                    <div class="info">
+                      <ul style="margin: 0px 0px 0px 18px">
+                          {{#each student in group.students}}
+                              <li style="list-style-type: circle; font-size: 13px;">
+                                 {{student.name}}
+                              </li>
+                          {{/each}}
+                      </ul>
+                    </div>
+                  </td>
+
+                  <td class="alignmid groupRow">
+                      <div>
+                          <ul style="margin: 0px" id="{{groupId}}" class="groupRow">
+                            <li style="font-size: 16px;">
+                                {{allCoaches group.coachNames}}
+                            </li>
                           </ul>
                       </div>
                   </td>
+
+                  <td class="alignmid groupRow">{{group.size}}</td>
+
               </tr>
                 {{/each}}
-
-
-
         </table>
+
+        <br/>
 
 
     </div>

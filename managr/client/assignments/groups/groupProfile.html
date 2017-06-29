@@ -17,11 +17,37 @@
             {{> studentNames}}
           </div> </div>
           <div class="row">
-          {{> groupButtons}}
+          {{> groupAdminButtons}}
         </div>
         </div>
       </div>
 </template>
+
+<template name="myGroupProfile">
+    {{> topNav}}
+      <div class="paddingNav">
+        <div class="marginContainer">
+        {{> groupName}}
+          <div class = "row">
+            <div class = "col-sm-6 col-xs-12" style="padding-left:0; padding-right:10;">
+          <div class="groupsCard">
+            {{> groupCoach}}
+          </div> </div>
+          <div class = "col-sm-6 col-xs-12" style="padding-left:10; padding-right:0;">
+          <div class="groupsCard">
+            {{> groupSize}}
+          </div> </div> </div>
+          <div class="row">
+          <div class="groupsCard">
+            {{> studentNames}}
+          </div> </div>
+          <div class="row">
+          {{> groupStudentButtons}}
+        </div>
+        </div>
+      </div>
+</template>
+
 
 
 <template name="groupName">
@@ -57,11 +83,17 @@
 </template>
 
 
-<template name="groupButtons">
+<template name="groupAdminButtons">
   <div class = "col-sm-6 col-xs-12" style="padding-left:0; padding-right:10;">
 	   <button type="button" class="buttonStyle groupBack">Back</button>
   </div>
   <div class = "col-sm-6 col-xs-12" style="padding-left:10; padding-right:0;">
 	   <button type="button" class="buttonStyle editGroupBtn">Edit Group</button>
+  </div>
+</template>
+
+<template name="groupStudentButtons">
+  <div class = "col-xs-12" style="padding-left:0; padding-right:10;">
+	   <button type="button" class="buttonStyle groupBack">Back</button>
   </div>
 </template>
