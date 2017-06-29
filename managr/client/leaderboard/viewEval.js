@@ -20,21 +20,25 @@ Template.viewEval.helpers({
     console.log("hi")
     var selectStudent = document.getElementById("studentChoice");
     var selectInstruct = document.getElementById("instructorChoice");
+    var selectMile = document.getElementById("milestoneChoice");
 
-   try{
+  //  try{
     selectStudent = selectStudent.value;
     selectInstruct = selectInstruct.value;
-
-    if(selectStudent == "sortAll" && selectInstruct == "sortAll"){
+    selectMile = selectMile.value;
+    console.log(selectMile);
+    if(selectStudent == "sortAll" && selectInstruct == "sortAll" && selectMile == "sortAll"){
     		//console.log(Eval.find({}).fetch());
     		var data = Eval.find().fetch();
         for(var i = 0; i < data.length; i++){
         //  console.log(Student.findOne({_id: data[i].evaluatee}));
     		data[i].name = Student.findOne({_id: data[i].evaluatee}).name;
         data[i].instructor = Instructor.findOne({_id: data[i].evaluator}).name;
-        //console.log(data[i].name);
-      //  console.log(data[i].instructor);
-      //  console.log(data[i].stars);
+        data[i].week = Milestone.findOne({_id: data[i].week}).name;
+        //console.log(data[i].week);
+       console.log(data[i].name);
+       console.log(data[i].instructor);
+       console.log(data[i].stars);
     		data[i].effort = data[i].stars[0];
     		data[i].att = data[i].stars[1];
     		data[i].team = data[i].stars[2];
@@ -42,13 +46,15 @@ Template.viewEval.helpers({
       }
     }
 
-    if(selectStudent != "sortAll" && selectInstruct == "sortAll"){
+    if(selectStudent != "sortAll" && selectInstruct == "sortAll" && selectMile == "sortAll"){
       var data = [];
       var dataList = Eval.find({evaluatee: document.getElementById("studentChoice").value}).fetch();
       console.log(dataList)
       dataList.forEach(function(element){
         element.name = $("#studentChoice option:selected").text();
         element.instructor = Instructor.findOne({_id: element.evaluator}).name;
+        element.week = Milestone.findOne({_id: element.week}).name;
+        console.log(element.week);
         element.effort = element.stars[0];
         element.att = element.stars[1];
         element.team = element.stars[2];
@@ -56,7 +62,7 @@ Template.viewEval.helpers({
         data.push(element);
       });
     }
-      if(selectStudent == "sortAll" && selectInstruct != "sortAll"){
+      if(selectStudent == "sortAll" && selectInstruct != "sortAll" && selectMile == "sortAll"){
         var data = [];
         var dataList = Eval.find({evaluator: document.getElementById("instructorChoice").value}).fetch();
         console.log(dataList)
@@ -64,6 +70,7 @@ Template.viewEval.helpers({
           element.name = Student.findOne({_id: element.evaluatee}).name;
           console.log(element.name)
           element.instructor = $("#instructorChoice option:selected").text();
+          element.week = Milestone.findOne({_id: element.week}).name;
           element.effort = element.stars[0];
           element.att = element.stars[1];
           element.team = element.stars[2];
@@ -71,7 +78,7 @@ Template.viewEval.helpers({
           data.push(element);
         });
       }
-        if(selectStudent != "sortAll" && selectInstruct != "sortAll"){
+        if(selectStudent != "sortAll" && selectInstruct != "sortAll" && selectMile == "sortAll"){
           var data = [];
           var dataList = Eval.find({
             evaluator: document.getElementById("instructorChoice").value,
@@ -81,6 +88,7 @@ Template.viewEval.helpers({
           dataList.forEach(function(element){
             element.name = Student.findOne({_id: element.evaluatee}).name;
             element.instructor = Instructor.findOne({_id: element.evaluator}).name;;
+            element.week = Milestone.findOne({_id: element.week}).name;
             element.effort = element.stars[0];
             element.att = element.stars[1];
             element.team = element.stars[2];
@@ -88,9 +96,84 @@ Template.viewEval.helpers({
             data.push(element);
           });
         }
-      } catch (e) {
-        console.log("error, the try statement not working")
-      }
+        if(selectStudent == "sortAll" && selectInstruct == "sortAll" && selectMile != "sortAll"){
+        		//console.log(Eval.find({}).fetch());
+        		var data = Eval.find({week: document.getElementById("milestoneChoice").value}).fetch();
+            for(var i = 0; i < data.length; i++){
+            //  console.log(Student.findOne({_id: data[i].evaluatee}));
+        		data[i].name = Student.findOne({_id: data[i].evaluatee}).name;
+            data[i].instructor = Instructor.findOne({_id: data[i].evaluator}).name;
+            data[i].week = Milestone.findOne({_id: data[i].week}).name;
+            //console.log(data[i].name);
+          //  console.log(data[i].instructor);
+          //  console.log(data[i].stars);
+        		data[i].effort = data[i].stars[0];
+        		data[i].att = data[i].stars[1];
+        		data[i].team = data[i].stars[2];
+        		data[i].tech = data[i].stars[3];
+          }
+        }
+
+        if(selectStudent != "sortAll" && selectInstruct == "sortAll" && selectMile != "sortAll"){
+          var data = [];
+          var dataList = Eval.find({
+            evaluatee: document.getElementById("studentChoice").value,
+            week: document.getElementById("milestoneChoice").value
+          }).fetch();
+          console.log(dataList)
+          dataList.forEach(function(element){
+            element.name = $("#studentChoice option:selected").text();
+            element.instructor = Instructor.findOne({_id: element.evaluator}).name;
+            element.week = Milestone.findOne({_id: element.week}).name;
+            element.effort = element.stars[0];
+            element.att = element.stars[1];
+            element.team = element.stars[2];
+            element.tech = element.stars[3];
+            data.push(element);
+          });
+        }
+          if(selectStudent == "sortAll" && selectInstruct != "sortAll" && selectMile != "sortAll"){
+            var data = [];
+            var dataList = Eval.find({
+              evaluator: document.getElementById("instructorChoice").value,
+              week: document.getElementById("milestoneChoice").value
+            }).fetch();
+            console.log(dataList)
+            dataList.forEach(function(element){
+              element.name = Student.findOne({_id: element.evaluatee}).name;
+              console.log(element.name)
+              element.instructor = $("#instructorChoice option:selected").text();
+              element.week = Milestone.findOne({_id: element.week}).name;
+              element.effort = element.stars[0];
+              element.att = element.stars[1];
+              element.team = element.stars[2];
+              element.tech = element.stars[3];
+              data.push(element);
+            });
+          }
+            if(selectStudent != "sortAll" && selectInstruct != "sortAll" && selectMile != "sortAll"){
+              var data = [];
+              var dataList = Eval.find({
+                evaluator: document.getElementById("instructorChoice").value,
+                evaluatee: document.getElementById("studentChoice").value,
+                week: document.getElementById("milestoneChoice")
+              }).fetch();
+              console.log(dataList)
+              dataList.forEach(function(element){
+                element.name = Student.findOne({_id: element.evaluatee}).name;
+                element.instructor = Instructor.findOne({_id: element.evaluator}).name;
+                element.week = Milestone.findOne({_id: element.week}).name;
+                element.effort = element.stars[0];
+                element.att = element.stars[1];
+                element.team = element.stars[2];
+                element.tech = element.stars[3];
+                data.push(element);
+              });
+            }
+
+      // } catch (e) {
+      //   console.log("error, the try statement not working")
+      // }
           return data;
 
   //console.log(data);
@@ -146,6 +229,10 @@ Template.viewEval.events({
     _dep.changed();
   },
   'change #instructorChoice': function(event){
+    event.preventDefault();
+    _dep.changed();
+  },
+  'change #milestoneChoice': function(event){
     event.preventDefault();
     _dep.changed();
   }
