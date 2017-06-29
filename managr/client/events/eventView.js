@@ -46,7 +46,7 @@ Template.eventView.events({
  }
 	 Meteor.call('sendRSVP', eventId, realS, rsvp, false);
 
-	 FlowRouter.go('/events');
+	FlowRouter.go('/events');
 	}
 });
 
