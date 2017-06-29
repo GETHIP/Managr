@@ -1,10 +1,12 @@
 <template name="eventsPage">
+
   <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
   {{#if userIsValid}}
     <div class="marginContainer">
       <h1 class="titleAssignment">Events</h1>
       <div class="orange-bar purpleBar lineP"> &nbsp;</div>
       <div class="formdashboardContainer">
+
         <h4 class="searchEventsLabel">Search:</h4>
           <div class = "eventSearchBar">
             <table class="eventsTable" id="t01">
@@ -13,8 +15,8 @@
                   <tr>
                   {{> EasySearch.Input index=eventsIndex attributes=searchBarEvent  sortBy='date'}}
 
-                  {{#if isInstructor}}
 
+                   {{#if isInstructor}}
                   <td class="eventsTableSpacer"></td>
                   <td class="eventsTableButton">
                   <button type="button" class="buttonStyle createEvent eventsTable" id="createEventButton"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>     Create Event</button>
@@ -48,7 +50,7 @@
            </div>
          {{/if}} -->
 
-         {{#if isInstructor}}
+ {{#if isInstructor}}
            <div class="editEventButton">
 
              <button type="button" class="buttonStyle editEvent createdEvent goToEdit" id="{{eventId}}"><i class="fa fa-eraser" aria-hidden="true"></i>     Edit Event</button>
@@ -57,7 +59,7 @@
              <button type="button" class="deleteEventButton manageDeleteButton" id="{{eventId}}"><i class="fa fa-trash-o" aria-hidden="true"></i>     Delete</button>
 
            </div>
-         {{/if}}
+ {{/if}}
 
 
 
@@ -69,6 +71,7 @@
 
     </div>
   </div>
+
 {{/EasySearch.Each}}
 
 {{else}}
