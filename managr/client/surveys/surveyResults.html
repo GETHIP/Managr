@@ -8,34 +8,6 @@
         <p class="noIndent assignmentFormFormat"><b>Number of Responses:</b> {{this.studentsCompleted}}/{{this.numberOfStudents}}</p>
         <p class="noIndent assignmentFormFormat"><b>Due Date:</b> {{this.dueDate}}</p>
         <p class="noIndent assignmentFormFormat"><b>Survey Questions:</b></p>
-        <!-- {{#each question in questions}}
-          <p class="questionPrompt" id="{{question.dateHash}}"><b>{{question.prompt}}</b>
-              <button type="button" class="deleteBtn btn" id="{{question.dateHash}}"><i class="fa fa-window-close fa-2x" id="xicon" aria-hidden="true"></i></button>
-          </p>
-          {{#if choicetype question.questionType}}
-              <ul>
-                {{#each option in question.options}}
-                  <li>
-                    <input id="MCradio" type="radio" name="MCQ" value="r" class="selectionForm CQlabel" />
-                      {{option}}
-                  </li>
-                {{/each}}
-              </ul>
-          {{/if}}
-          {{#if checktype question.questionType}}
-              <ul>
-                {{#each option in question.options}}
-                  <li>
-                    <input type="checkbox" name="CBQ" value="c" class="selectionForm CQlabel" />
-                      {{option}}
-                    </li>
-                {{/each}}
-              </ul>
-          {{/if}}
-          {{#if shResptype question.questionType}}
-              <input type="text" name="FRQ" class="selectionForm createSurveyForm" placeholder="Response Here">
-          {{/if}}
-        {{/each}} -->
       </div>
     <table class="viewAllTable">
       <!-- Table Headings -->
