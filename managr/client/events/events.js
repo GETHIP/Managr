@@ -46,6 +46,7 @@ var formatStudentsForGroup = function(group) {
     var userIds = group.userIds;
     var formattedStudents = [];
 
+
     for(var i = 0; i < userIds.length; i++) {
         var student = Student.findOne({_id: userIds[i]});
         if(student == undefined) {
@@ -81,6 +82,7 @@ Template.eventsPage.helpers({
         });
         return formattedGroups;
     },
+
     namesInGroup: function() {
         if(document.getElementById("namesInGroup").style.height > 200) {
             document.getElementById("namesInGroup").style.overflowY = "scroll";

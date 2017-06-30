@@ -43,6 +43,14 @@ Template.createEvent.events({
     // Stores date as a number (number of milliseconds since 1970)
     var dateCreated = new Date().getTime()
 
+    console.log(hostId);
+    console.log(host);
+    console.log(eventName);
+    console.log(description);
+    console.log(location);
+    console.log(date);
+    console.log(formattedDate);
+    console.log(userIds);
 
 
     Meteor.call("createNewEvent", hostId, host, eventName, description, date, formattedDate, location, userIds);
@@ -52,14 +60,6 @@ Template.createEvent.events({
 });
 
 
-    // console.log(hostId);
-    // console.log(host);
-    // console.log(eventName);
-    // console.log(description);
-    // console.log(location);
-    // console.log(date);
-    // console.log(formattedDate);
-    // console.log(userIds);
 
 
 import { Groups } from '../../collections/groups.js';

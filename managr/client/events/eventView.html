@@ -20,13 +20,18 @@
           <p>Description: {{eventDescription}}</p>
           <p>Date: {{formattedDate}}</p>
           <p>Location: {{eventLocation}}</p>
+{{#if isStudent}}
+<br>
+          <textarea id="createEventBox" name="description" rows="6" placeholder="Message"></textarea>
+          {{/if}}
         </div>
         {{#if isInstructor}}
         <button type="button" id="eventCancel" class="buttonStyle" onclick="FlowRouter.go('/events');">Back</button>
         {{/if}}
          {{#if isStudent}}
          <button type="button" id="eventCancel" class="buttonStyle cancelUserCreate leftFloatingButton" onclick="FlowRouter.go('/events');">Back</button>
-         <button type="submit" id="rsvpEventButton" class="buttonStyle cancelUserCreate rightFloatingButton">Send RSVP</button>
+         <button type="submit" id="rsvpEventButton" class="buttonStyle cancelUserCreate rightFloatingButton">Send Attendance</button>
+
         {{/if}}
 
     </div>
