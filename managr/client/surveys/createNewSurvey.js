@@ -55,58 +55,58 @@ var newformatStudentsForGroup = function(studentIds) {
     return formattedStudents;
 }
 
-Template.newSurvey.events({
-  'change .groupCheckBox':function(event) {
-      var groupId = event.target.id;
-      var group = Groups.findOne({_id: groupId});
-      var inputs = document.getElementsByTagName("INPUT");
-
-      //If its checked, they just clicked it, so we want to add the students. If its not checked, they unclicked it,
-      //so we want to remove the students
-      if(event.target.checked) {
-          for(var i = 0; i < group.studentIds.length; i++) {
-              var studentId = group.studentIds[i];
-              var checkbox = document.getElementById(studentId);
-              if(checkbox != undefined) {
-                  checkbox.checked = true;
-              }
-          }
-      } else {
-          var selectedGroups = [];
-          for(var i = 0; i < inputs.length; i++) {
-              if(inputs[i].type == "checkbox" && inputs[i].checked) {
-                  var selectedGroup = Groups.findOne({_id: inputs[i].id});
-                  //Because the inputs array has its elements in the order defined in the DOM, we know that groups
-                  //come before the students in DOM. Therefore, once selectedGroup is equal to undefined, we know
-                  //that we have reached students, therefore enabling us to optimize this method by breaking
-                  //and not iterating through all the students
-                  if(selectedGroup == undefined) {
-                      break;
-                  }
-                  selectedGroups.push(selectedGroup);
-              }
-          }
-
-          for(var i = 0; i < group.studentIds.length; i++) {
-              var studentId = group.studentIds[i];
-              var checkbox = document.getElementById(studentId);
-
-              if(checkbox != undefined) {
-                  var found = false;
-                  for(var j = 0; j < selectedGroups.length; j++) {
-                      //Dont want to include the clicked group in this comparison
-                      if(selectedGroups[j].id != groupId) {
-                          if(selectedGroups[j].studentIds.indexOf(studentId) != -1) {
-                              found = true;
-                              break;
-                          }
-                      }
-                  }
-                  if(!found) {
-                      checkbox.checked = false;
-                  }
-              }
-          }
-      }
-  }
-});
+// Template.newSurvey.events({
+  // 'change .groupCheckBox':function(event) {
+  //     var groupId = event.target.id;
+  //     var group = Groups.findOne({_id: groupId});
+  //     var inputs = document.getElementsByTagName("INPUT");
+  //
+  //     //If its checked, they just clicked it, so we want to add the students. If its not checked, they unclicked it,
+  //     //so we want to remove the students
+  //     if(event.target.checked) {
+  //         for(var i = 0; i < group.studentIds.length; i++) {
+  //             var studentId = group.studentIds[i];
+  //             var checkbox = document.getElementById(studentId);
+  //             if(checkbox != undefined) {
+  //                 checkbox.checked = true;
+  //             }
+  //         }
+  //     } else {
+  //         var selectedGroups = [];
+  //         for(var i = 0; i < inputs.length; i++) {
+  //             if(inputs[i].type == "checkbox" && inputs[i].checked) {
+  //                 var selectedGroup = Groups.findOne({_id: inputs[i].id});
+  //                 //Because the inputs array has its elements in the order defined in the DOM, we know that groups
+  //                 //come before the students in DOM. Therefore, once selectedGroup is equal to undefined, we know
+  //                 //that we have reached students, therefore enabling us to optimize this method by breaking
+  //                 //and not iterating through all the students
+  //                 if(selectedGroup == undefined) {
+  //                     break;
+  //                 }
+  //                 selectedGroups.push(selectedGroup);
+  //             }
+  //         }
+  //
+  //         for(var i = 0; i < group.studentIds.length; i++) {
+  //             var studentId = group.studentIds[i];
+  //             var checkbox = document.getElementById(studentId);
+  //
+  //             if(checkbox != undefined) {
+  //                 var found = false;
+  //                 for(var j = 0; j < selectedGroups.length; j++) {
+  //                     //Dont want to include the clicked group in this comparison
+  //                     if(selectedGroups[j].id != groupId) {
+  //                         if(selectedGroups[j].studentIds.indexOf(studentId) != -1) {
+  //                             found = true;
+  //                             break;
+  //                         }
+  //                     }
+  //                 }
+  //                 if(!found) {
+  //                     checkbox.checked = false;
+  //                 }
+  //             }
+  //         }
+  //     }
+  // }
+// });

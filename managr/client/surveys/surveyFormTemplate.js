@@ -12,7 +12,6 @@ Template.newSurvey.onCreated(function() {
 Template.newSurvey.events({
     'click #addQuestionBtn' (event) {
       event.preventDefault();
-
       const form = event.target;
 
       const surveyName = document.getElementById('surveyName').value;
@@ -25,6 +24,7 @@ Template.newSurvey.events({
       console.log(surveyName);
       console.log(date);
       console.log(anonToggle);
+      // console.log(inputs);
 
       Meteor.call("createNewSurvey", surveyName, date, anonToggle, function(error, result) {
   			  FlowRouter.go("/addQuestion/" + result);

@@ -19,10 +19,12 @@ export const Surveys = new Mongo.Collection('Surveys');
 
 option = new SimpleSchema({
 	text: {
-		type: String
+		type: String,
+		optional: true
 	},
 	controlType: {
-		type: String
+		type: String,
+		optional: true
 	}
 });
 
@@ -35,7 +37,7 @@ question = new SimpleSchema({
 	},
 	options: {
 		type: [String],
-		optional: true
+		optional: true 
 	},
 	dateHash: {
 		type: Number,
@@ -56,10 +58,10 @@ SurveySchema = new SimpleSchema({
         type: Number,
         optional: true
     },
-  //  studentsAssigned: {
-  //      type: [String],
-  //      optional: false
-  //  },
+   studentsAssigned: {
+       type: [String],
+       optional: true
+   },
     questions: {
 			type: [question],
 			defaultValue: [],

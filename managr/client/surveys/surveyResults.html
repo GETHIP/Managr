@@ -1,14 +1,45 @@
 <template name="surveysResults">
     {{#if isInstructor}}
+    {{#with survey}}
     <div class="marginContainer">
-    <h1 class="titleAssignment"> {{this.name}} &nbsp;</h1>
+    <h1 class="titleAssignment"> {{name}} &nbsp;</h1>
     <button id="deleteSurvey" class="buttonStyle delete">Delete</button>
     <div class="orange-bar red-bar"> &nbsp;</div>
       <div class="surveyContainer">
-        <p class="noIndent assignmentFormFormat"><b>Number of Responses:</b> {{this.studentsCompleted}}/{{this.numberOfStudents}}</p>
-        <p class="noIndent assignmentFormFormat"><b>Due Date:</b> {{this.dueDate}}</p>
+        <p class="noIndent assignmentFormFormat"><b>Number of Responses:</b> {{studentsCompleted}}/{{studentsAssigned}}</p>
+        <p class="noIndent assignmentFormFormat"><b>Due Date:</b> {{dueDate}}</p>
         <p class="noIndent assignmentFormFormat"><b>Survey Questions:</b></p>
+        {{#each question in questions}}
+          <ul>
+            <li>
+              {{question.prompt}}
+              <ul>
+                {{#if choicetype question.questionType}}
+                    <ul>
+                      {{#each option in question.options}}
+                        <li>
+                          <input id="MCradio" type="radio" name="MCQ" value="r" class="selectionForm CQlabel" />
+                            {{option}}
+                        </li>
+                      {{/each}}
+                    </ul>
+                {{/if}}
+                {{#if checktype question.questionType}}
+                    <ul>
+                      {{#each option in question.options}}
+                        <li>
+                          <input type="checkbox" name="CBQ" value="c" class="selectionForm CQlabel" />
+                            {{option}}
+                          </li>
+                      {{/each}}
+                    </ul>
+                {{/if}}
+              </ul>
+            </li>
+          </ul>
+        {{/each}}
       </div>
+
     <table class="viewAllTable">
       <!-- Table Headings -->
       <tr>
@@ -37,6 +68,7 @@
 
     </table>
     </div>
+      {{/with}}
       {{else}}
         {{> accessDenied}}
       {{/if}}
