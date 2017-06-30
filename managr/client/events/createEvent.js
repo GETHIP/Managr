@@ -52,14 +52,14 @@ Template.createEvent.events({
 });
 
 
-    console.log(hostId);
-    console.log(host);
-    console.log(eventName);
-    console.log(description);
-    console.log(location);
-    console.log(date);
-    console.log(formattedDate);
-    console.log(userIds);
+    // console.log(hostId);
+    // console.log(host);
+    // console.log(eventName);
+    // console.log(description);
+    // console.log(location);
+    // console.log(date);
+    // console.log(formattedDate);
+    // console.log(userIds);
 
 
 import { Groups } from '../../collections/groups.js';

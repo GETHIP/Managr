@@ -5,6 +5,8 @@
     <div class="marginContainer">
       <h1 class="titleAssignment">Events</h1>
       <div class="orange-bar purpleBar lineP"> &nbsp;</div>
+
+
       <div class="formdashboardContainer">
 
         <h4 class="searchEventsLabel">Search:</h4>
@@ -18,22 +20,32 @@
                   {{> EasySearch.Input index=eventsIndex attributes=searchBarEvent  sortBy='date'}}
 
 </div>
-                   {{#if isInstructor}}
+  {{#if isInstructor}}
                   <td class="eventsTableSpacer"></td>
                   <td class="eventsTableButton">
                   <button type="button" class="buttonStyle createEvent eventsTable" id="createEventButton"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>     Create Event</button>
                 </td>
 
-                  {{/if}}
-                <!-- <td class="eventsTableSpacer"></td> -->
+
+
                 <td class="eventsTableButton">
                 <button type="button" class="buttonStyle eventCalendar eventsTable" id="calendarButton"><i class="fa fa-calendar" aria-hidden="true"></i>     Calendar</button>
                 </td>
+{{/if}}
+{{#if isStudent}}
+
+<td class="eventsTableButton spacey2">
+<button type="button" class="buttonStyle eventCalendar eventsTable" id="calendarButton"><i class="fa fa-calendar" aria-hidden="true"></i>     Calendar</button>
+</td>
+
+{{/if}}
+
               </tr>
             </tbody>
           </table>
         </div>
       </div>
+
     </div>
 
 {{#EasySearch.Each index=eventsIndex attributes=searchBarEvent}}
