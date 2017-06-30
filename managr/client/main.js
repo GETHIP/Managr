@@ -145,10 +145,11 @@ groupIndex = new EasySearch.Index({
 	})
 });
 
+
+
 var formatStudentsForGroup = function(group) {
     var studentIds = group.studentIds;
     var formattedStudents = [];
-
 		if(!studentIds) {
 			return;
 		}
@@ -165,6 +166,7 @@ var formatStudentsForGroup = function(group) {
     }
     return formattedStudents;
 }
+
 
 var formatCoachesForGroup = function(group) {
 		var coachIds = group.coaches;

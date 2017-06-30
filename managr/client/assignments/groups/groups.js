@@ -57,7 +57,7 @@ Template.groups.helpers({
     },
     allcoaches: function(coaches) {
         if(!coaches) {
-          return;
+            return;
         }
         var allCoaches = [];
         for(var i = 0; i < coaches.length; i++) {
@@ -73,7 +73,9 @@ Template.groups.events({
     'click #createGroupButton': function(event) {
         Modal.show("createGroupModal", event.target.id);
     },
-
+    'click #suggestedgroupsbutton': function(event) {
+        FlowRouter.go("/groups/createSuggested");
+    },
     'click .editGroup': function(event) {
         event.preventDefault();
         const target = event.target;

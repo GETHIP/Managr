@@ -215,6 +215,12 @@ FlowRouter.route('/groups/editSuggested', {
 		BlazeLayout.render("groupsLayout", { content: 'editSuggested' });
 	}
 });
+FlowRouter.route('/groups/createSuggested', {
+	name: 'createSuggested',
+	action: function() {
+		BlazeLayout.render("groupsLayout", { content: 'createSuggested' });
+	}
+});
 FlowRouter.route('/groups/edit/:id', {
 	name: 'editGroup',
 	action: function() {
@@ -228,8 +234,14 @@ FlowRouter.route('/myGroups', {
 	}
 });
 FlowRouter.route('/groups/:id', {
-  	name: 'groupProfile',
+  	name: 'groupAdminProfile',
   	action: function() {
-  		BlazeLayout.render("groupProfile", {content: 'groupProfile'});
+  		BlazeLayout.render("groupAdminProfile", {content: 'groupAdminProfile'});
+  	}
+});
+FlowRouter.route('/myGroups/:id', {
+  	name: 'groupStudentProfile',
+  	action: function() {
+  		BlazeLayout.render("groupProfile", {content: 'groupStudentProfile'});
   	}
 });
