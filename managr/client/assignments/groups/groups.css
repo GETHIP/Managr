@@ -78,7 +78,7 @@
  }
  .studentGroup {
    border: 2px solid #CCCCCC;
-   border-radius: 5px 5px 0px 0px;
+   border-radius: 5px;
    background-color: #ffffff;
    overflow-x: hidden;
    max-height: 35vh;
@@ -126,8 +126,8 @@
 }
 .addedStudent {
   margin-left: 4%;
-  width: 48%;
 }
+
 .removeStudents, .addStudents {
    border: 2px solid #CCCCCC;
    padding: 5px;
@@ -274,12 +274,24 @@
   vertical-align: middle;
   margin-bottom: 0px;
 }
-
- @media screen and (max-width: 980px) {
-    #createGroupButton, #suggestedgroupsbutton{
-        margin-top: 6.5%;
-    }
- }
+.studentGroup:nth-child(even) {
+  margin-left: 4%;
+}
+.suggestedGroupsCard {
+  padding: 1%;
+  max-height: 45vh;
+  overflow: auto;
+  margin-bottom: 4%;
+}
+.studentsInGroup {
+  border: 1px solid #cccccc;
+  color: #666666;
+  padding: 1%;
+  max-height: 21vh;
+  overflow-y: scroll;
+  width: 50%;
+  display: inline-block;
+}
  .searchBar input[type=text]  {
     width:30%;
     height: 30px;
@@ -294,11 +306,9 @@
     background-repeat: no-repeat;
     position: relative;
  }
-
  .searchBar input[type=text]:hover, .searchBar input[type=text]:focus  {
     border: 2px solid #0397d7;
  }
-
  .sortText {
    margin: 0;
    padding: 0;
@@ -309,23 +319,42 @@
    padding-right: .4%;
    padding-left: 1.4%;
  }
-
  .sorting, .filters{
    float: right;
    width: auto;
    margin-top: 5px;
    margin-bottom: 5px;
  }
-
+ .suggestedGroupContent {
+   width: 48%;
+   float: left;
+   clear: left;
+   margin-left: 0px;
+ }
+ .suggestedOptions {
+   height: 2em;
+   padding: 4px;
+   width: 100%;
+ }
+ .suggestedTitles {
+   margin-top: 2%;
+   margin-bottom: 0;
+ }
+ .suggestedWidth {
+   width: 100%;
+ }
+ .moveSuggestedStudents {
+   float: right;
+   clear: right !important;
+   border-radius: 5px;
+ }
 .cancelButton {
   background-color: #84807b;
   margin-right: 2%;
   }
-
 td.alignmid {
   vertical-align: middle;
 }
-
 .groupsCard {
 	background-color: white;
 	box-shadow: 3px 3px 5px #888888;
@@ -336,37 +365,35 @@ td.alignmid {
   width: 100%;
   margin-bottom: 3%;
 }
-
 .nomargin {
   margin: 0px;
 }
-
 .buttonStyle.editGroupBtn {
   float: right;
   background-color: #870000;
   padding-top: 2.5%;
   padding-bottom:2.5%;
 }
-
 .buttonStyle.groupBack {
   float: left;
   padding-top: 2.5%;
   padding-bottom:2.5%;
   background-color: #870000;
-
 }
-
 .buttonStyle.editGroupBtn:hover {
   background-color: #660000;
 }
-
 .buttonStyle.groupBack:hover {
   background-color: #660000;
 }
-
 .tableRowFormat.groups:hover {
   cursor: pointer;
   background-color: #ffe6e6 !important;
+}
+@media screen and (max-width: 980px) {
+   #createGroupButton, #suggestedgroupsbutton{
+       margin-top: 6.5%;
+   }
 }
 .tableRowFormat.groups.mygroupstable:hover {
   cursor: default;
