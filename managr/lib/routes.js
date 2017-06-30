@@ -234,9 +234,9 @@ FlowRouter.route('/myGroups', {
 	}
 });
 FlowRouter.route('/groups/:id', {
-  	name: 'groupAdminProfile',
+  	name: 'groupProfile',
   	action: function() {
-  		BlazeLayout.render("groupAdminProfile", {content: 'groupAdminProfile'});
+  		BlazeLayout.render("groupProfile", {content: 'groupProfile'});
   	}
 });
 FlowRouter.route('/myGroups/:id', {
