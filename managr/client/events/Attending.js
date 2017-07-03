@@ -14,15 +14,21 @@ Template.attending.helpers({
   'event': function(){
   data = Events.findOne({_id: FlowRouter.getParam("id")});
   rList = data.rsvp;
+  var countAttending = 0;
+  var countNotAttending = 0;
   for(var i = 0; i < rList.length; i++){
     name = Student.findOne({_id: rList[i]._id}).name;
     rList[i].name = name;
     if(rList[i].rsvp == true){
       rList[i].status = "Attending";
+      countAttending++;
     }else{
       rList[i].status = "Not Attending";
+      countNotAttending++;
     }
   }
+  console.log(countAttending);
+  console.log(countNotAttending);
   return rList;
 }
 });
