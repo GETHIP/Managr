@@ -4,10 +4,10 @@
   <div id="lineP"> &nbsp;</div>
   {{#with event}}
   <div class="attendanceCount placement">
-    <td>Not Attending: {{countNotAttending}}</td>
+    <div class= "attendCounter">Not Attending: {{countNotAttending}}</div>
     </div>
     <div class="attendanceCount">
-    <td>Attending: {{countAttending}}</td>
+    <div class= "attendCounter">Attending: {{countAttending}}</div>
   </div>
   {{/with}}
 
@@ -16,15 +16,17 @@
 
       <thead>
         <tr>
+
           <th class="tableHeadFormat grades">Name &nbsp;<i class="fa fa-sort sortIcon" aria-hidden="true" id="studentNameSort"></i></th>
           <th class="tableHeadFormat grades">RSVP &nbsp;<i class="fa fa-sort sortIcon" aria-hidden="true" id="studentRSVPSort"></i></th>
-        </tr> 
+        </tr>
+
       </thead>
 
       <tbody>
 
         {{#each event}}
-          <tr>
+          <tr class="goToProfile" id="{{studentId}}">
 
           <td>{{name}}</td>
           <td>{{status}}</td>
