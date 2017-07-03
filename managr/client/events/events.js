@@ -43,12 +43,12 @@ Template.eventsPage.events({
 });
 
 var formatStudentsForGroup = function(group) {
-    var userIds = group.userIds;
+    var studentIds = group.studentIds;
     var formattedStudents = [];
 
 
-    for(var i = 0; i < userIds.length; i++) {
-        var student = Student.findOne({_id: userIds[i]});
+    for(var i = 0; i < studentIds.length; i++) {
+        var student = Student.findOne({_id: studentIds[i]});
         if(student == undefined) {
             continue;
         }
@@ -64,7 +64,7 @@ Template.eventsPage.helpers({
     events: function() {
         var studentID = Student.findOne({userId: Meteor.user()._id});
         var studentName = studentID._id;
-        var allGroups = Groups.find({ userIds: studentName }).fetch();
+        var allGroups = Groups.find({ studentIds: studentName }).fetch();
         var formattedGroups = [];
         for(var i = 0; i < allGroups.length; i++) {
             var group = allGroups[i];

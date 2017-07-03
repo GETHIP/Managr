@@ -212,6 +212,13 @@ FlowRouter.route('/events/createEvent', {
 	}
 });
 
+FlowRouter.route('/myEvents', {
+	name: 'myEventsPage',
+	action: function() {
+		BlazeLayout.reset();
+		BlazeLayout.render("eventsLayout", {content: 'myEventsPage'});
+	}
+});
 FlowRouter.route('/events/edit/:id', {
 	name: 'editEvent',
 	action: function() {

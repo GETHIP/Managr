@@ -27,7 +27,7 @@ Template.createEvent.events({
     // var groupName = form.groupName.value;
     var inputs = document.getElementsByTagName("INPUT");
 
-    var userIds = [];
+    var studentIds = [];
     for(var i = 0; i < inputs.length; i++) {
         if(inputs[i].type == "checkbox" && inputs[i].checked) {
             //Because if it is a valid group, then that implies it is not a student, so we don't want this in our studentIds array
@@ -35,11 +35,11 @@ Template.createEvent.events({
             if(group != undefined) {
                 continue;
             }
-            userIds.push(inputs[i].id);
+            studentIds.push(inputs[i].id);
         }
     }
-    var size = userIds.length;
-    var studentNames = newformatStudentsForGroup(userIds);
+    var size = studentIds.length;
+    var studentNames = newformatStudentsForGroup(studentIds);
     // Stores date as a number (number of milliseconds since 1970)
     var dateCreated = new Date().getTime()
 
@@ -50,10 +50,10 @@ Template.createEvent.events({
     console.log(location);
     console.log(date);
     console.log(formattedDate);
-    console.log(userIds);
+    console.log(studentIds);
 
 
-    Meteor.call("createNewEvent", hostId, host, eventName, description, date, formattedDate, location, userIds);
+    Meteor.call("createNewEvent", hostId, host, eventName, description, date, formattedDate, location, studentIds);
 
     FlowRouter.go('/events');
   }

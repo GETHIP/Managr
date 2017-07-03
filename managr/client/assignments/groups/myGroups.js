@@ -37,7 +37,7 @@ Template.myGroups.helpers({
                 groupId: group._id,
                 size: group.studentIds.length,
                 leader: group.leader
-                // 
+                //
                 // console.log(studentID);
                 // console.log(studentName);
                 // console.log(allGroups);
