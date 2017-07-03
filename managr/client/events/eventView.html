@@ -25,13 +25,13 @@
           <textarea id="createEventBox" name="reasonNotAttending" class = "reasonNotAttending" rows="6" placeholder="Why Will You Not Be Joining Us?" required></textarea>
           {{/if}}
         </div>
-        {{#if isInstructor}}
-        <button type="button" id="eventCancel" class="buttonStyle" onclick="FlowRouter.go('/events');">Back</button>
-        {{/if}}
+
          {{#if isStudent}}
          <button type="button" id="eventCancel" class="buttonStyle cancelUserCreate leftFloatingButton" onclick="FlowRouter.go('/events');">Back</button>
          <button type="submit" id="rsvpEventButton" class="buttonStyle cancelUserCreate rightFloatingButton">Send Attendance</button>
-
+        {{/if}}
+        {{#if isInstructor}}
+        <button type="button" id="eventCancel" class="buttonStyle" onclick="FlowRouter.go('/events');">Back</button>
         {{/if}}
 
     </div>
