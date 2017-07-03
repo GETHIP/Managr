@@ -10,6 +10,14 @@ Template.attending.onCreated(function() {
     Meteor.subscribe("Groups");
 });
 
+Template.attending.events({
+  'click .goToProfile': function(event) {
+    event.preventDefault();
+    const target = event.target;
+    FlowRouter.go('/profile/' + target.id);
+  },
+  });
+
 Template.attending.helpers({
   'event': function(){
   data = Events.findOne({_id: FlowRouter.getParam("id")});
