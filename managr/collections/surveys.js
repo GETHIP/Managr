@@ -28,12 +28,18 @@ option = new SimpleSchema({
 	}
 });
 
+
+
 studentAnswer = new SimpleSchema({
 	studentId: {
 		type: String
 	},
 	answer: {
 		type: String
+	},
+	status: {
+		type: Boolean,
+		optional: true
 	}
 });
 
