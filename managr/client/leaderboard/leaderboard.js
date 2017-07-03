@@ -9,6 +9,10 @@ Template.leaderboard.onCreated(function(){
   Meteor.subscribe('Eval');
   Meteor.subscribe('Student');
   Meteor.subscribe('Instructor');
+
+  Template.instance().sortDescriptor = new ReactiveVar("studentNameSort");
+  Template.instance().sortAscending = new ReactiveVar(true);
+
   _dep.changed();
 });
 
@@ -51,6 +55,7 @@ Template.leaderboard.helpers({
         var attitude = attTot/star_rating.length;
         var teamwork = teamTot/star_rating.length;
         var tech = techTot/star_rating.length;
+        var week = star_rating.length;
         var stars = (effort + attitude + teamwork + tech)/4
       //   stars = 0
       //   //star_rating = star_rating.fetch();
@@ -69,6 +74,7 @@ Template.leaderboard.helpers({
         var attitude = 0;
         var teamwork = 0;
         var tech =0;
+        var week = 0;
         var attendanceNumber = 0;
       }
 
@@ -85,6 +91,7 @@ Template.leaderboard.helpers({
         element.effort = Math.round(effort*10)/10;
         element.attitude = Math.round(attitude*10)/10;
         element.teamwork = Math.round(teamwork*10)/10;
+        element.week = Math.round(week*10)/10;
         element.technical = Math.round(tech*10)/10;
       //  console.log(element.effort);
       //  console.log(element.average);
@@ -96,51 +103,77 @@ Template.leaderboard.helpers({
       //console.log(stuarry)
     });
   //  stuarry.sort();
-    var select = document.getElementById("sortingChoice");
-    try {
-      var option = select.value;
-      //console.log(option);
-      if (option == "sortAlpha"){
-        stuarry.sort(function(a, b){
-          if (a.name < b.name) {return -1;}
-          if (a.name > b.name) {return 1;}
-          return 0;
-        })}
-      if (option == "sortAttendance"){
-        stuarry.sort(function(a, b){ //sort function by attendanceNumber
-          return b.attendanceNumber - a.attendanceNumber;
-      })}
-      if (option == "sortEffort"){
-        stuarry.sort(function(a, b){ //sort function by attendanceNumber
-          return b.effort - a.effort;
-      })}
-      if (option == "sortAttitude"){
-        stuarry.sort(function(a, b){ //sort function by attendanceNumber
-          return b.attitude - a.attitude;
-      })}
-      if (option == "sortTeamwork"){
-        stuarry.sort(function(a, b){ //sort function by attendanceNumber
-          return b.teamwork - a.teamwork;
-      })}
-      if (option == "sortTech"){
-        stuarry.sort(function(a, b){ //sort function by attendanceNumber
-          return b.technical - a.technical;
-      })}
-      if (option == "sortAverage"){
-        stuarry.sort(function(a, b){ //sort function by attendanceNumber
-          return b.average - a.average;
-      })}
-    } catch (e) {
-
-    }
+    // var select = document.getElementById("sortingChoice");
+    // try {
+    //   var option = select.value;
+    //   //console.log(option);
+    //   if (option == "sortAlpha"){
+    //     stuarry.sort(function(a, b){
+    //       if (a.name < b.name) {return -1;}
+    //       if (a.name > b.name) {return 1;}
+    //       return 0;
+    //     })}
+    //   if (option == "sortAttendance"){
+    //     stuarry.sort(function(a, b){ //sort function by attendanceNumber
+    //       return b.attendanceNumber - a.attendanceNumber;
+    //   })}
+    //   if (option == "sortEffort"){
+    //     stuarry.sort(function(a, b){ //sort function by attendanceNumber
+    //       return b.effort - a.effort;
+    //   })}
+    //   if (option == "sortAttitude"){
+    //     stuarry.sort(function(a, b){ //sort function by attendanceNumber
+    //       return b.attitude - a.attitude;
+    //   })}
+    //   if (option == "sortTeamwork"){
+    //     stuarry.sort(function(a, b){ //sort function by attendanceNumber
+    //       return b.teamwork - a.teamwork;
+    //   })}
+    //   if (option == "sortTech"){
+    //     stuarry.sort(function(a, b){ //sort function by attendanceNumber
+    //       return b.technical - a.technical;
+    //   })}
+    //   if (option == "sortAverage"){
+    //     stuarry.sort(function(a, b){ //sort function by attendanceNumber
+    //       return b.average - a.average;
+    //   })}
+    // } catch (e) {
+    //
+    // }
+    var sortDescriptor = Template.instance().sortDescriptor.get();
+    var sortDirection = Template.instance().sortAscending.get() ? 1 : -1;
+    stuarry.sort(function(student1, student2) {
+        if (sortDescriptor == "studentNameSort") {
+            return (student1.name.localeCompare(student2.name)) * sortDirection;
+        } else if(sortDescriptor == "studentAttendanceSort") {
+            return (student2.attendanceNumber - student1.attendanceNumber) * sortDirection;
+        } else if(sortDescriptor == "studentWeekSort") {
+            return (student2.week- student1.week) * sortDirection;
+        } else if(sortDescriptor == "studentEffortSort") {
+            return (student2.effort- student1.effort) * sortDirection;
+        } else if(sortDescriptor == "studentAttitudeSort") {
+            return (student2.attitude- student1.attitude) * sortDirection;
+        } else if(sortDescriptor == "studentTeamworkSort") {
+            return (student2.teamwork- student1.teamwork) * sortDirection;
+        } else if(sortDescriptor == "studentTechSort") {
+            return (student2.technical- student1.technical) * sortDirection;
+        } else if(sortDescriptor == "studentAveSort") {
+          return (student2.average- student1.average) * sortDirection;
+        }
+    });
     return stuarry;
   }
 });
 
 Template.leaderboard.events({
-  'change #sortingChoice': function(event) {
-    event.preventDefault();
-    _dep.changed();
+  'click .sortIcon': function(event) {
+      var sortDescriptor = Template.instance().sortDescriptor.get();
 
+      if(event.target.id == sortDescriptor) {
+        Template.instance().sortAscending.set(!Template.instance().sortAscending.get());
+      } else {
+        Template.instance().sortDescriptor.set(event.target.id);
+        Template.instance().sortAscending.set(true);
+      }
   }
 });

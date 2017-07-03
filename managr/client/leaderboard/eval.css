@@ -65,3 +65,18 @@ overflow: auto;
 .evalContent {
   float: left;
 }
+.buttonStyleEval.deleteEval {
+  width: 32%;
+  background-color: #7700DD;
+  border: none;
+  color: white;
+  padding: 1.25%;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: center;
+  font-size: 18px;
+  border-radius: 6px;
+  margin-bottom: 2%;
+  margin-top: .5%;
+  float: left;
+  }

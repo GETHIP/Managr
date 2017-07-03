@@ -52,7 +52,7 @@
     {{#if isInstructor}}
     <p>Student: </p>
       <select name="studentChoice" id="studentChoice">
-        <option value="sortAll" selected="selected">All</option>
+        <option value="sortAll" selected>All</option>
           {{#each students}}
       		  <option value="{{_id}}">{{name}}</option>
       		{{/each}}
@@ -76,7 +76,7 @@
 
   <table class="viewAllevalTable">
       <tr>
-        <th>Name</th>
+        <th class="tableHeadFormateval">Name &nbsp;<i class="fa fa-sort sortIcon" aria-hidden="true" id="NameSort"></i></th>
         <th>Milestone</th>
         <th>Effort</th>
         <th>Attitude</th>
