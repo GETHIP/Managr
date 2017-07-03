@@ -2,12 +2,14 @@
   <div class ="events">
   <h1 class="titleAssignment">Attending</h1>
   <div id="lineP"> &nbsp;</div>
+  {{#with event}}
   <div class="attendanceCount placement">
     <td>Not Attending: {{countNotAttending}}</td>
     </div>
     <div class="attendanceCount">
     <td>Attending: {{countAttending}}</td>
   </div>
+  {{/with}}
 
     <p>
       <table class="attendingTable" id="t02" name="attendingTable">
