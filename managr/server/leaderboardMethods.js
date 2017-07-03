@@ -12,25 +12,33 @@ import { isStudent, isInstructor, userIsValid, currentUserOrInstructor, nameOfUs
 export function leaderboardMethods() {
 	Meteor.methods({
 		'sendEval' : function(eAid, eId, comment, current, sList, cDate) {
-			if(isInstructor){
+			if(Roles.userIsInRole(this.userId, "instructor")){
 			Eval.insert({evaluator: eAid, evaluatee: eId, message: comment, week: current, stars: sList, timeStamp: cDate});
 		}
 		},
     'removeEval' : function(id){
-        Eval.remove({"_id": id});
+			if(Roles.userIsInRole(this.userId, "instructor")){
+				Eval.remove({"_id": id});
+			}
     },
     'editEval' : function(id, message, star1, star2, star3, star4, milestone, ){
+			if(Roles.userIsInRole(this.userId, "instructor")){
 			var stars = [star1, star2, star3, star4];
 			console.log(stars);
 			Eval.update({"_id": id}, {$set: {message: message, stars: stars, week: milestone}});
-    },
+			}
+		},
 		'newMilestone' : function(name){
+			if(Roles.userIsInRole(this.userId, "instructor")){
 			console.log(name);
 			Milestone.insert({name: name});
+		}
 		},
 		'removeMilestone' : function(id){
+			if(Roles.userIsInRole(this.userId, "instructor")){
 			console.log("it going");
 			Milestone.remove({"_id": id});
+			}
 		}
 	});
 }

@@ -199,11 +199,12 @@ Template.viewEval.events({
 		var attitude = $('#attitude').data('userrating');
 		var teamwork = $('#teamwork').data('userrating');
 		var tech = $('#tech').data('userrating');
+    console.log("SKDFPoLSDf0");
 
 		comment = document.getElementById('textarea1').value;
 		eaId = Instructor.findOne({userId: Meteor.user()._id})._id;
 		listVal = document.getElementById('dataListInput').value;
-    eId = $('#group [va0lue="' + listVal + '"]').data('value');
+    eId = $('#group [value="' + listVal + '"]').data('value');
     console.log($('#group [value="' + listVal + '"]'));
     console.log(eId)
 		week = document.getElementById('week').value;
