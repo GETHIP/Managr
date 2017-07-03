@@ -35,14 +35,12 @@ Template.eventView.events({
 	 var realS = studentId._id;
 	 var studentName = studentId.name;
 	 var rsvp = document.getElementById("indicator").innerHTML;
-	 var reason = target.reasonNotAttending.value;
 
 	 console.log(eventId);
 	 console.log(studentId);
 	 console.log(realS);
 	 console.log(studentName);
 	 console.log(rsvp);
-	 console.log(reasonNotAttending);
 
 	 	 FlowRouter.go('/events');
 
