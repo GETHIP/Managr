@@ -55,6 +55,7 @@ Template.leaderboard.helpers({
         var attitude = attTot/star_rating.length;
         var teamwork = teamTot/star_rating.length;
         var tech = techTot/star_rating.length;
+        var week = star_rating.length;
         var stars = (effort + attitude + teamwork + tech)/4
       //   stars = 0
       //   //star_rating = star_rating.fetch();
@@ -73,6 +74,7 @@ Template.leaderboard.helpers({
         var attitude = 0;
         var teamwork = 0;
         var tech =0;
+        var week = 0;
         var attendanceNumber = 0;
       }
 
@@ -89,6 +91,7 @@ Template.leaderboard.helpers({
         element.effort = Math.round(effort*10)/10;
         element.attitude = Math.round(attitude*10)/10;
         element.teamwork = Math.round(teamwork*10)/10;
+        element.week = Math.round(week*10)/10;
         element.technical = Math.round(tech*10)/10;
       //  console.log(element.effort);
       //  console.log(element.average);
@@ -144,6 +147,8 @@ Template.leaderboard.helpers({
             return (student1.name.localeCompare(student2.name)) * sortDirection;
         } else if(sortDescriptor == "studentAttendanceSort") {
             return (student2.attendanceNumber - student1.attendanceNumber) * sortDirection;
+        } else if(sortDescriptor == "studentWeekSort") {
+            return (student2.week- student1.week) * sortDirection;
         } else if(sortDescriptor == "studentEffortSort") {
             return (student2.effort- student1.effort) * sortDirection;
         } else if(sortDescriptor == "studentAttitudeSort") {

@@ -22,11 +22,13 @@
 			<tr>
 				<th class="tableHeadFormateval">Name &nbsp;<i class="fa fa-sort sortIcon" aria-hidden="true" id="studentNameSort"></i></th>
 				<th class="tableHeadFormateval">Attendance &nbsp;<i class="fa fa-sort sortIcon" aria-hidden="true" id="studentAttendanceSort"></i></th>
+				<th class="tableHeadFormateval">Eval No. &nbsp;<i class="fa fa-sort sortIcon" aria-hidden="true" id="studentWeekSort"></i></th>
 				<th class="tableHeadFormateval">Effort &nbsp;<i class="fa fa-sort sortIcon" aria-hidden="true" id="studentEffortSort"></i></th>
 				<th class="tableHeadFormateval">Attitude &nbsp;<i class="fa fa-sort sortIcon" aria-hidden="true" id="studentAttitudeSort"></i></th>
 				<th class="tableHeadFormateval">Teamwork &nbsp;<i class="fa fa-sort sortIcon" aria-hidden="true" id="studentTeamworkSort"></i></th>
-				<th class="tableHeadFormateval">Technical Skills&nbsp;<i class="fa fa-sort sortIcon" aria-hidden="true" id="studentTechSort"></i></th>
+				<th class="tableHeadFormateval">Technical&nbsp;<i class="fa fa-sort sortIcon" aria-hidden="true" id="studentTechSort"></i></th>
 				<th class="tableHeadFormateval">Average &nbsp;<i class="fa fa-sort sortIcon" aria-hidden="true" id="studentAveSort"></i></th>
+
 			</tr>
 
 		<!-- </thead> -->
@@ -35,6 +37,7 @@
 				<tr class= "tableRowFormat leaderboard"> <!--  <tr onclick="parent.location='{{url}}'"   "FlowRouter.go("/profile/edit/" + FlowRouter.getParam("id"));> -->
 					<td class="tableDataFormat leaderboard"> {{name}}</td>
 					<td class="tableDataFormat leaderboard">{{attendanceNumber}}/12</td>
+					<td class="tableDataFormat leaderboard"> {{week}}</td>
 					<td class="tableDataFormat leaderboard">{{effort}}</td>
 					<td class="tableDataFormat leaderboard">{{attitude}}</td>
 					<td class="tableDataFormat leaderboard">{{teamwork}}</td>
