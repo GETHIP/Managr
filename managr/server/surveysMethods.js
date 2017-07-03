@@ -65,12 +65,18 @@ export function surveysMethods() {
 		// 		Posts.update({"_id": id}, {$set : {comments : comments}});
 		// 	}
 		// },
+		'incCompletedSurveyCt': function(surveyId){
+		    Surveys.update({_id:surveyId}, {
+		      $inc: { studentsCompleted: 1 }
+		    });
+		},
 		'createNewSurvey': function(surveyName, date, anonToggle) {
 			if(!isInstructor()) {
 				return;
 			}
 			return Surveys.insert({
 				name: surveyName,
+				studentsCompleted: 0,
 				dueDate: date
 			});
 		},

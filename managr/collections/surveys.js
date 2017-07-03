@@ -71,10 +71,6 @@ SurveySchema = new SimpleSchema({
         type: Number,
         optional: true
     },
-   studentsAssigned: {
-       type: [String],
-       optional: true
-   },
     questions: {
 			type: [question],
 			defaultValue: [],

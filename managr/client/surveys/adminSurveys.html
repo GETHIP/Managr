@@ -56,14 +56,9 @@
     <tr class="tableRowFormat surveys rowClick" id="{{_id}}">
       <td class="tableDataFormat assignments"><div class="overflowText">{{this.name}}</div></td>
       <td class="tableDataFormat assignments">{{this.dueDate}}</td>
-      <td class="tableDataFormat assignments">{{this.studentsCompleted}}/{{this.numberOfStudents}}</td>
+      <td class="tableDataFormat assignments">{{this.studentsCompleted}}</td>
     </tr>
   {{/each}}
-  <tr class="tableRowFormat surveys">
-    <td class="tableDataFormat assignments"><div class="overflowText">&nbsp;</div></td>
-    <td class="tableDataFormat assignments">&nbsp;</td>
-    <td class="tableDataFormat assignments">&nbsp;</td>
-  </tr>
 </template>
 
 <template name="surveyRowsStudent">
