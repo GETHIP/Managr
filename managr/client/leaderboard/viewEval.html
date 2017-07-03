@@ -49,24 +49,21 @@
   <h1 class="titleviewEvaluations">Previous Evaluations</h1>
   <div class="purple-bar">&nbsp;</div>
   <h4>Filter By:</h4>
-    {{#if isInstructor}}
-    <p>Student: </p>
+    <p>Student:
       <select name="studentChoice" id="studentChoice">
         <option value="sortAll" selected>All</option>
           {{#each students}}
       		  <option value="{{_id}}">{{name}}</option>
       		{{/each}}
   		</select>
-      {{/if}}
-
-  <p>Instructor:</p>
+  Instructor:
       <select name="selectType" id="instructorChoice">
         <option value="sortAll" selected="selected">All</option>
           {{#each instructors}}
       		  <option value="{{_id}}">{{name}}</option>
       		{{/each}}
   		</select>
-  <p> Milestone: </p>
+   Milestone:
       <select name="selectType" id="milestoneChoice">
         <option value="sortAll">All</option>
         {{#each milestone}}
@@ -74,6 +71,8 @@
         {{/each}}
   		</select>
 
+    <button class="buttonStyleleader resetbtn">Reset</button>
+    </p>
   <table class="viewAllevalTable">
       <tr>
         <th class="tableHeadFormateval">Name &nbsp;<i class="fa fa-sort sortIcon" aria-hidden="true" id="NameSort"></i></th>
