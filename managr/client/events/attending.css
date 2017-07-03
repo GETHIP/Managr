@@ -17,11 +17,14 @@
   margin-bottom: 2%;
   margin-top: 2%;
   padding: 2%;
-  font-size: 40px;
+  font-size: 35px;
+  text-align:center;
+  vertical-align:middle;
 }
 .attendCounter{
-    text-align: center;
-  
+  margin: 0 auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 .placement{
   float: right;
