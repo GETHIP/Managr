@@ -16,12 +16,17 @@ export function eventsMethods() {
       }
       Events.remove(eventId);
     },
-		'sendRSVP': function(eventId, studentId, rsvp, type) {
+		'sendRSVP': function(eventId, studentId, rsvp, type, reasonNotAttending) {
 			var result;
 			if(!isStudent()) {
 				return;
 			}
 			console.log("asdf");
+
+			Events.insert({
+				reasonNotAttending: reasonNotAttending
+			});
+
 			if(rsvp == "Attending"){
 				result = true;
 			}else if(rsvp == "Not Attending"){

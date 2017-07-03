@@ -10,12 +10,20 @@ Template.eventView.events({
 'click .slider': function(event){
   if(document.getElementById("indicator").innerHTML == "Attending"){
       document.getElementById("indicator").innerHTML = "Not Attending"
+			$(".reasonNotAttending").show();
   }else{
       document.getElementById("indicator").innerHTML = "Attending"
+			$(".reasonNotAttending").hide();
   }
 	console.log(indicator)
 	}
 });
+
+// Template.eventView.events({
+// 	'click .slider': function(event){
+// 		if()
+// 	}
+// });
 
 Template.eventView.events({
 	'click #rsvpEventButton': function(event){
@@ -27,12 +35,14 @@ Template.eventView.events({
 	 var realS = studentId._id;
 	 var studentName = studentId.name;
 	 var rsvp = document.getElementById("indicator").innerHTML;
+	 var reason = target.reasonNotAttending.value;
 
 	 console.log(eventId);
 	 console.log(studentId);
 	 console.log(realS);
 	 console.log(studentName);
 	 console.log(rsvp);
+	 console.log(reasonNotAttending);
 
 	 	 FlowRouter.go('/events');
 
@@ -65,8 +75,8 @@ Template.eventView.helpers({
 });
 
 Template.eventView.helpers({
-	indicator: function() {
-		return getThisEvent().rsvp;
+	reasonNotAttending: function() {
+		return getThisEvent().reasonNotAttending;
 	}
 });
 
