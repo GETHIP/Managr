@@ -37,6 +37,8 @@ Template.attending.helpers({
   }
   console.log(countAttending);
   console.log(countNotAttending);
+  rList.countAttending = countAttending;
+  rList.countNotAttending = countNotAttending;
   return rList;
 }
 
