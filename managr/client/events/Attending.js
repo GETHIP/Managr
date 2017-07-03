@@ -31,4 +31,5 @@ Template.attending.helpers({
   console.log(countNotAttending);
   return rList;
 }
+
 });

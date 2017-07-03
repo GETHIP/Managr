@@ -2,22 +2,30 @@
   <div class ="events">
   <h1 class="titleAssignment">Attending</h1>
   <div id="lineP"> &nbsp;</div>
-  <div class="attendanceCount formdashboardContainer">
-    <td>Attending: {{countAttending}}</td>
+  <div class="attendanceCount placement">
     <td>Not Attending: {{countNotAttending}}</td>
+    </div>
+    <div class="attendanceCount">
+    <td>Attending: {{countAttending}}</td>
   </div>
-  <div class="formdashboardContainer">
+
     <p>
       <table class="attendingTable" id="t02" name="attendingTable">
+
       <thead>
         <tr>
-          <th>Name</th>
-          <th>RSVP</th>
+
+          <th class="attendingHead">Name</th>
+          <th class="attendingHead">RSVP</th>
+
         </tr>
       </thead>
+
       <tbody>
+
         {{#each event}}
-        <tr>
+          <tr>
+
           <td>{{name}}</td>
           <td>{{status}}</td>
         </tr>
@@ -26,7 +34,7 @@
       </tbody>
       </table>
     </p>
-    </div>
+
     <button type="button" id="eventCancel" class="buttonStyle" onclick="FlowRouter.go('/events');">Back</button>
     </div>
     </template>
