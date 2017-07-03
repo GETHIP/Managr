@@ -4,10 +4,10 @@
   <div id="lineP"> &nbsp;</div>
   {{#with event}}
   <div class="attendanceCount placement">
-    <td>Not Attending: {{countNotAttending}}</td>
+    <td class= "attendCounter">Not Attending: {{countNotAttending}}</td>
     </div>
     <div class="attendanceCount">
-    <td>Attending: {{countAttending}}</td>
+    <td class= "attendCounter">Attending: {{countAttending}}</td>
   </div>
   {{/with}}
 
@@ -15,7 +15,7 @@
       <table class="attendingTable" id="t02" name="attendingTable">
 
       <thead>
-        <tr class="goToProfile" id="{{studentId}}">
+        <tr>
 
           <th class="attendingHead">Name</th>
           <th class="attendingHead">RSVP</th>
@@ -26,7 +26,7 @@
       <tbody>
 
         {{#each event}}
-          <tr>
+          <tr class="goToProfile" id="{{studentId}}">
 
           <td>{{name}}</td>
           <td>{{status}}</td>
