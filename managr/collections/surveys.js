@@ -28,6 +28,15 @@ option = new SimpleSchema({
 	}
 });
 
+studentAnswer = new SimpleSchema({
+	studentId: {
+		type: String
+	},
+	answer: {
+		type: String
+	}
+});
+
 question = new SimpleSchema({
 	questionType: {
 		type: String
@@ -37,10 +46,14 @@ question = new SimpleSchema({
 	},
 	options: {
 		type: [String],
-		optional: true 
+		optional: true
 	},
 	dateHash: {
 		type: Number,
+		optional: true
+	},
+	studentResults: {
+		type: [studentAnswer],
 		optional: true
 	}
 });

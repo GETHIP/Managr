@@ -50,18 +50,25 @@
       {{/if}}
 	{{/if}}
 </template>
+
 <template name="surveyRowsAdmin">
   {{#each surveys}}
-    <tr class="tableRowFormat surveys" id="{{_id}}" onclick="FlowRouter.go('/surveysResults/{{_id}}');">
+    <tr class="tableRowFormat surveys rowClick" id="{{_id}}">
       <td class="tableDataFormat assignments"><div class="overflowText">{{this.name}}</div></td>
       <td class="tableDataFormat assignments">{{this.dueDate}}</td>
       <td class="tableDataFormat assignments">{{this.studentsCompleted}}/{{this.numberOfStudents}}</td>
     </tr>
   {{/each}}
+  <tr class="tableRowFormat surveys">
+    <td class="tableDataFormat assignments"><div class="overflowText">&nbsp;</div></td>
+    <td class="tableDataFormat assignments">&nbsp;</td>
+    <td class="tableDataFormat assignments">&nbsp;</td>
+  </tr>
 </template>
+
 <template name="surveyRowsStudent">
   {{#each surveys}}
-    <tr class="tableRowFormat" onclick="FlowRouter.go('{{this.url}}')">
+    <tr class="tableRowFormat rowClick" id="{{_id}}">
       <td class="tableDataFormat assignments"><div class="overflowText">{{this.name}}</div></td>
       <td class="tableDataFormat assignments">{{this.dueDate}}</td>
       <td class="tableDataFormat assignments">{{this.status}}</td>
