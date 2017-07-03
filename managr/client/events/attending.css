@@ -2,13 +2,29 @@
   width: 100%;
   font-family: arial, sans-serif;
   font-size: 20px;
-  border: 3px solid #BD53FF;
-  border-collapse: collapse;
   text-align: left;
+  width: 100%;
+  background: white;
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  margin-bottom: 2%;
+  margin-top: 2%;
+  padding: 2%;
 }
-
+.attendanceCount{
+  width: 48%;
+  background: white;
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  margin-bottom: 2%;
+  margin-top: 2%;
+  padding: 2%;
+  font-size: 20px;
+}
+.placement{
+  float: right;
+}
 table#t02 th {
-      background: #ffffff;
+      background: #BD53FF;
+      color: white;
       font-family: arial, sans-serif;
 }
 
@@ -19,8 +35,15 @@ table#t02 th, td {
 
 table#t02 tr {
     font-family: arial, sans-serif;
+    background: #f3f3f3;
 }
 
 table#t02 tr:nth-child(odd) {
-    background: #F0DFFB;
+    background: #ffffff;
+}
+table#t02 tr:nth-child(odd):hover {
+    background: #E8DDED;
+}
+table#t02 tr:nth-child(even):hover {
+    background: #E8DDED;
 }

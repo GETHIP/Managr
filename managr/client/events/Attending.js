@@ -33,4 +33,5 @@ Template.attending.helpers({
   rList.countNotAttending = countNotAttending;
   return rList;
 }
+
 });
