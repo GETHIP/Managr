@@ -10,6 +10,10 @@ Template.viewEval.onCreated(function(){
   Meteor.subscribe('Student');
   Meteor.subscribe('Instructor');
   Meteor.subscribe('Milestone');
+
+  Template.instance().sortDescriptor = new ReactiveVar("NameSort");
+  Template.instance().sortAscending = new ReactiveVar(true);
+
   _dep.changed();
 });
 
@@ -170,7 +174,13 @@ Template.viewEval.helpers({
                 data.push(element);
               });
             }
-
+            var sortDescriptor = Template.instance().sortDescriptor.get();
+            var sortDirection = Template.instance().sortAscending.get() ? 1 : -1;
+            data.sort(function(student1, student2) {
+                if (sortDescriptor == "NameSort") {
+                    return (student1.name.localeCompare(student2.name)) * sortDirection;
+                }
+              });
       // } catch (e) {
       //   console.log("error, the try statement not working")
       // }
@@ -235,5 +245,15 @@ Template.viewEval.events({
   'change #milestoneChoice': function(event){
     event.preventDefault();
     _dep.changed();
+  },
+  'click .sortIcon': function(event) {
+      var sortDescriptor = Template.instance().sortDescriptor.get();
+
+      if(event.target.id == sortDescriptor) {
+        Template.instance().sortAscending.set(!Template.instance().sortAscending.get());
+      } else {
+        Template.instance().sortDescriptor.set(event.target.id);
+        Template.instance().sortAscending.set(true);
+      }
   }
 });
