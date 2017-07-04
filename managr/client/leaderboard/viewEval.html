@@ -1,6 +1,6 @@
 <template name="viewEval">
-  {{#if isInstructor}}
   <div class="marginContainer">
+      {{#if isInstructor}}
   <h1 class="titleEvaluations">Evaluations</h1>
   <div class="purple-bar">&nbsp;</div>
   <form>
@@ -43,40 +43,37 @@
 </div>
 <button class="buttonStyleleader submitbtn" id="submitBtn">Submit Evaluation</button>
 </form>
+{{/if}}
 </div>
   <div class="marginContainer">
   <h1 class="titleviewEvaluations">Previous Evaluations</h1>
   <div class="purple-bar">&nbsp;</div>
-  <p><h4>Filter By:</h4>
+  <h4>Filter By:</h4>
     <p>Student:
       <select name="studentChoice" id="studentChoice">
-        <option value="sortAll" selected="selected">All</option>
+        <option value="sortAll" selected>All</option>
           {{#each students}}
       		  <option value="{{_id}}">{{name}}</option>
       		{{/each}}
   		</select>
-    <!-- </p> -->
-    <!-- <p>Instructor: --> Instructor:
+  Instructor:
       <select name="selectType" id="instructorChoice">
         <option value="sortAll" selected="selected">All</option>
           {{#each instructors}}
       		  <option value="{{_id}}">{{name}}</option>
       		{{/each}}
   		</select>
-    <!-- </p> -->
-    <!-- <p>Milestone: --> Milestone:
+   Milestone:
       <select name="selectType" id="milestoneChoice">
         <option value="sortAll">All</option>
         {{#each milestone}}
           <option value="{{_id}}">{{name}}</option>
         {{/each}}
   		</select>
-      <button class="buttonStyleleader resetbtn">Reset</button>
+
+    <button class="buttonStyleleader resetbtn">Reset</button>
     </p>
-  </p>
   <table class="viewAllevalTable">
-    <!-- <thead> -->
-      <!--table content should correspond -->
       <tr>
         <th class="tableHeadFormateval">Name &nbsp;<i class="fa fa-sort sortIcon" aria-hidden="true" id="NameSort"></i></th>
         <th>Milestone</th>
@@ -86,8 +83,6 @@
         <th>Technical Ability</th>
         <th>Instructor</th>
       </tr>
-    <!-- </thead> -->
-    <!-- <tbody> -->
       {{#each data}}
       <tr class= "tableRowFormat rowClick" id="{{_id}}">
                 <td class="tableDataFormat evals" id="{{_id}}">{{name}}</td>
@@ -99,13 +94,6 @@
                 <td class="tableDataFormat evals" id="{{_id}}">{{instructor}}</td>
               </tr>
       {{/each}}
-    <!-- </tbody> -->
-  </table>
-  </div>
-  {{else}}
-    <!-- {{> accessDenied}} -->
-    {{> loading}}
-  {{/if}}
-
+      </table>
+    </div>
 </template>
-<!--  -->

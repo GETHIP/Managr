@@ -1,4 +1,5 @@
 <template name="editEval">
+  {{#if isInstructor}}
   {{#with eval}}
     <div class="marginContainer">
         <h1 class="titleEvaluations">Edit</h1>
@@ -60,6 +61,7 @@
 
   </div>
   {{/with}}
+  {{/if}}
   </template>
   <template name="starEdit1">
     {{> starsRating rating=1 size='lg' mutable='true' class='mystar starScore'}}

@@ -21,8 +21,11 @@ export function publishAll() {
 	    });
 
 	Meteor.publish("Eval", function() {
+		if(Roles.userIsInRole(this.userId, "instructor")){
 				return Eval.find();
-				//Implement Security
+			}else if(Roles.userIsInRole(this.userId, "student")){
+				return Eval.find({_id: this.userId});
+			}
 		});
 
 	Meteor.publish("Comments", function(){

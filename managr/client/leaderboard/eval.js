@@ -32,7 +32,7 @@ Template.eval.helpers({
 });
 
 Template.eval.events({
-  'click .deleteEval': function(event){
+  'click #confirmdeleteEval': function(event){
     console.log(3423423)
   Meteor.call("removeEval",FlowRouter.getParam("id"));
   FlowRouter.go("/viewEval")
@@ -48,5 +48,9 @@ Template.eval.events({
   'click .editEval': function(event){
     console.log("YEESS");
     FlowRouter.go("/editEval/" + FlowRouter.getParam("id"));
-  }
+  },
+  'click .deleteEval': function(event){
+    Modal.show('deleteEvalModal');
+  },
+
 });
