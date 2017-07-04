@@ -28,7 +28,8 @@ Template.attending.helpers({
   var countAttending = 0;
   var countNotAttending = 0;
   for(var i = 0; i < rList.length; i++){
-    name = Student.findOne({_id: rList[i]._id}).name;
+    var student = Student.findOne({_id: rList[i]._id});
+    name = student.name;
     rList[i].name = name;
     if(rList[i].rsvp == true){
       rList[i].status = "Attending";

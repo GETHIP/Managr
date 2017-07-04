@@ -35,12 +35,16 @@ Template.eventView.events({
 	 var realS = studentId._id;
 	 var studentName = studentId.name;
 	 var rsvp = document.getElementById("indicator").innerHTML;
+	 var reasonNotAttending = document.getElementById("reasonForNotAttending").value;
+
+	 const form = event.target;
 
 	 console.log(eventId);
 	 console.log(studentId);
 	 console.log(realS);
 	 console.log(studentName);
 	 console.log(rsvp);
+	 console.log(reasonNotAttending);
 
 	 	 FlowRouter.go('/events');
 
@@ -48,13 +52,13 @@ Template.eventView.events({
 	 if(eData){
 	 for (var i = 0; i < eData.length; i++) {
 	 	if(eData[i]._id == realS){
-			Meteor.call('sendRSVP', eventId, realS, rsvp, true);
+			Meteor.call('sendRSVP', eventId, realS, rsvp, true, reasonNotAttending);
 			return;
 		}
 	 }
 	 // false means no rsvp
  }
-	 Meteor.call('sendRSVP', eventId, realS, rsvp, false);
+	 Meteor.call('sendRSVP', eventId, realS, rsvp, false, reasonNotAttending);
 
 
 	}
