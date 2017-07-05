@@ -103,6 +103,7 @@
    height: auto;
    width: auto;
    margin: auto;
+   display: inline-block;
  }
  #numOf, #numPer {
    margin: 5px;
@@ -124,7 +125,7 @@
   float: left;
   margin-top: 2%;
 }
-.addedStudent {
+.addedStudent, .changeType {
   margin-left: 4%;
 }
 
@@ -204,12 +205,13 @@
 .groupForum {
   border-radius: 6px;
   border: 2px solid #CCCCCC;
-  width: 100%;
+  width: 48%;
   /*Important tags required here to override bootstrap*/
 	height: 2em !important;
   margin: 0px;
   box-sizing: border-box;
   box-shadow: none;
+  /*float: left;*/
 }
 .groupForum:focus {
   outline: none;
@@ -217,6 +219,29 @@
   border-radius: 6px;
   border-color: white;
   border: 2px solid #660000 !important;
+}
+#changeTypeDiv {
+  /*height: auto;*/
+  width: 48%;
+  display: inline-block;
+  margin-left: 4%;
+}
+#newGroupType {
+  width: 30%;
+  margin-left: 1%;
+}
+#groupTypeSelect {
+  width: auto;
+}
+/*#groupTypeSelect:focus {
+    outline: none;
+    box-shadow: none !important;
+    border-radius: 6px;
+    border-color: white;
+    border: 2px solid #660000 !important;
+}*/
+#groupName {
+  width: 100%;
 }
 .previewStudentsBtn {
   position: relative;

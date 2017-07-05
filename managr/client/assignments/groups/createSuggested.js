@@ -5,9 +5,12 @@ var allAdded = [];
 var allNotAdded = [];
 suggested_dep = new Deps.Dependency;
 
+var alltypes = [];
+
 Template.createSuggested.onCreated(function() {
     Meteor.subscribe("Student");
     Meteor.subscribe("Groups");
+    Meteor.subscribe("Coaches");
 
     this.autorun(function () {
         var subscription = Meteor.subscribe("Student");
@@ -17,6 +20,7 @@ Template.createSuggested.onCreated(function() {
             allAdded = [];
             allNotAdded = Student.find().fetch();
             suggested_dep.changed()
+            alltypes = [];
         }
     });
     // var self = this;
@@ -31,52 +35,22 @@ Template.createSuggested.events({
         const form = event.target;
         var valid = true;
 
-        var numberOf = form.numTypeInput.value;
-        var option = form.numType.value;
-        console.log(numberOf);
-        console.log(option);
+        var groupType = document.getElementById("groupTypeSelect").value;
+        if(groupType == "newType") {
+            groupType = form.newGroupType.value;
+        }
 
-        var formattedStudents = [];
-        allAdded.forEach(function(student) {
-            var formattedStudent = {
-                name: student.name,
-                studentId: student._id
-            }
-            formattedStudents.push(formattedStudent);
-        });
+        var numberOf = parseInt(form.numTypeInput.value);
+        var option = form.numType.value;
+        var secondsToRun = 1;
+        var iterations = secondsToRun * 90000;
+        var bestScore = 9999;
 
         if (option == "Number Of Groups") {
-            var num = Math.floor(formattedStudents.length / numberOf);
-            var offset = formattedStudents.length % numberOf;
-            var groups = [];
-            var i = 1;
-            while (formattedStudents.length > 0) {
-                var count = num;
-                if (offset > 0) {
-                    offset--;
-                    count++;
-                }
-                var currentStudents = formattedStudents.splice(0, count);
-                var formattedGroup = {
-                    name: "Group " + i,
-                    students: currentStudents
-                }
-                groups.push(formattedGroup);
-                i++;
-            }
+            option = 1;
         }
         else if (option == "Students Per Group") {
-            var groups = [];
-            var i = 1;
-            while (formattedStudents.length > 0) {
-                var currentStudents = formattedStudents.splice(0, numberOf);
-                var formattedGroup = {
-                    name: "Group " + i,
-                    students: currentStudents
-                }
-                groups.push(formattedGroup);
-                i++;
-            }
+            option = 2;
         }
         else {
             valid = false;
@@ -88,10 +62,58 @@ Template.createSuggested.events({
             });
         }
 
+        if (numberOf < 2 && option == 2) {
+            valid = false;
+            Modal.show('warningModal', {
+                title: 'Error',
+                text: 'Not enough people in each group.',
+                confirmText: 'Retry',
+                confirmCallback: () => {}
+            });
+        }
+
+        var theStudents = [];
+        for(i = 0; i < allAdded.length; i++) {
+            var student = {
+                studentId: allAdded[i]._id,
+                name: allAdded[i].name,
+                strengths: strengthNumbers(allAdded[i].strengths),
+                strengthStrings: allAdded[i].strengths,
+                domains: findDomains(allAdded[i].strengths)
+            }
+            theStudents.push(student);
+        }
+
+
+
+        //theStudents = makeStudents(30);
+
+
+
+        var start = new Date().getTime();
+
+        //Run the best group finding algorithms
+        for(var index = 0; index < iterations; index++) {
+            theStudents = shuffle(theStudents);
+            var groups = makeGroups(option, theStudents, numberOf);
+            var score = scoreGroups(groups);
+            if (score < bestScore) {
+                var bestGroups = groups;
+                bestScore = score;
+            }
+        }
+        console.log(bestGroups);
+        console.log(bestScore);
+
+        var end = new Date().getTime();
+        console.log(end - start);
+        console.log((end - start)/iterations);
+
         if (valid) {
             var params = groups;
+            var typeparams = groupType;
             FlowRouter.go("/groups/editSuggested");
-            BlazeLayout.render("groupsLayout", {content:'editSuggested', groups: params});
+            BlazeLayout.render("groupsLayout", {content:'editSuggested', groups: params, groupsType: typeparams});
         }
     },
 		"click #addStudents"(event) {
@@ -108,27 +130,18 @@ Template.createSuggested.events({
 								if(group != undefined) {
 										continue;
 								}
-								console.log(allAdded);
-								console.log(swapping);
 								allAdded.push(Student.findOne({ _id: inputs[i].id}));
 								swapping.push(inputs[i].id);
-								console.log(allAdded);
-								console.log(swapping);
 						}
 				}
-				console.log(allNotAdded);
 				for(var i = 0; i < swapping.length; i++) {
-					console.log(swapping[i]);
 						for(var ii = 0; ii < allNotAdded.length; ii++) {
-							console.log(allNotAdded[ii]._id);
 								if(allNotAdded[ii]._id === swapping[i]) {
-									console.log("DELETEING");
 										allNotAdded.splice(ii, 1);
 										ii = allNotAdded.length;
 								}
 						}
 				}
-				console.log(allNotAdded);
 				var checkboxes = document.getElementsByTagName("input");
 				for(var i = 0; i < checkboxes.length; i++) {
 						if(checkboxes[i] != undefined && checkboxes[i].type == "checkbox") {
@@ -153,21 +166,13 @@ Template.createSuggested.events({
 								if(group != undefined) {
 										continue;
 								}
-								console.log(allNotAdded);
-								console.log(swapping);
 								allNotAdded.push(Student.findOne({ _id: inputs[i].id}));
 								swapping.push(inputs[i].id);
-								console.log(allNotAdded);
-								console.log(swapping);
 						}
 				}
-				console.log(allNotAdded);
 				for(var i = 0; i < swapping.length; i++) {
-					console.log(swapping[i]);
 						for(var ii = 0; ii < allAdded.length; ii++) {
-							console.log(allAdded[ii]._id);
 								if(allAdded[ii]._id === swapping[i]) {
-									console.log("DELETEING");
 										allAdded.splice(ii, 1);
 										ii = allAdded.length;
 								}
@@ -203,14 +208,47 @@ Template.createSuggested.events({
 		},
 		"click #cancel"(event) {
 				FlowRouter.go("/groups");
+		},
+		"change #groupTypeSelect"(event) {
+				var type = event.target.value;
+				if(event) {
+						if(type == "newType") {
+								document.getElementById("newGroupType").style.display = "inline-block";
+								$('#newGroupType').prop('required',true);
+
+						}
+						else {
+								document.getElementById("newGroupType").style.display = "none";
+								$('#newGroupType').removeAttr('required');
+						}
+				}
+				else {
+						console.log("IM NOT USELESS");
+						document.getElementById("newGroupType").style.display = "none";
+				}
 		}
 });
 
 Template.createSuggested.helpers({
+    groups: function() {
+        var allGroups = Groups.find({}).fetch();
+        var formattedGroups = [];
+        for(var i = 0; i < allGroups.length; i++) {
+            var group = allGroups[i];
+            var formattedGroup = {
+                name: group.name,
+                groupId: group._id,
+                size: group.size,
+                leader: group.leader,
+                groupType: group.groupType
+            }
+            formattedGroups.push(formattedGroup);
+        }
+        return formattedGroups;
+    },
     otherstudents: function() {
 				suggested_dep.depend();
         var allStudentsNotAdded = allNotAdded;
-				console.log(allNotAdded);
         var formattedStudents = [];
         for(var i = 0; i < allStudentsNotAdded.length; i++) {
             var student = allStudentsNotAdded[i];
@@ -220,13 +258,11 @@ Template.createSuggested.helpers({
             }
             formattedStudents.push(formattedStudent);
         }
-				console.log(formattedStudents);
         return formattedStudents;
     },
 		addedstudents: function() {
 				suggested_dep.depend();
         var allStudentsAdded = allAdded;
-				console.log(allAdded);
         var formattedStudents = [];
         for(var i = 0; i < allStudentsAdded.length; i++) {
             var student = allStudentsAdded[i];
@@ -236,7 +272,224 @@ Template.createSuggested.helpers({
             }
             formattedStudents.push(formattedStudent);
         }
-				console.log(formattedStudents);
         return formattedStudents;
+    },
+    uniquetypes: function(thisType) {
+        result = true;
+        for(var i = 0; i < alltypes.length; i++) {
+            if(alltypes[i] == thisType) {
+                result = false;
+                break;
+            }
+        }
+        if(result == true)
+        {
+            alltypes.push(thisType);
+        }
+        return result;
+    },
+    cleargrouptypes: function() {
+        alltypes = [];
     }
 });
+
+var findDomains = function(domainStrengths) {
+  var eachStudentDomains = [0,0,0,0];
+  var executing = ["Achiever", "Arranger", "Belief", "Consistency", "Deliberative", "Discipline", "Focus", "Responsibility", "Restorative"];
+  var influencing = ["Activator", "Command", "Communication", "Competition", "Maximizer", "Self-Assurance", "Significance", "Woo"];
+  var relationship = ["Adaptability","Developer","Connectedness","Empathy","Harmony","Includer","Individualization","Positivity","Relator"];
+  var strategic = ["Analytical","Context","Futuristic","Ideation","Input","Intellection","Learner","Strategic"];
+  for(var iiii = 0; iiii < 5; iiii++) {
+    if(executing.indexOf(domainStrengths[iiii]) != -1) {
+      eachStudentDomains[0] += 1;
+    }
+    else if(influencing.indexOf(domainStrengths[iiii]) != -1) {
+      eachStudentDomains[1] += 1;
+    }
+    else if(relationship.indexOf(domainStrengths[iiii]) != -1) {
+      eachStudentDomains[2] += 1;
+    }
+    else if(strategic.indexOf(domainStrengths[iiii]) != -1) {
+      eachStudentDomains[3] += 1;
+    }
+  }
+  return eachStudentDomains;
+}
+
+var allStrengths = ["Achiever", "Activator", "Adaptability", "Analytical", "Arranger", "Belief", "Command", "Communication",
+"Competition", "Connectedness", "Consistency", "Context", "Deliberative", "Developer", "Discipline", "Empathy", "Focus",
+"Futuristic", "Harmony", "Ideation", "Includer", "Individualization", "Input", "Intellection", "Learner", "Maximizer",
+"Positivity", "Relator", "Responsibility", "Restorative", "Self-Assurance", "Significance", "Strategic", "Woo"];
+
+var strengthNumbers = function(numberStrengths) {
+  var strengthsAsNumbers = [];
+  for(var iii = 0; iii < 5; iii++) {
+    strengthsAsNumbers.push(allStrengths.indexOf(numberStrengths[iii]) + 1);
+  }
+  return strengthsAsNumbers;
+}
+
+// Above runs for number of students, Below runs for number of iterations (above is not optimized)
+
+// Shuffles/randomizes the students
+var shuffle = function(array) {
+  var counter = array.length;
+  var temp;
+  var iii;
+
+  // While there are elements in the array
+  while (counter > 0) {
+    // Pick a random index
+    iii = (Math.random() * counter--) | 0;
+
+    // And swap the last element with it
+    temp = array[counter];
+    array[counter] = array[iii];
+    array[iii] = temp;
+  }
+  return array;
+}
+
+var makeGroups = function(option, allStudents, numberOf) {
+  if (option == 1) {
+    var length = allStudents.length;
+    var num = Math.floor(length / numberOf);
+    var offset = length % numberOf;
+    var nameIndex = 1;
+    var numDone = 0;
+    var groupSet = new Array(numberOf);
+
+    for (i = 0; i < numberOf; i++) {
+      var count = num;
+      if (offset > 0) {
+        offset--;
+        count++;
+      }
+      var currentStudents = new Array(count);
+      for (ii = 0; ii < count; ii++) {
+        currentStudents[ii] = allStudents[ii + numDone];
+      }
+      var formattedGroup = {
+        name: "Group " + nameIndex,
+        students: currentStudents
+      }
+      groupSet[i] = formattedGroup;
+      numDone += count;
+      nameIndex++;
+    }
+  }
+
+  // NEEDS FIXING *@$*)Q*@)C*NQ)(MDOICUMASODUCN(P*#@&%VNQ&WNOPICUASNDOCUNAWR)&VNQ#)(*UNP)AERN(CQ#&NC)   Math.ceil()
+  else if (option == 2) {
+    var length = allStudents.length;
+    var numNeeded = Math.ceil(length / numberOf);
+    var nameIndex = 1;
+    var numDone = 0;
+    var groupSet = new Array(numNeeded);
+
+    for (i = 0; i < numNeeded; i++) {
+      // Fixes last group having undefineds because there are not enough students left, will be changed
+      if ((length - numDone) < numberOf) {
+        numberOf = length - numDone;
+      }
+      var currentStudents = new Array(numberOf);
+      for (ii = 0; ii < numberOf; ii++) {
+        currentStudents[ii] = allStudents[ii + numDone];
+      }
+      var formattedGroup = {
+        name: "Group " + nameIndex,
+        students: currentStudents
+      }
+      // console.log(allStudents);
+      // console.log(formattedGroup);
+      groupSet[i] = formattedGroup;
+      numDone += numberOf;
+      nameIndex++;
+    }
+  }
+  return groupSet;
+}
+
+var scoreGroups = function(theGroups) {
+  var totalDomainScore = 0;
+  var totalStrengthsScore = 0;
+  // console.log(theGroups);
+  for (i = 0, length = theGroups.length; i < length; i++) {
+    var eachGroup = theGroups[i];
+    var eachStudents = eachGroup.students;
+    var slength = eachStudents.length;
+    // console.log(eachStudents);
+    // console.log(slength);
+    var eachDomains = [0,0,0,0];
+    for (ii = 0; ii < slength; ii++) {
+      for (iii = 0; iii < 4; iii++) {
+        // console.log(eachStudents[ii]);
+        eachDomains[iii] += eachStudents[ii].domains[iii];
+      }
+    }
+    var bestAverage = slength * 5 / 4;
+    var domainScore = 0;
+    for (ii = 0; ii < 4; ii++) {
+      domainScore += Math.abs(bestAverage - eachDomains[ii]);
+    }
+    totalDomainScore += domainScore;
+
+    var groupStrengths = {};
+    for (ii = 0; ii < slength; ii++) {
+      var eachStrengths = eachStudents[ii].strengths;
+      for (iii = 0; iii < 5; iii++) {
+        if (groupStrengths[eachStrengths[iii]] != undefined) {
+          groupStrengths[eachStrengths[iii]] += 1;
+        }
+        else {
+          groupStrengths[eachStrengths[iii]] = 1;
+        }
+      }
+    }
+    var strengthScore = 0;
+    for (ii = 0; ii < 34; ii++) {
+      if (groupStrengths[ii] != undefined) {
+        strengthScore += groupStrengths[ii] - 1;
+      }
+    }
+    strengthScoreWeighted = strengthScore * 4.75 / (slength + .5);
+
+    totalDomainScore += domainScore;
+    totalStrengthsScore += strengthScoreWeighted;
+  }
+  return totalDomainScore + totalStrengthsScore;
+}
+
+
+
+
+
+var ids = ["MAY3zGzMtnhoGBB3Q", "YGS92nMHac6XHQhma", "ijep8za9FpeASgmso", "xAa9PR8x8GFz2Cdxx", "4y3YRNKXwp8YrAmxj", "w2Ys9EioDAdrCNbaA", "SNaxMvJeok5XdTKKu", "6AnvvfFgXtP8S4TJd", "ZsGBm7jRBXzbnDSeF", "8NM5Fbqp5xB8TTkK4", "nfd4nget98KiYgecH", "MZjww3HMg3SGJWrJE", "9FMrzbfhnTprdeu5W", "rjeWcePE3F3MeRuTZ", "54ntBzaoPvMJXuYXm", "6v6yb2yRgDsQqd7nZ", "8rTPXxjPtdLybLhCM", "eYkEsHBvyjR5s92Ju", "Xg2MT7ZTZ8hLyDPnz", "YBgspKeGtBurmBPdX", "GqweGj7gnqTiQYAHX", "mPTxQKNGM3RfxhEYz", "Ks6jpMhmLPejb4nEx", "ybdGnx9ZFgLdhPQF7", "Cxo55MEn5rd7qS3dg", "pk6zkZM9ZuuasP5mm", "GM3BjxKLDYWt5pKXG", "7SamF7qKoCLcDtMkt", "oAqfzd6gvmdqsZErf", "vepe42NyhNF2i7Cz5", "ubKN2pQj2EuBqT63h", "FjySTRsDXntwNF2aP", "aFqMuaYbHfXfHdB2Z", "Pd9k4ktqHdgGvPi4v", "9BNPEL9MeED45rxCK", "c9SGf9mmX8ktBvzmn", "eBSwmMR8Rmkaci4ZT", "FFxWJxK83QSmY62k6", "zxHSkK7HntgRngvHr", "mh2ZqvuzDskR4eM2r", "64PJ7uhcFdMJWac67", "XxxmkmyYezxgnskPj", "NhL78C8XjJHSeb3Kc", "WrHaNgqCH7XaAXCx5", "72Cz8QjEPXtMvSR2p", "JN3aBdMswZkmrEi2n", "HaWHkSgokXLAmqDaq", "ALqzyYJ8zvxWjvjR5", "xDPEneWr3WW3oPGda", "yPpfNPSRtKCGoXxrJ", "Spp8Afos3MXKuJ7eN", "t8yDYCNJZKMt4wRkn", "ckmqjTS83hCtxsYGx", "xirBd8MxB4TfCcdzH", "M3TimiTkiovDgWeTq", "LqtiLBSWzqS632tTm", "ANF4o8LkqwMvqdbrn", "6msPZWkLhQPdznjZ6", "7vP3cS6WQK2TZmays", "tBJoSDKFiNzE4BDDf"];
+
+var makeStudents = function(numberOfStudents) {
+  var makingStudents = [];
+  for(i = 0; i < numberOfStudents; i++) {
+    var eachStrengths = randomtop();
+    var student = {
+      studentId: ids[Math.floor(Math.random()*60)],
+      strengths: strengthNumbers(eachStrengths),
+      domains: findDomains(eachStrengths)
+    }
+    makingStudents.push(student);
+  }
+  return makingStudents;
+}
+
+var randomtop = function() {
+  var top5 = [];
+  for(ii = 0; ii < 5; ii++) {
+    var strength = allStrengths[Math.floor(Math.random()*34)];
+    if(top5.indexOf(strength) == -1) {
+      top5.push(strength);
+    }
+    else {
+      ii--;
+    }
+  }
+  return top5;
+}
