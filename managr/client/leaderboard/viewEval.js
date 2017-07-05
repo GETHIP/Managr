@@ -242,17 +242,16 @@ import { Student } from '../../collections/student.js';
      listVal = document.getElementById('dataListInput').value;
      eId = $('#group [value="' + listVal + '"]').data('value');
      console.log($('#group [value="' + listVal + '"]'));
-     console.log(eId)
      week = document.getElementById('week').value;
      sList = [rating, attitude, teamwork, tech ];
-
+     console.log(eId);
      for(var i = 0; i < sList.length; i++){
        if(sList[i] == null){
          sList[i] = 1;
        }
      }
      date = new Date();
-    if(Eval.find({evaluator: eaId, evaluatee: eId, week: week}).fetch().length == 0){
+    if(Eval.find({evaluator: eaId, evaluatee: eId, week: week}).fetch().length == 0 && eId != null){
       Meteor.call("sendEval", eaId, eId, comment, week, sList, date);
     }else{
       event.preventDefault();
