@@ -33,7 +33,7 @@ export function surveysMethods() {
 			}
 			Surveys.remove(surveyId);
 		},
-		//Surveys.update({_id: surveyId}, { $pull: { [questions]: { "dateHash": dateHash } } });
+		//Surveys.update({_id: surveyId}, { $pull: { [questions]: { "dateHash": dateHash } } }); 
 
 		// 'deleteComment': function(id, index) {
 		// 	var comments = Posts.findOne({"_id": id}).comments;
