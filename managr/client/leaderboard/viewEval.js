@@ -231,7 +231,7 @@ import { Student } from '../../collections/student.js';
  });
 
  Template.viewEval.events({
-   'click #confirmSubmitEval': function(event){
+   'click .submitbtn': function(event){
      var rating = $('#rating').data('userrating');
      var attitude = $('#attitude').data('userrating');
      var teamwork = $('#teamwork').data('userrating');
@@ -258,12 +258,8 @@ import { Student } from '../../collections/student.js';
       event.preventDefault();
     }
    },
-   'click .submitbtn': function(event){
-     Modal.show('submitEvalModal');
-   },
    'click .rowClick': function(event){
      FlowRouter.go("/eval/" + event.target.id);
-
    },
    'change #studentChoice': function(event){
      event.preventDefault();
