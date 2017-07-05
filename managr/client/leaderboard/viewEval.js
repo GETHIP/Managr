@@ -67,9 +67,9 @@ import { Student } from '../../collections/student.js';
          data[i].instructor = Instructor.findOne({_id: data[i].evaluator}).name;
          data[i].week = Milestone.findOne({_id: data[i].week}).name;
          //console.log(data[i].week);
-        console.log(data[i].name);
-        console.log(data[i].instructor);
-        console.log(data[i].stars);
+        // console.log(data[i].name);
+        // console.log(data[i].instructor);
+        // console.log(data[i].stars);
          data[i].effort = data[i].stars[0];
          data[i].att = data[i].stars[1];
          data[i].team = data[i].stars[2];
@@ -232,7 +232,6 @@ import { Student } from '../../collections/student.js';
 
  Template.viewEval.events({
    'click #confirmSubmitEval': function(event){
-     event.preventDefault();
      var rating = $('#rating').data('userrating');
      var attitude = $('#attitude').data('userrating');
      var teamwork = $('#teamwork').data('userrating');
@@ -252,12 +251,14 @@ import { Student } from '../../collections/student.js';
          sList[i] = 1;
        }
      }
-
      date = new Date();
-     Meteor.call("sendEval", eaId, eId, comment, week, sList, date);
-
+    if(Eval.find({evaluator: eaId, evaluatee: eId, week: week}).fetch().length == 0){
+      Meteor.call("sendEval", eaId, eId, comment, week, sList, date);
+    }else{
+      event.preventDefault();
+    }
    },
-   'click .deleteEval': function(event){
+   'click .submitbtn': function(event){
      Modal.show('submitEvalModal');
    },
    'click .rowClick': function(event){
