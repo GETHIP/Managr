@@ -35,6 +35,9 @@ Template.surveysResults.helpers({
     console.log(Surveys.find({_id: surveyId}).fetch())
     return Surveys.find({_id: surveyId}).fetch()[0];
   },
+  students: function(){
+    return Student.find({}).fetch();
+  },
   questions: function(){
     var surveyId = FlowRouter.getParam('id');
     var allQuestionsArray = Surveys.findOne(surveyId);
