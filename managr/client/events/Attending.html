@@ -19,6 +19,7 @@
 
           <th class="tableHeadFormat grades">Name &nbsp;<i class="fa fa-sort sortIcon" aria-hidden="true" id="studentNameSort"></i></th>
           <th class="tableHeadFormat grades">RSVP &nbsp;<i class="fa fa-sort sortIcon" aria-hidden="true" id="studentRSVPSort"></i></th>
+          <th class="tableHeadFormat grades">Reason</th>
         </tr>
 
       </thead>
@@ -28,8 +29,9 @@
         {{#each event}}
           <tr>
 
-          <td class="goToProfile" id="{{this.studentId}}">{{name}}</td>
-          <td class="goToProfile" id="{{this.studentId}}">{{status}}</td>
+          <td>{{name}}</td>
+          <td>{{status}}</td>
+          <td>{{reasonNotAttending}}</td>
         </tr>
         {{/each}}
 

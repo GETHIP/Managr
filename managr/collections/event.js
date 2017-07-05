@@ -60,12 +60,12 @@ EventSchema = new SimpleSchema({
       blackbox: true,
       label: "rsvp",
       optional: true
-    },
-    reasonNotAttending: {
-      type: String,
-      label: "reasonNotAttending",
-      optional: true
     }
+    // reasonNotAttending: {
+    //   type: String,
+    //   label: "reasonNotAttending",
+    //   optional: true
+    // }
 });
 
 
