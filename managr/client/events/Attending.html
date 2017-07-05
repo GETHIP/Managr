@@ -26,10 +26,10 @@
       <tbody>
 
         {{#each event}}
-          <tr class="goToProfile" id="{{studentId}}">
+          <tr>
 
-          <td>{{name}}</td>
-          <td>{{status}}</td>
+          <td class="goToProfile" id="{{this.studentId}}">{{name}}</td>
+          <td class="goToProfile" id="{{this.studentId}}">{{status}}</td>
         </tr>
         {{/each}}
 
