@@ -259,7 +259,6 @@ import { Student } from '../../collections/student.js';
    },
    'click .rowClick': function(event){
      FlowRouter.go("/eval/" + event.target.id);
-
    },
    'change #studentChoice': function(event){
      event.preventDefault();
