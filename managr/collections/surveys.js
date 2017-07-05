@@ -45,10 +45,12 @@ studentAnswer = new SimpleSchema({
 
 question = new SimpleSchema({
 	questionType: {
-		type: String
+		type: String,
+		optional: true
 	},
 	prompt: {
-		type: String
+		type: String,
+		optional: true
 	},
 	options: {
 		type: [String],

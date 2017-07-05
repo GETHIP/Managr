@@ -27,17 +27,20 @@ Template.viewSurveyPage.helpers({
     console.log(allQuestionsArray);
     console.log(allQuestionsArray.questions);
     var data = allQuestionsArray.questions;
+    console.log(data.options);
     console.log(data.length);
     data.forEach(function(element){
       var Alloptions = element.options;
+      console.log(Alloptions);
       var NewOptions = [];
       Alloptions.forEach(function(opt){
-             var final = {}
-             final.option = opt
-             final.refId = Random.id();
-             console.log(final);
-             NewOptions.push(final);
-          });
+         var formattedOpt = {
+           name: opt,
+           refId: Random.id()
+         }
+         console.log(formattedOpt);
+         NewOptions.push(formattedOpt);
+      });
       element.options = NewOptions;
       idS.push(element);
     });
@@ -97,7 +100,7 @@ Template.viewSurveyPage.events({
         {
           console.log("Option Selected");
           console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-          Meteor.call("sendResponse", surveyId, data[i], i, mcAnswer.option);
+          Meteor.call("sendResponse", surveyId, data[i], data[i].dateHash, mcAnswer.option);
           break;
         }
       }

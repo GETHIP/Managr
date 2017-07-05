@@ -17,11 +17,11 @@ Template.surveysResults.events({
   }
 });
 Template.surveysResults.events({
-	'click .result'(event){
-		event.preventDefault();
-
-		FlowRouter.go('/individualResults/' + event.currentTarget.id)
-	}
+  'click .result'(event){
+    event.preventDefault();
+    console.log(event);
+    FlowRouter.go('/individualResults/' + event.currentTarget.id)
+  }
 });
 Template.viewSurveyPage.events({
   'click #sendResponse'(){
@@ -32,11 +32,8 @@ Template.viewSurveyPage.events({
 Template.surveysResults.helpers({
   'survey': function(){
     var surveyId = FlowRouter.getParam("id");
-    console.log(Surveys.find({_id: surveyId}).fetch())
+    console.log(Surveys.find({_id: surveyId}).fetch()[0])
     return Surveys.find({_id: surveyId}).fetch()[0];
-  },
-  students: function(){
-    return Student.find({}).fetch();
   },
   questions: function(){
     var surveyId = FlowRouter.getParam('id');
@@ -71,15 +68,15 @@ Template.surveysResults.helpers({
     return currentArray[currentArray.length-1];
   },
   surveyPath: function() {
-   var post = this;
-   var params = {
-       category: post.category,
-       postId: post._id
-   };
-   var queryParams = {comments: "yes"};
-   var routeName = "completeSurvey";
-   var path = FlowRouter.path(routeName, params, queryParams);
+    var post = this;
+    var params = {
+      category: post.category,
+      postId: post._id
+    };
+    var queryParams = {comments: "yes"};
+    var routeName = "completeSurvey";
+    var path = FlowRouter.path(routeName, params, queryParams);
 
-   return path;
- }
+    return path;
+  }
 });
