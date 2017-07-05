@@ -293,7 +293,8 @@ import { Student } from '../../collections/student.js';
      var elements = document.getElementsByTagName('select');
        for (var i = 0; i < elements.length; i++)
        {
-           elements[i].selectedIndex = 0;
+           elements[i].value = "sortAll";
        }
+       _dep.changed();
    }
  });

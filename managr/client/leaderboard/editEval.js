@@ -59,5 +59,10 @@ Template.editEval.events({
       Meteor.call("editEval", FlowRouter.getParam("id"), message, starBox1, starBox2, starBox3, starBox4, week);
       FlowRouter.go("/eval/" + id);
 
-  }
+},
+  'click .deleteEval.editEval': function(event){
+    console.log("testing")
+    Modal.show('deleteEditModal');
+  },
+
 });
