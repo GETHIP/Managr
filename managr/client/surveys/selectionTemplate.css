@@ -18,7 +18,7 @@
 
 .createSurveyForm:focus {
   outline: none !important;
-  border-radius: 6px !important; 
+  border-radius: 6px !important;
   border-color: white !important;
   box-shadow: none !important;
   border: 2px solid #e61610 !important;

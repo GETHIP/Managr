@@ -31,6 +31,28 @@ export function surveysMethods() {
 			if (!isInstructor()) {
 				return;
 			}
+//Uncomment after assigning students
+
+			// console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~1");
+			// console.log("Remove Surveys works!");
+			// var allStudents = Student.find({}).fetch();
+			// console.log(allStudents);
+			// console.log(allStudents.length);
+			// console.log()
+			// console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~2");
+			// for(var j = 0; j < allStudents.length; j+) {
+			// 	var studentSurveys = allStudents[j].surveys;
+			// 	for(var i = 0; i < studentSurveys.length; i++) {
+			// 		if(studentSurveys[i].surveyId == surveyId) {
+			// 			studentSurveys.splice(i, 1);
+			// 			Student.update({_id: allStudents[j]._id}, {
+			// 				$set: {surveys: studentSurveys}
+			// 			});
+			// 			break;
+			// 		}
+			// 	}
+			// }
+			// console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~3");
 			Surveys.remove(surveyId);
 		},
 		//Surveys.update({_id: surveyId}, { $pull: { [questions]: { "dateHash": dateHash } } });
@@ -42,7 +64,7 @@ export function surveysMethods() {
 		// 		comments.splice(index, 1);
 		// 		Posts.update({"_id": id}, {$set : {comments : comments}});
 		// 	}
-		// },
+		// },a
 		'incCompletedSurveyCt': function(surveyId){
 			Surveys.update({_id:surveyId}, {
 				$inc: { studentsCompleted: 1 }
@@ -79,7 +101,7 @@ export function surveysMethods() {
 							prompt: question,
 							options: temparray,
 							dateHash: dateHash,
-							studentResults: []
+ 						studentResults: []
 						}
 					}
 				});
@@ -91,7 +113,6 @@ export function surveysMethods() {
 				// var option3 = temparray[3];
 				// var option4 = temparray[4];
 				// var option5 = temparray[5];
-				console.log(option);
 				Surveys.update({_id: surveyId}, {
 					$push: {
 						questions: {
@@ -99,7 +120,7 @@ export function surveysMethods() {
 							prompt: question,
 							options: temparray,
 							dateHash: dateHash,
-							studentResults: []
+ 						studentResults: []
 						}
 					}
 				}
@@ -115,63 +136,30 @@ export function surveysMethods() {
 						questionType: "shResp",
 						prompt: question,
 						dateHash: dateHash,
-						studentResults: []
+  					studentResults: []
 					}
 				}
 			});
 		}
 	},
-	'sendResponse': function(surveyId, question, questionHash, mcAnswer) {
-		//console.log(Meteor.userId());
-		console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~1");
-		var studentId = Student.findOne({userId: Meteor.userId()}).userId;
-		console.log(studentId);
-		console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~2");
-		var studentAns = {studentId: studentId, answer: mcAnswer};
-		var updatedQuestion = question;
-		updatedQuestion.studentResults.push(studentAns);
-		console.log(updatedQuestion.studentResults);
-		console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~3");
-
-		var totalSurveys = Surveys.findOne({_id: surveyId});
-		var totalQuestions = totalSurveys.questions;
-		var newStudentResults;
-		var newAnswer = {};
-		var newQuestions = {};
-		for(var j = 0; j < totalQuestions.length; j++) {
-			var totalOptions = totalQuestions[j].options;
-			for(var i = 0; i < totalOptions.length; i++) {
-				if(totalQuestions[i].dateHash == questionHash) {
-					newAnswer.studentId = studentId;
-					newAnswer.answer = mcAnswer;
-					newQuestions.studentResults = newAnswer;
-					newQuestions.dateHash = questionHash;
-					Surveys.update({_id: surveyId, "questions.dateHash": questionHash},
-					{
-						$set: {
-							"questions.$": {
-								studentAnswer: newAnswer
-							}
-							//questions: newQuestions;
-						}
-					});
-					break;
-				}
-			}
-		}
+ 	'sendResponse': function(surveyId, question, questionIndex, mcAnswer) {
+ 		console.log(Meteor.userId());
+ 		console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~1");
+ 		var studentId = Student.findOne({userId: Meteor.userId()}).userId;
+ 		console.log(studentId);
+ 		console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~2");
+ 		var studentAns = {studentId: studentId, answer: mcAnswer};
+ 		var updatedQuestion = question;
+ 		updatedQuestion.studentResults.push(studentAns);
+ 		console.log(updatedQuestion.studentResults);
+ 		console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~3");
 
 
-		// Surveys.update({_id: surveyId}, {
-		// 	$push: {
-		// 		questions: updatedQuestion
-		// 	}
-		// });
-
+ 		Surveys.update({_id: surveyId}, {
+ 			$push: {
+ 				questions: updatedQuestion
+ 			}
+ 		});
 	}
-});
-}
-
-
-
-// db.test.update({"heros.nickname":"test", "heros.spells.spell_id":1},
-// {$set:{"heros.0.spells.1.level":3}});
+ 	});
+ }

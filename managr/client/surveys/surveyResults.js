@@ -29,11 +29,56 @@ Template.viewSurveyPage.events({
     Meteor.call('incCompletedSurveyCt', surveyId);
   }
 });
+var findStudentSurvey = function() {
+    var surveyId = FlowRouter.getParam("id");
+    var student = Student.findOne({userId: Meteor.user()._id});
+    var studentSurveys = student.surveys;
+    for(var i = 0; i < studentSurveys.length; i++) {
+        if(studentSurveys[i].surveyId == surveyId) {
+            return studentSurveys[i];
+        }
+    }
+    return undefined;
+}
 Template.surveysResults.helpers({
   'survey': function(){
     var surveyId = FlowRouter.getParam("id");
     console.log(Surveys.find({_id: surveyId}).fetch()[0])
     return Surveys.find({_id: surveyId}).fetch()[0];
+  },
+  students: function(){
+    var allStudents = Student.find({}).fetch();
+    var formattedStudents = [];
+    for (var i = 0; i < allStudents.length; i++) {
+      var student = allStudents[i];
+      console.log(student);
+      console.log("~~~~~~~~~~~~~~~~~~~~~~~");
+      try{
+          var studentSurvey = findStudentSurvey();
+          console.log(student);
+          console.log(studentSurvey);
+          console.log("===========================");
+      } catch(err) {
+        console.log(err.message);
+      }
+      var studentStatus = "Incomplete";
+      try{
+        if(studentSurvey.completed == true){
+          var studentStatus = "Complete";
+        }
+      } catch(err) {
+        console.log("-------------1--------------");
+        console.log(err.message);
+        console.log("-------------1--------------");
+      }
+      var formattedStudent = {
+          name: student.name,
+          status: studentStatus
+      }
+      formattedStudents.push(formattedStudent);
+    }
+    console.log(formattedStudents);
+    return formattedStudents;
   },
   questions: function(){
     var surveyId = FlowRouter.getParam('id');

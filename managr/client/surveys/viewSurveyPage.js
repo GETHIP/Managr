@@ -1,8 +1,7 @@
 import { Surveys } from '../../collections/surveys.js';
 import { Student } from '../../collections/student.js';
-import { Random } from 'meteor/random';
-
-var idS = [];
+import { Random } from 'meteor/random'
+var idS =[];
 
 Template.surveysResults.onCreated(function() {
   Meteor.subscribe("Surveys", function() {
