@@ -63,7 +63,7 @@ Template.viewSurveyPage.helpers({
 });
 
 Template.viewSurveyPage.events({
-  'click #sendSurveyBtn': function(event){
+  'click #sendResponse': function(event){
     var mcAnswer;
     var surveyId = FlowRouter.getParam('id');
     var allQuestionsArray = Surveys.findOne(surveyId);
