@@ -36,7 +36,21 @@ Template.surveysResults.helpers({
     return Surveys.find({_id: surveyId}).fetch()[0];
   },
   students: function(){
-    return Student.find({}).fetch();
+    var allStudents = Student.find({}).fetch();
+    var formattedStudents = [];
+    for (var i = 0; i < allStudents.length; i++) {
+        var student = allStudents[i];
+        var studentStatus = "Incomplete";
+        if(student.status == true){
+          var studentStatus = "Complete";
+        }
+        var formattedStudent = {
+            name: student.name,
+            status: "Incomplete"
+        }
+        formattedStudents.push(formattedStudent);
+    }
+    return formattedStudents;
   },
   questions: function(){
     var surveyId = FlowRouter.getParam('id');
