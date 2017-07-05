@@ -52,24 +52,13 @@
         <th class="surveyTableHeadFormat surveys">Date Completed</th>
       </tr>
       <!-- Each survey in table -->
-      {{#each surveys}}
+      {{#each students}}
         <tr class="tableRowFormat result">
-          <td class="tableDataFormat assignments">{{this.status}}</td>
-          <td class="tableDataFormat assignments">{{this.studentName}}</td>
+          <td class="tableDataFormat assignments" >{{this.status}}</td>
+          <td class="tableDataFormat assignments" id="{{studentId}}">{{this.name}}</td>
           <td class="tableDataFormat assignments">{{this.dateCompleted}}</td>
         </tr>
       {{/each}}
-      <tr class="tableRowFormat result" >
-        <td class="tableDataFormat assignments">Completed</td>
-        <td class="tableDataFormat assignments">Will Guo</td>
-        <td class="tableDataFormat assignments">09/15/17</td>
-      </tr>
-      <tr class="tableRowFormat result">
-        <td class="tableDataFormat assignments">Incompleted</td>
-        <td class="tableDataFormat assignments">Nick Nguyen</td>
-        <td class="tableDataFormat assignments">N/A</td>
-      </tr>
-
     </table>
     </div>
       {{/with}}
