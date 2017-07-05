@@ -233,12 +233,20 @@ Template.dashboard.events({
 			}
 		});
 	},
-  'click #createMilestone': function(){
+  'click #createMilestone': function(event){
+    event.preventDefault();
     name = document.getElementById("milestoneIn").value;
     Meteor.call("newMilestone", name);
+
   },
   'click #deleteMilestoneButton': function(){
     Meteor.call("removeMilestone", document.getElementById("milestone").value);
   },
+  'click .deleteResetButton.milestoneTable': function(event){
+    event.preventDefault();
+    console.log("testing")
+    Modal.show('deleteMilestoneModal');
+
+  }
 
 });
