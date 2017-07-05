@@ -82,7 +82,7 @@ eventsIndex = new EasySearch.Index({
 	collection: Events,
 	fields: ['name', 'description', 'location', 'host'],
 	defaultSearchOptions: {
-		sortBy: 'date',
+		sortBy: 'name',
 		limit: 1000
 	},
 	engine: new EasySearch.Minimongo({
@@ -107,9 +107,9 @@ eventsIndex = new EasySearch.Index({
 				if ('default' === sortBy) {
 					return;
 				}
-				else if ('date' === sortBy) {
+				else if ('name' === sortBy) {
 					return {
-						date: 1,
+						name: 1,
 					};
 				}
 		}
