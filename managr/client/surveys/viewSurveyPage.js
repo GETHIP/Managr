@@ -1,8 +1,7 @@
 import { Surveys } from '../../collections/surveys.js';
 import { Student } from '../../collections/student.js';
-import { Random } from 'meteor/random';
-
-var idS = [];
+import { Random } from 'meteor/random'
+var idS =[];
 
 Template.surveysResults.onCreated(function() {
   Meteor.subscribe("Surveys", function() {
@@ -29,20 +28,20 @@ Template.viewSurveyPage.helpers({
     var data = allQuestionsArray.questions;
     console.log(data.length);
     data.forEach(function(element){
-      var Alloptions = element.options;
-      var NewOptions = [];
-      Alloptions.forEach(function(opt){
-             var final = {}
-             final.option = opt
-             final.refId = Random.id();
-             console.log(final);
-             NewOptions.push(final);
-          });
-      element.options = NewOptions;
-      idS.push(element);
-    });
-    console.log(idS);
-    return idS;
+     var Alloptions = element.options;
+     var NewOptions = [];
+     Alloptions.forEach(function(opt){
+            var final = {}
+            final.option = opt
+            final.refId = Random.id();
+            console.log(final);
+            NewOptions.push(final);
+       });
+       element.options = NewOptions;
+       idS.push(element);
+     });
+     console.log(idS);
+     return idS;
   },
   choicetype: function(questionType) {
     console.log(questionType);
