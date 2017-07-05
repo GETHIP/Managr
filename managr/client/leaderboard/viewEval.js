@@ -231,7 +231,7 @@ import { Student } from '../../collections/student.js';
  });
 
  Template.viewEval.events({
-   'click .submitbtn': function(event){
+   'click #confirmSubmitEval': function(event){
      event.preventDefault();
      var rating = $('#rating').data('userrating');
      var attitude = $('#attitude').data('userrating');
@@ -256,6 +256,9 @@ import { Student } from '../../collections/student.js';
      date = new Date();
      Meteor.call("sendEval", eaId, eId, comment, week, sList, date);
 
+   },
+   'click .deleteEval': function(event){
+     Modal.show('submitEvalModal');
    },
    'click .rowClick': function(event){
      FlowRouter.go("/eval/" + event.target.id);
