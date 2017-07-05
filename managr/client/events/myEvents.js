@@ -89,6 +89,41 @@ Template.myEventsPage.helpers({
         }
     }
 });
+
+Template.myEventsPage.helpers({
+    assignments: function() {
+        var formattedAssignments, allAssignments, i;
+        formattedAssignments = [];
+
+        var student = Student.findOne({userId: Meteor.user()._id});
+
+        studentAssignments = student.assignments;
+        for (i = 0; i < studentAssignments.length; i++) {
+            var assignment, assignmentUrl, formattedAssignment;
+            assignment = Assignments.findOne({_id: studentAssignments[i].assignmentId});
+
+          
+
+            formattedAssignment = {
+                title: assignment.title,
+                dueDate: assignment.dueDate.getMonth() + "/" + assignment.dueDate.getDate() + "/" +  assignment.dueDate.getFullYear(),
+                assigner: assignment.assigner,
+                status: getStatus(studentAssignments[i], assignment),
+                pointsPossible: assignment.pointsPossible,
+                pointsReceived: formatPointsReceived(studentAssignments[i].pointsReceived),
+                url: assignmentUrl,
+                completedAssignmentLink: getCompletedAssignmentLink(studentAssignments[i])
+            }
+            formattedAssignments.push(formattedAssignment);
+        }
+        //Sort the formattedAssignments array by their dueDate
+        formattedAssignments.sort(function(a, b) {
+            return a.dueDate > b.dueDate;
+        });
+        return formattedAssignments;
+    }
+});
+
 // console.log(studentID);
 // console.log(studentName);
 // console.log(allGroups);
