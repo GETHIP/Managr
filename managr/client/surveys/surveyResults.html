@@ -6,7 +6,8 @@
     <button id="deleteSurvey" class="buttonStyle delete">Delete</button>
     <div class="orange-bar red-bar"> &nbsp;</div>
       <div class="surveyContainer">
-        <p class="noIndent assignmentFormFormat"><b>Number of Responses:</b> {{studentsCompleted}}/{{studentsAssigned}}</p>
+        <p class="noIndent assignmentFormFormat"><b>Survey Link: </b>{{getDomain ''}}/completeSurvey/{{getUrl ''}}</p>
+        <p class="noIndent assignmentFormFormat"><b>Number of Responses:</b> {{studentsCompleted}}</p>
         <p class="noIndent assignmentFormFormat"><b>Due Date:</b> {{dueDate}}</p>
         <p class="noIndent assignmentFormFormat"><b>Survey Questions:</b></p>
         {{#each question in questions}}
@@ -34,6 +35,9 @@
                       {{/each}}
                     </ul>
                 {{/if}}
+                {{#if shResptype question.questionType}}
+                  <input type="text" name="FRQ" class="selectionForm createSurveyForm Answer" placeholder="Response Here">
+                {{/if}}
               </ul>
             </li>
           </ul>
@@ -44,23 +48,23 @@
       <!-- Table Headings -->
       <tr>
         <th class="surveyTableHeadFormat surveys">Status</th>
-        <th class="surveyTableHeadFormat surveys">Student</th>
+        <th class="surveyTableHeadFormat surveys ">Student</th>
         <th class="surveyTableHeadFormat surveys">Date Completed</th>
       </tr>
       <!-- Each survey in table -->
       {{#each surveys}}
-        <tr class="tableRowFormat" onclick="FlowRouter.go('{{this.url}}')">
+        <tr class="tableRowFormat result">
           <td class="tableDataFormat assignments">{{this.status}}</td>
           <td class="tableDataFormat assignments">{{this.studentName}}</td>
           <td class="tableDataFormat assignments">{{this.dateCompleted}}</td>
         </tr>
       {{/each}}
-      <tr class="tableRowFormat" onclick="FlowRouter.go('{{this.url}}')">
+      <tr class="tableRowFormat result" >
         <td class="tableDataFormat assignments">Completed</td>
         <td class="tableDataFormat assignments">Will Guo</td>
         <td class="tableDataFormat assignments">09/15/17</td>
       </tr>
-      <tr class="tableRowFormat" onclick="FlowRouter.go('{{this.url}}')">
+      <tr class="tableRowFormat result">
         <td class="tableDataFormat assignments">Incompleted</td>
         <td class="tableDataFormat assignments">Nick Nguyen</td>
         <td class="tableDataFormat assignments">N/A</td>

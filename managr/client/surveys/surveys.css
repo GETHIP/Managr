@@ -1,3 +1,7 @@
+ul {
+  margin: 0;
+}
+
 .red-bar {
   background: #e61610;
 }
@@ -10,6 +14,15 @@
 .Questions {
   margin-left: 3%;
 }
+
+.Answer {
+  margin-top: 1%;
+}
+.surveyResults {
+  
+}
+
+
 
 viewAllTable tr:hover {
   background-color: #f7b9b7;

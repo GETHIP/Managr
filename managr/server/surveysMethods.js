@@ -33,12 +33,28 @@ export function surveysMethods() {
 			}
 			Surveys.remove(surveyId);
 		},
+		//Surveys.update({_id: surveyId}, { $pull: { [questions]: { "dateHash": dateHash } } });
+
+		// 'deleteComment': function(id, index) {
+		// 	var comments = Posts.findOne({"_id": id}).comments;
+		// 	var correctId = comments[index].authorId;
+		// 	if(currentUserOrInstructor(correctId)) {
+		// 		comments.splice(index, 1);
+		// 		Posts.update({"_id": id}, {$set : {comments : comments}});
+		// 	}
+		// },
+		'incCompletedSurveyCt': function(surveyId){
+		    Surveys.update({_id:surveyId}, {
+		      $inc: { studentsCompleted: 1 }
+		    });
+		},
 		'createNewSurvey': function(surveyName, date, anonToggle) {
 			if(!isInstructor()) {
 				return;
 			}
 			return Surveys.insert({
 				name: surveyName,
+				studentsCompleted: 0,
 				dueDate: date
 			});
 		},

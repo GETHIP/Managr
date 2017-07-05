@@ -205,7 +205,7 @@ FlowRouter.route("/surveysResults/:id", {
 	}
 });
 
-FlowRouter.route("/individualResults", {
+FlowRouter.route("/individualResults/:id", {
     action: function(params, queryParams) {
         BlazeLayout.render("surveysLayout", {content:'individualResults'});
 		//BlazeLayout.render(main, { content: 'assignmentsBody' });
@@ -229,6 +229,13 @@ FlowRouter.route("/viewSurveyPage/:id", {// /:id
 FlowRouter.route("/addQuestion/:id", {
     action: function(params, queryParams) {
         BlazeLayout.render("surveysLayout", {content:'addQuestion'});
+		//BlazeLayout.render(main, { content: 'assignmentsBody' });
+	}
+});
+
+FlowRouter.route("/surveyLink/:id", {
+    action: function(params, queryParams) {
+        BlazeLayout.render("surveysLayout", {content:'surveyLink'});
 		//BlazeLayout.render(main, { content: 'assignmentsBody' });
 	}
 });
