@@ -26,7 +26,26 @@ import { Student } from '../../collections/student.js';
      var selectStudent = document.getElementById("studentChoice");
      var selectInstruct = document.getElementById("instructorChoice");
      var selectMile = document.getElementById("milestoneChoice");
-     if(selectStudent == null || selectInstruct == null || selectMile == null)
+
+    //  document.getElementsByClassName("resetbtn").addEventListener("click", function displayTable() {
+    //      var data = Eval.find().fetch();
+    //      for(var i = 0; i < data.length; i++){
+    //      //  console.log(Student.findOne({_id: data[i].evaluatee}));
+    //      data[i].name = Student.findOne({_id: data[i].evaluatee}).name;
+    //      data[i].instructor = Instructor.findOne({_id: data[i].evaluator}).name;
+    //      data[i].week = Milestone.findOne({_id: data[i].week}).name;
+    //      //console.log(data[i].week);
+    //     console.log(data[i].name);
+    //     console.log(data[i].instructor);
+    //     console.log(data[i].stars);
+    //      data[i].effort = data[i].stars[0];
+    //      data[i].att = data[i].stars[1];
+    //      data[i].team = data[i].stars[2];
+    //      data[i].tech = data[i].stars[3];
+    //    }
+    //    return data;
+    //  });
+     if (selectStudent == null || selectInstruct == null || selectMile == null)
      {
        console.log("it works?");
        selectStudent = "sortAll";
@@ -168,7 +187,7 @@ import { Student } from '../../collections/student.js';
                var dataList = Eval.find({
                  evaluator: document.getElementById("instructorChoice").value,
                  evaluatee: document.getElementById("studentChoice").value,
-                 week: document.getElementById("milestoneChoice")
+                 week: document.getElementById("milestoneChoice").value
                }).fetch();
                console.log(dataList)
                dataList.forEach(function(element){
@@ -272,6 +291,5 @@ import { Student } from '../../collections/student.js';
        {
            elements[i].selectedIndex = 0;
        }
-       location.reload();
    }
  });
