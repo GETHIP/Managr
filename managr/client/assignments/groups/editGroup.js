@@ -6,18 +6,21 @@ var allAdded = [];
 var allNotAdded = [];
 edit_dep = new Deps.Dependency;
 
+var alltypes = [];
+
 Template.editGroup.onCreated(function() {
 		var id = FlowRouter.getParam('id');
 
-		Meteor.subscribe('singleGroup', id, function() {
-				var group = Groups.findOne({_id: id});
-				if(group == undefined) {
-						FlowRouter.go("/groups");
-				}
-				else {
-						BlazeLayout.render("groupsLayout", {content: 'editGroup'});
-				}
-		});
+		// Meteor.subscribe('singleGroup', id, function() {
+		// 		var group = Groups.findOne({_id: id});
+		// 		if(group == undefined) {
+		// 				FlowRouter.go("/groups");
+		// 		}
+		// 		else {
+		// 				BlazeLayout.render("groupsLayout", {content: 'editGroup'});
+		// 		}
+		// });
+		Meteor.subscribe("Groups");
 		Meteor.subscribe("Coaches");
 
 		this.autorun(function () {
@@ -27,6 +30,7 @@ Template.editGroup.onCreated(function() {
 				if (subscription.ready()) {
 						allAdded = findStudentsIn();
 						allNotAdded = findStudentsNot(allAdded);
+						alltypes = [];
 						edit_dep.changed()
 				}
 		});
@@ -66,9 +70,12 @@ Template.editGroup.events({
 
 				var groupId = FlowRouter.getParam('id');
         var groupName = form.groupName.value;
+				var groupType = document.getElementById("groupTypeSelect").value;
+				if(groupType == "newType") {
+						groupType = form.newGroupType.value;
+				}
 				var size = allAdded.length;
 				var stringSize = size.toString();
-				console.log(groupName);
 				var studentIds = [];
 				var studentNames = [];
 				allAdded.forEach(function(student) {
@@ -98,7 +105,8 @@ Template.editGroup.events({
 						coachNames: coachNames,
 						size: size,
 						stringSize: stringSize,
-						studentNames: studentNames
+						studentNames: studentNames,
+						groupType: groupType
 				};
 				Meteor.call('updateGroup', groupId, data);
 
@@ -118,27 +126,18 @@ Template.editGroup.events({
 								if(group != undefined) {
 										continue;
 								}
-								console.log(allAdded);
-								console.log(swapping);
 								allAdded.push(Student.findOne({ _id: inputs[i].id}));
 								swapping.push(inputs[i].id);
-								console.log(allAdded);
-								console.log(swapping);
 						}
 				}
-				console.log(allNotAdded);
 				for(var i = 0; i < swapping.length; i++) {
-					console.log(swapping[i]);
 						for(var ii = 0; ii < allNotAdded.length; ii++) {
-							console.log(allNotAdded[ii]._id);
 								if(allNotAdded[ii]._id === swapping[i]) {
-									console.log("DELETEING");
 										allNotAdded.splice(ii, 1);
 										ii = allNotAdded.length;
 								}
 						}
 				}
-				console.log(allNotAdded);
 				var checkboxes = document.getElementsByTagName("input");
 				for(var i = 0; i < checkboxes.length; i++) {
 						if(checkboxes[i] != undefined && checkboxes[i].type == "checkbox") {
@@ -163,21 +162,13 @@ Template.editGroup.events({
 								if(group != undefined) {
 										continue;
 								}
-								console.log(allNotAdded);
-								console.log(swapping);
 								allNotAdded.push(Student.findOne({ _id: inputs[i].id}));
 								swapping.push(inputs[i].id);
-								console.log(allNotAdded);
-								console.log(swapping);
 						}
 				}
-				console.log(allNotAdded);
 				for(var i = 0; i < swapping.length; i++) {
-					console.log(swapping[i]);
 						for(var ii = 0; ii < allAdded.length; ii++) {
-							console.log(allAdded[ii]._id);
 								if(allAdded[ii]._id === swapping[i]) {
-									console.log("DELETEING");
 										allAdded.splice(ii, 1);
 										ii = allAdded.length;
 								}
@@ -213,6 +204,24 @@ Template.editGroup.events({
 		},
 		"click #cancel"(event) {
 				FlowRouter.go("/groups");
+		},
+		"change #groupTypeSelect"(event) {
+				var type = event.target.value;
+				if(event) {
+						if(type == "newType") {
+								document.getElementById("newGroupType").style.display = "inline-block";
+								$('#newGroupType').prop('required',true);
+
+						}
+						else {
+								document.getElementById("newGroupType").style.display = "none";
+								$('#newGroupType').removeAttr('required');
+						}
+				}
+				else {
+						console.log("IM NOT USELESS");
+						document.getElementById("newGroupType").style.display = "none";
+				}
 		}
 });
 
@@ -226,7 +235,8 @@ Template.editGroup.helpers({
                 name: group.name,
                 groupId: group._id,
 								size: group.size,
-								leader: group.leader
+								leader: group.leader,
+								groupType: group.groupType
             }
             formattedGroups.push(formattedGroup);
         }
@@ -282,6 +292,40 @@ Template.editGroup.helpers({
 					formattedInstructors.push(formattedInstructor);
 			}
 			return formattedInstructors;
+		},
+		uniquetypes: function(thisType) {
+				result = true;
+				for(var i = 0; i < alltypes.length; i++) {
+						if(alltypes[i] == thisType) {
+								result = false;
+								break;
+						}
+				}
+				if(result == true)
+				{
+						alltypes.push(thisType);
+				}
+				return result;
+		},
+    cleargrouptypes: function() {
+        alltypes = [];
+    },
+		thisgrouptype: function() {
+				var id = FlowRouter.getParam('id');
+				var thisGroup = Groups.findOne({_id: id});
+				var thisType = thisGroup.groupType;
+				if(thisType != "") {
+						alltypes.push(thisType);
+						return true;
+				}
+				else {
+						return false;
+				}
+		},
+		getthisgrouptype: function() {
+				var id = FlowRouter.getParam('id');
+				var thisGroup = Groups.findOne({_id: id});
+				return thisGroup.groupType;
 		}
 });
 

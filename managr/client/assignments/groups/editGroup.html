@@ -5,8 +5,32 @@
       <h1 class="titleAssignment">Edit Group Details</h1>
       <div class="orange-bar" style="background-color: #870000">&nbsp;</div>
 
-      <p class="noIndent assignmentFormFormat"><b>Group Name:</b></p>
-      <input type="text" name="groupName" value="{{groupName}}" class="groupForum" autofocus="required">
+      <p class="groupTitle"><b>Group Name:</b></p>
+      <p class="groupTitle changeType"><b>Group Type (Optional):</b></p>
+      <input type="text" name="groupName" value="{{groupName}}" class="groupForum" autofocus="required" style="float:left" required>
+
+      <div id="changeTypeDiv">
+        <select id="groupTypeSelect">
+
+          {{ cleargrouptypes }}
+
+          {{ #if thisgrouptype }}
+            <option value="newType">Make New Type</option>
+            <option value="{{getthisgrouptype}}" selected>{{getthisgrouptype}}</option>
+          {{ else }}
+            <option value="" id="blanktype" selected hidden>Select Type:</option>
+            <option value="newType">Make New Type</option>
+          {{ /if }}
+
+          {{ #each group in groups }}
+            {{ #if uniquetypes group.groupType }}
+              <option value="{{group.groupType}}">{{group.groupType}}</option>
+            {{ /if }}
+          {{ /each }}
+
+        </select>
+        <input type="text" name="newGroupType" placeholder="New Type" class="groupForum" id="newGroupType" style="display:none">
+      </div>
 
       <p class="groupTitle"><b>Select Coaches (Optional):</b></p>
 

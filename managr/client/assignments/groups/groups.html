@@ -9,7 +9,15 @@
   				<h1 class="searchText">Search:</h1>
   			{{> EasySearch.Input index=groupIndex attributes=searchBarGroup}}
         <select class="filters">
-          <option value="GETHIP">GETHIP</option>
+          <option value="None">None</option>
+
+          {{ cleargrouptypes }}
+          {{ #each group in groups }}
+            {{ #if uniquetypes group.groupType }}
+              <option value="{{group.groupType}}">{{group.groupType}}</option>
+            {{ /if }}
+          {{ /each }}
+
         </select>
         <h1 class="sortText">Filter By Type:</h1>
         <select class="sorting">

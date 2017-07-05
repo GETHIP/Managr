@@ -50,6 +50,11 @@ GroupSchema = new SimpleSchema({
         type: Number,
         label: "Date Created",
         optional: true
+    },
+    groupType: {
+        type: String,
+        label: "Type",
+        optional: true
     }
     // groupStudents: {
     //     type: [StudentSchema],

@@ -215,6 +215,12 @@ FlowRouter.route('/groups/createSuggested', {
 		BlazeLayout.render("groupsLayout", { content: 'createSuggested' });
 	}
 });
+FlowRouter.route('/groups/generating', {
+	name: 'generating',
+	action: function() {
+		BlazeLayout.render("groupsLayout", { content: 'generating' });
+	}
+});
 FlowRouter.route('/groups/edit/:id', {
 	name: 'editGroup',
 	action: function() {
