@@ -15,10 +15,12 @@
           {{ cleargrouptypes }}
 
           {{ #if thisgrouptype }}
+            <option value="None">None</option>
             <option value="newType">Make New Type</option>
             <option value="{{getthisgrouptype}}" selected>{{getthisgrouptype}}</option>
           {{ else }}
-            <option value="" id="blanktype" selected hidden>Select Type:</option>
+            <option value="None" id="blanktype" selected hidden>Select Type:</option>
+            <option value="None">None</option>
             <option value="newType">Make New Type</option>
           {{ /if }}
 
