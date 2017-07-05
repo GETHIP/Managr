@@ -38,7 +38,18 @@ export function leaderboardMethods() {
 			if(Roles.userIsInRole(this.userId, "instructor")){
 			console.log("it going");
 			Milestone.remove({"_id": id});
+		}
+	},
+		'removeMEvals' : function(id){
+			if(Roles.userIsInRole(this.userId, "instructor")){
+				Eval.remove({"week" : id});
+			}
+		},
+		'removeUEvals' : function(id){
+			if(Roles.userIsInRole(this.userId, "instructor")){
+				Eval.remove({"evaluatee" : id});
 			}
 		}
-	});
+		}
+	);
 }

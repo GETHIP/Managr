@@ -3,6 +3,8 @@ import { Milestone } from '../../collections/milestone.js';
 import { Instructor } from '../../collections/instructor.js';
 import { nameOfUser } from '../../lib/permissions.js';
 import { Globals } from '../../collections/globals.js';
+import { Eval } from '../../collections/eval.js';
+
 
 function validateStudentData(dataArray) {
     if (dataArray == undefined || dataArray.length == 0) {
@@ -39,6 +41,7 @@ Template.dashboard.onCreated(function() {
     self.subscribe('userData');
 	self.subscribe('Globals');
   self.subscribe('Milestone');
+  self.subscribe('Eval');
   });
   Template.instance().importingStudents = new ReactiveVar(false);
 });
@@ -92,7 +95,12 @@ Template.dashboard.helpers({
 		return Globals.numberOfWeeks();
 	},
   milestones: function(){
-    return Milestone.find();
+    data = Milestone.find().fetch();
+    for (var i = 0; i < data.length; i++) {
+        data[i].numComplete = Eval.find({week: data[i]._id}).fetch().length;
+        console.log(data[i].numComplete);
+    }
+    return data;
   }
 });
 
@@ -232,5 +240,7 @@ Template.dashboard.events({
   },
   'click #deleteMilestoneButton': function(){
     Meteor.call("removeMilestone", document.getElementById("milestone").value);
+    console.log("sdf");
+    Meteor.call("removeMEvals", document.getElementById("milestone").value);
   }
 });
