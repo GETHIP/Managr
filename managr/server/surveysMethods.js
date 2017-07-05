@@ -31,40 +31,8 @@ export function surveysMethods() {
 			if (!isInstructor()) {
 				return;
 			}
-//Uncomment after assigning students
-
-			// console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~1");
-			// console.log("Remove Surveys works!");
-			// var allStudents = Student.find({}).fetch();
-			// console.log(allStudents);
-			// console.log(allStudents.length);
-			// console.log()
-			// console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~2");
-			// for(var j = 0; j < allStudents.length; j++) {
-			// 	var studentSurveys = allStudents[j].surveys;
-			// 	for(var i = 0; i < studentSurveys.length; i++) {
-			// 		if(studentSurveys[i].surveyId == surveyId) {
-			// 			studentSurveys.splice(i, 1);
-			// 			Student.update({_id: allStudents[j]._id}, {
-			// 				$set: {surveys: studentSurveys}
-			// 			});
-			// 			break;
-			// 		}
-			// 	}
-			// }
-			// console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~3");
 			Surveys.remove(surveyId);
 		},
-		//Surveys.update({_id: surveyId}, { $pull: { [questions]: { "dateHash": dateHash } } });
-
-		// 'deleteComment': function(id, index) {
-		// 	var comments = Posts.findOne({"_id": id}).comments;
-		// 	var correctId = comments[index].authorId;
-		// 	if(currentUserOrInstructor(correctId)) {
-		// 		comments.splice(index, 1);
-		// 		Posts.update({"_id": id}, {$set : {comments : comments}});
-		// 	}
-		// },
 		'createNewSurvey': function(surveyName, date, anonToggle) {
 			if(!isInstructor()) {
 				return;
@@ -94,7 +62,8 @@ export function surveysMethods() {
 							questionType: "choice",
 							prompt: question,
 							options: temparray,
-							dateHash: dateHash
+							dateHash: dateHash,
+							studentResults: []
 						}
 					}
 				});
@@ -113,7 +82,8 @@ export function surveysMethods() {
 							questionType: "check",
 							prompt: question,
 							options: temparray,
-							dateHash: dateHash
+							dateHash: dateHash,
+							studentResults: []
 						}
 					}
 				}
@@ -128,11 +98,37 @@ export function surveysMethods() {
 					questions: {
 						questionType: "shResp",
 						prompt: question,
-						dateHash: dateHash
+						dateHash: dateHash,
+						studentResults: []
 					}
 				}
 			});
 		}
+	},
+	'sendResponse': function(surveyId, question, questionIndex, mcAnswer) {
+		console.log(Meteor.userId());
+		console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~1");
+		var studentId = Student.findOne({userId: Meteor.userId()}).userId;
+		console.log(studentId);
+		console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~2");
+		var studentAns = {studentId: studentId, answer: mcAnswer};
+		var updatedQuestion = question;
+		updatedQuestion.studentResults.push(studentAns);
+		console.log(updatedQuestion.studentResults);
+		console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~3");
+
+
+		Surveys.update({_id: surveyId}, {
+			$push: {
+				questions: updatedQuestion
+			}
+		});
+
 	}
-	});
+});
 }
+
+
+
+// db.test.update({"heros.nickname":"test", "heros.spells.spell_id":1},
+// {$set:{"heros.0.spells.1.level":3}});

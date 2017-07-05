@@ -219,7 +219,7 @@ FlowRouter.route("/createNewSurvey", {// /:id
 	}
 });
 
-FlowRouter.route("/completeSurvey/:id", {// /:id
+FlowRouter.route("/viewSurveyPage/:id", {// /:id
     action: function(params, queryParams) {
         BlazeLayout.render("surveysLayout", {content:'viewSurveyPage'});
 		//BlazeLayout.render(main, { content: 'assignmentsBody' });
