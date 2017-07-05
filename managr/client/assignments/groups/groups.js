@@ -34,31 +34,6 @@ var formatStudentsForGroup = function(group) {
 }
 
 Template.groups.helpers({
-    // groups: function() {
-    //     var allGroups = Groups.find({}).fetch();
-    //     var formattedGroups = [];
-    //     /**currentValue.url2 = "/groups/" + group._id;
-    //     for(var i = 0; i < allGroups.length; i++) {
-    //         var group = allGroups[i];
-    //         var formattedGroup = {
-    //             name: group.name,
-    //             students: formatStudentsForGroup(group),
-    //             groupId: group._id,
-    //             size: group.size,
-    //             leader: group.leader
-    //         }
-    //         formattedGroups.push(formattedGroup);
-    //     }**/
-    //     Groups.forEach(function(currentValue, index, group){
-    //       currentValue.url2 = "/groups/" + currentValue._id;
-    //
-    //       GroupsTable.push(currentValue);
-    //     });
-    //     formattedGroups.sort(function(group1, group2) {
-    //         return group1.name.localeCompare(group2.name);
-    //     });
-    //     return formattedGroups;
-    // },
     groups: function() {
         var allGroups = Groups.find({}).fetch();
         var formattedGroups = [];
