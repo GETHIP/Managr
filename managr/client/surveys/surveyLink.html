@@ -1,0 +1,22 @@
+<!-- Create Survey section | NEEDS CSS FOR FORMATTING! -->
+<template name="surveyLink">
+<div class="marginContainer">
+  <h1 class="titleAssignment">Survey Link</h1>
+  <div class="orange-bar red-bar"> &nbsp;</div>
+  <div class="surveyContainer linkContainer">
+      <!-- Start form for survey creation -->
+      <textarea class="linkArea" rows="2" cols="200" readonly>{{getDomain ''}}/completeSurvey/{{getUrl ''}}</textarea>
+    </div>
+
+    <button class="buttonStyle back sendSurvey submitbtn" id="copyLinkButton">Copy Link</button>
+    <!-- <a href="/surveys"> -->
+    <button class="buttonStyle create sendSurvey submitbtn" id="finished">Finish</button>
+    <!-- </a> -->
+    <!-- <button type="submit" class="buttonStyle sendSurvey submitbtn" onclick="FlowRouter.go('/surveys')" id="createSurveyBtn">Cancel</button> -->
+</div>
+<div class="notificationDiv hideNote" id="copyLinkNote">
+  <div class="insideDiv">
+    Link Copied!
+  </div>
+</div>
+</template>

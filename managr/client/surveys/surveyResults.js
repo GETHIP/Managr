@@ -17,6 +17,14 @@ Template.surveysResults.events({
   }
 });
 
+Template.surveysResults.events({
+	'click .result'(event){
+		event.preventDefault();
+
+		FlowRouter.go('/individualResults/' + event.currentTarget.id)
+	}
+});
+
 Template.surveysResults.helpers({
   'survey': function(){
     var surveyId = FlowRouter.getParam("id");
@@ -46,5 +54,25 @@ Template.surveysResults.helpers({
     if(questionType == "shResp") {
       return true;
     }
-  }
+  },
+  getDomain: function() {
+    return window.location.hostname+(location.port ? ':'+location.port: '');
+  },
+  getUrl: function() {
+    var current = window.location.href;
+    var currentArray = current.split('/');
+    return currentArray[currentArray.length-1];
+  },
+  surveyPath: function() {
+   var post = this;
+   var params = {
+       category: post.category,
+       postId: post._id
+   };
+   var queryParams = {comments: "yes"};
+   var routeName = "completeSurvey";
+   var path = FlowRouter.path(routeName, params, queryParams);
+
+   return path;
+ }
 });

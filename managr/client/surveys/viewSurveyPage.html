@@ -1,4 +1,5 @@
 <template name="viewSurveyPage">
+      {{#if isStudent}}
   {{#with survey}}
     <!-- {{#if isStudent}} -->
     <div class="marginContainer">
@@ -36,6 +37,9 @@
                   {{/each}}
                 </ul>
             {{/if}}
+            {{#if shResptype question.questionType}}
+              <input type="text" name="FRQ" class="selectionForm createSurveyForm Answer" placeholder="Response Here">
+            {{/if}}
           </ul>
         </li>
       </ul>
@@ -45,4 +49,7 @@
     </div>
 	<!-- {{/if}} -->
   {{/with}}
+  {{else}}
+    {{> accessDenied}}
+  {{/if}}
 </template>

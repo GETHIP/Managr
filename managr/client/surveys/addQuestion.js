@@ -18,7 +18,7 @@ Template.addQuestion.events({
     //
     // Meteor.call("updateSurvey", surveyId, questionArray);
     // var surveyComplete = questionArray;
-    FlowRouter.go('/surveys');
+    FlowRouter.go('/surveyLink/' + FlowRouter.getParam('id'));
 
     // const target = event.target;
     // FlowRouter.go("/addQuestion/" + target.id);
