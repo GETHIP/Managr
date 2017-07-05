@@ -104,3 +104,10 @@
 .tableHeadFormatevals, .tableDataFormat.evals {
   width: 14.3%;
 }
+
+.sortDropdowns {
+  margin-top: 10px;
+}
+.sortDropdownsSelect {
+  margin-right: 20px;
+}
