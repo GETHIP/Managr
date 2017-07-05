@@ -16,7 +16,6 @@ Template.surveysResults.events({
     Modal.show('deleteSurveyModal');
   }
 });
-
 Template.surveysResults.events({
 	'click .result'(event){
 		event.preventDefault();
@@ -24,7 +23,12 @@ Template.surveysResults.events({
 		FlowRouter.go('/individualResults/' + event.currentTarget.id)
 	}
 });
-
+Template.viewSurveyPage.events({
+  'click #sendResponse'(){
+    var surveyId = FlowRouter.getParam("id");
+    Meteor.call('incCompletedSurveyCt', surveyId);
+  }
+});
 Template.surveysResults.helpers({
   'survey': function(){
     var surveyId = FlowRouter.getParam("id");
@@ -39,7 +43,7 @@ Template.surveysResults.helpers({
     console.log(allQuestionsArray.questions);
     return allQuestionsArray.questions;
   },
-  choicetype: function(questionType) {
+  choicetype: function(questionType){
     console.log(questionType);
     if(questionType == "choice") {
       return true;
