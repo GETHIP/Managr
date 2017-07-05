@@ -13,8 +13,10 @@ export function leaderboardMethods() {
 	Meteor.methods({
 		'sendEval' : function(eAid, eId, comment, current, sList, cDate) {
 			if(Roles.userIsInRole(this.userId, "instructor")){
-			Eval.insert({evaluator: eAid, evaluatee: eId, message: comment, week: current, stars: sList, timeStamp: cDate});
-		}
+				if(Eval.find({evaluator: eAid, evaluatee: eId, week: current}).fetch().length == 0){
+					Eval.insert({evaluator: eAid, evaluatee: eId, message: comment, week: current, stars: sList, timeStamp: cDate});
+				}
+			}
 		},
     'removeEval' : function(id){
 			if(Roles.userIsInRole(this.userId, "instructor")){
@@ -38,7 +40,18 @@ export function leaderboardMethods() {
 			if(Roles.userIsInRole(this.userId, "instructor")){
 			console.log("it going");
 			Milestone.remove({"_id": id});
+		}
+	},
+		'removeMEvals' : function(id){
+			if(Roles.userIsInRole(this.userId, "instructor")){
+				Eval.remove({"week" : id});
+			}
+		},
+		'removeUEvals' : function(id){
+			if(Roles.userIsInRole(this.userId, "instructor")){
+				Eval.remove({"evaluatee" : id});
 			}
 		}
-	});
+		}
+	);
 }
