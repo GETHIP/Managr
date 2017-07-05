@@ -54,6 +54,7 @@ GroupSchema = new SimpleSchema({
     groupType: {
         type: String,
         label: "Type",
+        defaultValue: "None",
         optional: true
     }
     // groupStudents: {

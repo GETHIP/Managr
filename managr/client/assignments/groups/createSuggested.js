@@ -5,7 +5,7 @@ var allAdded = [];
 var allNotAdded = [];
 suggested_dep = new Deps.Dependency;
 
-var alltypes = [];
+var alltypes = ["None"];
 
 Template.createSuggested.onCreated(function() {
     Meteor.subscribe("Student");
@@ -20,7 +20,7 @@ Template.createSuggested.onCreated(function() {
             allAdded = [];
             allNotAdded = Student.find().fetch();
             suggested_dep.changed()
-            alltypes = [];
+            alltypes = ["None"];
         }
     });
     // var self = this;
@@ -289,7 +289,7 @@ Template.createSuggested.helpers({
         return result;
     },
     cleargrouptypes: function() {
-        alltypes = [];
+        alltypes = ["None"];
     }
 });
 

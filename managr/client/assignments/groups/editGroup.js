@@ -6,7 +6,7 @@ var allAdded = [];
 var allNotAdded = [];
 edit_dep = new Deps.Dependency;
 
-var alltypes = [];
+var alltypes = ["None"];
 
 Template.editGroup.onCreated(function() {
 		var id = FlowRouter.getParam('id');
@@ -30,7 +30,7 @@ Template.editGroup.onCreated(function() {
 				if (subscription.ready()) {
 						allAdded = findStudentsIn();
 						allNotAdded = findStudentsNot(allAdded);
-						alltypes = [];
+						alltypes = ["None"];
 						edit_dep.changed()
 				}
 		});
@@ -308,13 +308,13 @@ Template.editGroup.helpers({
 				return result;
 		},
     cleargrouptypes: function() {
-        alltypes = [];
+        alltypes = ["None"];
     },
 		thisgrouptype: function() {
 				var id = FlowRouter.getParam('id');
 				var thisGroup = Groups.findOne({_id: id});
 				var thisType = thisGroup.groupType;
-				if(thisType != "") {
+				if(thisType != "None") {
 						alltypes.push(thisType);
 						return true;
 				}
