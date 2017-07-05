@@ -45,7 +45,7 @@ Template.surveyRowsAdmin.events({
 Template.surveyRowsStudent.events({
 	'click .rowClick'(event){
 		event.preventDefault();
-		FlowRouter.go('/viewSurveyPage/' + event.currentTarget.id);
+		FlowRouter.go('/completeSurvey/' + event.currentTarget.id);
 	}
 });
 

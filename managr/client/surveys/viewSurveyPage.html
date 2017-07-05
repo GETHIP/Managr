@@ -23,8 +23,8 @@
                 <ul>
                   {{#each option in question.options}}
                     <li>
-                      <input id="{{option.refId}}" type="radio" name="MCQ" class="selectionForm CQlabel" />
-                        {{option.option}}
+                      <input id="MCradio" type="radio" name="MCQ" class="selectionForm CQlabel" />
+                        {{option}}
                     </li>
                   {{/each}}
                 </ul>
@@ -49,8 +49,12 @@
     {{/each}}
   </form>
   </div>
+<<<<<<< HEAD
     <button id="sendResponse" class="buttonStyle sendSurvey submitbtn">Send</button>
     <!-- COME BACK -->
+=======
+    <button class="buttonStyle sendSurvey submitbtn">Send</button>
+>>>>>>> parent of 70115495... Survey send results
     </div>
 	<!-- {{/if}} -->
   {{/with}}

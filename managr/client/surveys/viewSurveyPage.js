@@ -1,8 +1,5 @@
 import { Surveys } from '../../collections/surveys.js';
 import { Student } from '../../collections/student.js';
-import { Random } from 'meteor/random';
-
-var idS = [];
 
 Template.surveysResults.onCreated(function() {
   Meteor.subscribe("Surveys", function() {
@@ -26,23 +23,7 @@ Template.viewSurveyPage.helpers({
     console.log("questions helper:");
     console.log(allQuestionsArray);
     console.log(allQuestionsArray.questions);
-    var data = allQuestionsArray.questions;
-    console.log(data.length);
-    data.forEach(function(element){
-      var Alloptions = element.options;
-      var NewOptions = [];
-      Alloptions.forEach(function(opt){
-             var final = {}
-             final.option = opt
-             final.refId = Random.id();
-             console.log(final);
-             NewOptions.push(final);
-          });
-      element.options = NewOptions;
-      idS.push(element);
-    });
-    console.log(idS);
-    return idS;
+    return allQuestionsArray.questions;
   },
   choicetype: function(questionType) {
     console.log(questionType);
@@ -59,49 +40,5 @@ Template.viewSurveyPage.helpers({
     if(questionType == "shResp") {
       return true;
     }
-  }
-});
-
-Template.viewSurveyPage.events({
-  'click #sendSurveyBtn': function(event){
-    var mcAnswer;
-    var surveyId = FlowRouter.getParam('id');
-    var allQuestionsArray = Surveys.findOne(surveyId);
-    var data = allQuestionsArray.questions;
-    console.log(idS);
-
-    // data.forEach(function(element){
-    //
-    //   console.log(element.options);
-    //   for(var j = 0; j < element.options.length; j++)
-    //   {
-    //     mcAnswer = element.options[j].refId;
-    //     if(document.getElementById(mcAnswer).checked)
-    //     {
-    //       console.log("Option Selected");
-    //       console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-    //       Meteor.call("sendResponses", surveyId, mcAnswer);
-    //     }
-    //   }
-    // });
-
-    for(var i = 0; i < idS.length; i++)
-    {
-      console.log(idS[i].options);
-      for(var j = 0; j < idS[i].options.length; j++)
-      {
-        console.log(idS[i].options[j].option);
-        console.log(idS[i].options[j].refId);
-        mcAnswer = idS[i].options[j];
-        if(document.getElementById(mcAnswer.refId).checked)
-        {
-          console.log("Option Selected");
-          console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-          Meteor.call("sendResponse", surveyId, data[i], i, mcAnswer.option);
-          break;
-        }
-      }
-    }
-    // FlowRouter.go('/surveys');
   }
 });
