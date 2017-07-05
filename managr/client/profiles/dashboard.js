@@ -226,11 +226,11 @@ Template.dashboard.events({
 		});
 	},
   'click #createMilestone': function(){
-    console.log("IT GONG");
     name = document.getElementById("milestoneIn").value;
     Meteor.call("newMilestone", name);
   },
   'click #deleteMilestoneButton': function(){
     Meteor.call("removeMilestone", document.getElementById("milestone").value);
-  }
+  },
+  
 });
