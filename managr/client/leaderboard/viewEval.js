@@ -23,6 +23,7 @@ import { Student } from '../../collections/student.js';
      _dep.depend()
  console.log(document.getElementById("studentChoice"));
      console.log("hi");
+     console.log(Eval.find().fetch());
      var selectStudent = document.getElementById("studentChoice");
      var selectInstruct = document.getElementById("instructorChoice");
      var selectMile = document.getElementById("milestoneChoice");
@@ -58,6 +59,8 @@ import { Student } from '../../collections/student.js';
      selectMile = selectMile.value;
      }
      console.log(selectMile);
+     console.log("The Data");
+     console.log(Eval.find().fetch());
      if(selectStudent == "sortAll" && selectInstruct == "sortAll" && selectMile == "sortAll"){
          //console.log(Eval.find({}).fetch());
          var data = Eval.find().fetch();
@@ -211,6 +214,7 @@ import { Student } from '../../collections/student.js';
        // } catch (e) {
        //
        // }
+
            return data;
 
    //console.log(data);
@@ -237,22 +241,21 @@ import { Student } from '../../collections/student.js';
      var teamwork = $('#teamwork').data('userrating');
      var tech = $('#tech').data('userrating');
 
-     comment = document.getElementById('textarea1').value;
+     comment = document.getElementById('textarea1').value + " ";
      eaId = Instructor.findOne({userId: Meteor.user()._id})._id;
      listVal = document.getElementById('dataListInput').value;
      eId = $('#group [value="' + listVal + '"]').data('value');
      console.log($('#group [value="' + listVal + '"]'));
-     console.log(eId)
      week = document.getElementById('week').value;
      sList = [rating, attitude, teamwork, tech ];
-
+     console.log(comment);
      for(var i = 0; i < sList.length; i++){
        if(sList[i] == null){
          sList[i] = 1;
        }
      }
      date = new Date();
-    if(Eval.find({evaluator: eaId, evaluatee: eId, week: week}).fetch().length == 0){
+    if(Eval.find({evaluator: eaId, evaluatee: eId, week: week}).fetch().length == 0 && eId != null && comment != " "){
       Meteor.call("sendEval", eaId, eId, comment, week, sList, date);
     }else{
       event.preventDefault();
