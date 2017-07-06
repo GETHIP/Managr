@@ -1,0 +1,58 @@
+<template name="editSuggested">
+  {{#if isInstructor}}
+  <div class="marginContainer">
+    <form id="createGroupForm">
+      <h1 class="titleAssignment">Edit Suggested Groups</h1>
+      <div class="orange-bar" style="background-color: #870000">&nbsp;</div>
+
+        <div class="studentGroup suggestedGroupsCard">
+
+          <div class="suggestedGroupContent">
+            <p class="suggestedTitles suggestedWidth"><b>Group Name:</b></p>
+            <input type="text" name="groupName" value="{{groupName}}" class="groupForum suggestedOptions suggestedTitles" autofocus="required">
+          </div>
+
+          <div class="suggestedGroupContent moveSuggestedStudents">
+            <p class="suggestedTitles suggestedWidth"><b>Students In Group:</b></p>
+            <div class="studentsInGroup student suggestedGroupContent moveSuggestedStudents suggestedTitles suggestedWidth">
+              <label for="{{studentId}}" class="studentLabel"><input type="checkbox" class="add" id="{{studentId}}"/>Jared Bledsoe</label>
+              <label for="{{studentId}}" class="studentLabel"><input type="checkbox" class="add" id="{{studentId}}"/>Jared Bledsoe</label>
+              <label for="{{studentId}}" class="studentLabel"><input type="checkbox" class="add" id="{{studentId}}"/>Jared Bledsoe</label>
+              <label for="{{studentId}}" class="studentLabel"><input type="checkbox" class="add" id="{{studentId}}"/>Jared Bledsoe</label>
+              <label for="{{studentId}}" class="studentLabel"><input type="checkbox" class="add" id="{{studentId}}"/>Jared Bledsoe</label>
+              <label for="{{studentId}}" class="studentLabel"><input type="checkbox" class="add" id="{{studentId}}"/>Jared Bledsoe</label>
+              <label for="{{studentId}}" class="studentLabel"><input type="checkbox" class="add" id="{{studentId}}"/>Jared Bledsoe</label>
+              <label for="{{studentId}}" class="studentLabel"><input type="checkbox" class="add" id="{{studentId}}"/>Jared Bledsoe</label>
+              <label for="{{studentId}}" class="studentLabel"><input type="checkbox" class="add" id="{{studentId}}"/>Jared Bledsoe</label>
+            </div>
+          </div>
+
+          <div class="suggestedGroupContent">
+            <p class="suggestedTitles suggestedWidth"><b>Select Instructor:</b></p>
+            <select class="suggestedOptions suggestedTitles">
+              <option value="default">Instructor 1</option>
+              <option value="datecreated">Instructor 2</option>
+              <option value="name">Instructor 3</option>
+              <option value="sizeinc">Instructor 4</option>
+              <option value="sizedec">Instructor 5</option>
+            </select>
+          </div>
+
+          <div class="suggestedGroupContent">
+            <p class="noIndent assignmentFormFormat suggestedGroupContent suggestedWidth"><b>Move Selected To Group:</b></p>
+            <div class="suggestedGroupContent suggestedWidth">
+              <select class="suggestedGroupContent suggestedOptions suggestedTitles">
+                <option value="default">pullaG</option>
+                <option value="datecreated">Group 2</option>
+                <option value="name">Group 3</option>
+                <option value="sizeinc">Group 4</option>
+              </select>
+          </div>
+        </div>
+        <button class="buttonStyle backBtn submitbtn editGroupButton" id="cancel">Move Selected Students</button>
+      </div>
+
+    </form>
+  </div>
+  {{else}} {{> accessDenied}} {{/if}}
+</template>

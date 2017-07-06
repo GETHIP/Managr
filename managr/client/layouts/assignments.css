@@ -249,16 +249,16 @@ header {
   padding:0 !important;
 }
 .assignmentForm {
-    border-radius: 6px !important;
-    border: 2px solid lightgrey !important;
-    width: 100% !important;
+  border-radius: 6px !important;
+  border: 2px solid #CCCCCC !important;
+  width: 100% !important;
 	/* All the important tags are bad practice, but
 	it appears to be the only way to get them to override
 	the default (bootstrap perhaps?) settings of 20px height for inputs. */
 	height: 2em !important;
-    margin: 0px !important;
-    box-sizing: border-box !important;
-    box-shadow: none !important;
+  margin: 0px !important;
+  box-sizing: border-box !important;
+  box-shadow: none !important;
 }
 .assignmentForm:focus {
   outline: none !important;
@@ -268,7 +268,7 @@ header {
   border: 2px solid #fcb040 !important;
 }
 .assignmentForm::-webkit-inner-spin-button {
-    display: none;
+  display: none;
 }
 
 .viewAllTable {

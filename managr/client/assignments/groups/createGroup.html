@@ -2,28 +2,50 @@
   {{#if isInstructor}}
   <div class="marginContainer">
     <form id="createGroupForm">
-      <h1 class="titleAssignment">Create Group</h1>
-      <div class="orange-bar">&nbsp;</div>
+      <h1 class="titleAssignment">Create A Group</h1>
+      <div class="orange-bar" style="background-color: #870000">&nbsp;</div>
 
       <p class="noIndent assignmentFormFormat"><b>Group Name:</b></p>
-      <input type="text" name="groupName" class="assignmentForm" autofocus required>
+      <input type="text" name="groupName" class="groupForum" autofocus="required">
 
-      <p class="noIndent assignmentFormFormat"><b>Assign Students:</b></p>
-      <div class="selectStudents">
-        <p class="noIndent">Groups:</p>
-        {{#each groups}}
-            <label for="{{groupId}}"><input type="checkbox" class="groupCheckBox" id="{{groupId}}"/> {{name}}</label>
-        {{/each}}
+      <p class="groupTitle"><b>From Existing Groups:</b></p>
 
-        <hr />
-
-        <p class="noIndent">Students:</p>
-        {{#each students}}
-            <label for="{{studentId}}"><input type="checkbox" id="{{studentId}}"/> {{name}}</label>
-        {{/each}}
-
+      <div class="existingGroups">
+        <div class="student">
+          {{#each groups}}
+              <label for="{{groupId}}"><input type="checkbox" class="groupCheckBox" id="{{groupId}}" checked="{{checked}}"/> {{name}}</label>
+          {{/each}}
+        </div>
       </div>
-      <button class="buttonStyle create submitbtn createGroupButton" type="submit" value="Create Group" id="createGroupButton">Create Group</button>
+
+      <p class="groupTitle"><b>Students To Be Added:</b></p>
+      <p class="groupTitle notAddedStudent"><b>Students Not Added:</b></p>
+
+      <div class="studentGroup" id="addedstudents">
+        <div class="student">
+
+          {{#each addedstudents}}
+              <label for="{{studentId}}" class="studentLabel"><input type="checkbox" class="remove" id="{{studentId}}"/>{{name}}</label>
+          {{/each}}
+
+        </div>
+      </div>
+
+      <div class="studentGroup studentsNotAdded" id="otherstudents">
+        <div class="student">
+
+          {{#each otherstudents}}
+              <label for="{{studentId}}" class="studentLabel"><input type="checkbox" class="add" id="{{studentId}}"/>{{name}}</label>
+          {{/each}}
+
+        </div>
+      </div>
+
+      <button type="submit" class="removeStudents" id="removeStudents"><b>Remove</b></button>
+      <button type="submit" class="addStudents" id="addStudents"><b>Add</b></button>
+
+      <button class="buttonStyle backBtn submitbtn createGroupButton" type="submit" value="Create Group" id="createGroupButton">Back</button>
+      <button class="buttonStyle createBtn submitbtn createGroupButton" type="submit" value="Create Group" id="createGroupButton">Create Group</button>
     </form>
   </div>
   {{else}} {{> accessDenied}} {{/if}}
