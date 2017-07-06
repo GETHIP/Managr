@@ -57,21 +57,18 @@ var getThisEvent = function() {
 import { Groups } from '../../collections/groups.js';
 
 Template.editEvent.helpers({
-    groups: function() {
-        var allGroups = Groups.find({}).fetch();
-        var formattedGroups = [];
-        for(var i = 0; i < allGroups.length; i++) {
-            var group = allGroups[i];
-            var formattedGroup = {
-                name: group.name,
-                groupId: group._id,
-								size: group.size,
-								leader: group.leader
-            }
-            formattedGroups.push(formattedGroup);
-        }
-        return formattedGroups;
-    },
+  groups: function() {
+      var allGroups = Groups.find({}).fetch();
+      var formattedGroups = [];
+      for (var i = 0; i < allGroups.length; i++) {
+          var formattedGroup = {
+              name: allGroups[i].name,
+              id: allGroups[i]._id
+          }
+          formattedGroups.push(formattedGroup);
+      }
+      return formattedGroups;
+  },
     students: function() {
         var allStudents = Student.find({}).fetch();
         var formattedStudents = [];

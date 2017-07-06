@@ -25,24 +25,21 @@ Template.createEvent.events({
 
     const form = event.target;
 
-    // var groupName = form.groupName.value;
-    var inputs = document.getElementsByTagName("INPUT");
+    // // var groupName = form.groupName.value;
+    // var inputs = document.getElementsByTagName("INPUT");
+    //
+    // var studentIds = [];
+    // for(var i = 0; i < inputs.length; i++) {
+    //     if(inputs[i].type == "checkbox" && inputs[i].checked) {
+    //         //Because if it is a valid group, then that implies it is not a student, so we don't want this in our studentIds array
+    //         var group = Groups.findOne({_id: inputs[i].id});
+    //         if(group != undefined) {
+    //             continue;
+    //         }
+    //         studentIds.push(inputs[i].id);
+    //     }
+    // }
 
-    var studentIds = [];
-    for(var i = 0; i < inputs.length; i++) {
-        if(inputs[i].type == "checkbox" && inputs[i].checked) {
-            //Because if it is a valid group, then that implies it is not a student, so we don't want this in our studentIds array
-            var group = Groups.findOne({_id: inputs[i].id});
-            if(group != undefined) {
-                continue;
-            }
-            studentIds.push(inputs[i].id);
-        }
-    }
-    // var size = studentIds.length;
-    // var studentNames = newformatStudentsForGroup(studentIds);
-    // // Stores date as a number (number of milliseconds since 1970)
-    // var dateCreated = new Date().getTime()
 
     console.log(hostId);
     console.log(host);
@@ -51,10 +48,9 @@ Template.createEvent.events({
     console.log(location);
     console.log(date);
     console.log(formattedDate);
-    console.log(studentIds);
 
 
-    Meteor.call("createNewEvent", hostId, host, eventName, description, date, formattedDate, location, studentIds);
+    Meteor.call("createNewEvent", hostId, host, eventName, description, date, formattedDate, location);
 
     FlowRouter.go('/events');
   }
@@ -90,16 +86,16 @@ Template.createEvent.helpers({
     }
 });
 
-var newformatStudentsForGroup = function(studentIds) {
-    var formattedStudents = [];
-
-    for(var i = 0; i < studentIds.length; i++) {
-        var student = Student.findOne({_id: studentIds[i]});
-        if(student == undefined) {
-            continue;
-        }
-        name = student.name;
-        formattedStudents.push(name);
-    }
-    return formattedStudents;
-};
+// var newformatStudentsForGroup = function(studentIds) {
+//     var formattedStudents = [];
+//
+//     for(var i = 0; i < studentIds.length; i++) {
+//         var student = Student.findOne({_id: studentIds[i]});
+//         if(student == undefined) {
+//             continue;
+//         }
+//         name = student.name;
+//         formattedStudents.push(name);
+//     }
+//     return formattedStudents;
+// };
