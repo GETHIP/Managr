@@ -1,8 +1,12 @@
 <template name="individualResults">
   {{#if isInstructor}}
   <div class="marginContainer">
-    <h1 class="titleAssignment">Will Guo's Results</h1>><!--{{studentName}}-->
+
+    <h1 class="titleAssignment"> {{name}} Results&nbsp;</h1>
     <div class="orange-bar red-bar"> &nbsp;</div>
+
+    <!-- <h1 class="titleAssignment" id="{{studentId}}">{{this.name}} Results</h1>
+    <div class="orange-bar red-bar"> &nbsp;</div> -->
     <div class="surveyContainer">
       <p class="noIndent assignmentFormFormat"><b>Survey Questions:</b></p>
       <!-- {{#each question in questions}}
@@ -36,9 +40,6 @@
 {{/each}} -->
 
 </div>
-<table class="viewAllTable">
-
-</table>
 </div>
 
 {{else}}

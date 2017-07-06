@@ -20,7 +20,7 @@ Template.surveysResults.events({
   'click .result'(event){
     event.preventDefault();
     console.log(event);
-    FlowRouter.go('/individualResults/' + event.currentTarget.id)
+    FlowRouter.go('/individualResults/' + Student.findOne({name: }))
   }
 });
 Template.viewSurveyPage.events({
