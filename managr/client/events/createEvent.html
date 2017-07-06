@@ -20,22 +20,15 @@
 					<p>Location:</p>
 					<input id="createEventBox" type="text" name="location" placeholder="Where's Your Event?" required>
 					<p>Invite:</p>
+					{{#each groups}}
+	          <label for="{{id}}"><input type="checkbox" class="groupCheckBox" id="{{id}}"/> {{name}}</label>
+	        {{/each}}
 
-					<div class="selectStudents">
-						<p class="noIndent">Groups:</p>
-						{{#each groups}}
-							<label for="{{groupId}}"><input type="checkbox" class="groupCheckBox" id="{{groupId}}" checked="true"/> {{name}}</label>
-						{{/each}}
-<hr>
-						<p class="noIndent">Students:</p>
-						{{#each students}}
-							<label for="{{studentId}}"><input type="checkbox" id="{{studentId}}" checked="true"/> {{name}}</label>
-						{{/each}}
-					</div>
-          <!-- {{#each students}}
-							<label for="{{studentId}}"><input type="checkbox" class="groupCheckBox" id="{{studentId}}"/> {{name}}</label>
+	        <hr />
 
-					{{/each}} -->
+					{{#each students}}
+							<label for="{{studentId}}"><input type="checkbox" id="{{studentId}}"/> {{name}}</label>
+					{{/each}}
         </div>
        </div>
 			 <button type="button" id="eventCancel" class="buttonStyle cancelUserCreate leftFloatingButton" onclick="FlowRouter.go('/events');">Cancel</button>

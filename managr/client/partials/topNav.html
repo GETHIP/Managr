@@ -25,6 +25,9 @@
 						</li>
 						{{#if isStudent}}
 						<li class="active">
+							<a class="eventsActive {{ activeIfTemplateIs '/myEvents'}}" href="/myEvents">My Events</a>
+						</li>
+						<li class="active">
 							<a class="profilesActive {{ activeIfTemplateIs '/profile'}}" href="/profile">Profiles</a>
 						</li>
 						{{/if}}
