@@ -24,8 +24,12 @@ export function publishAll() {
 		if(Roles.userIsInRole(this.userId, "instructor")){
 				return Eval.find();
 			}else if(Roles.userIsInRole(this.userId, "student")){
-				return Eval.find({_id: this.userId});
-			}
+				console.log("It running 7/5");
+				console.log(this.userId);
+				console.log(Eval.find({evaluatee: Student.findOne({userId: this.userId})._id}).fetch());
+				return Eval.find({evaluatee: Student.findOne({userId: this.userId})._id});
+				//
+			}//
 		});
 
 	Meteor.publish("Comments", function(){
