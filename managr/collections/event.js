@@ -60,7 +60,7 @@ EventSchema = new SimpleSchema({
       blackbox: true,
       label: "rsvp",
       optional: true
-    }
+    },
     studentIds: {
         type: [String],
         label: "Student IDs",
