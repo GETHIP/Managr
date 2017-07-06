@@ -33,12 +33,12 @@ Template.viewSurveyPage.helpers({
       console.log(Alloptions);
       var NewOptions = [];
       Alloptions.forEach(function(opt){
-         var formattedOpt = {
-           name: opt,
-           refId: Random.id()
-         }
-         console.log(formattedOpt);
-         NewOptions.push(formattedOpt);
+        var formattedOpt = {
+          name: opt,
+          refId: Random.id()
+        }
+        console.log(formattedOpt);
+        NewOptions.push(formattedOpt);
       });
       element.options = NewOptions;
       idS.push(element);

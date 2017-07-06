@@ -30,15 +30,15 @@ Template.viewSurveyPage.events({
   }
 });
 var findStudentSurvey = function() {
-    var surveyId = FlowRouter.getParam("id");
-    var student = Student.findOne({userId: Meteor.user()._id});
-    var studentSurveys = student.surveys;
-    for(var i = 0; i < studentSurveys.length; i++) {
-        if(studentSurveys[i].surveyId == surveyId) {
-            return studentSurveys[i];
-        }
+  var surveyId = FlowRouter.getParam("id");
+  var student = Student.findOne({userId: Meteor.user()._id});
+  var studentSurveys = student.surveys;
+  for(var i = 0; i < studentSurveys.length; i++) {
+    if(studentSurveys[i].surveyId == surveyId) {
+      return studentSurveys[i];
     }
-    return undefined;
+  }
+  return undefined;
 }
 Template.surveysResults.helpers({
   'survey': function(){
@@ -54,10 +54,10 @@ Template.surveysResults.helpers({
       console.log(student);
       console.log("~~~~~~~~~~~~~~~~~~~~~~~");
       try{
-          var studentSurvey = findStudentSurvey();
-          console.log(student);
-          console.log(studentSurvey);
-          console.log("===========================");
+        var studentSurvey = findStudentSurvey();
+        console.log(student);
+        console.log(studentSurvey);
+        console.log("===========================");
       } catch(err) {
         console.log(err.message);
       }
@@ -72,8 +72,8 @@ Template.surveysResults.helpers({
         console.log("-------------1--------------");
       }
       var formattedStudent = {
-          name: student.name,
-          status: studentStatus
+        name: student.name,
+        status: studentStatus
       }
       formattedStudents.push(formattedStudent);
     }

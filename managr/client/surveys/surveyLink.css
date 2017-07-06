@@ -1,16 +1,16 @@
 .linkArea {
-    resize: none;
-    cursor: text;
-    width: 90%;
-    height: 35px;
-    margin-left: 5%;
-    margin-right: 5%;
-    font-size: 24px;
-    overflow: hidden;
-    border: 2px gray solid;
-    transition: border 1s;
-    background-color: white !important;
-    outline: none !important;
+  resize: none;
+  cursor: text;
+  width: 90%;
+  height: 35px;
+  margin-left: 5%;
+  margin-right: 5%;
+  font-size: 24px;
+  overflow: hidden;
+  border: 2px gray solid;
+  transition: border 1s;
+  background-color: white !important;
+  outline: none !important;
 }
 
 .notificationDiv {

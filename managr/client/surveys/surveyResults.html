@@ -1,47 +1,47 @@
 <template name="surveysResults">
-    {{#if isInstructor}}
-    {{#with survey}}
-    <div class="marginContainer">
+  {{#if isInstructor}}
+  {{#with survey}}
+  <div class="marginContainer">
     <h1 class="titleAssignment"> {{name}} &nbsp;</h1>
     <button id="deleteSurvey" class="buttonStyle delete">Delete</button>
     <div class="orange-bar red-bar"> &nbsp;</div>
-      <div class="surveyContainer">
-        <p class="noIndent assignmentFormFormat"><b>Survey Link: </b>{{getDomain ''}}/completeSurvey/{{_id}}</p>        <p class="noIndent assignmentFormFormat"><b>Number of Responses:</b> {{studentsCompleted}}</p>
-        <p class="noIndent assignmentFormFormat"><b>Due Date:</b> {{dueDate}}</p>
-        <p class="noIndent assignmentFormFormat"><b>Survey Questions:</b></p>
-        {{#each question in questions}}
+    <div class="surveyContainer">
+      <p class="noIndent assignmentFormFormat"><b>Survey Link: </b>{{getDomain ''}}/completeSurvey/{{_id}}</p>        <p class="noIndent assignmentFormFormat"><b>Number of Responses:</b> {{studentsCompleted}}</p>
+      <p class="noIndent assignmentFormFormat"><b>Due Date:</b> {{dueDate}}</p>
+      <p class="noIndent assignmentFormFormat"><b>Survey Questions:</b></p>
+      {{#each question in questions}}
+      <ul class="answerFormatAnswers">
+        <li>
+          {{question.prompt}}
           <ul>
-            <li>
-              {{question.prompt}}
-              <ul>
-                {{#if choicetype question.questionType}}
-                    <ul>
-                      {{#each option in question.options}}
-                        <li>
-                          <input id="MCradio" type="radio" name="MCQ" value="r" class="selectionForm CQlabel" />
-                            {{option}}
-                        </li>
-                      {{/each}}
-                    </ul>
-                {{/if}}
-                {{#if checktype question.questionType}}
-                    <ul>
-                      {{#each option in question.options}}
-                        <li>
-                          <input type="checkbox" name="CBQ" value="c" class="selectionForm CQlabel" />
-                            {{option}}
-                          </li>
-                      {{/each}}
-                    </ul>
-                {{/if}}
-                {{#if shResptype question.questionType}}
-                  <input type="text" name="FRQ" class="selectionForm createSurveyForm Answer" placeholder="Response Here">
-                {{/if}}
-              </ul>
-            </li>
+            {{#if choicetype question.questionType}}
+            <ul>
+              {{#each option in question.options}}
+              <li>
+                <input id="MCradio" type="radio" name="MCQ" value="r" class="selectionForm CQlabel" />
+                {{option}}
+              </li>
+              {{/each}}
+            </ul>
+            {{/if}}
+            {{#if checktype question.questionType}}
+            <ul>
+              {{#each option in question.options}}
+              <li>
+                <input type="checkbox" name="CBQ" value="c" class="selectionForm CQlabel" />
+                {{option}}
+              </li>
+              {{/each}}
+            </ul>
+            {{/if}}
+            {{#if shResptype question.questionType}}
+            <input type="text" name="FRQ" class="selectionForm createSurveyForm Answer" placeholder="Response Here">
+            {{/if}}
           </ul>
-        {{/each}}
-      </div>
+        </li>
+      </ul>
+      {{/each}}
+    </div>
 
     <table class="viewAllTable">
       <!-- Table Headings -->
@@ -52,17 +52,17 @@
       </tr>
       <!-- Each survey in table -->
       {{#each students}}
-        <tr class="tableRowFormat result">
-          <td class="tableDataFormat assignments" >{{this.status}}</td>
-          <td class="tableDataFormat assignments" id="{{studentId}}">{{this.name}}</td>
-          <td class="tableDataFormat assignments">{{this.dateCompleted}}</td>
-        </tr>
+      <tr class="tableRowFormat result">
+        <td class="tableDataFormat assignments" >{{this.status}}</td>
+        <td class="tableDataFormat assignments" id="{{studentId}}">{{this.name}}</td>
+        <td class="tableDataFormat assignments">{{this.dateCompleted}}</td>
+      </tr>
       {{/each}}
     </table>
-    </div>
-      {{/with}}
-      {{else}}
-        {{> accessDenied}}
-      {{/if}}
+  </div>
+  {{/with}}
+  {{else}}
+  {{> accessDenied}}
+  {{/if}}
 </template>
 <!-- <button id="deleteSurvey" class="buttonStyle delete">Delete</button> -->
