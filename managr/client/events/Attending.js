@@ -19,13 +19,14 @@ Template.attending.onCreated(function() {
 //     FlowRouter.go('/profile/' + event.target.id);
 //   },
 //   });
+//
+//   Template.attending.events({
+//   'click .goToProfile': function(event) {
+//       event.preventDefault();
+//       FlowRouter.go("/profile/" + event.target.id);
+//   }
+// });
 
-  Template.attending.events({
-  'click .goToProfile': function(event) {
-      event.preventDefault();
-      FlowRouter.go("/profile/" + event.target.id);
-  }
-});
   Template.attending.helpers({
       students: function() {
           var studentData = [];
