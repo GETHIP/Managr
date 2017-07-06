@@ -47,8 +47,15 @@
       <button type="submit" class="removeStudents" id="removeStudents"><b class="spacing">Remove Selected</b></button>
 
       <button class="buttonStyle backBtn submitbtn createSuggestedButton" id="cancel">Cancel</button>
-      <button class="buttonStyle editBtn submitbtn createSuggestedButton" type="submit" value="Create Group" id="createSuggestedButton">Generate Suggested Groups</button>
+      <button class="buttonStyle editBtn submitbtn createSuggestedButton" type="submit" value="Create Group" id="createSuggestedButton" onclick="document.getElementById('loading').classList.remove('loadingHidden');">Generate Suggested Groups</button>
     </form>
   </div>
+
+  <div id="loading" class="loadingHidden">
+    <div class="modal-backdrop fade in"></div>
+    <div class="spinner"></div>
+    <p class="loadMessage">Generating <br>Groups</p>
+  </div>
+
   {{else}} {{> accessDenied}} {{/if}}
 </template>
