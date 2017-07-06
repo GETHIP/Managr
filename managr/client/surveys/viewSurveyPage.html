@@ -1,8 +1,8 @@
 <template name="viewSurveyPage">
-      {{#if isStudent}}
+  {{#if isStudent}}
   {{#with survey}}
-    <!-- {{#if isStudent}} -->
-    <div class="marginContainer">
+  <!-- {{#if isStudent}} -->
+  <div class="marginContainer">
     <h1 class="titleAssignment">{{name}} &nbsp;</h1>
     <div class="orange-bar red-bar"> &nbsp;</div>
 
@@ -10,16 +10,16 @@
       <p class="noIndent assignmentFormFormat"><b>Complete By:  {{dueDate}}</b></p>
       <p class="noIndent assignmentFormFormat"><b>Survey:</b></p>
 
-    <!-- {{/each}} -->
-    <!-- Questions -->
-    <form class="allQuestionForm" id="allQuestionForm">
-    {{#each question in questions}}
-    <form class="singleQuestionForm" id="singleQuestionForm">
-      <ul>
-        <li>
-          {{question.prompt}}
+      <!-- {{/each}} -->
+      <!-- Questions -->
+      <form class="allQuestionForm" id="allQuestionForm">
+        {{#each question in questions}}
+        <form class="singleQuestionForm" id="singleQuestionForm">
           <ul>
-            {{#if choicetype question.questionType}}
+            <li>
+              {{question.prompt}}
+              <ul>
+                {{#if choicetype question.questionType}}
                 <ul>
                   {{#each option in question.options}}
                     <li>
@@ -28,21 +28,24 @@
                     </li>
                   {{/each}}
                 </ul>
-            {{/if}}
-            {{#if checktype question.questionType}}
+                {{/if}}
+                {{#if checktype question.questionType}}
                 <ul>
                   {{#each option in question.options}}
-                    <li>
-                      <input type="checkbox" name="CBQ" value="c" class="selectionForm CQlabel" />
-                        {{option}}
-                      </li>
+                  <li>
+                    <input type="checkbox" name="CBQ" value="c" class="selectionForm CQlabel" />
+                    {{option}}
+                  </li>
                   {{/each}}
                 </ul>
-            {{/if}}
-            {{#if shResptype question.questionType}}
-              <input type="text" name="FRQ" class="selectionForm createSurveyForm Answer" placeholder="Response Here">
-            {{/if}}
+                {{/if}}
+                {{#if shResptype question.questionType}}
+                <input type="text" name="FRQ" class="selectionForm createSurveyForm Answer" placeholder="Response Here">
+                {{/if}}
+              </ul>
+            </li>
           </ul>
+<<<<<<< HEAD
         </li>
       </ul>
     </form>
@@ -50,11 +53,18 @@
   </form>
   </div>
     <button id="sendResponseBtnn" class="buttonStyle sendSurvey">Send</button>
-    <!-- COME BACK -->
+=======
+        </form>
+        {{/each}}
+      </form>
     </div>
-	<!-- {{/if}} -->
+    <button id="sendResponse" class="buttonStyle sendSurvey">Send</button>
+>>>>>>> 61b5e6405784038dd99caee70581be23cce60574
+    <!-- COME BACK -->
+  </div>
+  <!-- {{/if}} -->
   {{/with}}
   {{else}}
-    {{> accessDenied}}
+  {{> accessDenied}}
   {{/if}}
 </template>

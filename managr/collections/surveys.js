@@ -3,18 +3,18 @@ import { Mongo } from 'meteor/mongo';
 export const Surveys = new Mongo.Collection('Surveys');
 
 /*(Assignments.allow({
-  insert: function(userId, doc) {
-    if(Meteor.user.findOne({_id: userId})._id ===  Meteor.user()._id) {
-      return true;
-    }
-    return false;
-  },
-  update: function(userId, doc) {
-    return true;
-  },
-  remove: function(userId, doc) {
-    return true;
-  }
+insert: function(userId, doc) {
+if(Meteor.user.findOne({_id: userId})._id ===  Meteor.user()._id) {
+return true;
+}
+return false;
+},
+update: function(userId, doc) {
+return true;
+},
+remove: function(userId, doc) {
+return true;
+}
 });*/
 
 option = new SimpleSchema({
@@ -70,32 +70,27 @@ question = new SimpleSchema({
 });
 
 SurveySchema = new SimpleSchema({
-    name: {
-        type: String,
-        optional: false,
-
-    },
-    dueDate: {
-        type: String,
-        optional: true,
-
-    },
-    studentsCompleted: {
-        type: Number,
-        optional: true,
-
-    },
-    questions: {
-			type: [question],
-			defaultValue: [],
-			optional: true,
-
-		},
-		surveyId: {
-				type: String,
-				optional: true,
-
-		}
+	name: {
+		type: String,
+		optional: false
+	},
+	dueDate: {
+		type: String,
+		optional: true
+	},
+	studentsCompleted: {
+		type: Number,
+		optional: true
+	},
+	questions: {
+		type: [question],
+		defaultValue: [],
+		optional: true
+	},
+	surveyId: {
+		type: String,
+		optional: true
+	}
 });
 
 Surveys.attachSchema(SurveySchema);

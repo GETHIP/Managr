@@ -2,8 +2,12 @@ import { Surveys } from '../../collections/surveys.js';
 import { Student } from '../../collections/student.js';
 import { Random } from 'meteor/random'
 
+<<<<<<< HEAD
 var idS = [];
 Template.surveysResults.onCreated(function() {
+=======
+Template.viewSurveyPage.onCreated(function() {
+>>>>>>> 61b5e6405784038dd99caee70581be23cce60574
   Meteor.subscribe("Surveys", function() {
     var survey = Surveys.findOne({_id: FlowRouter.getParam("id")});
     // if(survey == undefined) {
@@ -33,12 +37,12 @@ Template.viewSurveyPage.helpers({
       console.log(Alloptions);
       var NewOptions = [];
       Alloptions.forEach(function(opt){
-         var formattedOpt = {
-           name: opt,
-           refId: Random.id()
-         }
-         console.log(formattedOpt);
-         NewOptions.push(formattedOpt);
+        var formattedOpt = {
+          name: opt,
+          refId: Random.id()
+        }
+        console.log(formattedOpt);
+        NewOptions.push(formattedOpt);
       });
       element.options = NewOptions;
       idS.push(element);

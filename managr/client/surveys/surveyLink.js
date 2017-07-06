@@ -22,17 +22,17 @@ Template.surveyLink.helpers({
     return currentArray[currentArray.length-1];
   },
   surveyPath: function() {
-   var post = this;
-   var params = {
-       category: post.category,
-       postId: post._id
-   };
-   var queryParams = {comments: "yes"};
-   var routeName = "completeSurvey";
-   var path = FlowRouter.path(routeName, params, queryParams);
+    var post = this;
+    var params = {
+      category: post.category,
+      postId: post._id
+    };
+    var queryParams = {comments: "yes"};
+    var routeName = "completeSurvey";
+    var path = FlowRouter.path(routeName, params, queryParams);
 
-   return path;
- }
+    return path;
+  }
 });
 
 Template.surveyLink.events({
@@ -61,21 +61,21 @@ Template.surveyLink.events({
 });
 
 function clearSelection() {
-    var sel;
-    if ( (sel = document.selection) && sel.empty ) {
-        sel.empty();
-    } else {
-        if (window.getSelection) {
-            window.getSelection().removeAllRanges();
-        }
-        var activeEl = document.activeElement;
-        if (activeEl) {
-            var tagName = activeEl.nodeName.toLowerCase();
-            if ( tagName == "textarea" ||
-                    (tagName == "input" && activeEl.type == "text") ) {
-                // Collapse the selection to the end
-                activeEl.selectionStart = activeEl.selectionEnd;
-            }
-        }
+  var sel;
+  if ( (sel = document.selection) && sel.empty ) {
+    sel.empty();
+  } else {
+    if (window.getSelection) {
+      window.getSelection().removeAllRanges();
     }
+    var activeEl = document.activeElement;
+    if (activeEl) {
+      var tagName = activeEl.nodeName.toLowerCase();
+      if ( tagName == "textarea" ||
+      (tagName == "input" && activeEl.type == "text") ) {
+        // Collapse the selection to the end
+        activeEl.selectionStart = activeEl.selectionEnd;
+      }
+    }
+  }
 }

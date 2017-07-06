@@ -19,9 +19,12 @@ ul {
   margin-top: 1%;
 }
 .surveyResults {
-  
+
 }
 
+.createSurveyForm.Questions {
+  width: 97% !important;
+}
 
 
 viewAllTable tr:hover {

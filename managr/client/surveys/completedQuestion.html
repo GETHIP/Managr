@@ -8,7 +8,7 @@
         <button type="button" class="deleteBtn btn" id="{{question.dateHash}}"><i class="fa fa-window-close fa-2x" id="xicon" aria-hidden="true"></i></button>
       </p>
       {{#if choicetype question.questionType}}
-      <ul>
+      <ul class="answerFormatCreated">
         {{#each option in question.options}}
         <li>
           <input id="MCradio" type="radio" name="MCQ" value="r" class="selectionForm CQlabel" />
@@ -18,7 +18,7 @@
       </ul>
       {{/if}}
       {{#if checktype question.questionType}}
-      <ul>
+      <ul class="answerFormatCreated">
         {{#each option in question.options}}
         <li>
           <input type="checkbox" name="CBQ" value="c" class="selectionForm CQlabel" />

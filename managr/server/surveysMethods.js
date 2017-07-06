@@ -31,7 +31,7 @@ export function surveysMethods() {
 			if (!isInstructor()) {
 				return;
 			}
-//Uncomment after assigning students
+			//Uncomment after assigning students
 
 			// console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~1");
 			// console.log("Remove Surveys works!");
@@ -101,7 +101,7 @@ export function surveysMethods() {
 							prompt: question,
 							options: temparray,
 							dateHash: dateHash,
- 						studentResults: []
+							studentResults: []
 						}
 					}
 				});
@@ -120,7 +120,7 @@ export function surveysMethods() {
 							prompt: question,
 							options: temparray,
 							dateHash: dateHash,
- 						studentResults: []
+							studentResults: []
 						}
 					}
 				}
@@ -136,7 +136,7 @@ export function surveysMethods() {
 						questionType: "shResp",
 						prompt: question,
 						dateHash: dateHash,
-  					studentResults: []
+						studentResults: []
 					}
 				}
 			});
@@ -184,5 +184,5 @@ export function surveysMethods() {
  	// 		}
  	// 	});
 	}
- 	});
- }
+});
+}
