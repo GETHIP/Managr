@@ -61,11 +61,11 @@ EventSchema = new SimpleSchema({
       label: "rsvp",
       optional: true
     },
-    studentIds: {
-        type: [String],
-        label: "Student IDs",
-        optional: true
-    },
+    // studentIds: {
+    //     type: [String],
+    //     label: "Student IDs",
+    //     optional: true
+    // },
 });
 
 
