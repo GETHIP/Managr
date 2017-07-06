@@ -1,10 +1,5 @@
-/*body {
-  background: white;
-}*/
-
 .purpleBar {
   background: #BD53FF !important;
-
 }
 
 .events {
@@ -46,7 +41,6 @@
 
 .switchFormat {
   background-color: white;
-  /*position: absolute;*/
 }
 
 .slider {
@@ -149,9 +143,6 @@ button.createdEvent {
 	text-align: center;
 	cursor: pointer;
 	text-decoration: none;
-	/*padding: 0px;
-	padding-top: 5px;
-	padding-bottom: 5px;*/
 	border:none;
 	border-radius: 5px;
 }
