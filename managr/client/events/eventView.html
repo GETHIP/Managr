@@ -20,12 +20,11 @@
           <p>Description: {{eventDescription}}</p>
           <p>Date: {{formattedDate}}</p>
           <p>Location: {{eventLocation}}</p>
-{{#if isStudent}}
-<br>
+        {{#if isStudent}}
+          <br>
           <textarea id="reasonForNotAttending" name="reasonNotAttending" class = "reasonNotAttending" rows="6" placeholder="Why Will You Not Be Joining Us?" required></textarea>
           {{/if}}
-        </div>
-
+          </div>
          {{#if isStudent}}
          <button type="button" id="eventCancel" class="buttonStyle cancelUserCreate leftFloatingButton" onclick="FlowRouter.go('/events');">Back</button>
          <button type="submit" id="rsvpEventButton" class="buttonStyle cancelUserCreate rightFloatingButton">Send Attendance</button>
@@ -33,6 +32,5 @@
         {{#if isInstructor}}
         <button type="button" id="eventCancel" class="buttonStyle" onclick="FlowRouter.go('/events');">Back</button>
         {{/if}}
-
     </div>
 </template>
