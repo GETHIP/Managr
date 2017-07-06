@@ -50,6 +50,7 @@
   <div class="purple-bar">&nbsp;</div>
 
     <p class="sortDropdowns">
+      {{#if isInstructor}}
         Student:
       <select name="studentChoice" id="studentChoice" class="sortDropdownsSelect">
         <option value="sortAll" selected>All</option>
@@ -57,6 +58,7 @@
       		  <option value="{{_id}}">{{name}}</option>
       		{{/each}}
   		</select>
+      {{/if}}
   Instructor:
       <select name="selectType" id="instructorChoice" class="sortDropdownsSelect">
         <option value="sortAll" selected="selected">All</option>
