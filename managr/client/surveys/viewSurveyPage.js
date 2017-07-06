@@ -3,7 +3,7 @@ import { Student } from '../../collections/student.js';
 import { Random } from 'meteor/random'
 var idS =[];
 
-Template.surveysResults.onCreated(function() {
+Template.viewSurveyPage.onCreated(function() {
   Meteor.subscribe("Surveys", function() {
     var survey = Surveys.findOne({_id: FlowRouter.getParam("id")});
     // if(survey == undefined) {
