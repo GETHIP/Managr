@@ -31,11 +31,19 @@ Template.createSuggested.onCreated(function() {
 
 Template.createSuggested.events({
 		"submit #createSuggestedForm"(event) {
+
+        document.getElementById('loading').style="display:initial";
+
         event.preventDefault();
+
+        setTimeout(function() {
+        console.log("running");
+
         const form = event.target;
         var valid = true;
 
         var groupType = document.getElementById("groupTypeSelect").value;
+
         if(groupType == "newType") {
             groupType = form.newGroupType.value;
         }
@@ -84,13 +92,13 @@ Template.createSuggested.events({
             theStudents.push(student);
         }
 
-
-
         //theStudents = makeStudents(30);
 
 
 
+        var bestGroups = [];
         var start = new Date().getTime();
+
 
         //Run the best group finding algorithms
         for(var index = 0; index < iterations; index++) {
@@ -98,23 +106,26 @@ Template.createSuggested.events({
             var groups = makeGroups(option, theStudents, numberOf);
             var score = scoreGroups(groups);
             if (score < bestScore) {
-                var bestGroups = groups;
+                bestGroups = groups;
                 bestScore = score;
             }
         }
-        console.log(bestGroups);
-        console.log(bestScore);
+
+        // console.log(bestGroups);
+        // console.log(bestScore);
 
         var end = new Date().getTime();
         console.log(end - start);
         console.log((end - start)/iterations);
+        console.log(end + " " + start + " " + iterations);
 
         if (valid) {
-            var params = groups;
+            var params = bestGroups;
             var typeparams = groupType;
             FlowRouter.go("/groups/editSuggested");
             BlazeLayout.render("groupsLayout", {content:'editSuggested', groups: params, groupsType: typeparams});
         }
+      },500);
     },
 		"click #addStudents"(event) {
 				event.preventDefault();
