@@ -1,9 +1,13 @@
 import { Surveys } from '../../collections/surveys.js';
 import { Student } from '../../collections/student.js';
 import { Random } from 'meteor/random'
-var idS =[];
 
+<<<<<<< HEAD
+var idS = [];
+Template.surveysResults.onCreated(function() {
+=======
 Template.viewSurveyPage.onCreated(function() {
+>>>>>>> 61b5e6405784038dd99caee70581be23cce60574
   Meteor.subscribe("Surveys", function() {
     var survey = Surveys.findOne({_id: FlowRouter.getParam("id")});
     // if(survey == undefined) {
@@ -27,7 +31,7 @@ Template.viewSurveyPage.helpers({
     console.log(allQuestionsArray.questions);
     var data = allQuestionsArray.questions;
     console.log(data.options);
-    console.log(data.length);
+    console.log(data);
     data.forEach(function(element){
       var Alloptions = element.options;
       console.log(Alloptions);
@@ -65,7 +69,7 @@ Template.viewSurveyPage.helpers({
 });
 
 Template.viewSurveyPage.events({
-  'click #sendResponse': function(event){
+  'click #sendResponseBtnn': function(event){
     var mcAnswer;
     var surveyId = FlowRouter.getParam('id');
     var allQuestionsArray = Surveys.findOne(surveyId);
@@ -92,18 +96,21 @@ Template.viewSurveyPage.events({
       console.log(idS[i].options);
       for(var j = 0; j < idS[i].options.length; j++)
       {
-        console.log(idS[i].options[j].option);
+        console.log(idS[i].options[j].name);
         console.log(idS[i].options[j].refId);
         mcAnswer = idS[i].options[j];
+        console.log(document.getElementById(mcAnswer.refId).checked);
         if(document.getElementById(mcAnswer.refId).checked)
         {
           console.log("Option Selected");
           console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-          Meteor.call("sendResponse", surveyId, data[i], data[i].dateHash, mcAnswer.option);
+          console.log(data[i].dateHash);
+          Meteor.call("sendResponse", surveyId, data[i], data[i].dateHash, mcAnswer.name, i);
           break;
         }
       }
     }
+    idS = [];
     // FlowRouter.go('/surveys');
   }
 });

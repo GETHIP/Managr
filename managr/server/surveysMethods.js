@@ -142,44 +142,47 @@ export function surveysMethods() {
 			});
 		}
 	},
-	'sendResponse': function(surveyId, question, questionHash, mcAnswer) {
-		//console.log(Meteor.userId());
-		console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~1");
-		var studentId = Student.findOne({userId: Meteor.userId()}).userId;
-		console.log(studentId);
-		console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~2");
-		var studentAns = {studentId: studentId, answer: mcAnswer};
-		var updatedQuestion = question;
-		updatedQuestion.studentResults.push(studentAns);
-		console.log(updatedQuestion.studentResults);
-		console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~3");
+ 	'sendResponse': function(surveyId, question, questionHash, mcAnswer, index) {
+ 		console.log(Meteor.userId());
+ 		console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~1");
+ 		var studentId = Student.findOne({userId: Meteor.userId()}).userId;
+ 		console.log(studentId);
+ 		console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~2");
+ 	// 	var studentAns = {studentId: studentId, answer: mcAnswer};
+ 	// 	var updatedQuestion = question;
+ 	// 	updatedQuestion.studentResults.push(studentAns);
+ 	// 	console.log(updatedQuestion.studentResults);
+ 	// 	console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~3");
 
 		var totalSurveys = Surveys.findOne({_id: surveyId});
-		var totalQuestions = totalSurveys.questions;
-		var newStudentResults;
-		var newAnswer = {};
-		var newQuestions = {};
-		for(var j = 0; j < totalQuestions.length; j++) {
-			var totalOptions = totalQuestions[j].options;
-			for(var i = 0; i < totalOptions.length; i++) {
-				if(totalQuestions[i].dateHash == questionHash) {
-					newAnswer.studentId = studentId;
-					newAnswer.answer = mcAnswer;
-					newQuestions.studentResults = newAnswer;
-					newQuestions.dateHash = questionHash;
-					Surveys.update({_id: surveyId, "questions.dateHash": questionHash},
-					{
-						$set: {
-							"questions.$": {
-								studentAnswer: newAnswer
-							}
-							//questions: newQuestions;
+				var totalQuestions = totalSurveys.questions;
+				var newStudentResults;
+				var newAnswer = {};
+				for(var j = 0; j < totalQuestions.length; j++) {
+					var totalOptions = totalQuestions[j].options;
+					console.log(totalOptions);
+					for(var i = 0; i < totalOptions.length; i++) {
+						if(totalQuestions[i].dateHash == questionHash) {
+							console.log("This works!");
+							newAnswer.studentId = studentId;
+							newAnswer.answer = mcAnswer;
+							Surveys.update({_id: surveyId, "questions.dateHash": questionHash},
+							{
+								$push: {
+									"questions.$.studentResults": newAnswer
+									}
+									//questions: newQuestions;
+							});
+							break;
 						}
-					});
-					break;
+					}
 				}
-			}
-		}
+
+ 	// 	Surveys.update({_id: surveyId}, {
+ 	// 		$push: {
+ 	// 			questions: updatedQuestion
+ 	// 		}
+ 	// 	});
 	}
 });
 }
