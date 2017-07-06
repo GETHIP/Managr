@@ -9,23 +9,10 @@ Template.attending.onCreated(function() {
     Meteor.subscribe("Instructor");
     Meteor.subscribe("Groups");
 
-
+    Template.instance().sortDescriptor = new ReactiveVar("studentNameSort");
+    Template.instance().sortAscending = new ReactiveVar(true);
 });
 
-// Template.attending.events({
-//   'click .goToProfile': function(event) {
-//     event.preventDefault();
-//     const target = event.target;
-//     FlowRouter.go('/profile/' + event.target.id);
-//   },
-//   });
-//
-//   Template.attending.events({
-//   'click .goToProfile': function(event) {
-//       event.preventDefault();
-//       FlowRouter.go("/profile/" + event.target.id);
-//   }
-// });
 
   Template.attending.helpers({
       students: function() {
@@ -60,7 +47,29 @@ Template.attending.helpers({
     console.log(countNotAttending);
     rList.countAttending = countAttending;
     rList.countNotAttending = countNotAttending;
+
+    var sortDescriptor = Template.instance().sortDescriptor.get();
+    var sortDirection = Template.instance().sortAscending.get() ? 1 : -1;
+    rList.sort(function(student1, student2) {
+        if (sortDescriptor == "studentNameSort") {
+            return (student1.name.localeCompare(student2.name)) * sortDirection;
+        } else if(sortDescriptor == "studentRSVPSort") {
+              return (student1.status.localeCompare(student2.status)) * sortDirection;
+        }
+    });
     return rList;
 }
 
 });
+Template.attending.events({
+    'click .sortIcon': function(event) {
+        var sortDescriptor = Template.instance().sortDescriptor.get();
+
+        if(event.target.id == sortDescriptor) {
+          Template.instance().sortAscending.set(!Template.instance().sortAscending.get());
+        } else {
+          Template.instance().sortDescriptor.set(event.target.id);
+          Template.instance().sortAscending.set(true);
+        }
+    }
+  });
