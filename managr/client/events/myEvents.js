@@ -89,46 +89,10 @@ Template.myEventsPage.helpers({
         }
     }
 });
-// console.log(studentID);
-// console.log(studentName);
-// console.log(allGroups);
-
-// Template.eventsPage.helpers({
-//   eventsHelper() {
-// var events = Events.find({
-//     date: {
-//         $gte: new Date()
-//     }
-// }, {
-//     sort: {
-//         date: 1
-//     }
-// }).fetch();
-// for (event of events) {
-//             var user = Meteor.users.findOne({
-//                 "_id": event.host
-//             })
-//             console.log(user);
-//             event.host = user.profile.firstname + " " + user.profile.lastname + " (" + user.username + ") "
-//         }
-//         console.log('it worked');
-//         return events;
-// },
-// });
-
 
 Template.myEventsPage.helpers({
 
   events: function() {
-    // var events = Events.find({
-    //     Date: {
-    //         $gte: new Date()
-    //     }
-    // }, {
-    //     sort: {
-    //         date: 1
-    //     }
-    // }).fetch();
 
     var allEvents = Events.find({}).fetch();
     var formattedEvents = [];

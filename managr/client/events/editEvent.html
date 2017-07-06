@@ -1,8 +1,6 @@
 <template name="editEvent">
-
   <div class="containerDiv form marginContainer">
     <div class="containerDiv form">
-
       <form id="eventForm">
         <div class="containerDiv formbg cep editEventPad">
           <div class="editHeading">
@@ -19,14 +17,18 @@
           <p>Location:</p>
           <input id="editEventBox" type="text" name="location" placeholder="Where's Your Event?" value="{{eventLocation}}" autofocus required>
           <p>Invite:</p>
-          {{#each students}}
+          {{#each groups}}
+	          <label for="{{id}}"><input type="checkbox" class="groupCheckBox" id="{{id}}"/> {{name}}</label>
+	        {{/each}}
+	        <hr/>
+					{{#each students}}
 							<label for="{{studentId}}"><input type="checkbox" id="{{studentId}}"/> {{name}}</label>
 					{{/each}}
         </div>
-       </div>
+        </div>
        <button type="button" id="eventCancel" class="buttonStyle cancelUserCreate leftFloatingButton" onclick="FlowRouter.go('/events');">Cancel</button>
 			 <button type="submit" id="submitEditEventButton" value="Create" class="buttonStyle cancelUserCreate rightFloatingButton">Edit My Event</button>
       </form>
     </div>
-</div>
+  </div>
 </template>

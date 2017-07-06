@@ -19,12 +19,6 @@ Template.eventView.events({
 	}
 });
 
-// Template.eventView.events({
-// 	'click .slider': function(event){
-// 		if()
-// 	}
-// });
-
 Template.eventView.events({
 	'click #rsvpEventButton': function(event){
 	 event.preventDefault();
@@ -35,12 +29,16 @@ Template.eventView.events({
 	 var realS = studentId._id;
 	 var studentName = studentId.name;
 	 var rsvp = document.getElementById("indicator").innerHTML;
+	 var reasonNotAttending = document.getElementById("reasonForNotAttending").value;
+
+	 const form = event.target;
 
 	 console.log(eventId);
 	 console.log(studentId);
 	 console.log(realS);
 	 console.log(studentName);
 	 console.log(rsvp);
+	 console.log(reasonNotAttending);
 
 	 	 FlowRouter.go('/events');
 
@@ -48,13 +46,13 @@ Template.eventView.events({
 	 if(eData){
 	 for (var i = 0; i < eData.length; i++) {
 	 	if(eData[i]._id == realS){
-			Meteor.call('sendRSVP', eventId, realS, rsvp, true);
+			Meteor.call('sendRSVP', eventId, realS, rsvp, true, reasonNotAttending);
 			return;
 		}
 	 }
 	 // false means no rsvp
  }
-	 Meteor.call('sendRSVP', eventId, realS, rsvp, false);
+	 Meteor.call('sendRSVP', eventId, realS, rsvp, false, reasonNotAttending);
 
 
 	}
@@ -101,49 +99,49 @@ var getThisEvent = function() {
 	return Events.findOne({ _id: id });
 }
 
-import { Groups } from '../../collections/groups.js';
+// import { Groups } from '../../collections/groups.js';
+//
+// Template.eventView.helpers({
+//     groups: function() {
+//         var allGroups = Groups.find({}).fetch();
+//         var formattedGroups = [];
+//         for(var i = 0; i < allGroups.length; i++) {
+//             var group = allGroups[i];
+//             var formattedGroup = {
+//                 name: group.name,
+//                 groupId: group._id,
+// 								size: group.size,
+// 								leader: group.leader
+//             }
+//             formattedGroups.push(formattedGroup);
+//         }
+//         return formattedGroups;
+//     },
+//     students: function() {
+//         var allStudents = Student.find({}).fetch();
+//         var formattedStudents = [];
+//         for(var i = 0; i < allStudents.length; i++) {
+//             var student = allStudents[i];
+//             var formattedStudent = {
+//                 name: student.name,
+//                 studentId: student._id
+//             }
+//             formattedStudents.push(formattedStudent);
+//         }
+//         return formattedStudents;
+//     }
+// });
 
-Template.eventView.helpers({
-    groups: function() {
-        var allGroups = Groups.find({}).fetch();
-        var formattedGroups = [];
-        for(var i = 0; i < allGroups.length; i++) {
-            var group = allGroups[i];
-            var formattedGroup = {
-                name: group.name,
-                groupId: group._id,
-								size: group.size,
-								leader: group.leader
-            }
-            formattedGroups.push(formattedGroup);
-        }
-        return formattedGroups;
-    },
-    students: function() {
-        var allStudents = Student.find({}).fetch();
-        var formattedStudents = [];
-        for(var i = 0; i < allStudents.length; i++) {
-            var student = allStudents[i];
-            var formattedStudent = {
-                name: student.name,
-                studentId: student._id
-            }
-            formattedStudents.push(formattedStudent);
-        }
-        return formattedStudents;
-    }
-});
-
-var newformatStudentsForGroup = function(studentIds) {
-    var formattedStudents = [];
-
-    for(var i = 0; i < studentIds.length; i++) {
-        var student = Student.findOne({_id: studentIds[i]});
-        if(student == undefined) {
-            continue;
-        }
-        name = student.name;
-        formattedStudents.push(name);
-    }
-    return formattedStudents;
-}
+// var newformatStudentsForGroup = function(studentIds) {
+//     var formattedStudents = [];
+//
+//     for(var i = 0; i < studentIds.length; i++) {
+//         var student = Student.findOne({_id: studentIds[i]});
+//         if(student == undefined) {
+//             continue;
+//         }
+//         name = student.name;
+//         formattedStudents.push(name);
+//     }
+//     return formattedStudents;
+// }

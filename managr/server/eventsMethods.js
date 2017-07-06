@@ -16,7 +16,7 @@ export function eventsMethods() {
       }
       Events.remove(eventId);
     },
-		'sendRSVP': function(eventId, studentId, rsvp, type) {
+		'sendRSVP': function(eventId, studentId, rsvp, type, reason) {
 			var result;
 			if(!isStudent()) {
 				return;
@@ -38,9 +38,9 @@ export function eventsMethods() {
 					$push: {rsvp: {_id: studentId, rsvp: result}}
 				});
 
-			}else{
+			} else{
 			Events.update({_id: eventId}, {
-				$push: {rsvp: {_id: studentId, rsvp: result}}
+				$push: {rsvp: {_id: studentId, rsvp: result, reasonNotAttending: reason}}
 			});
 		}
 		},
