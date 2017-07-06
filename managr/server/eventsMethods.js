@@ -71,6 +71,17 @@ export function eventsMethods() {
 						location: location
 					}
 				});
+			},
+			'updateEventCalendar': function(eventId, date, formattedDate) {
+				if(!isInstructor()) {
+					return;
+				}
+				Events.update({_id: eventId}, {
+					$set: {
+						date: date,
+						formattedDate: formattedDate
+					}
+				});
 			}
 		});
 	}
