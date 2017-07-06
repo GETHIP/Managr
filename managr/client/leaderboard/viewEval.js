@@ -252,7 +252,7 @@ import { Student } from '../../collections/student.js';
        }
      }
      date = new Date();
-    if(Eval.find({evaluator: eaId, evaluatee: eId, week: week}).fetch().length == 0){
+    if(Eval.find({evaluator: eaId, evaluatee: eId, week: week}).fetch().length == 0 && eId != null){
       Meteor.call("sendEval", eaId, eId, comment, week, sList, date);
     }else{
       event.preventDefault();
