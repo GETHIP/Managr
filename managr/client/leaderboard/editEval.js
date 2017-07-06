@@ -45,7 +45,7 @@ Template.editEval.helpers({
 
 //id, message, star1, star2, star3, star4, milestone,
 Template.editEval.events({
-  'click .saveEval': function(){
+  'click .save2Eval': function(){
     console.log("sdlf");
     event.preventDefault();
       var message  = document.getElementById('message').value;
@@ -59,5 +59,10 @@ Template.editEval.events({
       Meteor.call("editEval", FlowRouter.getParam("id"), message, starBox1, starBox2, starBox3, starBox4, week);
       FlowRouter.go("/eval/" + id);
 
-  }
+},
+  'click .deleteEval.editEval': function(event){
+    console.log("testing")
+    Modal.show('deleteEditModal');
+  },
+
 });

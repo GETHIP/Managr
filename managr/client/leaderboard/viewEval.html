@@ -24,7 +24,7 @@
 
 
 		<label for="group">Student</label>
-    <input list="group" name="group" id=dataListInput>
+    <input list="group" name="group" id=dataListInput autocomplete="off">
     <datalist id="group">
 		{{#each students}}
 		<option data-value="{{_id}}" value="{{name}}"></option>
@@ -49,24 +49,25 @@
   <h1 class="titleviewEvaluations">Previous Evaluations</h1>
   <div class="purple-bar">&nbsp;</div>
 
-    <p>
-        <strong>Filter By:</strong>
+    <p class="sortDropdowns">
+      {{#if isInstructor}}
         Student:
-      <select name="studentChoice" id="studentChoice">
+      <select name="studentChoice" id="studentChoice" class="sortDropdownsSelect">
         <option value="sortAll" selected>All</option>
           {{#each students}}
       		  <option value="{{_id}}">{{name}}</option>
       		{{/each}}
   		</select>
+      {{/if}}
   Instructor:
-      <select name="selectType" id="instructorChoice">
+      <select name="selectType" id="instructorChoice" class="sortDropdownsSelect">
         <option value="sortAll" selected="selected">All</option>
           {{#each instructors}}
       		  <option value="{{_id}}">{{name}}</option>
       		{{/each}}
   		</select>
    Milestone:
-      <select name="selectType" id="milestoneChoice">
+      <select name="selectType" id="milestoneChoice" class="sortDropdownsSelect">
         <option value="sortAll">All</option>
         {{#each milestone}}
           <option value="{{_id}}">{{name}}</option>
@@ -86,7 +87,7 @@
         <th>Instructor</th>
       </tr>
       {{#each data}}
-      <tr class= "tableRowFormat rowClick" id="{{_id}}">
+      <tr class= "tableRowFormat rowClick evals" id="{{_id}}">
                 <td class="tableDataFormat evals" id="{{_id}}">{{name}}</td>
                 <td class="tableDataFormat evals" id="{{_id}}">{{week}}</td>
                 <td class="tableDataFormat evals" id="{{_id}}">{{effort}}</td>
