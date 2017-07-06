@@ -142,24 +142,47 @@ export function surveysMethods() {
 			});
 		}
 	},
- 	'sendResponse': function(surveyId, question, questionIndex, mcAnswer) {
+ 	'sendResponse': function(surveyId, question, questionHash, mcAnswer, index) {
  		console.log(Meteor.userId());
  		console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~1");
  		var studentId = Student.findOne({userId: Meteor.userId()}).userId;
  		console.log(studentId);
  		console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~2");
- 		var studentAns = {studentId: studentId, answer: mcAnswer};
- 		var updatedQuestion = question;
- 		updatedQuestion.studentResults.push(studentAns);
- 		console.log(updatedQuestion.studentResults);
- 		console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~3");
+ 	// 	var studentAns = {studentId: studentId, answer: mcAnswer};
+ 	// 	var updatedQuestion = question;
+ 	// 	updatedQuestion.studentResults.push(studentAns);
+ 	// 	console.log(updatedQuestion.studentResults);
+ 	// 	console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~3");
 
+		var totalSurveys = Surveys.findOne({_id: surveyId});
+				var totalQuestions = totalSurveys.questions;
+				var newStudentResults;
+				var newAnswer = {};
+				for(var j = 0; j < totalQuestions.length; j++) {
+					var totalOptions = totalQuestions[j].options;
+					console.log(totalOptions);
+					for(var i = 0; i < totalOptions.length; i++) {
+						if(totalQuestions[i].dateHash == questionHash) {
+							console.log("This works!");
+							newAnswer.studentId = studentId;
+							newAnswer.answer = mcAnswer;
+							Surveys.update({_id: surveyId, "questions.dateHash": questionHash},
+							{
+								$push: {
+									"questions.$.studentResults": newAnswer
+									}
+									//questions: newQuestions;
+							});
+							break;
+						}
+					}
+				}
 
- 		Surveys.update({_id: surveyId}, {
- 			$push: {
- 				questions: updatedQuestion
- 			}
- 		});
+ 	// 	Surveys.update({_id: surveyId}, {
+ 	// 		$push: {
+ 	// 			questions: updatedQuestion
+ 	// 		}
+ 	// 	});
 	}
  	});
  }

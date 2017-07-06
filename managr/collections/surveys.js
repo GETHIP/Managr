@@ -33,13 +33,11 @@ option = new SimpleSchema({
 studentAnswer = new SimpleSchema({
 	studentId: {
 		type: String
+
 	},
 	answer: {
 		type: String
-	},
-	status: {
-		type: Boolean,
-		optional: true
+
 	}
 });
 
@@ -47,46 +45,56 @@ question = new SimpleSchema({
 	questionType: {
 		type: String,
 		optional: true
+
 	},
 	prompt: {
 		type: String,
 		optional: true
+
 	},
 	options: {
 		type: [String],
 		optional: true
+
 	},
 	dateHash: {
 		type: Number,
 		optional: true
+
 	},
 	studentResults: {
 		type: [studentAnswer],
 		optional: true
+
 	}
 });
 
 SurveySchema = new SimpleSchema({
     name: {
         type: String,
-        optional: false
+        optional: false,
+
     },
     dueDate: {
         type: String,
-        optional: true
+        optional: true,
+
     },
     studentsCompleted: {
         type: Number,
-        optional: true
+        optional: true,
+
     },
     questions: {
 			type: [question],
 			defaultValue: [],
-			optional: true
+			optional: true,
+
 		},
 		surveyId: {
 				type: String,
-				optional: true
+				optional: true,
+
 		}
 });
 
