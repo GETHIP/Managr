@@ -9,6 +9,10 @@
   border-bottom-color: #61c250;
 }
 
+.groupsActive:focus, .groupsActive:hover, .groupsActive, .myGroupsActive:focus, .myGroupsActive:hover, .myGroupsActive  {
+  border-bottom-color: #a50000;
+}
+
 .activated {
 	background-color: #444444;
  	border-bottom-width: 3px;

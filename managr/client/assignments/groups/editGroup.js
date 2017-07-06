@@ -32,8 +32,10 @@ Template.editGroup.events({
 								studentIds.push(inputs[i].id);
             }
         }
+				var size = studentIds.length;
+				var studentNames = formatStudentsForGroup(studentIds);
 
-        Meteor.call('updateGroup', groupId, groupName, studentIds);
+        Meteor.call('updateGroup', groupId, groupName, studentIds, size, studentNames);
 
         FlowRouter.go("/groups");
     },
@@ -132,6 +134,8 @@ Template.editGroup.helpers({
             var formattedGroup = {
                 name: allGroups[i].name,
                 groupId: allGroups[i]._id,
+								size: allGroups[i].size,
+                leader: allGroups[i].leader,
                 checked: containsAllStudentsInEditingGroup(getGroupBeingEdited(), allGroups[i])
             }
             formattedGroups.push(formattedGroup);
@@ -169,4 +173,18 @@ var containsAllStudentsInEditingGroup = function(groupBeingEdited, groupToCheckS
 //Else returns false
 var studentIsInGroup = function(groupBeingEdited, student) {
     return !(groupBeingEdited.studentIds.indexOf(student._id) == -1);
+}
+
+var formatStudentsForGroup = function(studentIds) {
+    var formattedStudents = [];
+
+    for(var i = 0; i < studentIds.length; i++) {
+        var student = Student.findOne({_id: studentIds[i]});
+        if(student == undefined) {
+            continue;
+        }
+        name = student.name;
+        formattedStudents.push(name);
+    }
+    return formattedStudents;
 }

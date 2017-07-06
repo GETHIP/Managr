@@ -1,8 +1,7 @@
 import { Groups } from '../../../collections/groups.js';
 import { Student } from '../../../collections/student.js';
-import { EasySearch } from 'meteor/easy:search';
 
-Template.groups.onCreated(function() {
+Template.myGroups.onCreated(function() {
     Meteor.subscribe("Groups");
     Meteor.subscribe("Student");
 });
@@ -24,9 +23,11 @@ var formatStudentsForGroup = function(group) {
     return formattedStudents;
 }
 
-Template.groups.helpers({
+Template.myGroups.helpers({
     groups: function() {
-        var allGroups = Groups.find({}).fetch();
+        var studentID = Student.findOne({userId: Meteor.user()._id});
+        var studentName = studentID._id;
+        var allGroups = Groups.find({ studentIds: studentName }).fetch();
         var formattedGroups = [];
         for(var i = 0; i < allGroups.length; i++) {
             var group = allGroups[i];
@@ -34,7 +35,7 @@ Template.groups.helpers({
                 name: group.name,
                 students: formatStudentsForGroup(group),
                 groupId: group._id,
-                size: group.size,
+                size: group.studentIds.length,
                 leader: group.leader
             }
             formattedGroups.push(formattedGroup);
@@ -48,13 +49,10 @@ Template.groups.helpers({
         if(document.getElementById("namesInGroup").style.height > 200) {
             document.getElementById("namesInGroup").style.overflowY = "scroll";
         }
-    },
-    groupIndex: function() {
-        return groupIndex;
     }
 });
 
-Template.groups.events({
+Template.myGroups.events({
     'click #createGroupButton': function() {
         FlowRouter.go("/groups/create");
     },
@@ -69,14 +67,5 @@ Template.groups.events({
         const target = event.target;
 
         Meteor.call("removeGroup", target.id);
-    },
-    'change .filters': function (e) {
-        groupIndex.getComponentMethods(/* optional name */)
-            .addProps('grouptype', $(e.target).val())
-        ;
-    },
-    'change .sorting': (e) => {
-        groupIndex.getComponentMethods()
-            .addProps('sortBy', $(e.target).val())
     }
 });

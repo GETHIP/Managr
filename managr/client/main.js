@@ -5,6 +5,7 @@ import { Posts } from '../collections/blogPosts.js'
 import { Assignments } from "../collections/assignments.js";
 import { Student } from "../collections/student.js";
 import { nameOfUser } from '../lib/permissions.js';
+import { Groups } from "../collections/groups.js";
 
 PostsIndex = new EasySearch.Index({
 	collection: Posts,
@@ -75,6 +76,90 @@ studentIndex = new EasySearch.Index({
     limit: 1000
   }
 });
+
+groupIndex = new EasySearch.Index({
+	collection: Groups,
+	fields: ['name', 'leader', 'stringSize', 'studentNames'],
+	defaultSearchOptions: {
+		sortBy: 'datecreated',
+		limit: 1000
+	},
+	engine: new EasySearch.Minimongo({
+		transform: function(doc){
+				var group = {};
+				group = {
+						name: doc.name,
+						size: doc.size,
+						students: formatStudentsForGroup(doc),
+						leader: doc.leader,
+						groupId: doc._id
+				};
+				return group;
+		},
+		sort: function (searchObject, options) {
+				const sortBy = options.search.props.sortBy
+
+				// return a mongo sort specifier
+				if ('default' === sortBy) {
+					return;
+				}
+				else if ('datecreated' === sortBy) {
+					return {
+						dateCreated: -1,
+					};
+				}
+				else if ('name' === sortBy) {
+					return {
+						name: 1,
+					};
+				}
+				else if ('sizeinc' === sortBy) {
+					return {
+						size: 1,
+					};
+				}
+				else if ('sizedec' === sortBy) {
+					return {
+						size: -1,
+					};
+				}
+				/*
+				else {
+					throw new Meteor.Error('Invalid sort by prop passed')
+				}
+				*/
+		}
+
+		/*
+		selector: function (searchObject, options, aggregation) {
+				const selector = this.defaultConfiguration().selector(searchObject, options, aggregation)
+
+				// filter for the grouptype if set
+				if (options.search.props.grouptype) {
+					selector.grouptype = options.search.props.grouptype
+				}
+				return selector
+		}
+		*/
+	})
+});
+
+var formatStudentsForGroup = function(group) {
+    var studentIds = group.studentIds;
+    var formattedStudents = [];
+
+    for(var i = 0; i < studentIds.length; i++) {
+        var student = Student.findOne({_id: studentIds[i]});
+        if(student == undefined) {
+            continue;
+        }
+        var formattedStudent = {
+            name: student.name
+        }
+        formattedStudents.push(formattedStudent);
+    }
+    return formattedStudents;
+}
 
 Template.main.helpers({
   renderNavbar:function() {

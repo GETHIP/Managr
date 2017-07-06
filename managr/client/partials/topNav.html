@@ -24,10 +24,20 @@
 						<li class="active">
 							<a class="profilesActive {{ activeIfTemplateIs '/profile'}}" href="/profile">Profiles</a>
 						</li>
-						{{/if}}s
+						{{/if}}
 						{{#if isInstructor}}
 						<li class="active">
 							<a class="profilesActive {{ activeIfTemplateIs '/profile'}}" href="/profile">All Profiles</a>
+						</li>
+						{{/if}}
+						{{#if isInstructor}}
+						<li class="active">
+							<a class="groupsActive {{ activeIfTemplateIs '/groups'}}" href="/groups">Groups</a>
+						</li>
+						{{/if}}
+						{{#if isStudent}}
+						<li class="active">
+							<a class="groupsActive {{ activeIfTemplateIs '/myGroups'}}" href="/myGroups">My Groups</a>
 						</li>
 						{{/if}}
 						{{#if isInstructor}}
@@ -39,6 +49,8 @@
 						<li class="active">
 							<a class="reportsActive {{ activeIfTemplateIs '/reports'}}" href="/reports">Reports</a>
 						</li>
+						{{/if}}
+						{{#if isInstructor}}
 						<li class="active">
 							<a class="dashboardActive {{ activeIfTemplateIs '/dashboard'}}" href="/dashboard">Dashboard</a>
 						</li>
@@ -52,7 +64,7 @@
 						<li class="active">
 							<a class="leaderboardActive {{ activeIfTemplateIs '/viewEval'}}" href="/viewEval">Evaluations</a>
 						</li>
-		
+
 						{{/if}}
 					<li></li>
 					</ul>

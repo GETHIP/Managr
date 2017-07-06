@@ -1,0 +1,51 @@
+<template name="myGroups">
+    {{#if isStudent}}
+    <div class="marginContainer">
+        <h1 class="titleAssignment">My Groups</h1>
+        <div class="orange-bar">&nbsp;</div>
+
+        <table class="groupsTable table">
+            <thead>
+                <tr>
+                    <th class="groupsTableHead">Name</th>
+                    <th class="groupsTableHead">Leader</th>
+                    <th class="groupsTableHead">Size</th>
+                    <th class="groupsTableHead">Students</th>
+                    <th class="groupsTableHead"></th>
+                </tr>
+            </thead>
+
+
+            {{#each group in groups}}
+              <tr class="tableRowFormat">
+                  <td>{{group.name}}</td>
+                  <td>{{group.leader}}</td>
+                  <td>{{group.size}}</td>
+                  <td>
+                      <div class="namesInGroup" id="namesInGroup">
+                          <ul style="margin-left: 18px">
+                              {{#each student in group.students}}
+                                  <li style="list-style-type: circle">
+                                     {{student.name}}
+                                  </li>
+                              {{/each}}
+                          </ul>
+                      </div>
+                  </td>
+                  <td>
+                      <div class="buttonCollection">
+                          <button class="groupButton editGroup" id="{{group.groupId}}">Edit</button>
+                          <button class="groupButton deleteGroup" id="{{group.groupId}}">Delete</button>
+                      </div>
+                  </td>
+              </tr>
+                {{/each}}
+
+
+
+        </table>
+
+
+    </div>
+    {{else}} {{> accessDenied}} {{/if}}
+</template>
