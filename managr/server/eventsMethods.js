@@ -47,7 +47,7 @@ export function eventsMethods() {
 			// })
 		}
 		},
-    'createNewEvent': function(hostId, host, eventName, description, date, formattedDate, location) {
+    'createNewEvent': function(hostId, host, eventName, description, date, formattedDate, location, studentIds) {
       if(!isInstructor()) {
         return;
       }
@@ -58,7 +58,8 @@ export function eventsMethods() {
 	      description: description,
 				date: date,
 				formattedDate: formattedDate,
-				location: location
+				location: location,
+				studentIds: studentIds
 			});
     },
 			'updateEvent': function(eventId, eventName, description, date, formattedDate, location) {
