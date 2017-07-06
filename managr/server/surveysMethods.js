@@ -142,8 +142,8 @@ export function surveysMethods() {
 			});
 		}
 	},
- 	'sendResponse': function(surveyId, question, questionIndex, mcAnswer) {
- 		console.log(Meteor.userId());
+	'sendResponse': function(surveyId, question, questionHash, mcAnswer) {
+ 		//console.log(Meteor.userId());
  		console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~1");
  		var studentId = Student.findOne({userId: Meteor.userId()}).userId;
  		console.log(studentId);
@@ -154,12 +154,32 @@ export function surveysMethods() {
  		console.log(updatedQuestion.studentResults);
  		console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~3");
 
-
- 		Surveys.update({_id: surveyId}, {
- 			$push: {
- 				questions: updatedQuestion
+ 		var totalSurveys = Surveys.findOne({_id: surveyId});
+ 		var totalQuestions = totalSurveys.questions;
+ 		var newStudentResults;
+ 		var newAnswer = {};
+ 		var newQuestions = {};
+ 		for(var j = 0; j < totalQuestions.length; j++) {
+ 			var totalOptions = totalQuestions[j].options;
+ 			for(var i = 0; i < totalOptions.length; i++) {
+ 				if(totalQuestions[i].dateHash == questionHash) {
+ 					newAnswer.studentId = studentId;
+ 					newAnswer.answer = mcAnswer;
+ 					newQuestions.studentResults = newAnswer;
+ 					newQuestions.dateHash = questionHash;
+ 					Surveys.update({_id: surveyId, "questions.dateHash": questionHash},
+ 					{
+ 						$set: {
+ 							"questions.$": {
+ 								studentAnswer: newAnswer
+ 							}
+ 							//questions: newQuestions;
+ 						}
+ 					});
+ 					break;
+ 				}
  			}
- 		});
-	}
- 	});
- }
+ 		}
+  }
+});
+}
