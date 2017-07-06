@@ -415,6 +415,133 @@ td.alignmid {
   cursor: pointer;
   background-color: #ffe6e6 !important;
 }
+.loadingHidden {
+  display: none;
+  color: red;
+}
+.loadMessage {
+  font-size: 1.5em;
+  z-index: 1040;
+  color: #f3f3f3;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  text-align: center;
+  position: fixed;
+  margin-top: 47vh;
+  animation: wobble 4s, gradient 8s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  animation-direction: alternate;
+  line-height: 25px;
+
+}
+@keyframes wobble {
+  0% {
+    transform: rotate(3deg);
+  }
+  50% {
+    transform: rotate(-3deg);
+  }
+  100% {
+    transform: rotate(3deg);
+  }
+}
+@keyframes gradient {
+  0% {
+    color: #0397d7;
+  }
+  25% {
+    color: #444444;
+  }
+  50% {
+    color: #fcb040;
+  }
+  75% {
+    color: #61c250;
+  }
+  100% {
+    color: #0397d7;
+  }
+}
+
+.spinner {
+  z-index: 1050;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+	width: 27vh;
+	height: 27vh;
+	position: fixed;
+	border-radius: 100%;
+	box-sizing: border-box;
+	animation: spin 8s;
+  animation-iteration-count: infinite;
+  /*animation-timing-function: ease-in-out;*/
+  animation-timing-function: ease-in-out;
+  animation-direction: alternate;
+}
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+    border: 10px solid;
+    border-color: #61c250 #0397d7 #444444 #fcb040;
+		box-shadow: 0px 0px 50px 1px rgba(0,0,0,1), inset 0px 0px 50px 1px rgba(0,0,0,1);
+	}
+  12.5% {
+    border: 30px solid;
+    border-color: #afb948 #32ad94 #246e8e #a07a42;
+    box-shadow: 0px 0px 10px 1px rgba(0,0,0,.5), inset 0px 0px 10px 1px rgba(0,0,0,.5);
+  }
+  25% {
+    transform: rotate(360deg);
+    border: 10px solid;
+    border-color: #fcb040 #61c250 #0397d7 #444444;
+    box-shadow: 0px 0px 50px 1px rgba(0,0,0,1), inset 0px 0px 50px 1px rgba(0,0,0,1);
+  }
+  37.5% {
+    border: 30px solid;
+    border-color: #a07a42 #afb948 #32ad94 #246e8e;
+    box-shadow: 0px 0px 10px 1px rgba(0,0,0,.5), inset 0px 0px 10px 1px rgba(0,0,0,.5);
+  }
+	50% {
+    transform: rotate(0deg);
+    border: 10px solid;
+    border-color: #444444 #fcb040 #61c250 #0397d7;
+    box-shadow: 0px 0px 10px 1px rgba(0,0,0,.25), inset 0px 0px 10px 1px rgba(0,0,0,.25);
+	}
+  62.5% {
+    border: 30px solid;
+    border-color: #246e8e #a07a42 #afb948 #32ad94;
+    box-shadow: 0px 0px 10px 1px rgba(0,0,0,.5), inset 0px 0px 10px 1px rgba(0,0,0,.5);
+  }
+  75% {
+    transform: rotate(360deg);
+    border: 10px solid;
+    border-color: #0397d7 #444444 #fcb040 #61c250;
+    box-shadow: 0px 0px 50px 1px rgba(0,0,0,1), inset 0px 0px 50px 1px rgba(0,0,0,1);
+  }
+  87.5% {
+    border: 30px solid;
+    border-color: #32ad94 #246e8e #a07a42 #afb948;
+    box-shadow: 0px 0px 10px 1px rgba(0,0,0,.5), inset 0px 0px 10px 1px rgba(0,0,0,.5);
+  }
+	100% {
+    transform: rotate(0deg);
+    border: 10px solid;
+    border-color: #61c250 #0397d7 #444444 #fcb040;
+    box-shadow: 0px 0px 50px 1px rgba(0,0,0,1), inset 0px 0px 50px 1px rgba(0,0,0,1);
+	}
+}
+
+
+
+
 @media screen and (max-width: 980px) {
    #createGroupButton, #suggestedgroupsbutton{
        margin-top: 6.5%;
