@@ -16,12 +16,34 @@
   line-height: 30px;
   padding: 5px;
 }
-.buttonStyleEval.saveEval {
-  width: 45%;
+.buttonStyleEval {
   display: inline-block;
 }
-.buttonStyleEval.deleteEval.editEval {
-  width: 45%;
-  display: inline-block;
+.buttonStyleEval.save2Eval {
+  width: 49%;
 }
- 
+.buttonStyleEval.delete2Eval.edit2Eval {
+  width: 49%;
+  float: right;
+}
+.delete2Eval {
+  background-color: #D11149 !important;
+}
+
+.delete2Eval:hover {
+  background-color: #FF5050 !important;
+}
+.buttonStyleEval {
+  background-color: #7700DD;
+  border: none;
+  color: white;
+  padding: 1.25%;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: center;
+  font-size: 18px;
+  border-radius: 6px;
+  margin-bottom: 2%;
+  margin-top: .5%;
+  float: left;
+  }

@@ -47,9 +47,14 @@
 </div>
   <p class="evalContent">{{message}} </p>
 </div>
+{{#if isInstructor}}
 <button class="buttonStyleEval backEval">Previous Evaluations</button>
 <button class="buttonStyleEval editEval">Edit</button>
 <button class="buttonStyleEval deleteEval">Delete</button>
+{{/if}}
+{{#if isStudent}}
+<button class="buttonStyleEval backStudentEval">Previous Evaluations</button>
+{{/if}}
 <!-- {{/if}} -->
 {{/with}}
 
