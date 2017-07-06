@@ -2,12 +2,9 @@ import { Surveys } from '../../collections/surveys.js';
 import { Student } from '../../collections/student.js';
 import { Random } from 'meteor/random'
 
-<<<<<<< HEAD
 var idS = [];
-Template.surveysResults.onCreated(function() {
-=======
+
 Template.viewSurveyPage.onCreated(function() {
->>>>>>> 61b5e6405784038dd99caee70581be23cce60574
   Meteor.subscribe("Surveys", function() {
     var survey = Surveys.findOne({_id: FlowRouter.getParam("id")});
     // if(survey == undefined) {
@@ -72,28 +69,12 @@ Template.viewSurveyPage.events({
   'click #sendResponseBtnn': function(event){
     var mcAnswer;
     var surveyId = FlowRouter.getParam('id');
-    var allQuestionsArray = Surveys.findOne(surveyId);
-    var data = allQuestionsArray.questions;
-    console.log(idS);
-
-    // data.forEach(function(element){
-    //
-    //   console.log(element.options);
-    //   for(var j = 0; j < element.options.length; j++)
-    //   {
-    //     mcAnswer = element.options[j].refId;
-    //     if(document.getElementById(mcAnswer).checked)
-    //     {
-    //       console.log("Option Selected");
-    //       console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-    //       Meteor.call("sendResponses", surveyId, mcAnswer);
-    //     }
-    //   }
-    // });
+    // console.log(idS);
 
     for(var i = 0; i < idS.length; i++)
     {
-      console.log(idS[i].options);
+      // console.log(idS[i].options);
+
       for(var j = 0; j < idS[i].options.length; j++)
       {
         console.log(idS[i].options[j].name);
@@ -102,15 +83,14 @@ Template.viewSurveyPage.events({
         console.log(document.getElementById(mcAnswer.refId).checked);
         if(document.getElementById(mcAnswer.refId).checked)
         {
-          console.log("Option Selected");
           console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-          console.log(data[i].dateHash);
-          Meteor.call("sendResponse", surveyId, data[i], data[i].dateHash, mcAnswer.name, i);
+          Meteor.call("sendResponse", surveyId, idS[i], idS[i].dateHash, mcAnswer.name, i);
           break;
         }
       }
     }
-    idS = [];
+    FlowRouter.go("/assignments");
+    //idS = [];
     // FlowRouter.go('/surveys');
   }
 });
