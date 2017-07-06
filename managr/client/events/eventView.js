@@ -19,12 +19,6 @@ Template.eventView.events({
 	}
 });
 
-// Template.eventView.events({
-// 	'click .slider': function(event){
-// 		if()
-// 	}
-// });
-
 Template.eventView.events({
 	'click #rsvpEventButton': function(event){
 	 event.preventDefault();
