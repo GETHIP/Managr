@@ -1,7 +1,6 @@
 #welcome {
   padding-top:20px;
 }
-
-.calendarPad {
-  padding-top: 30px;
+#eventSave {
+  background-color: #BD53FF;
 }

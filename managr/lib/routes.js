@@ -227,6 +227,14 @@ FlowRouter.route('/events/edit/:id', {
 	}
 });
 
+FlowRouter.route('/events/calendar/:id', {
+	name: 'eventSave',
+	action: function() {
+		BlazeLayout.reset();
+		BlazeLayout.render("eventsLayout", {content: 'eventSave'});
+	}
+});
+
 FlowRouter.route('/events/view/:id', {
 	name: 'eventView',
 	action: function() {
