@@ -40,27 +40,27 @@ Template.attending.onCreated(function() {
 
 Template.attending.helpers({
   'event': function(){
-  data = Events.findOne({_id: FlowRouter.getParam("id")});
-  rList = data.rsvp;
-  var countAttending = 0;
-  var countNotAttending = 0;
-  for(var i = 0; i < rList.length; i++){
-    var student = Student.findOne({_id: rList[i]._id});
-    name = student.name;
-    rList[i].name = name;
-    if(rList[i].rsvp == true){
-      rList[i].status = "Attending";
-      countAttending++;
-    }else{
-      rList[i].status = "Not Attending";
-      countNotAttending++;
+    data = Events.findOne({_id: FlowRouter.getParam("id")});
+    rList = data.rsvp;
+    var countAttending = 0;
+    var countNotAttending = 0;
+    for(var i = 0; i < rList.length; i++){
+      var student = Student.findOne({_id: rList[i]._id});
+      name = student.name;
+      rList[i].name = name;
+      if(rList[i].rsvp == true){
+        rList[i].status = "Attending";
+        countAttending++;
+      }else{
+        rList[i].status = "Not Attending";
+        countNotAttending++;
+      }
     }
-  }
-  console.log(countAttending);
-  console.log(countNotAttending);
-  rList.countAttending = countAttending;
-  rList.countNotAttending = countNotAttending;
-  return rList;
+    console.log(countAttending);
+    console.log(countNotAttending);
+    rList.countAttending = countAttending;
+    rList.countNotAttending = countNotAttending;
+    return rList;
 }
 
 });
