@@ -86,16 +86,16 @@ Template.createEvent.helpers({
     }
 });
 
-var newformatStudentsForGroup = function(studentIds) {
-    var formattedStudents = [];
-
-    for(var i = 0; i < studentIds.length; i++) {
-        var student = Student.findOne({_id: studentIds[i]});
-        if(student == undefined) {
-            continue;
-        }
-        name = student.name;
-        formattedStudents.push(name);
-    }
-    return formattedStudents;
-};
+// var newformatStudentsForGroup = function(studentIds) {
+//     var formattedStudents = [];
+//
+//     for(var i = 0; i < studentIds.length; i++) {
+//         var student = Student.findOne({_id: studentIds[i]});
+//         if(student == undefined) {
+//             continue;
+//         }
+//         name = student.name;
+//         formattedStudents.push(name);
+//     }
+//     return formattedStudents;
+// };
