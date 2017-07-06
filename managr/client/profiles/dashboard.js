@@ -144,7 +144,7 @@ Template.dashboard.events({
 	},
     'click .realDeleteUserButton':function(e) {
         var user = Meteor.users.findOne({username: e.target.id});
-		Modal.show('deleteUserModal', user);
+		    Modal.show('deleteUserModal', user);
     },
 	'click #dummyCSVButton':function(e) {
 		var fields = [

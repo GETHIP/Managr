@@ -16,6 +16,5 @@ Template.deleteUserModal.events({
 		console.log("Deleting: ", Template.instance().data._id);
 		Meteor.call("removeUEvals", id);
 		Meteor.call('deleteUser', Template.instance().data._id);
-
 	}
 });

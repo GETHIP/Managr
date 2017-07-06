@@ -16,36 +16,20 @@ export function groupsMethods() {
       }
       Groups.remove(groupId);
     },
-
-    'createGroup': function(groupName, studentIds, size, studentNames, dateCreated) {
-      if(!isInstructor()) {
-        return;
-      }
-			var stringSize = size.toString();
-      Groups.insert({
-        name: groupName,
-        studentIds: studentIds,
-				size: size,
-				stringSize: stringSize,
-				studentNames: studentNames,
-				dateCreated: dateCreated
-      });
-    },
-
-		'updateGroup': function(groupId, groupName, studentIds, size, studentNames) {
+		'createGroup': function(groupName, dateCreated) {
 			if(!isInstructor()) {
 				return;
 			}
-			var stringSize = size.toString();
-			Groups.update({_id: groupId}, {
-				$set: {
-					name: groupName,
-					studentIds: studentIds,
-					size: size,
-					stringSize: stringSize,
-					studentNames: studentNames
-				}
-      });
+			return Groups.insert({
+				name: groupName,
+				dateCreated: dateCreated
+			});
+		},
+		'updateGroup': function(groupId, data) {
+			if(!isInstructor()) {
+				return;
+			}
+			Groups.update({_id: groupId}, {$set: data});
 		}
 	});
 }

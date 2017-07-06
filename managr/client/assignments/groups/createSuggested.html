@@ -1,28 +1,32 @@
-<template name="editGroup">
+<template name="createSuggested">
   {{#if isInstructor}}
   <div class="marginContainer">
-    <form id="editGroupForm">
-      <h1 class="titleAssignment">Edit Group Details</h1>
+    <form id="createSuggestedForm">
+      <h1 class="titleAssignment">Create Suggested Groups</h1>
       <div class="orange-bar" style="background-color: #870000">&nbsp;</div>
 
-      <p class="groupTitle"><b>Group Name:</b></p>
+      <p class="groupTitle"><b>Select Option:</b></p>
+      <!-- <p class="noIndent" style="margin-left:0px"><b>Select Option:</b></p> -->
       <p class="groupTitle changeType"><b>Group Type (Optional):</b></p>
-      <input type="text" name="groupName" value="{{groupName}}" class="groupForum" autofocus="required" style="float:left" required>
 
-      <div id="changeTypeDiv">
+      <div style="width:48%;float:left">
+          <div id="numTypeDiv">
+              <input placeholder="0" type="number" name="numTypeInput" id="numPerSuggested" required>
+              <div style="float:right;padding:2.5px">
+                  <label for="numOf" class="numTypeLabel"><input type="radio" id="numOf" name="numType" value="Number Of Groups" required/>Number Of Groups</label>
+                  <label for="numPer" class="numTypeLabel" style="margin-bottom:0px"><input type="radio" id="numPer" name="numType" value="Students Per Group" required/>Students Per Group</label>
+              </div>
+          </div>
+      </div>
+
+      <div id="changeTypeDiv" style="height:60px">
         <select id="groupTypeSelect">
 
           {{ cleargrouptypes }}
 
-          {{ #if thisgrouptype }}
-            <option value="None">None</option>
-            <option value="newType">Make New Type</option>
-            <option value="{{getthisgrouptype}}" selected>{{getthisgrouptype}}</option>
-          {{ else }}
-            <option value="None" id="blanktype" selected hidden>Select Type:</option>
-            <option value="None">None</option>
-            <option value="newType">Make New Type</option>
-          {{ /if }}
+          <option value="" id="blanktype" selected hidden>Select Type:</option>
+          <option value="None">None</option>
+          <option value="newType">Make New Type</option>
 
           {{ #each group in groups }}
             {{ #if uniquetypes group.groupType }}
@@ -33,21 +37,10 @@
         </select>
         <input type="text" name="newGroupType" placeholder="New Type" class="groupForum" id="newGroupType" style="display:none">
       </div>
+      <br>
 
-      <p class="groupTitle"><b>Select Coaches (Optional):</b></p>
-
-      <div class="instructors">
-        <div class="student">
-
-          {{#each instructors}}
-              <label for="{{instructorId}}" class="instructorLabel"><input type="checkbox" class="coach" id="{{instructorId}}" checked="{{checked}}"/>{{name}}</label>
-          {{/each}}
-
-        </div>
-      </div>
-
-      <p class="groupTitle"><b>Students Not In Group:</b></p>
-      <p class="groupTitle addedStudent"><b>Students In Group:</b></p>
+      <p class="groupTitle"><b>Students Not Selected:</b></p>
+      <p class="groupTitle addedStudent"><b>Selected Students:</b></p>
 
       <div class="studentGroup" id="otherstudents">
         <div class="student">
@@ -76,8 +69,8 @@
       <button type="submit" class="addStudents" id="addStudents"><b class="spacing">Add Selected</b></button>
       <button type="submit" class="removeStudents" id="removeStudents"><b class="spacing">Remove Selected</b></button>
 
-      <button class="buttonStyle backBtn submitbtn editGroupButton" id="cancel">Cancel</button>
-      <button class="buttonStyle editBtn submitbtn editGroupButton" type="submit" value="Edit Group" id="editGroupButton">Save Changes</button>
+      <button class="buttonStyle backBtn submitbtn createSuggestedButton" id="cancel">Cancel</button>
+      <button class="buttonStyle editBtn submitbtn createSuggestedButton" type="submit" value="Create Group" id="createSuggestedButton">Generate Suggested Groups</button>
     </form>
   </div>
   {{else}} {{> accessDenied}} {{/if}}

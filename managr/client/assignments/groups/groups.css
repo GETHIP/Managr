@@ -18,6 +18,8 @@
 }
 .buttonCollection {
   text-align: right;
+  width: 150px;
+  float: right;
 }
 .groupButton.deleteGroup {
     background: #B2332F;
@@ -36,7 +38,7 @@
     padding-bottom: 2%;
     border-bottom: 1px solid #444444;
     color: white;
-    width: 20%;
+    width: 30%;
     font-size: 18px;
 }
 .namesInGroup {
@@ -47,10 +49,13 @@
 .namesInGroup ol li {
     list-style-type: decimal;
 }
-#createGroupForm .createGroupButton, #editGroupForm .editGroupButton {
-    width: 100%;
+#editGroupForm .editGroupButton {
+    width: 48%;
     display: block;
-    margin: 15px auto;
+}
+#createSuggestedForm .createSuggestedButton {
+    width: 48%;
+    display: block;
 }
 .buttonStyle.groups {
     width: auto;
@@ -71,11 +76,247 @@
  #suggestedgroupsbutton {
     margin-right: 2%;
  }
- @media screen and (max-width: 980px) {
-    #createGroupButton, #suggestedgroupsbutton{
-        margin-top: 6.5%;
-    }
+ .studentGroup {
+   border: 2px solid #CCCCCC;
+   border-radius: 5px;
+   background-color: #ffffff;
+   overflow-x: hidden;
+   max-height: 35vh;
+   min-height: 35vh;
+   width: 48%;
+   float: left;
  }
+ .instructors {
+   border: 2px solid #CCCCCC;
+   border-radius: 5px;
+   background-color: #ffffff;
+   overflow-x: hidden;
+   overflow-y: auto;
+   max-height: 17.5vh;
+   width: 100%;
+   margin: auto;
+ }
+ #numTypeDiv {
+   border: 2px solid #CCCCCC;
+   border-radius: 5px;
+   background-color: #ffffff;
+   height: auto;
+   width: auto;
+   margin: auto;
+   display: inline-block;
+ }
+ #numOf, #numPer {
+   margin: 5px;
+ }
+ .selectAllBar {
+   border: 1px solid #CCC;
+   width: 100%;
+   margin-bottom: 0px;
+ }
+ .studentLabel.selectAll {
+   margin-bottom: 0px;
+ }
+ .studentsAdded {
+   margin-left: 4%;
+ }
+.groupTitle {
+  width: 48%;
+  overflow-x: hidden;
+  float: left;
+  margin-top: 2%;
+}
+.addedStudent, .changeType {
+  margin-left: 4%;
+}
+
+.removeStudents, .addStudents {
+   border: 2px solid #CCCCCC;
+   padding: 5px;
+   width: 48%;
+   color: white;
+   border-top: none;
+   font-size: 16px;
+}
+.removeStudents {
+  background-color: #ff3333;
+  float: right;
+}
+.removeStudents:hover {
+  background-color: #ff211a;
+}
+.addStudents {
+  background-color: #47d147;
+  float: left;
+}
+.addStudents:hover {
+  background-color: #33cc33;
+}
+.spacing {
+  letter-spacing: .2px;
+}
+.student input {
+  margin: 5px;
+}
+.studentLabel:hover {
+  background-color: #d9d9d9;
+}
+.numTypeLabel:hover {
+  background-color: #d9d9d9;
+}
+.numTypeLabel {
+  padding-right: 5px;
+}
+.instructorLabel {
+  height: 20px;
+}
+.instructorLabel:hover {
+  background-color: #d9d9d9;
+}
+.add , .remove {
+  float: left;
+  box-sizing: border-box;
+}
+.editGroupButton {
+  background-color: #870000 !important;
+}
+.createSuggestedButton {
+  background-color: #870000 !important;
+}
+#numPerSuggested {
+  height: 46px;
+  width: 60px;
+  padding-left: 14px;
+  margin: 5px 0px 0px 5px;
+}
+#numPerSuggested::-webkit-inner-spin-button, #numPerSuggested::-webkit-outer-spin-button {
+   opacity: 1;
+}
+.buttonStyle.backBtn, .buttonStyle.editBtn {
+  margin-top: 4%;
+  margin-bottom: 4%;
+}
+.buttonStyle.backBtn {
+  float: left;
+}
+.buttonStyle.editBtn {
+  margin-left: 4%;
+  float: right;
+}
+.groupForum {
+  border-radius: 6px;
+  border: 2px solid #CCCCCC;
+  width: 48%;
+  /*Important tags required here to override bootstrap*/
+	height: 2em !important;
+  margin: 0px;
+  box-sizing: border-box;
+  box-shadow: none;
+  /*float: left;*/
+}
+.groupForum:focus {
+  outline: none;
+  box-shadow: none !important;
+  border-radius: 6px;
+  border-color: white;
+  border: 2px solid #660000 !important;
+}
+#changeTypeDiv {
+  /*height: auto;*/
+  width: 48%;
+  display: inline-block;
+  margin-left: 4%;
+}
+#newGroupType {
+  width: 30%;
+  margin-left: 1%;
+}
+#groupTypeSelect {
+  width: auto;
+}
+/*#groupTypeSelect:focus {
+    outline: none;
+    box-shadow: none !important;
+    border-radius: 6px;
+    border-color: white;
+    border: 2px solid #660000 !important;
+}*/
+#groupName {
+  width: 100%;
+}
+.previewStudentsBtn {
+  position: relative;
+  display: inline-block;
+  margin-left: 5px;
+  margin-bottom: 0px;
+  margin-right: 6px;
+  font-family: georgia;
+  color: #870000;
+  font-style: italic;
+  border: 1px solid #870000;
+  width: 21px;
+  border-radius: 50px;
+  text-align: center;
+  cursor: pointer;
+}
+.previewStudentsBtn:hover {
+  border: 1px solid #660000;
+  background-color: #ccc;
+}
+.info {
+  z-index: 2;
+  display: none;
+  transform: translateY(-50%);
+  position: absolute;
+  top: 50%;
+  margin-left: 1%;
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  background-color: #ffffff;
+  border: 1px solid #929292;
+  width: 75%;
+  padding: 5%;
+  font-size: 11px;
+  color: #666666;
+  border-radius: 5px;
+}
+.previewStudentsBtn:hover + .info, .info:hover {
+  display: inline-block;
+}
+.info::before {
+  content: '';
+  width: 0;
+  height: 0;
+  font-size: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border-right: 10px solid #870000;
+  left: -10px;
+}
+.groupName {
+  display: inline-block;
+  vertical-align: middle;
+  margin-bottom: 0px;
+}
+.studentGroup:nth-child(even) {
+  margin-left: 4%;
+}
+.suggestedGroupsCard {
+  padding: 1%;
+  max-height: 45vh;
+  overflow: auto;
+  margin-bottom: 4%;
+}
+.studentsInGroup {
+  border: 1px solid #cccccc;
+  color: #666666;
+  padding: 1%;
+  max-height: 21vh;
+  overflow-y: scroll;
+  width: 50%;
+  display: inline-block;
+}
  .searchBar input[type=text]  {
     width:30%;
     height: 30px;
@@ -90,11 +331,9 @@
     background-repeat: no-repeat;
     position: relative;
  }
-
  .searchBar input[type=text]:hover, .searchBar input[type=text]:focus  {
     border: 2px solid #0397d7;
  }
-
  .sortText {
    margin: 0;
    padding: 0;
@@ -105,10 +344,83 @@
    padding-right: .4%;
    padding-left: 1.4%;
  }
-
  .sorting, .filters{
    float: right;
    width: auto;
    margin-top: 5px;
    margin-bottom: 5px;
  }
+ .suggestedGroupContent {
+   width: 48%;
+   float: left;
+   clear: left;
+   margin-left: 0px;
+ }
+ .suggestedOptions {
+   height: 2em;
+   padding: 4px;
+   width: 100%;
+ }
+ .suggestedTitles {
+   margin-top: 2%;
+   margin-bottom: 0;
+ }
+ .suggestedWidth {
+   width: 100%;
+ }
+ .moveSuggestedStudents {
+   float: right;
+   clear: right !important;
+   border-radius: 5px;
+ }
+.cancelButton {
+  background-color: #84807b;
+  margin-right: 2%;
+  }
+td.alignmid {
+  vertical-align: middle;
+}
+.groupsCard {
+	background-color: white;
+	box-shadow: 3px 3px 5px #888888;
+	padding-left: 24px;
+	padding-right: 24px;
+  padding-top: 24px;
+  padding-bottom: 24px;
+  width: 100%;
+  margin-bottom: 3%;
+}
+.nomargin {
+  margin: 0px;
+}
+.buttonStyle.editGroupBtn {
+  float: right;
+  background-color: #870000;
+  padding-top: 2.5%;
+  padding-bottom:2.5%;
+}
+.buttonStyle.groupBack {
+  float: left;
+  padding-top: 2.5%;
+  padding-bottom:2.5%;
+  background-color: #870000;
+}
+.buttonStyle.editGroupBtn:hover {
+  background-color: #660000;
+}
+.buttonStyle.groupBack:hover {
+  background-color: #660000;
+}
+.tableRowFormat.groups:hover {
+  cursor: pointer;
+  background-color: #ffe6e6 !important;
+}
+@media screen and (max-width: 980px) {
+   #createGroupButton, #suggestedgroupsbutton{
+       margin-top: 6.5%;
+   }
+}
+.tableRowFormat.groups.mygroupstable:hover {
+  cursor: default;
+  background-color: #ffe6e6 !important;
+}
