@@ -45,7 +45,7 @@ Template.editEval.helpers({
 
 //id, message, star1, star2, star3, star4, milestone,
 Template.editEval.events({
-  'click .saveEval': function(){
+  'click .save2Eval': function(){
     console.log("sdlf");
     event.preventDefault();
       var message  = document.getElementById('message').value;
