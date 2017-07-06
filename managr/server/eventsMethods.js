@@ -42,9 +42,6 @@ export function eventsMethods() {
 			Events.update({_id: eventId}, {
 				$push: {rsvp: {_id: studentId, rsvp: result, reasonNotAttending: reason}}
 			});
-			// Events.insert({
-			// 	reasonNotAttending: reasonNotAttending
-			// })
 		}
 		},
     'createNewEvent': function(hostId, host, eventName, description, date, formattedDate, location) {
