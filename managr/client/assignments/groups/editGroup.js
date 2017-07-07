@@ -219,7 +219,6 @@ Template.editGroup.events({
 						}
 				}
 				else {
-						console.log("IM NOT USELESS");
 						document.getElementById("newGroupType").style.display = "none";
 				}
 		}
@@ -250,7 +249,6 @@ Template.editGroup.helpers({
     otherstudents: function() {
 				edit_dep.depend();
         var allStudentsNotAdded = allNotAdded;
-				console.log(allNotAdded);
         var formattedStudents = [];
         for(var i = 0; i < allStudentsNotAdded.length; i++) {
             var student = allStudentsNotAdded[i];
@@ -260,13 +258,11 @@ Template.editGroup.helpers({
             }
             formattedStudents.push(formattedStudent);
         }
-				console.log(formattedStudents);
         return formattedStudents;
     },
 		addedstudents: function() {
 				edit_dep.depend();
         var allStudentsAdded = allAdded;
-				console.log(allAdded);
         var formattedStudents = [];
         for(var i = 0; i < allStudentsAdded.length; i++) {
             var student = allStudentsAdded[i];
@@ -276,7 +272,6 @@ Template.editGroup.helpers({
             }
             formattedStudents.push(formattedStudent);
         }
-				console.log(formattedStudents);
         return formattedStudents;
     },
 		instructors: function() {
