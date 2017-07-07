@@ -49,8 +49,9 @@
   <h1 class="titleviewEvaluations">Previous Evaluations</h1>
   <div class="purple-bar">&nbsp;</div>
 
+{{#if isInstructor}}
     <p class="sortDropdowns">
-      {{#if isInstructor}}
+
         Student:
       <select name="studentChoice" id="studentChoice" class="sortDropdownsSelect">
         <option value="sortAll" selected>All</option>
@@ -58,7 +59,7 @@
       		  <option value="{{_id}}">{{name}}</option>
       		{{/each}}
   		</select>
-      {{/if}}
+
   Instructor:
       <select name="selectType" id="instructorChoice" class="sortDropdownsSelect">
         <option value="sortAll" selected="selected">All</option>
@@ -75,7 +76,9 @@
   		</select>
 
     <button class="buttonStyleleader resetbtn">Reset</button>
+
     </p>
+  {{/if}}
   <table class="viewAllevalTable">
       <tr>
         <th class="tableHeadFormateval">Name &nbsp;<i class="fa fa-sort sortIcon" aria-hidden="true" id="NameSort"></i></th>
