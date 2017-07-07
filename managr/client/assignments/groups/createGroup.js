@@ -24,6 +24,7 @@ Template.createGroup.events({
         event.preventDefault();
         const form = event.target;
 
+
         var groupName = form.groupName.value;
         var inputs = document.getElementsByTagName("INPUT");
 
