@@ -70,7 +70,7 @@ question = new SimpleSchema({
 });
 
 SurveySchema = new SimpleSchema({
-	name: {
+	name: { 
 		type: String,
 		optional: false
 	},

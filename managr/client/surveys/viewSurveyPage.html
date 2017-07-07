@@ -1,14 +1,13 @@
 <template name="viewSurveyPage">
   {{#if isStudent}}
-  {{#with survey}}
-  <!-- {{#if isStudent}} -->
-  <div class="marginContainer">
-    <h1 class="titleAssignment">{{name}} &nbsp;</h1>
-    <div class="orange-bar red-bar"> &nbsp;</div>
+    {{#with survey}}
+    <div class="marginContainer">
+      <h1 class="titleAssignment">{{name}} &nbsp;</h1>
+      <div class="orange-bar red-bar"> &nbsp;</div>
 
-    <div class="surveyContainer">
-      <p class="noIndent assignmentFormFormat"><b>Complete By:  {{dueDate}}</b></p>
-      <p class="noIndent assignmentFormFormat"><b>Survey:</b></p>
+      <div class="surveyContainer">
+        <p class="noIndent assignmentFormFormat"><b>Complete By:  {{dueDate}}</b></p>
+        <p class="noIndent assignmentFormFormat"><b>Survey:</b></p>
 
       <!-- {{/each}} -->
       <!-- Questions -->

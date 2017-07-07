@@ -20,7 +20,12 @@ Template.surveysResults.events({
   'click .result'(event){
     event.preventDefault();
     console.log(event);
+<<<<<<< HEAD
     FlowRouter.go('/individualResults/' + Meteor.userId() + "/" + Student.id)
+=======
+    var studentId = Student.findOne({userId: Meteor.userId()}).userId;
+    FlowRouter.go('/individualResults/' + studentId)
+>>>>>>> 1d36a851be6a491896a1c39f891b6a44a99a0461
   }
 });
 Template.viewSurveyPage.events({
