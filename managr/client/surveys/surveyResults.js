@@ -20,7 +20,7 @@ Template.surveysResults.events({
   'click .result'(event){
     event.preventDefault();
     console.log(event);
-    FlowRouter.go('/individualResults/' + Student.findOne({name: }))
+    FlowRouter.go('/individualResults/' + Meteor.userId() + "/" + Student.id)
   }
 });
 Template.viewSurveyPage.events({
@@ -51,6 +51,7 @@ Template.surveysResults.helpers({
     var formattedStudents = [];
     for (var i = 0; i < allStudents.length; i++) {
       var student = allStudents[i];
+      console.log(student.userId);
       console.log(student);
       console.log("~~~~~~~~~~~~~~~~~~~~~~~");
       try{
@@ -73,10 +74,14 @@ Template.surveysResults.helpers({
       }
       var formattedStudent = {
         name: student.name,
-        status: studentStatus
+        status: studentStatus,
+        userId: student.userId,
+        surveyId: FlowRouter.getParam('id')
       }
       formattedStudents.push(formattedStudent);
     }
+
+
     console.log(formattedStudents);
     return formattedStudents;
   },

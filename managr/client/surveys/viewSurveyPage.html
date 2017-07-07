@@ -20,23 +20,23 @@
               {{question.prompt}}
               <ul>
                 {{#if choicetype question.questionType}}
-                <ul>
-                  {{#each option in question.options}}
-                    <li>
-                        <input id="{{option.refId}}" type="radio" name="MCQ" class="selectionForm CQlabel" />
-                        {{option.name}}
-                    </li>
-                  {{/each}}
-                </ul>
+                        <ul>
+                          {{#each option in question.options}}
+                                  <li>
+                                    <input id="{{option.refId}}" type="radio" name="MCQ" class="selectionForm CQlabel" />
+                                    {{option.name}}
+                                  </li>
+                          {{/each}}
+                        </ul>
                 {{/if}}
                 {{#if checktype question.questionType}}
                 <ul>
-                  {{#each option in question.options}}
-                  <li>
-                    <input type="checkbox" name="CBQ" value="c" class="selectionForm CQlabel" />
-                    {{option}}
-                  </li>
-                  {{/each}}
+                      {{#each option in question.options}}
+                            <li>
+                              <input type="checkbox" name="CBQ" value="c" class="selectionForm CQlabel" />
+                              {{option}}
+                            </li>
+                      {{/each}}
                 </ul>
                 {{/if}}
                 {{#if shResptype question.questionType}}
@@ -45,26 +45,17 @@
               </ul>
             </li>
           </ul>
-<<<<<<< HEAD
-        </li>
-      </ul>
     </form>
     {{/each}}
   </form>
-  </div>
-    <button id="sendResponseBtnn" class="buttonStyle sendSurvey">Send</button>
-=======
-        </form>
-        {{/each}}
-      </form>
-    </div>
-    <button id="sendResponse" class="buttonStyle sendSurvey">Send</button>
->>>>>>> 61b5e6405784038dd99caee70581be23cce60574
-    <!-- COME BACK -->
-  </div>
-  <!-- {{/if}} -->
-  {{/with}}
-  {{else}}
-  {{> accessDenied}}
-  {{/if}}
+</div>
+<button id="sendResponseBtnn" class="buttonStyle sendSurvey dontlookatme">Send</button>
+
+<!-- COME BACK -->
+</div>
+<!-- {{/if}} -->
+{{/with}}
+{{else}}
+{{> accessDenied}}
+{{/if}}
 </template>

@@ -2,12 +2,11 @@ import { Surveys } from '../../collections/surveys.js';
 import { Student } from '../../collections/student.js';
 import { Random } from 'meteor/random'
 
-<<<<<<< HEAD
+
 var idS = [];
-Template.surveysResults.onCreated(function() {
-=======
+
 Template.viewSurveyPage.onCreated(function() {
->>>>>>> 61b5e6405784038dd99caee70581be23cce60574
+
   Meteor.subscribe("Surveys", function() {
     var survey = Surveys.findOne({_id: FlowRouter.getParam("id")});
     // if(survey == undefined) {
@@ -15,6 +14,14 @@ Template.viewSurveyPage.onCreated(function() {
     // }
   });
   Meteor.subscribe("Student");
+});
+
+Template.viewSurveyPage.events({
+  'click .dontlookatme'(event){
+    event.preventDefault();
+    console.log(event);
+    FlowRouter.go('/assignments')
+  }
 });
 
 Template.viewSurveyPage.helpers({
