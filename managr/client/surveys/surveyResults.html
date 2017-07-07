@@ -52,9 +52,9 @@
       </tr>
       <!-- Each survey in table -->
       {{#each students}}
-      <tr class="tableRowFormat result">
+      <tr class="tableRowFormat result" id="{{studentId}}">
         <td class="tableDataFormat assignments" >{{this.status}}</td>
-        <td class="tableDataFormat assignments" id="{{studentId}}">{{this.name}}</td>
+        <td class="tableDataFormat assignments" >{{this.name}}</td>
         <td class="tableDataFormat assignments">{{this.dateCompleted}}</td>
       </tr>
       {{/each}}

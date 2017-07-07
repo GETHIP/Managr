@@ -20,7 +20,8 @@ Template.surveysResults.events({
   'click .result'(event){
     event.preventDefault();
     console.log(event);
-    FlowRouter.go('/individualResults/' + Student.findOne({name: }))
+    var studentId = Student.findOne({userId: Meteor.userId()}).userId;
+    FlowRouter.go('/individualResults/' + studentId)
   }
 });
 Template.viewSurveyPage.events({
