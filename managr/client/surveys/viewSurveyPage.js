@@ -86,7 +86,7 @@ Template.viewSurveyPage.events({
         if(document.getElementById(mcAnswer.refId).checked)
         {
           console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-          Meteor.call("sendResponse", surveyId, idS[i], idS[i].dateHash, mcAnswer.name, i);
+          Meteor.call("sendResponse", surveyId, idS[i], idS[i].dateHash, mcAnswer.name);
           break;
         }
       }

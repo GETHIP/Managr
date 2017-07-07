@@ -146,8 +146,6 @@ export function surveysMethods() {
  		//console.log(Meteor.userId());
  		console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~1");
  		var studentId = Student.findOne({userId: Meteor.userId()}).userId;
- 		console.log(studentId);
- 		console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~2");
  	// 	var studentAns = {studentId: studentId, answer: mcAnswer};
  	// 	var updatedQuestion = question;
  	// 	updatedQuestion.studentResults.push(studentAns);
@@ -158,27 +156,25 @@ export function surveysMethods() {
  		var totalQuestions = totalSurveys.questions;
  		var newStudentResults;
  		var newAnswer = {};
- 		var newQuestions = {};
+
  		for(var j = 0; j < totalQuestions.length; j++) {
  			var totalOptions = totalQuestions[j].options;
- 			for(var i = 0; i < totalOptions.length; i++) {
- 				if(totalQuestions[i].dateHash == questionHash) {
+ 		// 	for(var i = 0; i < totalOptions.length; i++) {
+ 				if(totalQuestions[j].dateHash == questionHash) {
  					newAnswer.studentId = studentId;
  					newAnswer.answer = mcAnswer;
- 					newQuestions.studentResults = newAnswer;
- 					newQuestions.dateHash = questionHash;
+
  					Surveys.update({_id: surveyId, "questions.dateHash": questionHash},
  					{
- 						$set: {
- 							"questions.$": {
- 								studentAnswer: newAnswer
- 							}
+ 						$push: {
+ 							"questions.$.studentResults": newAnswer
+
  							//questions: newQuestions;
  						}
  					});
  					break;
  				}
- 			}
+ 		// 	}
  		}
   }
 });
