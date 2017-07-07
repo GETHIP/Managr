@@ -25,6 +25,48 @@ Template.createEvent.events({
 
     const form = event.target;
 
+    var sListData = Student.find().fetch();
+    var gListData = Groups.find().fetch();
+    var sList = [];
+    var gList = [];
+    var sCheckData = [];
+    var gCheckData = [];
+
+    var sCheckTrans = [];
+    var gCheckTrans = [];
+    console.log("ksdf");
+    for (var i = 0; i < sListData.length; i++) {
+      sList.push(sListData[i]._id);
+    }
+
+    for (var i = 0; i < gListData.length; i++) {
+      gList.push(gListData[i]._id);
+    }
+
+    for (var i = 0; i < sList.length; i++) {
+      sCheckData.push(document.getElementById(sList[i]).checked);
+       console.log(sCheckData);
+    }
+
+    for (var i = 0; i < gList.length; i++) {
+      gCheckData.push(document.getElementById(gList[i]).checked);
+    }
+
+    for (var i = 0; i < sCheckData.length; i++) {
+      if(sCheckData[i] == true){
+        sCheckTrans.push(sList[i]);
+      }
+    }
+
+    for (var i = 0; i < gCheckData.length; i++) {
+      if(gCheckData[i] == true){
+        gCheckTrans.push(gList[i]);
+      }
+    }
+    //
+    console.log(sCheckTrans);
+    console.log(gCheckTrans);
+
     // // var groupName = form.groupName.value;
     // var inputs = document.getElementsByTagName("INPUT");
     //
@@ -50,8 +92,7 @@ Template.createEvent.events({
     console.log(formattedDate);
 
 
-    Meteor.call("createNewEvent", hostId, host, eventName, description, date, formattedDate, location);
-
+    Meteor.call("createNewEvent", hostId, host, eventName, description, date, formattedDate, location, sCheckTrans, gCheckTrans);
     FlowRouter.go('/events');
   }
 });

@@ -52,7 +52,30 @@ export function publishAll() {
 	});
 
 	Meteor.publish("Events", function() {
+		if(Roles.userIsInRole(this.userId, "student")){
+		var allEvents = [];
+		var data = Events.find().fetch();
+		var id = Student.findOne({userId: this.userId})._id;
+		console.log("REAL: " + id);
+		console.log(this.userId);
+		for (var i = 0; i < data.length; i++) {
+			console.log(data[i]);
+			console.log(data[i].studentInvites.indexOf(id));
+			if(data[i].studentInvites.indexOf(id) != -1){
+				allEvents.push(data[i]);
+			}
+		}
+		console.log("*************************");
+		console.log(allEvents);
+		var returnIds = [];
+		for (var i = 0; i < allEvents.length; i++) {
+			returnIds.push(allEvents[i]._id);
+		}
+		console.log(returnIds);
+		return Events.find({_id: { $in: returnIds }});
+	}else{
 		return Events.find();
+	}
 	});
 
 	Meteor.publish("userData", function() {

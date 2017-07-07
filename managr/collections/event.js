@@ -61,6 +61,16 @@ EventSchema = new SimpleSchema({
       label: "rsvp",
       optional: true
     },
+    studentInvites: {
+        type: [String],
+        label: "sInvites",
+        optional: true
+    },
+    groupInvites: {
+        type: [String],
+        label: "gInvites",
+        optional: true
+    }
     // studentIds: {
     //     type: [String],
     //     label: "Student IDs",
@@ -85,16 +95,16 @@ UserProfile = new SimpleSchema({
     }
 
 });
-
-invites = new SimpleSchema({
-    invitee: {
-        type: String,
-        label: "invitee",
-        max: 500
-    },
-    EventSchema: {
-        type: EventSchema,
-    }
-});
+//
+// invites = new SimpleSchema({
+//     invitee: {
+//         type: String,
+//         label: "invitee",
+//         max: 500
+//     },
+//     EventSchema: {
+//         type: EventSchema,
+//     }
+// });
 
 Events.attachSchema(EventSchema);

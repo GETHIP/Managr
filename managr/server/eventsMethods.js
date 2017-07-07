@@ -44,7 +44,7 @@ export function eventsMethods() {
 			});
 		}
 		},
-    'createNewEvent': function(hostId, host, eventName, description, date, formattedDate, location) {
+    'createNewEvent': function(hostId, host, eventName, description, date, formattedDate, location, sInvites, gInvites) {
       if(!isInstructor()) {
         return;
       }
@@ -55,10 +55,12 @@ export function eventsMethods() {
 	      description: description,
 				date: date,
 				formattedDate: formattedDate,
-				location: location
+				location: location,
+				studentInvites: sInvites,
+				groupInvites: gInvites
 			});
     },
-			'updateEvent': function(eventId, eventName, description, date, formattedDate, location) {
+			'updateEvent': function(eventId, eventName, description, date, formattedDate, location, sList, gList) {
 				if(!isInstructor()) {
 					return;
 				}
@@ -68,7 +70,9 @@ export function eventsMethods() {
 			      description: description,
 						date: date,
 						formattedDate: formattedDate,
-						location: location
+						location: location,
+						studentInvites: sList,
+						groupInvites: gList
 					}
 				});
 			},
