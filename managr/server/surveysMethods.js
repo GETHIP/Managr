@@ -143,7 +143,7 @@ export function surveysMethods() {
 			});
 		}
 	},
-	'sendResponse': function(surveyId, question, questionHash, mcAnswer) {
+	'sendResponse': function(surveyId, question, questionHash, mcAnswer) { 
 		//console.log(Meteor.userId());
 		console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~1");
 		var studentId = Student.findOne({userId: Meteor.userId()}).userId;
