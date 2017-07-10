@@ -19,7 +19,7 @@
             <ul>
               {{#each option in question.options}}
               <li>
-                <input id="MCradio" type="radio" name="MCQ" value="r" class="selectionForm CQlabel" />
+                <input id="MCradio" type="radio" name="MCQ" value="r" class="selectionForm CQlabel questionOptions" />
                 {{option}}
               </li>
               {{/each}}
@@ -29,7 +29,7 @@
             <ul>
               {{#each option in question.options}}
               <li>
-                <input type="checkbox" name="CBQ" value="c" class="selectionForm CQlabel" />
+                <input type="checkbox" name="CBQ" value="c" class="selectionForm CQlabel questionOptions" />
                 {{option}}
               </li>
               {{/each}}
@@ -48,14 +48,12 @@
       <tr>
         <th class="surveyTableHeadFormat surveys">Status</th>
         <th class="surveyTableHeadFormat surveys ">Student</th>
-        <th class="surveyTableHeadFormat surveys">Date Completed</th>
       </tr>
       <!-- Each survey in table -->
       {{#each students}}
       <tr class="tableRowFormat result">
         <td class="tableDataFormat assignments">{{this.status}}</td>
         <td class="tableDataFormat assignments stud" value="{{this.userId}}">{{this.name}}</td>
-        <td class="tableDataFormat assignments">{{this.dateCompleted}}</td>
       </tr>
       {{/each}}
     </table>

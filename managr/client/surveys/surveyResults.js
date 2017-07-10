@@ -29,9 +29,9 @@ Template.surveysResults.events({
   }
 });
 Template.viewSurveyPage.events({
-  'click #sendResponse'(){
+  'click #sendResponseBtnn'(){
     var surveyId = FlowRouter.getParam("id");
-    Meteor.call('incCompletedSurveyCt', surveyId);
+    Meteor.call('incCount', surveyId);
   }
 });
 // var findStudentSurvey = function() {
@@ -59,9 +59,23 @@ Template.viewSurveyPage.events({
     },
     students: function(){
       var allStudents = Student.find({}).fetch();
+      var surveyId = FlowRouter.getParam("id");
+      var currentSurvey = Surveys.findOne(surveyId);
+      console.log(currentSurvey);
+      var questions = currentSurvey.questions;
+      var quest = questions[0];
+      console.log(quest);
+      var resultsArr = quest.studentResults;
+      console.log(resultsArr);
       var formattedStudents = [];
       for (var i = 0; i < allStudents.length; i++) {
         var student = allStudents[i];
+        var studentStatus = "Incomplete";
+        for(var j = 0; j < resultsArr.length; j++){
+          if(student.userId == resultsArr[j].studentId){
+            studentStatus = "Complete";
+          }
+        }
         console.log(student.userId);
         console.log(student);
         console.log("~~~~~~~~~~~~~~~~~~~~~~~");
@@ -73,7 +87,7 @@ Template.viewSurveyPage.events({
         // } catch(err) {
         //   console.log(err.message);
         // }
-        var studentStatus = "Incomplete";
+
         // try{
         //   if(studentSurvey.completed == true){
         //     var studentStatus = "Complete";

@@ -19,14 +19,14 @@ Template.newSurvey.events({
     //converst dat to string and slices date
     const date = moment(document.getElementById('dueDate').value).format("MM/DD/YYYY").toString().slice(0,14);
     // var question = document.getElementById('questionFormm').value;
-    const anonToggle = document.getElementById('anonymousToggle').checked;
+    // const anonToggle = document.getElementById('anonymousToggle').checked;
     //    var question = target.prompt.value;
     console.log(surveyName);
     console.log(date);
-    console.log(anonToggle);
+    // console.log(anonToggle);
     // console.log(inputs);
 
-    Meteor.call("createNewSurvey", surveyName, date, anonToggle, function(error, result) {
+    Meteor.call("createNewSurvey", surveyName, date, function(error, result) {
       FlowRouter.go("/addQuestion/" + result);
     });
   }

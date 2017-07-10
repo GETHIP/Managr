@@ -81,3 +81,7 @@ label {
   background: none;
   float: right;
 }
+
+.questionOptions {
+  margin-left: 20px !important;
+} 
