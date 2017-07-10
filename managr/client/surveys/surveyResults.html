@@ -66,3 +66,13 @@
   {{/if}}
 </template>
 <!-- <button id="deleteSurvey" class="buttonStyle delete">Delete</button> -->
+
+<template name="surveyRowsIndividual">
+  {{#with surveys}}
+    <tr class="tableRowFormat rowClick" onclick="FlowRouter.go('{{this.url}}')">
+      <td class="tableDataFormat assignments">{{this.status}}</td>
+      <td class="tableDataFormat assignments">{{this.studentName}}</td>
+      <td class="tableDataFormat assignments">{{this.dateCompleted}}</td>
+    </tr>
+  {{/with}}
+</template>
