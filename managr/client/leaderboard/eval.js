@@ -41,7 +41,7 @@ Template.eval.events({
   'click .updateBtn': function(event){
 
   },
-  'click .backEval': function(event){
+  'click .backStudentEval': function(event){
     FlowRouter.go("/viewEval");
     event.preventDefault();
   },
