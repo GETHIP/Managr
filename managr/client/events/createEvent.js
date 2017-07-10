@@ -140,3 +140,12 @@ Template.createEvent.helpers({
 //     }
 //     return formattedStudents;
 // };
+Template.createEvent.events({
+  'click #selectAllStudents': function(event){
+    // $('#selectAllStudents').click(function(event) {
+    elements = document.getElementById(this.studentId);
+    for (var i = 0; i < elements.length; i++){
+      elements[i].checked = true;
+    }
+  }
+});
