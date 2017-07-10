@@ -7,12 +7,30 @@ import { Student } from '../collections/student.js';
 import { Groups } from '../collections/groups.js';
 import { Drafts } from '../collections/drafts.js';
 import { Globals } from '../collections/globals.js';
+import { Eval } from '../collections/eval.js'
+import { Milestone } from '../collections/milestone.js';
 
 export function publishAll() {
 
 	Meteor.publish("Assignments", function() {
         return Assignments.find();
     });
+
+		Meteor.publish("Milestone", function() {
+	        return Milestone.find();
+	    });
+
+	Meteor.publish("Eval", function() {
+		if(Roles.userIsInRole(this.userId, "instructor")){
+				return Eval.find();
+			}else if(Roles.userIsInRole(this.userId, "student")){
+				console.log("It running 7/5");
+				console.log(this.userId);
+				console.log(Eval.find({evaluatee: Student.findOne({userId: this.userId})._id}).fetch());
+				return Eval.find({evaluatee: Student.findOne({userId: this.userId})._id});
+				//
+			}//
+		});
 
 	Meteor.publish("Comments", function(){
 		return Comments.find();

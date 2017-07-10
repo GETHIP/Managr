@@ -22,4 +22,4 @@ Template.adminSingleAssignment.events({
 			Modal.show('deleteAssignmentModal');
 		}
 
-});
+});  

@@ -320,9 +320,9 @@ header {
   width: 5%;
 }
 
-::-webkit-calendar-picker-indicator {
+.assignmentForm ::-webkit-calendar-picker-indicator {
   color:rgba(0,0,0,0);
-  background:url(http://strictthemes.com/wp-content/plugins/stkit/assets/images/icons/16/glyphs/gray/calendar.png);
+ background:url(http://strictthemes.com/wp-content/plugins/stkit/assets/images/icons/16/glyphs/gray/calendar.png);
 }
 .tableDataFormatStudent {
   padding-top: 2%;

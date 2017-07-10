@@ -40,4 +40,7 @@ peppelg:bootstrap-3-modal
 session@1.1.7
 maxharris9:csv-import
 shell-server@0.2.3
+barbatus:stars-rating
+semantic:ui-dropdown
+
 check

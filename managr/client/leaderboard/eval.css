@@ -1,0 +1,97 @@
+.evaluationContainer {
+width: 100%;
+background: white;
+box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+margin-bottom: 3%;
+margin-top: 1.5%;
+height: auto;
+align-self: center;
+padding: 2%;
+overflow: auto;
+}
+.starEval {
+  display: inline-block;
+}
+.starScore {
+  margin-bottom: 3px
+}
+.editEval {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.editEval:hover {
+  background-color: #9f53e0;
+}
+
+.deleteEval {
+  background-color: #D11149 !important;
+}
+
+.deleteEval:hover {
+  background-color: #FF5050 !important;
+}
+
+.buttonStyleEval {
+  width: 32%;
+  background-color: #7700DD;
+  border: none;
+  color: white;
+  padding: 1.25%;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: center;
+  font-size: 18px;
+  border-radius: 6px;
+  margin-bottom: 2%;
+  margin-top: .5%;
+  float: left;
+  }
+  .buttonStyleEval.deleteEval {
+    width: 32%;
+    background-color: #7700DD;
+    border: none;
+    color: white;
+    padding: 1.25%;
+    text-decoration: none;
+    cursor: pointer;
+    text-align: center;
+    font-size: 18px;
+    border-radius: 6px;
+    margin-bottom: 2%;
+    margin-top: .5%;
+    float: left;
+    }
+.evalContent {
+  float: left;
+}
+.buttonStyleEval.deleteEval {
+  width: 32%;
+  background-color: #7700DD;
+  border: none;
+  color: white;
+  padding: 1.25%;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: center;
+  font-size: 18px;
+  border-radius: 6px;
+  margin-bottom: 2%;
+  margin-top: .5%;
+  float: left;
+  }
+  .buttonStyleEval.backStudentEval {
+    width: 100%;
+    background-color: #7700DD;
+    border: none;
+    color: white;
+    padding: 1.25%;
+    text-decoration: none;
+    cursor: pointer;
+    text-align: center;
+    font-size: 18px;
+    border-radius: 6px;
+    margin-bottom: 2%;
+    margin-top: .5%;
+    float: left;
+    }

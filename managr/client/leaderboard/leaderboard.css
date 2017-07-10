@@ -1,0 +1,256 @@
+header {
+  padding: 20px 15px 15px 15px;
+  position: relative;
+}
+
+.viewAllStudentTable{
+  width: 100%;
+}
+.viewAllStudentTable td {
+  text-align: center;
+
+}
+.viewAllStudentTable th {
+  color: white;
+  font-size: 18px;
+  text-align: center;
+  background-color: #7700DD;
+  padding-top: 2.5%;
+  padding-left: 1%;
+  padding-right: 1%;
+  padding-bottom: 2.5%;
+  border-bottom: 1px solid #444444;
+}
+.titleEvaluations {
+  font-family: arial, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 40px;
+  display: inline-block;
+  margin-top: 1%;
+  /* width: 100%; */
+}
+.titleLeader {
+  font-family: arial, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 40px;
+  display: inline-block;
+  margin-top: 1%;
+  /* width: 100%; */
+}
+
+@media screen and (max-width: 980px) {
+  .titleLeader {
+    margin-top: 6.5%;
+  }
+}
+
+
+.leaderboard {
+  border-collapse: collapse;
+  font-size: 14px;
+  width: 100%;
+  height: 4px;
+  min-width: 93%;
+  margin-top: 1%;
+  margin-bottom: 2%;
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+
+.leaderboard {
+  padding-top: 1.75%;
+  padding-bottom: 1.75%;
+  border-bottom: 1px solid #444444;
+  color: white;
+  width: 16.666%;
+  font-size: 16px;
+  text-align: center;
+}
+
+.leaderboard td {
+  padding-top: 1.5%;
+  color: black;
+  width: 16.666%;
+  font-size: 14px;
+  text-align: center;
+
+}
+
+.purple-bar {
+  max-width: 100%;
+  max-height: 4px;
+  background: #7700DD;
+  margin-top: .5%;
+  margin-bottom: .5%;
+
+}
+
+.marginContainer {
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.buttonStyleleader.leaderboardBtn {
+  width: 15%;
+  font-size: 14px;
+  float: right;
+  padding: 1%;
+}
+.buttonStyleleader.submitBtn {
+  width: 15%;
+  font-size: 14px;
+  float: right;
+  padding: 1%;
+}
+
+.buttonStyleleader {
+  width: 100%;
+  background-color: #7700DD;
+  border: none;
+  color: white;
+  padding: 1.25%;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: center;
+  font-size: 18px;
+  border-radius: 6px;
+  margin-bottom: 2%;
+  margin-top: 1%;
+  }
+
+.buttonStyleleader:hover {
+  background-color: #9f53e0;
+}
+.tableHeadleaderFormat {
+  background-color: #7700DD;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  border-bottom: 1px solid #444444;
+  color: white;
+  width: 50%;
+  font-size: 18px;
+  text-align: center;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+.mytext {
+    width: 50%;
+    height: 420px;
+    font-size: 18px;
+}
+
+
+.textformContainer {
+	width: 100%;
+	background: white;
+	box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+	margin-bottom: 1%;
+	margin-top: 1%;
+	padding: 24px;
+	height: auto;
+	display: inline-block;
+  }
+
+  .dropdownformContainer {
+    margin-bottom: 3%;
+	  margin-top: 1.5%;
+	  padding: 15px;
+    display: inline-block;
+  }
+  .formstarsContainer {
+      margin-bottom:0;
+    	margin-top: 1.5%;
+    	padding: 15px;
+  	  display: inline-block;
+      margin-left: 16em;
+
+  }
+  .formstarsb {
+    display: inline-block;
+    margin-top: 1.5%
+    padding 15px;
+
+  }
+
+.mystar .current-rating {
+  color: #7700dd;
+}
+
+.mystar .active {
+  color: #8419e0;
+}
+
+.evalText {
+  display: inline-block;
+}
+
+.starLabel {
+  float:inherit;
+  margin-bottom: 5px;
+  margin-top: 5px;
+
+}
+textarea {
+  resize:none;
+  width: 100%;
+}
+.textarea1 {
+  margin-left: 5px;
+  margin-right: 5px;
+  width:100%;
+}
+.switch {
+  width: 60px;
+  height: 34px;
+}
+.tableDataFormat.leaderboard {
+  padding-top: 2%;
+  padding-bottom: 2%;
+  color: black;
+  text-align: center;
+  width: 50%;
+  cursor: pointer;
+  border: none;
+  box-shadow: none;
+}
+
+.tableRowFormat.leaderboard {
+  text-align: center;
+  font-size: 16px;
+  border: none;
+  box-shadow: none;
+}
+.tableRowFormat.leaderboard:nth-child(odd) {
+  background-color: #EEEEEE !important;
+}
+.tableRowFormat.leaderboard:nth-child(even) {
+  background-color: white !important;
+}
+.viewAllStudentTable {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+.tableHeadFormateval, .tableDataFormat.leaderboard {
+  width: 14.3%;
+}
+.buttonStyleleader.resetbtn {
+  width: 20%;
+  background-color: #7700DD;
+  border: none;
+  color: white;
+  padding: 0.45%;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: center;
+  font-size: 18px;
+  border-radius: 6px;
+  margin-top: 0%;
+  margin-left: 2.5%;
+  margin-bottom: 8px;
+  width: 147.53126px;
+  display: inline-block;
+  }
