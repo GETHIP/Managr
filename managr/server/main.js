@@ -6,6 +6,7 @@ import { Assignments } from '../collections/assignments.js';
 import { Instructor } from '../collections/instructor.js';
 import { Student } from '../collections/student.js';
 import { Groups } from '../collections/groups.js';
+import { Events } from '../collections/event.js';
 import { isStudent, isInstructor, userIsValid, currentUserOrInstructor, nameOfUser } from '../lib/permissions.js';
 import { Drafts } from '../collections/drafts.js';
 import { publishAll } from './publish.js';
@@ -14,6 +15,8 @@ import { blogsMethods } from './blogsMethods.js';
 import { assignmentsMethods } from './assignmentsMethods.js';
 import { profilesMethods } from './profilesMethods.js';
 import { groupsMethods } from './groupsMethods.js';
+// IS IN GRUOPSMETHODS
+import { eventsMethods } from './eventsMethods.js';
 import { dashboardMethods } from './dashboardMethods.js';
 import { leaderboardMethods } from './leaderboardMethods.js';
 import { Globals } from '../collections/globals.js';
@@ -77,6 +80,7 @@ Meteor.startup(() => {
 	assignmentsMethods();
 	profilesMethods();
 	groupsMethods();
+	eventsMethods();
 	dashboardMethods();
 	leaderboardMethods();
 

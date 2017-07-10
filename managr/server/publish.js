@@ -5,6 +5,7 @@ import { Assignments } from '../collections/assignments.js';
 import { Instructor } from '../collections/instructor.js';
 import { Student } from '../collections/student.js';
 import { Groups } from '../collections/groups.js';
+import { Events } from '../collections/event.js';
 import { Drafts } from '../collections/drafts.js';
 import { Globals } from '../collections/globals.js';
 import { Eval } from '../collections/eval.js'
@@ -72,35 +73,40 @@ export function publishAll() {
 		return Groups.find();
 	});
 
+	Meteor.publish("Events", function() {
+		if(Roles.userIsInRole(this.userId, "student")){
+		  var allEvents = [];
+		  var groupIdList = [];
+		  var data = Events.find().fetch();
+		  var groupData = Groups.find().fetch();
+		  var id = Student.findOne({userId: this.userId})._id;
+
+		for (var i = 0; i < groupData.length; i++) {
+			if(groupData[i].studentIds.indexOf(id) != -1){
+				groupIdList.push(groupData[i]._id);
+			}
+		}
+    for(var x = 0; x < groupIdList.length; x++){
+      for (var i = 0; i < data.length; i++) {
+        if(data[i].studentInvites.indexOf(id) != -1 || data[i].groupInvites.indexOf(groupIdList[x]) != -1){
+          allEvents.push(data[i]);
+        }
+      }
+    }
+		var returnIds = [];
+		for (var i = 0; i < allEvents.length; i++) {
+			returnIds.push(allEvents[i]._id);
+		}
+		return Events.find({_id: { $in: returnIds }});
+	}else{
+		return Events.find();
+	}
+  });
+  
 	Meteor.publish("singleGroup", function(id) {
 		check(id, String);
 		return Groups.find({_id: id});
 	});
-
-	Meteor.publish("CurrentAdded", function(id) {
-		// check(id, String);
-		// var thisGroup = Groups.find({_id: id});
-		// return thisGroup.;
-	});
-
-	Meteor.publish("CurrentNotAdded", function(id) {
-		// check(id, String);
-		// console.log(id);
-		// var thisGroup = Groups.find({_id: id});
-		// var studentsIn = thisGroup.studentIds;
-		// var studentsOut = Student.find({ isArchived: false });
-		// var index;
-		// for(var i = 0; i < studentsIn.length; i++) {
-		// 		for(var ii = 0; ii < studentsOut.length; ii++) {
-		// 				if(studentsOut[ii]._id === studentsIn[i]) {
-		// 						studentsOut.splice(ii, 1);
-		// 						ii = -1;
-		// 				}
-		// 		}
-		// }
-		// return studentsOut;
-	});
-
 	Meteor.publish("userData", function() {
 		return Meteor.users.find({});
 	});

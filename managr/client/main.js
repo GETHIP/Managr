@@ -6,6 +6,7 @@ import { Assignments } from "../collections/assignments.js";
 import { Student } from "../collections/student.js";
 import { Instructor } from "../collections/instructor.js";
 import { nameOfUser } from '../lib/permissions.js';
+import { Events } from '../collections/event.js';
 import { Groups } from "../collections/groups.js";
 
 PostsIndex = new EasySearch.Index({
@@ -76,6 +77,44 @@ studentIndex = new EasySearch.Index({
   defaultSearchOptions: {
     limit: 1000
   }
+});
+
+eventsIndex = new EasySearch.Index({
+	collection: Events,
+	fields: ['name', 'description', 'location', 'host'],
+	defaultSearchOptions: {
+		sortBy: 'name',
+		limit: 1000
+	},
+	engine: new EasySearch.Minimongo({
+	  transform: function(doc){
+			var eachEvent = {};
+			eachEvent = {
+					name: doc.name,
+					description: doc.description,
+					date: doc.date,
+					location: doc.location,
+					formattedDate: doc.formattedDate,
+					eventId: doc._id,
+					host: doc.host,
+					rsvp: doc.rsvp,
+					reasonNotAttending: doc.reasonNotAttending
+			};
+			return eachEvent;
+	  },
+		sort: function (searchObject, options) {
+				const sortBy = options.search.props.sortBy
+
+				if ('default' === sortBy) {
+					return;
+				}
+				else if ('name' === sortBy) {
+					return {
+						name: 1,
+					};
+				}
+		}
+	})
 });
 
 groupIndex = new EasySearch.Index({

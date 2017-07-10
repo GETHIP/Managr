@@ -1,0 +1,36 @@
+<template name="editEvent">
+  <div class="containerDiv form marginContainer">
+    <div class="containerDiv form">
+      <form id="eventForm">
+        <div class="containerDiv formbg cep editEventPad">
+          <div class="editHeading">
+            <p id="welcome">Edit Event</p>
+            <p id="lineP"></p>
+          </div>
+          <div class ="formdashboardContainer">
+          <p>Event Name:</p>
+          <input id="editEventBox" type="text" name="name" placeholder="Name Of Your Event" value="{{eventName}}" autofocus required>
+          <p>Description:</p>
+          <textarea id="editEventBox" name="description" rows="6" placeholder="Describe Your Event" value="{{eventDescription}}" required></textarea>
+          <p>When:</p>
+          <input id="editEventBox" type="datetime-local" name="date" value="{{eventDate}}">
+          <p>Location:</p>
+          <input id="editEventBox" type="text" name="location" placeholder="Where's Your Event?" value="{{eventLocation}}" autofocus required>
+          <p>Invite:</p>
+          <h5>Groups:</h5>
+          {{#each groups}}
+	          <label for="{{id}}"><input type="checkbox" {{checkedS}} class="groupCheckBox" id="{{id}}"/> {{name}}</label>
+	        {{/each}}
+	        <hr/>
+          <h5>Students:</h5>
+					{{#each students}}
+							<label for="{{studentId}}"><input type="checkbox" {{checkedS}} id="{{studentId}}"/> {{name}}</label>
+					{{/each}}
+        </div>
+        </div>
+       <button type="button" id="eventCancel" class="buttonStyle cancelUserCreate leftFloatingButton" onclick="FlowRouter.go('/events');">Cancel</button>
+			 <button type="submit" id="submitEditEventButton" value="Create" class="buttonStyle cancelUserCreate rightFloatingButton">Edit My Event</button>
+      </form>
+    </div>
+  </div>
+</template>

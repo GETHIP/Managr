@@ -225,13 +225,18 @@ profileSection.route("/profile", {
 	}
 });
 
+FlowRouter.route('/events', {
+	action: function(params, queryParams) {
+		BlazeLayout.render("eventsLayout", {content: 'eventsPage'});
+	}
+});
+
 FlowRouter.route('/home/blogs/:year/:month', {
 	name: 'archives',
 	action : function(params) {
 		BlazeLayout.render(blogLayout, {content: 'archives'});
 	}
 });
-
 FlowRouter.route('/home/createPost', {
 	name: 'createPost',
 	action() {
@@ -239,6 +244,46 @@ FlowRouter.route('/home/createPost', {
 		BlazeLayout.render(blogLayout, {content: 'createBlogPost'});
 	}
 });
+
+FlowRouter.route('/events/createEvent', {
+	name: 'createEvent',
+	action: function() {
+		BlazeLayout.reset();
+		BlazeLayout.render("eventsLayout", {content: 'createEvent'});
+	}
+});
+
+FlowRouter.route('/myEvents', {
+	name: 'myEventsPage',
+	action: function() {
+		BlazeLayout.reset();
+		BlazeLayout.render("eventsLayout", {content: 'myEventsPage'});
+	}
+});
+FlowRouter.route('/events/edit/:id', {
+	name: 'editEvent',
+	action: function() {
+		//BlazeLayout.reset();
+		BlazeLayout.render("eventsLayout", {content: 'editEvent'});
+	}
+});
+
+FlowRouter.route('/events/calendar/:id', {
+	name: 'eventSave',
+	action: function() {
+		BlazeLayout.reset();
+		BlazeLayout.render("eventsLayout", {content: 'eventSave'});
+	}
+});
+
+FlowRouter.route('/events/view/:id', {
+	name: 'eventView',
+	action: function() {
+		//BlazeLayout.reset();
+		BlazeLayout.render("eventsLayout", {content: 'eventView'});
+	}
+});
+
 FlowRouter.route('/reports', {
     action: function(params, queryParams){
         BlazeLayout.render("reportsLayout", {content: 'reports'});
@@ -272,6 +317,24 @@ FlowRouter.route('/myGroups', {
 	name: 'myGroups',
 	action: function() {
 		BlazeLayout.render("groupsLayout", {content: 'myGroups'});
+	}
+});
+FlowRouter.route('/events/calendar', {
+	name: 'calendar',
+	action: function() {
+		BlazeLayout.render("eventsLayout", {content: 'calendar'});
+	}
+});
+FlowRouter.route('/events/invite/:id', {
+	name: 'invitePage',
+	action: function() {
+		BlazeLayout.render("eventsLayout", {content: 'invitePage'});
+	}
+});
+FlowRouter.route('/events/attending/:id', {
+	name: 'attending',
+	action: function() {
+		BlazeLayout.render("eventsLayout", {content: 'attending'});
 	}
 });
 FlowRouter.route('/groups/:id', {
