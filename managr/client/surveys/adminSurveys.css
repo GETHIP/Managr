@@ -28,14 +28,14 @@ viewAllTable tr:hover {
 
 /*cards*/
 .surveyContainer {
- 	  background: white;
-  	box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26);
-    margin-top: 2%;
-    margin-bottom: 2%;
-	  padding-top: 2%;
-    padding-bottom: 4%;
-  	padding-left: 4%;
-  	padding-right: 4%;
+  background: white;
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  margin-top: 2%;
+  margin-bottom: 2%;
+  padding-top: 2%;
+  padding-bottom: 4%;
+  padding-left: 4%;
+  padding-right: 4%;
 }
 
 .createTableInput {
@@ -101,9 +101,9 @@ input:checked + .slider:before {
 
 /* Rounded sliders */
 /*.slider.round {
-  border-radius: 34px;
+border-radius: 34px;
 }
 
 .slider.round:before {
-  border-radius: 50%;
+border-radius: 50%;
 }*/

@@ -10,6 +10,14 @@
 }
 
 .compQuestionDiv {
-margin-left: 1.18%;
+  margin-left: 1.18%;
   width: 85% !important;
+}
+
+.answerFormatCreated {
+  margin-left: 32px;
+}
+
+.answerFormatAnswers {
+  margin-left: 8px;
 }

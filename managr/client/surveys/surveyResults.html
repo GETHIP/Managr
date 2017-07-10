@@ -1,80 +1,69 @@
 <template name="surveysResults">
-    {{#if isInstructor}}
-    {{#with survey}}
-    <div class="marginContainer">
+  {{#if isInstructor}}
+  {{#with survey}}
+  <div class="marginContainer">
     <h1 class="titleAssignment"> {{name}} &nbsp;</h1>
     <button id="deleteSurvey" class="buttonStyle delete">Delete</button>
     <div class="orange-bar red-bar"> &nbsp;</div>
-      <div class="surveyContainer">
-        <p class="noIndent assignmentFormFormat"><b>Number of Responses:</b> {{studentsCompleted}}/{{studentsAssigned}}</p>
-        <p class="noIndent assignmentFormFormat"><b>Due Date:</b> {{dueDate}}</p>
-        <p class="noIndent assignmentFormFormat"><b>Survey Questions:</b></p>
-        {{#each question in questions}}
+    <div class="surveyContainer">
+      <p class="noIndent assignmentFormFormat"><b>Survey Link: </b>{{getDomain ''}}/completeSurvey/{{_id}}</p>        <p class="noIndent assignmentFormFormat"><b>Number of Responses:</b> {{studentsCompleted}}</p>
+      <p class="noIndent assignmentFormFormat"><b>Due Date:</b> {{dueDate}}</p>
+      <p class="noIndent assignmentFormFormat"><b>Survey Questions:</b></p>
+      {{#each question in questions}}
+      <ul class="answerFormatAnswers">
+        <li>
+          {{question.prompt}}
           <ul>
-            <li>
-              {{question.prompt}}
-              <ul>
-                {{#if choicetype question.questionType}}
-                    <ul>
-                      {{#each option in question.options}}
-                        <li>
-                          <input id="MCradio" type="radio" name="MCQ" value="r" class="selectionForm CQlabel" />
-                            {{option}}
-                        </li>
-                      {{/each}}
-                    </ul>
-                {{/if}}
-                {{#if checktype question.questionType}}
-                    <ul>
-                      {{#each option in question.options}}
-                        <li>
-                          <input type="checkbox" name="CBQ" value="c" class="selectionForm CQlabel" />
-                            {{option}}
-                          </li>
-                      {{/each}}
-                    </ul>
-                {{/if}}
-              </ul>
-            </li>
+            {{#if choicetype question.questionType}}
+            <ul>
+              {{#each option in question.options}}
+              <li>
+                <input id="MCradio" type="radio" name="MCQ" value="r" class="selectionForm CQlabel" />
+                {{option}}
+              </li>
+              {{/each}}
+            </ul>
+            {{/if}}
+            {{#if checktype question.questionType}}
+            <ul>
+              {{#each option in question.options}}
+              <li>
+                <input type="checkbox" name="CBQ" value="c" class="selectionForm CQlabel" />
+                {{option}}
+              </li>
+              {{/each}}
+            </ul>
+            {{/if}}
+            {{#if shResptype question.questionType}}
+            <input type="text" name="FRQ" class="selectionForm createSurveyForm Answer" placeholder="Response Here">
+            {{/if}}
           </ul>
-        {{/each}}
-      </div>
+        </li>
+      </ul>
+      {{/each}}
+    </div>
 
     <table class="viewAllTable">
       <!-- Table Headings -->
       <tr>
         <th class="surveyTableHeadFormat surveys">Status</th>
-        <th class="surveyTableHeadFormat surveys">Student</th>
+        <th class="surveyTableHeadFormat surveys ">Student</th>
         <th class="surveyTableHeadFormat surveys">Date Completed</th>
       </tr>
       <!-- Each survey in table -->
-      <!--{{#each surveys}}
-        <tr class="tableRowFormat" onclick="FlowRouter.go('{{this.url}}')">
-          <td class="tableDataFormat assignments">{{this.status}}</td>
-          <td class="tableDataFormat assignments">{{this.studentName}}</td>
-          <td class="tableDataFormat assignments">{{this.dateCompleted}}</td>
-        </tr>
-      {{/each}} -->
-
-      {{> surveyRowsIndividual}}
-
-      <tr class="tableRowFormat rowClick" onclick="FlowRouter.go('{{this.url}}')">
-        <td class="tableDataFormat assignments">Completed</td>
-        <td class="tableDataFormat assignments">Will Guo</td>
-        <td class="tableDataFormat assignments">09/15/17</td>
+      {{#each students}}
+      <tr class="tableRowFormat result" id="{{studentId}}">
+        <td class="tableDataFormat assignments" >{{this.status}}</td>
+        <td class="tableDataFormat assignments" >{{this.name}}</td>
+        <td class="tableDataFormat assignments">{{this.dateCompleted}}</td>
       </tr>
-      <tr class="tableRowFormat rowClick" onclick="FlowRouter.go('{{this.url}}')">
-        <td class="tableDataFormat assignments">Incompleted</td>
-        <td class="tableDataFormat assignments">Nick Nguyen</td>
-        <td class="tableDataFormat assignments">N/A</td>
-      </tr>
-
+      {{/each}}
     </table>
-    </div>
-      {{/with}}
-      {{else}}
-        {{> accessDenied}}
-      {{/if}}
+  </div>
+  {{/with}}
+  {{else}}
+  {{> accessDenied}}
+  {{/if}}
 </template>
 <!-- <button id="deleteSurvey" class="buttonStyle delete">Delete</button> -->
 

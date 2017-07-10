@@ -5,15 +5,15 @@
 }
 
 .createSurveyForm {
-    border-radius: 6px !important;
-    border: 2px solid lightgrey !important;
-    width: 100% !important;
-	/* All the important tags are bad practice, but
-	it appears to be the only way to get them to override
-	the default (bootstrap perhaps?) settings of 20px height for inputs. */
-	height: 2em !important;
-    box-sizing: border-box !important;
-    box-shadow: none !important;
+  border-radius: 6px !important;
+  border: 2px solid lightgrey !important;
+  width: 100% !important;
+  /* All the important tags are bad practice, but
+  it appears to be the only way to get them to override
+  the default (bootstrap perhaps?) settings of 20px height for inputs. */
+  height: 2em !important;
+  box-sizing: border-box !important;
+  box-shadow: none !important;
 }
 
 .createSurveyForm:focus {
@@ -25,7 +25,7 @@
 }
 
 .createSurveyForm::-webkit-inner-spin-button {
-    display: none;
+  display: none;
 }
 
 .addBtnn{
@@ -41,6 +41,10 @@
 
 .questionSbmt{
   width:60%;
+}
+
+.answerFormat {
+  margin-left: 25px;
 }
 
 .selectionQuestion {

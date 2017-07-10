@@ -26,7 +26,7 @@ export function surveysMethods() {
 				}
 			});
 		},
-//Reference assignmentMethods.js - 'removeAssignment' function
+		//Reference assignmentMethods.js - 'removeAssignment' function
 		'removeSurvey':function(surveyId) {
 			if (!isInstructor()) {
 				return;
@@ -40,7 +40,7 @@ export function surveysMethods() {
 			// console.log(allStudents.length);
 			// console.log()
 			// console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~2");
-			// for(var j = 0; j < allStudents.length; j++) {
+			// for(var j = 0; j < allStudents.length; j+) {
 			// 	var studentSurveys = allStudents[j].surveys;
 			// 	for(var i = 0; i < studentSurveys.length; i++) {
 			// 		if(studentSurveys[i].surveyId == surveyId) {
@@ -64,13 +64,19 @@ export function surveysMethods() {
 		// 		comments.splice(index, 1);
 		// 		Posts.update({"_id": id}, {$set : {comments : comments}});
 		// 	}
-		// },
+		// },a
+		'incCompletedSurveyCt': function(surveyId){
+			Surveys.update({_id:surveyId}, {
+				$inc: { studentsCompleted: 1 }
+			});
+		},
 		'createNewSurvey': function(surveyName, date, anonToggle) {
 			if(!isInstructor()) {
 				return;
 			}
 			return Surveys.insert({
 				name: surveyName,
+				studentsCompleted: 0,
 				dueDate: date
 			});
 		},
@@ -94,7 +100,8 @@ export function surveysMethods() {
 							questionType: "choice",
 							prompt: question,
 							options: temparray,
-							dateHash: dateHash
+							dateHash: dateHash,
+ 						studentResults: []
 						}
 					}
 				});
@@ -106,14 +113,14 @@ export function surveysMethods() {
 				// var option3 = temparray[3];
 				// var option4 = temparray[4];
 				// var option5 = temparray[5];
-				console.log(option);
 				Surveys.update({_id: surveyId}, {
 					$push: {
 						questions: {
 							questionType: "check",
 							prompt: question,
 							options: temparray,
-							dateHash: dateHash
+							dateHash: dateHash,
+ 						studentResults: []
 						}
 					}
 				}
@@ -128,11 +135,47 @@ export function surveysMethods() {
 					questions: {
 						questionType: "shResp",
 						prompt: question,
-						dateHash: dateHash
+						dateHash: dateHash,
+  					studentResults: []
 					}
 				}
 			});
 		}
-	}
-	});
+	},
+	'sendResponse': function(surveyId, question, questionHash, mcAnswer) {
+ 		//console.log(Meteor.userId());
+ 		console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~1");
+ 		var studentId = Student.findOne({userId: Meteor.userId()}).userId;
+ 	// 	var studentAns = {studentId: studentId, answer: mcAnswer};
+ 	// 	var updatedQuestion = question;
+ 	// 	updatedQuestion.studentResults.push(studentAns);
+ 	// 	console.log(updatedQuestion.studentResults);
+ 	// 	console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~3");
+
+ 		var totalSurveys = Surveys.findOne({_id: surveyId});
+ 		var totalQuestions = totalSurveys.questions;
+ 		var newStudentResults;
+ 		var newAnswer = {};
+
+ 		for(var j = 0; j < totalQuestions.length; j++) {
+ 			var totalOptions = totalQuestions[j].options;
+ 		// 	for(var i = 0; i < totalOptions.length; i++) {
+ 				if(totalQuestions[j].dateHash == questionHash) {
+ 					newAnswer.studentId = studentId;
+ 					newAnswer.answer = mcAnswer;
+
+ 					Surveys.update({_id: surveyId, "questions.dateHash": questionHash},
+ 					{
+ 						$push: {
+ 							"questions.$.studentResults": newAnswer
+
+ 							//questions: newQuestions;
+ 						}
+ 					});
+ 					break;
+ 				}
+ 		// 	}
+ 		}
+  }
+});
 }

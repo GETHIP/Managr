@@ -3,75 +3,70 @@
   <div class="marginContainer">
     <h1 class="titleAssignment">Surveys</h1>
     <div class="orange-bar red-bar"> &nbsp;</div>
-      <table class="viewAllTable">
-        <tr>
-          <th class="surveyTableHeadFormat surveys">Survey Name</th>
-          <th class="surveyTableHeadFormat surveys">Completion Date</th>
-          <th class="surveyTableHeadFormat surveys"># of Responses</th>
-        </tr>
-        <!-- {{#each surveys}}
-          <tr class="tableRowFormat surveys rowClick" id="{{_id}}">
-            <td class="tableDataFormat assignments"><div class="overflowText">{{this.name}}</div></td>
-            <td class="tableDataFormat assignments">{{this.dueDate}}</td>
-            <td class="tableDataFormat assignments">{{this.studentsCompleted}}/{{this.numberOfStudents}}</td>
-          </tr>
-        {{/each}} -->
-        {{> surveyRowsAdmin}}
-      </table>
-        <button type="submit" class="buttonStyle sendSurvey submitbtn" onclick="FlowRouter.go('/createNewSurvey')" id="createSurveyBtn">Create New Survey</button>
-    </div>
-
-	{{else}}
-    {{#if isStudent}}
-    <div class="marginContainer">
-      <h1 class="titleAssignment">Surveys</h1>
-      <div class="orange-bar red-bar"> &nbsp;</div>
-      <table class="viewAllTable">
-        <!-- Table Headings -->
-        <tr>
-          <th class="surveyTableHeadFormat surveys">Survey Name</th>
-          <th class="surveyTableHeadFormat surveys">Date Due</th>
-          <th class="surveyTableHeadFormat surveys">Status</th>
-        </tr>
-
-        <!-- Each survey in table -->
-        <!--{{#each surveys}}
-          <tr class="tableRowFormat" onclick="FlowRouter.go('{{this.url}}')">
-            <td class="tableDataFormat assignments"><div class="overflowText">{{this.name}}</div></td>
-            <td class="tableDataFormat assignments">{{this.dueDate}}</td>
-            <td class="tableDataFormat assignments">{{this.status}}</td>
-          </tr>
-        {{/each}}-->
-        {{> surveyRowsStudent}}
-      </table>
-    </div>
-      {{else}}
-        {{> accessDenied}}
-      {{/if}}
-	{{/if}}
-</template>
-
-<template name="surveyRowsAdmin">
-  {{#each surveys}}
-    <tr class="tableRowFormat surveys rowClick" id="{{_id}}">
+    <table class="viewAllTable">
+      <tr>
+        <th class="surveyTableHeadFormat surveys">Survey Name</th>
+        <th class="surveyTableHeadFormat surveys">Completion Date</th>
+        <th class="surveyTableHeadFormat surveys"># of Responses</th>
+      </tr>
+      <!-- {{#each surveys}}
+      <tr class="tableRowFormat surveys rowClick" id="{{_id}}">
       <td class="tableDataFormat assignments"><div class="overflowText">{{this.name}}</div></td>
       <td class="tableDataFormat assignments">{{this.dueDate}}</td>
       <td class="tableDataFormat assignments">{{this.studentsCompleted}}/{{this.numberOfStudents}}</td>
     </tr>
-  {{/each}}
-  <tr class="tableRowFormat surveys">
-    <td class="tableDataFormat assignments"><div class="overflowText">&nbsp;</div></td>
-    <td class="tableDataFormat assignments">&nbsp;</td>
-    <td class="tableDataFormat assignments">&nbsp;</td>
+    {{/each}} -->
+    {{> surveyRowsAdmin}}
+  </table>
+  <button type="submit" class="buttonStyle sendSurvey submitbtn" onclick="FlowRouter.go('/createNewSurvey')" id="createSurveyBtn">Create New Survey</button>
+</div>
+
+{{else}}
+{{#if isStudent}}
+<div class="marginContainer">
+  <h1 class="titleAssignment">Surveys</h1>
+  <div class="orange-bar red-bar"> &nbsp;</div>
+  <table class="viewAllTable">
+    <!-- Table Headings -->
+    <tr>
+      <th class="surveyTableHeadFormat surveys">Survey Name</th>
+      <th class="surveyTableHeadFormat surveys">Date Due</th>
+      <th class="surveyTableHeadFormat surveys">Status</th>
+    </tr>
+
+    <!-- Each survey in table -->
+    <!--{{#each surveys}}
+    <tr class="tableRowFormat" onclick="FlowRouter.go('{{this.url}}')">
+    <td class="tableDataFormat assignments"><div class="overflowText">{{this.name}}</div></td>
+    <td class="tableDataFormat assignments">{{this.dueDate}}</td>
+    <td class="tableDataFormat assignments">{{this.status}}</td>
   </tr>
+  {{/each}}-->
+  {{> surveyRowsStudent}}
+</table>
+</div>
+{{else}}
+{{> accessDenied}}
+{{/if}}
+{{/if}}
+</template>
+
+<template name="surveyRowsAdmin">
+  {{#each surveys}}
+  <tr class="tableRowFormat surveys rowClick" id="{{_id}}">
+    <td class="tableDataFormat assignments"><div class="overflowText">{{this.name}}</div></td>
+    <td class="tableDataFormat assignments">{{this.dueDate}}</td>
+    <td class="tableDataFormat assignments">{{this.studentsCompleted}}</td>
+  </tr>
+  {{/each}}
 </template>
 
 <template name="surveyRowsStudent">
   {{#each surveys}}
-    <tr class="tableRowFormat rowClick" id="{{_id}}">
-      <td class="tableDataFormat assignments"><div class="overflowText">{{this.name}}</div></td>
-      <td class="tableDataFormat assignments">{{this.dueDate}}</td>
-      <td class="tableDataFormat assignments">{{this.status}}</td>
-    </tr>
+  <tr class="tableRowFormat rowClick" id="{{_id}}">
+    <td class="tableDataFormat assignments"><div class="overflowText">{{this.name}}</div></td>
+    <td class="tableDataFormat assignments">{{this.dueDate}}</td>
+    <td class="tableDataFormat assignments">{{this.status}}</td>
+  </tr>
   {{/each}}
 </template>
