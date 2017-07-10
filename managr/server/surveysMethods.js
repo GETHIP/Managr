@@ -135,6 +135,7 @@ export function surveysMethods() {
 					questions: {
 						questionType: "shResp",
 						prompt: question,
+						options: [],
 						dateHash: dateHash,
   					studentResults: []
 					}
@@ -142,40 +143,31 @@ export function surveysMethods() {
 			});
 		}
 	},
-	'sendResponse': function(surveyId, question, questionHash, mcAnswer) {
- 		//console.log(Meteor.userId());
- 		console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~1");
- 		var studentId = Student.findOne({userId: Meteor.userId()}).userId;
- 	// 	var studentAns = {studentId: studentId, answer: mcAnswer};
- 	// 	var updatedQuestion = question;
- 	// 	updatedQuestion.studentResults.push(studentAns);
- 	// 	console.log(updatedQuestion.studentResults);
- 	// 	console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~3");
+	'sendResponse': function(surveyId, question, questionHash, Answer) {
+		//console.log(Meteor.userId());
+		console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+		//prints 4 times when only 3 questions
+		var studentId = Student.findOne({userId: Meteor.userId()}).userId;
+		var totalSurveys = Surveys.findOne({_id: surveyId});
+		var totalQuestions = totalSurveys.questions;
+		var newAnswer = {};
 
- 		var totalSurveys = Surveys.findOne({_id: surveyId});
- 		var totalQuestions = totalSurveys.questions;
- 		var newStudentResults;
- 		var newAnswer = {};
+		for(var j = 0; j < totalQuestions.length; j++) {
 
- 		for(var j = 0; j < totalQuestions.length; j++) {
- 			var totalOptions = totalQuestions[j].options;
- 		// 	for(var i = 0; i < totalOptions.length; i++) {
- 				if(totalQuestions[j].dateHash == questionHash) {
- 					newAnswer.studentId = studentId;
- 					newAnswer.answer = mcAnswer;
+			if(totalQuestions[j].dateHash == questionHash) {
+				newAnswer.studentId = studentId;
+				newAnswer.answer = Answer;
 
- 					Surveys.update({_id: surveyId, "questions.dateHash": questionHash},
- 					{
- 						$push: {
- 							"questions.$.studentResults": newAnswer
-
- 							//questions: newQuestions;
- 						}
- 					});
- 					break;
- 				}
- 		// 	}
- 		}
-  }
+				Surveys.update({_id: surveyId, "questions.dateHash": questionHash},
+				{
+					$push: {
+						"questions.$.studentResults": newAnswer
+						//questions: newQuestions;
+					}
+				});
+				break;
+			}
+		}
+	}
 });
 }
