@@ -13,21 +13,21 @@
       <form class="allQuestionForm" id="allQuestionForm">
         {{#each question in questions}}
         <form class="singleQuestionForm questionOptions" id="singleQuestionForm">
-          <ul>
+          <ul class="answerFormatAnswers">
             <li>
               <b>{{question.prompt}}</b>
               <ul class="questionOptions">
                 {{#if choicetype question.questionType}}
                 {{#each studentAnswer in question.studentResults}}
                 <ul>
-                  <li><input type="radio" class="selectionForm CQlabel questionOptions"/>{{studentAnswer.answer}}</li>
+                  <li><input type="radio" class="selectionForm CQlabel questionOptions" checked="checked"/>{{studentAnswer.answer}}</li>
                 </ul>
                 {{/each}}
                 {{/if}}
                 {{#if checktype question.questionType}}
                 {{#each studentAnswer in question.studentResults}}
                 <ul>
-                  <li><input type="checkbox" class="selectionForm CQlabel questionOptions"/>{{studentAnswer.answer}}</li>
+                  <li><input type="checkbox" class="selectionForm CQlabel questionOptions" checked="checked"/>{{studentAnswer.answer}}</li>
                 </ul>
                 {{/each}}
                 {{/if}}

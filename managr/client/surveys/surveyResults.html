@@ -18,7 +18,7 @@
             <ul>
               {{#each option in question.options}}
               <li>
-                <input id="MCradio" type="radio" name="MCQ" value="r" class="selectionForm CQlabel" />
+                <input id="MCradio" type="radio" name="MCQ" value="r" class="selectionForm CQlabel questionOptions" />
                 {{option}}
               </li>
               {{/each}}
@@ -28,14 +28,14 @@
             <ul>
               {{#each option in question.options}}
               <li>
-                <input type="checkbox" name="CBQ" value="c" class="selectionForm CQlabel" />
+                <input type="checkbox" name="CBQ" value="c" class="selectionForm CQlabel questionOptions" />
                 {{option}}
               </li>
               {{/each}}
             </ul>
             {{/if}}
             {{#if shResptype question.questionType}}
-            <input type="text" name="FRQ" class="selectionForm createSurveyForm Answer" placeholder="Response Here">
+            <input type="text" name="FRQ" class="selectionForm createSurveyForm Answer questionOptions" placeholder="Response Here">
             {{/if}}
           </ul>
         </li>

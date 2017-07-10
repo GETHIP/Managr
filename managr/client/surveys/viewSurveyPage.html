@@ -14,8 +14,8 @@
       <form class="allQuestionForm" id="allQuestionForm">
         {{#each question in questions}}
         <form class="singleQuestionForm" id="singleQuestionForm">
-          <ul>
-            <li class="questionOptions">
+          <ul class="answerFormatAnswers">
+            <li>
               <b>{{question.prompt}}</b>
               <ul>
                 {{#if choicetype question.questionType}}
@@ -32,14 +32,14 @@
                 <ul class="questionOptions">
                   {{#each option in question.options}}
                   <li>
-                    <input id="{{option.refId}}" type="checkbox" name="CBQ" value="c" class="selectionForm CQlabel" />
+                    <input id="{{option.refId}}" type="checkbox" name="CBQ" value="c" class="selectionForm CQlabel questionOptions" />
                     {{option.name}}
                   </li>
                   {{/each}}
                 </ul>
                 {{/if}}
                 {{#if shResptype question.questionType}}
-                <input id="shRespAnswer" type="text" name="FRQ" class="selectionForm createSurveyForm Answer" placeholder="Type your response here...">
+                <input id="shRespAnswer" type="text" name="FRQ" class="selectionForm createSurveyForm Answer questionOptions" placeholder="Type your response here...">
                 {{/if}}
               </ul>
             </li>
