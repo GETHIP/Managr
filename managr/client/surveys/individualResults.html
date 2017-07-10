@@ -16,25 +16,25 @@
           <ul>
             <li>
               <b>{{question.prompt}}</b>
-              <ul>
+              <ul class="questionOptions">
                 {{#if choicetype question.questionType}}
                 {{#each studentAnswer in question.studentResults}}
                 <ul>
-                  <li><input type="radio" class="selectionForm CQlabel"/>{{studentAnswer.answer}}</li>
+                  <li><input type="radio" class="selectionForm CQlabel questionOptions"/>{{studentAnswer.answer}}</li>
                 </ul>
                 {{/each}}
                 {{/if}}
                 {{#if checktype question.questionType}}
                 {{#each studentAnswer in question.studentResults}}
                 <ul>
-                  <li><input type="checkbox" class="selectionForm CQlabel"/>{{studentAnswer.answer}}</li>
+                  <li><input type="checkbox" class="selectionForm CQlabel questionOptions"/>{{studentAnswer.answer}}</li>
                 </ul>
                 {{/each}}
                 {{/if}}
                 {{#if shResptype question.questionType}}
                 {{#each studentAnswer in question.studentResults}}
                 <ul>
-                  <li>Answer: {{studentAnswer.answer}}</li>
+                  <li class="questionOptions">Answer: {{studentAnswer.answer}}</li>
                 </ul>
                 {{/each}}
                 {{/if}}
