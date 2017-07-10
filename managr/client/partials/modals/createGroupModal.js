@@ -27,10 +27,9 @@ Template.createGroupModal.events({
         var ifNameInName = 0;
 
           if ((groupName != null) && (Groups.findOne({ name: groupName }) == null)) {
-            console.log("asdakjdfajkdfnjdflnf");
             ifNameInName = 2;
           } else {
-            console.log("iuasdhfsb");
+            document.getElementsByClassName("notUnique")[0].style.display = "initial";
           }
 
           if (ifNameInName == 2) {
