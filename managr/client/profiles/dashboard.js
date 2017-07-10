@@ -1,7 +1,10 @@
 import { Student } from '../../collections/student.js';
+import { Milestone } from '../../collections/milestone.js';
 import { Instructor } from '../../collections/instructor.js';
 import { nameOfUser } from '../../lib/permissions.js';
 import { Globals } from '../../collections/globals.js';
+import { Eval } from '../../collections/eval.js';
+
 
 function validateStudentData(dataArray) {
     if (dataArray == undefined || dataArray.length == 0) {
@@ -37,6 +40,8 @@ Template.dashboard.onCreated(function() {
     self.subscribe('Instructor');
     self.subscribe('userData');
 	self.subscribe('Globals');
+  self.subscribe('Milestone');
+  self.subscribe('Eval');
   });
   Template.instance().importingStudents = new ReactiveVar(false);
 });
@@ -88,7 +93,15 @@ Template.dashboard.helpers({
 	},
 	numberOfWeeks: function() {
 		return Globals.numberOfWeeks();
-	}
+	},
+  milestones: function(){
+    data = Milestone.find().fetch();
+    for (var i = 0; i < data.length; i++) {
+        data[i].numComplete = Eval.find({week: data[i]._id}).fetch().length;
+        console.log(data[i].numComplete);
+    }
+    return data;
+  }
 });
 
 Template.dashboard.events({
@@ -131,7 +144,7 @@ Template.dashboard.events({
 	},
     'click .realDeleteUserButton':function(e) {
         var user = Meteor.users.findOne({username: e.target.id});
-		Modal.show('deleteUserModal', user);
+		    Modal.show('deleteUserModal', user);
     },
 	'click #dummyCSVButton':function(e) {
 		var fields = [
@@ -219,5 +232,21 @@ Template.dashboard.events({
 				Meteor.call('resetAttendance');
 			}
 		});
-	}
+	},
+  'click #createMilestone': function(event){
+    name = document.getElementById("milestoneIn").value;
+    Meteor.call("newMilestone", name);
+
+  },
+  'click #deleteMilestoneButton': function(){
+    Meteor.call("removeMilestone", document.getElementById("milestone").value);
+   Meteor.call("removeMEvals", document.getElementById("milestone").value);
+  },
+  'click .deleteResetButton.milestoneTable': function(event){
+    event.preventDefault();
+    console.log("testing")
+    Modal.show('deleteMilestoneModal');
+
+  }
+
 });

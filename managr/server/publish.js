@@ -8,12 +8,30 @@ import { Groups } from '../collections/groups.js';
 import { Events } from '../collections/event.js';
 import { Drafts } from '../collections/drafts.js';
 import { Globals } from '../collections/globals.js';
+import { Eval } from '../collections/eval.js'
+import { Milestone } from '../collections/milestone.js';
 
 export function publishAll() {
 
 	Meteor.publish("Assignments", function() {
         return Assignments.find();
     });
+
+		Meteor.publish("Milestone", function() {
+	        return Milestone.find();
+	    });
+
+	Meteor.publish("Eval", function() {
+		if(Roles.userIsInRole(this.userId, "instructor")){
+				return Eval.find();
+			}else if(Roles.userIsInRole(this.userId, "student")){
+				console.log("It running 7/5");
+				console.log(this.userId);
+				console.log(Eval.find({evaluatee: Student.findOne({userId: this.userId})._id}).fetch());
+				return Eval.find({evaluatee: Student.findOne({userId: this.userId})._id});
+				//
+			}//
+		});
 
 	Meteor.publish("Comments", function(){
 		return Comments.find();
@@ -47,31 +65,34 @@ export function publishAll() {
 		return Student.find({ isArchived: false });
 	});
 
+	Meteor.publish("Coaches", function() {
+		return Instructor.find({ name: { $ne: "Admin" } });
+	});
+
 	Meteor.publish("Groups", function() {
 		return Groups.find();
 	});
 
 	Meteor.publish("Events", function() {
 		if(Roles.userIsInRole(this.userId, "student")){
-		var allEvents = [];
-		var groupIdList = [];
-		var data = Events.find().fetch();
-		var groupData = Groups.find().fetch();
-		var id = Student.findOne({userId: this.userId})._id;
+		  var allEvents = [];
+		  var groupIdList = [];
+		  var data = Events.find().fetch();
+		  var groupData = Groups.find().fetch();
+		  var id = Student.findOne({userId: this.userId})._id;
 
 		for (var i = 0; i < groupData.length; i++) {
 			if(groupData[i].studentIds.indexOf(id) != -1){
 				groupIdList.push(groupData[i]._id);
 			}
 		}
-
-	for(var x = 0; x < groupIdList.length; x++){
-		for (var i = 0; i < data.length; i++) {
-			if(data[i].studentInvites.indexOf(id) != -1 || data[i].groupInvites.indexOf(groupIdList[x]) != -1){
-				allEvents.push(data[i]);
-			}
-		}
-	}
+    for(var x = 0; x < groupIdList.length; x++){
+      for (var i = 0; i < data.length; i++) {
+        if(data[i].studentInvites.indexOf(id) != -1 || data[i].groupInvites.indexOf(groupIdList[x]) != -1){
+          allEvents.push(data[i]);
+        }
+      }
+    }
 		var returnIds = [];
 		for (var i = 0; i < allEvents.length; i++) {
 			returnIds.push(allEvents[i]._id);
@@ -80,8 +101,12 @@ export function publishAll() {
 	}else{
 		return Events.find();
 	}
+  });
+  
+	Meteor.publish("singleGroup", function(id) {
+		check(id, String);
+		return Groups.find({_id: id});
 	});
-
 	Meteor.publish("userData", function() {
 		return Meteor.users.find({});
 	});

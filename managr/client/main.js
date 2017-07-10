@@ -4,6 +4,7 @@ import { Comments } from '../collections/comments.js'
 import { Posts } from '../collections/blogPosts.js'
 import { Assignments } from "../collections/assignments.js";
 import { Student } from "../collections/student.js";
+import { Instructor } from "../collections/instructor.js";
 import { nameOfUser } from '../lib/permissions.js';
 import { Events } from '../collections/event.js';
 import { Groups } from "../collections/groups.js";
@@ -118,7 +119,7 @@ eventsIndex = new EasySearch.Index({
 
 groupIndex = new EasySearch.Index({
 	collection: Groups,
-	fields: ['name', 'leader', 'stringSize', 'studentNames'],
+	fields: ['name', 'leader', 'stringSize', 'studentNames', 'coachNames'],
 	defaultSearchOptions: {
 		sortBy: 'datecreated',
 		limit: 1000
@@ -130,7 +131,7 @@ groupIndex = new EasySearch.Index({
 						name: doc.name,
 						size: doc.size,
 						students: formatStudentsForGroup(doc),
-						leader: doc.leader,
+						coaches: formatCoachesForGroup(doc),
 						groupId: doc._id
 				};
 				return group;
@@ -183,9 +184,14 @@ groupIndex = new EasySearch.Index({
 	})
 });
 
+
+
 var formatStudentsForGroup = function(group) {
     var studentIds = group.studentIds;
     var formattedStudents = [];
+		if(!studentIds) {
+			return;
+		}
 
     for(var i = 0; i < studentIds.length; i++) {
         var student = Student.findOne({_id: studentIds[i]});
@@ -198,6 +204,28 @@ var formatStudentsForGroup = function(group) {
         formattedStudents.push(formattedStudent);
     }
     return formattedStudents;
+}
+
+
+var formatCoachesForGroup = function(group) {
+		var coachIds = group.coaches;
+		var formattedCoaches = [];
+
+		if(!coachIds) {
+			return;
+		}
+
+		for(var i = 0; i < coachIds.length; i++) {
+				var coach = Instructor.findOne({_id: coachIds[i]});
+				if(coach == undefined) {
+						continue;
+				}
+				var formattedCoach = {
+            name: coach.name
+        }
+				formattedCoaches.push(formattedCoach);
+		}
+		return formattedCoaches;
 }
 
 Template.main.helpers({

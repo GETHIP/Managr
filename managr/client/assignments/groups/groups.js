@@ -1,10 +1,19 @@
 import { Groups } from '../../../collections/groups.js';
 import { Student } from '../../../collections/student.js';
 import { EasySearch } from 'meteor/easy:search';
+import { Instructor } from '../../../collections/instructor.js';
+
+var alltypes = [];
 
 Template.groups.onCreated(function() {
-    Meteor.subscribe("Groups");
     Meteor.subscribe("Student");
+    Meteor.subscribe("Coaches");
+    this.autorun(function () {
+        var subscription = Meteor.subscribe("Groups");
+        if (subscription.ready()) {
+            alltypes = [];
+        }
+    });
 });
 
 var formatStudentsForGroup = function(group) {
@@ -31,32 +40,52 @@ Template.groups.helpers({
         for(var i = 0; i < allGroups.length; i++) {
             var group = allGroups[i];
             var formattedGroup = {
-                name: group.name,
-                students: formatStudentsForGroup(group),
-                groupId: group._id,
-                size: group.size,
-                leader: group.leader
+                groupType: group.groupType
             }
             formattedGroups.push(formattedGroup);
         }
-        formattedGroups.sort(function(group1, group2) {
-            return group1.name.localeCompare(group2.name);
-        });
         return formattedGroups;
-    },
-    namesInGroup: function() {
-        if(document.getElementById("namesInGroup").style.height > 200) {
-            document.getElementById("namesInGroup").style.overflowY = "scroll";
-        }
     },
     groupIndex: function() {
         return groupIndex;
+    },
+    allcoaches: function(coaches) {
+        if(!coaches) {
+            return;
+        }
+        var allCoaches = [];
+        for(var i = 0; i < coaches.length; i++) {
+            allCoaches.push(coaches[i].name);
+        }
+        return allCoaches.join(", ");
+    },
+    uniquetypes: function(thisType) {
+        result = true;
+        for(var i = 0; i < alltypes.length; i++) {
+            if(alltypes[i] == thisType) {
+                result = false;
+                break;
+            }
+        }
+        if(result == true)
+        {
+            alltypes.push(thisType);
+        }
+        return result;
+    },
+    cleargrouptypes: function() {
+        alltypes = [];
     }
 });
 
+
+
 Template.groups.events({
-    'click #createGroupButton': function() {
-        FlowRouter.go("/groups/create");
+    'click #createGroupButton': function(event) {
+        Modal.show("createGroupModal", event.target.id);
+    },
+    'click #suggestedgroupsbutton': function(event) {
+        FlowRouter.go("/groups/createSuggested");
     },
     'click .editGroup': function(event) {
         event.preventDefault();
@@ -64,12 +93,6 @@ Template.groups.events({
         console.log(target);
         console.log(target.id);
         FlowRouter.go("/groups/edit/" + target.id);
-    },
-    'click .deleteGroup': function(event) {
-        event.preventDefault();
-        const target = event.target;
-
-        Meteor.call("removeGroup", target.id);
     },
     'change .filters': function (e) {
         groupIndex.getComponentMethods(/* optional name */)
@@ -79,5 +102,16 @@ Template.groups.events({
     'change .sorting': (e) => {
         groupIndex.getComponentMethods()
             .addProps('sortBy', $(e.target).val())
+    },
+    'click .realDeleteGroupButton':function(e) {
+        /*var user = Meteor.users.findOne({username: e.target.id});*/
+        /*var asdf = group.name;*/
+        var group = Groups.findOne({_id: e.target.id});
+		    Modal.show('deleteGroupModal', group);
+    },
+    'click .groupRow': function(event) {
+        event.preventDefault();
+        const target = event.target;
+        FlowRouter.go("/groups/" + event.target.id);
     }
 });

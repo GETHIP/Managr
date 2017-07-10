@@ -3,13 +3,21 @@
     <div class="marginContainer">
         <h1 class="titleAssignment">Groups Overview</h1>
         <button id="createGroupButton" class="buttonStyle groups submitbtn">Create a Group</button>
-        <a href="/groups"><button id="suggestedgroupsbutton" class="buttonStyle groups" style="">Suggested Groups</button></a>
+        <button id="suggestedgroupsbutton" class="buttonStyle groups">Suggested Groups</button>
         <div class="orange-bar" style="background-color: #870000">&nbsp;</div>
         <div class="searchBar">
   				<h1 class="searchText">Search:</h1>
   			{{> EasySearch.Input index=groupIndex attributes=searchBarGroup}}
         <select class="filters">
-          <option value="GETHIP">GETHIP</option>
+          <option value="None">None</option>
+
+          {{ cleargrouptypes }}
+          {{ #each group in groups }}
+            {{ #if uniquetypes group.groupType }}
+              <option value="{{group.groupType}}">{{group.groupType}}</option>
+            {{ /if }}
+          {{ /each }}
+
         </select>
         <h1 class="sortText">Filter By Type:</h1>
         <select class="sorting">
@@ -25,32 +33,37 @@
             <thead>
                 <tr>
                     <th class="groupsTableHead">Name</th>
-                    <th class="groupsTableHead">Leader</th>
+                    <th class="groupsTableHead">Coach</th>
                     <th class="groupsTableHead">Size</th>
-                    <th class="groupsTableHead">Students</th>
-                    <th class="groupsTableHead"></th>
+                    <th class="groupsTableHead" style="width:10%"></th>
                 </tr>
             </thead>
             {{#EasySearch.Each index=groupIndex attributes=searchBarGroup}}
-              <tr class="tableRowFormat">
-                  <td>{{name}}</td>
-                  <td>{{leader}}</td>
-                  <td>{{size}}</td>
-                  <td>
-                      <div class="namesInGroup">
-                          <ul style="margin-left: 18px">
-                              {{#each student in students}}
-                                  <li style="list-style-type: circle">
-                                     {{student.name}}
-                                  </li>
-                              {{/each}}
+              <tr id="{{groupId}}" class="tableRowFormat groups">
+                  <td id="{{groupId}}" style="position:relative; vertical-align:middle;" class="groupRow"><div id="{{groupId}}" class="groupName groupRow">{{name}}</div>
+                    <p id="{{groupId}}" class="previewStudentsBtn groupRow">i</p>
+                    <div class="info">
+                      <ul style="margin: 0px 0px 0px 18px">
+                          {{#each student in students}}
+                              <li style="list-style-type: circle; font-size: 13px;">
+                                 {{student.name}}
+                              </li>
+                          {{/each}}
+                      </ul>
+                    </div>
+                  </td>
+                  <td id="{{groupId}}" class="alignmid groupRow">
+                      <div>
+                          <ul style="margin: 0px" id="{{groupId}}" class="groupRow">
+                              {{allcoaches coaches}}
                           </ul>
                       </div>
                   </td>
-                  <td>
+                  <td id="{{groupId}}" class="alignmid groupRow">{{size}}</td>
+                  <td class="alignmid ">
                       <div class="buttonCollection">
                           <button class="groupButton editGroup" id="{{groupId}}">Edit</button>
-                          <button class="groupButton deleteGroup" id="{{groupId}}">Delete</button>
+                          <button class="groupButton deleteGroup realDeleteGroupButton" id="{{groupId}}">Delete</button>
                       </div>
                   </td>
               </tr>
@@ -82,7 +95,6 @@
           -->
             {{/EasySearch.Each}}
         </table>
-
     </div>
     {{else}} {{> accessDenied}} {{/if}}
 </template>

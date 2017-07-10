@@ -1,190 +1,342 @@
 import { Student } from '../../../collections/student.js';
+import { Instructor } from '../../../collections/instructor.js';
 import { Groups } from '../../../collections/groups.js';
 
+var allAdded = [];
+var allNotAdded = [];
+edit_dep = new Deps.Dependency;
+
+var alltypes = ["None"];
+
 Template.editGroup.onCreated(function() {
-		Meteor.subscribe("Student");
-    Meteor.subscribe("Groups", function() {
-        var groupId = FlowRouter.getParam("id");
-        var group = Groups.findOne({_id: groupId});
-        if(group == undefined) {
-            FlowRouter.go("/groups");
-        }
-    });
+		var id = FlowRouter.getParam('id');
+
+		// Meteor.subscribe('singleGroup', id, function() {
+		// 		var group = Groups.findOne({_id: id});
+		// 		if(group == undefined) {
+		// 				FlowRouter.go("/groups");
+		// 		}
+		// 		else {
+		// 				BlazeLayout.render("groupsLayout", {content: 'editGroup'});
+		// 		}
+		// });
+		Meteor.subscribe("Groups");
+		Meteor.subscribe("Coaches");
+
+		this.autorun(function () {
+				var subscription = Meteor.subscribe("Student");
+				//Meteor.subscribe("CurrentAdded", id);
+				//Meteor.subscribe("CurrentNotAdded", id);
+				if (subscription.ready()) {
+						allAdded = findStudentsIn();
+						allNotAdded = findStudentsNot(allAdded);
+						alltypes = ["None"];
+						edit_dep.changed()
+				}
+		});
 });
+
+function findStudentsIn() {
+		var allAdded = [];
+		var thisGroup = Groups.findOne({ _id: FlowRouter.getParam('id')});
+		if(!thisGroup) {
+			return;
+		}
+		var groupStudentIds = thisGroup.studentIds;
+		for(var i = 0; i < groupStudentIds.length; i++) {
+				var thisStudent = Student.findOne({ _id: groupStudentIds[i] });
+				allAdded.push(thisStudent);
+		}
+		return allAdded;
+}
+
+function findStudentsNot(allAdded) {
+		allNotAdded = Student.find().fetch();
+		for(var i = 0; i < allAdded.length; i++) {
+				for(var ii = 0; ii < allNotAdded.length; ii++) {
+						if(allNotAdded[ii]._id === allAdded[i]._id) {
+								allNotAdded.splice(ii,1);
+								ii = allNotAdded.length;
+						}
+				}
+		}
+		return allNotAdded;
+}
 
 Template.editGroup.events({
 		"submit #editGroupForm"(event) {
         event.preventDefault();
         const form = event.target;
 
-        var groupId = FlowRouter.getParam("id");
+				var groupId = FlowRouter.getParam('id');
         var groupName = form.groupName.value;
-        var inputs = document.getElementsByTagName("INPUT");
+				var groupType = document.getElementById("groupTypeSelect").value;
+				if(groupType == "newType") {
+						groupType = form.newGroupType.value;
+				}
+				var size = allAdded.length;
+				var stringSize = size.toString();
+				var studentIds = [];
+				var studentNames = [];
+				allAdded.forEach(function(student) {
+						studentIds.push(student._id);
+						studentNames.push(student.name);
+				});
 
-        var studentIds = [];
-        for(var i = 0; i < inputs.length; i++) {
-            if(inputs[i].type == "checkbox" && inputs[i].checked) {
+				var inputs = document.getElementsByTagName("INPUT");
+				var coaches = [];
+				var coachNames = [];
+				for(var i = 0; i < inputs.length; i++) {
+						if(inputs[i].type == "checkbox" && inputs[i].checked && inputs[i].className == "coach") {
 								//Because if it is a valid group, then that implies it is not a student, so we don't want this in our studentIds array
 								var group = Groups.findOne({_id: inputs[i].id});
 								if(group != undefined) {
 										continue;
 								}
-								studentIds.push(inputs[i].id);
-            }
-        }
-				var size = studentIds.length;
-				var studentNames = formatStudentsForGroup(studentIds);
-
-        Meteor.call('updateGroup', groupId, groupName, studentIds, size, studentNames);
+								coaches.push(inputs[i].id);
+								var coach = Instructor.findOne({_id: inputs[i].id});
+								coachNames.push(coach.name);
+						}
+				}
+				var data = {
+						name: groupName,
+						studentIds: studentIds,
+						coaches: coaches,
+						coachNames: coachNames,
+						size: size,
+						stringSize: stringSize,
+						studentNames: studentNames,
+						groupType: groupType
+				};
+				Meteor.call('updateGroup', groupId, data);
 
         FlowRouter.go("/groups");
     },
-    'change .groupCheckBox':function(event) {
-        var groupId = event.target.id;
-        var group = Groups.findOne({_id: groupId});
-        var inputs = document.getElementsByTagName("INPUT");
+		"click #addStudents"(event) {
+				event.preventDefault();
+				const form = event.target;
 
-        //If its checked, they just clicked it, so we want to add the students. If its not checked, they unclicked it,
-        //so we want to remove the students
-        if(event.target.checked) {
-            for(var i = 0; i < group.studentIds.length; i++) {
-                var studentId = group.studentIds[i];
-                var checkbox = document.getElementById(studentId);
-                if(checkbox != undefined) {
-                    checkbox.checked = true;
-                }
-            }
-        } else {
-            var selectedGroups = [];
-            for(var i = 0; i < inputs.length; i++) {
-                if(inputs[i].type == "checkbox" && inputs[i].checked) {
-                    var selectedGroup = Groups.findOne({_id: inputs[i].id});
-										//Because the inputs array has its elements in the order defined in the DOM, we know that groups
-                    //come before the students in DOM. Therefore, once selectedGroup is equal to undefined, we know
-                    //that we have reached students, therefore enabling us to optimize this method by breaking
-                    //and not iterating through all the students
-                    if(selectedGroup == undefined) {
-                        break;
-                    }
-                    selectedGroups.push(selectedGroup);
-                }
-            }
+				var inputs = document.getElementsByTagName("INPUT");
 
-            for(var i = 0; i < group.studentIds.length; i++) {
-                var studentId = group.studentIds[i];
-                var checkbox = document.getElementById(studentId);
+				var swapping = [];
+				for(var i = 0; i < inputs.length; i++) {
+						if(inputs[i].type == "checkbox" && inputs[i].className == "add" && inputs[i].checked) {
+								//Because if it is a valid group, then that implies it is not a student, so we don't want this in our studentIds array
+								var group = Groups.findOne({_id: inputs[i].id});
+								if(group != undefined) {
+										continue;
+								}
+								allAdded.push(Student.findOne({ _id: inputs[i].id}));
+								swapping.push(inputs[i].id);
+						}
+				}
+				for(var i = 0; i < swapping.length; i++) {
+						for(var ii = 0; ii < allNotAdded.length; ii++) {
+								if(allNotAdded[ii]._id === swapping[i]) {
+										allNotAdded.splice(ii, 1);
+										ii = allNotAdded.length;
+								}
+						}
+				}
+				var checkboxes = document.getElementsByTagName("input");
+				for(var i = 0; i < checkboxes.length; i++) {
+						if(checkboxes[i] != undefined && checkboxes[i].type == "checkbox") {
+								if(checkboxes[i].className == "add" || checkboxes[i].id == "selectAllNotAdded") {
+										checkboxes[i].checked = false;
+								}
+						}
+				}
+				edit_dep.changed()
+		},
+		"click #removeStudents"(event) {
+				event.preventDefault();
+				const form = event.target;
 
-                if(checkbox != undefined) {
-                    var found = false;
-                    for(var j = 0; j < selectedGroups.length; j++) {
-                        //Dont want to include the clicked group in this comparison
-                        if(selectedGroups[j].id != groupId) {
-                            if(selectedGroups[j].studentIds.indexOf(studentId) != -1) {
-                                found = true;
-                                break;
-                            }
-                        }
-                    }
-                    if(!found) {
-                        checkbox.checked = false;
-                    }
-                }
-            }
-        }
-    }
-});
+				var inputs = document.getElementsByTagName("INPUT");
 
-var getGroupBeingEdited = function() {
-    var groupId = FlowRouter.getParam("id");
-    var group = Groups.findOne({_id: groupId});
-    return group;
-}
+				var swapping = [];
+				for(var i = 0; i < inputs.length; i++) {
+						if(inputs[i].type == "checkbox" && inputs[i].className == "remove" && inputs[i].checked) {
+								//Because if it is a valid group, then that implies it is not a student, so we don't want this in our studentIds array
+								var group = Groups.findOne({_id: inputs[i].id});
+								if(group != undefined) {
+										continue;
+								}
+								allNotAdded.push(Student.findOne({ _id: inputs[i].id}));
+								swapping.push(inputs[i].id);
+						}
+				}
+				for(var i = 0; i < swapping.length; i++) {
+						for(var ii = 0; ii < allAdded.length; ii++) {
+								if(allAdded[ii]._id === swapping[i]) {
+										allAdded.splice(ii, 1);
+										ii = allAdded.length;
+								}
+						}
+				}
+				var checkboxes = document.getElementsByTagName("input");
+				for(var i = 0; i < checkboxes.length; i++) {
+						if(checkboxes[i] != undefined && checkboxes[i].type == "checkbox") {
+								if(checkboxes[i].className == "remove" || checkboxes[i].id == "selectAllAdded") {
+										checkboxes[i].checked = false;
+								}
+						}
+				}
+				edit_dep.changed()
+		},
+		"click #selectAllAdded"(event) {
+				var currentState = document.getElementById("selectAllAdded").checked;
+				var checkboxes = document.getElementsByTagName("input");
+				for(var i = 0; i < checkboxes.length; i++) {
+						if(checkboxes[i] != undefined && checkboxes[i].type == "checkbox" && checkboxes[i].className == "remove") {
+								checkboxes[i].checked = currentState;
+						}
+				}
+		},
+		"click #selectAllNotAdded"(event) {
+				var currentState = document.getElementById("selectAllNotAdded").checked;
+				var checkboxes = document.getElementsByTagName("input");
+				for(var i = 0; i < checkboxes.length; i++) {
+						if(checkboxes[i] != undefined && checkboxes[i].type == "checkbox" && checkboxes[i].className == "add") {
+								checkboxes[i].checked = currentState;
+						}
+				}
+		},
+		"click #cancel"(event) {
+				FlowRouter.go("/groups");
+		},
+		"change #groupTypeSelect"(event) {
+				var type = event.target.value;
+				if(event) {
+						if(type == "newType") {
+								document.getElementById("newGroupType").style.display = "inline-block";
+								$('#newGroupType').prop('required',true);
 
-//Compares the two groups to see if they are equal, it is defined as equal if they have the same name
-//and they have all the same students, and no dissenting students
-var groupsEqual = function(group1, group2) {
-		if(group1.name != group2.name) {
-				return false;
-		}
-		//This is potentially a faster check because most groups won't have the same number of students
-		//so we can immediately throw some out if their lengths aren't equal
-		if(group1.studentIds.length != group2.studentIds.length) {
-				return false;
-		}
-		for(var i = 0; i < group1.studentIds.length; i++) {
-				if(group2.studentIds.indexOf(group1.studentIds[i]) == -1) {
-						return false;
+						}
+						else {
+								document.getElementById("newGroupType").style.display = "none";
+								$('#newGroupType').removeAttr('required');
+						}
+				}
+				else {
+						console.log("IM NOT USELESS");
+						document.getElementById("newGroupType").style.display = "none";
 				}
 		}
-		return true;
-}
+});
 
 Template.editGroup.helpers({
-    groupName: function() {
-        return getGroupBeingEdited().name;
-    },
     groups: function() {
         var allGroups = Groups.find({}).fetch();
         var formattedGroups = [];
         for(var i = 0; i < allGroups.length; i++) {
-						//we don't want to include the group itself in the list
-						if(groupsEqual(getGroupBeingEdited(), allGroups[i])) {
-								continue;
-						}
+            var group = allGroups[i];
             var formattedGroup = {
-                name: allGroups[i].name,
-                groupId: allGroups[i]._id,
-								size: allGroups[i].size,
-                leader: allGroups[i].leader,
-                checked: containsAllStudentsInEditingGroup(getGroupBeingEdited(), allGroups[i])
+                name: group.name,
+                groupId: group._id,
+								size: group.size,
+								leader: group.leader,
+								groupType: group.groupType
             }
             formattedGroups.push(formattedGroup);
         }
         return formattedGroups;
     },
-    students: function() {
-        var allStudents = Student.find({}).fetch();
+		groupName: function() {
+				var id = FlowRouter.getParam('id');
+				var thisGroup = Groups.findOne({_id: id});
+				return thisGroup.name;
+		},
+    otherstudents: function() {
+				edit_dep.depend();
+        var allStudentsNotAdded = allNotAdded;
+				console.log(allNotAdded);
         var formattedStudents = [];
-        for(var i = 0; i < allStudents.length; i++) {
-            var student = allStudents[i];
+        for(var i = 0; i < allStudentsNotAdded.length; i++) {
+            var student = allStudentsNotAdded[i];
             var formattedStudent = {
                 name: student.name,
-                studentId: student._id,
-                checked: studentIsInGroup(getGroupBeingEdited(), student)
+                studentId: student._id
             }
             formattedStudents.push(formattedStudent);
         }
+				console.log(formattedStudents);
         return formattedStudents;
-    }
+    },
+		addedstudents: function() {
+				edit_dep.depend();
+        var allStudentsAdded = allAdded;
+				console.log(allAdded);
+        var formattedStudents = [];
+        for(var i = 0; i < allStudentsAdded.length; i++) {
+            var student = allStudentsAdded[i];
+            var formattedStudent = {
+                name: student.name,
+                studentId: student._id
+            }
+            formattedStudents.push(formattedStudent);
+        }
+				console.log(formattedStudents);
+        return formattedStudents;
+    },
+		instructors: function() {
+			var allInstructors = Instructor.find({}).fetch();
+			var formattedInstructors = [];
+			for(var i = 0; i < allInstructors.length; i++) {
+					var instructor = allInstructors[i];
+					var formattedInstructor = {
+							name: instructor.name,
+							instructorId: instructor._id,
+							checked: isCoach(instructor)
+					}
+					formattedInstructors.push(formattedInstructor);
+			}
+			return formattedInstructors;
+		},
+		uniquetypes: function(thisType) {
+				result = true;
+				for(var i = 0; i < alltypes.length; i++) {
+						if(alltypes[i] == thisType) {
+								result = false;
+								break;
+						}
+				}
+				if(result == true)
+				{
+						alltypes.push(thisType);
+				}
+				return result;
+		},
+    cleargrouptypes: function() {
+        alltypes = ["None"];
+    },
+		thisgrouptype: function() {
+				var id = FlowRouter.getParam('id');
+				var thisGroup = Groups.findOne({_id: id});
+				var thisType = thisGroup.groupType;
+				if(thisType != "None") {
+						alltypes.push(thisType);
+						return true;
+				}
+				else {
+						return false;
+				}
+		},
+		getthisgrouptype: function() {
+				var id = FlowRouter.getParam('id');
+				var thisGroup = Groups.findOne({_id: id});
+				return thisGroup.groupType;
+		}
 });
 
-//Checks the group being edited studentIds against the group in question and will return true if
-//the group in question contains all the students in the group being edited. Else it returns false
-var containsAllStudentsInEditingGroup = function(groupBeingEdited, groupToCheckStudentsAgainst) {
-    for(var i = 0; i < groupToCheckStudentsAgainst.studentIds.length; i++) {
-        if(groupBeingEdited.studentIds.indexOf(groupToCheckStudentsAgainst.studentIds[i]) == -1) {
-            return false;
-        }
-    }
-    return true;
-}
-
-//Determines if a student is in the group being edited, and returns true if that is the case
-//Else returns false
-var studentIsInGroup = function(groupBeingEdited, student) {
-    return !(groupBeingEdited.studentIds.indexOf(student._id) == -1);
-}
-
-var formatStudentsForGroup = function(studentIds) {
-    var formattedStudents = [];
-
-    for(var i = 0; i < studentIds.length; i++) {
-        var student = Student.findOne({_id: studentIds[i]});
-        if(student == undefined) {
-            continue;
-        }
-        name = student.name;
-        formattedStudents.push(name);
-    }
-    return formattedStudents;
+var isCoach = function(instructor) {
+		var id = FlowRouter.getParam('id');
+		var thisGroup = Groups.findOne({_id: id});
+		var coachesInGroup = thisGroup.coaches;
+		for(var i = 0; i < coachesInGroup.length; i++) {
+				if(instructor._id == coachesInGroup[i]) {
+						return true;
+				}
+		}
+		return false;
 }

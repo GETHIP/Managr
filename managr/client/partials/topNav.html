@@ -57,7 +57,18 @@
 							<a class="dashboardActive {{ activeIfTemplateIs '/dashboard'}}" href="/dashboard">Dashboard</a>
 						</li>
 						{{/if}}
+						{{#if isInstructor}}
+						<li class="active">
+							<a class="leaderboardActive {{ activeIfTemplateIs '/leaderboard'}}" href="/leaderboard">Performance</a>
+						</li>
 						{{/if}}
+
+						<li class="active">
+							<a class="leaderboardActive {{ activeIfTemplateIs '/viewEval'}}" href="/viewEval">Evaluations</a>
+						</li>
+
+						{{/if}}
+					<li></li>
 					</ul>
 					{{#if renderNavbar}}
 					<ul class="nav navbar-nav navbar-right">
