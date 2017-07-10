@@ -1,48 +1,53 @@
 <template name="individualResults">
   {{#if isInstructor}}
+  {{#with survey}}
   <div class="marginContainer">
 
-    <h1 class="titleAssignment"> {{name}} Results&nbsp;</h1>
+    <h1 class="titleAssignment"> {{student.name}}'s Results&nbsp;</h1>
     <div class="orange-bar red-bar"> &nbsp;</div>
 
     <!-- <h1 class="titleAssignment" id="{{studentId}}">{{this.name}} Results</h1>
     <div class="orange-bar red-bar"> &nbsp;</div> -->
     <div class="surveyContainer">
-      <p class="noIndent assignmentFormFormat"><b>Survey Questions:</b></p>
-      <!-- {{#each question in questions}}
-      <ul>
-      <li>
-      {{question.prompt}}
-      <ul>
-      {{#if choicetype question.questionType}}
-      <ul>
-      {{#each option in question.options}}
-      <li>
-      <input id="MCradio" type="radio" name="MCQ" value="r" class="selectionForm CQlabel" />
-      {{option}}
-    </li>
-    {{/each}}
-  </ul>
+      <h3 class="noIndent assignmentFormFormat"><b>Survey Questions:</b></h3>
+      <form class="allQuestionForm" id="allQuestionForm">
+        {{#each question in questions}}
+        <form class="singleQuestionForm" id="singleQuestionForm">
+          <ul>
+            <li>
+              <b>{{question.prompt}}</b>
+              <ul>
+                {{#if choicetype question.questionType}}
+                {{#each studentAnswer in question.studentResults}}
+                <ul>
+                  <li><input type="radio" class="selectionForm CQlabel"/>{{studentAnswer.answer}}</li>
+                </ul>
+                {{/each}}
+                {{/if}}
+                {{#if checktype question.questionType}}
+                {{#each studentAnswer in question.studentResults}}
+                <ul>
+                  <li><input type="checkbox" class="selectionForm CQlabel"/>{{studentAnswer.answer}}</li>
+                </ul>
+                {{/each}}
+                {{/if}}
+                {{#if shResptype question.questionType}}
+                {{#each studentAnswer in question.studentResults}}
+                <ul>
+                  <li>Answer: {{studentAnswer.answer}}</li>
+                </ul>
+                {{/each}}
+                {{/if}}
+              </ul>
+            </li>
+          </ul>
+        </form>
+        {{/each}}
+      </form>
+    </div>
+  </div>
+  {{/with}}
+  {{else}}
+  {{> accessDenied}}
   {{/if}}
-  {{#if checktype question.questionType}}
-  <ul>
-  {{#each option in question.options}}
-  <li>
-  <input type="checkbox" name="CBQ" value="c" class="selectionForm CQlabel" />
-  {{option}}
-</li>
-{{/each}}
-</ul>
-{{/if}}
-</ul>
-</li>
-</ul>
-{{/each}} -->
-
-</div>
-</div>
-
-{{else}}
-{{> accessDenied}}
-{{/if}}
 </template>

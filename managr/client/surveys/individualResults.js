@@ -3,22 +3,42 @@ import { Student } from '../../collections/student.js';
 
 Template.individualResults.onCreated(function() {
   Meteor.subscribe("Student");
+  Meteor.subscribe("Surveys");
 });
 
 Template.individualResults.helpers({
-  name: function(){
-      console.log(FlowRouter.path(pathDef, params));
-      var urlIds = FlowRouter.path(pathDef, params);
-      var formattedUrl = urlIds.substring(19);
-      console.log(formattedUrl);
-      for (var i = 0; i < formattedUrl.length; i++){
-        if(formattedUrl.charAt(i).equals("//")){
-          var IdSurvey = formattedUrl.substring(0, i);
-          var IdStudent = formattedUrl.substring(i + 1);
-        }
-      }
-
-      var studentName = Student.findOne({userId: IdStudent});
-      return studentName;
+  student: function(){
+      console.log("Hi");
+      var pathDef = "/individualResults/:surveyId/:studentId";
+      var IdStudent = FlowRouter.getParam('studentId');
+      var IdSurvey = FlowRouter.getParam('surveyId');
+      var student = Student.findOne({userId: IdStudent});
+      return student;
+  },
+  survey: function(){
+    console.log("Hello");
+    var pathDef = "/individualResults/:surveyId/:studentId";
+    var IdStudent = FlowRouter.getParam('studentId');
+    var IdSurvey = FlowRouter.getParam('surveyId');
+    var survey = Surveys.findOne(IdSurvey);
+    console.log(survey.questions);
+    console.log(survey.questions[0].studentResults[0].answer);
+    return survey;
+  },
+  choicetype: function(questionType) {
+    console.log(questionType);
+    if(questionType == "choice") {
+      return true;
+    }
+  },
+  checktype: function(questionType) {
+    if(questionType == "check") {
+      return true;
+    }
+  },
+  shResptype: function(questionType) {
+    if(questionType == "shResp") {
+      return true;
+    }
   }
 });
