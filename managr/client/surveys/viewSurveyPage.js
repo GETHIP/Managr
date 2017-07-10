@@ -69,8 +69,7 @@ Template.viewSurveyPage.events({
   'click #sendResponseBtnn': function(event){
 
     var mcAnswer;
-    var surveyId = FlowRouter.getParam('id');
-    Meteor.call("incCompletedSurveyCt", surveyId);
+  
     // console.log(idS);
 
     for(var i = 0; i < idS.length; i++)

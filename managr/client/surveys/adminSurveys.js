@@ -48,6 +48,20 @@ Template.surveyRowsStudent.events({
 		FlowRouter.go('/completeSurvey/' + event.currentTarget.id);
 	}
 });
+Template.surveyRowsAdmin.helpers({
+	count: function(){
+		var surveyId = FlowRouter.getParam('id');
+		var currentSurvey = Surveys.findOne({
+			_id: surveyId
+		});
+		var surveyResultList = currentSurvey[0].studentResults;
+		var surveyResultCt = 0;
+		for(var i = 0; i<surveyResultList.length; i++){
+			surveyResultCt++;
+		}
+		Meteor.call("incCt", surveyResultCt);
+	}
+});
 
 Template.surveysPage.events({
 	'click #createSurveyBtn'(event){
