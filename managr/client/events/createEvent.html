@@ -18,11 +18,12 @@
 					<p>Location:</p>
 					<input id="createEventBox" type="text" name="location" placeholder="Where's Your Event?" required>
 					<p>Invite:</p>
+          <h5>Groups:</h5>
 					{{#each groups}}
 	          <label for="{{id}}"><input type="checkbox" class="groupCheckBox" id="{{id}}"/> {{name}}</label>
 	        {{/each}}
 	        <hr/>
-          <label><input type="checkbox" name="selectAllStudents" id="selectAllStudents"/> Select All</label>
+          <h5>Students:</h5>
 					{{#each students}}
 							<label for="{{studentId}}"><input type="checkbox" id="{{studentId}}"/> {{name}}</label>
 					{{/each}}

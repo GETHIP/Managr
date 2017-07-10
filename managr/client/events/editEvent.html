@@ -17,10 +17,12 @@
           <p>Location:</p>
           <input id="editEventBox" type="text" name="location" placeholder="Where's Your Event?" value="{{eventLocation}}" autofocus required>
           <p>Invite:</p>
+          <h5>Groups:</h5>
           {{#each groups}}
 	          <label for="{{id}}"><input type="checkbox" {{checkedS}} class="groupCheckBox" id="{{id}}"/> {{name}}</label>
 	        {{/each}}
 	        <hr/>
+          <h5>Students:</h5>
 					{{#each students}}
 							<label for="{{studentId}}"><input type="checkbox" {{checkedS}} id="{{studentId}}"/> {{name}}</label>
 					{{/each}}
