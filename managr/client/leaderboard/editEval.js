@@ -56,9 +56,11 @@ Template.editEval.events({
       var week = document.getElementById('maSelector').value;
       console.log(week);
       var id = FlowRouter.getParam("id");
-      Meteor.call("editEval", FlowRouter.getParam("id"), message, starBox1, starBox2, starBox3, starBox4, week);
-      FlowRouter.go("/eval/" + id);
-
+      if(checkStar(starBox1) && checkStar(starBox2) && checkStar(starBox3) && checkStar(starBox4)){
+        Meteor.call("editEval", FlowRouter.getParam("id"), message, starBox1, starBox2, starBox3, starBox4, week);
+        FlowRouter.go("/eval/" + id);
+      }
+      event.preventDefault();
 },
   'click .deleteEval.editEval': function(event){
     console.log("testing")
@@ -66,3 +68,13 @@ Template.editEval.events({
   },
 
 });
+
+function checkStar(data){
+  if(data <= 5 && data >= 1 && Number.isInteger(eval(data))){
+    console.log("true");
+    return true;
+  }else{
+    console.log("false");
+    return false;
+  }
+}
