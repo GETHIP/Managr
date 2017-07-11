@@ -29,10 +29,10 @@
                 </ul>
                 {{/if}}
                 {{#if checktype question.questionType}}
-                <ul class="questionOptions">
+                <ul>
                   {{#each option in question.options}}
                   <li>
-                    <input id="{{option.refId}}" type="checkbox" name="CBQ" value="c" class="selectionForm CQlabel" />
+                    <input id="{{option.refId}}" type="checkbox" name="CBQ" value="c" class="selectionForm CQlabel questionOptions" />
                     {{option.name}}
                   </li>
                   {{/each}}
