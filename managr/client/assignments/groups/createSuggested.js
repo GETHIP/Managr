@@ -36,7 +36,6 @@ Template.createSuggested.events({
 
         event.preventDefault();
 
-        setTimeout(function() {
         console.log("running");
 
         const form = event.target;
@@ -51,7 +50,7 @@ Template.createSuggested.events({
         var numberOf = parseInt(form.numTypeInput.value);
         var option = form.numType.value;
         var secondsToRun = 1;
-        var iterations = secondsToRun * 2000000;
+        var iterations = secondsToRun * 90000;
         var bestScore = 9999;
 
         if (option == "Number Of Groups") {
@@ -125,7 +124,6 @@ Template.createSuggested.events({
             FlowRouter.go("/groups/editSuggested");
             BlazeLayout.render("groupsLayout", {content:'editSuggested', groups: params, groupsType: typeparams});
         }
-      },50);
     },
 		"click #addStudents"(event) {
 				event.preventDefault();
