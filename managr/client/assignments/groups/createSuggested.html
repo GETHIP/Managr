@@ -102,5 +102,12 @@
       <button class="buttonStyle editBtn submitbtn createSuggestedButton" type="submit" value="Create Group" id="createSuggestedButton">Generate Suggested Groups</button>
     </form>
   </div>
+
+  <div id="loading" class="loadingHidden">
+    <div class="modal-backdrop fade in"></div>
+    <div class="spinner"></div>
+    <p class="loadMessage">Generating <br>Groups</p>
+  </div>
+
   {{else}} {{> accessDenied}} {{/if}}
 </template>

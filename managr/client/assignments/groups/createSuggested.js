@@ -32,11 +32,18 @@ Template.createSuggested.onCreated(function() {
 
 Template.createSuggested.events({
 		"submit #createSuggestedForm"(event) {
+
+        document.getElementById('loading').style="display:initial";
+
         event.preventDefault();
+
+        console.log("running");
+
         const form = event.target;
         var valid = true;
 
         var groupType = document.getElementById("groupTypeSelect").value;
+
         if(groupType == "newType") {
             groupType = form.newGroupType.value;
         }
@@ -119,7 +126,6 @@ Template.createSuggested.events({
                 confirmCallback: () => {}
             });
         }
-
         if (valid) {
             var theStudents = [];
             for(i = 0; i < allAdded.length; i++) {
@@ -132,11 +138,6 @@ Template.createSuggested.events({
                 }
                 theStudents.push(student);
             }
-
-
-
-            //theStudents = makeStudents(30);
-
 
             var bestGroups = [];
             var bestScore = 9999;
@@ -173,6 +174,7 @@ Template.createSuggested.events({
 
             localStorage.setItem('bestGroupsTransfer', JSON.stringify(bestGroups));
             localStorage.setItem('groupType', groupType);
+
             FlowRouter.go("/groups/editSuggested");
         }
     },
