@@ -24,7 +24,7 @@ var profileSection = FlowRouter.group({
 });
 var leaderboardSection = FlowRouter.group({ // my edit
 	name: "leaderboard",
-	prefix: "/leaderboard"
+	prefix: "/performance"
 
 });
 var viewEvalSection = FlowRouter.group({ // my edit
@@ -182,7 +182,7 @@ profileSection.route("/profile/edit/:id", {
   }
 });
 
-FlowRouter.route("/leaderboard", {  //--------------------------my edit
+FlowRouter.route("/performance", {  //--------------------------my edit
 	action: function(params, queryParams){
 		BlazeLayout.render("leaderboardLayout", {content: "leaderboard"})
 	}
