@@ -11,7 +11,7 @@
     </tr>
 
     {{#each assignments}}
-      <tr class="tableRowFormat" onclick="FlowRouter.go('{{this.url}}')">
+      <tr class="tableRowFormat assignments" onclick="FlowRouter.go('{{this.url}}')">
         <td class="tableDataFormat assignments"><div class="overflowText">{{this.title}}</div></td>
         <td class="tableDataFormat assignments">{{this.studentsCompleted}}/{{this.numberOfStudents}}</td>
         <td class="tableDataFormat assignments">{{this.averageGrade}}</td>

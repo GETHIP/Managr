@@ -1,0 +1,62 @@
+.MClabel {
+  margin-top: 7px !important;
+  margin-bottom: 35px !important;
+  margin-right: 10px !important;
+}
+
+.createSurveyForm {
+  border-radius: 6px !important;
+  border: 2px solid lightgrey !important;
+  width: 100% !important;
+  /* All the important tags are bad practice, but
+  it appears to be the only way to get them to override
+  the default (bootstrap perhaps?) settings of 20px height for inputs. */
+  height: 2em !important;
+  box-sizing: border-box !important;
+  box-shadow: none !important;
+}
+
+.createSurveyForm:focus {
+  outline: none !important;
+  border-radius: 6px !important;
+  border-color: white !important;
+  box-shadow: none !important;
+  border: 2px solid #e61610 !important;
+}
+
+.createSurveyForm::-webkit-inner-spin-button {
+  display: none;
+}
+
+.addBtnn{
+  background-color: #e61610;
+  width: 100%;
+  padding: 10px;
+  margin-left: 10px;
+}
+
+.addBtnn:hover{
+  background-color: #cf130e;
+}
+
+.questionSbmt{
+  width:60%;
+}
+
+.answerFormat {
+  margin-left: 25px;
+}
+
+.selectionQuestion {
+  font-size: 18px;
+  padding: 10px;
+  margin-top: 30px;
+}
+
+.selctionQuestInput {
+  margin-bottom: 20px !important;
+}
+
+.questionOptions {
+  margin-left: 20px !important;
+}

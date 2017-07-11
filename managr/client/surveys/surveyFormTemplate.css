@@ -1,0 +1,13 @@
+.surveyFormFormat {
+  font-size: 20px;
+}
+
+.nSurveyHr {
+  border-color: #e61610;
+  margin: 30px;
+}
+
+.selectionQuestInput {
+  margin-left: 2%;
+  margin-bottom: 0px !important;
+}

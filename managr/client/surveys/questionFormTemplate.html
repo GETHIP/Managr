@@ -1,0 +1,38 @@
+<template name="questionFormTemplate">
+  <form class="questionFormSbmt" id="questionFormSbmt">
+    <!-- <table class="createTable"> -->
+    <!-- <tbody class="createTable"> -->
+    <div class="compQuestionDiv">
+      <!-- <tr> -->
+      <!-- <class="createTableBtn"> -->
+
+      <!-- </td> -->
+      <!-- <td class="createTableSlct"> -->
+      <select name="selectType" class="dropdown dropSurveys" id="questionFormm">
+        <option value="" disabled selected>Select Survey Type</option>
+        <option value="choice">Multiple Choice</option>
+        <option value="check">Check Boxes</option>
+        <option value="shResp">Short Response</option>
+      </select>
+      <!-- </td> -->
+      <!-- </tr> -->
+      <!-- </tbody> -->
+      <!-- </table> -->
+
+
+      <div id="MCdiv">
+        {{> MCtemplate}}
+      </div>
+
+      <div id="CBdiv">
+        {{> CBtemplate}}
+      </div>
+
+      <div id="FRdiv">
+        {{> FRtemplate}}
+      </div>
+    </div>
+
+    <button type="submit" class="buttonStyle submitbtn addBtn" id="buttonn">Add</button>
+  </form>
+</template>

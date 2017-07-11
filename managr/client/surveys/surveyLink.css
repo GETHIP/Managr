@@ -1,0 +1,60 @@
+.linkArea {
+  resize: none;
+  cursor: text;
+  width: 90%;
+  height: 35px;
+  margin-left: 5%;
+  margin-right: 5%;
+  font-size: 24px;
+  overflow: hidden;
+  border: 2px gray solid;
+  transition: border 1s;
+  background-color: white !important;
+  outline: none !important;
+}
+
+.notificationDiv {
+  position: fixed;
+  height: 10vh;
+  width: 10vw;
+  right: 5vw;
+  bottom: 7vh;
+  border-radius: 5px;
+  padding-top: 3.5vh;
+  background: white;
+  box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.7);
+  opacity: 1;
+  cursor: pointer;
+}
+
+.hideNote {
+  opacity: 0;
+  transition: opacity .5s ease-in-out;
+  -moz-transition: opacity .5s ease-in-out;
+  -webkit-transition: opacity .5s ease-in-out;
+}
+
+.insideDiv {
+  margin: 0 auto;
+  width: 75%;
+  margin-left: 13%;
+}
+
+.linkArea:hover {
+  cursor: text;
+  border: 2px #e61610 solid;
+}
+
+.linkArea:focus {
+  cursor: text;
+  border: 2px #e61610 solid;
+}
+
+.surveyContainer.linkContainer {
+  margin: 0;
+  padding: 0;
+
+  padding-top: 35px;
+  padding-bottom: 30px;
+  margin-bottom: 30px;
+}
