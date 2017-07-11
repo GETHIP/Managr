@@ -126,58 +126,59 @@ Template.createSuggested.events({
                     confirmCallback: () => {}
                 });
             }
+            
+            if (valid) {
+                var theStudents = [];
+                for(i = 0; i < allAdded.length; i++) {
+                    var student = {
+                        studentId: allAdded[i]._id,
+                        name: allAdded[i].name,
+                        strengths: strengthNumbers(allAdded[i].strengths),
+                        strengthStrings: allAdded[i].strengths,
+                        domains: findDomains(allAdded[i].strengths)
+                    }
+                    theStudents.push(student);
+                }
+
+                var bestGroups = [];
+                var bestScore = 9999;
+                var start = Date.now();
+                var groups = [];
+                var score = 0;
+                secondsToRun = secondsToRun * 1000;
+
+                //Run the best group finding algorithms
+                while((Date.now() - start) < secondsToRun) {
+                //for(var index = 0; index < iterations; index++) {
+                    theStudents = shuffle(theStudents);
+                    groups = makeGroups(option, theStudents, numberOf);
+                    score = scoreGroups(groups);
+                    if (score < bestScore) {
+                        bestGroups = groups;
+                        bestScore = score;
+                    }
+                }
+                console.log("Best Group Set:");
+                console.log(bestGroups);
+                console.log("Best Score:");
+                console.log(bestScore);
+
+                var end = Date.now();
+                console.log("Ms elapsed:");
+                console.log(end - start);
+                console.log("Ms elapsed per iteration:");
+                console.log((end - start) / iterations);
+
+                bestGroups.forEach(function(group) {
+                    group.groupId = Random.id();
+                });
+
+                localStorage.setItem('bestGroupsTransfer', JSON.stringify(bestGroups));
+                localStorage.setItem('groupType', groupType);
+
+                FlowRouter.go("/groups/editSuggested");
+            }
         },50);
-        if (valid) {
-            var theStudents = [];
-            for(i = 0; i < allAdded.length; i++) {
-                var student = {
-                    studentId: allAdded[i]._id,
-                    name: allAdded[i].name,
-                    strengths: strengthNumbers(allAdded[i].strengths),
-                    strengthStrings: allAdded[i].strengths,
-                    domains: findDomains(allAdded[i].strengths)
-                }
-                theStudents.push(student);
-            }
-
-            var bestGroups = [];
-            var bestScore = 9999;
-            var start = Date.now();
-            var groups = [];
-            var score = 0;
-            secondsToRun = secondsToRun * 1000;
-
-            //Run the best group finding algorithms
-            while((Date.now() - start) < secondsToRun) {
-            //for(var index = 0; index < iterations; index++) {
-                theStudents = shuffle(theStudents);
-                groups = makeGroups(option, theStudents, numberOf);
-                score = scoreGroups(groups);
-                if (score < bestScore) {
-                    bestGroups = groups;
-                    bestScore = score;
-                }
-            }
-            console.log("Best Group Set:");
-            console.log(bestGroups);
-            console.log("Best Score:");
-            console.log(bestScore);
-
-            var end = Date.now();
-            console.log("Ms elapsed:");
-            console.log(end - start);
-            console.log("Ms elapsed per iteration:");
-            console.log((end - start) / iterations);
-
-            bestGroups.forEach(function(group) {
-                group.groupId = Random.id();
-            });
-
-            localStorage.setItem('bestGroupsTransfer', JSON.stringify(bestGroups));
-            localStorage.setItem('groupType', groupType);
-
-            FlowRouter.go("/groups/editSuggested");
-        }
     },
 		"click #addStudents"(event) {
 				event.preventDefault();
