@@ -207,19 +207,14 @@ Template.editGroup.events({
 		},
 		"change #groupTypeSelect"(event) {
 				var type = event.target.value;
-				if(event) {
-						if(type == "newType") {
-								document.getElementById("newGroupType").style.display = "inline-block";
-								$('#newGroupType').prop('required',true);
+				if(type == "newType") {
+						document.getElementById("newGroupType").style.display = "inline-block";
+						$('#newGroupType').prop('required',true);
 
-						}
-						else {
-								document.getElementById("newGroupType").style.display = "none";
-								$('#newGroupType').removeAttr('required');
-						}
 				}
 				else {
 						document.getElementById("newGroupType").style.display = "none";
+						$('#newGroupType').removeAttr('required');
 				}
 		}
 });

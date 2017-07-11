@@ -30,6 +30,22 @@ export function groupsMethods() {
 				return;
 			}
 			Groups.update({_id: groupId}, {$set: data});
+		},
+		'createGroupsSugg': function(data) {
+			if(!isInstructor()) {
+				return;
+			}
+			Groups.insert({
+				name: data.name,
+				studentIds: data.studentIds,
+				coaches: data.coaches,
+				coachNames: data.coachNames,
+				size: data.size,
+				stringSize: data.stringSize,
+				studentNames: data.studentNames,
+				groupType: data.groupType,
+				dateCreated: data.dateCreated
+			});
 		}
 	});
 }

@@ -1,5 +1,6 @@
 import { Student } from '../../../collections/student.js';
 import { Groups } from '../../../collections/groups.js';
+import { Random } from 'meteor/random';
 
 var allAdded = [];
 var allNotAdded = [];
@@ -46,18 +47,45 @@ Template.createSuggested.events({
         if(groupType == "newType") {
             groupType = form.newGroupType.value;
         }
-
         var numberOf = parseInt(form.numTypeInput.value);
         var option = form.numType.value;
-        var secondsToRun = 1;
-        var iterations = secondsToRun * 90000;
-        var bestScore = 9999;
-
+        console.log(option);
+        var secondsInput = document.getElementById("timeSelect").value;
+        if(secondsInput == "low") {
+            secondsInput = 2;
+        }
+        else if(secondsInput == "medium") {
+            secondsInput = 5;
+        }
+        else if(secondsInput == "high") {
+            secondsInput = 10;
+        }
+        else {
+            secondsInput = parseInt(form.waitTimeInput.value);
+            if(isNaN(secondsInput)) {
+                secondsInput = 5;
+            }
+        }
+        console.log(secondsInput);
+        if (typeof(secondsInput) != "number") {
+            valid = false;
+            Modal.show('warningModal', {
+                title: 'Error',
+                text: 'An error has occurred.',
+                confirmText: 'Retry',
+                confirmCallback: () => {}
+            });
+        }
+        var secondsToRun = secondsInput;
         if (option == "Number Of Groups") {
             option = 1;
+            // Seems like 3 seconds plus the number of groups as seconds is how long it runs for 5 seconds
+            //var secondsToRun = ((numberOf * 1 / 1) + 2) / 5 * secondsInput;
         }
         else if (option == "Students Per Group") {
             option = 2;
+            // Seems like 3 seconds plus the number of groups as seconds is how long it runs for 5 seconds
+            //var secondsToRun = ((Math.ceil(allAdded.length / numberOf) * 1 / 5) + 2) * secondsInput;
         }
         else {
             valid = false;
@@ -68,6 +96,8 @@ Template.createSuggested.events({
                 confirmCallback: () => {}
             });
         }
+        console.log(secondsToRun);
+        var iterations = secondsToRun * 90000;
 
         if (numberOf < 2 && option == 2) {
             valid = false;
@@ -78,51 +108,74 @@ Template.createSuggested.events({
                 confirmCallback: () => {}
             });
         }
-
-        var theStudents = [];
-        for(i = 0; i < allAdded.length; i++) {
-            var student = {
-                studentId: allAdded[i]._id,
-                name: allAdded[i].name,
-                strengths: strengthNumbers(allAdded[i].strengths),
-                strengthStrings: allAdded[i].strengths,
-                domains: findDomains(allAdded[i].strengths)
-            }
-            theStudents.push(student);
+        if (numberOf < 2 && option == 1) {
+            valid = false;
+            Modal.show('warningModal', {
+                title: 'Error',
+                text: 'Not enough groups.',
+                confirmText: 'Retry',
+                confirmCallback: () => {}
+            });
         }
-
-        //theStudents = makeStudents(30);
-
-
-
-        var bestGroups = [];
-        var start = new Date().getTime();
-
-
-        //Run the best group finding algorithms
-        for(var index = 0; index < iterations; index++) {
-            theStudents = shuffle(theStudents);
-            var groups = makeGroups(option, theStudents, numberOf);
-            var score = scoreGroups(groups);
-            if (score < bestScore) {
-                bestGroups = groups;
-                bestScore = score;
-            }
+        if (allAdded.length < 3) {
+            valid = false;
+            Modal.show('warningModal', {
+                title: 'Error',
+                text: 'Not enough students were selected.',
+                confirmText: 'Retry',
+                confirmCallback: () => {}
+            });
         }
-
-        // console.log(bestGroups);
-        // console.log(bestScore);
-
-        var end = new Date().getTime();
-        console.log(end - start);
-        console.log((end - start)/iterations);
-        console.log(end + " " + start + " " + iterations);
-
         if (valid) {
-            var params = bestGroups;
-            var typeparams = groupType;
+            var theStudents = [];
+            for(i = 0; i < allAdded.length; i++) {
+                var student = {
+                    studentId: allAdded[i]._id,
+                    name: allAdded[i].name,
+                    strengths: strengthNumbers(allAdded[i].strengths),
+                    strengthStrings: allAdded[i].strengths,
+                    domains: findDomains(allAdded[i].strengths)
+                }
+                theStudents.push(student);
+            }
+
+            var bestGroups = [];
+            var bestScore = 9999;
+            var start = Date.now();
+            var groups = [];
+            var score = 0;
+            secondsToRun = secondsToRun * 1000;
+
+            //Run the best group finding algorithms
+            while((Date.now() - start) < secondsToRun) {
+            //for(var index = 0; index < iterations; index++) {
+                theStudents = shuffle(theStudents);
+                groups = makeGroups(option, theStudents, numberOf);
+                score = scoreGroups(groups);
+                if (score < bestScore) {
+                    bestGroups = groups;
+                    bestScore = score;
+                }
+            }
+            console.log("Best Group Set:");
+            console.log(bestGroups);
+            console.log("Best Score:");
+            console.log(bestScore);
+
+            var end = Date.now();
+            console.log("Ms elapsed:");
+            console.log(end - start);
+            console.log("Ms elapsed per iteration:");
+            console.log((end - start) / iterations);
+
+            bestGroups.forEach(function(group) {
+                group.groupId = Random.id();
+            });
+
+            localStorage.setItem('bestGroupsTransfer', JSON.stringify(bestGroups));
+            localStorage.setItem('groupType', groupType);
+
             FlowRouter.go("/groups/editSuggested");
-            BlazeLayout.render("groupsLayout", {content:'editSuggested', groups: params, groupsType: typeparams});
         }
     },
 		"click #addStudents"(event) {
@@ -220,22 +273,25 @@ Template.createSuggested.events({
 		},
 		"change #groupTypeSelect"(event) {
 				var type = event.target.value;
-				if(event) {
-						if(type == "newType") {
-								document.getElementById("newGroupType").style.display = "inline-block";
-								$('#newGroupType').prop('required',true);
+				if(type == "newType") {
+						document.getElementById("newGroupType").style.display = "inline-block";
+						$('#newGroupType').prop('required',true);
 
-						}
-						else {
-								document.getElementById("newGroupType").style.display = "none";
-								$('#newGroupType').removeAttr('required');
-						}
 				}
 				else {
-						console.log("IM NOT USELESS");
 						document.getElementById("newGroupType").style.display = "none";
+						$('#newGroupType').removeAttr('required');
 				}
-		}
+		},
+    "change #timeSelect"(event) {
+        var speedSelected = event.target.value;
+        if(speedSelected == "custom") {
+            document.getElementById("secondsDiv").style.display = "inline-block";
+        }
+        else {
+            document.getElementById("secondsDiv").style.display = "none";
+        }
+    }
 });
 
 Template.createSuggested.helpers({
@@ -248,7 +304,7 @@ Template.createSuggested.helpers({
                 name: group.name,
                 groupId: group._id,
                 size: group.size,
-                leader: group.leader,
+                coaches: group.coaches,
                 groupType: group.groupType
             }
             formattedGroups.push(formattedGroup);
