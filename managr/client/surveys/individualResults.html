@@ -12,11 +12,11 @@
       <h3 class="noIndent assignmentFormFormat"><b>Survey Questions:</b></h3>
       <form class="allQuestionForm" id="allQuestionForm">
         {{#each question in questions}}
-        <form class="singleQuestionForm questionOptions" id="singleQuestionForm">
+        <form class="singleQuestionForm" id="singleQuestionForm">
           <ul class="answerFormatAnswers">
             <li>
               <b>{{question.prompt}}</b>
-              <ul class="questionOptions">
+              <ul>
                 {{#if choicetype question.questionType}}
                 {{#each studentAnswer in question.studentResults}}
                 <ul>
