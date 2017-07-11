@@ -50,10 +50,6 @@
 	border-bottom-color: #0397d7;
 }
 
-.reportsActive:focus, .reportsActive:hover, .reportsActivated {
-  border-bottom-color: #0397D7;
-}
-
 .navbar-inverse .nav .active > a {
   background-color: #222;
   padding: 15px;

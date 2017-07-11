@@ -40,10 +40,9 @@ table#t02 th {
       width: 33%;
 }
 
-table#t02 th, td {
+table#t02 th, table#t02 td {
     padding: 20px;
     font-family: arial, sans-serif;
-    overflow: hidden;
 }
 
 table#t02 tr {
