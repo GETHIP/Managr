@@ -1,0 +1,69 @@
+<template name= "myEventsPage">
+
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    {{#if userIsValid}}
+      <div class="marginContainer">
+        <h1 class="titleAssignment">Events</h1>
+        <div class="orange-bar purpleBar lineP"> &nbsp;</div>
+        <div class="formdashboardContainer">
+          <h4 class="searchEventsLabel">Search:</h4>
+            <div class = "eventSearchBar">
+              <table class="eventsTable" id="t01">
+                    <thead></thead>
+                    <tbody class="eventsTable">
+                    <tr>
+                <div class = "spacey">
+                    {{> EasySearch.Input index=eventsIndex attributes=searchBarEvent  sortBy='name'}}
+                </div>
+
+                  {{#if isInstructor}}
+                    <td class="eventsTableSpacer"></td>
+                    <td class="eventsTableButton">
+                    <button type="button" class="buttonStyle createEvent eventsTable" id="createEventButton"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>     Create Event</button>
+                  </td>
+                  <td class="eventsTableButton">
+                  <button type="button" class="buttonStyle eventCalendar eventsTable" id="calendarButton"><i class="fa fa-calendar" aria-hidden="true"></i>     Calendar</button>
+                  </td>
+                {{/if}}
+
+                {{#if isStudent}}
+                  <td class="eventsTableButton spacey2">
+                  <button type="button" class="buttonStyle eventCalendar eventsTable" id="calendarButton"><i class="fa fa-calendar" aria-hidden="true"></i>     Calendar</button>
+                  </td>
+                {{/if}}
+
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      {{#EasySearch.Each index=eventsIndex attributes=searchBarEvent}}
+        <div class="events">
+          <div class ="formdashboardContainer containerDiv formbg homeEvents">
+            <h1 class="formTitle eventTitle goToView" id="{{eventId}}">{{name}}</h1>
+
+            {{#if isInstructor}}
+               <div class="editEventButton">
+                 <button type="button" class="buttonStyle editEvent createdEvent goToEdit" id="{{eventId}}"><i class="fa fa-eraser" aria-hidden="true"></i>     Edit Event</button>
+                 <button type="button" class="buttonStyle editEvent createdEvent attendingButton" id="{{eventId}}"><i class="fa fa-user-circle" aria-hidden="true"></i>     Attending</button>
+                 <button type="button" class="deleteEventButton manageDeleteButton" id="{{eventId}}"><i class="fa fa-trash-o" aria-hidden="true"></i>     Delete</button>
+               </div>
+            {{/if}}
+
+            <p>Host: {{host}}</p>
+            <p>Description: {{description}}</p>
+            <p>Date: {{formattedDate}}</p>
+            <p>Location: {{location}}</p>
+
+        </div>
+      </div>
+
+    {{/EasySearch.Each}}
+      {{else}}
+      {{> accessDenied}}
+
+    {{/if}}
+    
+  </template>

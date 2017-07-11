@@ -6,6 +6,7 @@ import { Assignments } from '../collections/assignments.js';
 import { Instructor } from '../collections/instructor.js';
 import { Student } from '../collections/student.js';
 import { Groups } from '../collections/groups.js';
+import { Events } from '../collections/event.js';
 import { isStudent, isInstructor, userIsValid, currentUserOrInstructor, nameOfUser } from '../lib/permissions.js';
 import { Drafts } from '../collections/drafts.js';
 import { publishAll } from './publish.js';
@@ -14,9 +15,14 @@ import { blogsMethods } from './blogsMethods.js';
 import { assignmentsMethods } from './assignmentsMethods.js';
 import { profilesMethods } from './profilesMethods.js';
 import { groupsMethods } from './groupsMethods.js';
+import { eventsMethods } from './eventsMethods.js';
 import { dashboardMethods } from './dashboardMethods.js';
+import { leaderboardMethods } from './leaderboardMethods.js';
 import { Globals } from '../collections/globals.js';
 import { Email } from 'meteor/email'
+import { Milestone } from '../collections/milestone.js';
+import { Surveys } from '../collections/surveys.js';
+import { surveysMethods } from './surveysMethods.js';
 
 var fs = Npm.require('fs');
 
@@ -74,8 +80,11 @@ Meteor.startup(() => {
 	blogsMethods();
 	assignmentsMethods();
 	profilesMethods();
-	groupsMethods();
+	eventsMethods();
 	dashboardMethods();
+	leaderboardMethods();
+	surveysMethods();
+	groupsMethods();
 
 	Email.send({
     to: 'emily_zhang@gallup.com',

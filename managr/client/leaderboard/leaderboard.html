@@ -1,0 +1,56 @@
+<template name="leaderboard">
+	{{#if isInstructor}}
+  <div class="marginContainer">
+  <h2 class="titleLeader">Evaluation Overview</h2>
+  <div class="purple-bar">&nbsp;</div>
+	<!-- <td class="createTableSlct">
+		<p>sort by:
+		<select name="selectType" id="sortingChoice">
+      <option value="sortAlpha">alphabet</option>
+			<option value="sortAttendanc">attendance</option>
+			<option value="sortEffort">effort</option>
+			<option value="sortAttitude">attitude</option>
+			<option value="sortTeamwork">teamwork</option>
+			<option value="sortTech">Technical Abilities</option>
+			<option value="sortAverage">average stars</option>
+		</select>
+		</p>
+	</td> -->
+	<table class="viewAllStudentTable" style="padding:5px;">
+		<!-- <thead> -->
+			<!--table content should correspond -->
+			<tr>
+				<th class="tableHeadFormateval">Name&nbsp;<i class="fa fa-sort sortIcon" aria-hidden="true" id="studentNameSort"></i></th>
+				<th class="tableHeadFormateval">Attendance&nbsp;<i class="fa fa-sort sortIcon" aria-hidden="true" id="studentAttendanceSort"></i></th>
+				<th class="tableHeadFormateval">No. Evals&nbsp;<i class="fa fa-sort sortIcon" aria-hidden="true" id="studentWeekSort"></i></th>
+				<th class="tableHeadFormateval">Effort&nbsp;<i class="fa fa-sort sortIcon" aria-hidden="true" id="studentEffortSort"></i></th>
+				<th class="tableHeadFormateval">Attitude&nbsp;<i class="fa fa-sort sortIcon" aria-hidden="true" id="studentAttitudeSort"></i></th>
+				<th class="tableHeadFormateval">Teamwork&nbsp;<i class="fa fa-sort sortIcon" aria-hidden="true" id="studentTeamworkSort"></i></th>
+				<th class="tableHeadFormateval">Technical&nbsp;<i class="fa fa-sort sortIcon" aria-hidden="true" id="studentTechSort"></i></th>
+				<th class="tableHeadFormateval">Average&nbsp;<i class="fa fa-sort sortIcon" aria-hidden="true" id="studentAveSort"></i></th>
+
+			</tr>
+
+		<!-- </thead> -->
+		<!-- <tbody> -->
+			{{#each stuarry}}
+				<tr class= "tableRowFormat leaderboard"> <!--  <tr onclick="parent.location='{{url}}'"   "FlowRouter.go("/profile/edit/" + FlowRouter.getParam("id"));> -->
+					<td class="tableDataFormat leaderboard"> {{name}}</td>
+					<td class="tableDataFormat leaderboard">{{attendanceNumber}}/12</td>
+					<td class="tableDataFormat leaderboard"> {{week}}</td>
+					<td class="tableDataFormat leaderboard">{{effort}}</td>
+					<td class="tableDataFormat leaderboard">{{attitude}}</td>
+					<td class="tableDataFormat leaderboard">{{teamwork}}</td>
+					<td class="tableDataFormat leaderboard">{{technical}}</td>
+					<td class="tableDataFormat leaderboard">{{average}}</td>
+							</tr>
+			{{/each}}
+		<!-- </tbody> -->
+	</table>
+</div>
+	{{else}}
+		<!-- {{> accessDenied}} -->
+		{{> loading}}
+	{{/if}}
+
+</template>

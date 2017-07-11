@@ -48,18 +48,10 @@ li {
 }
 #createPostButton {
     background-color: #61c250;
-    color: white;
-    cursor: pointer;
-    display: block;
-    text-decoration: none;
-    width: auto;
-    margin-top: 10px;
-    font-size: 12px;
-    float: left;
-    margin-left: 3%;
-    text-align: center;
-    padding: 0px 6px;
-    height: 30px;
+    width:90%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 5%;
 }
 #createPostButton:hover {
     color: white;
@@ -74,30 +66,25 @@ li {
 }
 #editPostButton {
     background-color: #61c250;
-    color: white;
-    text-align: center;
-    cursor: pointer;
-    display: block;
-    text-decoration: none;
-    width: auto;
-    margin-top: 10px;
-    font-size: 12px;
-    margin-right: 3%;
-    float: right;
+    width:90%;
+    margin-top: 20px;
+    align-items: center;
+    margin-left: 5%;
 }
 #editPostButton:hover {
     color: white;
     background-color: #61d250;
     text-decoration: none;
 }
-#buttonArea {
+
+/*#buttonArea {
     background-color: #333333;
-    padding-bottom: 10px;
     display: flex;
-    align-items: center;
     justify-content: space-around;
     flex-direction: row-reverse;
-}
+    align-items: center;
+
+}*/
 
 @media (max-width: 450px) {
   #sideNav{

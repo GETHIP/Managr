@@ -1,0 +1,105 @@
+<template name="viewEval">
+  <div class="marginContainer">
+      {{#if isInstructor}}
+  <h1 class="titleEvaluations">Evaluations</h1>
+  <div class="purple-bar">&nbsp;</div>
+  <form>
+		<div class ="textformContainer">
+		  <form id="textformContainer">
+    <textarea placeholder="Write evaluation here..." rows="4" cols="50" width="100%" name="textarea1" id="textarea1"></textarea>
+
+<!--Should Have replicated Stars -->
+<div class="formstarsContainer">
+
+				<p class="starLabel"><strong>Effort:</strong></p>{{> starsRating size='lg' id='rating' rating=1 mutable='true' class='mystar'}}
+				<p class="starLabel"><strong>Attitude:</strong></p>{{> starsRating size='lg' id='attitude' rating=1 mutable='true' class='mystar'}}
+      </div>
+      <div class=formstarsb>
+				<p class="starLabel"><strong>Teamwork:</strong></p>{{> starsRating size='lg' id='teamwork' rating=1 mutable='true' class='mystar'}}
+				<p class="starLabel"><strong>Technical Ability:</strong></p>{{> starsRating size='lg' id='tech' rating=1 mutable='true' class='mystar'}}
+
+
+</div>
+<div class ="dropdownformContainer">
+
+
+		<label for="group">Student</label>
+    <input placeholder="Student Search" list="group" name="group" id=dataListInput autocomplete="off">
+    <datalist id="group">
+		{{#each students}}
+		<option data-value="{{_id}}" value="{{name}}"></option>
+		{{/each}}
+  </dataList>
+
+    <label for="week">Milestone</label>
+    <select id="week" name="week">
+      {{#each milestone}}
+      <option value="{{_id}}">{{name}}</option>
+      {{/each}}
+    </select>
+
+</div>
+</form>
+</div>
+<button class="buttonStyleleader submitbtn" id="submitBtn">Submit Evaluation</button>
+</form>
+{{/if}}
+</div>
+  <div class="marginContainer">
+  <h1 class="titleviewEvaluations">Previous Evaluations</h1>
+  <div class="purple-bar">&nbsp;</div>
+
+{{#if isInstructor}}
+    <p class="sortDropdowns">
+
+        Student:
+      <select name="studentChoice" id="studentChoice" class="sortDropdownsSelect">
+        <option value="sortAll" selected>All</option>
+          {{#each students}}
+      		  <option value="{{_id}}">{{name}}</option>
+      		{{/each}}
+  		</select>
+
+  Instructor:
+      <select name="selectType" id="instructorChoice" class="sortDropdownsSelect">
+        <option value="sortAll" selected="selected">All</option>
+          {{#each instructors}}
+      		  <option value="{{_id}}">{{name}}</option>
+      		{{/each}}
+  		</select>
+   Milestone:
+      <select name="selectType" id="milestoneChoice" class="sortDropdownsSelect">
+        <option value="sortAll">All</option>
+        {{#each milestone}}
+          <option value="{{_id}}">{{name}}</option>
+        {{/each}}
+  		</select>
+
+    <button class="buttonStyleleader resetbtn">Reset</button>
+
+    </p>
+  {{/if}}
+  <table class="viewAllevalTable">
+      <tr>
+        <th class="tableHeadFormateval">Name &nbsp;<i class="fa fa-sort sortIcon" aria-hidden="true" id="NameSort"></i></th>
+        <th>Milestone</th>
+        <th>Effort</th>
+        <th>Attitude</th>
+        <th>Teamwork</th>
+        <th>Technical Ability</th>
+        <th>Instructor</th>
+      </tr>
+      {{#each data}}
+      <tr class= "tableRowFormat rowClick evals" id="{{_id}}">
+                <td class="tableDataFormat evals" id="{{_id}}">{{name}}</td>
+                <td class="tableDataFormat evals" id="{{_id}}">{{week}}</td>
+                <td class="tableDataFormat evals" id="{{_id}}">{{effort}}</td>
+                <td class="tableDataFormat evals" id="{{_id}}">{{att}}</td>
+                <td class="tableDataFormat evals" id="{{_id}}">{{team}}</td>
+                <td class="tableDataFormat evals" id="{{_id}}">{{tech}}</td>
+                <td class="tableDataFormat evals" id="{{_id}}">{{instructor}}</td>
+              </tr>
+      {{/each}}
+      </table>
+    </div>
+</template>

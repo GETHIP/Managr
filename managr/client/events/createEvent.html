@@ -1,0 +1,37 @@
+<template name="createEvent">
+  <div class="containerDiv form marginContainer">
+		<div class="containerDiv form">
+			<form id="eventForm">
+				<div class="containerDiv formbg cep">
+          <div class="createHeading">
+            <p id="welcome">Create Your Event</p>
+            <p id="lineP"></p>
+          </div>
+          <div class ="formdashboardContainer">
+					<p>Event Name:</p>
+					<input id="createEventBox" type="text" name="name" placeholder="Name Of Your Event" required>
+					<p>Description:</p>
+					<textarea id="createEventBox" name="description" rows="6" placeholder="Describe Your Event" required></textarea>
+					<p>When:</p>
+					<input id="createEventBox" type="datetime-local" name="date"
+						min="2017-06-01T08:30" required>
+					<p>Location:</p>
+					<input id="createEventBox" type="text" name="location" placeholder="Where's Your Event?" required>
+					<p>Invite:</p>
+          <h5>Groups:</h5>
+					{{#each groups}}
+	          <label for="{{id}}"><input type="checkbox" class="groupCheckBox" id="{{id}}"/> {{name}}</label>
+	        {{/each}}
+	        <hr/>
+          <h5>Students:</h5>
+					{{#each students}}
+							<label for="{{studentId}}"><input type="checkbox" id="{{studentId}}"/> {{name}}</label>
+					{{/each}}
+         </div>
+        </div>
+			 <button type="button" id="eventCancel" class="buttonStyle cancelUserCreate leftFloatingButton" onclick="FlowRouter.go('/events');">Cancel</button>
+			 <button type="submit" id="createEventButton" value="Create" class="buttonStyle cancelUserCreate rightFloatingButton">Create My Event</button>
+			</form>
+		</div>
+  </div>
+</template>

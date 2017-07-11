@@ -1,0 +1,44 @@
+<template name = "attending">
+  <div class ="events">
+  <h1 class="titleAssignment">Attending</h1>
+  <div id="lineP"> &nbsp;</div>
+  {{#with event}}
+  <div class="attendanceCount placement">
+    <div class= "attendCounter">Not Attending: {{countNotAttending}}</div>
+    </div>
+    <div class="attendanceCount">
+    <div class= "attendCounter">Attending: {{countAttending}}</div>
+  </div>
+  {{/with}}
+
+    <p>
+      <table class="attendingTable" id="t02" name="attendingTable">
+
+      <thead>
+        <tr>
+
+          <th class="tableHeadFormat grades">Name &nbsp;<i class="fa fa-sort sortIcon" aria-hidden="true" id="studentNameSort"></i></th>
+          <th class="tableHeadFormat grades">RSVP &nbsp;<i class="fa fa-sort sortIcon" aria-hidden="true" id="studentRSVPSort"></i></th>
+          <th class="tableHeadFormat grades">Reason</th>
+        </tr>
+
+      </thead>
+
+      <tbody>
+
+        {{#each event}}
+          <tr>
+
+          <td>{{name}}</td>
+          <td>{{status}}</td>
+          <td>{{reasonNotAttending}}</td>
+        </tr>
+        {{/each}}
+
+      </tbody>
+      </table>
+    </p>
+
+    <button type="button" id="eventCancel" class="buttonStyle" onclick="FlowRouter.go('/events');">Back</button>
+    </div>
+    </template>

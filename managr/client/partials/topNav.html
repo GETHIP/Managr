@@ -20,7 +20,13 @@
 						<li class="active" >
 							<a class="assignmentsActive {{ activeIfTemplateIs '/assignments'}}" href="/assignments">Assignments</a>
 						</li>
+						<li class="active">
+							<a class="eventsActive {{ activeIfTemplateIs '/events'}}" href="/events">Events</a>
+						</li>
 						{{#if isStudent}}
+						<!-- <li class="active">
+							<a class="eventsActive {{ activeIfTemplateIs '/myEvents'}}" href="/myEvents">My Events</a>
+						</li> -->
 						<li class="active">
 							<a class="profilesActive {{ activeIfTemplateIs '/profile'}}" href="/profile">Profiles</a>
 						</li>
@@ -29,8 +35,6 @@
 						<li class="active">
 							<a class="profilesActive {{ activeIfTemplateIs '/profile'}}" href="/profile">All Profiles</a>
 						</li>
-						{{/if}}
-						{{#if isInstructor}}
 						<li class="active">
 							<a class="groupsActive {{ activeIfTemplateIs '/groups'}}" href="/groups">Groups</a>
 						</li>
@@ -44,8 +48,6 @@
 						<li class="active">
 							<a class="attendanceActive {{ activeIfTemplateIs '/attendance'}}" href="/attendance">Attendance</a>
 						</li>
-						{{/if}}
-						{{#if isInstructor}}
 						<li class="active">
 							<a class="reportsActive {{ activeIfTemplateIs '/reports'}}" href="/reports">Reports</a>
 						</li>
@@ -54,8 +56,22 @@
 						<li class="active">
 							<a class="dashboardActive {{ activeIfTemplateIs '/dashboard'}}" href="/dashboard">Dashboard</a>
 						</li>
+						<li class="active">
+							<a class="surveysActive {{ activeIfTemplateIs '/surveys'}}" href="/surveys">Surveys</a>
+						</li>
 						{{/if}}
+						{{#if isInstructor}}
+						<li class="active">
+							<a class="leaderboardActive {{ activeIfTemplateIs '/performance'}}" href="/performance">Performance</a>
+						</li>
 						{{/if}}
+
+						<li class="active">
+							<a class="leaderboardActive {{ activeIfTemplateIs '/viewEval'}}" href="/viewEval">Evaluations</a>
+						</li>
+
+						{{/if}}
+					<li></li>
 					</ul>
 					{{#if renderNavbar}}
 					<ul class="nav navbar-nav navbar-right">
