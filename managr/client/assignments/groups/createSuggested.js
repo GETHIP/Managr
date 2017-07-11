@@ -36,96 +36,97 @@ Template.createSuggested.events({
         document.getElementById('loading').style="display:initial";
 
         event.preventDefault();
+        setTimeout(function(){
+            console.log("running");
 
-        console.log("running");
+            const form = event.target;
+            var valid = true;
 
-        const form = event.target;
-        var valid = true;
+            var groupType = document.getElementById("groupTypeSelect").value;
 
-        var groupType = document.getElementById("groupTypeSelect").value;
-
-        if(groupType == "newType") {
-            groupType = form.newGroupType.value;
-        }
-        var numberOf = parseInt(form.numTypeInput.value);
-        var option = form.numType.value;
-        console.log(option);
-        var secondsInput = document.getElementById("timeSelect").value;
-        if(secondsInput == "low") {
-            secondsInput = 2;
-        }
-        else if(secondsInput == "medium") {
-            secondsInput = 5;
-        }
-        else if(secondsInput == "high") {
-            secondsInput = 10;
-        }
-        else {
-            secondsInput = parseInt(form.waitTimeInput.value);
-            if(isNaN(secondsInput)) {
+            if(groupType == "newType") {
+                groupType = form.newGroupType.value;
+            }
+            var numberOf = parseInt(form.numTypeInput.value);
+            var option = form.numType.value;
+            console.log(option);
+            var secondsInput = document.getElementById("timeSelect").value;
+            if(secondsInput == "low") {
+                secondsInput = 2;
+            }
+            else if(secondsInput == "medium") {
                 secondsInput = 5;
             }
-        }
-        console.log(secondsInput);
-        if (typeof(secondsInput) != "number") {
-            valid = false;
-            Modal.show('warningModal', {
-                title: 'Error',
-                text: 'An error has occurred.',
-                confirmText: 'Retry',
-                confirmCallback: () => {}
-            });
-        }
-        var secondsToRun = secondsInput;
-        if (option == "Number Of Groups") {
-            option = 1;
-            // Seems like 3 seconds plus the number of groups as seconds is how long it runs for 5 seconds
-            //var secondsToRun = ((numberOf * 1 / 1) + 2) / 5 * secondsInput;
-        }
-        else if (option == "Students Per Group") {
-            option = 2;
-            // Seems like 3 seconds plus the number of groups as seconds is how long it runs for 5 seconds
-            //var secondsToRun = ((Math.ceil(allAdded.length / numberOf) * 1 / 5) + 2) * secondsInput;
-        }
-        else {
-            valid = false;
-            Modal.show('warningModal', {
-                title: 'Error',
-                text: 'No generation option was selected.',
-                confirmText: 'Retry',
-                confirmCallback: () => {}
-            });
-        }
-        console.log(secondsToRun);
-        var iterations = secondsToRun * 90000;
+            else if(secondsInput == "high") {
+                secondsInput = 10;
+            }
+            else {
+                secondsInput = parseInt(form.waitTimeInput.value);
+                if(isNaN(secondsInput)) {
+                    secondsInput = 5;
+                }
+            }
+            console.log(secondsInput);
+            if (typeof(secondsInput) != "number") {
+                valid = false;
+                Modal.show('warningModal', {
+                    title: 'Error',
+                    text: 'An error has occurred.',
+                    confirmText: 'Retry',
+                    confirmCallback: () => {}
+                });
+            }
+            var secondsToRun = secondsInput;
+            if (option == "Number Of Groups") {
+                option = 1;
+                // Seems like 3 seconds plus the number of groups as seconds is how long it runs for 5 seconds
+                //var secondsToRun = ((numberOf * 1 / 1) + 2) / 5 * secondsInput;
+            }
+            else if (option == "Students Per Group") {
+                option = 2;
+                // Seems like 3 seconds plus the number of groups as seconds is how long it runs for 5 seconds
+                //var secondsToRun = ((Math.ceil(allAdded.length / numberOf) * 1 / 5) + 2) * secondsInput;
+            }
+            else {
+                valid = false;
+                Modal.show('warningModal', {
+                    title: 'Error',
+                    text: 'No generation option was selected.',
+                    confirmText: 'Retry',
+                    confirmCallback: () => {}
+                });
+            }
+            console.log(secondsToRun);
+            var iterations = secondsToRun * 90000;
 
-        if (numberOf < 2 && option == 2) {
-            valid = false;
-            Modal.show('warningModal', {
-                title: 'Error',
-                text: 'Not enough people in each group.',
-                confirmText: 'Retry',
-                confirmCallback: () => {}
-            });
-        }
-        if (numberOf < 2 && option == 1) {
-            valid = false;
-            Modal.show('warningModal', {
-                title: 'Error',
-                text: 'Not enough groups.',
-                confirmText: 'Retry',
-                confirmCallback: () => {}
-            });
-        }
-        if (allAdded.length < 3) {
-            valid = false;
-            Modal.show('warningModal', {
-                title: 'Error',
-                text: 'Not enough students were selected.',
-                confirmText: 'Retry',
-                confirmCallback: () => {}
-            });
-        }
+            if (numberOf < 2 && option == 2) {
+                valid = false;
+                Modal.show('warningModal', {
+                    title: 'Error',
+                    text: 'Not enough people in each group.',
+                    confirmText: 'Retry',
+                    confirmCallback: () => {}
+                });
+            }
+            if (numberOf < 2 && option == 1) {
+                valid = false;
+                Modal.show('warningModal', {
+                    title: 'Error',
+                    text: 'Not enough groups.',
+                    confirmText: 'Retry',
+                    confirmCallback: () => {}
+                });
+            }
+            if (allAdded.length < 3) {
+                valid = false;
+                Modal.show('warningModal', {
+                    title: 'Error',
+                    text: 'Not enough students were selected.',
+                    confirmText: 'Retry',
+                    confirmCallback: () => {}
+                });
+            }
+        },50);
         if (valid) {
             var theStudents = [];
             for(i = 0; i < allAdded.length; i++) {
