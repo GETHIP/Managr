@@ -9,7 +9,7 @@
   				<h1 class="searchText">Search:</h1>
   			{{> EasySearch.Input index=groupIndex attributes=searchBarGroup}}
         <select class="filters">
-          <option value="None">None</option>
+          <option value="">No Filter</option>
 
           {{ cleargrouptypes }}
           {{ #each group in groups }}
@@ -61,7 +61,7 @@
                       </div>
                   </td>
                   <td id="{{groupId}}" class="alignmid groupRow">{{size}}</td>
-                  <td id="{{groupId}}" class="alignmid groupRow">{{grouptypes type}}</td>
+                  <td id="{{groupId}}" class="alignmid groupRow">{{type}}</td>
                   <td class="alignmid ">
                       <div class="buttonCollection">
                           <button class="groupButton editGroup" id="{{groupId}}">Edit</button>

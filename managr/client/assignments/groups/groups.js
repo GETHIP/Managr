@@ -59,13 +59,6 @@ Template.groups.helpers({
         }
         return allCoaches.join(", ");
     },
-    grouptypes: function(type) {
-        if(!type || type == 0 || type == null) {
-            return "None";
-        } else {
-          return type;
-        }
-    },
     uniquetypes: function(thisType) {
         result = true;
         for(var i = 0; i < alltypes.length; i++) {
