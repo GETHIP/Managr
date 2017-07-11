@@ -51,6 +51,12 @@ Template.viewSurveyPage.events({
       console.log(Surveys.find({_id: surveyId}).fetch()[0])
       return Surveys.find({_id: surveyId}).fetch()[0];
     },
+    total: function(){
+      var Survey = Surveys.findOne(FlowRouter.getParam('id'));
+      var AllQuestions = Survey.questions;
+      var AllOptions = AllQuestions.options;
+
+    },
     students: function(){
       var allStudents = Student.find({}).fetch();
       var surveyId = FlowRouter.getParam("id");
