@@ -36,7 +36,6 @@ Template.createSuggested.events({
 
         event.preventDefault();
 
-        setTimeout(function() {
         console.log("running");
 
         const form = event.target;
@@ -125,7 +124,6 @@ Template.createSuggested.events({
             FlowRouter.go("/groups/editSuggested");
             BlazeLayout.render("groupsLayout", {content:'editSuggested', groups: params, groupsType: typeparams});
         }
-      },500);
     },
 		"click #addStudents"(event) {
 				event.preventDefault();

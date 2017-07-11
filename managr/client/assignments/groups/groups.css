@@ -415,6 +415,11 @@ td.alignmid {
   cursor: pointer;
   background-color: #ffe6e6 !important;
 }
+.notUnique {
+  float: left;
+  color: #870000;
+  padding: 1%;
+}
 .loadingHidden {
   display: none;
 }
@@ -430,23 +435,12 @@ td.alignmid {
   text-align: center;
   position: fixed;
   margin-top: 47vh;
-  animation: wobble 4s, gradient 8s;
+  animation: gradient 8s, wobble 4s;
   animation-iteration-count: infinite;
   animation-timing-function: ease-in-out;
   animation-direction: alternate;
   line-height: 25px;
 
-}
-@keyframes wobble {
-  0% {
-    transform: rotate(3deg);
-  }
-  50% {
-    transform: rotate(-3deg);
-  }
-  100% {
-    transform: rotate(3deg);
-  }
 }
 @keyframes gradient {
   0% {
@@ -465,7 +459,17 @@ td.alignmid {
     color: #0397d7;
   }
 }
-
+@keyframes wobble {
+  0% {
+    transform: rotate(3deg);
+  }
+  50% {
+    transform: rotate(-3deg);
+  }
+  100% {
+    transform: rotate(3deg);
+  }
+}
 .spinner {
   z-index: 1050;
 	left: 0;
@@ -481,7 +485,7 @@ td.alignmid {
 	animation: spin 8s;
   animation-iteration-count: infinite !important;
   animation-timing-function: ease-in-out;
-  /*animation-direction: alternate;*/
+  animation-direction: alternate;
 }
 
 @keyframes spin {
