@@ -50,14 +50,21 @@ Template.groups.helpers({
         return groupIndex;
     },
     allcoaches: function(coaches) {
-        if(!coaches) {
-            return;
+        if(!coaches || coaches == 0 || coaches == null) {
+            return "None";
         }
         var allCoaches = [];
         for(var i = 0; i < coaches.length; i++) {
             allCoaches.push(coaches[i].name);
         }
         return allCoaches.join(", ");
+    },
+    grouptypes: function(type) {
+        if(!type || type == 0 || type == null) {
+            return "None";
+        } else {
+          return type;
+        }
     },
     uniquetypes: function(thisType) {
         result = true;
@@ -78,8 +85,6 @@ Template.groups.helpers({
     }
 });
 
-
-
 Template.groups.events({
     'click #createGroupButton': function(event) {
         Modal.show("createGroupModal", event.target.id);
@@ -95,9 +100,8 @@ Template.groups.events({
         FlowRouter.go("/groups/edit/" + target.id);
     },
     'change .filters': function (e) {
-        groupIndex.getComponentMethods(/* optional name */)
-            .addProps('grouptype', $(e.target).val())
-        ;
+        groupIndex.getComponentMethods()
+            .addProps('groupType', $(e.target).val());
     },
     'change .sorting': (e) => {
         groupIndex.getComponentMethods()
@@ -112,6 +116,8 @@ Template.groups.events({
     'click .groupRow': function(event) {
         event.preventDefault();
         const target = event.target;
+        console.log(target);
+        console.log(target.id);
         FlowRouter.go("/groups/" + event.target.id);
     }
 });

@@ -120,7 +120,7 @@ eventsIndex = new EasySearch.Index({
 
 groupIndex = new EasySearch.Index({
 	collection: Groups,
-	fields: ['name', 'leader', 'stringSize', 'studentNames', 'coachNames'],
+	fields: ['name', 'leader', 'stringSize', 'studentNames', 'coachNames', 'groupType'],
 	defaultSearchOptions: {
 		sortBy: 'datecreated',
 		limit: 1000
@@ -131,6 +131,7 @@ groupIndex = new EasySearch.Index({
 				group = {
 						name: doc.name,
 						size: doc.size,
+					  type: doc.groupType,
 						students: formatStudentsForGroup(doc),
 						coaches: formatCoachesForGroup(doc),
 						groupId: doc._id
@@ -169,19 +170,17 @@ groupIndex = new EasySearch.Index({
 					throw new Meteor.Error('Invalid sort by prop passed')
 				}
 				*/
-		}
+		},
 
-		/*
 		selector: function (searchObject, options, aggregation) {
-				const selector = this.defaultConfiguration().selector(searchObject, options, aggregation)
+				const selector = this.defaultConfiguration().selector(searchObject, options, aggregation);
 
 				// filter for the grouptype if set
-				if (options.search.props.grouptype) {
-					selector.grouptype = options.search.props.grouptype
+				if (options.search.props.groupType) {
+					selector.groupType = options.search.props.groupType;
 				}
-				return selector
+				return selector;
 		}
-		*/
 	})
 });
 

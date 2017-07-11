@@ -5,11 +5,11 @@
       <h1 class="titleAssignment">Edit Group Details</h1>
       <div class="orange-bar" style="background-color: #870000">&nbsp;</div>
 
-      <p class="groupTitle"><b>Group Name:</b></p>
-      <p class="groupTitle changeType"><b>Group Type (Optional):</b></p>
-      <input type="text" name="groupName" value="{{groupName}}" class="groupForum" autofocus="required" style="float:left" required>
+      <p class="groupTitle" style="margin-top:1%"><b>Group Name:</b></p>
+      <p class="groupTitle changeTypeEdit" style="width:40%"><b>Group Type (Optional):</b></p>
+      <input type="text" name="groupName" value="{{groupName}}" class="groupForum" autofocus="required" style="float:left;margin-bottom:0px" required>
 
-      <div id="changeTypeDiv">
+      <div class="changeTypeDiv changeTypeDivEdit" style="height:auto">
         <select id="groupTypeSelect">
 
           {{ cleargrouptypes }}
@@ -17,11 +17,13 @@
           {{ #if thisgrouptype }}
             <option value="None">None</option>
             <option value="newType">Make New Type</option>
+            <option disabled>----------</option>
             <option value="{{getthisgrouptype}}" selected>{{getthisgrouptype}}</option>
           {{ else }}
             <option value="None" id="blanktype" selected hidden>Select Type:</option>
             <option value="None">None</option>
             <option value="newType">Make New Type</option>
+            <option disabled>----------</option>
           {{ /if }}
 
           {{ #each group in groups }}
@@ -49,7 +51,7 @@
       <p class="groupTitle"><b>Students Not In Group:</b></p>
       <p class="groupTitle addedStudent"><b>Students In Group:</b></p>
 
-      <div class="studentGroup" id="otherstudents">
+      <div class="studentGroup noRoundBottom" id="otherstudents">
         <div class="student">
           <label for="selectAllNotAdded" class="studentLabel selectAll"><input type="checkbox" id="selectAllNotAdded"/>Select All</label>
           <div class="selectAllBar"></div>
@@ -61,7 +63,7 @@
         </div>
       </div>
 
-      <div class="studentGroup studentsAdded" id="addedstudents">
+      <div class="studentGroup studentsAdded noRoundBottom" id="addedstudents">
         <div class="student">
           <label for="selectAllAdded" class="studentLabel selectAll"><input type="checkbox" id="selectAllAdded"/>Select All</label>
           <div class="selectAllBar"></div>
