@@ -40,5 +40,12 @@ Template.individualResults.helpers({
     if(questionType == "shResp") {
       return true;
     }
+  },
+  isStudentId: function(anything) {
+    if(anything == FlowRouter.getParam('studentId')){
+      return true;
+    }else{
+      return false;
+    }
   }
 });

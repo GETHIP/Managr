@@ -19,23 +19,29 @@
               <ul>
                 {{#if choicetype question.questionType}}
                 {{#each studentAnswer in question.studentResults}}
-                <ul>
-                  <li><input type="radio" class="selectionForm CQlabel questionOptions" checked="checked"/>{{studentAnswer.answer}}</li>
-                </ul>
+                  {{#if isStudentId studentAnswer.studentId}}
+                    <ul>
+                      <li><input type="radio" class="selectionForm CQlabel questionOptions" checked="checked"/>{{studentAnswer.answer}}</li>
+                    </ul>
+                  {{/if}}
                 {{/each}}
                 {{/if}}
                 {{#if checktype question.questionType}}
                 {{#each studentAnswer in question.studentResults}}
-                <ul>
-                  <li><input type="checkbox" class="selectionForm CQlabel questionOptions" checked="checked"/>{{studentAnswer.answer}}</li>
-                </ul>
+                  {{#if isStudentId studentAnswer.studentId}}
+                    <ul>
+                      <li><input type="checkbox" class="selectionForm CQlabel questionOptions" checked="checked"/>{{studentAnswer.answer}}</li>
+                    </ul>
+                  {{/if}}
                 {{/each}}
                 {{/if}}
                 {{#if shResptype question.questionType}}
                 {{#each studentAnswer in question.studentResults}}
-                <ul>
-                  <li class="questionOptions">Answer: {{studentAnswer.answer}}</li>
-                </ul>
+                  {{#if isStudentId studentAnswer.studentId}}
+                    <ul>
+                      <li class="questionOptions">Answer: {{studentAnswer.answer}}</li>
+                    </ul>
+                  {{/if}}
                 {{/each}}
                 {{/if}}
               </ul>
