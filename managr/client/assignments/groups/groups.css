@@ -38,7 +38,7 @@
     padding-bottom: 2%;
     border-bottom: 1px solid #444444;
     color: white;
-    width: 30%;
+    width: 25%;
     font-size: 18px;
 }
 .namesInGroup {
@@ -153,6 +153,7 @@
 .groupTitle {
   width: 48%;
   overflow-x: hidden;
+  overflow-y: hidden;
   float: left;
   margin-top: 2%;
 }
@@ -486,6 +487,7 @@ td.alignmid {
   padding-bottom: 24px;
   width: 100%;
   margin-bottom: 3%;
+  margin-top: 2%;
 }
 .nomargin {
   margin: 0px;
@@ -516,6 +518,17 @@ td.alignmid {
   float: left;
   color: #870000;
   padding: 1%;
+}
+.notUnique2 {
+  color: #870000;
+  padding: 1%;
+  overflow-y: hidden;
+}
+.notUniqueSugg {
+  color: #ff0000;
+  margin-bottom: 0;
+  padding-left: 2%;
+  display: inline-block;
 }
 .loadingHidden {
   display: none;
