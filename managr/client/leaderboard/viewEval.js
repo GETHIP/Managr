@@ -295,5 +295,8 @@ import { Student } from '../../collections/student.js';
            elements[i].value = "sortAll";
        }
        _dep.changed();
-   }
+   },
+   'click .performancebtn': function(event) {
+   FlowRouter.go('/performance');
+ }
  });
