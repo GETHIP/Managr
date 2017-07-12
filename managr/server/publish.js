@@ -88,13 +88,26 @@ export function publishAll() {
 				groupIdList.push(groupData[i]._id);
 			}
 		}
-    for(var x = 0; x < groupIdList.length; x++){
-      for (var i = 0; i < data.length; i++) {
-        if(data[i].studentInvites.indexOf(id) != -1 || data[i].groupInvites.indexOf(groupIdList[x]) != -1){
-          allEvents.push(data[i]);
-        }
-      }
-    }
+		console.log(groupIdList);
+    // for(var x = 0; x < groupIdList.length; x++){
+    //   for (var i = 0; i < data.length; i++) {
+    //     if(data[i].studentInvites.indexOf(id) != -1 || data[i].groupInvites.indexOf(groupIdList[x]) != -1){
+    //       allEvents.push(data[i]);
+    //     }
+    //   }
+    // }
+		for (var i = 0; i < data.length; i++) {
+			if(data[i].studentInvites.indexOf(id) != -1){
+				allEvents.push(data[i]);
+			}
+			else{
+				for(var x = 0; x < groupIdList.length; x++){
+					if(data[i].groupInvites.indexOf(groupIdList[x]) != -1){
+						allEvents.push(data[i]);
+					}
+				}
+			}
+		}
 		var returnIds = [];
 		for (var i = 0; i < allEvents.length; i++) {
 			returnIds.push(allEvents[i]._id);

@@ -109,18 +109,26 @@ Template.editGroup.events({
 						groupType: groupType
 				};
 
-				ifNameInName = 0
-				if ((groupName != null) && (Groups.findOne({ name: groupName }) == null)) {
-					ifNameInName = 2;
-				} else {
-					document.getElementsByClassName("notUnique2")[0].style.display = "initial";
+				var thisGroup = Groups.findOne({_id: groupId});
+				var prevName = thisGroup.name;
+
+				var ifNameInName = 0;
+				var foundInGroups = Groups.findOne({ name: groupName });
+				if (foundInGroups == null) {
+						ifNameInName = 2;
+				}
+				else if (groupName == prevName) {
+						ifNameInName = 2;
+				}
+				else {
+						document.getElementsByClassName("notUnique2")[0].style.display = "initial";
 				}
 
 				if (ifNameInName == 2) {
-					Meteor.call('updateGroup', groupId, data);
-	        FlowRouter.go("/groups");
-					}
-				},
+						Meteor.call('updateGroup', groupId, data);
+	        	FlowRouter.go("/groups");
+				}
+		},
 
 		"click #addStudents"(event) {
 				event.preventDefault();

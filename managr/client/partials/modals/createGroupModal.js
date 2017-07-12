@@ -26,18 +26,18 @@ Template.createGroupModal.events({
 
         var ifNameInName = 0;
 
-          if ((groupName != null) && (Groups.findOne({ name: groupName }) == null)) {
+        if ((groupName != null) && (Groups.findOne({ name: groupName }) == null)) {
             ifNameInName = 2;
-          } else {
+        }
+        else {
             document.getElementsByClassName("notUnique")[0].style.display = "initial";
-          }
+        }
 
-          if (ifNameInName == 2) {
+        if (ifNameInName == 2) {
             Modal.hide("createGroupModal");
             Meteor.call("createGroup", groupName, dateCreated, function(error, result) {
-              FlowRouter.go("/groups/edit/" + result);
+                FlowRouter.go("/groups/edit/" + result);
             });
-          }
-
+        }
   	}
 });
