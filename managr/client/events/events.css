@@ -1,0 +1,220 @@
+.purpleBar {
+  background: #BD53FF !important;
+}
+
+.events {
+  margin-right: 5%;
+  margin-left: 5%;
+}
+
+.containerDiv.formbg.homeEvents  {
+    width: 100%;
+    text-align: left;
+    font-size: 18px;
+    padding: 5%;
+    padding-right: 2%;
+    padding-top: 2%;
+}
+
+.formTitle.eventTitle {
+    text-align: center;
+    font-size: 36px;
+    color: #BD53FF;
+}
+
+.formTitle.eventTitle:hover {
+    cursor: pointer;
+    color: #BD79FF;
+}
+
+
+.switch {
+  position: relative;
+  display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    display: none;
+}
+
+.switchFormat {
+  background-color: white;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked+.slider {
+    background-color: #BD53FF;
+}
+
+input:focus+.slider {
+    box-shadow: 0 0 1px #BD53FF;
+}
+input:checked+.slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+.rsvp {
+  background-color: white;
+  width:40%;
+  float: right;
+}
+
+.switching {
+  background-color: white;
+}
+
+button.createdEvent {
+	padding-top: 0.4em;
+	padding-bottom: 0.4em;
+}
+
+.buttonStyle.editEvent {
+  background-color: #BD53FF;
+}
+
+.buttonStyle.editEvent:hover {
+  background-color: #BD79FF;
+}
+
+.createEvent {
+  background-color: #BD53FF;
+}
+
+.createEvent:hover {
+  background-color: #BD79FF;
+}
+
+#calendarButton {
+  background-color: #BD53FF;
+
+}
+
+#calendarButton:hover {
+  background-color: #BD79FF;
+
+}
+.attendingButton {
+  background-color:#BD53FF;
+}
+.attendingButton:hover {
+  background-color: #BD79FF;
+}
+.deleteEventButton {
+  width: 100%;
+  font-size: 18px;
+  padding: 7px;
+  margin-top: 0;
+  background-color: #B2332F;
+	color: white;
+	text-align: center;
+	cursor: pointer;
+	text-decoration: none;
+	border:none;
+	border-radius: 5px;
+}
+.eventsTable {
+	width: 100%;
+  background: white;
+}
+
+table#t01 tr {
+  background: white;
+}
+
+.eventsTableInput {
+	width: 45%;
+	margin-right: 5%;
+}
+
+.searchEvents {
+  outline: none;
+}
+
+#searchBox:focus {
+  outline: none;
+  border-radius: 6px;
+  border: 2px solid #BD53FF;
+  color:black;
+}
+.spacey{
+  padding-top: 2%;
+}
+.spacey2{
+  padding-top: 2.25%;
+}
+.eventsTableButton {
+	width: 20%;
+}
+.eventsTableButtons {
+ margin-right: 0;
+ width: 100%;
+
+}
+.eventsTableText {
+	width: 80%;
+}
+.eventsTableSpacer {
+	width: 5%;
+}
+
+button.eventsTable {
+	padding-top: 0.4em;
+	padding-bottom: 0.4em;
+}
+
+input.eventsTable {
+	margin-bottom: 0px;
+	height: 100%;
+
+}
+.editEventButton {
+  width: 30%;
+  float: right;
+}
+
+.eventSearchBar input[type=text] {
+  width: 100%;
+  height: 30px;
+  margin-right: 5%;
+  margin-top: 1%;
+}
+
+.eventSearchBar input[type=text]:hover, .eventSearchBar input[type=text]:focus  {
+   border: 2px solid #BD53FF;
+   -webkit-box-shadow: none;
+
+}

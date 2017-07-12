@@ -1,0 +1,59 @@
+<template name="individualResults">
+  {{#if isInstructor}}
+  {{#with survey}}
+  <div class="marginContainer">
+
+    <h1 class="titleAssignment"> {{student.name}}'s Results&nbsp;</h1>
+    <div class="orange-bar red-bar"> &nbsp;</div>
+
+    <!-- <h1 class="titleAssignment" id="{{studentId}}">{{this.name}} Results</h1>
+    <div class="orange-bar red-bar"> &nbsp;</div> -->
+    <div class="surveyContainer">
+      <h3 class="noIndent assignmentFormFormat"><b>Survey Questions:</b></h3>
+      <form class="allQuestionForm" id="allQuestionForm">
+        {{#each question in questions}}
+        <form class="singleQuestionForm" id="singleQuestionForm">
+          <ul class="answerFormatAnswers">
+            <li>
+              <b>{{question.prompt}}</b>
+              <ul>
+                {{#if choicetype question.questionType}}
+                {{#each studentAnswer in question.studentResults}}
+                  {{#if isStudentId studentAnswer.studentId}}
+                    <ul>
+                      <li><input type="radio" class="selectionForm CQlabel questionOptions" checked="checked"/>{{studentAnswer.answer}}</li>
+                    </ul>
+                  {{/if}}
+                {{/each}}
+                {{/if}}
+                {{#if checktype question.questionType}}
+                {{#each studentAnswer in question.studentResults}}
+                  {{#if isStudentId studentAnswer.studentId}}
+                    <ul>
+                      <li><input type="checkbox" class="selectionForm CQlabel questionOptions" checked="checked"/>{{studentAnswer.answer}}</li>
+                    </ul>
+                  {{/if}}
+                {{/each}}
+                {{/if}}
+                {{#if shResptype question.questionType}}
+                {{#each studentAnswer in question.studentResults}}
+                  {{#if isStudentId studentAnswer.studentId}}
+                    <ul>
+                      <li class="questionOptions">Answer: {{studentAnswer.answer}}</li>
+                    </ul>
+                  {{/if}}
+                {{/each}}
+                {{/if}}
+              </ul>
+            </li>
+          </ul>
+        </form>
+        {{/each}}
+      </form>
+    </div>
+  </div>
+  {{/with}}
+  {{else}}
+  {{> accessDenied}}
+  {{/if}}
+</template>

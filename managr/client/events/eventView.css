@@ -1,0 +1,22 @@
+.viewingEvents {
+  margin-top: 6%;
+}
+
+.switchFormat {
+  padding-left: 50%;
+}
+
+#rsvpEventButton {
+    background-color: #BD53FF;
+  }
+
+#rsvpEventButton:hover {
+    background-color: #BD79FF;
+  }
+
+  #reasonForNotAttending:focus{
+      border-radius: 6px;
+      border: 2px solid #BD53FF;
+      color:black;
+      -webkit-box-shadow: none;
+  }

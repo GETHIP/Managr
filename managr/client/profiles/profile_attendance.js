@@ -45,7 +45,7 @@ Template.profileAttendance.helpers({
 	studentIndex: function(){
 		return studentIndex;
 	},
-	headers: function() { 
+	headers: function() {
 		//Force reactivity.
 		var attendancePage = Template.instance().attendancePage.get();
 		return AttendanceUtilities.headers();

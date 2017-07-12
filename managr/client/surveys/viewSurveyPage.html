@@ -1,0 +1,60 @@
+<template name="viewSurveyPage">
+  {{#if isStudent}}
+  {{#with survey}}
+  <div class="marginContainer">
+    <h1 class="titleAssignment">{{name}} &nbsp;</h1>
+    <div class="orange-bar red-bar"> &nbsp;</div>
+
+    <div class="surveyContainer">
+      <p class="noIndent assignmentFormFormat"><b>Complete By:  {{dueDate}}</b></p>
+      <p class="noIndent assignmentFormFormat"><i>Please answer all the questions.</i></p>
+
+      <!-- {{/each}} -->
+      <!-- Questions -->
+      <form class="allQuestionForm" id="allQuestionForm">
+        {{#each question in questions}}
+        <form class="singleQuestionForm" id="singleQuestionForm">
+          <ul class="answerFormatAnswers">
+            <li>
+              <b>{{question.prompt}}</b>
+              <ul>
+                {{#if choicetype question.questionType}}
+                <ul>
+                  {{#each option in question.options}}
+                  <li>
+                    <input id="{{option.refId}}" type="radio" name="MCQ" class="selectionForm CQlabel questionOptions" />
+                    {{option.name}}
+                  </li>
+                  {{/each}}
+                </ul>
+                {{/if}}
+                {{#if checktype question.questionType}}
+                <ul>
+                  {{#each option in question.options}}
+                  <li>
+                    <input id="{{option.refId}}" type="checkbox" name="CBQ" value="c" class="selectionForm CQlabel questionOptions" />
+                    {{option.name}}
+                  </li>
+                  {{/each}}
+                </ul>
+                {{/if}}
+                {{#if shResptype question.questionType}}
+                <input id="shRespAnswer" type="text" name="FRQ" class="selectionForm createSurveyForm Answer" placeholder="Type your response here...">
+                {{/if}}
+              </ul>
+            </li>
+        </ul>
+      </form>
+      {{/each}}
+    </form>
+  </div>
+  <button id="sendResponseBtnn" class="buttonStyle sendSurvey">Send</button>
+
+  <!-- COME BACK -->
+</div>
+<!-- {{/if}} -->
+{{/with}}
+{{else}}
+{{> accessDenied}}
+{{/if}}
+</template>

@@ -31,7 +31,7 @@ Template.editSingleAssignment.helpers({
     var formattedAssignment = {
       title: assignment.title,
       description: assignment.description,
-	  dueDate: moment(assignment.dueDate).format("MM/DD/YYYY"),
+	    dueDate: moment(assignment.dueDate).format("MM/DD/YYYY"),
       assigner: assignment.assigner,
       dateAssigned: moment(assignment.dateAssigned).format("MM/DD/YYYY"),
       pointsPossible: assignment.pointsPossible

@@ -1,0 +1,56 @@
+<template name="editEval">
+  {{#if isInstructor}}
+  {{#with eval}}
+    <div class="marginContainer">
+        <h1 class="titleEvaluations">Edit</h1>
+    <div class="purple-bar">&nbsp;</div>
+
+  <div class="evaluationContainer">
+
+    <div>
+      <select class="editDropDown" name="milestoneDropDown" id="maSelector">
+        {{#each milestone}}
+        <option value="{{_id}}" {{selected}}>{{name}}</option>
+        {{/each}}
+      </select>
+  <p class="evaluatorEval"><strong>To: {{to}}</strong></p>
+    <p class="evaluateeEval"><strong>From: {{from}}</strong></p>
+    <strong><p class="timeStamp">Date: {{formDate}}</p></strong>
+
+    <p class="starEval" id="effort"><strong>Effort:
+   </strong></p>
+   <input type="number" value="{{fSt}}" min="1" max="5" class="starsBox" id="starBox1">
+    <p class="starEval"><strong>Attitude:
+    </strong></p>
+       <input type="number" value="{{sSt}}" min="1" max="5" class="starsBox" id="starBox2">
+    <p class="starEval"><strong>Teamwork:
+    </strong></p>
+       <input type="number" value="{{tSt}}" min="1" max="5" class="starsBox" id="starBox3">
+    <p class="starEval"><strong>Technical Ability:
+    </strong></p>
+       <input type="number" value="{{fOSt}}" min="1" max="5" class="starsBox" id="starBox4">
+  </div>
+  <textarea id="message">{{message}}</textarea>
+  </div>
+  <button class="buttonStyleEval save2Eval">Save</button>
+  <button class="buttonStyleEval delete2Eval edit2Eval">Delete</button>
+
+  </div>
+  {{/with}}
+  {{/if}}
+  </template>
+  <template name="starEdit1">
+    {{> starsRating rating=1 size='lg' mutable='true' class='mystar starScore'}}
+  </template>
+  <template name="starEdit2">
+    {{> starsRating rating=2 size='lg' class='mystar starScore' mutable='true'}}
+  </template>
+  <template name="starEdit3">
+    {{> starsRating rating=3 size='lg' class='mystar starScore' mutable='true'}}
+  </template>
+  <template name="starEdit4">
+    {{> starsRating rating=4 size='lg' class='mystar starScore' mutable='true'}}
+  </template>
+  <template name="starEdit5">
+    {{> starsRating rating=5 size='lg' class='mystar starScore' mutable='true'}}
+  </template>

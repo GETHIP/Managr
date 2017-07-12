@@ -38,7 +38,7 @@
     padding-bottom: 2%;
     border-bottom: 1px solid #444444;
     color: white;
-    width: 30%;
+    width: 25%;
     font-size: 18px;
 }
 .namesInGroup {
@@ -523,6 +523,12 @@ td.alignmid {
   color: #870000;
   padding: 1%;
   overflow-y: hidden;
+}
+.notUniqueSugg {
+  color: #ff0000;
+  margin-bottom: 0;
+  padding-left: 2%;
+  display: inline-block;
 }
 .loadingHidden {
   display: none;
