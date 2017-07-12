@@ -80,3 +80,7 @@ viewAllTable tr:hover {
 .questionOptions {
   margin-left: 20px !important;
 }
+
+.dropSurveys {
+  margin-left: 2%;
+}
