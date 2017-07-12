@@ -43,10 +43,10 @@
               <tr id="{{groupId}}" class="tableRowFormat groups">
                   <td id="{{groupId}}" style="position:relative; vertical-align:middle;" class="groupRow"><div id="{{groupId}}" class="groupName groupRow">{{name}}</div>
                     <p id="{{groupId}}" class="previewStudentsBtn groupRow">i</p>
-                    <div class="info">
+                    <div class="info" style="overflow: visible">
                       <ul style="margin: 0px 0px 0px 18px">
                           {{#each student in students}}
-                              <li style="list-style-type: circle; font-size: 13px;">
+                              <li style="list-style-type: circle; font-size: 13px; overflow: visible">
                                  {{student.name}}
                               </li>
                           {{/each}}
