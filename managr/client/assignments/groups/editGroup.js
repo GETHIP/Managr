@@ -108,10 +108,20 @@ Template.editGroup.events({
 						studentNames: studentNames,
 						groupType: groupType
 				};
-				Meteor.call('updateGroup', groupId, data);
 
-        FlowRouter.go("/groups");
-    },
+				ifNameInName = 0
+				if ((groupName != null) && (Groups.findOne({ name: groupName }) == null)) {
+					ifNameInName = 2;
+				} else {
+					document.getElementsByClassName("notUnique2")[0].style.display = "initial";
+				}
+
+				if (ifNameInName == 2) {
+					Meteor.call('updateGroup', groupId, data);
+	        FlowRouter.go("/groups");
+					}
+				},
+
 		"click #addStudents"(event) {
 				event.preventDefault();
 				const form = event.target;

@@ -7,9 +7,10 @@
         <table class="groupsTable table">
             <thead>
                 <tr>
-                    <th class="groupsTableHead">Name</th>
-                    <th class="groupsTableHead">Coach</th>
-                    <th class="groupsTableHead">Size</th>
+                    <th class="groupsTableHead" style="width:22.5%">Name</th>
+                    <th class="groupsTableHead" style="width:22.5%">Coach</th>
+                    <th class="groupsTableHead" style="width:22.5%">Size</th>
+                    <th class="groupsTableHead" style="width:22.5%;">Type</th>
                 </tr>
             </thead>
 
@@ -40,6 +41,7 @@
 
                   <td class="alignmid groupRow">{{group.size}}</td>
 
+                  <td id="{{groupId}}" class="alignmid groupRow">{{grouptypes type}}</td>
               </tr>
                 {{/each}}
         </table>
