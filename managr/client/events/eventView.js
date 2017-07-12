@@ -7,7 +7,7 @@ Template.eventView.onCreated(function() {
 });
 
 Template.eventView.events({
-'click .slider': function(event){
+'click .sliderEvents': function(event){
   if(document.getElementById("indicator").innerHTML == "Attending"){
       document.getElementById("indicator").innerHTML = "Not Attending"
 			$(".reasonNotAttending").show();
