@@ -272,3 +272,8 @@ textarea {
     width: 147.53126px;
     display: inline-block;
 }
+
+.buttonStyleleader.performanceBackbtn {
+  width: 20%;
+  margin-bottom: 8px;
+}

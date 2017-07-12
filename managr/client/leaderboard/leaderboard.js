@@ -175,5 +175,8 @@ Template.leaderboard.events({
         Template.instance().sortDescriptor.set(event.target.id);
         Template.instance().sortAscending.set(true);
       }
+  },
+  'click .performanceBackbtn': function(event) {
+    FlowRouter.go('/viewEval');
   }
 });
