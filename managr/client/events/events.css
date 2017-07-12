@@ -170,12 +170,7 @@ table#t01 tr {
   border: 2px solid #BD53FF;
   color:black;
 }
-.spacey{
-  padding-top: 2%;
-}
-.spacey2{
-  padding-top: 2.25%;
-}
+
 .eventsTableButton {
 	width: 20%;
 }

@@ -12,22 +12,24 @@
                   <thead></thead>
                   <tbody class="eventsTable">
                   <tr>
-              <div class = "spacey">
+          
                   {{> EasySearch.Input index=eventsIndex attributes=searchBarEvent  sortBy='name'}}
-              </div>
+
 
                 {{#if isInstructor}}
                   <td class="eventsTableSpacer"></td>
                   <td class="eventsTableButton">
                   <button type="button" class="buttonStyle createEvent eventsTable" id="createEventButton"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>     Create Event</button>
                 </td>
+                <td class="eventsTableSpacer"></td>
                 <td class="eventsTableButton">
                 <button type="button" class="buttonStyle eventCalendar eventsTable" id="calendarButton"><i class="fa fa-calendar" aria-hidden="true"></i>     Calendar</button>
                 </td>
               {{/if}}
 
               {{#if isStudent}}
-                <td class="eventsTableButton spacey2">
+              <td class="eventsTableSpacer"></td>
+                <td class="eventsTableButton">
                 <button type="button" class="buttonStyle eventCalendar eventsTable" id="calendarButton"><i class="fa fa-calendar" aria-hidden="true"></i>     Calendar</button>
                 </td>
               {{/if}}
@@ -65,5 +67,5 @@
     {{> accessDenied}}
 
   {{/if}}
-  
+
 </template>
