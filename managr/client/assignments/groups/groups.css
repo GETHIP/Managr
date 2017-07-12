@@ -49,7 +49,7 @@
 .namesInGroup ol li {
     list-style-type: decimal;
 }
-#editGroupForm .editGroupButton {
+#editGroupForm .editGroupButton, .submitbtn.editGroupButton {
     width: 48%;
     display: block;
 }
@@ -86,6 +86,9 @@
    width: 48%;
    float: left;
  }
+ .studentGroup.noRoundBottom {
+   border-radius: 5px 5px 0px 0px;
+ }
  .instructors {
    border: 2px solid #CCCCCC;
    border-radius: 5px;
@@ -96,17 +99,45 @@
    width: 100%;
    margin: auto;
  }
- #numTypeDiv {
+ .numTypeDiv {
+   background-color: #ffffff;
    border: 2px solid #CCCCCC;
    border-radius: 5px;
-   background-color: #ffffff;
    height: auto;
    width: auto;
    margin: auto;
    display: inline-block;
  }
+ #secondsDiv {
+   border: none;
+   border-radius: 0px;
+   background-color: #f3f3f3;
+   margin: 0px;
+ }
+ .numTypeDivOuter {
+   display: inline-block;
+   width: 30.5%;
+   float: left;
+   height: 60px;
+ }
+ .numTypeDivOuter.waitTimeDiv {
+   margin-left: 4%;
+   height: 40px;
+ }
  #numOf, #numPer {
    margin: 5px;
+ }
+ #secondsDiv {
+   /*height: 35px;*/
+   display: inline-block;
+   /*float: right;*/
+   /*margin: 2.5px;*/
+ }
+ #seconds {
+   /*padding: 1.5px 5px 1.5px 5px;*/
+   /*padding: 6.5px 5px 7.5px 5px;*/
+   font-size: 14px;
+   margin-bottom: 0px;
  }
  .selectAllBar {
    border: 1px solid #CCC;
@@ -125,10 +156,16 @@
   float: left;
   margin-top: 2%;
 }
-.addedStudent, .changeType {
+.groupTitle.createsugg, .groupTitle.changeType {
+  width: 30.5%;
+}
+.addedStudent {
   margin-left: 4%;
 }
-
+.changeType, .changeTypeEdit {
+  margin-left: 4%;
+  margin-top: 1%;
+}
 .removeStudents, .addStudents {
    border: 2px solid #CCCCCC;
    padding: 5px;
@@ -186,9 +223,19 @@
   height: 46px;
   width: 60px;
   padding-left: 14px;
-  margin: 5px 0px 0px 5px;
+  margin: 5px 0px 5px 5px;
 }
 #numPerSuggested::-webkit-inner-spin-button, #numPerSuggested::-webkit-outer-spin-button {
+   opacity: 1;
+}
+#waitTime {
+  height: 30px;
+  width: 50px;
+  padding-left: 8px;
+  margin: 0px 0px 0px 4px;
+  /*margin: 5px 0px 5px 5px;*/
+}
+#waitTime::-webkit-inner-spin-button, #waitTime::-webkit-outer-spin-button {
    opacity: 1;
 }
 .buttonStyle.backBtn, .buttonStyle.editBtn {
@@ -220,18 +267,24 @@
   border-color: white;
   border: 2px solid #660000 !important;
 }
-#changeTypeDiv {
+.changeTypeDiv {
   /*height: auto;*/
-  width: 48%;
+  height: 60px;
+  width: 30.5%;
   display: inline-block;
   margin-left: 4%;
+}
+.changeTypeDiv.changeTypeDivEdit {
+  width: 48%;
 }
 #newGroupType {
   width: 30%;
   margin-left: 1%;
+  margin-bottom: 0px;
 }
-#groupTypeSelect {
+#groupTypeSelect, #timeSelect {
   width: auto;
+  margin-bottom: 0px;
 }
 /*#groupTypeSelect:focus {
     outline: none;
@@ -294,28 +347,72 @@
   border-right: 10px solid #870000;
   left: -10px;
 }
+.groupQuality {
+  padding: 0px;
+  width: auto;
+  top: auto;
+  transform: translateY(-36.5%);
+}
+.qualityinfo {
+  margin: 10px 14px 10px 14px;
+}
+.qualityinfotext {
+  font-size: 12px;
+  margin-bottom: 0px;
+  text-align: center;
+}
 .groupName {
   display: inline-block;
   vertical-align: middle;
   margin-bottom: 0px;
 }
-.studentGroup:nth-child(even) {
-  margin-left: 4%;
+.suggestedGroupsCard:nth-child(even) {
+  margin-left: 3%;
 }
 .suggestedGroupsCard {
   padding: 1%;
-  max-height: 45vh;
-  overflow: auto;
-  margin-bottom: 4%;
+  padding-top: .5%;
+  height: auto;
+  max-height: none;
+  min-height: 0;
+  /*overflow: auto;*/
+  margin-bottom: 1.5%;
+  margin-top: 1.5%;
 }
 .studentsInGroup {
   border: 1px solid #cccccc;
-  color: #666666;
+  /*color: #666666;*/
   padding: 1%;
-  max-height: 21vh;
-  overflow-y: scroll;
+  max-height: 20vh;
+  height: 20vh;
+  overflow-y: auto;
   width: 50%;
   display: inline-block;
+}
+.instructorsInGroupSugg {
+  border: 1px solid #cccccc;
+  /*color: #666666;*/
+  padding: 1%;
+  max-height: 10vh;
+  height: 10vh;
+  overflow-y: auto;
+  width: 50%;
+  display: inline-block;
+}
+.suggestedWidth.moveToGroup {
+  margin-bottom: 0px;
+  margin-left: 0px;
+  margin-top: 4.5%;
+}
+.editGroupButton.editSuggBtn {
+  margin-top: 3.6%;
+  width: 48%;
+  float: right;
+  margin-bottom:  0;
+}
+.editGroupButton.suggFinalButton {
+  margin-top: 2%;
+  width: 48.5%;
 }
  .searchBar input[type=text]  {
     width:30%;
@@ -415,6 +512,135 @@ td.alignmid {
   cursor: pointer;
   background-color: #ffe6e6 !important;
 }
+.notUnique {
+  float: left;
+  color: #870000;
+  padding: 1%;
+}
+.loadingHidden {
+  display: none;
+}
+.loadMessage {
+  font-size: 1.5em;
+  z-index: 1040;
+  color: #f3f3f3;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  text-align: center;
+  position: fixed;
+  margin-top: 47vh;
+  animation: gradient 8s, wobble 4s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  animation-direction: alternate;
+  line-height: 25px;
+
+}
+@keyframes gradient {
+  0% {
+    color: #0397d7;
+  }
+  25% {
+    color: #444444;
+  }
+  50% {
+    color: #fcb040;
+  }
+  75% {
+    color: #61c250;
+  }
+  100% {
+    color: #0397d7;
+  }
+}
+@keyframes wobble {
+  0% {
+    transform: rotate(3deg);
+  }
+  50% {
+    transform: rotate(-3deg);
+  }
+  100% {
+    transform: rotate(3deg);
+  }
+}
+.spinner {
+  z-index: 1050;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+	width: 27vh;
+	height: 27vh;
+	position: fixed;
+	border-radius: 100%;
+	box-sizing: border-box;
+	animation: spin 8s;
+  animation-iteration-count: infinite !important;
+  animation-timing-function: ease-in-out;
+  animation-direction: alternate;
+}
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+    border: 10px solid;
+    border-color: #61c250 #0397d7 #444444 #fcb040;
+		box-shadow: 0px 0px 50px 1px rgba(0,0,0,1), inset 0px 0px 50px 1px rgba(0,0,0,1);
+	}
+  12.5% {
+    border: 30px solid;
+    border-color: #afb948 #32ad94 #246e8e #a07a42;
+    box-shadow: 0px 0px 10px 1px rgba(0,0,0,.5), inset 0px 0px 10px 1px rgba(0,0,0,.5);
+  }
+  25% {
+    transform: rotate(360deg);
+    border: 10px solid;
+    border-color: #fcb040 #61c250 #0397d7 #444444;
+    box-shadow: 0px 0px 50px 1px rgba(0,0,0,1), inset 0px 0px 50px 1px rgba(0,0,0,1);
+  }
+  37.5% {
+    border: 30px solid;
+    border-color: #a07a42 #afb948 #32ad94 #246e8e;
+    box-shadow: 0px 0px 10px 1px rgba(0,0,0,.5), inset 0px 0px 10px 1px rgba(0,0,0,.5);
+  }
+	50% {
+    transform: rotate(0deg);
+    border: 10px solid;
+    border-color: #444444 #fcb040 #61c250 #0397d7;
+    box-shadow: 0px 0px 10px 1px rgba(0,0,0,.25), inset 0px 0px 10px 1px rgba(0,0,0,.25);
+	}
+  62.5% {
+    border: 30px solid;
+    border-color: #246e8e #a07a42 #afb948 #32ad94;
+    box-shadow: 0px 0px 10px 1px rgba(0,0,0,.5), inset 0px 0px 10px 1px rgba(0,0,0,.5);
+  }
+  75% {
+    transform: rotate(360deg);
+    border: 10px solid;
+    border-color: #0397d7 #444444 #fcb040 #61c250;
+    box-shadow: 0px 0px 50px 1px rgba(0,0,0,1), inset 0px 0px 50px 1px rgba(0,0,0,1);
+  }
+  87.5% {
+    border: 30px solid;
+    border-color: #32ad94 #246e8e #a07a42 #afb948;
+    box-shadow: 0px 0px 10px 1px rgba(0,0,0,.5), inset 0px 0px 10px 1px rgba(0,0,0,.5);
+  }
+	100% {
+    transform: rotate(0deg);
+    border: 10px solid;
+    border-color: #61c250 #0397d7 #444444 #fcb040;
+    box-shadow: 0px 0px 50px 1px rgba(0,0,0,1), inset 0px 0px 50px 1px rgba(0,0,0,1);
+	}
+}
+
+
+
+
 @media screen and (max-width: 980px) {
    #createGroupButton, #suggestedgroupsbutton{
        margin-top: 6.5%;

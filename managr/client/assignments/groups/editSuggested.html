@@ -1,58 +1,59 @@
 <template name="editSuggested">
   {{#if isInstructor}}
   <div class="marginContainer">
-    <form id="createGroupForm">
-      <h1 class="titleAssignment">Edit Suggested Groups</h1>
-      <div class="orange-bar" style="background-color: #870000">&nbsp;</div>
-
-        <div class="studentGroup suggestedGroupsCard">
+    <h1 class="titleAssignment">Edit Suggested Groups</h1>
+    <div class="orange-bar" style="background-color: #870000">&nbsp;</div>
+    {{#each group in suggestedGroups}}
+      <form id="{{group.groupId}}" class="studentGroup suggestedGroupsCard" style="width:48.5%">
+        <div>
 
           <div class="suggestedGroupContent">
             <p class="suggestedTitles suggestedWidth"><b>Group Name:</b></p>
-            <input type="text" name="groupName" value="{{groupName}}" class="groupForum suggestedOptions suggestedTitles" autofocus="required">
+            <input type="text" name="groupName" value="{{group.name}}" id="name{{group.groupId}}" class="groupForum suggestedOptions suggestedTitles groupNameClass" style="margin-bottom:0px" autofocus="required" required>
           </div>
 
           <div class="suggestedGroupContent moveSuggestedStudents">
             <p class="suggestedTitles suggestedWidth"><b>Students In Group:</b></p>
             <div class="studentsInGroup student suggestedGroupContent moveSuggestedStudents suggestedTitles suggestedWidth">
-              <label for="{{studentId}}" class="studentLabel"><input type="checkbox" class="add" id="{{studentId}}"/>Jared Bledsoe</label>
-              <label for="{{studentId}}" class="studentLabel"><input type="checkbox" class="add" id="{{studentId}}"/>Jared Bledsoe</label>
-              <label for="{{studentId}}" class="studentLabel"><input type="checkbox" class="add" id="{{studentId}}"/>Jared Bledsoe</label>
-              <label for="{{studentId}}" class="studentLabel"><input type="checkbox" class="add" id="{{studentId}}"/>Jared Bledsoe</label>
-              <label for="{{studentId}}" class="studentLabel"><input type="checkbox" class="add" id="{{studentId}}"/>Jared Bledsoe</label>
-              <label for="{{studentId}}" class="studentLabel"><input type="checkbox" class="add" id="{{studentId}}"/>Jared Bledsoe</label>
-              <label for="{{studentId}}" class="studentLabel"><input type="checkbox" class="add" id="{{studentId}}"/>Jared Bledsoe</label>
-              <label for="{{studentId}}" class="studentLabel"><input type="checkbox" class="add" id="{{studentId}}"/>Jared Bledsoe</label>
-              <label for="{{studentId}}" class="studentLabel"><input type="checkbox" class="add" id="{{studentId}}"/>Jared Bledsoe</label>
+              {{#each stud in group.students}}
+                <label for="{{stud.studentId}}" class="studentLabel" style="height:20px"><input type="checkbox" class="student{{group.groupId}}" id="{{stud.studentId}}"/>{{stud.name}}</label>
+              {{/each}}
             </div>
           </div>
 
           <div class="suggestedGroupContent">
-            <p class="suggestedTitles suggestedWidth"><b>Select Instructor:</b></p>
-            <select class="suggestedOptions suggestedTitles">
-              <option value="default">Instructor 1</option>
-              <option value="datecreated">Instructor 2</option>
-              <option value="name">Instructor 3</option>
-              <option value="sizeinc">Instructor 4</option>
-              <option value="sizedec">Instructor 5</option>
-            </select>
+            <p class="suggestedTitles suggestedWidth" style="margin-top:4.5%"><b>Select Coaches (Optional):</b></p>
+            <div class="instructorsInGroupSugg student suggestedGroupContent moveSuggestedStudents suggestedTitles suggestedWidth">
+              {{#each ins in instructors}}
+                <label for="{{ins.instructorId}}{{group.groupId}}" class="instructorLabel"><input type="checkbox" class="coachBox" value="{{ins.instructorId}}" id="{{ins.instructorId}}{{group.groupId}}"/>{{ins.name}}</label>
+              {{/each}}
+            </div>
+            <!-- <select class="suggestedOptions suggestedTitles">
+              {{#each ins in instructors}}
+                <option value="{{ins.instructorId}}" id="{{ins.instructorId}}">{{ins.name}}</option>
+              {{/each}}
+            </select> -->
           </div>
 
           <div class="suggestedGroupContent">
-            <p class="noIndent assignmentFormFormat suggestedGroupContent suggestedWidth"><b>Move Selected To Group:</b></p>
+            <p class="noIndent assignmentFormFormat suggestedGroupContent suggestedWidth moveToGroup"><b>Move Selected To Group:</b></p>
             <div class="suggestedGroupContent suggestedWidth">
-              <select class="suggestedGroupContent suggestedOptions suggestedTitles">
-                <option value="default">pullaG</option>
-                <option value="datecreated">Group 2</option>
-                <option value="name">Group 3</option>
-                <option value="sizeinc">Group 4</option>
+              <select class="suggestedGroupContent suggestedOptions suggestedTitles" id="select{{group.groupId}}">
+                {{#each dropGroup in otherGroups}}
+                  {{#if isOtherGroup group.groupId dropGroup.groupId}}
+                    <option value="{{dropGroup.groupId}}">{{dropGroup.name}}</option>
+                  {{/if}}
+                {{/each}}
               </select>
+            </div>
           </div>
-        </div>
-        <button class="buttonStyle backBtn submitbtn editGroupButton" id="cancel">Move Selected Students</button>
-      </div>
+          <button class="buttonStyle backBtn submitbtn editGroupButton editSuggBtn" id="{{group.groupId}}">Move Students</button>
 
-    </form>
+        </div>
+      </form>
+    {{/each}}
+    <button class="buttonStyle backBtn submitbtn editGroupButton suggFinalButton" id="cancel" style="clear:left">Cancel</button>
+    <button class="buttonStyle editBtn submitbtn editGroupButton suggFinalButton" id="saveGroupsButton" style="margin-left:2%">Save Groups</button>
   </div>
   {{else}} {{> accessDenied}} {{/if}}
 </template>

@@ -24,7 +24,7 @@ var profileSection = FlowRouter.group({
 });
 var leaderboardSection = FlowRouter.group({ // my edit
 	name: "leaderboard",
-	prefix: "/leaderboard"
+	prefix: "/performance"
 
 });
 var viewEvalSection = FlowRouter.group({ // my edit
@@ -43,6 +43,12 @@ var attendanceSection = FlowRouter.group({
 	name: "attendance",
 	profiles: "/attendance"
 });
+
+var surveysSection = FlowRouter.group({
+	name: "surveys",
+	prefix: "/surveys"
+});
+
 blogsSection.route('/home', {
 	name: 'home',
 	action() {
@@ -101,6 +107,7 @@ assignmentSection.route("/single/:id", {
         });
     }
 });
+
 //this is a temp route
 assignmentSection.route("/single/admin/:id", {
     name: "adminSingleAssignment",
@@ -175,7 +182,7 @@ profileSection.route("/profile/edit/:id", {
   }
 });
 
-FlowRouter.route("/leaderboard", {  //--------------------------my edit
+FlowRouter.route("/performance", {  //--------------------------my edit
 	action: function(params, queryParams){
 		BlazeLayout.render("leaderboardLayout", {content: "leaderboard"})
 	}
@@ -230,6 +237,61 @@ FlowRouter.route('/events', {
 		BlazeLayout.render("eventsLayout", {content: 'eventsPage'});
 	}
 });
+
+FlowRouter.route("/surveys", {
+    action: function(params, queryParams) {
+        BlazeLayout.render("surveysLayout", {content:'surveysPage'});
+		//BlazeLayout.render(main, { content: 'assignmentsBody' });
+	}
+});
+
+FlowRouter.route("/surveysResults/:id", {
+    action: function(params, queryParams) {
+        BlazeLayout.render("surveysLayout", {content:'surveysResults'});
+		//BlazeLayout.render(main, { content: 'assignmentsBody' });
+	}
+});
+
+FlowRouter.route("/individualResults/:surveyId/:studentId", {
+    action: function(params, queryParams) {
+        BlazeLayout.render("surveysLayout", {content:'individualResults'});
+		//BlazeLayout.render(main, { content: 'assignmentsBody' });
+	}
+});
+
+FlowRouter.route("/createNewSurvey", {// /:id
+    action: function(params, queryParams) {
+        BlazeLayout.render("surveysLayout", {content:'newSurvey'});
+		//BlazeLayout.render(main, { content: 'assignmentsBody' });
+	}
+});
+
+FlowRouter.route("/completeSurvey/:id", {// /:id
+    action: function(params, queryParams) {
+        BlazeLayout.render("surveysLayout", {content:'viewSurveyPage'});
+		//BlazeLayout.render(main, { content: 'assignmentsBody' });
+	}
+});
+
+FlowRouter.route("/addQuestion/:id", {
+    action: function(params, queryParams) {
+        BlazeLayout.render("surveysLayout", {content:'addQuestion'});
+		//BlazeLayout.render(main, { content: 'assignmentsBody' });
+	}
+});
+
+FlowRouter.route("/surveyLink/:id", {
+    action: function(params, queryParams) {
+        BlazeLayout.render("surveysLayout", {content:'surveyLink'});
+		//BlazeLayout.render(main, { content: 'assignmentsBody' });
+	}
+});
+// //with specific survey id
+// FlowRouter.route("/view/:id", {
+//     action: function(params, queryParams) {
+//         BlazeLayout.render("surveysLayout", {content:'viewSurveyPage'});
+// 	}
+// });
 
 FlowRouter.route('/home/blogs/:year/:month', {
 	name: 'archives',

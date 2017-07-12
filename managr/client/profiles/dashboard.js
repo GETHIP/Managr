@@ -108,6 +108,9 @@ Template.dashboard.events({
 	'click #newUserButton':function(e) {
 		FlowRouter.go('/dashboard/new');
 	},
+  'click #reportsButton':function(e) {
+    FlowRouter.go('/reports');
+  },
 	'change #usersFile':function(e) {
 		var fileReader = new FileReader();
 		var templateInstance = Template.instance();

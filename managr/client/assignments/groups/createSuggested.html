@@ -5,44 +5,73 @@
       <h1 class="titleAssignment">Create Suggested Groups</h1>
       <div class="orange-bar" style="background-color: #870000">&nbsp;</div>
 
-      <p class="groupTitle"><b>Select Option:</b></p>
-      <!-- <p class="noIndent" style="margin-left:0px"><b>Select Option:</b></p> -->
-      <p class="groupTitle changeType"><b>Group Type (Optional):</b></p>
+      <p class="groupTitle createsugg" style="margin-top:1%"><b>Select Option:</b></p>
+      <div>
+          <p class="groupTitle changeType"><b>Group Quality (Optional): </b>
+              <p class="previewStudentsBtn" style="margin-right:0px">i</p>
+              <div class="info groupQuality">
+                  <div class="row qualityinfo">
+                      <p class="qualityinfotext">More time allows for more combinations of</p>
+                      <p class="qualityinfotext">groups, leading to a better group set.</p>
+                      <p class="qualityinfotext">Speed = ~100 Sets/Millisecond</p>
+                  </div>
+              </div>
+          </p>
+      </div>
+      <p class="groupTitle changeType" style="height:22px"><b>Group Type (Optional):</b></p>
 
-      <div style="width:48%;float:left">
-          <div id="numTypeDiv">
-              <input placeholder="0" type="number" name="numTypeInput" id="numPerSuggested" required>
-              <div style="float:right;padding:2.5px">
-                  <label for="numOf" class="numTypeLabel"><input type="radio" id="numOf" name="numType" value="Number Of Groups" required/>Number Of Groups</label>
-                  <label for="numPer" class="numTypeLabel" style="margin-bottom:0px"><input type="radio" id="numPer" name="numType" value="Students Per Group" required/>Students Per Group</label>
+      <div class="row" style="margin:0">
+          <div class="numTypeDivOuter">
+              <div class="numTypeDiv">
+                  <input placeholder="0" type="number" name="numTypeInput" id="numPerSuggested" required>
+                  <div style="float:right;padding:2.5px">
+                      <label for="numOf" class="numTypeLabel"><input type="radio" id="numOf" name="numType" value="Number Of Groups" required/>Number Of Groups</label>
+                      <label for="numPer" class="numTypeLabel" style="margin-bottom:0px"><input type="radio" id="numPer" name="numType" value="Students Per Group" required/>Students Per Group</label>
+                  </div>
               </div>
           </div>
+
+          <div class="numTypeDivOuter waitTimeDiv">
+              <select id="timeSelect">
+                  <option value="low">Low (2s)</option>
+                  <option value="medium" selected>Medium (5s)</option>
+                  <option value="high">High (10s)</option>
+                  <option value="custom">Custom Length</option>
+              </select>
+              <div class="numTypeDiv" id="secondsDiv" style="display:none">
+                  <input placeholder="5" type="number" name="waitTimeInput" id="waitTime">
+                  <div id="secondsDiv" style="padding:2.5px">
+                      <p id="seconds">Seconds</p>
+                  </div>
+              </div>
+          </div>
+
+          <div class="changeTypeDiv">
+              <select id="groupTypeSelect">
+
+                  {{ cleargrouptypes }}
+
+                  <option value="None" id="blanktype" selected hidden>Select Type:</option>
+                  <option value="None">None</option>
+                  <option value="newType">Make New Type</option>
+                  <option disabled>----------</option>
+
+                  {{ #each group in groups }}
+                      {{ #if uniquetypes group.groupType }}
+                          <option value="{{group.groupType}}">{{group.groupType}}</option>
+                      {{ /if }}
+                  {{ /each }}
+
+              </select>
+              <input type="text" name="newGroupType" placeholder="New Type" class="groupForum" id="newGroupType" style="display:none">
+          </div>
       </div>
-
-      <div id="changeTypeDiv" style="height:60px">
-        <select id="groupTypeSelect">
-
-          {{ cleargrouptypes }}
-
-          <option value="" id="blanktype" selected hidden>Select Type:</option>
-          <option value="None">None</option>
-          <option value="newType">Make New Type</option>
-
-          {{ #each group in groups }}
-            {{ #if uniquetypes group.groupType }}
-              <option value="{{group.groupType}}">{{group.groupType}}</option>
-            {{ /if }}
-          {{ /each }}
-
-        </select>
-        <input type="text" name="newGroupType" placeholder="New Type" class="groupForum" id="newGroupType" style="display:none">
-      </div>
-      <br>
+      <!-- <br> -->
 
       <p class="groupTitle"><b>Students Not Selected:</b></p>
       <p class="groupTitle addedStudent"><b>Selected Students:</b></p>
 
-      <div class="studentGroup" id="otherstudents">
+      <div class="studentGroup noRoundBottom" id="otherstudents">
         <div class="student">
           <label for="selectAllNotAdded" class="studentLabel selectAll"><input type="checkbox" id="selectAllNotAdded"/>Select All</label>
           <div class="selectAllBar"></div>
@@ -54,7 +83,7 @@
         </div>
       </div>
 
-      <div class="studentGroup studentsAdded" id="addedstudents">
+      <div class="studentGroup studentsAdded noRoundBottom" id="addedstudents">
         <div class="student">
           <label for="selectAllAdded" class="studentLabel selectAll"><input type="checkbox" id="selectAllAdded"/>Select All</label>
           <div class="selectAllBar"></div>
@@ -73,5 +102,12 @@
       <button class="buttonStyle editBtn submitbtn createSuggestedButton" type="submit" value="Create Group" id="createSuggestedButton">Generate Suggested Groups</button>
     </form>
   </div>
+
+  <div id="loading" class="loadingHidden">
+    <div class="modal-backdrop fade in"></div>
+    <div class="spinner"></div>
+    <p class="loadMessage">Generating <br>Groups</p>
+  </div>
+
   {{else}} {{> accessDenied}} {{/if}}
 </template>

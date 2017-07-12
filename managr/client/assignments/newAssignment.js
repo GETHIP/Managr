@@ -61,6 +61,7 @@ Template.newAssignment.helpers({
 Template.newAssignment.events({
     'submit .submitbtn' (event) {
         event.preventDefault();
+        console.log(3453453);
         const form = event.target;
 
         var title = form.name.value;

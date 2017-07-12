@@ -10,6 +10,8 @@ import { Drafts } from '../collections/drafts.js';
 import { Globals } from '../collections/globals.js';
 import { Eval } from '../collections/eval.js'
 import { Milestone } from '../collections/milestone.js';
+import { Surveys } from '../collections/surveys.js';
+import { Questions } from '../collections/questions.js';
 
 export function publishAll() {
 
@@ -102,7 +104,7 @@ export function publishAll() {
 		return Events.find();
 	}
   });
-  
+
 	Meteor.publish("singleGroup", function(id) {
 		check(id, String);
 		return Groups.find({_id: id});
@@ -121,4 +123,12 @@ export function publishAll() {
 	Meteor.publish("Globals", function() {
 		return Globals.find({});
 	});
+
+	Meteor.publish("Surveys", function() {
+		return Surveys.find({});
+	});
+
+	// Meteor.publish("Questions", function() {
+	// 	return Questions.find({});
+	// });
 }
