@@ -5,6 +5,8 @@ import { Groups } from '../../../collections/groups.js';
 var bestGroups = [];
 var groupType = "";
 
+var allValid = 0;
+
 editSugg_dep = new Deps.Dependency;
 editSuggName_dep = new Deps.Dependency;
 
@@ -36,61 +38,87 @@ Template.editSuggested.onCreated(function() {
 				if (subscription.ready()) {
 						editSugg_dep.changed()
             editSuggName_dep.changed()
+            allValid = 0;
 				}
 		});
 });
+
+var checkGroups = function() {
+    for(var i = 0; i < bestGroups.length; i++) {
+        var foundInGroups = Groups.findOne({ name: bestGroups[i].name });
+        var currentText = document.getElementsByClassName("notUniqueSugg")[i];
+        if(foundInGroups != null) {
+            if(currentText.style.display == "none") {
+                allValid++;
+            }
+            currentText.style.display = "initial";
+        }
+    }
+}
 
 Template.editSuggested.events({
 		"click #saveGroupsButton"(event) {
         event.preventDefault();
         const form = event.target;
 
-				var inputs = document.getElementsByTagName("INPUT");
-				var coachBoxes = [];
-				for(i = 0; i < inputs.length; i++) {
-						if(inputs[i].type == "checkbox" && inputs[i].checked && inputs[i].className == "coachBox") {
-								coachBoxes.push(inputs[i]);
-						}
-				}
-				for(i = 0; i < bestGroups.length; i++) {
-						var coaches = [];
-						var coachNames = [];
-						for(ii = 0; ii < coachBoxes.length; ii++) {
-								if(coachBoxes[ii].id == coachBoxes[ii].value + bestGroups[i].groupId) {
-										coaches.push(coachBoxes[ii].value);
-										var coach = Instructor.findOne({_id: coachBoxes[ii].value});
-										coachNames.push(coach.name);
-								}
-						}
+        checkGroups();
 
-						var studentsInEach = bestGroups[i].students;
-						var size = studentsInEach.length;
-						var stringSize = size.toString();
+        if(allValid == 0) {
+    				var inputs = document.getElementsByTagName("INPUT");
+    				var coachBoxes = [];
+    				for(i = 0; i < inputs.length; i++) {
+    						if(inputs[i].type == "checkbox" && inputs[i].checked && inputs[i].className == "coachBox") {
+    								coachBoxes.push(inputs[i]);
+    						}
+    				}
+    				for(i = 0; i < bestGroups.length; i++) {
+    						var coaches = [];
+    						var coachNames = [];
+    						for(ii = 0; ii < coachBoxes.length; ii++) {
+    								if(coachBoxes[ii].id == coachBoxes[ii].value + bestGroups[i].groupId) {
+    										coaches.push(coachBoxes[ii].value);
+    										var coach = Instructor.findOne({_id: coachBoxes[ii].value});
+    										coachNames.push(coach.name);
+    								}
+    						}
 
-						var studentIds = [];
-						var studentNames = [];
-						studentsInEach.forEach(function(student) {
-								studentIds.push(student.studentId);
-								studentNames.push(student.name);
-						});
+    						var studentsInEach = bestGroups[i].students;
+    						var size = studentsInEach.length;
+    						var stringSize = size.toString();
 
-						var dateCreated = new Date().getTime();
+    						var studentIds = [];
+    						var studentNames = [];
+    						studentsInEach.forEach(function(student) {
+    								studentIds.push(student.studentId);
+    								studentNames.push(student.name);
+    						});
 
-						var data = {
-								name: bestGroups[i].name,
-								studentIds: studentIds,
-								coaches: coaches,
-								coachNames: coachNames,
-								size: size,
-								stringSize: stringSize,
-								studentNames: studentNames,
-								groupType: groupType,
-								dateCreated: dateCreated
-						};
+    						var dateCreated = new Date().getTime();
 
-						Meteor.call('createGroupsSugg', data);
-				}
-        FlowRouter.go("/groups");
+    						var data = {
+    								name: bestGroups[i].name,
+    								studentIds: studentIds,
+    								coaches: coaches,
+    								coachNames: coachNames,
+    								size: size,
+    								stringSize: stringSize,
+    								studentNames: studentNames,
+    								groupType: groupType,
+    								dateCreated: dateCreated
+    						};
+
+    						Meteor.call('createGroupsSugg', data);
+    				}
+            FlowRouter.go("/groups");
+        }
+        else {
+            Modal.show('warningModal', {
+                title: 'Error',
+                text: 'Group names must be unique.',
+                confirmText: 'Close',
+                confirmCallback: () => {}
+            });
+        }
     },
     "click .editSuggBtn"(event) {
         event.preventDefault();
@@ -148,18 +176,36 @@ Template.editSuggested.events({
         var target = event.target;
         var groupName = target.value;
         var nameGroupId = event.target.id;
+        var foundInGroups = Groups.findOne({ name: groupName });
+        var foundInSugg = false;
+        for(var i = 0; i < bestGroups.length; i++) {
+            var eachId = "name" + bestGroups[i].groupId;
+            if(eachId != nameGroupId && bestGroups[i].name == groupName) {
+                foundInSugg = true;
+            }
+        }
         for(var i = 0; i < bestGroups.length; i++) {
             var eachId = "name" + bestGroups[i].groupId;
             if(eachId == nameGroupId) {
-                if(groupName != "") {
+                var currentText = document.getElementsByClassName("notUniqueSugg")[i];
+                if(groupName != "" && foundInGroups == null && foundInSugg == false) {
                     bestGroups[i].name = groupName;
+                    if(currentText.style.display == "initial") {
+                        allValid--;
+                    }
+                    currentText.style.display = "none";
                     editSuggName_dep.changed()
-                    break;
                 }
-                else {
+                else if(groupName == "") {
                     document.getElementById(nameGroupId).value = bestGroups[i].name;
-                    break;
                 }
+                else if(foundInGroups != null || foundInSugg == true) {
+                    if(currentText.style.display == "none") {
+                        allValid++;
+                    }
+                    currentText.style.display = "initial";
+                }
+                break;
             }
         }
 		}

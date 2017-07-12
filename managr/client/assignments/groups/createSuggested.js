@@ -49,7 +49,6 @@ Template.createSuggested.events({
             }
             var numberOf = parseInt(form.numTypeInput.value);
             var option = form.numType.value;
-            console.log(option);
             var secondsInput = document.getElementById("timeSelect").value;
             if(secondsInput == "low") {
                 secondsInput = 2;
@@ -66,13 +65,13 @@ Template.createSuggested.events({
                     secondsInput = 5;
                 }
             }
-            console.log(secondsInput);
             if (typeof(secondsInput) != "number") {
                 valid = false;
+                document.getElementById('loading').style="display:none";
                 Modal.show('warningModal', {
                     title: 'Error',
                     text: 'An error has occurred.',
-                    confirmText: 'Retry',
+                    confirmText: 'Close',
                     confirmCallback: () => {}
                 });
             }
@@ -89,44 +88,48 @@ Template.createSuggested.events({
             }
             else {
                 valid = false;
+                document.getElementById('loading').style="display:none";
                 Modal.show('warningModal', {
                     title: 'Error',
                     text: 'No generation option was selected.',
-                    confirmText: 'Retry',
+                    confirmText: 'Close',
                     confirmCallback: () => {}
                 });
             }
-            console.log(secondsToRun);
+
             var iterations = secondsToRun * 90000;
 
             if (numberOf < 2 && option == 2) {
                 valid = false;
+                document.getElementById('loading').style="display:none";
                 Modal.show('warningModal', {
                     title: 'Error',
                     text: 'Not enough people in each group.',
-                    confirmText: 'Retry',
+                    confirmText: 'Close',
                     confirmCallback: () => {}
                 });
             }
             if (numberOf < 2 && option == 1) {
                 valid = false;
+                document.getElementById('loading').style="display:none";
                 Modal.show('warningModal', {
                     title: 'Error',
                     text: 'Not enough groups.',
-                    confirmText: 'Retry',
+                    confirmText: 'Close',
                     confirmCallback: () => {}
                 });
             }
             if (allAdded.length < 3) {
                 valid = false;
+                document.getElementById('loading').style="display:none";
                 Modal.show('warningModal', {
                     title: 'Error',
                     text: 'Not enough students were selected.',
-                    confirmText: 'Retry',
+                    confirmText: 'Close',
                     confirmCallback: () => {}
                 });
             }
-            
+
             if (valid) {
                 var theStudents = [];
                 for(i = 0; i < allAdded.length; i++) {

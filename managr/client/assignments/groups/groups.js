@@ -115,8 +115,6 @@ Template.groups.events({
     'click .groupRow': function(event) {
         event.preventDefault();
         const target = event.target;
-        console.log(target);
-        console.log(target.id);
         FlowRouter.go("/groups/" + event.target.id);
     }
 });
