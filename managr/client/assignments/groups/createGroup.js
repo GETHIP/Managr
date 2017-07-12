@@ -42,11 +42,24 @@ Template.createGroup.events({
 				var size = studentIds.length;
 				var studentNames = newformatStudentsForGroup(studentIds);
 				// Stores date as a number (number of milliseconds since 1970)
-				var dateCreated = new Date().getTime()
+				var dateCreated = new Date().getTime();
 
-        Meteor.call("createGroup", groupName, studentIds, size, studentNames, dateCreated);
+				var nameCheck = 0;
+				if ((groupName != null) && (Groups.findOne({ name: groupName }) == null)) {
+					nameCheck = 2;
+					console.log("2");
+				} else {
+					/**document.getElementsByClassName("notUnique")[0].style.display = "initial";**/
+					console.log("1");
+				}
 
-        FlowRouter.go("/groups");
+				if (nameCheck == 2) {
+						console.log("3");
+						Meteor.call("createGroup", groupName, dateCreated, function(error, result) {
+						FlowRouter.go("/groups/edit/" + result);
+					}
+				);
+				}
     },
     'change .groupCheckBox':function(event) {
         var groupId = event.target.id;

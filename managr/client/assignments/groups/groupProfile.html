@@ -48,14 +48,18 @@
 <template name="groupCoach">
   <p><strong>Coach:</strong></p>
   {{#with groupCoach}}
-      <p> {{groupCoach}}</p>
+  <ul>
+      <li> {{groupCoach}}</li>
+  </ul>
   {{/with}}
 </template>
 
 <template name="groupSize">
   <!--{{#with groupSize}}-->
     <p><strong>Size:</strong></p>
-    <p> {{groupSize.size}}</p>
+    <ul>
+      <li> {{groupSize.size}}</li>
+    </ul>
   <!--{{/with}}-->
 </template>
 

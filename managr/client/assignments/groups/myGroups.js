@@ -52,6 +52,13 @@ Template.myGroups.helpers({
             document.getElementById("namesInGroup").style.overflowY = "scroll";
         }
     },
+    grouptypes: function(type) {
+        if(!type || type == 0 || type == null) {
+            return "None";
+        } else {
+          return type;
+        }
+    },
     allCoaches: function(coaches) {
         console.log(coaches);
         if(!coaches || coaches.length == 0) {
