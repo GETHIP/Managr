@@ -362,6 +362,66 @@
   margin-bottom: 0px;
   text-align: center;
 }
+.groupQuality.groupDomains {
+  transform: translateY(-41.5%);
+}
+.domainChart {
+  height: 75px;
+  padding: 2px;
+}
+.domainChart.redBarChart {
+  position: absolute;
+  width: 100%;
+  padding: 2px 0px 0px 0px;
+}
+.domainChart div {
+  margin: 2px 1px 2px 1px;
+  width: 20px;
+  display: inline-block;
+  vertical-align: bottom;
+}
+.domainAmounts div {
+  font: 11px sans-serif;
+  color: black;
+  margin: 2px 1px 2px 1px;
+  width: 20px;
+  display: inline-block;
+  text-align: center;
+  vertical-align: top;
+}
+.domainAmounts {
+  padding: 2px;
+  height: 20px;
+}
+.orange-bar.chart-bar {
+  background-color: black;
+  height: 1px;
+  margin-top: 3px;
+  margin-bottom: 0px;
+}
+.orange-bar.redChart-bar {
+  background-color: red;
+  height: 1px;
+  margin: 0px;
+  width: 100%;
+  vertical-align: top;
+}
+.domainAmount {
+  display: inline-block;
+  padding: 0px;
+}
+.domainColor0 {
+  background-color: #600e69;
+}
+.domainColor1 {
+  background-color: #f7971d;
+}
+.domainColor2 {
+  background-color: #005187;
+}
+.domainColor3 {
+  background-color: #98012d;
+}
 .groupName {
   display: inline-block;
   vertical-align: middle;

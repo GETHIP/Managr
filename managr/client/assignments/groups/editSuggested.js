@@ -217,10 +217,32 @@ Template.editSuggested.helpers({
         var formattedGroups = [];
         for(var i = 0; i < bestGroups.length; i++) {
             var group = bestGroups[i];
+            var eachStudents = group.students;
+
+            var bestAverage = eachStudents.length * 5 / 4;
+            var eachPercentDomains = [{amount:0,percent:0},{amount:0,percent:0},{amount:0,percent:0},{amount:0,percent:0}];
+            for (ii = 0; ii < eachStudents.length; ii++) {
+                for (iii = 0; iii < 4; iii++) {
+                    eachPercentDomains[iii].amount += eachStudents[ii].domains[iii];
+                }
+            }
+            var highestDomain = 0;
+            var bestAveragePercent = {amount:bestAverage,percent:0};
+            for (ii = 0; ii < 4; ii++) {
+                if (eachPercentDomains[ii].amount > highestDomain) {
+                    highestDomain = eachPercentDomains[ii].amount;
+                    bestAveragePercent.percent = bestAverage / eachPercentDomains[ii].amount * 100;
+                }
+            }
+            for (ii = 0; ii < 4; ii++) {
+                eachPercentDomains[ii].percent = eachPercentDomains[ii].amount / highestDomain * 100;
+            }
             var formattedGroup = {
                 name: group.name,
-                students: group.students,
-                groupId: group.groupId
+                students: eachStudents,
+                groupId: group.groupId,
+                domains: eachPercentDomains,
+                bestAverage: bestAveragePercent
                 // coaches: group.coaches
             }
             formattedGroups.push(formattedGroup);

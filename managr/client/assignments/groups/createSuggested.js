@@ -148,6 +148,7 @@ Template.createSuggested.events({
                 var start = Date.now();
                 var groups = [];
                 var score = 0;
+                var iterationsDone = 0;
                 secondsToRun = secondsToRun * 1000;
 
                 //Run the best group finding algorithms
@@ -160,6 +161,7 @@ Template.createSuggested.events({
                         bestGroups = groups;
                         bestScore = score;
                     }
+                    iterationsDone++;
                 }
                 console.log("Best Group Set:");
                 console.log(bestGroups);
@@ -170,7 +172,9 @@ Template.createSuggested.events({
                 console.log("Ms elapsed:");
                 console.log(end - start);
                 console.log("Ms elapsed per iteration:");
-                console.log((end - start) / iterations);
+                console.log((end - start) / iterationsDone);
+                console.log("Number of iterations:");
+                console.log(iterationsDone);
 
                 bestGroups.forEach(function(group) {
                     group.groupId = Random.id();
@@ -439,9 +443,17 @@ var makeGroups = function(option, allStudents, numberOf) {
       for (ii = 0; ii < count; ii++) {
         currentStudents[ii] = allStudents[ii + numDone];
       }
+      var eachDomains = [0,0,0,0];
+      for (ii = 0; ii < currentStudents.length; ii++) {
+        for (iii = 0; iii < 4; iii++) {
+          // console.log(eachStudents[ii]);
+          eachDomains[iii] += currentStudents[ii].domains[iii];
+        }
+      }
       var formattedGroup = {
         name: "Group " + nameIndex,
-        students: currentStudents
+        students: currentStudents,
+        domains: eachDomains
       }
       groupSet[i] = formattedGroup;
       numDone += count;
@@ -466,9 +478,17 @@ var makeGroups = function(option, allStudents, numberOf) {
       for (ii = 0; ii < numberOf; ii++) {
         currentStudents[ii] = allStudents[ii + numDone];
       }
+      var eachDomains = [0,0,0,0];
+      for (ii = 0; ii < length; ii++) {
+        for (iii = 0; iii < 4; iii++) {
+          // console.log(eachStudents[ii]);
+          eachDomains[iii] += currentStudents[ii].domains[iii];
+        }
+      }
       var formattedGroup = {
         name: "Group " + nameIndex,
-        students: currentStudents
+        students: currentStudents,
+        domains: eachDomains
       }
       // console.log(allStudents);
       // console.log(formattedGroup);
@@ -490,17 +510,10 @@ var scoreGroups = function(theGroups) {
     var slength = eachStudents.length;
     // console.log(eachStudents);
     // console.log(slength);
-    var eachDomains = [0,0,0,0];
-    for (ii = 0; ii < slength; ii++) {
-      for (iii = 0; iii < 4; iii++) {
-        // console.log(eachStudents[ii]);
-        eachDomains[iii] += eachStudents[ii].domains[iii];
-      }
-    }
     var bestAverage = slength * 5 / 4;
     var domainScore = 0;
     for (ii = 0; ii < 4; ii++) {
-      domainScore += Math.abs(bestAverage - eachDomains[ii]);
+      domainScore += Math.abs(bestAverage - eachGroup.domains[ii]);
     }
     totalDomainScore += domainScore;
 
@@ -528,38 +541,4 @@ var scoreGroups = function(theGroups) {
     totalStrengthsScore += strengthScoreWeighted;
   }
   return totalDomainScore + totalStrengthsScore;
-}
-
-
-
-
-
-var ids = ["MAY3zGzMtnhoGBB3Q", "YGS92nMHac6XHQhma", "ijep8za9FpeASgmso", "xAa9PR8x8GFz2Cdxx", "4y3YRNKXwp8YrAmxj", "w2Ys9EioDAdrCNbaA", "SNaxMvJeok5XdTKKu", "6AnvvfFgXtP8S4TJd", "ZsGBm7jRBXzbnDSeF", "8NM5Fbqp5xB8TTkK4", "nfd4nget98KiYgecH", "MZjww3HMg3SGJWrJE", "9FMrzbfhnTprdeu5W", "rjeWcePE3F3MeRuTZ", "54ntBzaoPvMJXuYXm", "6v6yb2yRgDsQqd7nZ", "8rTPXxjPtdLybLhCM", "eYkEsHBvyjR5s92Ju", "Xg2MT7ZTZ8hLyDPnz", "YBgspKeGtBurmBPdX", "GqweGj7gnqTiQYAHX", "mPTxQKNGM3RfxhEYz", "Ks6jpMhmLPejb4nEx", "ybdGnx9ZFgLdhPQF7", "Cxo55MEn5rd7qS3dg", "pk6zkZM9ZuuasP5mm", "GM3BjxKLDYWt5pKXG", "7SamF7qKoCLcDtMkt", "oAqfzd6gvmdqsZErf", "vepe42NyhNF2i7Cz5", "ubKN2pQj2EuBqT63h", "FjySTRsDXntwNF2aP", "aFqMuaYbHfXfHdB2Z", "Pd9k4ktqHdgGvPi4v", "9BNPEL9MeED45rxCK", "c9SGf9mmX8ktBvzmn", "eBSwmMR8Rmkaci4ZT", "FFxWJxK83QSmY62k6", "zxHSkK7HntgRngvHr", "mh2ZqvuzDskR4eM2r", "64PJ7uhcFdMJWac67", "XxxmkmyYezxgnskPj", "NhL78C8XjJHSeb3Kc", "WrHaNgqCH7XaAXCx5", "72Cz8QjEPXtMvSR2p", "JN3aBdMswZkmrEi2n", "HaWHkSgokXLAmqDaq", "ALqzyYJ8zvxWjvjR5", "xDPEneWr3WW3oPGda", "yPpfNPSRtKCGoXxrJ", "Spp8Afos3MXKuJ7eN", "t8yDYCNJZKMt4wRkn", "ckmqjTS83hCtxsYGx", "xirBd8MxB4TfCcdzH", "M3TimiTkiovDgWeTq", "LqtiLBSWzqS632tTm", "ANF4o8LkqwMvqdbrn", "6msPZWkLhQPdznjZ6", "7vP3cS6WQK2TZmays", "tBJoSDKFiNzE4BDDf"];
-
-var makeStudents = function(numberOfStudents) {
-  var makingStudents = [];
-  for(i = 0; i < numberOfStudents; i++) {
-    var eachStrengths = randomtop();
-    var student = {
-      studentId: ids[Math.floor(Math.random()*60)],
-      strengths: strengthNumbers(eachStrengths),
-      domains: findDomains(eachStrengths)
-    }
-    makingStudents.push(student);
-  }
-  return makingStudents;
-}
-
-var randomtop = function() {
-  var top5 = [];
-  for(ii = 0; ii < 5; ii++) {
-    var strength = allStrengths[Math.floor(Math.random()*34)];
-    if(top5.indexOf(strength) == -1) {
-      top5.push(strength);
-    }
-    else {
-      ii--;
-    }
-  }
-  return top5;
 }
