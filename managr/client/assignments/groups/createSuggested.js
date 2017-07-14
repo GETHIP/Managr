@@ -446,7 +446,6 @@ var makeGroups = function(option, allStudents, numberOf) {
       var eachDomains = [0,0,0,0];
       for (ii = 0; ii < currentStudents.length; ii++) {
         for (iii = 0; iii < 4; iii++) {
-          // console.log(eachStudents[ii]);
           eachDomains[iii] += currentStudents[ii].domains[iii];
         }
       }
@@ -455,6 +454,8 @@ var makeGroups = function(option, allStudents, numberOf) {
         students: currentStudents,
         domains: eachDomains
       }
+      // console.log(allStudents);
+      // console.log(formattedGroup);
       groupSet[i] = formattedGroup;
       numDone += count;
       nameIndex++;
@@ -479,9 +480,8 @@ var makeGroups = function(option, allStudents, numberOf) {
         currentStudents[ii] = allStudents[ii + numDone];
       }
       var eachDomains = [0,0,0,0];
-      for (ii = 0; ii < length; ii++) {
+      for (ii = 0; ii < numberOf; ii++) {
         for (iii = 0; iii < 4; iii++) {
-          // console.log(eachStudents[ii]);
           eachDomains[iii] += currentStudents[ii].domains[iii];
         }
       }
