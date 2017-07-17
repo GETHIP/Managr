@@ -13,7 +13,58 @@
           </div>
 
           <div class="suggestedGroupContent moveSuggestedStudents">
-            <p class="suggestedTitles suggestedWidth"><b>Students In Group:</b></p>
+            <p class="suggestedTitles suggestedWidth"><b>Students In Group:</b>
+            <p id="{{group.groupId}}" class="previewStudentsBtn" style="margin-bottom:-5px;margin-right:-1px">i</p>
+              <div class="info groupQuality groupDomains" style="overflow:visible">
+                <div style="display:inline-block">
+                  <div class="domainChart redBarChart" style="width:101px">
+                    <div style="margin:0px;width:0%;height:100%">
+                    </div>
+                    <div style="margin:0px;width:94%;height:{{group.bestAverage.percent}}%">
+                      <div class="orange-bar redChart-bar">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="domainChart">
+                    {{#each domain in group.domains}}
+                      <div class="domainColor{{@index}}" style="height:{{domain.percent}}%"></div>
+                    {{/each}}
+                  </div>
+                  <div class="orange-bar chart-bar">
+                  </div>
+                  <div class="domainAmounts">
+                    {{#each domain in group.domains}}
+                      <div>
+                        <p class="domainAmount">{{domain.amount}}</p>
+                      </div>
+                    {{/each}}
+                  </div>
+                  <div class="domainAmounts">
+                    <div>
+                      <p class="domainAmount"><b>E</b></p>
+                    </div>
+                    <div>
+                      <p class="domainAmount"><b>I</b></p>
+                    </div>
+                    <div>
+                      <p class="domainAmount"><b>R</b></p>
+                    </div>
+                    <div>
+                      <p class="domainAmount"><b>S</b></p>
+                    </div>
+                  </div>
+                </div>
+                <div style="display:inline-block;vertical-align:top;margin-top:3.25%">
+                  <div class="row qualityinfo" style="margin:4px 6px 4px 6px">
+                    <p class="qualityinfotext">The red line</p>
+                    <p class="qualityinfotext">is the height</p>
+                    <p class="qualityinfotext">when all the</p>
+                    <p class="qualityinfotext">domains are</p>
+                    <p class="qualityinfotext">balanced.</p>
+                  </div>
+                </div>
+              </div>
+            </p>
             <div class="studentsInGroup student suggestedGroupContent moveSuggestedStudents suggestedTitles suggestedWidth">
               {{#each stud in group.students}}
                 <label for="{{stud.studentId}}" class="studentLabel" style="height:20px"><input type="checkbox" class="student{{group.groupId}}" id="{{stud.studentId}}"/>{{stud.name}}</label>
