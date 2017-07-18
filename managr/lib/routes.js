@@ -346,7 +346,7 @@ FlowRouter.route('/events/view/:id', {
 	}
 });
 
-FlowRouter.route('/reports', {
+FlowRouter.route('/dashboard/reports', {
     action: function(params, queryParams){
         BlazeLayout.render("reportsLayout", {content: 'reports'});
     }

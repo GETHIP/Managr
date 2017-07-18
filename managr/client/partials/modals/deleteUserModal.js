@@ -1,4 +1,5 @@
 import { Student } from '../../../collections/student.js';
+import { Instructor } from '../../../collections/instructor.js';
 
  Template.deleteUserModal.onCreated(function(){
    Meteor.subscribe('Student');
@@ -12,9 +13,14 @@ Template.deleteUserModal.helpers({
 
 Template.deleteUserModal.events({
 	'click #confirmDeleteUser':function(event) {
-	var id =	Student.findOne({userId: Template.instance().data._id})._id;
-		console.log("Deleting: ", Template.instance().data._id);
-		Meteor.call("removeUEvals", id);
-		Meteor.call('deleteUser', Template.instance().data._id);
+	   var thisStudent =	Student.findOne({userId: Template.instance().data._id});
+     if(thisStudent == null) {
+       var id = Instructor.findOne({userId: Template.instance().data._id})._id;
+     }else{
+      var id = thisStudent._id;
+     }
+	   console.log("Deleting: ", Template.instance().data._id);
+	   Meteor.call("removeUEvals", id);
+	   Meteor.call('deleteUser', Template.instance().data._id);
 	}
 });

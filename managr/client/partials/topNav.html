@@ -51,9 +51,6 @@
 						{{/if}}
 						{{#if isInstructor}}
 						<li class="active">
-							<a class="dashboardActive {{ activeIfTemplateIs '/dashboard'}}" href="/dashboard">Dashboard</a>
-						</li>
-						<li class="active">
 							<a class="surveysActive {{ activeIfTemplateIs '/surveys'}}" href="/surveys">Surveys</a>
 						</li>
 						{{/if}}
@@ -61,6 +58,11 @@
 						<li class="active">
 							<a class="leaderboardActive {{ activeIfTemplateIs '/viewEval'}}" href="/viewEval">Evaluations</a>
 						</li>
+
+						<li class="active">
+							<a class="dashboardActive {{ activeIfTemplateIs '/dashboard'}}" href="/dashboard">Dashboard</a>
+						</li>
+
 
 						{{/if}}
 					<li></li>

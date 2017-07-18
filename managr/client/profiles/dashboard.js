@@ -98,7 +98,6 @@ Template.dashboard.helpers({
     data = Milestone.find().fetch();
     for (var i = 0; i < data.length; i++) {
         data[i].numComplete = Eval.find({week: data[i]._id}).fetch().length;
-        console.log(data[i].numComplete);
     }
     return data;
   }
@@ -109,7 +108,7 @@ Template.dashboard.events({
 		FlowRouter.go('/dashboard/new');
 	},
   'click #reportsButton':function(e) {
-    FlowRouter.go('/reports');
+    FlowRouter.go('/dashboard/reports');
   },
 	'change #usersFile':function(e) {
 		var fileReader = new FileReader();
@@ -131,14 +130,14 @@ Template.dashboard.events({
 			for (i in csvArray) {
 				Meteor.call('addStudent', csvArray[i], function(error, result) {
 					if (result != "" && !alreadyFailed) {
-						alreadyFailed = true;
-                        document.getElementById('usersFile').value = [];
-						Modal.show('warningModal', {
-							title: 'Error',
-							text: 'Loading users failed. Some users might not have loaded correctly.',
-							confirmText: 'Dismiss',
-							confirmCallback: () => {}
-						});
+					       alreadyFailed = true;
+                 document.getElementById('usersFile').value = [];
+						     Modal.show('warningModal', {
+							            title: 'Error',
+							            text: 'Loading users failed. Some users might not have loaded correctly.',
+							            confirmText: 'Dismiss',
+						              confirmCallback: () => {}
+						     });
 					}
 				});
 			}
