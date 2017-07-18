@@ -1,5 +1,5 @@
-import { Student } from '../../../collections/student.js';
-import { Groups } from '../../../collections/groups.js';
+import { Student } from '../../collections/student.js';
+import { Groups } from '../../collections/groups.js';
 import { Random } from 'meteor/random';
 
 var allAdded = [];
@@ -15,8 +15,7 @@ Template.createSuggested.onCreated(function() {
 
     this.autorun(function () {
         var subscription = Meteor.subscribe("Student");
-        //Meteor.subscribe("CurrentAdded", id);
-        //Meteor.subscribe("CurrentNotAdded", id);
+
         if (subscription.ready()) {
             allAdded = [];
             allNotAdded = Student.find().fetch();
@@ -24,10 +23,6 @@ Template.createSuggested.onCreated(function() {
             alltypes = ["None"];
         }
     });
-    // var self = this;
-    // self.autorun(function() {
-    //   self.subscribe('Student');
-    // })
 });
 
 Template.createSuggested.events({
@@ -78,13 +73,9 @@ Template.createSuggested.events({
             var secondsToRun = secondsInput;
             if (option == "Number Of Groups") {
                 option = 1;
-                // Seems like 3 seconds plus the number of groups as seconds is how long it runs for 5 seconds
-                //var secondsToRun = ((numberOf * 1 / 1) + 2) / 5 * secondsInput;
             }
             else if (option == "Students Per Group") {
                 option = 2;
-                // Seems like 3 seconds plus the number of groups as seconds is how long it runs for 5 seconds
-                //var secondsToRun = ((Math.ceil(allAdded.length / numberOf) * 1 / 5) + 2) * secondsInput;
             }
             else {
                 valid = false;
@@ -96,7 +87,7 @@ Template.createSuggested.events({
                     confirmCallback: () => {}
                 });
             }
-
+            //A bit more than 90000 iterations can run each second
             var iterations = secondsToRun * 90000;
 
             if (numberOf < 2 && option == 2) {
@@ -153,7 +144,6 @@ Template.createSuggested.events({
 
                 //Run the best group finding algorithms
                 while((Date.now() - start) < secondsToRun) {
-                //for(var index = 0; index < iterations; index++) {
                     theStudents = shuffle(theStudents);
                     groups = makeGroups(option, theStudents, numberOf);
                     score = scoreGroups(groups);
@@ -454,15 +444,12 @@ var makeGroups = function(option, allStudents, numberOf) {
         students: currentStudents,
         domains: eachDomains
       }
-      // console.log(allStudents);
-      // console.log(formattedGroup);
       groupSet[i] = formattedGroup;
       numDone += count;
       nameIndex++;
     }
   }
 
-  // NEEDS FIXING *@$*)Q*@)C*NQ)(MDOICUMASODUCN(P*#@&%VNQ&WNOPICUASNDOCUNAWR)&VNQ#)(*UNP)AERN(CQ#&NC)   Math.ceil()
   else if (option == 2) {
     var length = allStudents.length;
     var numNeeded = Math.ceil(length / numberOf);
@@ -490,8 +477,6 @@ var makeGroups = function(option, allStudents, numberOf) {
         students: currentStudents,
         domains: eachDomains
       }
-      // console.log(allStudents);
-      // console.log(formattedGroup);
       groupSet[i] = formattedGroup;
       numDone += numberOf;
       nameIndex++;
@@ -503,13 +488,10 @@ var makeGroups = function(option, allStudents, numberOf) {
 var scoreGroups = function(theGroups) {
   var totalDomainScore = 0;
   var totalStrengthsScore = 0;
-  // console.log(theGroups);
   for (i = 0, length = theGroups.length; i < length; i++) {
     var eachGroup = theGroups[i];
     var eachStudents = eachGroup.students;
     var slength = eachStudents.length;
-    // console.log(eachStudents);
-    // console.log(slength);
     var bestAverage = slength * 5 / 4;
     var domainScore = 0;
     for (ii = 0; ii < 4; ii++) {

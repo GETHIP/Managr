@@ -1,5 +1,5 @@
-import { Student } from '../../../collections/student.js';
-import { Groups } from '../../../collections/groups.js';
+import { Student } from '../../collections/student.js';
+import { Groups } from '../../collections/groups.js';
 
 Template.groupName.onCreated(function() {
   var self = this;
