@@ -1,7 +1,7 @@
-import { Groups } from '../../../collections/groups.js';
-import { Student } from '../../../collections/student.js';
+import { Groups } from '../../collections/groups.js';
+import { Student } from '../../collections/student.js';
 import { EasySearch } from 'meteor/easy:search';
-import { Instructor } from '../../../collections/instructor.js';
+import { Instructor } from '../../collections/instructor.js';
 
 var alltypes = [];
 
@@ -101,8 +101,6 @@ Template.groups.events({
             .addProps('sortBy', $(e.target).val())
     },
     'click .realDeleteGroupButton':function(e) {
-        /*var user = Meteor.users.findOne({username: e.target.id});*/
-        /*var asdf = group.name;*/
         var group = Groups.findOne({_id: e.target.id});
 		    Modal.show('deleteGroupModal', group);
     },

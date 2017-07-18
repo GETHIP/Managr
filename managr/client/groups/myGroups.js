@@ -1,6 +1,6 @@
-import { Groups } from '../../../collections/groups.js';
-import { Student } from '../../../collections/student.js';
-import { Instructor } from '../../../collections/instructor.js';
+import { Groups } from '../../collections/groups.js';
+import { Student } from '../../collections/student.js';
+import { Instructor } from '../../collections/instructor.js';
 
 Template.myGroups.onCreated(function() {
     Meteor.subscribe("Groups");

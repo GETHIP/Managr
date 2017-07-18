@@ -1,6 +1,6 @@
-import { Student } from '../../../collections/student.js';
-import { Instructor } from '../../../collections/instructor.js';
-import { Groups } from '../../../collections/groups.js';
+import { Student } from '../../collections/student.js';
+import { Instructor } from '../../collections/instructor.js';
+import { Groups } from '../../collections/groups.js';
 
 var bestGroups = [];
 var groupType = "";
@@ -19,17 +19,7 @@ Template.editSuggested.onCreated(function() {
     if(bestGroups == undefined) {
 				FlowRouter.go("/groups");
     }
-    console.log(bestGroups);
 
-		// Meteor.subscribe('singleGroup', id, function() {
-		// 		var group = Groups.findOne({_id: id});
-		// 		if(group == undefined) {
-		// 				FlowRouter.go("/groups");
-		// 		}
-		// 		else {
-		// 				BlazeLayout.render("groupsLayout", {content: 'editGroup'});
-		// 		}
-		// });
 		Meteor.subscribe("Groups");
 		Meteor.subscribe("Coaches");
 
@@ -270,7 +260,6 @@ Template.editSuggested.helpers({
   					var formattedInstructor = {
   							name: instructor.name,
   							instructorId: instructor._id
-  							//checked: isCoach(instructor)
   					}
   					formattedInstructors.push(formattedInstructor);
   			}

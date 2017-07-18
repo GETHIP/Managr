@@ -1,6 +1,6 @@
-import { Student } from '../../../collections/student.js';
-import { Instructor } from '../../../collections/instructor.js';
-import { Groups } from '../../../collections/groups.js';
+import { Student } from '../../collections/student.js';
+import { Instructor } from '../../collections/instructor.js';
+import { Groups } from '../../collections/groups.js';
 
 var allAdded = [];
 var allNotAdded = [];
@@ -11,22 +11,11 @@ var alltypes = ["None"];
 Template.editGroup.onCreated(function() {
 		var id = FlowRouter.getParam('id');
 
-		// Meteor.subscribe('singleGroup', id, function() {
-		// 		var group = Groups.findOne({_id: id});
-		// 		if(group == undefined) {
-		// 				FlowRouter.go("/groups");
-		// 		}
-		// 		else {
-		// 				BlazeLayout.render("groupsLayout", {content: 'editGroup'});
-		// 		}
-		// });
 		Meteor.subscribe("Groups");
 		Meteor.subscribe("Coaches");
 
 		this.autorun(function () {
 				var subscription = Meteor.subscribe("Student");
-				//Meteor.subscribe("CurrentAdded", id);
-				//Meteor.subscribe("CurrentNotAdded", id);
 				if (subscription.ready()) {
 						allAdded = findStudentsIn();
 						allNotAdded = findStudentsNot(allAdded);
