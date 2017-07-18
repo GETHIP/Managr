@@ -14,13 +14,11 @@ export function dashboardMethods() {
 
 	Meteor.methods({
 		'deleteUser': function(userId) {
-			if (!isInstructor()) {
-				return;
-			}
 			if (userId == Meteor.userId()) {
 				return;
 			}
 			Meteor.users.remove({_id: userId});
+			Meteor.instructors.remove({_id: userId});
 
 			//Only one of these will actually have any affect, because
 			//a user can only be a student or an instructor.

@@ -4,43 +4,65 @@
 }
 
 table.reportsTable {
-  min-width: 90% !important;
-  max-width: 90% !important;
 	margin-left: 70px;
 	margin-right: 70px;
 }
+
 thead.reportsTable {
 	background-color: #0397d7;
 	color: white;
 }
+
 td.reportsTable {
 	width: 50%;
 }
 
 .buttonBottom {
   text-align: center;
-  margin: 0 auto;
+  margin: auto;
+  margin-top: 80px;
 }
 
 .reportsButton{
-  max-width: 90% !important;
-  display: inline-block !important;
-  margin: 0 auto;
-  background-color: #0397d7 !important;
+  width: 45%;
+  margin-right: 2%;
+  background-color: #333333;
   background-image: none;
   margin-top: 2%;
+  font-size: 18px;
+  font-family: helvetica;
+  padding: 10px;
 }
+
+.reportsBackButton{
+  width: 45%;
+  margin-right: 2%;
+  margin-left: 2%;
+  background-color: #333333;
+  background-image: none;
+  margin-top: 2%;
+  font-size: 18px;
+  font-family: helvetica;
+  padding: 10px;
+}
+
+.reportsButton:hover, .reportsBackButton:hover, .reportsButton:active, .reportsButton:focus, .reportsBackButton:active, .reportsBackButton:focus{
+  background-color: black;
+}
+
 .reportsSelect{
   display: inline-block;
   margin: 0 auto;
   margin-top: 2%;
 }
+
 .form-group{
   margin-left: 50px;
 }
 
 .checkbox-grid li {
-    display: block;
-    float: left;
-    width: 20%;
+  display: block;
+  float: left;
+  width: 50%;
+  font-family: helvetica;
 }

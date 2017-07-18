@@ -50,6 +50,9 @@ Template.reports.events({
   'change #namesIncluded' (event){
     Session.set("checked", event.target.checked);
   },
+	'click #reportsBackButton' (event){
+		FlowRouter.go('/dashboard');
+	},
   'click #csvExport' (event){
     let students = Student.find({});
     let array = {};

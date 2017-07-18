@@ -164,10 +164,12 @@ text-align: left;
 	width: 50%;
 	padding-right: 12px;
 }
+
 .editTableRowRight {
 	width: 50%;
 	padding-left: 12px;
 }
+
 .editAboutMeTable {
 	width: 100%;
 }

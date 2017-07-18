@@ -79,7 +79,7 @@ Template.newUser.events({
 		Meteor.call('createUserAccount', data);
 		FlowRouter.go('/dashboard');
     },
-	'click #cancelButton':function(event) {
+	'click #cancelUserCreate':function(event) {
 		event.preventDefault();
 		FlowRouter.go('/dashboard');
 	}

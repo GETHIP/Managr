@@ -2,10 +2,12 @@
     /*display: block;*/
     width: 100%;
 }
+
 .marginContainer {
   margin-left: 5%;
   margin-right: 5%;
 }
+
 .dashTable {
   margin-top: 2%;
   border-collapse: collapse;
@@ -226,14 +228,17 @@
 	width: 49%;
 	float: right;
 }
+
 .middleButton {
 	width: 100%;
 	margin-top: 16px;
 }
+
 #reportsButton {
-  margin: 0px;
-  margin-bottom: 4%;
+  margin: 10px;
+  width: 98%;
 }
+
 .formdashboardContainer {
   width: 100%;
  	background: white;
@@ -241,26 +246,30 @@
   margin-bottom: 2%;
   margin-top: 2%;
   padding: 2%;
-
 }
+
 .deleteFormButton {
   background-color: #333333;
   width: 20%;
   margin: 1%;
   margin-top: 1%;
 }
+
 .deleteResetButton {
   background-color: #333333;
   width: 20%;
   margin: 1%;
   margin-top: 1%;
 }
+
 .deleteFormButton:hover{
   background-color: black;
 }
+
 .deleteResetButton:hover{
   background-color: black;
 }
+
 .questionDiv.numberOfWeeks input:focus {
   border-color: black;
 }
@@ -268,6 +277,7 @@
 .questionDiv.numberOfWeeks {
 	width: 50%;
 }
+
 .numberOfWeeksLabel {
 	padding: 0px;
 	margin-bottom: 4px;
@@ -313,26 +323,30 @@ input.weeksTable {
   margin-bottom: 2%;
   margin-top: 2%;
   padding: 2%;
-
 }
+
 .createFormButton {
   background-color: #333333;
   width: 20%;
   margin: 1%;
   margin-top: 1%;
 }
+
 .deleteMilestoneButton {
   background-color: #333333;
   width: 20%;
   margin: 1%;
   margin-top: 1%;
 }
+
 .createFormButton:hover{
   background-color: black;
 }
+
 .deleteMilestoneButton:hover{
   background-color: black;
 }
+
 .questionDiv.newMilestone input:focus {
   border-color: black;
 }
@@ -340,6 +354,7 @@ input.weeksTable {
 .questionDiv.newMilestone {
 	width: 300%;
 }
+
 .newMilestoneLabel {
 	padding: 0px;
 	margin-bottom: 4px;
@@ -371,6 +386,7 @@ input.milestoneTable {
 	margin-bottom: 0px;
 	height: 100%;
 }
+
 .dropdownformContainermilestone {
   margin-bottom: 1%;
   margin-top: 1%;
