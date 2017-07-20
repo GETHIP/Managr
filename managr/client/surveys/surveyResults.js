@@ -19,13 +19,11 @@ Template.surveysResults.events({
 Template.surveysResults.events({
   'click .result'(event){
     event.preventDefault();
-    console.log(this.userId);
 
     var studId = this.userId;
     var pathDef = "/individualResults/:surveyId/:studentId";
     var params = {surveyId: FlowRouter.getParam('id'), studentId: studId}
     FlowRouter.go('/individualResults/' + FlowRouter.getParam('id') + "/" + studId)
-    console.log(FlowRouter.path(pathDef, params));
   }
 });
 Template.viewSurveyPage.events({
@@ -48,7 +46,6 @@ Template.viewSurveyPage.events({
   Template.surveysResults.helpers({
     'survey': function(){
       var surveyId = FlowRouter.getParam("id");
-      console.log(Surveys.find({_id: surveyId}).fetch()[0])
       return Surveys.find({_id: surveyId}).fetch()[0];
     },
     total: function(){
@@ -61,12 +58,9 @@ Template.viewSurveyPage.events({
       var allStudents = Student.find({}).fetch();
       var surveyId = FlowRouter.getParam("id");
       var currentSurvey = Surveys.findOne(surveyId);
-      console.log(currentSurvey);
       var questions = currentSurvey.questions;
       var quest = questions[0];
-      console.log(quest);
       var resultsArr = quest.studentResults;
-      console.log(resultsArr);
       var formattedStudents = [];
       for (var i = 0; i < allStudents.length; i++) {
         var student = allStudents[i];
@@ -76,52 +70,22 @@ Template.viewSurveyPage.events({
             studentStatus = "Complete";
           }
         }
-        console.log(student.userId);
-        console.log(student);
-        console.log("~~~~~~~~~~~~~~~~~~~~~~~");
-        // try{
-        //   var studentSurvey = findStudentSurvey();
-        //   console.log(student);
-        //   console.log(studentSurvey);
-        //   console.log("===========================");
-        // } catch(err) {
-        //   console.log(err.message);
-        // }
-
-        // try{
-        //   if(studentSurvey.completed == true){
-        //     var studentStatus = "Complete";
-        //   }
-        // } catch(err) {
-        //   console.log("-------------1--------------");
-        //   console.log(err.message);
-        //   console.log("-------------1--------------");
-        // }
         var formattedStudent = {
           name: student.name,
           status: studentStatus,
           userId: student.userId,
           surveyId: FlowRouter.getParam('id')
-          // url: window.location.hostname+(location.port ? ':'+location.port: '') + "/individualResults/" + FlowRouter.getParam('id') + "/" +  student.userId
         }
-        console.log(formattedStudent);
         formattedStudents.push(formattedStudent);
       }
-
-
-      console.log(formattedStudents);
       return formattedStudents;
     },
     questions: function(){
       var surveyId = FlowRouter.getParam('id');
       var allQuestionsArray = Surveys.findOne(surveyId);
-      console.log("questions helper:");
-      console.log(allQuestionsArray);
-      console.log(allQuestionsArray.questions);
       return allQuestionsArray.questions;
     },
     choicetype: function(questionType){
-      console.log(questionType);
       if(questionType == "choice") {
         return true;
       }

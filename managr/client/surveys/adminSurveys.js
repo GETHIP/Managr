@@ -63,7 +63,6 @@ Template.questionFormTemplate.events({
 		event.preventDefault();
 		var select = document.getElementById("questionFormm");
 		var option = select.value;
-		console.log(option);
 
 		questiontype();
 	},
@@ -79,7 +78,6 @@ Template.questionFormTemplate.events({
 			var choice3 = Session.get('choiceOption3');
 			var choice4 = Session.get('choiceOption4');
 			var choiceArray = [choice1, choice2, choice3, choice4]
-			console.log(question);
 			//if options are blank, they are not added to the array
 			var newArray = [];
 			for (i = 0; i < 4; i++) {
@@ -90,7 +88,6 @@ Template.questionFormTemplate.events({
 				break;
 			}
 		}
-		console.log(newArray);
 
 		//clears template for next use
 		Session.set('choiceQuestion', null);
@@ -112,8 +109,6 @@ Template.questionFormTemplate.events({
 		var option4 = Session.get('checkOption4');
 		var option5 = Session.get('checkOption5')
 		var checkArray = [option1, option2, option3, option4, option5]
-		console.log(question);
-		console.log(option1);
 
 		//if options are blank, they are not added to the array
 		var newArray = [];
@@ -125,7 +120,6 @@ Template.questionFormTemplate.events({
 				break;
 			}
 		}
-		console.log(newArray)
 
 		//clears template for next use
 		Session.set('checkQuestion', null);
@@ -140,7 +134,6 @@ Template.questionFormTemplate.events({
 	}
 	else if(option == 'shResp') {
 		var question = Session.get('shRespQuestion');
-		console.log(question);
 		Session.set('shRespQuestion', null);
 		//  temparray = [shResp];
 		//add card code here
@@ -148,7 +141,6 @@ Template.questionFormTemplate.events({
 		alert("Please select an option");
 	}
 	var surveyId = FlowRouter.getParam('id');
-	console.log(surveyId);
 	Meteor.call('addQuestion', surveyId, option, question, temparray);
 	clearForm();
 }
@@ -184,15 +176,6 @@ function clearForm() {
 	document.getElementById("optionSbmt2").reset();
 }
 
-/*async function questiontype() {
-var select = document.getElementById("questionFormm");
-var option = select.value;
-var testing = "testing"
-if (option == "yesNo") {
-document.getElementById('eachquestionentry').innerHTML = '{{>' + testing + '}}';
-}
-}*/
-
 Template.surveyFormTemplate.helpers({
 	allsurveys: function() {
 		return Surveys.find();
@@ -213,19 +196,6 @@ Template.surveysPage.helpers({
 		return Surveys.find({}).fetch();
 	}
 });
-
-// Meteor.startup(() => {
-// 	Surveys.remove({});
-// 	var temp = [{
-// 		type: "yesNo",
-// 		prompt: "Do you think we should make the United Sates like North Korea?"
-// 	},{
-// 		type: "check",
-// 		prompt: "Check the boxes with your favorite number",
-// 		answers: ["1", "2", "3"]
-// 	}]
-// 	Surveys.insert({"title": "Random Test", "dueDate":"December 2", "studentsAssigned": ["Will Guo", "Abby Brooks", "Katie GErot", "Nick Nguyen"], "surveyId":"154209", temp});
-// });
 
 Template.MCtemplate.events({
 	'keyup #MCQuestion'(event) {

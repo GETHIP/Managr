@@ -71,7 +71,7 @@ viewAllTable tr:hover {
 }
 
 .deleteBtn {
-  padding: 0%;
+  padding: 10px;
   border: none;
   background: none;
   float: right;
