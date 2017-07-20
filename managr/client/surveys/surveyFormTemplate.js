@@ -21,22 +21,12 @@ Template.newSurvey.events({
     // var question = document.getElementById('questionFormm').value;
     // const anonToggle = document.getElementById('anonymousToggle').checked;
     //    var question = target.prompt.value;
-    console.log(surveyName);
-    console.log(date);
-    // console.log(anonToggle);
-    // console.log(inputs);
 
     Meteor.call("createNewSurvey", surveyName, date, function(error, result) {
       FlowRouter.go("/addQuestion/" + result);
     });
   }
 });
-// Template.questionFormTemplate.helpers({
-//   questionData: function() {
-//       var questionArray = Questions.find({}).fetch();
-//   }
-//
-// });
 Template.surveyFormTemplate.helpers({
   groups: function() {
     var allGroups = Groups.find({}).fetch();
