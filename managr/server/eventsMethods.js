@@ -21,7 +21,6 @@ export function eventsMethods() {
 			if(!isStudent()) {
 				return;
 			}
-			console.log("asdf");
 
 			if(rsvp == "Attending"){
 				result = true;

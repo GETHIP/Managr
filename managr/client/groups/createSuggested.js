@@ -32,8 +32,6 @@ Template.createSuggested.events({
 
         event.preventDefault();
         setTimeout(function(){
-            console.log("running");
-
             const form = event.target;
             var valid = true;
 

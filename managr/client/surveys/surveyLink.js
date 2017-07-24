@@ -43,10 +43,8 @@ Template.surveyLink.events({
     try {
       var successful = document.execCommand('copy');
       var msg = successful ? 'successful' : 'unsuccessful';
-      console.log('Copying!');
       document.getElementById("copyLinkNote").classList.remove('hideNote');
     } catch (err) {
-      console.log('Error: unable to copy');
     } finally {
       clearSelection();
     }

@@ -79,7 +79,6 @@ Template.attendanceUpdate.helpers({
 
 Template.attendanceWeeksHeader.helpers({
   shouldBeHidden: function(side) {
-    console.log(AttendanceUtilities.attendancePage);
   	if (AttendanceUtilities.attendancePage >= (Globals.numberOfWeeks() / AttendanceUtilities.attendanceColumnsPerPage)-1) {
   		return 'buttonHide';
   	}
@@ -98,6 +97,5 @@ Template.attendanceWeeksHeader.helpers({
   		}
   	}
   	return '';
-
    }
 });

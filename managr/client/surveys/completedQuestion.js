@@ -13,13 +13,9 @@ Template.completedQuestion.helpers({
   questions: function(){
     var surveyId = FlowRouter.getParam('id');
     var allQuestionsArray = Surveys.findOne(surveyId);
-    console.log("questions helper:");
-    console.log(allQuestionsArray);
-    console.log(allQuestionsArray.questions);
     return allQuestionsArray.questions;
   },
   choicetype: function(questionType) {
-    console.log(questionType);
     if(questionType == "choice") {
       return true;
     }
@@ -45,7 +41,6 @@ Template.completedQuestion.events({
       surveyId: FlowRouter.getParam('id'),
       dateHash: event.currentTarget.id
     }
-    console.log("This is working");
     Modal.show("deleteQuestion", data);
   }
 });

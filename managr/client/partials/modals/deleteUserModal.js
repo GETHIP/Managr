@@ -19,7 +19,6 @@ Template.deleteUserModal.events({
      }else{
       var id = thisStudent._id;
      }
-	   console.log("Deleting: ", Template.instance().data._id);
 	   Meteor.call("removeUEvals", id);
 	   Meteor.call('deleteUser', Template.instance().data._id);
 	}

@@ -15,7 +15,6 @@ Template.newSurvey.events({
     const form = event.target;
 
     const surveyName = document.getElementById('surveyName').value;
-    console.log(document.getElementById('dueDate').value);
     //converst dat to string and slices date
     const date = moment(document.getElementById('dueDate').value).format("MM/DD/YYYY").toString().slice(0,14);
     // var question = document.getElementById('questionFormm').value;

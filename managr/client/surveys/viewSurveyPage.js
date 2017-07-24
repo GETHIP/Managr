@@ -18,15 +18,12 @@ Template.viewSurveyPage.onCreated(function() {
 Template.viewSurveyPage.helpers({
   'survey': function(){
     var surveyId = FlowRouter.getParam("id");
-    console.log(Surveys.find({_id: surveyId}).fetch())
     return Surveys.find({_id: surveyId}).fetch()[0];
   },
   questions: function(){
     var surveyId = FlowRouter.getParam('id');
     var allQuestionsArray = Surveys.findOne(surveyId);
-    console.log(allQuestionsArray);
     var data = allQuestionsArray.questions;
-    console.log(data);
     data.forEach(function(element){
       if(element.questionType == 'choice' || element.questionType == 'check')
       {
@@ -37,7 +34,6 @@ Template.viewSurveyPage.helpers({
             name: opt,
             refId: Random.id()
           }
-          console.log(formattedOpt);
           NewOptions.push(formattedOpt);
         });
         element.options = NewOptions;
@@ -48,11 +44,9 @@ Template.viewSurveyPage.helpers({
         idS.push(element);
       }
     });
-    console.log(idS);
     return idS;
   },
   choicetype: function(questionType) {
-    console.log(questionType);
     if(questionType == "choice") {
       return true;
     }
@@ -83,12 +77,9 @@ Template.viewSurveyPage.events({
       {
         for(var j = 0; j < idS[i].options.length; j++)
         {
-          console.log(idS[i].options[j].name);
-          console.log(idS[i].options[j].refId);
           mcAnswer = idS[i].options[j];
           if(document.getElementById(mcAnswer.refId).checked)
           {
-            console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
             Meteor.call("sendResponse", surveyId, idS[i], idS[i].dateHash, mcAnswer.name);
             break;
           }
@@ -98,26 +89,20 @@ Template.viewSurveyPage.events({
       {
         for(var j = 0; j < idS[i].options.length; j++)
         {
-          console.log(idS[i].options[j].name);
-          console.log(idS[i].options[j].refId);
           cbAnswer = idS[i].options[j];
           if(document.getElementById(cbAnswer.refId).checked)
           {
-            console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
             Meteor.call("sendResponse", surveyId, idS[i], idS[i].dateHash, cbAnswer.name);
           }
         }
       }
       else if(idS[i].questionType == 'shResp')
       {
-        console.log("FRQ");
         srAnswer = document.getElementById("shRespAnswer").value;
-        console.log(srAnswer);
         Meteor.call("sendResponse", surveyId, idS[i], idS[i].dateHash, srAnswer);
       }
 
     }
-    console.log(idS.length);
     FlowRouter.go("/assignments");
   }
 });
