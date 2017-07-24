@@ -11,8 +11,6 @@ Template.deleteQuestion.events({
     var surveyId = Template.instance().data.surveyId;
     var dateHash = Template.instance().data.dateHash;
     dateHash = parseInt(dateHash);
-    console.log(surveyId);
-    console.log(dateHash);
     
     Meteor.call('removeQuestion', surveyId, dateHash);
   }

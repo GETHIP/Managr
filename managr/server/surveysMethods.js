@@ -16,8 +16,6 @@ export function surveysMethods() {
 			if(!isInstructor()) {
 				return;
 			}
-			console.log(surveyId);
-			console.log(dateHash);
 			Surveys.update({_id: surveyId}, {
 				$pull: {
 					questions: {
@@ -82,8 +80,6 @@ export function surveysMethods() {
 		},
 		'addQuestion': function(surveyId, option, question, temparray) {
 			var dateHash = new Date().getTime();
-			console.log(dateHash);
-			console.log(temparray);
 			if(!isInstructor()) {
 				return;
 			}
@@ -129,7 +125,6 @@ export function surveysMethods() {
 		else if(option == 'shResp') {
 			// var question = temparray[0];
 			// var count = temparray[1];
-			console.log(option);
 			Surveys.update({_id: surveyId}, {
 				$push: {
 					questions: {
@@ -143,9 +138,8 @@ export function surveysMethods() {
 			});
 		}
 	},
-	'sendResponse': function(surveyId, question, questionHash, mcAnswer) { 
+	'sendResponse': function(surveyId, question, questionHash, mcAnswer) {
 		//console.log(Meteor.userId());
-		console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~1");
 		var studentId = Student.findOne({userId: Meteor.userId()}).userId;
 
 		var totalSurveys = Surveys.findOne({_id: surveyId});
@@ -173,9 +167,7 @@ export function surveysMethods() {
 
 					break;
 				}
-
 			}
-
 		}
 	});
 }

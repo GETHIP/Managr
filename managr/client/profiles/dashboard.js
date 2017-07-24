@@ -218,7 +218,6 @@ Template.dashboard.events({
 				text: 'Are you sure you want to change the number of weeks (this does not reset attendance)?',
 				confirmText: 'Confirm',
 				confirmCallback: function(callbackData) {
-					console.log(callbackData);
 					Meteor.call('updateNumberOfWeeks', callbackData);
 				},
 				callbackData: event.target.numberOfWeeks.value
@@ -238,7 +237,6 @@ Template.dashboard.events({
   'click #createMilestone': function(event){
     name = document.getElementById("milestoneIn").value;
     Meteor.call("newMilestone", name);
-
   },
   'click #deleteMilestoneButton': function(){
     Meteor.call("removeMilestone", document.getElementById("milestone").value);
@@ -246,9 +244,7 @@ Template.dashboard.events({
   },
   'click .deleteResetButton.milestoneTable': function(event){
     event.preventDefault();
-    console.log("testing")
     Modal.show('deleteMilestoneModal');
-
   }
 
 });

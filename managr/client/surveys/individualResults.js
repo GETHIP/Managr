@@ -8,7 +8,6 @@ Template.individualResults.onCreated(function() {
 
 Template.individualResults.helpers({
   student: function(){
-      console.log("Hi");
       var pathDef = "/individualResults/:surveyId/:studentId";
       var IdStudent = FlowRouter.getParam('studentId');
       var IdSurvey = FlowRouter.getParam('surveyId');
@@ -16,17 +15,13 @@ Template.individualResults.helpers({
       return student;
   },
   survey: function(){
-    console.log("Hello");
     var pathDef = "/individualResults/:surveyId/:studentId";
     var IdStudent = FlowRouter.getParam('studentId');
     var IdSurvey = FlowRouter.getParam('surveyId');
     var survey = Surveys.findOne(IdSurvey);
-    console.log(survey.questions);
-    console.log(survey.questions[0].studentResults[0].answer);
     return survey;
   },
   choicetype: function(questionType) {
-    console.log(questionType);
     if(questionType == "choice") {
       return true;
     }

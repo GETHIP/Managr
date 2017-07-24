@@ -60,7 +60,6 @@ Template.myGroups.helpers({
         }
     },
     allCoaches: function(coaches) {
-        console.log(coaches);
         if(!coaches || coaches.length == 0) {
           return "None";
         }

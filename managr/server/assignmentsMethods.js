@@ -52,7 +52,6 @@ export function assignmentsMethods() {
 			if (!isInstructor()) {
 				return;
 			}
-			console.log("New Date: ", new Date());
 			var obj = {
 				title: title,
 				description: description,
@@ -61,7 +60,6 @@ export function assignmentsMethods() {
 				dateAssigned: new Date(),
 				pointsPossible: pointsPossible
 			};
-			console.log(obj);
 			var assignmentId = Assignments.insert(obj);
 			Meteor.call("addEmptyAssignmentToStudents", assignmentId, studentIds);
 		},
