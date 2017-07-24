@@ -35,7 +35,6 @@ Template.leaderboard.helpers({
       var star_rating = Eval.find({evaluatee: element._id}).fetch();
     //  console.log(star_rating.stars)
       if(star_rating.length == 0){
-        console.log('there are no star ratings')
         stars = 0
       }
     //  console.log(star_rating.length);
@@ -57,16 +56,6 @@ Template.leaderboard.helpers({
         var tech = techTot/star_rating.length;
         var week = star_rating.length;
         var stars = (effort + attitude + teamwork + tech)/4
-      //   stars = 0
-      //   //star_rating = star_rating.fetch();
-      //   star_rating = star_rating[0].stars;
-      // //  console.log(star_rating);
-      //   var stars = (eval(star_rating[0]) + eval(star_rating[1]) + eval(star_rating[2]) + eval(star_rating[3]))/4
-      //   //console.log(stars);
-      //   var effort = star_rating[0];
-      //   var attitude = star_rating[1];
-      //   var teamwork = star_rating[2];
-      //   var tech = star_rating[3];
          var attendanceNumber = 0;
       }else{
         var stars = 0;
@@ -85,22 +74,14 @@ Template.leaderboard.helpers({
           }
       });
       element.attendanceNumber = attendanceNumber;
-      //console.log(element.attendance)
-      //console.log(attendanceNumber);
         element.average = Math.round(stars*10)/10; // rounds to the nearest tenths
         element.effort = Math.round(effort*10)/10;
         element.attitude = Math.round(attitude*10)/10;
         element.teamwork = Math.round(teamwork*10)/10;
         element.week = Math.round(week*10)/10;
         element.technical = Math.round(tech*10)/10;
-      //  console.log(element.effort);
-      //  console.log(element.average);
-        //console.log(element.attitude)
-        //console.log(element.teamwork)
 
       stuarry.push(element);
-      //console.log("ushing to stuarray")
-      //console.log(stuarry)
     });
   //  stuarry.sort();
     // var select = document.getElementById("sortingChoice");

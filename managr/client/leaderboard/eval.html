@@ -1,65 +1,65 @@
 <template name="eval">
-  <div class="marginContainer">
+<div class="marginContainer">
     {{#with evalA}}
   <h1 class="titleEvaluations">{{milestone}}</h1>
   <div class="purple-bar">&nbsp;</div>
 
-<div class="evaluationContainer">
+  <div class="evaluationContainer">
 
-  <div>
+    <div>
 
-<p class="evaluatorEval"><strong>To: {{to}}</strong></p>
-  <p class="evaluateeEval"><strong>From: {{from}}</strong></p>
-  <strong><p class="timeStamp">Date: {{formDate}}</p></strong>
+      <p class="evaluatorEval"><strong>To: {{to}}</strong></p>
+        <p class="evaluateeEval"><strong>From: {{from}}</strong></p>
+        <strong><p class="timeStamp">Date: {{formDate}}</p></strong>
 
-  <p class="starEval"><strong>Effort:
-    {{#if equals fSt 1}} {{> star1}}
-    {{else if equals fSt 2}} {{> star2}}
-    {{else if equals fSt 3}} {{> star3}}
-    {{else if equals fSt 4}} {{> star4}}
-    {{else if equals fSt 5}} {{> star5}}
-    {{/if}}
- </strong></p>
-  <p class="starEval"><strong>Attitude:
-    {{#if equals sSt 1}} {{> star1}}
-    {{else if equals sSt 2}} {{> star2}}
-    {{else if equals sSt 3}} {{> star3}}
-    {{else if equals sSt 4}} {{> star4}}
-    {{else if equals sSt 5}} {{> star5}}
-    {{/if}}
-  </strong></p>
-  <p class="starEval"><strong>Teamwork:
-    {{#if equals tSt 1}} {{> star1}}
-    {{else if equals tSt 2}} {{> star2}}
-    {{else if equals tSt 3}} {{> star3}}
-    {{else if equals tSt 4}} {{> star4}}
-    {{else if equals tSt 5}} {{> star5}}
-    {{/if}}
-  </strong></p>
-  <p class="starEval"><strong>Technical Ability:
-    {{#if equals fOSt 1}} {{> star1}}
-    {{else if equals fOSt 2}} {{> star2}}
-    {{else if equals fOSt 3}} {{> star3}}
-    {{else if equals fOSt 4}} {{> star4}}
-    {{else if equals fOSt 5}} {{> star5}}
-    {{/if}}
-  </strong></p>
-</div>
-  <p class="evalContent">{{message}} </p>
-</div>
-{{#if isInstructor}}
-<button class="buttonStyleEval backEval">Previous Evaluations</button>
-<button class="buttonStyleEval editEval">Edit</button>
-<button class="buttonStyleEval deleteEval">Delete</button>
-{{/if}}
-{{#if isStudent}}
-<button class="buttonStyleEval backStudentEval">Previous Evaluations</button>
-{{/if}}
-<!-- {{/if}} -->
-{{/with}}
+        <p class="starEval"><strong>Effort:
+          {{#if equals fSt 1}} {{> star1}}
+          {{else if equals fSt 2}} {{> star2}}
+          {{else if equals fSt 3}} {{> star3}}
+          {{else if equals fSt 4}} {{> star4}}
+          {{else if equals fSt 5}} {{> star5}}
+          {{/if}}
+       </strong></p>
+        <p class="starEval"><strong>Attitude:
+          {{#if equals sSt 1}} {{> star1}}
+          {{else if equals sSt 2}} {{> star2}}
+          {{else if equals sSt 3}} {{> star3}}
+          {{else if equals sSt 4}} {{> star4}}
+          {{else if equals sSt 5}} {{> star5}}
+          {{/if}}
+        </strong></p>
+        <p class="starEval"><strong>Teamwork:
+          {{#if equals tSt 1}} {{> star1}}
+          {{else if equals tSt 2}} {{> star2}}
+          {{else if equals tSt 3}} {{> star3}}
+          {{else if equals tSt 4}} {{> star4}}
+          {{else if equals tSt 5}} {{> star5}}
+          {{/if}}
+        </strong></p>
+        <p class="starEval"><strong>Technical Ability:
+          {{#if equals fOSt 1}} {{> star1}}
+          {{else if equals fOSt 2}} {{> star2}}
+          {{else if equals fOSt 3}} {{> star3}}
+          {{else if equals fOSt 4}} {{> star4}}
+          {{else if equals fOSt 5}} {{> star5}}
+          {{/if}}
+        </strong></p>
+      </div>
+    <p class="evalContent">{{message}} </p>
+  </div>
 
+  {{#if isInstructor}}
+    <button class="buttonStyleEval backEval">Previous Evaluations</button>
+    <button class="buttonStyleEval editEval">Edit</button>
+    <button class="buttonStyleEval deleteEval">Delete</button>
+  {{/if}}
+  {{#if isStudent}}
+    <button class="buttonStyleEval backStudentEval">Previous Evaluations</button>
+  {{/if}}
+  {{/with}}
 </div>
 </template>
+
 <template name="star1">
   {{> starsRating rating=1 size='lg' class='mystar starScore'}}
 </template>

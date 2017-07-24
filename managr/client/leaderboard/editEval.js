@@ -27,7 +27,6 @@ Template.editEval.helpers({
     var formattedDate = moment(newDate).format("MMMM D [,] YYYY");
     data.formDate = formattedDate;
     data.milestone = Milestone.findOne({_id: data.week}).name;
-    console.log(data.fOSt);
     return data;
   },
   milestone: function(){
@@ -46,7 +45,6 @@ Template.editEval.helpers({
 //id, message, star1, star2, star3, star4, milestone,
 Template.editEval.events({
   'click .save2Eval': function(){
-    console.log("sdlf");
     event.preventDefault();
       var message  = document.getElementById('message').value;
       var starBox1 = document.getElementById('starBox1').value;
@@ -54,7 +52,6 @@ Template.editEval.events({
       var starBox3 = document.getElementById('starBox3').value;
       var starBox4 = document.getElementById('starBox4').value;
       var week = document.getElementById('maSelector').value;
-      console.log(week);
       var id = FlowRouter.getParam("id");
       if(checkStar(starBox1) && checkStar(starBox2) && checkStar(starBox3) && checkStar(starBox4)){
         Meteor.call("editEval", FlowRouter.getParam("id"), message, starBox1, starBox2, starBox3, starBox4, week);
@@ -63,7 +60,6 @@ Template.editEval.events({
       event.preventDefault();
 },
   'click .deleteEval.editEval': function(event){
-    console.log("testing")
     Modal.show('deleteEditModal');
   },
 
@@ -71,10 +67,8 @@ Template.editEval.events({
 
 function checkStar(data){
   if(data <= 5 && data >= 1 && Number.isInteger(eval(data))){
-    console.log("true");
     return true;
   }else{
-    console.log("false");
     return false;
   }
 }
