@@ -21,9 +21,6 @@ import { Student } from '../../collections/student.js';
 
    data: function(){
      _dep.depend()
- console.log(document.getElementById("studentChoice"));
-     console.log("hi");
-     console.log(Eval.find().fetch());
      var selectStudent = document.getElementById("studentChoice");
      var selectInstruct = document.getElementById("instructorChoice");
      var selectMile = document.getElementById("milestoneChoice");
@@ -48,7 +45,6 @@ import { Student } from '../../collections/student.js';
     //  });
      if (selectStudent == null || selectInstruct == null || selectMile == null)
      {
-       console.log("it works?");
        selectStudent = "sortAll";
        selectInstruct = "sortAll";
        selectMile = "sortAll";
@@ -58,9 +54,6 @@ import { Student } from '../../collections/student.js';
      selectInstruct = selectInstruct.value;
      selectMile = selectMile.value;
      }
-     console.log(selectMile);
-     console.log("The Data");
-     console.log(Eval.find().fetch());
      if(selectStudent == "sortAll" && selectInstruct == "sortAll" && selectMile == "sortAll"){
          //console.log(Eval.find({}).fetch());
          var data = Eval.find().fetch();
@@ -83,12 +76,10 @@ import { Student } from '../../collections/student.js';
      if(selectStudent != "sortAll" && selectInstruct == "sortAll" && selectMile == "sortAll"){
        var data = [];
        var dataList = Eval.find({evaluatee: document.getElementById("studentChoice").value}).fetch();
-       console.log(dataList)
        dataList.forEach(function(element){
          element.name = $("#studentChoice option:selected").text();
          element.instructor = Instructor.findOne({_id: element.evaluator}).name;
          element.week = Milestone.findOne({_id: element.week}).name;
-         console.log(element.week);
          element.effort = element.stars[0];
          element.att = element.stars[1];
          element.team = element.stars[2];
@@ -99,10 +90,8 @@ import { Student } from '../../collections/student.js';
        if(selectStudent == "sortAll" && selectInstruct != "sortAll" && selectMile == "sortAll"){
          var data = [];
          var dataList = Eval.find({evaluator: document.getElementById("instructorChoice").value}).fetch();
-         console.log(dataList)
          dataList.forEach(function(element){
            element.name = Student.findOne({_id: element.evaluatee}).name;
-           console.log(element.name)
            element.instructor = $("#instructorChoice option:selected").text();
            element.week = Milestone.findOne({_id: element.week}).name;
            element.effort = element.stars[0];
@@ -118,7 +107,6 @@ import { Student } from '../../collections/student.js';
              evaluator: document.getElementById("instructorChoice").value,
              evaluatee: document.getElementById("studentChoice").value
            }).fetch();
-           console.log(dataList)
            dataList.forEach(function(element){
              element.name = Student.findOne({_id: element.evaluatee}).name;
              element.instructor = Instructor.findOne({_id: element.evaluator}).name;;
@@ -154,7 +142,6 @@ import { Student } from '../../collections/student.js';
              evaluatee: document.getElementById("studentChoice").value,
              week: document.getElementById("milestoneChoice").value
            }).fetch();
-           console.log(dataList)
            dataList.forEach(function(element){
              element.name = $("#studentChoice option:selected").text();
              element.instructor = Instructor.findOne({_id: element.evaluator}).name;
@@ -172,10 +159,8 @@ import { Student } from '../../collections/student.js';
                evaluator: document.getElementById("instructorChoice").value,
                week: document.getElementById("milestoneChoice").value
              }).fetch();
-             console.log(dataList)
              dataList.forEach(function(element){
                element.name = Student.findOne({_id: element.evaluatee}).name;
-               console.log(element.name)
                element.instructor = $("#instructorChoice option:selected").text();
                element.week = Milestone.findOne({_id: element.week}).name;
                element.effort = element.stars[0];
@@ -192,7 +177,6 @@ import { Student } from '../../collections/student.js';
                  evaluatee: document.getElementById("studentChoice").value,
                  week: document.getElementById("milestoneChoice").value
                }).fetch();
-               console.log(dataList)
                dataList.forEach(function(element){
                  element.name = Student.findOne({_id: element.evaluatee}).name;
                  element.instructor = Instructor.findOne({_id: element.evaluator}).name;
@@ -211,13 +195,7 @@ import { Student } from '../../collections/student.js';
                              return (student1.name.localeCompare(student2.name)) * sortDirection;
                           }
                        });
-       // } catch (e) {
-       //
-       // }
-
            return data;
-
-   //console.log(data);
 
  },
    allEvals: function(){
@@ -245,10 +223,8 @@ import { Student } from '../../collections/student.js';
      eaId = Instructor.findOne({userId: Meteor.user()._id})._id;
      listVal = document.getElementById('dataListInput').value;
      eId = $('#group [value="' + listVal + '"]').data('value');
-     console.log($('#group [value="' + listVal + '"]'));
      week = document.getElementById('week').value;
      sList = [rating, attitude, teamwork, tech ];
-     console.log(comment);
      for(var i = 0; i < sList.length; i++){
        if(sList[i] == null){
          sList[i] = 1;
@@ -288,7 +264,6 @@ import { Student } from '../../collections/student.js';
    },
    'click .resetbtn': function(event){
    //  event.preventDefault();
-     console.log("Is it working");
      var elements = document.getElementsByTagName('select');
        for (var i = 0; i < elements.length; i++)
        {

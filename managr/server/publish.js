@@ -27,9 +27,6 @@ export function publishAll() {
 		if(Roles.userIsInRole(this.userId, "instructor")){
 				return Eval.find();
 			}else if(Roles.userIsInRole(this.userId, "student")){
-				console.log("It running 7/5");
-				console.log(this.userId);
-				console.log(Eval.find({evaluatee: Student.findOne({userId: this.userId})._id}).fetch());
 				return Eval.find({evaluatee: Student.findOne({userId: this.userId})._id});
 				//
 			}//
@@ -88,14 +85,6 @@ export function publishAll() {
 				groupIdList.push(groupData[i]._id);
 			}
 		}
-		console.log(groupIdList);
-    // for(var x = 0; x < groupIdList.length; x++){
-    //   for (var i = 0; i < data.length; i++) {
-    //     if(data[i].studentInvites.indexOf(id) != -1 || data[i].groupInvites.indexOf(groupIdList[x]) != -1){
-    //       allEvents.push(data[i]);
-    //     }
-    //   }
-    // }
 		for (var i = 0; i < data.length; i++) {
 			if(data[i].studentInvites.indexOf(id) != -1){
 				allEvents.push(data[i]);
