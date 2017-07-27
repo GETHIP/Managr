@@ -365,6 +365,19 @@
 .groupQuality.groupDomains {
   transform: translateY(-41.5%);
 }
+.cardTable {
+  display: table;
+  width: 100%;
+}
+.indCard {
+  display: table-cell;
+}
+@media only screen and (max-width: 1080px) {
+    .indCard {
+        display: block;
+        width: 100%;
+    }
+}
 .domainChart {
   height: 75px;
   padding: 2px;
@@ -557,6 +570,9 @@ td.alignmid {
   background-color: #870000;
   padding-top: 2.5%;
   padding-bottom:2.5%;
+}
+.rightSideFix {
+  padding-right: 0;
 }
 .buttonStyle.groupBack {
   float: left;

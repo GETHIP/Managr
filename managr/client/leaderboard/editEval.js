@@ -55,7 +55,7 @@ Template.editEval.events({
       var id = FlowRouter.getParam("id");
       if(checkStar(starBox1) && checkStar(starBox2) && checkStar(starBox3) && checkStar(starBox4)){
         Meteor.call("editEval", FlowRouter.getParam("id"), message, starBox1, starBox2, starBox3, starBox4, week);
-        FlowRouter.go("/eval/" + id);
+        FlowRouter.go("/viewEval/eval/" + id);
       }
       event.preventDefault();
 },

@@ -47,6 +47,9 @@
 </div>
   <div class="marginContainer">
   <h1 class="titleviewEvaluations">Previous Evaluations</h1>
+  {{#if isInstructor}}
+  <button class="buttonStyleleader performancebtn">Performance Table</button>
+  {{/if}}
   <div class="purple-bar">&nbsp;</div>
 
 {{#if isInstructor}}
@@ -75,8 +78,7 @@
         {{/each}}
   		</select>
 
-    <button class="buttonStyleleader resetbtn">Reset</button>
-    <button class="buttonStyleleader performancebtn">Performance Table</button>
+    <button class="buttonStyleleader resetbtn">Show All</button>
 
     </p>
   {{/if}}

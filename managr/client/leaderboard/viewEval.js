@@ -238,7 +238,7 @@ import { Student } from '../../collections/student.js';
     }
    },
    'click .rowClick': function(event){
-     FlowRouter.go("/eval/" + event.target.id);
+     FlowRouter.go("/viewEval/eval/" + event.target.id);
    },
    'change #studentChoice': function(event){
      event.preventDefault();
@@ -272,6 +272,6 @@ import { Student } from '../../collections/student.js';
        _dep.changed();
    },
    'click .performancebtn': function(event) {
-   FlowRouter.go('/performance');
+   FlowRouter.go('/viewEval/performance');
  }
  });

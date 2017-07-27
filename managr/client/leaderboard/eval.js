@@ -49,7 +49,7 @@ Template.eval.events({
     event.preventDefault();
   },
   'click .editEval': function(event){
-    FlowRouter.go("/editEval/" + FlowRouter.getParam("id"));
+    FlowRouter.go("/viewEval/editEval/" + FlowRouter.getParam("id"));
   },
   'click .deleteEval': function(event){
     Modal.show('deleteEvalModal');
