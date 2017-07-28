@@ -24,7 +24,7 @@ var profileSection = FlowRouter.group({
 });
 var leaderboardSection = FlowRouter.group({ // my edit
 	name: "leaderboard",
-	prefix: "/performance"
+	prefix: "/viewEval"
 
 });
 var viewEvalSection = FlowRouter.group({ // my edit
@@ -33,11 +33,11 @@ var viewEvalSection = FlowRouter.group({ // my edit
 });
 var editEvalSection = FlowRouter.group({ // my edit
 	name: "editEval",
-	prefix: "/editEval"
+	prefix: "/viewEval/editEval"
 });
 var evalSection = FlowRouter.group({ // my edit
 	name: "eval",
-	prefix: "/eval"
+	prefix: "/viewEval/eval"
 });
 var attendanceSection = FlowRouter.group({
 	name: "attendance",
@@ -182,7 +182,7 @@ profileSection.route("/profile/edit/:id", {
   }
 });
 
-FlowRouter.route("/performance", {  //--------------------------my edit
+FlowRouter.route("/viewEval/performance", {  //--------------------------my edit
 	action: function(params, queryParams){
 		BlazeLayout.render("leaderboardLayout", {content: "leaderboard"})
 	}
@@ -194,13 +194,13 @@ FlowRouter.route("/viewEval", {  //--------------------------my edit
 	}
 });
 
-FlowRouter.route("/editEval/:id", {  //--------------------------my edit
+FlowRouter.route("/viewEval/editEval/:id", {  //--------------------------my edit
 	action: function(params, queryParams){
 		BlazeLayout.render("editEvalLayout", {content: "editEval"})
 	}
 });
 
-FlowRouter.route("/eval/:id", {  //--------------------------my edit
+FlowRouter.route("/viewEval/eval/:id", {  //--------------------------my edit
 	action: function(params, queryParams){
 		BlazeLayout.render("evalLayout", {content: "eval"})
 	}

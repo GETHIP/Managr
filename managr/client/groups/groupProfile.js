@@ -1,22 +1,19 @@
 import { Student } from '../../collections/student.js';
 import { Groups } from '../../collections/groups.js';
 
-Template.groupName.onCreated(function() {
+Template.groupProfile.onCreated(function() {
   var self = this;
   self.autorun(function() {
     self.subscribe('Groups');
   });
 });
 
-Template.groupName.helpers({
+Template.groupProfile.helpers({
   groupName: function() {
     let groupId = FlowRouter.getParam("id");
     var groupName = Groups.findOne({"_id": groupId});
-    return groupName;
-  }
-});
-
-Template.studentNames.helpers({
+    return groupName.name;
+  },
   studentNames: function() {
     let groupId = FlowRouter.getParam("id");
     var theGroup = Groups.findOne({"_id": groupId});
@@ -26,10 +23,13 @@ Template.studentNames.helpers({
     else {
       return;
     }
-  }
-});
-
-Template.groupCoach.helpers({
+  },
+  groupTypeHelper: function() {
+    let groupId = FlowRouter.getParam("id");
+    var theGroup = Groups.findOne({"_id": groupId});
+    var groupType = theGroup.groupType;
+    return groupType;
+  },
   groupCoach: function() {
     let groupId = FlowRouter.getParam("id");
     var theGroup = Groups.findOne({"_id": groupId});
@@ -38,18 +38,15 @@ Template.groupCoach.helpers({
    } else {
       return theGroup.coachNames;
    }
-  }
-});
-
-Template.groupSize.helpers({
+ },
   groupSize: function() {
     let groupId = FlowRouter.getParam("id");
     var groupSize = Groups.findOne({"_id": groupId});
     return groupSize;
-  }
+   }
 });
 
-Template.groupButtons.events({
+Template.groupProfile.events({
 	"click .editGroupBtn" (event) {
 		FlowRouter.go("/groups/edit/" + FlowRouter.getParam("id"));
 	},

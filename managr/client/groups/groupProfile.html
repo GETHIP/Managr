@@ -3,89 +3,72 @@
 
     <div class="paddingNav">
       <div class="marginContainer">
-      {{> groupName}}
-        <div class="row nomargin">
 
-          <div class="col-sm-6 col-xs-12" style="padding-left:0; padding-right:10;">
-            <div class="groupsCard nomargin">
-              {{> groupCoach}}
+        <div class="row nomargin">
+          <h1 class="titleAssignment"> {{groupName}}</h1>
+          <div class="orange-bar" style="background-color: #870000">&nbsp;</div>
+        </div>
+
+        <div class="row nomargin cardTable" style="margin-bottom:15px">
+
+          <div class="col-sm-4 rightSideFix indCard">
+            <div class="groupsCard">
+
+              <p><strong>Group Members:</strong></p>
+              <ul>
+                {{#each name in studentNames}}
+                  <li class="studentArray">{{name}}</li>
+                {{/each}}
+              </ul>
+
             </div>
           </div>
 
-          <div class="col-sm-6 col-xs-12" style="padding-left:10; padding-right:0;">
-            <div class="groupsCard nomargin">
-              {{> groupSize}}
+          <div class="col-sm-4 rightSideFix indCard">
+            <div class="groupsCard">
+
+              <p><strong>Group Type:</strong></p>
+              <ul>
+                  <li> {{groupTypeHelper}} </li>
+              </ul>
+
             </div>
           </div>
 
-        </div>
+          <div class="col-sm-4 rightSideFix indCard">
+            <div class="groupsCard">
 
-        <div class="row nomargin" style="padding-top:20;">
-          <div class="groupsCard">
-            {{> studentNames}}
+              <p><strong>Coach:</strong></p>
+              <ul>
+                  <li> {{groupCoach}}</li>
+              </ul>
+
+            </div>
+          </div>
+
+          <div class="col-sm-4 rightSideFix indCard">
+            <div class="groupsCard">
+
+              <p><strong>Size:</strong></p>
+              <ul>
+                <li> {{groupSize.size}}</li>
+              </ul>
+
+            </div>
           </div>
         </div>
 
-        <div class="row nomargin">
-          {{> groupButtons}}
+        <div class="row nomargin rightSideFix">
+          <div class="col-sm-6 col-xs-12 rightSideFix" style="padding-left:0; width:50%;">
+             <button type="button" class="buttonStyle groupBack">Back</button>
+          </div>
+
+          <div class="col-sm-6 col-xs-12 rightSideFix" style="padding-left:10; width:50%;">
+             <button type="button" class="buttonStyle editGroupBtn">Edit Group</button>
+          </div>
         </div>
 
       </div>
     </div>
-</template>
-
-<template name="groupName">
-  {{#with groupName}}
-
-    <div class="row nomargin">
-      <h1 class="titleAssignment"> {{groupName.name}}</h1>
-      <div class="orange-bar" style="background-color: #870000">&nbsp;</div>
-    </div>
-
-  {{/with}}
-</template>
-
-<template name="studentNames">
-  <p><strong>Group Members:</strong></p>
-  <ul>
-    {{#each name in studentNames}}
-      <li class="studentArray">{{name}}</li>
-    {{/each}}
-  </ul>
-</template>
-
-<template name="groupCoach">
-  <p><strong>Coach:</strong></p>
-  {{#with groupCoach}}
-  <ul>
-      <li> {{groupCoach}}</li>
-  </ul>
-  {{/with}}
-</template>
-
-<template name="groupSize">
-    <p><strong>Size:</strong></p>
-    <ul>
-      <li> {{groupSize.size}}</li>
-    </ul>
-</template>
-
-<template name="groupButtons">
-
-  <div class="col-sm-6 col-xs-12" style="padding-left:0; padding-right:10;">
-	   <button type="button" class="buttonStyle groupBack">Back</button>
-  </div>
-
-  <div class="col-sm-6 col-xs-12" style="padding-left:10; padding-right:0;">
-	   <button type="button" class="buttonStyle editGroupBtn">Edit Group</button>
-  </div>
-
-</template>
-
-<template name="groupStudentButtons">
-
-  <div class = "col-xs-12" style="padding-left:0; padding-right:10;">
-	   <button type="button" class="buttonStyle groupBack">Back</button>
-  </div>
 
 </template>
