@@ -11,7 +11,9 @@
    </div>
   </div>
   <button type="button" id="eventCancel" class="buttonStyle" onclick="FlowRouter.go('/events');">Back</button>
+  {{#if isInstructor}}
    <button type="button" id="eventSave" class="buttonStyle" onclick="FlowRouter.go('/events');">Save Changes</button>
+  {{/if}}
   <br>
   <br>
 

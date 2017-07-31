@@ -42,7 +42,7 @@ Template.aboutme.events({
 		FlowRouter.go("/attendance/edit/" + FlowRouter.getParam("id"));
 	},
 	"click .profileBack" (event) {
-		FlowRouter.go("/profiles/");
+		FlowRouter.go("/profile/");
 	}
 });
 
