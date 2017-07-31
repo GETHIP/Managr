@@ -46,7 +46,7 @@
                         {{/each}}
                     </ol>
                     {{#with student}}
-                    <p><strong>EP10:</strong></p>
+                    <p><strong>BP10:</strong></p>
                     <ol>
                         {{#each ep}}
                         <li>{{this}}</li>
@@ -90,7 +90,9 @@
             </table>
         </div>
     </div>
+    {{#if isInstructor}}
     <button type="button" class="buttonStyle editAttendance">Edit Attendance</button>
+    {{/if}}
 </template>
 
 <template name="studentName">
@@ -103,5 +105,7 @@
 
 <template name="editAboutMe">
 	<button type="button" class="buttonStyle profileBack">Back</button>
+  {{#if isInstructor}}
 	<button type="button" class="buttonStyle editAboutMe">Edit About Me</button>
+  {{/if}}
 </template>

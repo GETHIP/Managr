@@ -59,10 +59,11 @@
 							<a class="leaderboardActive {{ activeIfTemplateIs '/viewEval'}}" href="/viewEval">Evaluations</a>
 						</li>
 
+						{{#if isInstructor}}
 						<li class="active">
 							<a class="dashboardActive {{ activeIfTemplateIs '/dashboard'}}" href="/dashboard">Dashboard</a>
 						</li>
-
+						{{/if}}
 
 						{{/if}}
 					<li></li>
