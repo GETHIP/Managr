@@ -61,3 +61,17 @@ export function nameOfUser(id) {
 		}
 	}
 }
+
+export function emailOfUser(id) {
+	var instructor = Instructor.findOne({userId: id});
+	if (instructor != undefined) {
+		return instructor.email;
+	} else {
+		var student = Student.findOne({userId: id});
+		if (student != undefined) {
+			return student.email;
+		} else {
+			return undefined;
+		}
+	}
+}

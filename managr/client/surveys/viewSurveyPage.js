@@ -103,6 +103,6 @@ Template.viewSurveyPage.events({
       }
 
     }
-    FlowRouter.go("/assignments");
+    FlowRouter.go("/home");
   }
 });

@@ -1,7 +1,12 @@
 .publishButton{
   background-image: none;
   background-color: #61c250;
-} 
+}
+
+.backHomeButton{
+  background-color: #61c250;
+  width:100%;
+}
 
 .publishButton:hover, .publishButton:active, .publishButton:active:hover, .publishButton:active:focus, .publishButton:focus{
   background-color: #61c250;

@@ -1,9 +1,12 @@
 import { Student } from '../../collections/student.js';
+import { Globals } from '../../collections/globals.js';
+
 
 Template.ProfilesTable.onCreated(function() {
   var self = this;
   self.autorun(function() {
     self.subscribe('Student');
+    self.subscribe('Globals');
   })
 })
 
@@ -28,5 +31,8 @@ Template.ProfilesTable.helpers({
   },
   studentIndex: function(){
     return studentIndex;
-  }
+  },
+	numberOfWeeks: function(){
+		return Globals.numberOfWeeks();
+	}
 });

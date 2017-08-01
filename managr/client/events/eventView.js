@@ -15,7 +15,6 @@ Template.eventView.events({
       document.getElementById("indicator").innerHTML = "Attending"
 			$(".reasonNotAttending").hide();
   }
-	console.log(indicator)
 	}
 });
 
@@ -33,13 +32,6 @@ Template.eventView.events({
 
 	 const form = event.target;
 
-	 console.log(eventId);
-	 console.log(studentId);
-	 console.log(realS);
-	 console.log(studentName);
-	 console.log(rsvp);
-	 console.log(reasonNotAttending);
-
 	 	 FlowRouter.go('/events');
 
 	 var eData = Events.findOne({_id: eventId}).rsvp;
@@ -53,8 +45,6 @@ Template.eventView.events({
 	 // false means no rsvp
  }
 	 Meteor.call('sendRSVP', eventId, realS, rsvp, false, reasonNotAttending);
-
-
 	}
 });
 

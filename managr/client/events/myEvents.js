@@ -46,7 +46,6 @@ var formatStudentsForGroup = function(group) {
     var studentIds = group.studentIds;
     var formattedStudents = [];
 
-
     for(var i = 0; i < studentIds.length; i++) {
         var student = Student.findOne({_id: studentIds[i]});
         if(student == undefined) {
@@ -91,9 +90,7 @@ Template.myEventsPage.helpers({
 });
 
 Template.myEventsPage.helpers({
-
   events: function() {
-
     var allEvents = Events.find({}).fetch();
     var formattedEvents = [];
     for(var i = 0; i < allEvents.length; i++) {
@@ -116,9 +113,7 @@ Template.myEventsPage.helpers({
   eventsIndex: function() {
       return eventsIndex;
   }
-
   });
-
 
   Template.myEventsPage.events({
     'click .deleteEventButton': function(event){

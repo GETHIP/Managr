@@ -17,20 +17,9 @@
 						<li class="active highlightBackground">
 							<a class="blogsActive {{ activeIfTemplateIs '/home'}}" href="/home">Home</a>
 						</li>
-						<li class="active" >
+						<!-- <li class="active" >
 							<a class="assignmentsActive {{ activeIfTemplateIs '/assignments'}}" href="/assignments">Assignments</a>
-						</li>
-						<li class="active">
-							<a class="eventsActive {{ activeIfTemplateIs '/events'}}" href="/events">Events</a>
-						</li>
-						{{#if isStudent}}
-						<!-- <li class="active">
-							<a class="eventsActive {{ activeIfTemplateIs '/myEvents'}}" href="/myEvents">My Events</a>
 						</li> -->
-						<li class="active">
-							<a class="profilesActive {{ activeIfTemplateIs '/profile'}}" href="/profile">Profiles</a>
-						</li>
-						{{/if}}
 						{{#if isInstructor}}
 						<li class="active">
 							<a class="profilesActive {{ activeIfTemplateIs '/profile'}}" href="/profile">All Profiles</a>
@@ -41,24 +30,26 @@
 						{{/if}}
 						{{#if isStudent}}
 						<li class="active">
+							<a class="profilesActive {{ activeIfTemplateIs '/profile'}}" href="/profile">Profiles</a>
+						</li>
+						<li class="active">
 							<a class="groupsActive {{ activeIfTemplateIs '/myGroups'}}" href="/myGroups">My Groups</a>
 						</li>
 						{{/if}}
-						{{#if isInstructor}}
 						<li class="active">
-							<a class="attendanceActive {{ activeIfTemplateIs '/attendance'}}" href="/attendance">Attendance</a>
+							<a class="eventsActive {{ activeIfTemplateIs '/events'}}" href="/events">Events</a>
 						</li>
-						{{/if}}
 						{{#if isInstructor}}
 						<li class="active">
 							<a class="surveysActive {{ activeIfTemplateIs '/surveys'}}" href="/surveys">Surveys</a>
 						</li>
+						<li class="active">
+							<a class="attendanceActive {{ activeIfTemplateIs '/attendance'}}" href="/attendance">Attendance</a>
+						</li>
 						{{/if}}
-
 						<li class="active">
 							<a class="leaderboardActive {{ activeIfTemplateIs '/viewEval'}}" href="/viewEval">Evaluations</a>
 						</li>
-
 						{{#if isInstructor}}
 						<li class="active">
 							<a class="dashboardActive {{ activeIfTemplateIs '/dashboard'}}" href="/dashboard">Dashboard</a>
