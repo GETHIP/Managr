@@ -37,7 +37,7 @@
 			{{#each stuarry}}
 				<tr class= "tableRowFormat leaderboard"> <!--  <tr onclick="parent.location='{{url}}'"   "FlowRouter.go("/profile/edit/" + FlowRouter.getParam("id"));> -->
 					<td class="tableDataFormat leaderboard"> {{name}}</td>
-					<td class="tableDataFormat leaderboard">{{attendanceNumber}}/12</td>
+					<td class="tableDataFormat leaderboard">{{attendanceNumber}}/{{numberOfWeeks}}</td>
 					<td class="tableDataFormat leaderboard"> {{week}}</td>
 					<td class="tableDataFormat leaderboard">{{effort}}</td>
 					<td class="tableDataFormat leaderboard">{{attitude}}</td>
