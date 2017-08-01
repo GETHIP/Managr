@@ -2,6 +2,7 @@ import { Student } from '../../collections/student.js';
 import { Milestone } from '../../collections/milestone.js';
 import { Instructor } from '../../collections/instructor.js';
 import { nameOfUser } from '../../lib/permissions.js';
+import { emailOfUser } from '../../lib/permissions.js';
 import { Globals } from '../../collections/globals.js';
 import { Eval } from '../../collections/eval.js';
 
@@ -39,9 +40,9 @@ Template.dashboard.onCreated(function() {
     self.subscribe('Student');
     self.subscribe('Instructor');
     self.subscribe('userData');
-	self.subscribe('Globals');
-  self.subscribe('Milestone');
-  self.subscribe('Eval');
+	  self.subscribe('Globals');
+    self.subscribe('Milestone');
+    self.subscribe('Eval');
   });
   Template.instance().importingStudents = new ReactiveVar(false);
 });
@@ -57,6 +58,7 @@ Template.dashboard.helpers({
 				//upload, but that shouldn't happen actually).
 				u.name = "Archived";
 			}
+      u.email = emailOfUser(u._id);
 			u.role = u.roles[0].charAt(0).toUpperCase() + u.roles[0].slice(1);
 			return u;
 		});

@@ -65,11 +65,8 @@
         <table class="dashTable">
             <thead>
                 <tr>
-					<th>Name</th>
-					<!-- This table heading previously had the class
-						 class="dashTableWidthOverride"
-						 I don't really know why, and it screwed up the
-						 table when I added actual names, so I removed it. -->
+										<th>Name</th>
+										<th>Email</th>
                     <th>Username</th>
                     <th>Role</th>
                     <th></th>
@@ -78,17 +75,10 @@
             <tbody>
                 {{#each users}}
                 <tr>
-					<td>{{name}}</td>
-                    <td>{{ username }}</td>
-                    <td class="selectorDiv">
-						{{role}}
-<!--                         <select class="dashTableSelect">
-                            <option {{userHasRole roles 'instructor'}}>Instructor</option>
-                            <option {{userHasRole roles 'student'}}>Student</option>
-                            <option {{userHasRole roles 'unconfirmed'}}>Unconfirmed</option>
-                        </select>
- -->
-                    </td>
+										<td>{{name}}</td>
+										<td>{{email}}</td>
+                    <td>{{username}}</td>
+                    <td class="selectorDiv">{{role}}</td>
                     <td>
 						{{#unless isCurrentUser _id}}
 							<button class="buttonStyle deleteUserButton realDeleteUserButton" id="{{username}}">Delete</button>
