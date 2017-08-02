@@ -1,6 +1,7 @@
 import { Student } from '../../collections/student.js';
 import { Eval } from '../../collections/eval.js';
 import { Instructor } from '../../collections/instructor.js';
+import { Globals } from '../../collections/globals.js';
 
 var _dep = new Deps.Dependency();
 
@@ -9,6 +10,7 @@ Template.leaderboard.onCreated(function(){
   Meteor.subscribe('Eval');
   Meteor.subscribe('Student');
   Meteor.subscribe('Instructor');
+  Meteor.subscribe('Globals');
 
   Template.instance().sortDescriptor = new ReactiveVar("studentNameSort");
   Template.instance().sortAscending = new ReactiveVar(true);
@@ -19,25 +21,23 @@ Template.leaderboard.onCreated(function(){
 Template.leaderboard.helpers({
 
   students: function(){
-    //console.log(Student.find().fetch());
     return Student.find({});
   },
+  numberOfWeeks: function(){
+		return Globals.numberOfWeeks();
+	},
   stuarry: function(){
     var studentlist = Student.find({}).fetch();
     var evalList = Eval.find({}).fetch();
     var stuarry = [];
     var total;
-  //  console.log(studentlist)
     _dep.depend()
     studentlist.forEach(function (element) {
       var stars;
-      //console.log(element._id)
       var star_rating = Eval.find({evaluatee: element._id}).fetch();
-    //  console.log(star_rating.stars)
       if(star_rating.length == 0){
         stars = 0
       }
-    //  console.log(star_rating.length);
       if(star_rating.length != 0){
         var effortTot = 0;
         var attTot = 0;
@@ -45,7 +45,6 @@ Template.leaderboard.helpers({
         var techTot = 0;
         for (var i = 0; i < star_rating.length; i++){
           effortTot += eval(star_rating[i].stars[0]);
-          //console.log(effortTot)
           attTot += eval(star_rating[i].stars[1]);
           teamTot += eval(star_rating[i].stars[2]);
           techTot += eval(star_rating[i].stars[3]);
@@ -67,7 +66,6 @@ Template.leaderboard.helpers({
         var attendanceNumber = 0;
       }
 
-      //console.log(element.name);
       element.attendance.forEach(function (ment){ //attendance number calculation
           if(ment == true){
             attendanceNumber++;
