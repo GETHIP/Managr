@@ -85,11 +85,4 @@ Meteor.startup(() => {
 	leaderboardMethods();
 	surveysMethods();
 	groupsMethods();
-
-	Email.send({
-    to: 'emily_zhang@gallup.com',
-    from: 'gallupgethip@gmail.com',
-    subject: 'the application has started',
-    text: 'thanks'
-	});
 });

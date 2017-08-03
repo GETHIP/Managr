@@ -7,11 +7,9 @@ Template.manage.onCreated(function(){
 
 Template.manage.helpers({
   'titles': function(){
-    return Posts.find({authorId: Meteor.userId()}, { sort: { lastUpdated: -1 } });
+    return Posts.find({}, { sort: { lastUpdated: -1 } });
   },
   'drafts': function(){
-    console.log( Drafts.find());
-    console.log(Meteor.userId());
     return Drafts.find({authorId: Meteor.userId()}, { sort: { lastUpdated: -1 } });
   }
 });
