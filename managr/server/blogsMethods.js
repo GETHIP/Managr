@@ -58,10 +58,7 @@ export function blogsMethods() {
 			}
 		},
 		'delPost': function(id) {
-		  correctId = Posts.findOne({"_id": id}).authorId;
-		  if(correctId == Meteor.userId()){
 			Posts.remove({"_id": id});
-		  }
 		},
 		'insertPost':function(post){
 			post.lastUpdated = new Date();

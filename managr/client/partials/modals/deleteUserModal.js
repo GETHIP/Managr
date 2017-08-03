@@ -18,8 +18,8 @@ Template.deleteUserModal.events({
        var id = Instructor.findOne({userId: Template.instance().data._id})._id;
      }else{
       var id = thisStudent._id;
+      Meteor.call("removeUEvals", id);
      }
-	   Meteor.call("removeUEvals", id);
 	   Meteor.call('deleteUser', Template.instance().data._id);
 	}
 });

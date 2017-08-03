@@ -17,13 +17,14 @@ export function dashboardMethods() {
 			if (userId == Meteor.userId()) {
 				return;
 			}
+			var theUser = Meteor.users.findOne({ _id: userId });
+			var emailToDelete = theUser.emails[0].address;
 			Meteor.users.remove({_id: userId});
-			Meteor.instructors.remove({_id: userId});
 
 			//Only one of these will actually have any affect, because
 			//a user can only be a student or an instructor.
-			Student.remove({userId: userId});
-			Instructor.remove({userId: userId});
+			Student.remove({email: emailToDelete});
+			Instructor.remove({email: emailToDelete});
 		},
 		'createUserAccount': function(user) {
 			if (!isInstructor()) {
