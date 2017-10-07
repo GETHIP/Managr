@@ -10,6 +10,14 @@ Template.aboutme.onCreated(function() {
 });
 
 Template.aboutme.helpers({
+  userParam: function() {
+		var student = Student.findOne({_id: FlowRouter.getParam("id")});
+		if (student == undefined) {
+			return undefined;
+		} else {
+			return student.userId;
+		}
+	},
   student: function() {
     let userId = FlowRouter.getParam("id");
     let student = Student.findOne({"_id": userId});
@@ -57,6 +65,14 @@ Template.attendanceBody.onCreated(function() {
 });
 
 Template.attendanceBody.helpers({
+  userParam: function() {
+		var student = Student.findOne({_id: FlowRouter.getParam("id")});
+		if (student == undefined) {
+			return undefined;
+		} else {
+			return student.userId;
+		}
+	},
 	headers: function() {
 		//Force reactivity.
 		var attendancePage = Template.instance().attendancePage.get();

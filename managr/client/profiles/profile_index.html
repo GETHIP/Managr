@@ -61,7 +61,10 @@
         {{/with}}
 		  {{> attendanceBody}}
       </div>
-		  {{> editAboutMe}}
+      <button type="button" class="buttonStyle profileBack">Back</button>
+      {{#if currentUserOrInstructor userParam}}
+    	<button type="button" class="buttonStyle editAboutMe">Edit About Me</button>
+      {{/if}}
 </template>
 
 <template name="attendanceBody">
@@ -90,7 +93,7 @@
             </table>
         </div>
     </div>
-    {{#if isInstructor}}
+    {{#if currentUserOrInstructor userParam}}
     <button type="button" class="buttonStyle editAttendance">Edit Attendance</button>
     {{/if}}
 </template>
@@ -100,12 +103,4 @@
         <h1 class="titleProfile names">{{studentName.name}}</h1>
         <div class="blueBar">&nbsp;</div>
     {{/with}}
-</template>
-
-
-<template name="editAboutMe">
-	<button type="button" class="buttonStyle profileBack">Back</button>
-  {{#if isInstructor}}
-	<button type="button" class="buttonStyle editAboutMe">Edit About Me</button>
-  {{/if}}
 </template>
