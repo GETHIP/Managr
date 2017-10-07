@@ -165,11 +165,6 @@ groupIndex = new EasySearch.Index({
 						size: -1,
 					};
 				}
-				/*
-				else {
-					throw new Meteor.Error('Invalid sort by prop passed')
-				}
-				*/
 		},
 
 		selector: function (searchObject, options, aggregation) {

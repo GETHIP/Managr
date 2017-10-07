@@ -46,18 +46,18 @@
         <div class ="formdashboardContainer containerDiv formbg homeEvents">
           <h1 class="formTitle eventTitle goToView" id="{{eventId}}">{{name}}</h1>
 
+          <p><b>Host:</b> {{host}}</p>
+          <p><b>Description:</b> {{description}}</p>
+          <p><b>Date:</b> {{formattedDate}}</p>
+          <p><b>Location:</b> {{location}}</p>
+
           {{#if isInstructor}}
              <div class="editEventButton">
                <button type="button" class="buttonStyle editEvent createdEvent goToEdit" id="{{eventId}}"><i class="fa fa-eraser" aria-hidden="true"></i>     Edit Event</button>
                <button type="button" class="buttonStyle editEvent createdEvent attendingButton" id="{{eventId}}"><i class="fa fa-user-circle" aria-hidden="true"></i>     Attending</button>
-               <button type="button" class="deleteEventButton manageDeleteButton" id="{{eventId}}"><i class="fa fa-trash-o" aria-hidden="true"></i>     Delete</button>
+               <button type="button" class="deleteEventButton manageDeleteButton" id="{{eventId}}"><i class="fa fa-trash-o" aria-hidden="true"></i>     Delete Event</button>
              </div>
           {{/if}}
-
-          <p>Host: {{host}}</p>
-          <p>Description: {{description}}</p>
-          <p>Date: {{formattedDate}}</p>
-          <p>Location: {{location}}</p>
 
       </div>
     </div>
