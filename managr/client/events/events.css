@@ -12,7 +12,6 @@
     text-align: left;
     font-size: 18px;
     padding: 5%;
-    padding-right: 2%;
     padding-top: 2%;
     padding-bottom: 1%;
     white-space: pre-line;
@@ -90,8 +89,8 @@ input:checked+.slider:before {
 
 .rsvp {
   background-color: white;
-  width:40%;
-  float: right;
+  width: 150px;
+  float: none;
 }
 
 .switching {

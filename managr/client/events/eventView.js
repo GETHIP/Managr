@@ -8,11 +8,11 @@ Template.eventView.onCreated(function() {
 
 Template.eventView.events({
 'click .sliderEvents': function(event){
-  if(document.getElementById("indicator").innerHTML == "Attending"){
-      document.getElementById("indicator").innerHTML = "Not Attending"
+  if(document.getElementById("indicator").innerHTML == "Attending" || document.getElementById("indicator").innerHTML == "<b>Attending</b>"){
+      document.getElementById("indicator").innerHTML = "<b>Not Attending</b>"
 			$(".reasonNotAttending").show();
   }else{
-      document.getElementById("indicator").innerHTML = "Attending"
+      document.getElementById("indicator").innerHTML = "<b>Attending</b>"
 			$(".reasonNotAttending").hide();
   }
 	}

@@ -3,7 +3,7 @@
 }
 
 .switchFormat {
-  padding-left: 50%;
+  background-color: white;
 }
 
 #rsvpEventButton {
@@ -32,9 +32,6 @@
       display: none;
   }
 
-  .switchFormat {
-    background-color: white;
-  }
   .sliderEvents {
       position: absolute;
       cursor: pointer;

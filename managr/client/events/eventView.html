@@ -2,24 +2,26 @@
     <div class = "events viewingEvents">
     <div class ="formdashboardContainer containerDiv formbg homeEvents">
       <h1 class="formTitle eventTitle goToView" id="{{eventId}}" >{{eventName}}</h1>
-        {{#if isStudent}}
-        <div class="rsvp">
-          <html>
-            <body class="switchFormat">
-              <p id="indicator">Not Attending</p>
-              <br>
-              <label class="switchEvents">
-                <input type="checkbox" name="rsvp">
-                <div class="sliderEvents"></div>
-              </label>
-            </body>
-          </html>
-        </div>
-        {{/if}}
-          <p>Host: {{host}}</p>
-          <p>Description: {{eventDescription}}</p>
-          <p>Date: {{formattedDate}}</p>
-          <p>Location: {{eventLocation}}</p>
+
+          <p><b>Host:</b> {{host}}</p>
+          <p><b>Description:</b> {{eventDescription}}</p>
+          <p><b>Date:</b> {{formattedDate}}</p>
+          <p><b>Location:</b> {{eventLocation}}</p>
+
+          {{#if isStudent}}
+          <div class="rsvp">
+            <html style="background-color: #FFFFFF">
+              <body class="switchFormat" style="background-color: #F3F3F3">
+                <p id="indicator"><b>Not Attending</b></p>
+                <label class="switchEvents">
+                  <input type="checkbox" name="rsvp">
+                  <div class="sliderEvents"></div>
+                </label>
+              </body>
+            </html>
+          </div>
+          {{/if}}
+
         {{#if isStudent}}
           <br>
           <textarea id="reasonForNotAttending" name="reasonNotAttending" class = "reasonNotAttending" rows="6" placeholder="Why Will You Not Be Joining Us?" required></textarea>
